@@ -1,4 +1,4 @@
-https://tdexxx.github.io/2022/12/10/title/
-https://tdexxx.github.io/2022/12/10/hello-world/
-https://tdexxx.github.io/2023/02/01/C++%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/
-https://tdexxx.github.io/
+https://blog.tdexxx.cf/2022/12/10/title/
+https://blog.tdexxx.cf/2022/12/10/hello-world/
+https://blog.tdexxx.cf/2023/02/01/C++%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/
+https://blog.tdexxx.cf/
