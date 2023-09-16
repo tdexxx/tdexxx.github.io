@@ -306,7 +306,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：10 天前
+                    本文最后更新于：1 个月前
                   
                 
               </p>
@@ -315,20 +315,20 @@
               <div class="markdown-body">
                 
                 <p>使用返回布尔值的方法</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> pangram = <span class="string">&quot;The quick brown fox jumps over the lazy dog.&quot;</span>;</span><br><span class="line">Console.WriteLine(pangram.Contains(<span class="string">&quot;fox&quot;</span>));</span><br><span class="line">Console.WriteLine(pangram.Contains(<span class="string">&quot;cow&quot;</span>));</span><br></pre></td></tr></table></figure>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">string</span> pangram = <span class="hljs-string">&quot;The quick brown fox jumps over the lazy dog.&quot;</span>;<br>Console.WriteLine(pangram.Contains(<span class="hljs-string">&quot;fox&quot;</span>));<br>Console.WriteLine(pangram.Contains(<span class="hljs-string">&quot;cow&quot;</span>));<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">True</span><br><span class="line">False</span><br></pre></td></tr></table></figure>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c#">True<br>False<br></code></pre></td></tr></table></figure>
 
 <p>什么是逻辑非？下面两个代码行生成相同的结果。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// These two lines of code will create the same output</span><br><span class="line"></span><br><span class="line">Console.WriteLine(pangram.Contains(&quot;fox&quot;) == false);</span><br><span class="line">Console.WriteLine(!pangram.Contains(&quot;fox&quot;));</span><br></pre></td></tr></table></figure>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs arcade"><span class="hljs-comment">// These two lines of code will create the same output</span><br><br><span class="hljs-built_in">Console</span>.WriteLine(pangram.<span class="hljs-built_in">Contains</span>(<span class="hljs-string">&quot;fox&quot;</span>) == <span class="hljs-literal">false</span>);<br><span class="hljs-built_in">Console</span>.WriteLine(!pangram.<span class="hljs-built_in">Contains</span>(<span class="hljs-string">&quot;fox&quot;</span>));<br></code></pre></td></tr></table></figure>
 
 <p>使用逻辑非运算符</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">string pangram = &quot;The quick brown fox jumps over the lazy dog.&quot;;</span><br><span class="line">Console.WriteLine(!pangram.Contains(&quot;fox&quot;));</span><br><span class="line">Console.WriteLine(!pangram.Contains(&quot;cow&quot;));</span><br></pre></td></tr></table></figure>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"><span class="hljs-built_in">string</span> pangram = <span class="hljs-string">&quot;The quick brown fox jumps over the lazy dog.&quot;</span>;<br>Console.<span class="hljs-constructor">WriteLine(!<span class="hljs-params">pangram</span>.Contains(<span class="hljs-string">&quot;fox&quot;</span>)</span>);<br>Console.<span class="hljs-constructor">WriteLine(!<span class="hljs-params">pangram</span>.Contains(<span class="hljs-string">&quot;cow&quot;</span>)</span>);<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">False</span><br><span class="line">True</span><br></pre></td></tr></table></figure>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ada"><span class="hljs-literal">False</span><br><span class="hljs-literal">True</span><br></code></pre></td></tr></table></figure>
 
 <p>概括</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">计算字符串的相等性需要考虑字符串可能具有不同的大小写以及前导空格或尾随空格。 根据具体情况，使用 ToLower() 或 ToUpper() 帮助程序方法，并使用 Trim() 帮助程序方法来提高两个字符串相等的可能性。</span><br></pre></td></tr></table></figure>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs scss">计算字符串的相等性需要考虑字符串可能具有不同的大小写以及前导空格或尾随空格。 根据具体情况，使用 <span class="hljs-built_in">ToLower</span>() 或 <span class="hljs-built_in">ToUpper</span>() 帮助程序方法，并使用 <span class="hljs-built_in">Trim</span>() 帮助程序方法来提高两个字符串相等的可能性。<br></code></pre></td></tr></table></figure>
 
 
                 
