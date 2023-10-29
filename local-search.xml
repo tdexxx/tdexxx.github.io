@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>不定积分</title>
+    <link href="/2023/10/29/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/"/>
+    <url>/2023/10/29/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/</url>
+    
+    <content type="html"><![CDATA[<p>$$<br>\begin{flalign*}<br>例1 \quad 求 \int^\ x^4dx<br>\end{flalign*}<br>$$<br>$$<br>解：因(\frac{x^5}{5})^\prime &#x3D; x^4故\frac{x^5}{5}是x^4的一个原函数，所以<br>$$</p><p>$$<br>\int^\ x^4dx &#x3D; \frac{x^5}{5}+C<br>$$</p><p>$$</p><p>$$</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>math</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Ffmpeg</title>
     <link href="/2023/08/14/ffmpeg/"/>
     <url>/2023/08/14/ffmpeg/</url>

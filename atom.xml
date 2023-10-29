@@ -6,7 +6,7 @@
   <link href="https://blog.tdexxx.cf/atom.xml" rel="self"/>
   
   <link href="https://blog.tdexxx.cf/"/>
-  <updated>2023-08-14T14:59:22.536Z</updated>
+  <updated>2023-10-29T09:15:12.265Z</updated>
   <id>https://blog.tdexxx.cf/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>不定积分</title>
+    <link href="https://blog.tdexxx.cf/2023/10/29/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/"/>
+    <id>https://blog.tdexxx.cf/2023/10/29/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/</id>
+    <published>2023-10-29T08:51:00.000Z</published>
+    <updated>2023-10-29T09:15:12.265Z</updated>
+    
+    <content type="html"><![CDATA[<p>$$<br>\begin{flalign*}<br>例1 \quad 求 \int^\ x^4dx<br>\end{flalign*}<br>$$<br>$$<br>解：因(\frac{x^5}{5})^\prime &#x3D; x^4故\frac{x^5}{5}是x^4的一个原函数，所以<br>$$</p><p>$$<br>\int^\ x^4dx &#x3D; \frac{x^5}{5}+C<br>$$</p><p>$$</p><p>$$</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;$$&lt;br&gt;&#92;begin{flalign*}&lt;br&gt;例1 &#92;quad 求 &#92;int^&#92; x^4dx&lt;br&gt;&#92;end{flalign*}&lt;br&gt;$$&lt;br&gt;$$&lt;br&gt;解：因(&#92;frac{x^5}{5})^&#92;prime &amp;#x3D; x^4故&#92;frac{x^5}{5}是x^4</summary>
+      
+    
+    
+    
+    
+    <category term="math" scheme="https://blog.tdexxx.cf/tags/math/"/>
+    
+  </entry>
   
   <entry>
     <title>Ffmpeg</title>
