@@ -1,0 +1,726 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="tdexxx">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Linux-Ubuntu22.04安装使用Clash - 个人博客网站 | 张涵哲02&#x2F;19 既然已经寻找Linux安装Clash的教程，那么本文就假定你在Windows下已经使用过Clash，有自己的订阅，文章中提到的需要下载的文件，会在末尾提供下载地址，如果找不到或地址失效请联系我补链接，文章不会用傻瓜式命令让你直接安装成功，希望看文章的你最起码懂一些基础的Linux基础命令 Lin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux-Ubuntu22.04安装使用Clash">
+<meta property="og:url" content="https://tdexxx.github.io/2023/07/04/clash%20for%20ubuntu/index.html">
+<meta property="og:site_name" content="tdexxx的博客">
+<meta property="og:description" content="Linux-Ubuntu22.04安装使用Clash - 个人博客网站 | 张涵哲02&#x2F;19 既然已经寻找Linux安装Clash的教程，那么本文就假定你在Windows下已经使用过Clash，有自己的订阅，文章中提到的需要下载的文件，会在末尾提供下载地址，如果找不到或地址失效请联系我补链接，文章不会用傻瓜式命令让你直接安装成功，希望看文章的你最起码懂一些基础的Linux基础命令 Lin">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-07-03T17:15:47.000Z">
+<meta property="article:modified_time" content="2023-07-03T17:15:42.430Z">
+<meta property="article:author" content="tdexxx">
+<meta property="article:tag" content="Ubuntu22.04">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Linux-Ubuntu22.04安装使用Clash - tdexxx的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"tdexxx.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Linux-Ubuntu22.04安装使用Clash"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-07-04 01:15" pubdate>
+          2023年7月4日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          35 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Linux-Ubuntu22.04安装使用Clash</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>Linux-Ubuntu22.04安装使用Clash - 个人博客网站 | 张涵哲<br>02&#x2F;19</p>
+<p>既然已经寻找Linux安装Clash的教程，那么本文就假定你在Windows下已经使用过Clash，有自己的订阅，文章中提到的需要下载的文件，会在末尾提供下载地址，如果找不到或地址失效请联系我补链接，文章不会用傻瓜式命令让你直接安装成功，希望看文章的你最起码懂一些基础的Linux基础命令</p>
+<p>Linux下的网络环境比较差，所以需要提前在Win下准备好相关文件，首先需要准备的是Clash本身，在Win下可以通过代理访问Github，下载文件比较方便，点击访问Clash下载页面，选择一个合适的版本下载即可</p>
+<p>然后打开Win下的Clash，在常规页面下点开配置文件主目录，在弹出的目录中将</p>
+<p>Country.mmdb</p>
+<p>文件复制出来，这个配置文件是动态IP库，记录各个国家IP地址信息，这样Clash才知道那些是国外网站，哪些是国内网站，在Linux下这个文件需要联网下载，很大概率会失败，所以需要提前准备</p>
+<p>然后在Win下点开Clash的配置页面，找到目前正在使用的订阅，右键打开文件夹，文件夹打开后资源管理器会默认选中对应的文件，将他复制出来即可</p>
+<p>现在已经准备好了三个文件，一个是Clash本身，一个是Country.mmdb动态IP库，一个是.yml结尾的订阅文件，现在就可以进入Linux安装Clash了</p>
+<p>首先将之前准备好的文件放入Linux中，找到之前准备的Clash文件，如果是从Github官网下载的文件，应该是压缩文件，将文件解压后放到</p>
+<p>&#x2F;usr&#x2F;local&#x2F;bin</p>
+<p>目录中（推荐该目录，可以在任何位置调用Clash），然后将文件名修改为</p>
+<p>clash</p>
+<p>（这里不重要，改名只为调用方便），效果如下所示</p>
+<p>接下来在任意位置打开终端，输入</p>
+<p>clash</p>
+<p>然后回车，如果控制台输出了127.0.0.1:7890的代理地址，就像下面图片上这样，就说明你的Clash已经初始化成功了</p>
+<p>如果在第二行downlaod时失败，就说明网络环境不是很好，这时就需要之前准备的动态IP库了（你的报错信息可能跟我有些出入，因为我这里直接下载成功了，为了模拟下载失败的效果我将网线拔了）</p>
+<p>Clash初始化会创建</p>
+<p>~&#x2F;.config&#x2F;clash</p>
+<p>隐藏目录，动态IP库最终会被下载到该目录内，这里打开该目录，将目录内的文件清空，然后将之前准备好的</p>
+<p>Country.mmdb</p>
+<p>文件复制过去，重新执行clash命令，这样就可以解决下载报错的问题了</p>
+<p>在</p>
+<p>~&#x2F;.config&#x2F;clash</p>
+<p>目录中可以发现，除了动态IP库之外还有一个config.yaml的文件，这个就是Clash的默认配置文件，将之前准备的.yml文件复制过来，重命名为config.yaml，打开刚刚的终端重新运行Clash</p>
+<p>接着终端不要关闭，保持Clash的运行，然后打开linux的网络链接，配置代理地址为Clash提供的地址，一般都是</p>
+<p>127.0.0.1:7890</p>
+<p>，如下图所示，然后浏览器打开这个地址：<a target="_blank" rel="noopener" href="http://clash.razord.top,就可以看到linux下基于web的clashui/">http://clash.razord.top，就可以看到Linux下基于WEB的ClashUI</a></p>
+<p>需要注意的是，只有开启了Clash的代理后，这个页面才可以访问，否则是无法访问的，打开页面后就可以看到订阅中的代理，就可以正常使用了</p>
+<p><a target="_blank" rel="noopener" href="https://typecho.hanzhe.site/archives/72/">https://typecho.hanzhe.site/archives/72/</a></p>
+<p>Ubuntu 22.04 LTS安装并配置Clash - 索尼安装clash</p>
+<p>一、Clash For Linux GUI 通过图形界面使用</p>
+<ol>
+<li>下载Linux版本Clash For Windows<br>Clash For Windows 最新版本下载链接（GitHub）<br>蓝奏云网盘 Clash.for.Windows-0.19.25-x64下载链接 密码:2f92<br>普通的PC电脑下载x64版本，其他版本根据个人硬件选择</li>
+<li>解压并启动</li>
+</ol>
+<h2 id="安装目录根据个人习惯-我习惯放在-opt目录下"><a href="#安装目录根据个人习惯-我习惯放在-opt目录下" class="headerlink" title="安装目录根据个人习惯 我习惯放在&#x2F;opt目录下"></a>安装目录根据个人习惯 我习惯放在&#x2F;opt目录下</h2><p>cd &#x2F;opt</p>
+<h2 id="下载压缩包-若通过浏览器下载可忽略这一步-需安装有wget-若没有可以先下载-sudo-apt-install-wget-y"><a href="#下载压缩包-若通过浏览器下载可忽略这一步-需安装有wget-若没有可以先下载-sudo-apt-install-wget-y" class="headerlink" title="下载压缩包(若通过浏览器下载可忽略这一步) 需安装有wget 若没有可以先下载 sudo apt install wget -y"></a>下载压缩包(若通过浏览器下载可忽略这一步) 需安装有wget 若没有可以先下载 sudo apt install wget -y</h2><p>sudo wget <a target="_blank" rel="noopener" href="https://github.com/Fndroid/clash_for_windows_pkg/releases/tag/0.19.25">https://github.com/Fndroid/clash_for_windows_pkg/releases/tag/0.19.25</a></p>
+<h2 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h2><p>sudo tar -zxf Clash.for.Windows-0.19.25-x64-linux.tar.gz</p>
+<h2 id="文件夹更名-更方便操作"><a href="#文件夹更名-更方便操作" class="headerlink" title="文件夹更名 更方便操作"></a>文件夹更名 更方便操作</h2><p>sudo mv ‘Clash for Windows-0.19.25-x64-linux’ clash-GUI</p>
+<h2 id="进入clash-GUI目录启动Clash"><a href="#进入clash-GUI目录启动Clash" class="headerlink" title="进入clash-GUI目录启动Clash"></a>进入clash-GUI目录启动Clash</h2><p>.&#x2F;cfw<br>复制代码<br>3. 加载订阅链接<br>订阅链接一般在 “仪表盘” 或者 “我的订阅” 这样的标签内，不同的代理服务商不太一样<br>*Windows下Clash主界面有System Proxy选项（系统代理），需要手动打开才能开启代理，Linux下开启Clash即为打开代理<br>4. 配置端口和系统代理<br>进入Proxies界面，选择你需要的代理模式。其中：<br>Global（全局模式）：所有流量都使用代理<br>Rule（规则模式） ：根据配置文件内的规则进行分流，部分流量使用代理，部分流量不使用（推荐此方式）<br>Direct（直连模式）：所有流量都不使用代理<br>Script（脚本模式）：根据高级脚本来进行分流（不推荐无编程经验用户使用）<br>*在Rule模式下，点击分组右上角的小眼睛可以切换显示所有节点或收起分组<br>Clash 启动时默认使用第一台服务器，在Proxies界面可任意选择一可用节点，若当前节点无法联网可尝试更换<br>Linux下需要配置网络代理才能正常使用Clash，需要注意的是：<br>当系统网络代理打开的时候，若Clash未启动，则无法正常访问网页<br>当Clash开启但系统网络代理为Disabled状态时，代理无效<br>这样手动切换起来很麻烦 解决方案<br>打开 Settings→Network 改Network Proxy为Manual（手动），然后填入地址和端口即可（端口可以更改，依据自己的配置文件）<br>端口可以在Clash主界面 General → Port 看到，点击可以手动更改端口，新版本的Mixed Port整合了http + socks默认为7890，我记得老版本的http port为7890、socks为7891，这个具体可以在 ~&#x2F;.config&#x2F;clash&#x2F;config.yaml 配置文件中查到<br>打开浏览器输入<a target="_blank" rel="noopener" href="http://www.google.com/">www.google.com</a> 检查是否代理成功<br>5. 设置终端代理<br>如果有终端代理的需求，点击Clash主界面上的终端图标可唤出终端代理命令<br>！！！ 进入Proxies界面，将代理模式改为Global， 全局模式终端代理才生效</p>
+<h1 id="！！！进入Proxies界面，将代理模式改为Global"><a href="#！！！进入Proxies界面，将代理模式改为Global" class="headerlink" title="！！！进入Proxies界面，将代理模式改为Global"></a>！！！进入Proxies界面，将代理模式改为Global</h1><h1 id="将-mixedPort-更换为自己的端口-端口根据个人配置文件填写-这里我是7890"><a href="#将-mixedPort-更换为自己的端口-端口根据个人配置文件填写-这里我是7890" class="headerlink" title="将%mixedPort%更换为自己的端口 端口根据个人配置文件填写 这里我是7890"></a>将%mixedPort%更换为自己的端口 端口根据个人配置文件填写 这里我是7890</h1><h1 id="临时使用终端代理"><a href="#临时使用终端代理" class="headerlink" title="临时使用终端代理"></a>临时使用终端代理</h1><p>export https_proxy&#x3D;<a target="_blank" rel="noopener" href="http://127.0.0.1:7890/">http://127.0.0.1:7890</a> http_proxy&#x3D;<a target="_blank" rel="noopener" href="http://127.0.0.1:7890/">http://127.0.0.1:7890</a> all_proxy&#x3D;socks5:&#x2F;&#x2F;127.0.0.1:7890</p>
+<h1 id="永久使用终端代理-写入到-bashrc文件"><a href="#永久使用终端代理-写入到-bashrc文件" class="headerlink" title="永久使用终端代理 写入到.bashrc文件"></a>永久使用终端代理 写入到.bashrc文件</h1><p>echo “export https_proxy&#x3D;<a target="_blank" rel="noopener" href="http://127.0.0.1:7890/">http://127.0.0.1:7890</a> http_proxy&#x3D;<a target="_blank" rel="noopener" href="http://127.0.0.1:7890/">http://127.0.0.1:7890</a> all_proxy&#x3D;socks5:&#x2F;&#x2F;127.0.0.1:7890”&gt;&gt;~&#x2F;.bashrc</p>
+<h1 id="刷新配置文件"><a href="#刷新配置文件" class="headerlink" title="刷新配置文件"></a>刷新配置文件</h1><p>source ~&#x2F;.bashrc<br>#测试是否成功，IP是否更改 其他测试方法 curl ifconfig.me&#x2F;all 或者 curl <a target="_blank" rel="noopener" href="http://www.google.com出现一大堆html代码/">www.google.com出现一大堆html代码</a><br>curl cip.cc<br>复制代码<br>二、 Clash For Linux Shell 通过命令行使用</p>
+<ol>
+<li>下载Linux版本二进制Clash文件<br>Clash-Linux最新版本下载链接（GitHub）<br>蓝奏云网盘 clash-linux-amd64-v1.11.4下载链接 密码:6bk4<br>普通的PC电脑下载amd64也就是x64版本，其他版本根据个人硬件选择</li>
+<li>配置并启动</li>
+</ol>
+<h2 id="安装目录根据个人习惯-我习惯放在-opt目录下-1"><a href="#安装目录根据个人习惯-我习惯放在-opt目录下-1" class="headerlink" title="安装目录根据个人习惯 我习惯放在&#x2F;opt目录下"></a>安装目录根据个人习惯 我习惯放在&#x2F;opt目录下</h2><p>cd &#x2F;opt</p>
+<h2 id="下载压缩包-若通过浏览器下载可忽略这一步-需安装有wget-若没有可以先下载-sudo-apt-install-wget-y-1"><a href="#下载压缩包-若通过浏览器下载可忽略这一步-需安装有wget-若没有可以先下载-sudo-apt-install-wget-y-1" class="headerlink" title="下载压缩包(若通过浏览器下载可忽略这一步) 需安装有wget 若没有可以先下载 sudo apt install wget -y"></a>下载压缩包(若通过浏览器下载可忽略这一步) 需安装有wget 若没有可以先下载 sudo apt install wget -y</h2><p>sudo wget <a target="_blank" rel="noopener" href="https://github.com/Dreamacro/clash/releases/download/v1.11.4/clash-linux-amd64-v1.11.4.gz">https://github.com/Dreamacro/clash/releases/download/v1.11.4/clash-linux-amd64-v1.11.4.gz</a></p>
+<h2 id="解压-1"><a href="#解压-1" class="headerlink" title="解压"></a>解压</h2><p>sudo gzip -d clash-linux-amd64-v1.11.4.gz</p>
+<h2 id="重命名"><a href="#重命名" class="headerlink" title="重命名"></a>重命名</h2><p>sudo mv clash-linux-amd64-v1.11.4.gz clash-linux</p>
+<h2 id="赋予二进制文件可执行权限"><a href="#赋予二进制文件可执行权限" class="headerlink" title="赋予二进制文件可执行权限"></a>赋予二进制文件可执行权限</h2><p>sudo chmod a+x clash-linux<br>复制代码<br>如果之前安装了图形界面的Clash，会在 ~&#x2F;.config&#x2F; 目录下生成一个clash文件夹，如果要使用二进制版本的clash需要先删除这个文件夹</p>
+<h1 id="执行二进制文件会在-config下初始化生成文件夹clash-cache-db-config-yaml-Country-mmdb-先Ctrl-C停止运行"><a href="#执行二进制文件会在-config下初始化生成文件夹clash-cache-db-config-yaml-Country-mmdb-先Ctrl-C停止运行" class="headerlink" title="执行二进制文件会在~&#x2F;.config下初始化生成文件夹clash(cache.db config.yaml Country.mmdb) 先Ctrl + C停止运行"></a>执行二进制文件会在~&#x2F;.config下初始化生成文件夹clash(cache.db config.yaml Country.mmdb) 先Ctrl + C停止运行</h1><p>.&#x2F;clash-linux<br>复制代码<br>有的代理服务商会直接给出配置文件config.yaml，如果没有，可以将订阅链接直接粘贴在浏览器网址栏，然后搜索，会直接下载下来文件或者展示出配置文件，如果搜索到的是一大堆字符则需要在订阅链接的后面添加&amp;flag&#x3D;clash ，然后会下载下来一个文件，将其更名为config.yaml即可<br>将得到的配置文件更名为config.yaml，替换~&#x2F;.config&#x2F;clash下自动生成的config.yaml，删除Country.mmdb文件，然后再次执行 .&#x2F;clash-linux,会开始下载Country.mmdb文件，需要稍等一会，待出现端口和节点信息时，将网络代理设置为手动，填入地址和端口号即可。<br>打开浏览器输入<a target="_blank" rel="noopener" href="http://www.google.com/">www.google.com</a> 检查是否代理成功<br>原版Clash可以通过网页来管理，更换代理模式、选择节点（clash和系统网络代理都要打开才可以访问）<br>浏览器搜索网址clash.razord.top<br>3. 设置终端代理<br>同上<br>三、 优化启动方式</p>
+<ol>
+<li>systemctl服务 + shell脚本（仅适用于原版clash，无法用于Clash For Windows）<br>首先将clash注册为systemctl服务<br>&#x2F;usr&#x2F;lib&#x2F;systemd&#x2F;system下新建一个文件clash.service<br>填入内容<br>[Unit]<br>Description&#x3D;Clash Linux<br>[Service]<br>Type&#x3D;simple</li>
+</ol>
+<h1 id="用来启动clash-linux的用户"><a href="#用来启动clash-linux的用户" class="headerlink" title="用来启动clash-linux的用户"></a>用来启动clash-linux的用户</h1><p>User&#x3D;ice</p>
+<h1 id="绝对路径"><a href="#绝对路径" class="headerlink" title="绝对路径"></a>绝对路径</h1><p>ExecStart&#x3D;&#x2F;opt&#x2F;clash-linux<br>[Install]<br>WantedBy&#x3D;multi-user.target<br>复制代码<br>关于systemctl脚本的更多内容可以参考<br>Systemd 入门教程：实战篇 - 阮一峰的网络日志</p>
+<h1 id="重新加载配置文件"><a href="#重新加载配置文件" class="headerlink" title="重新加载配置文件"></a>重新加载配置文件</h1><p>sudo systemctl daemon-reload<br>复制代码<br>然后可以写两个shell脚本，一个用来启动（vpns），一个用来关闭（vpnx）<br>#!&#x2F;bin&#x2F;bash</p>
+<h1 id="Clash-Start"><a href="#Clash-Start" class="headerlink" title="Clash Start"></a>Clash Start</h1><h1 id="我用的是非root用户，root用户可以直接使用systemctl-start-clash，password替换为自己管理员的密码"><a href="#我用的是非root用户，root用户可以直接使用systemctl-start-clash，password替换为自己管理员的密码" class="headerlink" title="我用的是非root用户，root用户可以直接使用systemctl start clash，password替换为自己管理员的密码"></a>我用的是非root用户，root用户可以直接使用systemctl start clash，password替换为自己管理员的密码</h1><p>echo password | sudo -S systemctl start clash</p>
+<h1 id="通过命令行更改系统代理设置为手动"><a href="#通过命令行更改系统代理设置为手动" class="headerlink" title="通过命令行更改系统代理设置为手动"></a>通过命令行更改系统代理设置为手动</h1><p>gsettings set org.gnome.system.proxy mode ‘manual’<br>复制代码<br>#!&#x2F;bin&#x2F;bash</p>
+<h1 id="Clash-Stop"><a href="#Clash-Stop" class="headerlink" title="Clash Stop"></a>Clash Stop</h1><h1 id="我用的是非root用户，root用户可以直接使用systemctl-start-clash，password替换为自己管理员的密码-1"><a href="#我用的是非root用户，root用户可以直接使用systemctl-start-clash，password替换为自己管理员的密码-1" class="headerlink" title="我用的是非root用户，root用户可以直接使用systemctl start clash，password替换为自己管理员的密码"></a>我用的是非root用户，root用户可以直接使用systemctl start clash，password替换为自己管理员的密码</h1><p>echo password | sudo -S systemctl stop clash</p>
+<h1 id="通过命令行禁用系统代理"><a href="#通过命令行禁用系统代理" class="headerlink" title="通过命令行禁用系统代理"></a>通过命令行禁用系统代理</h1><p>gsettings set org.gnome.system.proxy mode ‘none’<br>复制代码<br>然后可以把这两个脚本放在&#x2F;usr&#x2F;local&#x2F;bin目录下设置为全局的命令<br>这样就可以通过vpns vpnx这两个命令实现同时打开或者关闭Clash和系统代理<br><a target="_blank" rel="noopener" href="http://www.zztongyun.com/article/%E7%B4%A2%E5%B0%BC%E5%AE%89%E8%A3%85clash">http://www.zztongyun.com/article/%E7%B4%A2%E5%B0%BC%E5%AE%89%E8%A3%85clash</a></p>
+<p>Ubuntu 使用 Clash For Linux 客户端教程<br>在自己的开发平台上到处都需要网络代理环境，Clash 是款用 Go 语言开发的软件，可以直接下载预编译的版本进行部署使用网络代理，与 Windows 不同，Linux 提供了多种架构的预编译二进制文件，下载要注意区分，演示平台的 Ubuntu 为 X86_64 架构，选择的为 Linux-amd64 文件。<br>操作步骤<br>1、在 Ubuntu 打开终端，切换到超级管理员权限，创建 Clash 文件夹，并通过 Github Clash 仓库选择对应的版本通过 Wget 进行在线下载，下载地址可以“右键复制链接”获取，如下图：<br>#GithubClash<br><a target="_blank" rel="noopener" href="https://github.com/Dreamacro/clash/releases">https://github.com/Dreamacro/clash/releases</a></p>
+<p>#切换超级管理员<br>su</p>
+<p>#创建文件夹<br>cd&amp;&amp;mkdirclash<br>cdclash</p>
+<p>#下载Clash文件<br>wget<a target="_blank" rel="noopener" href="https://github.com/Dreamacro/clash/releases/download/v1.14.0/clash-linux-amd64-v1.14.0.gz">https://github.com/Dreamacro/clash/releases/download/v1.14.0/clash-linux-amd64-v1.14.0.gz</a><br>2、下载 Clash 文件完成，进行解压文件，给予文件权限，并为 Clash 文件改名移入另一个文件目录中，之所以如此操作是为了后续加入开机自启做准备，可通过查看版本确认操作是否成功，如下图：<br>#解压文件<br>gzip-dclash-linux-amd64-v1.14.0.gz</p>
+<p>#给予权限<br>chmod+xclash-linux-amd64-v1.14.0</p>
+<p>#改名移动<br>mvclash-linux-amd64-v1.14.0&#x2F;usr&#x2F;local&#x2F;bin&#x2F;clash</p>
+<p>#查看版本<br>clash-v<br>3、启动 Clash 客户端生成 config.yaml 文件，进入 $HOME&#x2F;.config&#x2F;clash&#x2F; 目录，通过命令导入 Clash 订阅链接到 config.yaml 文件，再次执行启动 Clash For Linux 客户端，如下图：<br>#启动Clash<br>clash</p>
+<p>#进入目录<br>cd$HOME&#x2F;.config&#x2F;clash&#x2F;</p>
+<p>#导入订阅<br>wget-Oconfig.yaml订阅地址</p>
+<p>#手动节点（适用于自建）<br>ls$HOME&#x2F;.config&#x2F;clash&#x2F;config.yaml<br>vi&#x2F;root&#x2F;.config&#x2F;clash&#x2F;config.yaml<br>4、设置客户端完成，就要解决开机自启的问题了，彧繎使用 systemd 来解决，先通过命令生成 systemd 配置文件，接着配置开机自启，并启动 clash 服务，为 Ubuntu 设置环境变量，如下图：<br>#生成systemd配置文件<br>cat&gt;&#x2F;etc&#x2F;systemd&#x2F;system&#x2F;clash.service&lt;&lt;EOF<br>[Unit]<br>Description&#x3D;Clash-Arule-basedtunnelinGo<br>Documentation&#x3D;<a target="_blank" rel="noopener" href="https://github.com/Dreamacro/clash/wiki">https://github.com/Dreamacro/clash/wiki</a><br>[Service]<br>OOMScoreAdjust&#x3D;-1000<br>ExecStart&#x3D;&#x2F;usr&#x2F;local&#x2F;bin&#x2F;clash-f&#x2F;root&#x2F;.config&#x2F;clash&#x2F;config.yaml<br>Restart&#x3D;on-failure<br>RestartSec&#x3D;5<br>[Install]<br>WantedBy&#x3D;multi-user.target<br>EOF</p>
+<p>#配置开机自启<br>systemctlenableclash</p>
+<p>#启动clash服务<br>systemctlstartclash</p>
+<p>#配置环境变量<br>echo-e”exporthttp_proxy&#x3D;<a target="_blank" rel="noopener" href="http://127.0.0.1:7890/nexporthttps_proxy=http://127.0.0.1:7890%22%3E%3E~/.bashrc">http://127.0.0.1:7890\nexporthttps_proxy=http://127.0.0.1:7890&quot;&gt;&gt;~/.bashrc</a><br>5、为确保万无一失，打开 Ubuntu 的“设置”管理，在“网络”内将“网络代理”的“自动”改为“手动”，根据以下内容进行填写 HTTP、HTTPS 和 Socks 地址，如下图：<br>#HTTP代理<br>127.0.0.0:7890</p>
+<p>#HTTPS代理<br>127.0.0.0:7890</p>
+<p>#Socks主机<br>127.0.0.0:7891<br>6、以上设置完成就可以在 Firefox 输入 clash.razord.top 进行切换设置订阅节点了，至此 Clash 在 Linux Ubuntu 20.04 上的配置就算是完成了，如下图：<br>#节点管理<br><a target="_blank" rel="noopener" href="http://clash.razord.top/#/proxies">http://clash.razord.top/#/proxies</a></p>
+<p>#节点购买<br><a target="_blank" rel="noopener" href="https://www.aa66aa.com/#/register?code=PPJn00bx">https://www.aa66aa.com/#/register?code=PPJn00bx</a><br>最后说明<br>关于 Ubuntu 使用 Clash For Linux 客户端，目前测试适用于 Ubuntu 18.04 的更高版本，操作前切记要切换到超级管理员模式下，否则操作时会提示权限不足，导致配置失败，推荐使用第三方的订阅链接地址，不推荐手动配置订阅节点，手动配置节点繁琐容易出错。<br><a target="_blank" rel="noopener" href="https://opclash.com/fenxiang/302.html">https://opclash.com/fenxiang/302.html</a></p>
+<p>在 ubuntu服务器上安装Clash<br>一、前言<br>这是一个媲美 Surge 的代理客户端，免费、简洁的界面，支持 SS、V2Ray、SOCKS5 协议、支持规则分流和屏蔽广告（类似 Surge 的规则），支持托管订阅。<br>二、必要条件</p>
+<ol>
+<li>linux服务器一台<br>三、安装Clash到 Linux 系统上</li>
+<li>下载并安装Clash<br>12345678910<br>进入当前用户根目录cd~#下载二进制文件wget <a target="_blank" rel="noopener" href="https://github.com/Dreamacro/clash/releases/download/v0.16.0/clash-linux-amd64-v0.16.0.gz#%E4%BD%BF%E7%94%A8">https://github.com/Dreamacro/clash/releases/download/v0.16.0/clash-linux-amd64-v0.16.0.gz#使用</a> gzip 解压gzip -d clash-linux-amd64-v0.16.0.gz#移动到binmv clash-linux-amd64-v0.16.0 &#x2F;usr&#x2F;local&#x2F;bin&#x2F;clash#添加执行权限chmod +x &#x2F;usr&#x2F;local&#x2F;bin&#x2F;clash<br>2.配置Clash启动服务<br>1<br>nano &#x2F;etc&#x2F;systemd&#x2F;system&#x2F;clash.service<br>把下面的信息复制进去<br>123456789101112<br>[Unit]Description&#x3D;clash serviceAfter&#x3D;network.target[Service]Type&#x3D;simpleUser&#x3D;rootExecStart&#x3D;&#x2F;usr&#x2F;local&#x2F;bin&#x2F;clashRestart&#x3D;on-failure# or always, on-abort, etc[Install]WantedBy&#x3D;multi-user.target<br>3.设置 Clash 开机自启<br>12<br>systemctl daemon-reload<br>systemctlenableclash<br>其他功能<br>service clash start # 启动<br>service clash stop # 停止<br>service clash restart # 重启<br>service clash status # 状态<br>4.下载 dashboard 控制面板<br>12345678910</li>
+</ol>
+<h1 id="创建-config目录mkdir-config-创建-clash-目录mkdir-config-clash-下载-dashboardwget-https-github-com-haishanh-yacd-archive-gh-pages-zip-用-unzip解压缩unzip-gh-pages-zip-把文件改名层-dashboardmv-yacd-gh-pages-config-clash-dashboard"><a href="#创建-config目录mkdir-config-创建-clash-目录mkdir-config-clash-下载-dashboardwget-https-github-com-haishanh-yacd-archive-gh-pages-zip-用-unzip解压缩unzip-gh-pages-zip-把文件改名层-dashboardmv-yacd-gh-pages-config-clash-dashboard" class="headerlink" title="创建 .config目录mkdir .config# 创建 clash 目录mkdir ~&#x2F;.config&#x2F;clash# 下载 dashboardwget https://github.com/haishanh/yacd/archive/gh-pages.zip# 用 unzip解压缩unzip gh-pages.zip# 把文件改名层 dashboardmv yacd-gh-pages&#x2F; ~&#x2F;.config&#x2F;clash&#x2F;dashboard&#x2F;"></a>创建 .config目录mkdir .config# 创建 clash 目录mkdir ~&#x2F;.config&#x2F;clash# 下载 dashboardwget <a target="_blank" rel="noopener" href="https://github.com/haishanh/yacd/archive/gh-pages.zip#">https://github.com/haishanh/yacd/archive/gh-pages.zip#</a> 用 unzip解压缩unzip gh-pages.zip# 把文件改名层 dashboardmv yacd-gh-pages&#x2F; ~&#x2F;.config&#x2F;clash&#x2F;dashboard&#x2F;</h1><p>5.配置 Clash 文件<br>1234</p>
+<h1 id="进入配置文件目录cd-config-编辑-Clash-配置文件config-yamlnano-config-yaml"><a href="#进入配置文件目录cd-config-编辑-Clash-配置文件config-yamlnano-config-yaml" class="headerlink" title="进入配置文件目录cd~&#x2F;.config&#x2F;# 编辑 Clash 配置文件config.yamlnano config.yaml"></a>进入配置文件目录cd~&#x2F;.config&#x2F;# 编辑 Clash 配置文件config.yamlnano config.yaml</h1><p>config.yaml配置<br>123456789<br>mixed-port:7890allow-lan:falsemode: rule<br>log-level: info<br>external-controller:0.0.0.0:9090<br>external-ui: ~&#x2F;.config&#x2F;clash&#x2F;dashboard<br>secret:”1235”dns:<br>    default-nameserver:[127.0.0.1]<br>6.启动前<br>配置文件里面的加密是重点<br>7.启动 Clash<br>12345678910<br>service clash start&#96;&#96;&#96;&#96;### 8.🎉 完成访问<a target="_blank" rel="noopener" href="http://serverip:9090/ui/">http://serverip:9090/ui/</a> 试试吧## 四、通过V2ray访问已安装Clash的服务器v2ray配置如下<br>bash<br>{<br>“inbounds”: [<br>{<br>“port”: 30123,<br>“listen”:“127.0.0.1”, &#x2F;&#x2F;只监听 127.0.0.1，避免除本机外的机器探测到开放了 30123 端口<br>“protocol”: “vmess”,<br>“settings”: {<br>“clients”: [<br>{<br>“id”: “b831381d-6324-4d53-ad4f-8cda48b30811”,<br>“alterId”: 64<br>}<br>]<br>},<br>“streamSettings”: {<br>“network”: “ws”,<br>“wsSettings”: {<br>“path”: “&#x2F;ray30123”<br>}<br>}<br>}<br>],<br>“outbounds”: [<br>{<br>“protocol”: “socks”,<br>“settings”: {<br>“servers”: [{<br>“address”: “127.0.0.1”,<br>“port”: 7890,<br>“auth”: “noauth”<br>}]<br>}<br>}<br>]<br>}<br>123</p>
+<h3 id="在线-json-编辑器"><a href="#在线-json-编辑器" class="headerlink" title="在线 json 编辑器"></a><a target="_blank" rel="noopener" href="http://jsoneditoronline.org/">在线 json 编辑器</a></h3><h2 id="五、关闭端口"><a href="#五、关闭端口" class="headerlink" title="五、关闭端口"></a>五、关闭端口</h2><p>bash<br>#打开端口<br>iptables -A INPUT -p $port -j ACCEPT<br>#关闭端口<br>iptables -A INPUT -p $port -j DROP</p>
+<pre><code class="hljs">[参考1]https://breakertt.moe/2019/08/20/clash_gateway/index.html
+[参考2]https://qust.me/post/678ffe99.html
+文章作者Suan
+上次更新2019-11-18
+许可协议CC BY-NC-ND 4.0
+赞赏支持
+
+微信打赏
+
+支付宝打赏
+https://suan.eu.org/post/clash-%E6%95%99%E7%A8%8B/
+</code></pre>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Ubuntu22-04/" class="print-no-link">#Ubuntu22.04</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Linux-Ubuntu22.04安装使用Clash</div>
+      <div>https://tdexxx.github.io/2023/07/04/clash for ubuntu/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>tdexxx</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年7月4日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/08/05/2023-8-5%20C#%20023008/" title="C#">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">C#</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/07/04/C++20/" title="vs2022 配置使用c++20编译器">
+                        <span class="hidden-mobile">vs2022 配置使用c++20编译器</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
