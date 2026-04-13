@@ -19,21 +19,22 @@
   <meta name="author" content="tdexxx">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+    <meta name="description" content="第 1 天    数组基础及二分查找                                                                                                         今日任务：先把 704写熟练，要熟悉 根据 左闭右开，左闭右闭 两种区间规则 写出来的二分法。题目建议： 了解一下数组基础，以及数组的内存空间地址，数组也">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://tdexxx.github.io/2026/01/15/hello-world2/index.html">
+<meta property="og:title" content="算法训练营第一天 704. 二分查找">
+<meta property="og:url" content="https://tdexxx.github.io/2026/04/13/%E7%AE%97%E6%B3%95%E8%AE%AD%E7%BB%83%E8%90%A5%E7%AC%AC%E4%B8%80%E5%A4%A9%20704.%20%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/index.html">
 <meta property="og:site_name" content="tdexxx的博客">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="第 1 天    数组基础及二分查找                                                                                                         今日任务：先把 704写熟练，要熟悉 根据 左闭右开，左闭右闭 两种区间规则 写出来的二分法。题目建议： 了解一下数组基础，以及数组的内存空间地址，数组也">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-01-15T14:44:31.705Z">
-<meta property="article:modified_time" content="2024-08-30T19:31:39.828Z">
+<meta property="article:published_time" content="2026-04-13T04:37:26.000Z">
+<meta property="article:modified_time" content="2026-04-13T04:56:14.477Z">
 <meta property="article:author" content="tdexxx">
+<meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Hello World - tdexxx的博客</title>
+  <title>算法训练营第一天 704. 二分查找 - tdexxx的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -211,7 +212,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hello World"></span>
+            <span id="subtitle" data-typed-text="算法训练营第一天 704. 二分查找"></span>
           
         </div>
 
@@ -222,8 +223,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-01-15 22:44" pubdate>
-          2026年1月15日 晚上
+        <time datetime="2026-04-13 12:37" pubdate>
+          2026年4月13日 下午
         </time>
       </span>
     
@@ -234,7 +235,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          18 字
+          405 字
         
       </span>
     
@@ -245,7 +246,7 @@
         
         
         
-          1 分钟
+          4 分钟
         
       </span>
     
@@ -282,24 +283,22 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Hello World</h1>
+            <h1 id="seo-header">算法训练营第一天 704. 二分查找</h1>
             
             
               <div class="markdown-body">
                 
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
+                <p>第 1 天    数组基础及二分查找                                                                                                        </p>
+<p>今日任务：先把 704写熟练，要熟悉 根据 左闭右开，左闭右闭 两种区间规则 写出来的二分法。<br>题目建议： 了解一下数组基础，以及数组的内存空间地址，数组也没那么简单。<br>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/binary-search/">https://leetcode.cn/problems/binary-search/</a><br>视频讲解：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1fA4y1o715">https://www.bilibili.com/video/BV1fA4y1o715</a></p>
+<p>二分查找算法<br>二分查找通过不断缩小搜索范围来快速定位目标值。具体步骤如下：</p>
+<p>初始化左边界 left 为 0，右边界 right 为数组长度减 1。</p>
+<p>在每次迭代中，计算中间位置 mid，并比较 nums[mid] 与目标值 target：</p>
+<p>若 nums[mid] &#x3D;&#x3D; target，直接返回 mid。<br>若 nums[mid] &lt; target，说明目标值在右半部分，调整左边界 left &#x3D; mid + 1。<br>若 nums[mid] &gt; target，说明目标值在左半部分，调整右边界 right &#x3D; mid - 1。<br>重复上述过程直到找到目标值或搜索范围为空（即 left &gt; right），此时返回 -1。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs bash">int search(int* nums, int numsSize, int target) &#123;<br>    int left = 0;<br>    int right = numsSize - 1;<br>    <br>    <span class="hljs-keyword">while</span> (left &lt;= right) &#123;<br>        int mid = left + (right - left) / 2; // 防止溢出<br>        <span class="hljs-keyword">if</span> (nums[mid] == target) &#123;<br>            <span class="hljs-built_in">return</span> mid;<br>        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (nums[mid] &lt; target) &#123;<br>            left = mid + 1;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            right = mid - 1;<br>        &#125;<br>    &#125;<br>    <br>    <span class="hljs-built_in">return</span> -1;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>防止溢出：计算 mid 时使用 left + (right - left) &#x2F; 2 而非 (left + right) &#x2F; 2，避免 left + right 超出整数范围。<br>边界条件：循环条件为 left &lt;&#x3D; right，确保能处理边界情况（如数组仅有一个元素）。<br>时间复杂度：每次迭代将搜索范围减半，时间复杂度为 O(log n)，满足题目要求。</p>
 
                 
               </div>
@@ -309,6 +308,13 @@
               <div class="post-metas my-3">
   
   
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%AE%97%E6%B3%95/" class="print-no-link">#算法</a>
+      
+    </div>
+  
 </div>
 
 
@@ -317,8 +323,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hello World</div>
-      <div>https://tdexxx.github.io/2026/01/15/hello-world2/</div>
+      <div>算法训练营第一天 704. 二分查找</div>
+      <div>https://tdexxx.github.io/2026/04/13/算法训练营第一天 704. 二分查找/</div>
     </div>
     <div class="license-meta">
       
@@ -330,7 +336,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年1月15日</div>
+          <div>2026年4月13日</div>
         </div>
       
       
@@ -362,18 +368,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/04/13/%E7%AE%97%E6%B3%95%E8%AE%AD%E7%BB%83%E8%90%A5%E7%AC%AC%E4%B8%80%E5%A4%A9%20704.%20%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" title="算法训练营第一天 704. 二分查找">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">算法训练营第一天 704. 二分查找</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/10/29/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/" title="不定积分">
-                        <span class="hidden-mobile">不定积分</span>
+                      <a href="/2026/01/15/hello-world2/" title="Hello World">
+                        <span class="hidden-mobile">Hello World</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
