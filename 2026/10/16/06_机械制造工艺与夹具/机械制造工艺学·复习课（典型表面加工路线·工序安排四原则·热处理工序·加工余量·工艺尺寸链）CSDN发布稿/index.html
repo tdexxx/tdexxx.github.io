@@ -1,0 +1,1557 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="tdexxx">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="《机械制造工艺学》复习课：典型表面加工路线 · 工序安排四原则 · 热处理工序安排 · 加工余量 · 工艺尺寸链 本篇为《机械制造工艺学》课堂复习课整理。这节课把”工艺规程设计”这一大块内容从头到尾串了一遍，共五个主题：  典型表面的加工路线——外圆、孔、平面各有哪些成熟路线，怎么根据精度和材料选； 工艺顺序的安排原则——先基准后其他、先粗后精、先主后次、先面后孔； 热处理工序与辅助工序的安排——">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机械制造工艺学复习课：加工路线、工序安排与工艺尺寸链">
+<meta property="og:url" content="https://tdexxx.github.io/2026/10/16/06_%E6%9C%BA%E6%A2%B0%E5%88%B6%E9%80%A0%E5%B7%A5%E8%89%BA%E4%B8%8E%E5%A4%B9%E5%85%B7/%E6%9C%BA%E6%A2%B0%E5%88%B6%E9%80%A0%E5%B7%A5%E8%89%BA%E5%AD%A6%C2%B7%E5%A4%8D%E4%B9%A0%E8%AF%BE%EF%BC%88%E5%85%B8%E5%9E%8B%E8%A1%A8%E9%9D%A2%E5%8A%A0%E5%B7%A5%E8%B7%AF%E7%BA%BF%C2%B7%E5%B7%A5%E5%BA%8F%E5%AE%89%E6%8E%92%E5%9B%9B%E5%8E%9F%E5%88%99%C2%B7%E7%83%AD%E5%A4%84%E7%90%86%E5%B7%A5%E5%BA%8F%C2%B7%E5%8A%A0%E5%B7%A5%E4%BD%99%E9%87%8F%C2%B7%E5%B7%A5%E8%89%BA%E5%B0%BA%E5%AF%B8%E9%93%BE%EF%BC%89CSDN%E5%8F%91%E5%B8%83%E7%A8%BF/index.html">
+<meta property="og:site_name" content="tdexxx的博客">
+<meta property="og:description" content="《机械制造工艺学》复习课：典型表面加工路线 · 工序安排四原则 · 热处理工序安排 · 加工余量 · 工艺尺寸链 本篇为《机械制造工艺学》课堂复习课整理。这节课把”工艺规程设计”这一大块内容从头到尾串了一遍，共五个主题：  典型表面的加工路线——外圆、孔、平面各有哪些成熟路线，怎么根据精度和材料选； 工艺顺序的安排原则——先基准后其他、先粗后精、先主后次、先面后孔； 热处理工序与辅助工序的安排——">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-10-16T10:33:09.000Z">
+<meta property="article:modified_time" content="2026-10-30T17:37:19.966Z">
+<meta property="article:author" content="tdexxx">
+<meta property="article:tag" content="机械制造工艺 复习课 尺寸链 CSDN">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>机械制造工艺学复习课：加工路线、工序安排与工艺尺寸链 - tdexxx的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"tdexxx.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2022-12-10T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="机械制造工艺学复习课：加工路线、工序安排与工艺尺寸链"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-10-16 18:33" pubdate>
+          2026年10月16日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          13k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          112 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">机械制造工艺学复习课：加工路线、工序安排与工艺尺寸链</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="《机械制造工艺学》复习课：典型表面加工路线-·-工序安排四原则-·-热处理工序安排-·-加工余量-·-工艺尺寸链"><a href="#《机械制造工艺学》复习课：典型表面加工路线-·-工序安排四原则-·-热处理工序安排-·-加工余量-·-工艺尺寸链" class="headerlink" title="《机械制造工艺学》复习课：典型表面加工路线 · 工序安排四原则 · 热处理工序安排 · 加工余量 · 工艺尺寸链"></a>《机械制造工艺学》复习课：典型表面加工路线 · 工序安排四原则 · 热处理工序安排 · 加工余量 · 工艺尺寸链</h1><blockquote>
+<p>本篇为《机械制造工艺学》课堂<strong>复习课</strong>整理。这节课把”工艺规程设计”这一大块内容从头到尾串了一遍，共五个主题：</p>
+<ol>
+<li><strong>典型表面的加工路线</strong>——外圆、孔、平面各有哪些成熟路线，怎么根据精度和材料选；</li>
+<li><strong>工艺顺序的安排原则</strong>——先基准后其他、先粗后精、先主后次、先面后孔；</li>
+<li><strong>热处理工序与辅助工序的安排</strong>——退火正火、时效、调质、淬火、渗碳、冷处理各放在哪一段；</li>
+<li><strong>加工余量</strong>——单边与双边、被包容面与包容面、最大最小余量与余量公差、三种确定方法；</li>
+<li><strong>工艺尺寸链</strong>——封闭环、组成环、增环减环的判定，极值法与概率法公式，以及测量基准不重合时的换算。</li>
+</ol>
+<p>中间穿插了两个<strong>工序排序判断例题</strong>（加工中心方案、流水线方案）和一个<strong>45 号钢轴外圆加工路线设计例题</strong>。</p>
+<p>文中公式统一采用行内数学写法；课堂口述与教材符号不一致、或录音模糊处，均标注【以教材为准】。</p>
+</blockquote>
+<hr>
+<h2 id="一、这节课讲了什么"><a href="#一、这节课讲了什么" class="headerlink" title="一、这节课讲了什么"></a>一、这节课讲了什么</h2><p>这是一节<strong>复习课</strong>，把工艺规程设计的几大块内容串成一条线。</p>
+<p><strong>第一块（约 10:14–20:08）典型表面的加工路线。</strong><br>老师反复强调的学习目标是：<strong>给你一个零件和它的精度要求，你能不能判断出该走哪一条路线</strong>。外圆表面有”车削路线”和”磨削路线”两大分支；孔有”钻-扩-铰”和”镗削”两大分支；平面有”铣”、”刨”、”拉”三条主线。选哪条，看<strong>公差等级、表面粗糙度、材料硬度</strong>三个条件。这里还专门讲了几种”特殊工艺”：<strong>金刚镗、浮动镗、珩磨、研磨</strong>。</p>
+<p><strong>第二块（约 20:08–23:40）工艺顺序的安排原则。</strong><br>就四条，老师说”很简单的一个字”：<strong>先基准后其他、先粗后精、先主后次、先面后孔</strong>。难的不是记住，而是<strong>拿到一张图纸能套用</strong>——基准是哪一面？主次怎么分？面在哪里、孔在哪里？</p>
+<p><strong>第三块（约 23:40–28:30）热处理工序与辅助工序的安排。</strong><br>热处理的安排位置取决于<strong>目的</strong>：为了改善切削性能（退火、正火）放在切削加工<strong>之前</strong>；为了消除内应力（时效）放在粗加工<strong>之前或之后</strong>；为了改善物理力学性能（调质）放在<strong>粗加工之后、精加工之前</strong>；为了提高硬度（淬火）放在<strong>半精加工之后</strong>；渗碳放在<strong>半精加工之后、精加工之前</strong>；高精密零件最后安排<strong>冷处理</strong>稳定尺寸；表面处理（镀铬等）放在<strong>工艺最后</strong>。辅助工序（检验、去毛刺、清洗、去磁）穿插在整个流程中。</p>
+<p><strong>第四块（约 28:30–32:10）工序集中与工序分散、加工阶段的划分。</strong><br>工序集中的典型是加工中心——一次装夹完成多道工序；工序分散则设备工装简单、对操作者要求低。加工阶段划分为粗加工、半精加工、精加工、光整加工四段。</p>
+<p><strong>第五块（约 51:35–1:45:00）加工余量与工艺尺寸链。</strong><br>这是全课的”计算”部分。加工余量讲清了<strong>工序余量 &#x3D; 相邻两工序尺寸之差</strong>、被包容面与包容面的方向差异、单边与双边余量的关系、最大最小余量与余量公差（<strong>余量公差 &#x3D; 上道工序尺寸公差 + 本道工序尺寸公差</strong>），以及计算法、查表法、经验法三种确定方法。工艺尺寸链部分讲了<strong>封闭环、组成环、增环、减环</strong>的判定与两组公式（极值法、概率法），最后用”两孔中心距用游标卡尺测量”的例子说明<strong>测量基准与设计基准不重合时要做尺寸换算</strong>。</p>
+<hr>
+<h2 id="二、核心结论速览"><a href="#二、核心结论速览" class="headerlink" title="二、核心结论速览"></a>二、核心结论速览</h2><ol>
+<li><strong>选加工路线的三个依据</strong>：公差等级、表面粗糙度、材料硬度（是否淬火）。老师原话：给你一个零件，你要能判断”走哪一条路”。</li>
+<li><strong>外圆表面两条主线</strong>：车削路线（粗车 → 半精车 → 精车）与磨削路线（粗车 → 半精车 → 粗磨 → 精磨）。</li>
+<li><strong>外圆表面要更高精度</strong>：在精磨之后再加<strong>研磨、超精加工、镜面磨削</strong>。</li>
+<li><strong>淬火钢、合金钢淬火后硬度高</strong>，车削路线走不通（刀具磨损快），必须走<strong>磨削路线</strong>。</li>
+<li><strong>孔的两条主线</strong>：毛坯<strong>无孔</strong>时走”<strong>钻 → 扩 → 铰</strong>“；毛坯<strong>已有孔</strong>（铸出、锻出）时走”<strong>粗镗 → 半精镗 → 精镗</strong>“。</li>
+<li><strong>孔要更高精度</strong>：粗镗 → 半精镗 → 精镗 → <strong>浮动镗 &#x2F; 金刚镗</strong>；或钻 → 扩 → 铰 → <strong>珩磨</strong>。</li>
+<li><strong>难加工材料（淬火钢等）的孔</strong>：走”粗镗 → 半精镗 → 精磨”（<strong>磨孔</strong>）。</li>
+<li><strong>平面的三条主线</strong>：铣削路线（粗铣 → 半精铣 → 精铣）、刨削路线（粗刨 → 半精刨 → 精刨 → 宽刀精刨）、<strong>拉削路线</strong>（粗拉 → 精拉）。</li>
+<li><strong>拉削只适合大批量生产</strong>：设备昂贵、刀具专用，一年要生产几十万件才有经济性；小厂与教学环节少见。</li>
+<li><strong>平面有淬火要求时</strong>：在半精铣（或半精刨）之后加<strong>淬火或调质</strong>，之后改为<strong>磨削</strong>。</li>
+<li><strong>金刚镗</strong>：在精密镗床上用金刚石刀具（或硬质合金刀具）进行<strong>高速、小进给、小切深</strong>的精密切削，精度与表面质量都很高。</li>
+<li><strong>浮动镗</strong>：镗刀块<strong>不固定在镗杆上</strong>，可沿<strong>径向自由滑动</strong>，自动对中，因此加工精度高、效率高。</li>
+<li><strong>珩磨与研磨的区别</strong>：珩磨是<strong>珩磨头</strong>（带油石条）旋转并往复、工件不动；研磨是<strong>工件</strong>运动、研具不动。珩磨对机床精度要求不高，能提高尺寸精度与表面质量。</li>
+<li><strong>工艺顺序四原则</strong>：<strong>先基准后其他、先粗后精、先主后次、先面后孔</strong>。</li>
+<li><strong>先基准后其他</strong>：先把设计基准（或工艺基准）加工出来，再以它为基准加工其他表面；以精确的基准去加工其他面，其他面的精度才有保证。</li>
+<li><strong>先粗后精</strong>：粗加工放在一起、精加工放在一起，<strong>不要粗精交替</strong>。否则后一道的精加工变形会破坏前一道已保证的精度。</li>
+<li><strong>先主后次</strong>：先加工主要表面（重要面、基准面），后加工次要表面（沟槽、螺纹等）；主要面加工好后再精加工次要面，以保证相互位置关系。</li>
+<li><strong>先面后孔</strong>有两层含义：① 面与孔之间有垂直度要求，先加工面、再以面为基准加工孔；② 孔所在表面是<strong>毛坯面</strong>时，直接钻孔容易<strong>引偏、打刀</strong>，所以先把面加工出来。</li>
+<li><strong>加工中心上也要”先粗后精”<strong>：粗加工集中做完，再集中做精加工。老师特别指出”粗加工完就精加工同一个面”是</strong>错的</strong>——粗加工的变形会直接带入精加工。</li>
+<li><strong>划分加工阶段的意义</strong>：合理使用设备、便于安排热处理工序、及时发现毛坯缺陷、保证加工质量。</li>
+<li><strong>什么时候需要半精加工</strong>：粗加工<strong>余量大</strong>，或粗加工时<strong>工件刚性差产生变形</strong>，需要在精加工前修正。</li>
+<li><strong>热处理按”目的”定位置</strong>：改善切削性能（退火&#x2F;正火）→ 切削加工之前；消除内应力（时效）→ 粗加工前或后；改善力学性能（调质）→ 粗加工之后精加工之前（有半精加工则放在半精加工之后）；提高硬度（淬火）→ 半精加工之后；渗碳 → 半精加工之后精加工之前；稳定尺寸（冷处理）→ 最后；表面处理 → 工艺最后。</li>
+<li><strong>表面处理放最后</strong>：镀铬之类的表面处理如果放在前面，后面的切削会把镀层切掉，”白处理了”。</li>
+<li><strong>辅助工序</strong>：检验穿插在整个流程中（工序间、车间间、流水段间都要检查）；去毛刺一般安排在切削加工之后；清洗一般安排在零件加工之后、装配之前。</li>
+<li><strong>工序集中 vs 工序分散</strong>：集中（如加工中心）可保证各表面相互位置精度、可用高效设备、省时间省面积便于管理；分散则设备工装简单、对操作者技术水平要求低。趋势是多品种小批量 → 加工中心。</li>
+<li><strong>工序余量 &#x3D; 相邻两工序尺寸之差</strong>。</li>
+<li><strong>被包容面（外表面，如轴）</strong>：加工后尺寸变小，余量 &#x3D; <strong>加工前尺寸 − 加工后尺寸</strong>。</li>
+<li><strong>包容面（内表面，如孔）</strong>：加工后尺寸变大，余量 &#x3D; <strong>加工后尺寸 − 加工前尺寸</strong>（方向与轴相反）。</li>
+<li><strong>单边余量与双边余量</strong>：平面按<strong>单边</strong>计算；回转表面（外圆、内孔）按<strong>双边</strong>计算，双边余量是单边余量的 <strong>2 倍</strong>。</li>
+<li><strong>余量公差 &#x3D; 上道工序尺寸公差 + 本道工序尺寸公差</strong>（即余量的最大值与最小值之差）。</li>
+<li><strong>加工余量的三种确定方法</strong>：<strong>计算法</strong>（精确但工作量大，实际少用）、<strong>查表法</strong>（查手册，生产上主要方法）、<strong>经验法</strong>（凭经验估，用于单件小批）。</li>
+<li><strong>注意手册上”基本余量”的定义</strong>：手册给出的多为<strong>基本余量</strong>（相当于最小余量），使用时一定要看清它的定义，不要与最大余量混用。</li>
+<li><strong>工序尺寸的确定方向</strong>：从<strong>最终加工工序</strong>（图纸上的设计尺寸）开始，<strong>依次往前加上各道工序的加工余量</strong>，逐道倒推。</li>
+<li><strong>入体原则</strong>：标注工序尺寸时，<strong>被包容面</strong>取<strong>最大极限尺寸</strong>（上偏差为零）；<strong>包容面</strong>取<strong>最小极限尺寸</strong>（下偏差为零）。</li>
+<li><strong>尺寸链</strong>：在零件加工或装配过程中，由相互联系的尺寸形成的<strong>封闭尺寸组</strong>。</li>
+<li><strong>封闭环</strong>：加工或装配过程中<strong>最终形成（间接得到）</strong>的那个环。判断关键——<strong>不是题目让你求的那个环</strong>，而是”最后才形成、间接得到”的那个环。</li>
+<li><strong>组成环</strong>：除封闭环以外的所有环，一般是加工过程中<strong>直接得到</strong>的尺寸。</li>
+<li><strong>增环</strong>：该环增大时，封闭环<strong>随之增大</strong>；<strong>减环</strong>：该环增大时，封闭环<strong>随之减小</strong>。</li>
+<li><strong>增环减环的两种判定方法</strong>：① 定义法（看变动方向）；② <strong>箭头法</strong>（沿尺寸链画箭头，与封闭环<strong>箭头方向相反</strong>的是增环，<strong>相同</strong>的是减环）。环数多时用箭头法。</li>
+<li><strong>尺寸链基本公式（极值法）</strong>：封闭环公称尺寸 &#x3D; 所有增环公称尺寸之和 − 所有减环公称尺寸之和。</li>
+<li><strong>封闭环上偏差 &#x3D; 所有增环上偏差之和 − 所有减环下偏差之和</strong>。</li>
+<li><strong>封闭环下偏差 &#x3D; 所有增环下偏差之和 − 所有减环上偏差之和</strong>。</li>
+<li><strong>极值法公差</strong>：封闭环公差 &#x3D; 各组成环公差<strong>之和</strong>（最保守，可能过于苛刻）。</li>
+<li><strong>概率法公差</strong>：封闭环公差 &#x3D; 各组成环公差<strong>平方和再开方</strong>，即 $T_0 &#x3D; \sqrt{\sum T_i^2}$。比极值法合理。</li>
+<li><strong>测量基准与设计基准不重合时要换算</strong>：例如设计图给的是两孔<strong>中心距</strong>，而现场只能用<strong>游标卡尺量内孔边距</strong>，此时要建立尺寸链，算出”卡尺读数应在什么范围内”才能保证中心距合格。</li>
+</ol>
+<hr>
+<h2 id="三、知识结构树"><a href="#三、知识结构树" class="headerlink" title="三、知识结构树"></a>三、知识结构树</h2><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><code class="hljs gherkin">《机械制造工艺学》复习课 本讲脉络<br>|<span class="hljs-string"></span><br><span class="hljs-string"></span>|<span class="hljs-string">- 1. 典型表面的加工路线</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 外圆表面</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 车削路线：粗车 - 半精车 - 精车</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 磨削路线：粗车 - 半精车 - 粗磨 - 精磨</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">   `- 更高精度：加研磨 / 超精加工 / 镜面磨削</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 孔</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 毛坯无孔：钻 - 扩 - 铰</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 毛坯有孔：粗镗 - 半精镗 - 精镗</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 更高精度：+ 浮动镗 / 金刚镗，或 + 珩磨</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">   `- 难加工材料：粗镗 - 半精镗 - 精磨（磨孔）</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 平面</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 铣削：粗铣 - 半精铣 - 精铣</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 刨削：粗刨 - 半精刨 - 精刨 - 宽刀精刨</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 拉削：粗拉 - 精拉（仅大批量）</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">   `- 有淬火要求：半精加工后加淬火/调质，改磨削</span><br><span class="hljs-string"></span>|<span class="hljs-string">   `- 特殊工艺：金刚镗 / 浮动镗 / 珩磨 / 研磨</span><br><span class="hljs-string"></span>|<br>|<span class="hljs-string">- 2. 工艺顺序的安排原则（四原则）</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 先基准后其他</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 先粗后精（粗精不交替）</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 先主后次</span><br><span class="hljs-string"></span>|<span class="hljs-string">   `- 先面后孔</span><br><span class="hljs-string"></span>|<br>|<span class="hljs-string">- 3. 热处理工序与辅助工序的安排</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 改善切削性能：退火 / 正火  -&gt; 切削加工之前</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 消除内应力：时效        -&gt; 粗加工前或后</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 改善力学性能：调质      -&gt; 粗加工后、精加工前（有半精加工则在其后）</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 提高硬度：淬火          -&gt; 半精加工之后</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 渗碳                    -&gt; 半精加工后、精加工前</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 稳定尺寸：冷处理        -&gt; 最后</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 表面处理（镀铬等）      -&gt; 工艺最后</span><br><span class="hljs-string"></span>|<span class="hljs-string">   `- 辅助工序：检验 / 去毛刺 / 清洗 / 去磁</span><br><span class="hljs-string"></span>|<br>|<span class="hljs-string">- 4. 工序集中与工序分散</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 工序集中（加工中心）：保证位置精度、高效、省时省面积</span><br><span class="hljs-string"></span>|<span class="hljs-string">   `- 工序分散：设备工装简单、对操作者要求低</span><br><span class="hljs-string"></span>|<br>|<span class="hljs-string">- 5. 加工阶段的划分</span><br><span class="hljs-string"></span>|<span class="hljs-string">   `- 粗加工 -&gt; 半精加工 -&gt; 精加工 -&gt; 光整加工</span><br><span class="hljs-string"></span>|<br>|<span class="hljs-string">- 6. 加工余量</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 概念：相邻两工序尺寸之差</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 被包容面（轴）vs 包容面（孔）</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 单边余量 vs 双边余量（回转表面取双边）</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 最大余量 / 最小余量 / 余量公差</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">   `- 余量公差 = 上道工序公差 + 本道工序公差</span><br><span class="hljs-string"></span>|<span class="hljs-string">   `- 确定方法：计算法 / 查表法 / 经验法</span><br><span class="hljs-string"></span>|<br>|<span class="hljs-string">- 7. 工序尺寸及其公差的确定</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 从最终工序（设计尺寸）往前逐道加余量</span><br><span class="hljs-string"></span>|<span class="hljs-string">   `- 入体原则：被包容面取最大极限尺寸；包容面取最小极限尺寸</span><br><span class="hljs-string"></span>|<br>`- 8. 工艺尺寸链<br>    |<span class="hljs-string">- 术语：环 / 封闭环 / 组成环 / 增环 / 减环</span><br><span class="hljs-string">    </span>|<span class="hljs-string">- 增环减环判定：定义法 + 箭头法</span><br><span class="hljs-string">    </span>|<span class="hljs-string">- 极值法公式（公称尺寸、上下偏差、公差）</span><br><span class="hljs-string">    </span>|<span class="hljs-string">- 概率法公式（公差平方和开方）</span><br><span class="hljs-string">    `- 测量基准与设计基准不重合时的换算</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="四、知识点详解"><a href="#四、知识点详解" class="headerlink" title="四、知识点详解"></a>四、知识点详解</h2><h3 id="4-1-典型表面的加工路线"><a href="#4-1-典型表面的加工路线" class="headerlink" title="4.1 典型表面的加工路线"></a>4.1 典型表面的加工路线</h3><p>老师说这部分的学习目标是：<strong>拿到一个零件、知道它的精度要求，要能判断该走哪一条路线</strong>。判断依据是三个：<strong>公差等级、表面粗糙度、材料硬度</strong>。</p>
+<h4 id="4-1-1-外圆表面的加工路线"><a href="#4-1-1-外圆表面的加工路线" class="headerlink" title="4.1.1 外圆表面的加工路线"></a>4.1.1 外圆表面的加工路线</h4><table>
+<thead>
+<tr>
+<th>路线</th>
+<th>工序组成</th>
+<th>大致能达到的精度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>车削路线</td>
+<td>粗车 → 半精车 → 精车</td>
+<td>IT8～IT7，Ra 3.2～0.8</td>
+</tr>
+<tr>
+<td>车削路线（精细车）</td>
+<td>粗车 → 半精车 → 精车 → 精细车</td>
+<td>用于<strong>有色金属</strong>，可接近磨削水平</td>
+</tr>
+<tr>
+<td>磨削路线</td>
+<td>粗车 → 半精车 → 粗磨 → 精磨</td>
+<td>IT7～IT6，Ra 0.8～0.2</td>
+</tr>
+<tr>
+<td>精密磨削路线</td>
+<td>粗车 → 半精车 → 粗磨 → 精磨 → 精密磨削 &#x2F; 镜面磨削</td>
+<td>IT5 以上，Ra 0.1 以下</td>
+</tr>
+<tr>
+<td>光整加工</td>
+<td>在磨削之后加研磨、超精加工</td>
+<td>进一步提高尺寸精度、降低粗糙度</td>
+</tr>
+</tbody></table>
+<p><strong>关键判断</strong>：<strong>淬火钢、合金钢淬火后硬度很高</strong>，车削路线走不通——刀具磨损快、精度无法保证。老师原话是”它比较硬，很容易使我们的砂轮被磨损”，因此这类零件要<strong>走磨削路线</strong>。</p>
+<blockquote>
+<p>老师特别提醒：同一条路线里”走到哪一处停”，取决于<strong>最终产品要求的公差等级和表面粗糙度</strong>——不是走到底，而是够用就停。</p>
+</blockquote>
+<h4 id="4-1-2-孔的加工路线"><a href="#4-1-2-孔的加工路线" class="headerlink" title="4.1.2 孔的加工路线"></a>4.1.2 孔的加工路线</h4><p>孔的路线选择，第一件事是看<strong>毛坯上有没有孔</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>情形</th>
+<th>路线</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>毛坯<strong>无孔</strong></td>
+<td>钻 → 扩 → 铰</td>
+</tr>
+<tr>
+<td>毛坯<strong>有孔</strong>（铸出、锻出）</td>
+<td>粗镗 → 半精镗 → 精镗</td>
+</tr>
+<tr>
+<td>要求更高</td>
+<td>粗镗 → 半精镗 → 精镗 → <strong>浮动镗 &#x2F; 金刚镗</strong></td>
+</tr>
+<tr>
+<td>小孔、要求高</td>
+<td>钻 → 扩 → 铰 → <strong>珩磨</strong></td>
+</tr>
+<tr>
+<td><strong>难加工材料</strong>（淬火钢等）</td>
+<td>粗镗 → 半精镗 → <strong>精磨</strong>（磨孔）</td>
+</tr>
+</tbody></table>
+<p><strong>为什么毛坯有孔就不从钻开始？</strong> 因为铸出或锻出的孔余量不均匀，直接用钻头容易引偏，所以用镗削逐步修正。反之，毛坯上原本没有孔，就必须先钻出来。</p>
+<blockquote>
+<p>最后一条”粗镗 → 半精镗 → 精磨”是<strong>专门为难加工材料准备的</strong>——因为材料硬，用镗刀切削困难，改用磨削。</p>
+</blockquote>
+<h4 id="4-1-3-平面的加工路线"><a href="#4-1-3-平面的加工路线" class="headerlink" title="4.1.3 平面的加工路线"></a>4.1.3 平面的加工路线</h4><table>
+<thead>
+<tr>
+<th>路线</th>
+<th>工序组成</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>铣削路线</td>
+<td>粗铣 → 半精铣 → 精铣</td>
+<td>最常用</td>
+</tr>
+<tr>
+<td>刨削路线</td>
+<td>粗刨 → 半精刨 → 精刨 → 宽刀精刨</td>
+<td>宽刀精刨可达到较高精度</td>
+</tr>
+<tr>
+<td><strong>拉削路线</strong></td>
+<td>粗拉 → 精拉</td>
+<td><strong>仅适合大批量生产</strong></td>
+</tr>
+<tr>
+<td>磨削路线</td>
+<td>在半精加工之后加淬火&#x2F;调质，再磨平面</td>
+<td>有淬火要求时采用</td>
+</tr>
+<tr>
+<td>精密路线</td>
+<td>磨 → 研磨 &#x2F; 刮研</td>
+<td>高精度平面</td>
+</tr>
+</tbody></table>
+<p><strong>为什么拉削少见？</strong> 老师讲得很直接：</p>
+<ul>
+<li>拉削设备<strong>昂贵</strong>，小厂负担不起；</li>
+<li>教学环节也用不到；</li>
+<li>它主要用于<strong>大批量生产</strong>——一年要生产十几万、几十万件，为了生产效率才值得投这条工艺；</li>
+<li>但拉削对<strong>表面有凹槽、台阶面的零件</strong>效果非常好。</li>
+</ul>
+<p><strong>平面有淬火要求时怎么排？</strong> 在<strong>半精铣或半精刨之后</strong>加一道<strong>淬火或调质</strong>，之后改走磨削。老师解释说：淬火或调质之后<strong>表面硬度提高</strong>，原来用的铣削、刨削就不合适了，所以要改用磨削。</p>
+<h4 id="4-1-4-几种特殊的孔加工与光整工艺"><a href="#4-1-4-几种特殊的孔加工与光整工艺" class="headerlink" title="4.1.4 几种特殊的孔加工与光整工艺"></a>4.1.4 几种特殊的孔加工与光整工艺</h4><table>
+<thead>
+<tr>
+<th>工艺</th>
+<th>要点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>金刚镗</strong></td>
+<td>在精密镗床上，用<strong>金刚石刀具</strong>（也可能是硬质合金刀具）进行<strong>高速、小进给、小切深</strong>的精密切削。有在普通车床上和在精密镗床上两种实现方式，两者能达到的精度基础不同</td>
+</tr>
+<tr>
+<td><strong>浮动镗</strong></td>
+<td>镗刀块<strong>不固定在镗杆上</strong>，可沿<strong>径向自由滑动</strong>，能自动调整、自动对中。因此加工精度高、表面粗糙度等级高，<strong>加工效率也高</strong>，质量与效率兼顾</td>
+</tr>
+<tr>
+<td><strong>珩磨</strong></td>
+<td>用<strong>珩磨头</strong>（上面装有油石条，均匀分布在圆周上）旋转并往复运动，靠机械或液压力使油石<strong>径向涨开压在孔壁上</strong>。加工时<strong>工件不动</strong>，只有珩磨头运动。对机床精度要求不高，能提高尺寸精度并获得很好的表面粗糙度</td>
+</tr>
+<tr>
+<td><strong>研磨</strong></td>
+<td>与珩磨原理类似，但<strong>运动状态相反</strong>——研磨时是<strong>工件运动、研具不动</strong>（相对珩磨是”工件不动、珩磨头运动”）。用于获得极高精度和极低的表面粗糙度</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>理解口诀：<strong>珩磨</strong>是”头动件不动”，<strong>研磨</strong>是”件动研具不动”。</p>
+</blockquote>
+<h3 id="4-2-工艺顺序的安排原则"><a href="#4-2-工艺顺序的安排原则" class="headerlink" title="4.2 工艺顺序的安排原则"></a>4.2 工艺顺序的安排原则</h3><p>老师说这部分”很简单的一个字”——四条原则：</p>
+<table>
+<thead>
+<tr>
+<th>原则</th>
+<th>含义</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>先基准后其他</strong></td>
+<td>先把设计基准（或工艺基准）加工出来，再以它为基准加工其他表面</td>
+<td>基准越精确，其他表面的精度才越有保证</td>
+</tr>
+<tr>
+<td><strong>先粗后精</strong></td>
+<td>粗加工集中在一起、精加工集中在一起，<strong>不交替</strong></td>
+<td>粗加工的变形会破坏已保证的精加工精度</td>
+</tr>
+<tr>
+<td><strong>先主后次</strong></td>
+<td>先加工主要表面（重要面、基准面），后加工次要表面（沟槽、螺纹等）</td>
+<td>保证主要面之间的相互位置关系</td>
+</tr>
+<tr>
+<td><strong>先面后孔</strong></td>
+<td>先加工平面，再加工孔</td>
+<td>见下</td>
+</tr>
+</tbody></table>
+<p><strong>先面后孔的两层含义</strong>（老师反复强调）：</p>
+<ol>
+<li><strong>面与孔之间有垂直度要求</strong>。在面上打孔，孔与面之间必然有位置要求，所以先把面加工好，再以这个<strong>精确的面</strong>为基准去加工孔；</li>
+<li><strong>孔所在的表面是毛坯面时</strong>，钻头下刀容易<strong>引偏、打刀</strong>，所以必须先把面加工出来再钻孔。</li>
+</ol>
+<p><strong>老师对”先粗后精”的补充说明（加工中心场景）</strong>：</p>
+<p>加工中心上一次装夹可以完成很多工序，粗加工和精加工都可能在同一台设备上完成。这时<strong>更要注意把粗加工集中做完、再做精加工</strong>。如果”粗加工完 A 面就精加工 A 面，再粗加工 B 面、精加工 B 面”，B 面的精加工产生的切削力和夹紧力会造成变形，<strong>把 A 面已经保证的平行度等精度破坏掉</strong>。</p>
+<blockquote>
+<p>老师的总结：四个原则”感觉好像很简单，不就是先粗加工还是精加工”，但<strong>难在拿到图纸能套用</strong>——需要一定的熟练度，”看多了、做多了自然可以”。</p>
+</blockquote>
+<h3 id="4-3-热处理工序与辅助工序的安排"><a href="#4-3-热处理工序与辅助工序的安排" class="headerlink" title="4.3 热处理工序与辅助工序的安排"></a>4.3 热处理工序与辅助工序的安排</h3><h4 id="4-3-1-热处理工序：按”目的”定位置"><a href="#4-3-1-热处理工序：按”目的”定位置" class="headerlink" title="4.3.1 热处理工序：按”目的”定位置"></a>4.3.1 热处理工序：按”目的”定位置</h4><p>这是本节的<strong>核心逻辑</strong>——不要背位置，要背<strong>目的</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>目的</th>
+<th>热处理种类</th>
+<th>安排位置</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>改善<strong>切削性能</strong></td>
+<td>退火、正火</td>
+<td><strong>切削加工之前</strong></td>
+</tr>
+<tr>
+<td>消除<strong>内应力</strong></td>
+<td>时效处理（自然时效、人工时效）</td>
+<td>视内应力来源而定，一般在粗加工前或后</td>
+</tr>
+<tr>
+<td>改善<strong>物理力学性能</strong></td>
+<td>调质</td>
+<td><strong>粗加工之后、精加工之前</strong>；有半精加工时放在<strong>半精加工之后</strong></td>
+</tr>
+<tr>
+<td>提高<strong>表面硬度</strong></td>
+<td>淬火</td>
+<td><strong>半精加工之后</strong></td>
+</tr>
+<tr>
+<td>提高表面<strong>耐磨性</strong></td>
+<td>渗碳</td>
+<td><strong>半精加工之后、精加工之前</strong></td>
+</tr>
+<tr>
+<td>稳定<strong>尺寸</strong></td>
+<td>冷处理</td>
+<td>高精密零件放在<strong>最后</strong></td>
+</tr>
+<tr>
+<td>改善表面<strong>性能与美观</strong></td>
+<td>表面处理（镀铬等）</td>
+<td><strong>工艺最后</strong></td>
+</tr>
+</tbody></table>
+<p>几条要点展开：</p>
+<ul>
+<li><strong>消除内应力要分清来源</strong>。如果内应力是<strong>粗加工</strong>反复切削产生的，那时效就安排在粗加工之后；如果毛坯本身是<strong>铸造件或锻造件</strong>，来料时内应力就已经很大（老师举例”钢件、锻件”），那就要在<strong>切削加工之前</strong>先安排一道时效或退火来消除。</li>
+<li><strong>渗碳的位置</strong>：如果渗碳放在精加工之后，那么”你再粗铣一下、把它铣掉了”，渗碳层就白做了。所以渗碳一般安排在<strong>半精加工之后、精加工之前</strong>（老师表述为”半精加工以后、精加工之前”）。</li>
+<li><strong>冷处理</strong>：高精密零件在最后安排冷处理，目的是<strong>稳定零件的尺寸</strong>。</li>
+<li><strong>表面处理（镀铬等）一定要放最后</strong>：如果放在前面，后面的切削会把镀层切掉，”你就不是白处理了”。</li>
+</ul>
+<h4 id="4-3-2-辅助工序的安排"><a href="#4-3-2-辅助工序的安排" class="headerlink" title="4.3.2 辅助工序的安排"></a>4.3.2 辅助工序的安排</h4><table>
+<thead>
+<tr>
+<th>辅助工序</th>
+<th>安排位置</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>检验</strong></td>
+<td>穿插在整个流程中。零件加工完后、传递到下一道时要检查；<strong>不同车间、不同工段、不同流水段之间的传递</strong>都要检查</td>
+</tr>
+<tr>
+<td><strong>去毛刺</strong></td>
+<td>一般安排在<strong>切削加工之后</strong>（此时才有毛刺、飞边）</td>
+</tr>
+<tr>
+<td><strong>清洗</strong></td>
+<td>一般安排在<strong>零件加工之后、装配之前</strong>；研磨、珩磨等完成之后也要清洗</td>
+</tr>
+<tr>
+<td><strong>去磁</strong></td>
+<td>采用磁力夹紧（电磁吸盘）装夹后，要对工件<strong>去磁</strong></td>
+</tr>
+</tbody></table>
+<h3 id="4-4-工序集中与工序分散"><a href="#4-4-工序集中与工序分散" class="headerlink" title="4.4 工序集中与工序分散"></a>4.4 工序集中与工序分散</h3><table>
+<thead>
+<tr>
+<th>对比项</th>
+<th>工序集中</th>
+<th>工序分散</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>含义</td>
+<td>一个工序里包含很多工步</td>
+<td>工序内容少、工序数量多</td>
+</tr>
+<tr>
+<td>典型设备</td>
+<td><strong>加工中心</strong></td>
+<td>通用机床</td>
+</tr>
+<tr>
+<td>优点</td>
+<td>保证各表面相互位置精度；可采用高效设备；节省加工时间；减少支出；节省生产面积；便于管理</td>
+<td>设备和工装简单；对操作者技术水平要求较低</td>
+</tr>
+<tr>
+<td>缺点</td>
+<td>设备复杂、投资大</td>
+<td>工序多、设备多、占地面积大</td>
+</tr>
+</tbody></table>
+<p><strong>趋势</strong>：随着市场需求变化，<strong>产品品种越来越多、批量越来越小</strong>，为了应对这种多品种小批量生产，越来越多地采用加工中心这类先进设备，<strong>工序集中的优势越来越明显</strong>。</p>
+<h3 id="4-5-加工阶段的划分"><a href="#4-5-加工阶段的划分" class="headerlink" title="4.5 加工阶段的划分"></a>4.5 加工阶段的划分</h3><table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>任务</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>粗加工</strong></td>
+<td>切除大部分加工余量</td>
+</tr>
+<tr>
+<td><strong>半精加工</strong></td>
+<td>达到一定精度，为精加工做准备</td>
+</tr>
+<tr>
+<td><strong>精加工</strong></td>
+<td>达到零件主要表面的精度和表面质量要求</td>
+</tr>
+<tr>
+<td><strong>光整加工（精密加工）</strong></td>
+<td>进一步提高尺寸精度、降低表面粗糙度，如研磨、珩磨、超精加工、抛光</td>
+</tr>
+</tbody></table>
+<p><strong>什么时候需要半精加工？</strong></p>
+<ul>
+<li>粗加工<strong>余量很大</strong>时；</li>
+<li>粗加工时<strong>工件刚性差、产生了变形</strong>，需要在精加工前修正一下——因为精加工的切削余量很小，如果带着粗加工的变形直接精加工，反而会造成较大误差。</li>
+</ul>
+<p><strong>划分加工阶段的意义</strong>：</p>
+<ul>
+<li>合理使用设备（粗加工用功率大、精度低的设备，精加工用精度高的设备）；</li>
+<li>便于安排热处理工序；</li>
+<li>及时发现毛坯缺陷（粗加工后就能暴露）；</li>
+<li>保证加工质量。</li>
+</ul>
+<h3 id="4-6-加工余量"><a href="#4-6-加工余量" class="headerlink" title="4.6 加工余量"></a>4.6 加工余量</h3><h4 id="4-6-1-工序余量的概念"><a href="#4-6-1-工序余量的概念" class="headerlink" title="4.6.1 工序余量的概念"></a>4.6.1 工序余量的概念</h4><p><strong>工序余量 &#x3D; 相邻两工序的尺寸之差</strong>，也就是某一工序<strong>从工件表面切去的金属层厚度</strong>。</p>
+<p>老师强调：<strong>不要从定义去理解，直接从图形上去理解</strong>——在尺寸图上，工序余量就是”上一道工序尺寸线”与”本道工序尺寸线”之间那一段。</p>
+<h4 id="4-6-2-被包容面与包容面"><a href="#4-6-2-被包容面与包容面" class="headerlink" title="4.6.2 被包容面与包容面"></a>4.6.2 被包容面与包容面</h4><p>这是最容易搞错的地方：</p>
+<table>
+<thead>
+<tr>
+<th>表面类型</th>
+<th>加工后尺寸</th>
+<th>余量表达式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>被包容面</strong>（外表面，如轴）</td>
+<td><strong>变小</strong></td>
+<td>$Z &#x3D; d_1 - d_2$</td>
+</tr>
+<tr>
+<td><strong>包容面</strong>（内表面，如孔）</td>
+<td><strong>变大</strong></td>
+<td>$Z &#x3D; D_2 - D_1$</td>
+</tr>
+</tbody></table>
+<p>式中：$d_1$、$D_1$ 为<strong>上道工序</strong>的尺寸，$d_2$、$D_2$ 为<strong>本道工序</strong>的尺寸；$d$ 表示外表面尺寸（轴），$D$ 表示内表面尺寸（孔）。</p>
+<p>直观理解：轴越车越细，所以余量是”加工前减加工后”；孔越镗越大，所以余量是”加工后减加工前”——<strong>方向恰好相反</strong>。</p>
+<h4 id="4-6-3-单边余量与双边余量"><a href="#4-6-3-单边余量与双边余量" class="headerlink" title="4.6.3 单边余量与双边余量"></a>4.6.3 单边余量与双边余量</h4><table>
+<thead>
+<tr>
+<th>表面</th>
+<th>余量按哪种算</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>平面</strong></td>
+<td>单边余量</td>
+</tr>
+<tr>
+<td><strong>回转表面</strong>（外圆、内孔）</td>
+<td><strong>双边余量</strong>，$Z_d &#x3D; 2 \times Z_s$</td>
+</tr>
+</tbody></table>
+<p>式中 $Z_s$ 为单边余量、$Z_d$ 为双边余量。</p>
+<p>因为回转表面是”两边同时被切掉一层”，所以双边余量是单边余量的 2 倍。做题时<strong>一定要看清题目给的是单边还是双边</strong>——双边要乘 2，单边不要乘。</p>
+<h4 id="4-6-4-最大余量、最小余量与余量公差"><a href="#4-6-4-最大余量、最小余量与余量公差" class="headerlink" title="4.6.4 最大余量、最小余量与余量公差"></a>4.6.4 最大余量、最小余量与余量公差</h4><p>以<strong>被包容面（轴）</strong>为例，设上道工序尺寸为 $d_1$、本道工序尺寸为 $d_2$，对应的尺寸公差分别为 $T_1$、$T_2$：</p>
+<ul>
+<li>$Z_{max} &#x3D; d_{1max} - d_{2min}$</li>
+<li>$Z_{min} &#x3D; d_{1min} - d_{2max}$</li>
+<li>$T_Z &#x3D; Z_{max} - Z_{min} &#x3D; T_1 + T_2$</li>
+</ul>
+<p>即：<strong>余量公差 &#x3D; 上道工序尺寸公差 + 本道工序尺寸公差</strong>。</p>
+<p><strong>包容面（孔）</strong>方向相反，用后道尺寸减前道尺寸，公式形式一致。</p>
+<h4 id="4-6-5-加工余量的确定方法"><a href="#4-6-5-加工余量的确定方法" class="headerlink" title="4.6.5 加工余量的确定方法"></a>4.6.5 加工余量的确定方法</h4><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+<th>适用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>计算法</strong></td>
+<td>根据影响余量的各项因素（表面粗糙度、表面缺陷层深度、空间偏差、装夹误差等）逐项计算</td>
+<td>精确，但工作量大，实际<strong>很少用</strong></td>
+</tr>
+<tr>
+<td><strong>查表法</strong></td>
+<td>查机械加工工艺手册确定</td>
+<td><strong>生产上主要方法</strong>，也是教学重点</td>
+</tr>
+<tr>
+<td><strong>经验法</strong></td>
+<td>凭经验估计（例如”半精加工留 1.5、精加工留 1.2 就行”）</td>
+<td>单件小批、有经验的场合</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>老师特别提醒</strong>：手册上给出的余量，很多是**”基本余量”<strong>——它相当于</strong>最小余量<strong>。使用时一定要</strong>看清它的定义**，不要与最大余量混用。这是查手册时最容易出错的地方。</p>
+</blockquote>
+<h3 id="4-7-工序尺寸及其公差的确定"><a href="#4-7-工序尺寸及其公差的确定" class="headerlink" title="4.7 工序尺寸及其公差的确定"></a>4.7 工序尺寸及其公差的确定</h3><p><strong>确定方向：从最终加工工序往前倒推。</strong></p>
+<ol>
+<li>最后一道工序的尺寸就是<strong>图纸上的设计尺寸</strong>（设计尺寸是已知的、不能改的）；</li>
+<li>往前依次加上各道工序的加工余量，得到各道工序的<strong>公称尺寸</strong>；</li>
+<li>各道工序的公差按该工序能达到的<strong>公差等级</strong>确定。</li>
+</ol>
+<p><strong>入体原则</strong>（标注工序尺寸时的约定）：</p>
+<table>
+<thead>
+<tr>
+<th>表面类型</th>
+<th>工序尺寸取</th>
+<th>偏差</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>被包容面</strong>（轴）</td>
+<td><strong>最大极限尺寸</strong></td>
+<td>上偏差为零</td>
+</tr>
+<tr>
+<td><strong>包容面</strong>（孔）</td>
+<td><strong>最小极限尺寸</strong></td>
+<td>下偏差为零</td>
+</tr>
+</tbody></table>
+<p>这样标注的好处是：加工时”尺寸往材料里面走”即为合格，工人操作与测量都方便。</p>
+<h3 id="4-8-工艺尺寸链"><a href="#4-8-工艺尺寸链" class="headerlink" title="4.8 工艺尺寸链"></a>4.8 工艺尺寸链</h3><h4 id="4-8-1-尺寸链的定义与分类"><a href="#4-8-1-尺寸链的定义与分类" class="headerlink" title="4.8.1 尺寸链的定义与分类"></a>4.8.1 尺寸链的定义与分类</h4><p><strong>尺寸链</strong>：在零件加工或装配过程中，由<strong>相互联系的尺寸</strong>形成的<strong>封闭尺寸组</strong>。</p>
+<p>按研究对象分：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>研究对象</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>设计尺寸链</strong></td>
+<td>零件设计图上尺寸之间的关系</td>
+</tr>
+<tr>
+<td><strong>工艺尺寸链</strong></td>
+<td>零件<strong>加工过程</strong>中，同一零件有关工序尺寸之间的关系</td>
+</tr>
+<tr>
+<td><strong>装配尺寸链</strong></td>
+<td>零件<strong>装配过程</strong>中，有关装配尺寸之间的关系</td>
+</tr>
+</tbody></table>
+<p>老师说：其实都是尺寸链，<strong>只是研究的对象不同</strong>——用在设计上就叫设计尺寸链，用在工艺上就叫工艺尺寸链。</p>
+<h4 id="4-8-2-环、封闭环、组成环"><a href="#4-8-2-环、封闭环、组成环" class="headerlink" title="4.8.2 环、封闭环、组成环"></a>4.8.2 环、封闭环、组成环</h4><table>
+<thead>
+<tr>
+<th>术语</th>
+<th>定义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>环</strong></td>
+<td>组成尺寸链的每一个尺寸</td>
+</tr>
+<tr>
+<td><strong>封闭环</strong></td>
+<td>在零件加工或装配过程中<strong>最终形成（间接得到）</strong>的那个环</td>
+</tr>
+<tr>
+<td><strong>组成环</strong></td>
+<td>尺寸链中除封闭环以外的<strong>所有</strong>环</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>最重要的判断技巧</strong>（老师反复强调）：封闭环<strong>不是”题目让你求的那个环”<strong>，而是”<strong>最终形成、间接得到</strong>“的那个环。很多同学做题时把”题目要求解的环”直接当成封闭环，这是错的——题目让你求的</strong>可能是组成环中的某一个</strong>。</p>
+</blockquote>
+<p><strong>举例说明</strong>：以 A 面为基准加工 C 面（尺寸 $A_1$），以 A 面为基准加工 B 面（尺寸 $A_2$），那么 B 面到 C 面的距离 $A_0$ 就是<strong>间接得到</strong>的——它没有直接加工，而是由 $A_1$ 和 $A_2$ 共同决定的。所以 $A_0$ 是<strong>封闭环</strong>，$A_1$、$A_2$ 是<strong>组成环</strong>。</p>
+<ul>
+<li>组成环之所以叫”组成”，是因为它们一般是<strong>加工时直接得到</strong>的尺寸——你编程序时就已经告诉了”A 到 C 多远”、”A 到 B 多远”；</li>
+<li>封闭环则是<strong>最后才能确定</strong>的。</li>
+</ul>
+<h4 id="4-8-3-增环与减环的判定"><a href="#4-8-3-增环与减环的判定" class="headerlink" title="4.8.3 增环与减环的判定"></a>4.8.3 增环与减环的判定</h4><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>定义</th>
+<th>变化关系</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>增环</strong></td>
+<td>该环增大时，封闭环<strong>随之增大</strong></td>
+<td>同向变化</td>
+</tr>
+<tr>
+<td><strong>减环</strong></td>
+<td>该环增大时，封闭环<strong>随之减小</strong></td>
+<td>反向变化</td>
+</tr>
+</tbody></table>
+<p><strong>两种判定方法</strong>：</p>
+<ol>
+<li><strong>定义法（看变动方向）</strong>：环数少时好用。想一下”这个环变大了，封闭环会变大还是变小”；</li>
+<li><strong>箭头法（画箭头）</strong>：环数多时好用。沿尺寸链依次画箭头，<strong>与封闭环箭头方向相反的为增环，与封闭环箭头方向相同的为减环</strong>。</li>
+</ol>
+<blockquote>
+<p><strong>易混点</strong>：两种方法的”同向&#x2F;反向”说的不是同一件事——</p>
+<ul>
+<li>定义法看的是<strong>变动方向</strong>：同向变动的是<strong>增环</strong>；</li>
+<li>箭头法看的是<strong>箭头方向</strong>：箭头同向的是<strong>减环</strong>。</li>
+</ul>
+<p>老师专门提醒”两个都有’同向’，不要搞混了”。</p>
+</blockquote>
+<h4 id="4-8-4-极值法基本计算公式"><a href="#4-8-4-极值法基本计算公式" class="headerlink" title="4.8.4 极值法基本计算公式"></a>4.8.4 极值法基本计算公式</h4><p>设增环用 $A^{+}$ 表示、减环用 $A^{-}$ 表示，封闭环为 $A_0$：</p>
+<p><strong>（1）公称尺寸</strong></p>
+<p>$A_0 &#x3D; \sum A^{+} - \sum A^{-}$</p>
+<p>即：封闭环公称尺寸 &#x3D; 所有增环公称尺寸之和 − 所有减环公称尺寸之和。</p>
+<p><strong>（2）上偏差</strong></p>
+<p>$ES(A_0) &#x3D; \sum ES(A^{+}) - \sum EI(A^{-})$</p>
+<p>即：封闭环上偏差 &#x3D; 所有增环上偏差之和 − 所有减环<strong>下</strong>偏差之和。</p>
+<p><strong>（3）下偏差</strong></p>
+<p>$EI(A_0) &#x3D; \sum EI(A^{+}) - \sum ES(A^{-})$</p>
+<p>即：封闭环下偏差 &#x3D; 所有增环下偏差之和 − 所有减环<strong>上</strong>偏差之和。</p>
+<blockquote>
+<p><strong>注意</strong>：算上偏差时减环用<strong>下偏差</strong>，算下偏差时减环用<strong>上偏差</strong>——这是”减环要反号”的体现，也是公式最容易记混的地方。</p>
+</blockquote>
+<p><strong>（4）公差（极值法）</strong></p>
+<p>$T(A_0) &#x3D; \sum T(A_i)$</p>
+<p>即：封闭环公差 &#x3D; 各组成环公差<strong>之和</strong>。极值法最保守，但有时会得出过于苛刻的结果。</p>
+<h4 id="4-8-5-概率法"><a href="#4-8-5-概率法" class="headerlink" title="4.8.5 概率法"></a>4.8.5 概率法</h4><p>概率法把”极限尺寸”换成”平均尺寸”、把”极限偏差”换成”中间偏差”，公差按<strong>平方和开方</strong>计算：</p>
+<p>$T(A_0) &#x3D; \sqrt{\sum T(A_i)^2}$</p>
+<p>即：封闭环公差 &#x3D; 各组成环公差的<strong>平方和再开方</strong>。</p>
+<blockquote>
+<p>老师说：极值法”可能太极限了”，<strong>概率法是比较合适的方式</strong>。教学阶段两种方法都要了解、公式都要记住。</p>
+</blockquote>
+<h4 id="4-8-6-测量基准与设计基准不重合时的尺寸换算"><a href="#4-8-6-测量基准与设计基准不重合时的尺寸换算" class="headerlink" title="4.8.6 测量基准与设计基准不重合时的尺寸换算"></a>4.8.6 测量基准与设计基准不重合时的尺寸换算</h4><p>老师用一个非常典型的例子说明为什么需要尺寸换算：</p>
+<p><strong>问题</strong>：图纸上标注的是两个孔的<strong>中心距</strong>（例如 127±0.07，【以教材为准】）。可是<strong>生产完以后，你怎么量这两个中心之间的距离？</strong> 中心是虚的，找不到量点。</p>
+<p><strong>实际测量方式只有两种</strong>：</p>
+<ol>
+<li>用游标卡尺<strong>卡内侧</strong>，量两个孔内边之间的距离；</li>
+<li>用游标卡尺<strong>卡外侧</strong>，量两个孔外边之间的距离。</li>
+</ol>
+<p><strong>那卡尺读数应该落在什么范围，才能保证中心距合格？</strong></p>
+<p>这就是<strong>设计基准（中心距）与测量基准（孔边距）不重合</strong>的问题——必须建立尺寸链，把”中心距”作为封闭环，把”卡尺读到的孔边距”和”两个孔的半径”作为组成环，反算出卡尺读数的允许范围。</p>
+<p><strong>解法思路</strong>：中间那一段（孔边距）是<strong>可以直接量出来的</strong>（拿游标卡尺卡一下即可）；上下的两个孔半径也是可以量出来的。以”中心距”为封闭环，建立尺寸链换算即可。</p>
+<hr>
+<h2 id="五、例题与解题方法汇总"><a href="#五、例题与解题方法汇总" class="headerlink" title="五、例题与解题方法汇总"></a>五、例题与解题方法汇总</h2><h3 id="题型-1：给零件与精度要求，选加工路线"><a href="#题型-1：给零件与精度要求，选加工路线" class="headerlink" title="题型 1：给零件与精度要求，选加工路线"></a>题型 1：给零件与精度要求，选加工路线</h3><p><strong>解题步骤</strong>：</p>
+<ol>
+<li><strong>看材料与热处理</strong>：是否淬火、硬度高不高？硬度高 → 走磨削类路线；</li>
+<li><strong>看表面类型</strong>：外圆、孔、还是平面？各走对应路线；</li>
+<li><strong>看毛坯状态</strong>（针对孔）：毛坯上有孔 → 从镗开始；无孔 → 从钻开始；</li>
+<li><strong>看公差等级与表面粗糙度要求</strong>：对照各路线能达到的精度，”够用就停”；</li>
+<li><strong>安排热处理</strong>：按目的插入相应位置；</li>
+<li><strong>安排辅助工序</strong>：检验、去毛刺、清洗等。</li>
+</ol>
+<p><strong>例题（45 号钢轴外圆加工路线）</strong></p>
+<ul>
+<li>已知：45 号钢轴的外圆表面，表面粗糙度要求高（Ra 小于 0.16 量级，【以教材为准】）；</li>
+<li>45 号钢是<strong>中碳钢</strong>，通常<strong>不淬火</strong>，所以可以走<strong>车削 + 磨削</strong>路线；</li>
+<li>但精车达不到这么低的粗糙度，精磨（Ra 约 0.16～1.25）<strong>也差一点</strong>，需要再往后面走一步，用<strong>精密磨削 &#x2F; 镜面磨削</strong>；</li>
+<li><strong>加工路线</strong>：粗车 → 半精车 → 粗磨 → 精磨 → 精密磨削（镜面磨削）</li>
+<li><strong>热处理安排</strong>：45 号钢常用的热处理是<strong>调质</strong>，目的是<strong>改善物理力学性能</strong>（不是消除内应力，也不是表面美观），所以应安排在<strong>粗加工之后、精加工之前</strong>；本例有半精加工，故放在<strong>半精加工之后</strong>；</li>
+<li><strong>含热处理的完整路线</strong>：粗车 → 半精车 → <strong>调质</strong> → 粗磨 → 精磨 → 精密磨削（镜面磨削）</li>
+</ul>
+<blockquote>
+<p><strong>更严谨的做法</strong>：如果过程写完整，还要先<strong>车两个端面、打中心孔</strong>，调质之后因为会有一点变形，需要<strong>重新修正中心孔</strong>，再进入粗磨、精磨。如果来料长度不规格，还要先<strong>切段</strong>。</p>
+</blockquote>
+<h3 id="题型-2：判断工艺顺序是否合理"><a href="#题型-2：判断工艺顺序是否合理" class="headerlink" title="题型 2：判断工艺顺序是否合理"></a>题型 2：判断工艺顺序是否合理</h3><p><strong>解题步骤</strong>：<strong>把四条原则一个一个套</strong>。</p>
+<ol>
+<li><strong>先粗后精</strong>：粗加工是否都集中在一起？有没有粗精交替？</li>
+<li><strong>先面后孔</strong>：面是否在孔之前加工？孔的定位面是否已经加工好？</li>
+<li><strong>先基准后其他</strong>：基准面（设计基准面）是否被安排在了最后？基准面放在最后是<strong>错的</strong>——基准面粗糙、精度低，以它为基准加工其他面，其他面的精度也差。</li>
+<li><strong>先主后次</strong>：主要面是否先加工？</li>
+</ol>
+<p><strong>典型错误</strong>（老师举的两个例子）：</p>
+<ul>
+<li><strong>错误一</strong>：先加工两个孔，再加工两个端面 → 违反”先面后孔”；</li>
+<li><strong>错误二</strong>：把基准面（底面）<strong>放到最后</strong>才精加工 → 违反”先基准后其他”；</li>
+<li><strong>错误三</strong>：粗加工完一个面就精加工这个面，粗精交替 → 违反”先粗后精”，后道精加工的变形会破坏前道已保证的精度。</li>
+</ul>
+<p><strong>正确写法示例</strong>：粗铣底面 → 粗铣两个端面 → 粗镗半精镗两个孔 → 精铣底面 → 精铣顶面 → 精铣两个端面 → 精镗两个孔。</p>
+<blockquote>
+<p>老师提醒：这类题”看上去好像没什么问题，实际上整个工序基本上都是错的”——必须一条一条原则去核对。</p>
+</blockquote>
+<h3 id="题型-3：计算加工余量"><a href="#题型-3：计算加工余量" class="headerlink" title="题型 3：计算加工余量"></a>题型 3：计算加工余量</h3><p><strong>已知</strong>：某轴外圆，本道工序（精车）尺寸为 $d_2$，上道工序（粗车）尺寸为 $d_1$，各带上下偏差。</p>
+<p><strong>求</strong>：$Z_{max}$、$Z_{min}$、$T_Z$。</p>
+<p><strong>解题模板</strong>：</p>
+<ol>
+<li>由尺寸与偏差算出 $d_{1max}$、$d_{1min}$、$d_{2max}$、$d_{2min}$；</li>
+<li>判断是<strong>被包容面</strong>（轴）还是<strong>包容面</strong>（孔）；</li>
+<li>被包容面：$Z_{max} &#x3D; d_{1max} - d_{2min}$，$Z_{min} &#x3D; d_{1min} - d_{2max}$；</li>
+<li>校验：$T_Z &#x3D; Z_{max} - Z_{min} &#x3D; T_1 + T_2$。</li>
+</ol>
+<p><strong>数值示例</strong>（设上道尺寸 $d_1$ 为 50.5 上偏差 0、下偏差 −0.1；本道尺寸 $d_2$ 为 50 上偏差 0、下偏差 −0.02）：</p>
+<ul>
+<li>$d_{1max} &#x3D; 50.5$，$d_{1min} &#x3D; 50.4$；$d_{2max} &#x3D; 50$，$d_{2min} &#x3D; 49.98$</li>
+<li>$Z_{max} &#x3D; 50.5 - 49.98 &#x3D; 0.52$</li>
+<li>$Z_{min} &#x3D; 50.4 - 50 &#x3D; 0.40$</li>
+<li>$T_Z &#x3D; 0.52 - 0.40 &#x3D; 0.12 &#x3D; 0.1 + 0.02$ ✓（与”余量公差 &#x3D; 上道公差 + 本道公差”一致）</li>
+</ul>
+<h3 id="题型-4：尺寸链计算（正计算与反计算）"><a href="#题型-4：尺寸链计算（正计算与反计算）" class="headerlink" title="题型 4：尺寸链计算（正计算与反计算）"></a>题型 4：尺寸链计算（正计算与反计算）</h3><p><strong>解题模板</strong>：</p>
+<ol>
+<li><strong>判断封闭环</strong>：找出”最终形成、间接得到”的那个环——<strong>不要</strong>直接把题目要求的环当封闭环；</li>
+<li><strong>判定增环、减环</strong>：环数少用定义法，环数多用箭头法；</li>
+<li><strong>代入公式</strong>：<ul>
+<li>公称尺寸：$A_0 &#x3D; \sum A^{+} - \sum A^{-}$</li>
+<li>上偏差：$ES(A_0) &#x3D; \sum ES(A^{+}) - \sum EI(A^{-})$</li>
+<li>下偏差：$EI(A_0) &#x3D; \sum EI(A^{+}) - \sum ES(A^{-})$</li>
+<li>公差（极值法）：$T(A_0) &#x3D; \sum T(A_i)$</li>
+</ul>
+</li>
+<li><strong>校验</strong>：$T(A_0)$ 应等于 $ES(A_0) - EI(A_0)$。</li>
+</ol>
+<p><strong>数值示例</strong>：已知 $A_1 &#x3D; 60^{+0.05}<em>{0}$、$A_2 &#x3D; 20^{+0.03}</em>{0}$，封闭环 $A_0 &#x3D; A_1 - A_2$。</p>
+<ul>
+<li>公称尺寸：$A_0 &#x3D; 60 - 20 &#x3D; 40$</li>
+<li>上偏差：$ES(A_0) &#x3D; +0.05 - 0 &#x3D; +0.05$</li>
+<li>下偏差：$EI(A_0) &#x3D; 0 - 0.03 &#x3D; -0.03$</li>
+<li>公差校验：$T(A_0) &#x3D; 0.05 - (-0.03) &#x3D; 0.08 &#x3D; 0.05 + 0.03$ ✓</li>
+<li>结果：$A_0 &#x3D; 40^{+0.05}_{-0.03}$</li>
+</ul>
+<hr>
+<h2 id="六、术语速查表"><a href="#六、术语速查表" class="headerlink" title="六、术语速查表"></a>六、术语速查表</h2><table>
+<thead>
+<tr>
+<th>术语</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>工序余量</td>
+<td>相邻两工序尺寸之差，即某工序从工件表面切去的金属层厚度</td>
+</tr>
+<tr>
+<td>加工总余量</td>
+<td>从毛坯到成品各工序余量之和</td>
+</tr>
+<tr>
+<td>被包容面</td>
+<td>加工后尺寸变小的表面，如轴的外圆</td>
+</tr>
+<tr>
+<td>包容面</td>
+<td>加工后尺寸变大的表面，如孔的內圆</td>
+</tr>
+<tr>
+<td>单边余量</td>
+<td>平面类表面按单边计算的余量</td>
+</tr>
+<tr>
+<td>双边余量</td>
+<td>回转表面（外圆、内孔）按双边计算的余量，为单边余量的 2 倍</td>
+</tr>
+<tr>
+<td>余量公差</td>
+<td>最大余量与最小余量之差，等于上道工序尺寸公差与本道工序尺寸公差之和</td>
+</tr>
+<tr>
+<td>基本余量</td>
+<td>手册中给出的余量，相当于最小余量；使用时须看清定义</td>
+</tr>
+<tr>
+<td>入体原则</td>
+<td>标注工序尺寸时，被包容面取最大极限尺寸（上偏差为零），包容面取最小极限尺寸（下偏差为零）</td>
+</tr>
+<tr>
+<td>工序集中</td>
+<td>一个工序内包含很多工步，如加工中心</td>
+</tr>
+<tr>
+<td>工序分散</td>
+<td>工序内容少、工序数量多，设备工装简单</td>
+</tr>
+<tr>
+<td>加工阶段</td>
+<td>粗加工、半精加工、精加工、光整加工</td>
+</tr>
+<tr>
+<td>金刚镗</td>
+<td>在精密镗床上用金刚石（或硬质合金）刀具高速小进给精密切削</td>
+</tr>
+<tr>
+<td>浮动镗</td>
+<td>镗刀块不固定在镗杆上，可径向自由滑动、自动对中</td>
+</tr>
+<tr>
+<td>珩磨</td>
+<td>珩磨头（带油石条）旋转并往复、工件不动，用于提高孔的精度与表面质量</td>
+</tr>
+<tr>
+<td>研磨</td>
+<td>工件运动、研具不动的光整加工，精度与表面质量极高</td>
+</tr>
+<tr>
+<td>拉削</td>
+<td>用拉刀加工，效率高但设备昂贵，仅适合大批量生产</td>
+</tr>
+<tr>
+<td>宽刀精刨</td>
+<td>用宽刃刨刀进行精刨，可达到较高精度</td>
+</tr>
+<tr>
+<td>尺寸链</td>
+<td>零件加工或装配过程中，由相互联系的尺寸形成的封闭尺寸组</td>
+</tr>
+<tr>
+<td>环</td>
+<td>组成尺寸链的每一个尺寸</td>
+</tr>
+<tr>
+<td>封闭环</td>
+<td>加工或装配过程中最终形成（间接得到）的环</td>
+</tr>
+<tr>
+<td>组成环</td>
+<td>尺寸链中除封闭环以外的所有环</td>
+</tr>
+<tr>
+<td>增环</td>
+<td>该环增大时封闭环随之增大的环</td>
+</tr>
+<tr>
+<td>减环</td>
+<td>该环增大时封闭环随之减小的环</td>
+</tr>
+<tr>
+<td>极值法</td>
+<td>封闭环公差等于各组成环公差之和的计算方法</td>
+</tr>
+<tr>
+<td>概率法</td>
+<td>封闭环公差等于各组成环公差平方和开方的计算方法</td>
+</tr>
+<tr>
+<td>设计基准</td>
+<td>零件设计图上用来确定其他点、线、面位置的基准</td>
+</tr>
+<tr>
+<td>工艺基准</td>
+<td>工艺过程中使用的基准，包括定位基准、测量基准、装配基准</td>
+</tr>
+<tr>
+<td>测量基准</td>
+<td>测量时所依据的基准；与设计基准不重合时需做尺寸换算</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="七、课堂强调与复习重点"><a href="#七、课堂强调与复习重点" class="headerlink" title="七、课堂强调与复习重点"></a>七、课堂强调与复习重点</h2><ol>
+<li>**这一节是复习课，考的是”套用能力”**——四条工艺原则必须能对着图纸一条条套出来，而不是背下来。</li>
+<li><strong>“封闭环”的判断是尺寸链部分最容易失分的地方</strong>：它<strong>不是题目要求解的环</strong>，而是”最终形成、间接得到”的环。</li>
+<li><strong>增环减环的两种判定方法要分清</strong>：定义法看<strong>变动方向</strong>（同向变动&#x3D;增环），箭头法看<strong>箭头方向</strong>（同向箭头&#x3D;减环）。老师专门提醒”两个都有’同向’，不要搞混”。</li>
+<li><strong>算上偏差时减环取下偏差、算下偏差时减环取上偏差</strong>——这是公式最容易记混的地方。</li>
+<li><strong>单边余量与双边余量</strong>：回转表面取双边，是单边的 2 倍；做题先看清题目给的是哪种。</li>
+<li><strong>被包容面与包容面的余量方向相反</strong>：轴是”前减后”，孔是”后减前”。</li>
+<li><strong>余量公差 &#x3D; 上道公差 + 本道公差</strong>，这是校验计算是否正确的快捷方式。</li>
+<li><strong>查手册时注意”基本余量”的定义</strong>——手册给的常是最小余量，别当最大余量用。</li>
+<li><strong>热处理的安排位置由”目的”决定</strong>，不要死记：改善切削性能→前；改善力学性能→粗后精前；提高硬度→半精后；表面处理→最后。</li>
+<li><strong>表面处理（镀铬等）必须放最后</strong>，否则后面的切削会把镀层切掉。</li>
+<li>**加工中心上也要遵守”先粗后精”**，粗加工集中做、精加工集中做，不能粗精交替。</li>
+<li><strong>基准面不能放在最后加工</strong>——基准面精度低，以它为准加工其他面，其他面也差。</li>
+<li><strong>“先面后孔”有两层含义</strong>：垂直度要求 + 毛坯面钻孔易引偏打刀。答题时两层都要写。</li>
+<li><strong>选路线的三要素</strong>：公差等级、表面粗糙度、材料硬度。</li>
+<li><strong>测量基准与设计基准不重合时要建尺寸链换算</strong>，游标卡尺量孔中心距就是典型例子。</li>
+</ol>
+<hr>
+<h2 id="八、【以教材为准】待核对清单"><a href="#八、【以教材为准】待核对清单" class="headerlink" title="八、【以教材为准】待核对清单"></a>八、【以教材为准】待核对清单</h2><p>以下条目因录音环境噪声、口述省略或与教材符号习惯不一致，建议对照教材核对：</p>
+<ol>
+<li><strong>孔的加工路线条数与顺序</strong>。录音提到四条路线，但个别路线名称听录模糊（如”钻-扩-铰”与”镗削”路线的排列），<strong>以教材给出的路线图为准</strong>。</li>
+<li><strong>“粗镗-半精镗-精磨”的适用材料</strong>。录音表述为”粒粒的材料”，疑为<strong>淬火钢或难加工材料</strong>，正文按”难加工材料”处理。</li>
+<li><strong>高硬度材料磨削时的砂轮选择</strong>。录音中提到某类高硬度磨料（听录为”辐射核心”，疑为<strong>立方氮化硼 CBN</strong> 或<strong>人造金刚石</strong>），正文按”高硬度磨料砂轮”表述，<strong>具体磨料以教材为准</strong>。</li>
+<li><strong>封闭环下偏差公式</strong>。录音口述为”所有增环下偏差减去所有减环的下偏差”，**标准公式应为”所有增环下偏差之和减去所有减环上偏差之和”**，正文按标准公式书写，请对照教材确认。</li>
+<li><strong>加工余量公差公式</strong>。录音表述有重复（”下一道的工序尺寸公差加上下一道的工序尺寸公差”），正文按”上道工序尺寸公差 + 本道工序尺寸公差”书写。</li>
+<li><strong>最大余量与最小余量的符号约定</strong>。正文按被包容面（轴）给出，包容面（孔）方向相反，<strong>请对照教材确认符号</strong>。</li>
+<li><strong>手册中”基本余量”的确切定义</strong>。录音称其为”最小余量”，正文按此表述，<strong>以教材或手册定义为准</strong>。</li>
+<li><strong>渗碳的工序位置</strong>。录音表述为”半精加工之后、精加工之前”（与”精加工之后”两种说法都有出现），正文按前者，<strong>以教材为准</strong>。</li>
+<li><strong>冷处理与时效处理的适用场合</strong>。录音提到高精密零件最后安排冷处理稳定尺寸、铸锻件来料内应力大需先时效，正文按此表述。</li>
+<li><strong>测量基准换算例题的具体数值</strong>。录音听录为中心距 127±0.07 一类数值，但前后出现 127 与 120 两种数字，<strong>正文只叙述方法、不引用具体数值</strong>，请以教材例题为准。</li>
+<li><strong>各加工路线能达到的公差等级与表面粗糙度区间</strong>。正文表格中的 IT 等级与 Ra 区间按通用工艺资料补全，<strong>具体数值以教材表格为准</strong>。</li>
+<li><strong>教材页码</strong>（录音中提到”100 页””37 页”等）为听录，正文未引用。</li>
+<li><strong>课程名称</strong>。本讲内容属工艺规程设计范畴，标题课程名按《机械制造工艺学》书写，<strong>若教学计划中课程名为《机械制造技术基础》或《工程材料与机械制造基础》，请自行调整标题</strong>。</li>
+</ol>
+<hr>
+<h2 id="九、复习自测（20-题）"><a href="#九、复习自测（20-题）" class="headerlink" title="九、复习自测（20 题）"></a>九、复习自测（20 题）</h2><p><strong>基础概念（1–5）</strong></p>
+<ol>
+<li>选择加工路线的主要依据有哪三个？</li>
+<li>外圆表面的两条主要加工路线分别是什么？</li>
+<li>为什么淬火钢的外圆不适合走车削路线？</li>
+<li>孔的加工路线中，”毛坯有孔”和”毛坯无孔”分别从哪道工序开始？为什么？</li>
+<li>什么是工序余量？</li>
+</ol>
+<p><strong>工艺顺序与热处理（6–11）</strong></p>
+<ol start="6">
+<li>写出工艺顺序安排的四条原则。</li>
+<li>“先面后孔”有哪两层含义？</li>
+<li>为什么加工中心上也要”先粗后精”、不能粗精交替？</li>
+<li>按”目的”说出热处理工序的六种安排位置（改善切削性能、消除内应力、改善力学性能、提高硬度、渗碳、表面处理）。</li>
+<li>为什么表面处理（如镀铬）一定要安排在工艺最后？</li>
+<li>检验、去毛刺、清洗这三种辅助工序一般安排在什么位置？</li>
+</ol>
+<p><strong>工序集中与加工阶段（12–13）</strong></p>
+<ol start="12">
+<li>工序集中与工序分散各有什么优缺点？发展趋势是哪一种？</li>
+<li>加工阶段划分为哪四段？什么情况下需要安排半精加工？</li>
+</ol>
+<p><strong>加工余量（14–16）</strong></p>
+<ol start="14">
+<li>被包容面与包容面的余量表达式有什么区别？</li>
+<li>单边余量与双边余量分别适用于什么表面？两者是什么关系？</li>
+<li>加工余量的确定方法有哪三种？生产上主要用哪一种？</li>
+</ol>
+<p><strong>尺寸链（17–20）</strong></p>
+<ol start="17">
+<li>什么是封闭环？判断封闭环的关键是什么？</li>
+<li>增环与减环的定义分别是什么？有哪两种判定方法？</li>
+<li>写出极值法下封闭环公称尺寸、上偏差、下偏差与公差的公式。</li>
+<li>已知 $A_1 &#x3D; 60^{+0.05}<em>{0}$、$A_2 &#x3D; 20^{+0.03}</em>{0}$，封闭环 $A_0 &#x3D; A_1 - A_2$。求 $A_0$ 的尺寸及偏差，并校验公差。</li>
+</ol>
+<hr>
+<h2 id="十、复习自测参考答案"><a href="#十、复习自测参考答案" class="headerlink" title="十、复习自测参考答案"></a>十、复习自测参考答案</h2><p><strong>1.</strong> 三个依据：<strong>公差等级、表面粗糙度、材料硬度</strong>（是否淬火）。</p>
+<p><strong>2.</strong> ① <strong>车削路线</strong>：粗车 → 半精车 → 精车；② <strong>磨削路线</strong>：粗车 → 半精车 → 粗磨 → 精磨。（要更高精度时在精磨后加研磨、超精加工或镜面磨削。）</p>
+<p><strong>3.</strong> 因为淬火后<strong>硬度很高</strong>，车削时刀具磨损很快、切削困难，尺寸精度和表面质量都难以保证，所以必须改走<strong>磨削路线</strong>。</p>
+<p><strong>4.</strong> <strong>毛坯无孔</strong>时从<strong>钻</strong>开始（钻 → 扩 → 铰），因为孔还不存在，必须先钻出来；<strong>毛坯有孔</strong>（铸出或锻出）时从<strong>粗镗</strong>开始（粗镗 → 半精镗 → 精镗），因为铸锻出来的孔余量不均匀、直接用钻头容易引偏，用镗削逐步修正更合理。</p>
+<p><strong>5.</strong> <strong>工序余量 &#x3D; 相邻两工序的尺寸之差</strong>，即某一工序从工件表面切去的金属层厚度。</p>
+<p><strong>6.</strong> <strong>先基准后其他、先粗后精、先主后次、先面后孔。</strong></p>
+<p><strong>7.</strong> ① <strong>面与孔之间有垂直度要求</strong>，先加工面，再以这个精确的面为基准加工孔；② <strong>孔所在的表面是毛坯面时</strong>，直接下钻容易引偏、打刀，所以必须先把面加工出来。</p>
+<p><strong>8.</strong> 因为加工中心上一次装夹可完成很多工序，如果粗精交替进行，后一道精加工产生的切削力和夹紧力会造成变形，<strong>破坏前一道已经保证的精度</strong>（例如 A 面已保证的平行度会因加工 B 面而超差）。所以要把粗加工集中做完，再集中做精加工。</p>
+<p><strong>9.</strong> ① 改善<strong>切削性能</strong>（退火、正火）→ <strong>切削加工之前</strong>；② 消除<strong>内应力</strong>（时效）→ 视内应力来源，一般在粗加工前或后；③ 改善<strong>物理力学性能</strong>（调质）→ <strong>粗加工之后、精加工之前</strong>（有半精加工则放在半精加工之后）；④ 提高<strong>表面硬度</strong>（淬火）→ <strong>半精加工之后</strong>；⑤ <strong>渗碳</strong> → <strong>半精加工之后、精加工之前</strong>；⑥ 改善表面<strong>性能与美观</strong>（表面处理）→ <strong>工艺最后</strong>。（补充：高精密零件最后安排<strong>冷处理</strong>稳定尺寸。）</p>
+<p><strong>10.</strong> 因为表面处理是为了获得表面性能与外观，如果放在前面，<strong>后面的切削加工会把镀层切掉</strong>，”就白处理了”。所以必须放在整个工艺的最后。</p>
+<p><strong>11.</strong> <strong>检验</strong>穿插在整个流程中（工序间、车间间、流水段之间的传递都要检查）；<strong>去毛刺</strong>一般安排在切削加工之后；<strong>清洗</strong>一般安排在零件加工之后、装配之前。</p>
+<p><strong>12.</strong> <strong>工序集中</strong>（如加工中心）的优点：保证各表面相互位置精度、可采用高效设备、节省加工时间、减少支出、节省生产面积、便于管理；缺点是设备复杂、投资大。<strong>工序分散</strong>的优点是设备与工装简单、对操作者技术水平要求较低；缺点是工序多、设备多、占地大。<strong>发展趋势是工序集中</strong>——因为市场需求趋向多品种小批量，加工中心这类设备越来越有优势。</p>
+<p><strong>13.</strong> 四段：<strong>粗加工、半精加工、精加工、光整加工（精密加工）</strong>。需要安排半精加工的情况：① 粗加工<strong>余量很大</strong>；② 粗加工时<strong>工件刚性差、产生了变形</strong>，需要在精加工前修正（因为精加工余量小，带着变形直接精加工反而会造成较大误差）。</p>
+<p><strong>14.</strong> <strong>被包容面</strong>（轴）加工后尺寸<strong>变小</strong>，$Z &#x3D; d_1 - d_2$（加工前减加工后）；<strong>包容面</strong>（孔）加工后尺寸<strong>变大</strong>，$Z &#x3D; D_2 - D_1$（加工后减加工前）。两者方向恰好相反。</p>
+<p><strong>15.</strong> <strong>平面</strong>按<strong>单边余量</strong>计算；<strong>回转表面</strong>（外圆、内孔）按<strong>双边余量</strong>计算。两者关系：$Z_d &#x3D; 2 \times Z_s$。</p>
+<p><strong>16.</strong> 三种：<strong>计算法</strong>（精确但工作量大，实际少用）、<strong>查表法</strong>（查手册，<strong>生产上主要方法</strong>）、<strong>经验法</strong>（凭经验估计，用于单件小批）。</p>
+<p><strong>17.</strong> 封闭环是<strong>在零件加工或装配过程中最终形成（间接得到）</strong>的那个环。判断关键：<strong>它不是题目要求解的那个环</strong>，而是”最后才形成、由其他尺寸间接决定”的那个环——题目要求解的可能是组成环中的某一个。</p>
+<p><strong>18.</strong> <strong>增环</strong>：该环增大时，封闭环<strong>随之增大</strong>；<strong>减环</strong>：该环增大时，封闭环<strong>随之减小</strong>。两种判定方法：① <strong>定义法</strong>（看变动方向，环数少时用）；② <strong>箭头法</strong>（沿尺寸链画箭头，与封闭环箭头方向<strong>相反</strong>的为增环、<strong>相同</strong>的为减环，环数多时用）。</p>
+<p><strong>19.</strong> 设增环为 $A^{+}$、减环为 $A^{-}$：</p>
+<ul>
+<li>公称尺寸：$A_0 &#x3D; \sum A^{+} - \sum A^{-}$</li>
+<li>上偏差：$ES(A_0) &#x3D; \sum ES(A^{+}) - \sum EI(A^{-})$</li>
+<li>下偏差：$EI(A_0) &#x3D; \sum EI(A^{+}) - \sum ES(A^{-})$</li>
+<li>公差：$T(A_0) &#x3D; \sum T(A_i)$</li>
+</ul>
+<p><strong>20.</strong> 已知 $A_1 &#x3D; 60^{+0.05}<em>{0}$（增环）、$A_2 &#x3D; 20^{+0.03}</em>{0}$（减环）：</p>
+<ul>
+<li><strong>公称尺寸</strong>：$A_0 &#x3D; 60 - 20 &#x3D; 40$</li>
+<li><strong>上偏差</strong>：$ES(A_0) &#x3D; ES(A_1) - EI(A_2) &#x3D; +0.05 - 0 &#x3D; +0.05$</li>
+<li><strong>下偏差</strong>：$EI(A_0) &#x3D; EI(A_1) - ES(A_2) &#x3D; 0 - 0.03 &#x3D; -0.03$</li>
+<li><strong>结果</strong>：$A_0 &#x3D; 40^{+0.05}_{-0.03}$</li>
+<li><strong>公差校验</strong>：$T(A_0) &#x3D; 0.05 - (-0.03) &#x3D; 0.08$，而 $T(A_1) + T(A_2) &#x3D; 0.05 + 0.03 &#x3D; 0.08$，两者相等 ✓</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%9C%BA%E6%A2%B0%E5%88%B6%E9%80%A0%E5%B7%A5%E8%89%BA-%E5%A4%8D%E4%B9%A0%E8%AF%BE-%E5%B0%BA%E5%AF%B8%E9%93%BE-CSDN/" class="print-no-link">#机械制造工艺 复习课 尺寸链 CSDN</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>机械制造工艺学复习课：加工路线、工序安排与工艺尺寸链</div>
+      <div>https://tdexxx.github.io/2026/10/16/06_机械制造工艺与夹具/机械制造工艺学·复习课（典型表面加工路线·工序安排四原则·热处理工序·加工余量·工艺尺寸链）CSDN发布稿/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>tdexxx</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年10月16日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/10/21/04_%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80%C2%B7%E6%BB%9A%E5%8A%A8%E8%BD%B4%E6%89%BF%E4%B9%A0%E9%A2%98%E8%AF%BE%EF%BC%88%E7%B1%BB%E5%9E%8B%E4%BB%A3%E5%8F%B7%C2%B7%E6%8E%A5%E8%A7%A6%E8%A7%92%C2%B7%E5%BD%93%E9%87%8F%E5%8A%A8%E8%BD%BD%E8%8D%B7%C2%B7%E5%86%85%E9%83%A8%E8%BD%B4%E5%90%91%E5%8A%9B%C2%B7%E5%8E%8B%E7%B4%A7%E6%94%BE%E6%9D%BE%E5%88%A4%E6%96%AD%C2%B7%E5%AF%BF%E5%91%BD%E8%AE%A1%E7%AE%97%C2%B7%E8%BD%B4%E5%90%91%E5%9B%BA%E5%AE%9A%EF%BC%89CSDN%E5%8F%91%E5%B8%83%E7%A8%BF/" title="滚动轴承习题课：类型代号、当量动载荷与寿命计算">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">滚动轴承习题课：类型代号、当量动载荷与寿命计算</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/10/16/06_%E6%9C%BA%E6%A2%B0%E5%88%B6%E9%80%A0%E5%B7%A5%E8%89%BA%E4%B8%8E%E5%A4%B9%E5%85%B7/%E6%9C%BA%E6%A2%B0%E5%88%B6%E9%80%A0%E5%B7%A5%E8%89%BA%E5%AD%A6%C2%B7%E8%AF%BE%E5%A0%82%E9%80%90%E5%AD%97%E7%A8%BF%EF%BC%88%E5%A4%8D%E4%B9%A0%E8%AF%BE%C2%B7%E5%B7%A5%E8%89%BA%E8%A7%84%E7%A8%8B%E8%AE%BE%E8%AE%A1%EF%BC%89ASR%E5%8E%9F%E5%A7%8B/" title="机械制造工艺学复习课课堂逐字稿（ASR 原始）">
+                        <span class="hidden-mobile">机械制造工艺学复习课课堂逐字稿（ASR 原始）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

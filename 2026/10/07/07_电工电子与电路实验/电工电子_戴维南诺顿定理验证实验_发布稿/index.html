@@ -1,0 +1,1071 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="tdexxx">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="戴维南定理与诺顿定理验证实验笔记：开路电压 Uoc&#x2F;短路电流 Isc 测量、除源法测等效内阻 Rs、戴维南串联等效与诺顿并联等效接线、负载伏安数据验证、电阻串并联选配与单位换算、误差分析（含实验步骤、数据记录表与考点） 本文整理《戴维南定理与诺顿定理验证实验》指导课。本课在电工实验台上完成两个重要电路定理的验证：先把含源二端网络的开路电压 Uoc和短路电流 Isc测出（表一），再分别测量">
+<meta property="og:type" content="article">
+<meta property="og:title" content="戴维南定理与诺顿定理验证实验">
+<meta property="og:url" content="https://tdexxx.github.io/2026/10/07/07_%E7%94%B5%E5%B7%A5%E7%94%B5%E5%AD%90%E4%B8%8E%E7%94%B5%E8%B7%AF%E5%AE%9E%E9%AA%8C/%E7%94%B5%E5%B7%A5%E7%94%B5%E5%AD%90_%E6%88%B4%E7%BB%B4%E5%8D%97%E8%AF%BA%E9%A1%BF%E5%AE%9A%E7%90%86%E9%AA%8C%E8%AF%81%E5%AE%9E%E9%AA%8C_%E5%8F%91%E5%B8%83%E7%A8%BF/index.html">
+<meta property="og:site_name" content="tdexxx的博客">
+<meta property="og:description" content="戴维南定理与诺顿定理验证实验笔记：开路电压 Uoc&#x2F;短路电流 Isc 测量、除源法测等效内阻 Rs、戴维南串联等效与诺顿并联等效接线、负载伏安数据验证、电阻串并联选配与单位换算、误差分析（含实验步骤、数据记录表与考点） 本文整理《戴维南定理与诺顿定理验证实验》指导课。本课在电工实验台上完成两个重要电路定理的验证：先把含源二端网络的开路电压 Uoc和短路电流 Isc测出（表一），再分别测量">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-10-07T08:34:59.000Z">
+<meta property="article:modified_time" content="2026-10-30T17:37:19.969Z">
+<meta property="article:author" content="tdexxx">
+<meta property="article:tag" content="电工电子 电路实验 戴维南定理">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>戴维南定理与诺顿定理验证实验 - tdexxx的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"tdexxx.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2022-12-10T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="戴维南定理与诺顿定理验证实验"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-10-07 16:34" pubdate>
+          2026年10月7日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          57 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">戴维南定理与诺顿定理验证实验</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="戴维南定理与诺顿定理验证实验笔记：开路电压-Uoc-短路电流-Isc-测量、除源法测等效内阻-Rs、戴维南串联等效与诺顿并联等效接线、负载伏安数据验证、电阻串并联选配与单位换算、误差分析（含实验步骤、数据记录表与考点）"><a href="#戴维南定理与诺顿定理验证实验笔记：开路电压-Uoc-短路电流-Isc-测量、除源法测等效内阻-Rs、戴维南串联等效与诺顿并联等效接线、负载伏安数据验证、电阻串并联选配与单位换算、误差分析（含实验步骤、数据记录表与考点）" class="headerlink" title="戴维南定理与诺顿定理验证实验笔记：开路电压 Uoc&#x2F;短路电流 Isc 测量、除源法测等效内阻 Rs、戴维南串联等效与诺顿并联等效接线、负载伏安数据验证、电阻串并联选配与单位换算、误差分析（含实验步骤、数据记录表与考点）"></a>戴维南定理与诺顿定理验证实验笔记：开路电压 Uoc&#x2F;短路电流 Isc 测量、除源法测等效内阻 Rs、戴维南串联等效与诺顿并联等效接线、负载伏安数据验证、电阻串并联选配与单位换算、误差分析（含实验步骤、数据记录表与考点）</h1><blockquote>
+<p>本文整理《戴维南定理与诺顿定理验证实验》指导课。本课在电工实验台上完成两个重要电路定理的验证：先把含源二端网络的<strong>开路电压 Uoc</strong>和<strong>短路电流 Isc</strong>测出（表一），再分别测量原电路在不同负载下的电压、电流（表二）；随后把网络等效为”<strong>恒压源 Uoc 串联等效内阻 Rs</strong>“的戴维南电路（表三）和”<strong>恒流源 Isc 并联等效内阻 Rs</strong>“的诺顿电路（表四），在相同负载下对比三组数据是否一致；最后用<strong>除源法</strong>（电流源开路、电压源短路后外加电源）实测等效内阻 Req（表五），并与 $R_s&#x3D;U_{oc}&#x2F;I_{sc}$ 的计算值对照。文中先补齐两个定理的标准原理与公式，再按课堂操作顺序讲清面板使用、电阻串并联选配、各表接线逻辑、电流表&#x2F;电压表位置、档位选择、单位换算和误差分析，文末附三种电路接线对比表、数据记录模板、待核对清单和主动回忆题（含答案要点）。</p>
+</blockquote>
+<h2 id="一、核心结论"><a href="#一、核心结论" class="headerlink" title="一、核心结论"></a>一、核心结论</h2><ul>
+<li><strong>戴维南定理</strong>：任何一个含独立电源和线性电阻的<strong>线性有源二端网络</strong>，对其外接负载而言，都可以等效为一个<strong>理想电压源 $U_{oc}$ 与一个等效内阻 $R_s$ 串联</strong>的电压源模型。$U_{oc}$ 是该二端网络两个输出端的<strong>开路电压</strong>，$R_s$ 是网络内部所有<strong>独立源置零</strong>后从端口看进去的等效电阻。</li>
+<li><strong>诺顿定理</strong>：同一有源二端网络也可以等效为一个<strong>理想电流源 $I_{sc}$ 与等效内阻 $R_s$ 并联</strong>的电流源模型。$I_{sc}$ 是两个输出端直接短接时的<strong>短路电流</strong>，$R_s$ 与戴维南等效内阻相同。</li>
+<li>三个量之间满足电源等效互换关系：<br>$$U_{oc}&#x3D;I_{sc},R_s,\qquad I_{sc}&#x3D;\frac{U_{oc}}{R_s},\qquad R_s&#x3D;\frac{U_{oc}}{I_{sc}}$$</li>
+<li><strong>独立源置零规则（除源）</strong>：求等效内阻时，恒压源置零＝把它<strong>短路</strong>（用导线代替，$U_s&#x3D;0$）；恒流源置零＝把它<strong>开路</strong>（断开，$I_s&#x3D;0$）。</li>
+<li>实验验证思路：在同一负载电阻 $R_L$ 下，<strong>原电路（表二）、戴维南等效电路（表三）、诺顿等效电路（表四）</strong>测得的负载电压 $U_L$ 和负载电流 $I_L$ 应当一致（在误差允许范围内），即三种电路对外电路等效。</li>
+<li><strong>表一</strong>：恒压源调 12 V、恒流源调 20 mA（用 200 mA 档位才能准确调到 20 mA），且这两个源的数值在表一、表二中保持不动；负载开路时电压表并接在输出（蓝色）节点测 $U_{oc}$；输出端用导线短接、电流表串入短接回路测 $I_{sc}$（以刚上电稳定的读数为准）。</li>
+<li><strong>表二（原电路带载）</strong>：接入负载电阻 $R_L$（如 990 Ω，可用 1000 Ω 或串并联凑出接近值），电流表<strong>串联</strong>在回路中（注意正负极性），电压表<strong>并联</strong>在负载两端测 $U_L$（不要把电流表的压降测进去）；更换不同 $R_L$ 测多组数据。</li>
+<li><strong>表三（戴维南等效）</strong>：把内部网络等效为”恒压源（调到表一测得的 $U_{oc}$，<strong>不再是 12 V</strong>）串联内阻 $R_s$（取计算值，如 300 Ω）”，再串接负载（可变电阻）；回路顺序为恒压源 → $R_s$ → 电流表 → 可变电阻 $R_L$ → 回恒压源，电流表必须串在可变电阻<strong>之前</strong>，电压表并在 $R_L$ 两端。</li>
+<li><strong>表四（诺顿等效）</strong>：把恒流源（调到表一测得的 $I_{sc}$）与内阻 $R_s$ <strong>并联</strong>，再与可变电阻 $R_L$ 串联；电流表串在可变电阻之前，电压表并在可变电阻两端。</li>
+<li><strong>表五（除源法测 Req）</strong>：令恒流源开路、恒压源短路，网络内部只剩一个等效电阻；在端口外加电压源并串入电流表，把电压调成便于计算的整数（如 2 V），读电流（如 3.8 mA），用欧姆定律 $R_{eq}&#x3D;U&#x2F;I$ 计算（电流要把 mA 换算成 A）。因为是<strong>线性电路</strong>，外加电压取 2 V 还是 4 V，算出的电阻都相同（$U$、$I$ 成正比）。</li>
+<li>电阻选配：面板上没有所需阻值时用串联&#x2F;并联凑出最接近值；串联采用”Z 字形”接线（上一个电阻的出端接下一个电阻的进端），并联把两个元件两端分别接到同一对节点；注意看清单位，不要把 30 kΩ 当成 300 Ω。</li>
+<li>安全与操作规范：接线前把旋钮旋到最小、开关置于关闭；先合空开、开总电源，再开电压源&#x2F;电流源并旋旋钮检查两源是否都有输出，无输出或一直为 0 应及时换台；更换电阻尽量<strong>断电操作、避免热插拔</strong>；实验结束断电、整理导线。</li>
+<li>数据处理注意<strong>单位统一</strong>（mA→A），并对开路电压、短路电流、负载伏安数据与理论值之间的误差进行来源分析。</li>
+</ul>
+<h2 id="二、知识结构"><a href="#二、知识结构" class="headerlink" title="二、知识结构"></a>二、知识结构</h2><ul>
+<li>实验原理：戴维南定理、诺顿定理、$U_{oc}&#x2F;I_{sc}&#x2F;R_s$ 关系、独立源置零</li>
+<li>实验设备：实验面板、恒压源&#x2F;恒流源、电压表&#x2F;电流表、电阻区</li>
+<li>准备工作：旋钮归零、开关检查、电源检查与档位选择、电阻串并联选配</li>
+<li>表一：开路电压 $U_{oc}$ 与短路电流 $I_{sc}$ 测量</li>
+<li>表二：原电路不同负载下的 $U_L$、$I_L$</li>
+<li>表三：戴维南等效电路（电压源串内阻）接线与验证</li>
+<li>表四：诺顿等效电路（电流源并内阻）接线与验证</li>
+<li>表五：除源法实测等效内阻 $R_{eq}$</li>
+<li>数据处理、单位换算、误差分析与实验报告要求</li>
+</ul>
+<h2 id="三、详细笔记"><a href="#三、详细笔记" class="headerlink" title="三、详细笔记"></a>三、详细笔记</h2><h3 id="3-1-实验原理回顾"><a href="#3-1-实验原理回顾" class="headerlink" title="3.1 实验原理回顾"></a>3.1 实验原理回顾</h3><ul>
+<li><strong>二端网络</strong>：把复杂电路中待研究的负载以外的部分看成一个具有两个输出端子的网络；网络内部含独立电源时称有源二端网络。</li>
+<li><strong>戴维南定理</strong>：线性有源二端网络可等效为理想电压源 $U_{oc}$ 与等效内阻 $R_s$ 串联。接负载 $R_L$ 后：<br>$$I_L&#x3D;\frac{U_{oc}}{R_s+R_L},\qquad U_L&#x3D;I_L R_L&#x3D;U_{oc}\frac{R_L}{R_s+R_L}$$</li>
+<li><strong>诺顿定理</strong>：同一网络可等效为理想电流源 $I_{sc}$ 与等效内阻 $R_s$ 并联。$R_s$ 与 $I_{sc}$ 并联后对负载分流：<br>$$U_L&#x3D;I_{sc}\cdot\frac{R_s R_L}{R_s+R_L},\qquad I_L&#x3D;\frac{U_L}{R_L}$$</li>
+<li>两种等效电源描述的是同一个网络，故 $U_{oc}&#x3D;I_{sc}R_s$。</li>
+<li><strong>等效内阻 $R_s$ 的两种获得方法</strong>：<ol>
+<li>计算&#x2F;实测开路电压与短路电流后用 $R_s&#x3D;U_{oc}&#x2F;I_{sc}$；</li>
+<li>除源法：把内部独立源置零（电压源短路、电流源开路）后，直接在端口测等效电阻（本实验用外加电压源测 $U$、$I$ 再由欧姆定律求）。</li>
+</ol>
+</li>
+<li>验证判据：对同一个 $R_L$，原电路、戴维南电路、诺顿电路给出的 $U_L$、$I_L$ 应相同。</li>
+</ul>
+<h3 id="3-2-实验面板与模块认识"><a href="#3-2-实验面板与模块认识" class="headerlink" title="3.2 实验面板与模块认识"></a>3.2 实验面板与模块认识</h3><ul>
+<li>主要用到的面板部位：<ul>
+<li>第一行<strong>第三个把手</strong>（中间位置）：戴维南定理实验电路部分；</li>
+<li><strong>倒数第二个把手</strong>（最后一个把手内）：电阻区，实验所需的 990 Ω、900 Ω、500 Ω、800 Ω 等电阻在此选取（课堂也称在第 5 个把手附近选电阻）；</li>
+<li>第二栏第二个与第三个把手之间：<strong>恒流源、恒压源</strong>模块；</li>
+<li>另需用电压表、电流表（部分接法中电流表位置在面板上以 “A” 标出）。</li>
+</ul>
+</li>
+<li>端子约定：恒压源接 $U_s$（us）端子，恒流源接 $I_s$（is）端子，按面板标注与导线颜色（红、黄、绿&#x2F;黑）对应连接。</li>
+</ul>
+<h3 id="3-3-接线前的设备检查与电阻选配"><a href="#3-3-接线前的设备检查与电阻选配" class="headerlink" title="3.3 接线前的设备检查与电阻选配"></a>3.3 接线前的设备检查与电阻选配</h3><ul>
+<li><strong>上电前检查</strong>：把面板上相关旋钮旋到最小、开关置于关闭（只需先关注电压源部分的旋钮）；导线尽量按颜色区分，便于检查。</li>
+<li><strong>上电与电源检查</strong>：先合上实验台的空开（空气开关）、打开设备总电源；再打开电压源&#x2F;恒压源部分的开关（绿色指示灯亮）；旋动旋钮，分别检查电压源、电流源是否都能正常输出数值；若调到某档始终为 0、无数值，说明该台电源可能故障，应及时换台；检查完先把电压源、电流源关掉再接线。</li>
+<li><strong>档位选择（易错）</strong>：<ul>
+<li>恒流源要调到 20 mA，若选在中间档位可能调不到”20 整”，应先把档位拨到 <strong>200 mA 档</strong>，再旋旋钮调到 20 mA；</li>
+<li>测量中若电流表（尤其 auto&#x2F;自动档）档位一直跳，直接固定选 200 mA 档；</li>
+<li>诺顿等效时若 $I_{sc}$ 约为 2 mA，则应拨到 <strong>20 mA 档</strong>测量。</li>
+</ul>
+</li>
+<li><strong>电阻串并联选配</strong>：<ul>
+<li>需要某阻值而面板没有完全相同的，就选最接近的，或用串联、并联凑出接近值；</li>
+<li>例如 990 Ω 可直接用 1000 Ω，或用 510＋300＋100 等组合；400 Ω 可用 300＋100，也可用两个 200 Ω 并联；</li>
+<li><strong>看清单位</strong>：面板上有的是 30 kΩ，不要误当成 300 Ω；</li>
+<li><strong>串联接法</strong>：约定元件”上进下出”，前一个电阻的出端接后一个电阻的进端，整体呈”Z 字形”；</li>
+<li><strong>并联接法</strong>：把两个元件的两个端子分别接到同一对节点上，使之构成并联回路。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-4-表一：测开路电压-Uoc-与短路电流-Isc"><a href="#3-4-表一：测开路电压-Uoc-与短路电流-Isc" class="headerlink" title="3.4 表一：测开路电压 Uoc 与短路电流 Isc"></a>3.4 表一：测开路电压 Uoc 与短路电流 Isc</h3><ul>
+<li>先把恒压源 $U_s$、恒流源 $I_s$ 接入实验电路（按颜色接到 us、is 端子）。</li>
+<li>调节电源：恒压源调到 <strong>12 V</strong>、恒流源调到 <strong>20 mA</strong>（用 200 mA 档调节）；<strong>表一调好后，表二过程中这两个源的数值保持不动</strong>。</li>
+<li>**测开路电压 $U_{oc}$**：<ul>
+<li>面板虚线框内部表示不接任何元件，即负载处于开路（断开）状态；测电压时不需要电流表，电流表所在的两个节点可视为同一个节点；</li>
+<li>把电压表直接并接在输出端（蓝色节点）上，红色表笔接对应高电位端；</li>
+<li>上电后读电压表数值并记录（课堂举例约 1.57 V，<strong>具体以本组实测为准</strong>）。</li>
+</ul>
+</li>
+<li>**测短路电流 $I_{sc}$**：<ul>
+<li>用一根导线把两个输出端直接短接，把电流表串联接入该短接回路（红色端接电流表流入侧）；</li>
+<li>上电后读电流表；读数可能随时间缓慢变化，以<strong>刚上电、刚稳定时显示的数据</strong>为准并记录。</li>
+</ul>
+</li>
+<li>测完表一后先关电、拆除开路&#x2F;短路用的临时接线。</li>
+</ul>
+<h3 id="3-5-表二：原电路带负载测量"><a href="#3-5-表二：原电路带负载测量" class="headerlink" title="3.5 表二：原电路带负载测量"></a>3.5 表二：原电路带负载测量</h3><ul>
+<li>把电路全部元件接入，并接入负载电阻 $R_L$（第一个取 990 Ω，可用 1000 Ω 代替）。</li>
+<li><strong>电流表极性</strong>：从恒压源正端出发，经一小圆弧（该处不是同一节点）到蓝色节点是相通的，据此确定电流流入端为电流表”＋”、流出端为”－”；负载电阻的正极端接到对应节点，另一端回到回路，构成闭合回路。</li>
+<li><strong>电表接法</strong>：电流表串联在回路中测 $I_L$；电压表并联在负载电阻两端测 $U_L$（两根电压线始终夹在负载两端，黄色线与黄色线一对、绿色与黑色一对）。</li>
+<li>电源仍保持 12 V、20 mA 不变；依次更换不同 $R_L$（如 990、900、500、800 Ω 等），分别记录 $U_L$、$I_L$。</li>
+<li>更换电阻时按 3.3 的串、并联方法凑值；表二做完后，左侧（原网络电源）部分可拆除。</li>
+</ul>
+<h3 id="3-6-表三：戴维南等效电路验证"><a href="#3-6-表三：戴维南等效电路验证" class="headerlink" title="3.6 表三：戴维南等效电路验证"></a>3.6 表三：戴维南等效电路验证</h3><ul>
+<li>等效思想：把原网络内部所有电阻等效成一个内阻 $R_s$，与恒压源串联后再接负载（可变电阻）。</li>
+<li>$R_s$ 取表一通过 $R_s&#x3D;U_{oc}&#x2F;I_{sc}$ 算出的值（课堂举例约 300 Ω，算多少就接多少，选最接近的固定电阻）。</li>
+<li><strong>接线顺序（串联关系）</strong>：恒压源 → 内阻 $R_s$ → 电流表 → 可变电阻 $R_L$ → 回到恒压源，构成单一闭合回路。<ul>
+<li>接完固定电阻（内阻）后要留出节点再接可变电阻：内阻的”出”接到可变电阻的”进”，可变电阻的”出”回到电源；</li>
+<li><strong>电流表必须串在可变电阻之前</strong>（电源进入后、经过可变电阻之前串入）；</li>
+<li><strong>电压表只测负载（可变电阻）两端</strong>，不要把电流表的电压也测进去——电流表并非理想表、有微小内阻和压降，测进去会使 $U_L$ 不准。</li>
+</ul>
+</li>
+<li><strong>电源数值变化</strong>：此时恒压源不再调 12 V，而是调到表一实测的 $U_{oc}$（如测得一点几伏就调到一点几伏）。</li>
+<li>上电后读 $U_L$、$I_L$，通过插拔改变 $R_L$ 测多组；<strong>更换电阻尽量断电操作，避免热插拔</strong>（确有把握时可带电操作，但不建议）。</li>
+<li>数据应与表二在相同 $R_L$ 下一致，从而验证戴维南定理。</li>
+</ul>
+<h3 id="3-7-表四：诺顿等效电路验证"><a href="#3-7-表四：诺顿等效电路验证" class="headerlink" title="3.7 表四：诺顿等效电路验证"></a>3.7 表四：诺顿等效电路验证</h3><ul>
+<li>等效思想：恒流源 $I_s$ 与内阻 $R_s$ <strong>并联</strong>，再与可变电阻 $R_L$ 串联。</li>
+<li><strong>接线（并联关系）</strong>：<ul>
+<li>先把恒流源与固定电阻 $R_s$ 并联——进端与进端并接、出端经同一回路回来；</li>
+<li>并联部分之后再接可变电阻 $R_L$：电流从并联部分出来，经电流表、再经可变电阻后回到电源；</li>
+<li><strong>电流表同样串在可变电阻之前</strong>，电压表并联在可变电阻（负载）两端。</li>
+</ul>
+</li>
+<li>恒流源数值调到表一实测的短路电流 $I_{sc}$（如约 2 mA，则用 20 mA 档测量）。</li>
+<li>改变 $R_L$ 测多组 $U_L$、$I_L$，应与表二、表三对应数据一致，验证诺顿定理。</li>
+</ul>
+<h3 id="3-8-表五：除源法实测等效内阻-Req"><a href="#3-8-表五：除源法实测等效内阻-Req" class="headerlink" title="3.8 表五：除源法实测等效内阻 Req"></a>3.8 表五：除源法实测等效内阻 Req</h3><ul>
+<li><strong>除源</strong>：令内部独立源为零——<ul>
+<li>恒流源 $I_s&#x3D;0$：对应接点<strong>开路</strong>，不接线；</li>
+<li>恒压源 $U_s&#x3D;0$：对应两端用一根导线<strong>短接</strong>；</li>
+<li>除源后，原网络内部可看成一个纯电阻 $R_{eq}$。</li>
+</ul>
+</li>
+<li><strong>测量接线</strong>：<ul>
+<li>在端口（原负载位置）外加一个电压源，并把电流表串联接入；电压表测端口（等效电阻&#x2F;负载位置）电压；</li>
+<li>注意外加电源的极性：电压源正极接在哪一端，电流表的”＋”就对应电流流入的那一端（红色或蓝色节点随接线而定）。</li>
+</ul>
+</li>
+<li><strong>测量与计算</strong>：<ul>
+<li>调节外加电压源，使电压表读数为便于计算的整数（如 $U&#x3D;2\text{ V}$），读对应电流（如 $I&#x3D;3.8\text{ mA}$）；</li>
+<li>由欧姆定律：<br>$$R_{eq}&#x3D;\frac{U}{I}&#x3D;\frac{2\text{ V}}{3.8\text{ mA}}&#x3D;\frac{2}{3.8\times10^{-3}}\ \Omega\approx526\ \Omega$$</li>
+<li>电流务必先把 mA 换算成 A（除以 1000）再代入；</li>
+<li>因为网络是<strong>线性电路</strong>，$U$ 与 $I$ 成正比，外加电压取 2 V 或 4 V（如 4 V 时电流约 7.6 mA）算出的 $R_{eq}$ 相同，可借此自检。</li>
+</ul>
+</li>
+<li>将除源法实测的 $R_{eq}$ 与由 $U_{oc}&#x2F;I_{sc}$ 计算出的 $R_s$ 比较，二者应基本一致。</li>
+</ul>
+<h3 id="3-9-数据处理、单位换算与误差分析"><a href="#3-9-数据处理、单位换算与误差分析" class="headerlink" title="3.9 数据处理、单位换算与误差分析"></a>3.9 数据处理、单位换算与误差分析</h3><ul>
+<li><strong>单位统一</strong>：电压常用 V、电流常用 mA，计算电阻&#x2F;功率前必须把 mA 换成 A（$1\text{ mA}&#x3D;10^{-3}\text{ A}$）。</li>
+<li><strong>数据一致性核对</strong>：<ul>
+<li>表三、表四采用表一测得的 $U_{oc}$、$I_{sc}$ 作为等效电源；</li>
+<li>对每个 $R_L$，表二（原电路）、表三（戴维南）、表四（诺顿）的 $U_L$、$I_L$ 应相同；</li>
+<li>仪表末位会跳动，以稳定读数为准；同组两人可各做一遍，数据不必逐位相同，但应在合理范围内接近。</li>
+</ul>
+</li>
+<li><strong>常见误差来源</strong>：<ul>
+<li>电压表、电流表并非理想表（电流表有内阻、电压表内阻非无穷大），接入后改变电路；</li>
+<li>电阻标称值与实际值有偏差、串并联凑值带来差异；</li>
+<li>读数视差、档位选择不当、接线端子接触电阻；</li>
+<li>电源输出随时间&#x2F;负载轻微波动；</li>
+<li>短路电流读数随时间变化未取到稳定值。</li>
+</ul>
+</li>
+<li>出现负数读数多为电表极性接反，应断电核对电流表&#x2F;电压表正负端。</li>
+</ul>
+<h3 id="3-10-实验报告与课堂任务"><a href="#3-10-实验报告与课堂任务" class="headerlink" title="3.10 实验报告与课堂任务"></a>3.10 实验报告与课堂任务</h3><ul>
+<li>完成实验报告，内容包括：实验目的、实验原理、数据记录与计算过程；其中表三、表四（以及等效内阻数据）要按本组<strong>实际测量值</strong>填写，不得照抄。</li>
+<li>整理实验数据并拍照发给老师检查；两人一组，两人都应动手完成接线与测量。</li>
+<li>同时完成实验一、实验二的预习思考题和实验思考题，并画出对应图表。</li>
+<li>实验结束断电、拆除接线并整理好导线。</li>
+</ul>
+<h2 id="四、三种等效电路接线与测量对照"><a href="#四、三种等效电路接线与测量对照" class="headerlink" title="四、三种等效电路接线与测量对照"></a>四、三种等效电路接线与测量对照</h2><h3 id="4-1-接线逻辑对照"><a href="#4-1-接线逻辑对照" class="headerlink" title="4.1 接线逻辑对照"></a>4.1 接线逻辑对照</h3><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>电源形式</th>
+<th>内阻接法</th>
+<th>电流表位置</th>
+<th>电压表位置</th>
+<th>电源取值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>表二 原电路</td>
+<td>原网络 $U_s$、$I_s$</td>
+<td>网络内部原样</td>
+<td>串联在回路中，注意极性</td>
+<td>并在负载 $R_L$ 两端（不含电流表）</td>
+<td>12 V、20 mA 固定</td>
+</tr>
+<tr>
+<td>表三 戴维南</td>
+<td>恒压源</td>
+<td>$R_s$ 与电压源<strong>串联</strong></td>
+<td>串在可变电阻<strong>之前</strong></td>
+<td>并在可变电阻两端</td>
+<td>调到实测 $U_{oc}$</td>
+</tr>
+<tr>
+<td>表四 诺顿</td>
+<td>恒流源</td>
+<td>$R_s$ 与电流源<strong>并联</strong></td>
+<td>串在可变电阻<strong>之前</strong></td>
+<td>并在可变电阻两端</td>
+<td>调到实测 $I_{sc}$</td>
+</tr>
+<tr>
+<td>表五 除源测阻</td>
+<td>外加恒压源</td>
+<td>网络已除源成纯电阻</td>
+<td>串联接入，注意极性</td>
+<td>并在端口（等效电阻）两端</td>
+<td>取整数便于算，如 2 V</td>
+</tr>
+</tbody></table>
+<h3 id="4-2-验证关系"><a href="#4-2-验证关系" class="headerlink" title="4.2 验证关系"></a>4.2 验证关系</h3><ul>
+<li>对同一负载 $R_L$：$U_{L(原)}\approx U_{L(戴维南)}\approx U_{L(诺顿)}$，$I_L$ 同理；</li>
+<li>$R_s$（计算值）$&#x3D;U_{oc}&#x2F;I_{sc}\approx R_{eq}$（除源法实测值）。</li>
+</ul>
+<h2 id="五、数据记录模板（按实测填写）"><a href="#五、数据记录模板（按实测填写）" class="headerlink" title="五、数据记录模板（按实测填写）"></a>五、数据记录模板（按实测填写）</h2><h3 id="表一-开路电压与短路电流（-U-s-12-text-V-，-I-s-20-text-mA-）"><a href="#表一-开路电压与短路电流（-U-s-12-text-V-，-I-s-20-text-mA-）" class="headerlink" title="表一　开路电压与短路电流（$U_s&#x3D;12\text{ V}$，$I_s&#x3D;20\text{ mA}$）"></a>表一　开路电压与短路电流（$U_s&#x3D;12\text{ V}$，$I_s&#x3D;20\text{ mA}$）</h3><table>
+<thead>
+<tr>
+<th>测量量</th>
+<th>接线方式</th>
+<th>实测值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>开路电压 $U_{oc}$</td>
+<td>负载开路，电压表并接输出端</td>
+<td>＿＿＿ V（课堂举例约 1.57 V，待实测）</td>
+</tr>
+<tr>
+<td>短路电流 $I_{sc}$</td>
+<td>输出端短接，电流表串入</td>
+<td>＿＿＿ mA</td>
+</tr>
+<tr>
+<td>计算内阻 $R_s&#x3D;U_{oc}&#x2F;I_{sc}$</td>
+<td>—</td>
+<td>＿＿＿ Ω</td>
+</tr>
+</tbody></table>
+<h3 id="表二-三-四-不同负载下的电压、电流（三电路对照）"><a href="#表二-三-四-不同负载下的电压、电流（三电路对照）" class="headerlink" title="表二&#x2F;三&#x2F;四　不同负载下的电压、电流（三电路对照）"></a>表二&#x2F;三&#x2F;四　不同负载下的电压、电流（三电路对照）</h3><table>
+<thead>
+<tr>
+<th>$R_L$（Ω）</th>
+<th>原电路 $U_L&#x2F;I_L$</th>
+<th>戴维南 $U_L&#x2F;I_L$</th>
+<th>诺顿 $U_L&#x2F;I_L$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>990（约 1000）</td>
+<td>＿&#x2F;＿</td>
+<td>＿&#x2F;＿</td>
+<td>＿&#x2F;＿</td>
+</tr>
+<tr>
+<td>900</td>
+<td>＿&#x2F;＿</td>
+<td>＿&#x2F;＿</td>
+<td>＿&#x2F;＿</td>
+</tr>
+<tr>
+<td>500</td>
+<td>＿&#x2F;＿</td>
+<td>＿&#x2F;＿</td>
+<td>＿&#x2F;＿</td>
+</tr>
+<tr>
+<td>800</td>
+<td>＿&#x2F;＿</td>
+<td>＿&#x2F;＿</td>
+<td>＿&#x2F;＿</td>
+</tr>
+</tbody></table>
+<h3 id="表五-除源法测等效内阻"><a href="#表五-除源法测等效内阻" class="headerlink" title="表五　除源法测等效内阻"></a>表五　除源法测等效内阻</h3><table>
+<thead>
+<tr>
+<th>外加电压 $U$（V）</th>
+<th>测得电流 $I$（mA）</th>
+<th>电流换算（A）</th>
+<th>$R_{eq}&#x3D;U&#x2F;I$（Ω）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2（举例）</td>
+<td>3.8（举例）</td>
+<td>0.0038</td>
+<td>≈526（举例）</td>
+</tr>
+<tr>
+<td>4（自检）</td>
+<td>＿＿＿</td>
+<td>＿＿＿</td>
+<td>应与上一行一致</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>说明：以上 1.57 V、300 Ω、2 V&#x2F;3.8 mA 等均为课堂口述举例或演算值，正式报告必须替换为本组真实测量数据。</p>
+</blockquote>
+<h2 id="六、电阻选配与操作速查"><a href="#六、电阻选配与操作速查" class="headerlink" title="六、电阻选配与操作速查"></a>六、电阻选配与操作速查</h2><table>
+<thead>
+<tr>
+<th>需求阻值</th>
+<th>可选配法</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>990 Ω</td>
+<td>直接用 1000 Ω，或 510＋300＋100</td>
+<td>取最接近值</td>
+</tr>
+<tr>
+<td>400 Ω</td>
+<td>300＋100，或两个 200 Ω 并联</td>
+<td>串&#x2F;并均可</td>
+</tr>
+<tr>
+<td>300 Ω</td>
+<td>找标 300 Ω 的电阻</td>
+<td>切勿用 30 kΩ</td>
+</tr>
+<tr>
+<td>串联</td>
+<td>前一出端接后进端，呈 Z 字形</td>
+<td>上进下出</td>
+</tr>
+<tr>
+<td>并联</td>
+<td>两端分别接到同一对节点</td>
+<td>—</td>
+</tr>
+<tr>
+<td>20 mA 调节</td>
+<td>档位选 200 mA 再调到 20</td>
+<td>中间档可能调不到 20</td>
+</tr>
+<tr>
+<td>约 2 mA 测量</td>
+<td>档位选 20 mA</td>
+<td>表四诺顿</td>
+</tr>
+<tr>
+<td>换电阻</td>
+<td>尽量断电，避免热插拔</td>
+<td>防止带电拔插</td>
+</tr>
+</tbody></table>
+<h2 id="七、课堂任务与复习安排"><a href="#七、课堂任务与复习安排" class="headerlink" title="七、课堂任务与复习安排"></a>七、课堂任务与复习安排</h2><ul>
+<li>提交实验报告：目的、原理、数据记录与计算（表三、表四、$R_{eq}$ 用实测值），整理数据拍照发老师。</li>
+<li>完成实验一、实验二的预习思考题与实验思考题并画图。</li>
+<li>复习要求：<ol>
+<li>默写戴维南、诺顿定理内容及 $U_{oc}&#x3D;I_{sc}R_s$ 关系；</li>
+<li>牢记除源时”电压源短路、电流源开路”；</li>
+<li>能独立画出原电路、戴维南、诺顿三种接线并正确放置电流表、电压表；</li>
+<li>会用串并联凑出所需电阻，能正确选择电流档位；</li>
+<li>掌握除源法测电阻的接线、计算与单位换算；</li>
+<li>能分析实测数据与理论值不一致的原因。</li>
+</ol>
+</li>
+</ul>
+<h2 id="八、待核对与疑问"><a href="#八、待核对与疑问" class="headerlink" title="八、待核对与疑问"></a>八、待核对与疑问</h2><table>
+<thead>
+<tr>
+<th>问题</th>
+<th>原因</th>
+<th>建议核对方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>面板把手&#x2F;模块的具体编号（第一行第三、倒数第二等）</td>
+<td>各台实验箱布局可能不同</td>
+<td>以实际实验箱面板标识为准</td>
+</tr>
+<tr>
+<td>电阻具体阻值清单（990&#x2F;900&#x2F;500&#x2F;800 等）</td>
+<td>课堂按实验箱现有电阻</td>
+<td>对照实验指导书电阻表</td>
+</tr>
+<tr>
+<td>$U_{oc}$ 举例 1.57 V、$I_{sc}$ 约 2 mA、$R_s$ 约 300 Ω</td>
+<td>课堂现场实测&#x2F;演算举例，各组不同</td>
+<td>以本组实测数据为准</td>
+</tr>
+<tr>
+<td>除源法举例 2 V&#x2F;3.8 mA（≈526 Ω）</td>
+<td>课堂演算举例</td>
+<td>以实测 $U$、$I$ 计算</td>
+</tr>
+<tr>
+<td>恒流源 20 mA 用 200 mA 档、2 mA 用 20 mA 档</td>
+<td>针对所用表计量程</td>
+<td>核对实际仪表量程档位</td>
+</tr>
+<tr>
+<td>表号编排（表一~表五）与指导书是否一致</td>
+<td>课堂口语称”表三&#x2F;表四&#x2F;最后一个数据”</td>
+<td>对照纸质实验指导书表格编号</td>
+</tr>
+</tbody></table>
+<h2 id="九、复习与主动回忆"><a href="#九、复习与主动回忆" class="headerlink" title="九、复习与主动回忆"></a>九、复习与主动回忆</h2><h3 id="复习清单"><a href="#复习清单" class="headerlink" title="复习清单"></a>复习清单</h3><ol>
+<li>用 3 分钟默写两个定理内容和三个等效量关系。</li>
+<li>用 2 分钟说清除源规则（电压源、电流源分别怎么处理）。</li>
+<li>用 6 分钟复述表一到表五各测什么、电源取多少、电流表电压表放哪里。</li>
+<li>用 4 分钟讲清戴维南”串联”、诺顿”并联”接线的区别和电流表为何串在负载前。</li>
+<li>用 3 分钟演算除源法测电阻（含 mA→A 换算），说明为何换电压结果相同。</li>
+<li>用 3 分钟列举误差来源和负数读数的原因。</li>
+</ol>
+<h3 id="主动回忆题"><a href="#主动回忆题" class="headerlink" title="主动回忆题"></a>主动回忆题</h3><ol>
+<li>戴维南定理的内容是什么？等效电路由哪两部分组成？</li>
+<li>诺顿定理的内容是什么？等效电路结构与戴维南有何不同？</li>
+<li>$U_{oc}$、$I_{sc}$、$R_s$ 三者的换算关系是什么？</li>
+<li>求等效内阻时，独立源如何置零？恒压源、恒流源分别怎样处理？</li>
+<li>实验中怎样测开路电压 $U_{oc}$？此时电流表要不要接入？</li>
+<li>怎样测短路电流 $I_{sc}$？读数为什么强调以刚稳定时为准？</li>
+<li>表二带载测量时，电流表、电压表分别怎样接？为什么电压表不能把电流表也并进去？</li>
+<li>表三戴维南等效电路的接线顺序是什么？此时电压源为什么要从 12 V 改成 $U_{oc}$？</li>
+<li>表四诺顿等效电路中，恒流源与内阻是什么连接关系？电流表放在哪里？</li>
+<li>除源法测 $R_{eq}$ 怎样接线、怎样计算？为什么外加 2 V 或 4 V 算出的电阻相同？</li>
+<li>实验如何判定戴维南、诺顿定理得到了验证？</li>
+<li>面板上没有所需阻值的电阻怎么办？串联、并联分别怎样接线？要特别注意什么单位问题？</li>
+<li>测电流时为什么 20 mA 要选 200 mA 档、约 2 mA 要选 20 mA 档？</li>
+<li>出现负的电压&#x2F;电流读数通常是什么原因？</li>
+</ol>
+<h3 id="答案要点"><a href="#答案要点" class="headerlink" title="答案要点"></a>答案要点</h3><ol>
+<li>任一线性有源二端网络，对外电路都可等效为理想电压源 $U_{oc}$ 与等效内阻 $R_s$ 串联；$U_{oc}$ 是端口开路电压，$R_s$ 是内部独立源置零后端口的等效电阻。</li>
+<li>同一网络可等效为理想电流源 $I_{sc}$ 与等效内阻 $R_s$ 并联；$I_{sc}$ 是端口短路电流。戴维南是”电压源串内阻”，诺顿是”电流源并内阻”，内阻相同。</li>
+<li>$U_{oc}&#x3D;I_{sc}R_s$，即 $I_{sc}&#x3D;U_{oc}&#x2F;R_s$、$R_s&#x3D;U_{oc}&#x2F;I_{sc}$。</li>
+<li>独立源置零：恒压源短路（用导线代替）、恒流源开路（断开），保留内阻和其他电阻，再求端口等效电阻。</li>
+<li>把负载断开（虚线框内不接元件），电压表直接并接在两个输出端（蓝色节点）上；测电压不需要电流表，电流表位置不接、两端视为同一节点。</li>
+<li>用导线把两个输出端直接短接，电流表串联接入短接回路，上电读数；由于电源&#x2F;仪表读数可能随时间缓慢变化，所以取刚上电、刚稳定时的数值作为 $I_{sc}$。</li>
+<li>电流表串联在回路中、正极接电流流入端；电压表并联在负载两端测 $U_L$。电流表有微小内阻和压降，若把它并入电压表测量范围会把电流表压降也算进负载电压，使 $U_L$ 偏大、不准确。</li>
+<li>顺序为恒压源 → 内阻 $R_s$ → 电流表 → 可变电阻 $R_L$ → 回到恒压源（串联回路），电流表串在可变电阻之前、电压表并在可变电阻两端。等效电压源的电动势就等于开路电压 $U_{oc}$，而不是原网络外加的 12 V，故必须把电压源调到实测 $U_{oc}$，等效电路才与原网络对外等效。</li>
+<li>诺顿电路中恒流源 $I_{sc}$ 与内阻 $R_s$ 并联，之后再与可变电阻 $R_L$ 串联；电流表串在可变电阻之前，电压表并在可变电阻两端；恒流源调到实测 $I_{sc}$。</li>
+<li>先除源（电流源开路、电压源短路）使网络成为纯电阻，再在端口外加电压源、串入电流表、并上电压表，把电压调成整数（如 2 V）读电流（如 3.8 mA），按 $R_{eq}&#x3D;U&#x2F;I$ 计算，电流先由 mA 换算成 A。由于是线性电阻网络，$U$ 与 $I$ 成正比，电压加倍电流也加倍，比值 $R_{eq}$ 不变，所以取 2 V 或 4 V 结果相同，可用于自检。</li>
+<li>在相同负载 $R_L$ 下，原电路、戴维南等效电路、诺顿等效电路测得的负载电压 $U_L$ 和电流 $I_L$ 在误差范围内一致，且 $U_{oc}&#x2F;I_{sc}$ 与除源法实测 $R_{eq}$ 基本一致，即验证了两个定理。</li>
+<li>选最接近的现成电阻，或用串联、并联凑出接近值。串联按”上进下出、前一出接后进”接成 Z 字形；并联把元件两端分别接到同一对节点。务必看清阻值单位，不要把 30 kΩ 误当 300 Ω。</li>
+<li>量程档位要覆盖被测量并便于准确读数：调 20 mA 时中间档位分辨率&#x2F;范围可能调不到 20 整，用更大量程的 200 mA 档可平滑调到 20 mA；而测约 2 mA 的小电流时用 20 mA 档分辨率更高、读数更准（自动档跳动时也应固定合适量程）。</li>
+<li>多为电压表或电流表极性接反，应断电核对电表正、负端与电流实际方向后重接。</li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%94%B5%E5%B7%A5%E7%94%B5%E5%AD%90-%E7%94%B5%E8%B7%AF%E5%AE%9E%E9%AA%8C-%E6%88%B4%E7%BB%B4%E5%8D%97%E5%AE%9A%E7%90%86/" class="print-no-link">#电工电子 电路实验 戴维南定理</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>戴维南定理与诺顿定理验证实验</div>
+      <div>https://tdexxx.github.io/2026/10/07/07_电工电子与电路实验/电工电子_戴维南诺顿定理验证实验_发布稿/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>tdexxx</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年10月7日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/10/07/04_%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1_%E5%B8%A6%E4%BC%A0%E5%8A%A8%E5%BA%94%E5%8A%9B%E5%88%86%E6%9E%90%E4%B8%8EV%E5%B8%A6%E8%AE%BE%E8%AE%A1_%E5%8F%91%E5%B8%83%E7%A8%BF/" title="带传动应力分析与 V 带设计计算八步骤">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">带传动应力分析与 V 带设计计算八步骤</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/10/07/01_%E6%95%B0%E6%8E%A7%E5%8A%A0%E5%B7%A5%E5%B7%A5%E8%89%BA%E4%B8%8E%E7%BC%96%E7%A8%8B/%E6%95%B0%E6%8E%A7%E5%8A%A0%E5%B7%A5%E5%B7%A5%E8%89%BA%E4%B8%8E%E7%BC%96%E7%A8%8B_%E7%BC%96%E7%A8%8B%E6%8C%87%E4%BB%A4%E4%B8%8E%E5%B7%A5%E8%89%BA%E5%A4%84%E7%90%86_%E5%8F%91%E5%B8%83%E7%A8%BF/" title="数控编程指令与工艺处理：刀补、长度补偿与走刀路线">
+                        <span class="hidden-mobile">数控编程指令与工艺处理：刀补、长度补偿与走刀路线</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

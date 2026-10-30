@@ -1,0 +1,1229 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="tdexxx">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="《电气控制与PLC》课堂笔记：HMI（触摸屏）组态 · 自动伸缩门 PLC 控制系统设计一、这节课讲了什么这节课是「电气控制 + PLC + HMI」三件套的第一次合体，从「为什么要有触摸屏」讲到「用触摸屏控制一台真实的门」。    模块 内容    HMI 认知 触摸屏 &#x3D; 人机界面，是什么、有什么用、有哪几类面板   组态软件 WinCC 的版本与定位   博途实操 添加 HMI 设">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HMI 触摸屏组态与自动伸缩门 PLC 控制系统">
+<meta property="og:url" content="https://tdexxx.github.io/2026/10/14/02_%E7%94%B5%E6%B0%94%E6%8E%A7%E5%88%B6%E4%B8%8EPLC/%E7%94%B5%E6%B0%94%E6%8E%A7%E5%88%B6%E4%B8%8EPLC_HMI%E8%A7%A6%E6%91%B8%E5%B1%8F%E7%BB%84%E6%80%81%E4%B8%8E%E8%87%AA%E5%8A%A8%E4%BC%B8%E7%BC%A9%E9%97%A8_%E5%8F%91%E5%B8%83%E7%A8%BF/index.html">
+<meta property="og:site_name" content="tdexxx的博客">
+<meta property="og:description" content="《电气控制与PLC》课堂笔记：HMI（触摸屏）组态 · 自动伸缩门 PLC 控制系统设计一、这节课讲了什么这节课是「电气控制 + PLC + HMI」三件套的第一次合体，从「为什么要有触摸屏」讲到「用触摸屏控制一台真实的门」。    模块 内容    HMI 认知 触摸屏 &#x3D; 人机界面，是什么、有什么用、有哪几类面板   组态软件 WinCC 的版本与定位   博途实操 添加 HMI 设">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-10-14T14:13:51.000Z">
+<meta property="article:modified_time" content="2026-10-30T17:37:19.918Z">
+<meta property="article:author" content="tdexxx">
+<meta property="article:tag" content="PLC HMI 组态 综合设计">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>HMI 触摸屏组态与自动伸缩门 PLC 控制系统 - tdexxx的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"tdexxx.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2022-12-10T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="HMI 触摸屏组态与自动伸缩门 PLC 控制系统"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-10-14 22:13" pubdate>
+          2026年10月14日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          57 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">HMI 触摸屏组态与自动伸缩门 PLC 控制系统</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="《电气控制与PLC》课堂笔记：HMI（触摸屏）组态-·-自动伸缩门-PLC-控制系统设计"><a href="#《电气控制与PLC》课堂笔记：HMI（触摸屏）组态-·-自动伸缩门-PLC-控制系统设计" class="headerlink" title="《电气控制与PLC》课堂笔记：HMI（触摸屏）组态 · 自动伸缩门 PLC 控制系统设计"></a>《电气控制与PLC》课堂笔记：HMI（触摸屏）组态 · 自动伸缩门 PLC 控制系统设计</h1><h2 id="一、这节课讲了什么"><a href="#一、这节课讲了什么" class="headerlink" title="一、这节课讲了什么"></a>一、这节课讲了什么</h2><p>这节课是<strong>「电气控制 + PLC + HMI」三件套的第一次合体</strong>，从「为什么要有触摸屏」讲到「用触摸屏控制一台真实的门」。</p>
+<table>
+<thead>
+<tr>
+<th>模块</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>HMI 认知</td>
+<td>触摸屏 &#x3D; 人机界面，是什么、有什么用、有哪几类面板</td>
+</tr>
+<tr>
+<td>组态软件</td>
+<td>WinCC 的版本与定位</td>
+</tr>
+<tr>
+<td>博途实操</td>
+<td>添加 HMI 设备 → 设备组态 → 建立 HMI 连接 → 变量关联</td>
+</tr>
+<tr>
+<td>画面组态</td>
+<td>指示灯、按钮、动画与 PLC 变量的绑定</td>
+</tr>
+<tr>
+<td><strong>项目实战</strong></td>
+<td><strong>自动伸缩门控制系统</strong>：控制要求 → I&#x2F;O 分配 → 程序分析 → 触摸屏重复控制</td>
+</tr>
+<tr>
+<td>电气控制复习</td>
+<td>启动按钮 + 中间继电器 + 自锁（记忆与保持）</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>课堂节奏：<strong>先跟着做一遍基础操作（约 25 分钟），再进入本节的正式项目（自动伸缩门）</strong>。</p>
+</blockquote>
+<h2 id="二、核心结论速览"><a href="#二、核心结论速览" class="headerlink" title="二、核心结论速览"></a>二、核心结论速览</h2><ol>
+<li><strong>触摸屏又称人机界面（HMI，Human Machine Interface）</strong>，是操作人员与 PLC 之间的「对话窗口」。</li>
+<li>HMI 广泛应用于<strong>工业控制现场</strong>，通常与 <strong>PLC 配套使用</strong>。</li>
+<li>HMI 的核心作用是<strong>替代传统按钮和指示灯</strong>，把设备的运行状态可视化。</li>
+<li>按用途和形态，面板大致分为：<strong>精简面板、精智面板、移动面板、按键面板</strong>四类。</li>
+<li><strong>移动面板</strong>可在移动中实时监测；<strong>按键面板</strong>是传统按钮的替代方案。</li>
+<li>HMI 一般带 <strong>USB 接口</strong>，可连接键盘、鼠标、条码扫描器等外设。</li>
+<li>HMI 通过 <strong>PROFINET</strong> 等工业以太网与 PLC 通信，可与多种 PLC 连接。</li>
+<li><strong>WinCC</strong> 是西门子的人机界面组态软件，有 Basic &#x2F; Comfort &#x2F; Advanced &#x2F; Professional 等多个版本。</li>
+<li>组态的<strong>标准流程</strong>：添加 HMI 设备 → 设备组态 → 建立 HMI 与 PLC 的连接 → 关联变量 → 编辑画面。</li>
+<li>在博途中添加 HMI 设备时，要先选<strong>系列</strong>、再选<strong>具体型号</strong>（含屏幕尺寸），选错系列会导致后续无法连接。</li>
+<li><strong>HMI 与 PLC 之间必须先建立「连接」</strong>，否则画面上的对象找不到数据源。</li>
+<li>画面上的每个对象（指示灯、按钮）都要<strong>绑定一个 PLC 变量</strong>，变量的值决定对象的表现。</li>
+<li><strong>指示灯</strong>用颜色或亮&#x2F;灭表示变量状态；<strong>按钮</strong>按下时改变变量值（置位 &#x2F; 复位）。</li>
+<li>每个对象都可以设置<strong>动画</strong>，动画的时间轴与 PLC 变量的变化同步。</li>
+<li>HMI 组态的本质是「<strong>把电气原理图上的按钮和指示灯搬到屏幕上</strong>」——逻辑不变，载体变了。</li>
+<li>本节项目是<strong>自动伸缩门控制系统</strong>，控制对象是一台真实的门。</li>
+<li>门的三个执行动作：<strong>开门（Y1）、关门（Y2）、暂停（Y3）</strong>。</li>
+<li>控制要求一：按<strong>开门按钮</strong> → 电动机正转 → 门打开 → <strong>开门限位开关</strong>动作时停止。</li>
+<li>控制要求二：按<strong>关门按钮</strong> → <strong>延时 5 秒</strong> → 电动机反转 → 门关闭 → <strong>关门限位开关</strong>动作时停止。</li>
+<li>控制要求三：门的内侧设有<strong>暂停按钮</strong>，用于紧急停止（安全要求）。</li>
+<li>控制要求四：关门过程中若<strong>碰到障碍</strong>，应能触发安全动作（防夹）。</li>
+<li>程序结构上，<strong>开门与关门是两条独立的控制支路</strong>，各自带自锁，并通过<strong>互锁</strong>避免同时接通。</li>
+<li>硬件设计阶段要完成<strong>设备连接与地址分配</strong>，明确每个输入、输出对应的物理点。</li>
+<li>项目要求<strong>用触摸屏实现重复控制</strong>——即同一套逻辑既能在屏上操作，也能在现场按钮上操作。</li>
+<li>电气控制的基础仍是那三件套：<strong>启动按钮 + 中间继电器 + 自锁触点</strong>，实现信号的<strong>记忆与保持</strong>。</li>
+<li><strong>自锁</strong>就是「按一下，松手后电路自己保持通电」；<strong>互锁</strong>就是「你通了我就不能通」。</li>
+</ol>
+<h2 id="三、知识结构树"><a href="#三、知识结构树" class="headerlink" title="三、知识结构树"></a>三、知识结构树</h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><code class="hljs text">电气控制与PLC（本次课）<br>|<br>|- 1. HMI（触摸屏 / 人机界面）<br>|   |- 定义：操作人员与 PLC 之间的对话窗口<br>|   |- 用途：工业现场，与 PLC 配套<br>|   |- 作用：替代传统按钮与指示灯，状态可视化<br>|   |- 面板分类<br>|   |   |- 精简面板（简单应用）<br>|   |   |- 精智面板（复杂程序、精致画面）<br>|   |   |- 移动面板（移动中实时监测）<br>|   |   `- 按键面板（传统按钮的替代）<br>|   `- 接口<br>|       |- USB：键盘 / 鼠标 / 条码扫描器<br>|       `- PROFINET：与 PLC 通信<br>|<br>|- 2. 组态软件 WinCC<br>|   |- 定位：人机界面组态软件<br>|   `- 版本：Basic / Comfort / Advanced / Professional<br>|<br>|- 3. 博途（TIA Portal）组态流程<br>|   |- 步骤 1：打开项目，添加 HMI 设备<br>|   |- 步骤 2：选择系列 -&gt; 选择具体型号（含尺寸）<br>|   |- 步骤 3：设备组态（Device configuration）<br>|   |- 步骤 4：添加 / 确认 PLC 设备<br>|   |- 步骤 5：建立 HMI 连接（HMI connection）<br>|   |- 步骤 6：关联 PLC 变量到画面对象<br>|   `- 步骤 7：编辑画面（指示灯、按钮、动画）<br>|<br>|- 4. 项目实战：自动伸缩门控制系统<br>|   |- 控制要求<br>|   |   |- 开门：按钮 -&gt; 正转 -&gt; 开门限位停止<br>|   |   |- 关门：按钮 -&gt; 延时 5s -&gt; 反转 -&gt; 关门限位停止<br>|   |   |- 暂停：门内侧按钮，紧急停止<br>|   |   `- 安全：关门遇障触发<br>|   |- I/O 分配<br>|   |   |- 输出：Y1 开门 / Y2 关门 / Y3 暂停指示<br>|   |   |- 输入：开门按钮 / 关门按钮 / 暂停按钮 / 两个限位开关<br>|   |   `- 中间量：中间继电器（M）、定时器（T）<br>|   |- 程序分析<br>|   |   |- 开门支路：自锁 + 限位停止<br>|   |   |- 关门支路：自锁 + 延时 + 限位停止<br>|   |   `- 互锁：开门与关门不能同时接通<br>|   `- HMI 画面<br>|       |- 按钮：启动 / 停止 / 暂停<br>|       `- 指示灯：门状态、暂停状态<br>|<br>`- 5. 电气控制线路复习<br>    |- 启动按钮（常开）<br>    |- 中间继电器：信号的记忆与保持<br>    |- 自锁：松开按钮后电路自保持<br>    |- 互锁：互斥支路不能同时通电<br>    `- 常开 / 常闭触点、线圈输出<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="四、知识点详解"><a href="#四、知识点详解" class="headerlink" title="四、知识点详解"></a>四、知识点详解</h2><h3 id="4-1-HMI-是什么"><a href="#4-1-HMI-是什么" class="headerlink" title="4.1 HMI 是什么"></a>4.1 HMI 是什么</h3><p><strong>触摸屏又称人机界面</strong>（HMI），是操作人员与 PLC 之间交互的窗口，广泛应用于<strong>工业控制现场</strong>，通常与 PLC <strong>配套使用</strong>。</p>
+<p><strong>它能做什么</strong></p>
+<ul>
+<li>把设备的<strong>运行状态</strong>显示出来（门开没开、电动机转没转）；</li>
+<li>让操作人员<strong>在屏幕上操作</strong>（按「开门」「关门」）；</li>
+<li>替代传统的<strong>按钮 + 指示灯</strong>组合，减少柜内元件与接线。</li>
+</ul>
+<p><strong>面板的分类</strong></p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>精简面板</strong></td>
+<td>面向简单应用，功能基础</td>
+</tr>
+<tr>
+<td><strong>精智面板</strong></td>
+<td>可做较复杂的画面与程序</td>
+</tr>
+<tr>
+<td><strong>移动面板</strong></td>
+<td>可在移动过程中进行实时监测</td>
+</tr>
+<tr>
+<td><strong>按键面板</strong></td>
+<td>传统按钮的创新替代方案</td>
+</tr>
+</tbody></table>
+<p><strong>接口能力</strong></p>
+<ul>
+<li><strong>USB</strong>：可连接键盘、鼠标、条码扫描器等外设；</li>
+<li><strong>PROFINET</strong>：与 PLC 通信的工业以太网接口。</li>
+</ul>
+<blockquote>
+<p>课堂上演示的是与西门子 S7 系列 PLC 配合使用的情形。</p>
+</blockquote>
+<h3 id="4-2-组态软件-WinCC"><a href="#4-2-组态软件-WinCC" class="headerlink" title="4.2 组态软件 WinCC"></a>4.2 组态软件 WinCC</h3><p><strong>WinCC</strong> 是西门子的人机界面组态软件，用于给 HMI 面板「画画面」。</p>
+<p>课堂上介绍了它的多个版本，按功能由简到繁大致是：</p>
+<table>
+<thead>
+<tr>
+<th>版本</th>
+<th>定位</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Basic</strong></td>
+<td>基础版，面向精简面板</td>
+</tr>
+<tr>
+<td><strong>Comfort</strong></td>
+<td>舒适版，面向精智面板</td>
+</tr>
+<tr>
+<td><strong>Advanced</strong></td>
+<td>高级版，面向 PC 与复杂应用</td>
+</tr>
+<tr>
+<td><strong>Professional</strong></td>
+<td>专业版，面向分布式系统</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>选版本的原则是<strong>与手上的面板型号匹配</strong>——面板是精简型就用 Basic，是精智型就用 Comfort。</p>
+</blockquote>
+<h3 id="4-3-在博途中添加-HMI-设备（实操步骤）"><a href="#4-3-在博途中添加-HMI-设备（实操步骤）" class="headerlink" title="4.3 在博途中添加 HMI 设备（实操步骤）"></a>4.3 在博途中添加 HMI 设备（实操步骤）</h3><p>这是本节课的<strong>动手主线</strong>，步骤如下：</p>
+<p><strong>步骤 1：打开项目，添加 HMI 设备</strong></p>
+<p>在项目中执行「添加设备」，选择 HMI 类型。</p>
+<p><strong>步骤 2：先选系列，再选型号</strong></p>
+<ul>
+<li>先选<strong>系列</strong>（如精简系列、精智系列）；</li>
+<li>再选<strong>具体型号</strong>，型号里包含屏幕尺寸（例如 9 寸面板）。</li>
+</ul>
+<blockquote>
+<p><strong>易错点</strong>：系列选错，后面就无法与手上的实物面板匹配，连接会失败。选型号时注意区分相近的型号后缀。</p>
+</blockquote>
+<p><strong>步骤 3：设备组态</strong></p>
+<p>进入<strong>设备组态</strong>（Device configuration）界面，确认面板的通信接口设置。</p>
+<p><strong>步骤 4：确认 PLC 设备</strong></p>
+<p>项目里必须已经有 PLC 设备（这是 HMI 的数据来源）。</p>
+<p><strong>步骤 5：建立 HMI 连接</strong></p>
+<p>在项目的「<strong>HMI 连接</strong>」中建立 HMI 与 PLC 之间的连接。</p>
+<blockquote>
+<p><strong>关键点</strong>：连接建立之前，画面上的对象是「无源」的——它们找不到变量。<strong>先连接，再画画面</strong>。</p>
+</blockquote>
+<p><strong>步骤 6：关联变量</strong></p>
+<p>打开「<strong>PLC 变量</strong>」表，把 PLC 的变量（包括线圈、位存储器等）关联到画面对象上。</p>
+<p><strong>步骤 7：编辑画面</strong></p>
+<ul>
+<li><strong>指示灯</strong>：设置颜色，让它在变量为 1 时点亮；</li>
+<li><strong>按钮</strong>：设置按下时对变量执行的动作（置位 &#x2F; 复位）；</li>
+<li><strong>动画</strong>：每个对象都可以设置动画，动画与 PLC 变量同步。</li>
+</ul>
+<blockquote>
+<p>课堂原话大意：HMI 组态其实是<strong>一层更深层的编辑</strong>——你编辑的不只是画面，而是画面背后与 PLC 变量的绑定关系。</p>
+</blockquote>
+<h3 id="4-4-项目实战：自动伸缩门控制系统"><a href="#4-4-项目实战：自动伸缩门控制系统" class="headerlink" title="4.4 项目实战：自动伸缩门控制系统"></a>4.4 项目实战：自动伸缩门控制系统</h3><p><strong>背景</strong></p>
+<p>自动伸缩门在企业和学校很常见。本项目的目标是<strong>用 PLC + 触摸屏来控制一台真实的门</strong>。</p>
+<p><strong>控制要求（课堂口述整理）</strong></p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>要求</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>按<strong>开门按钮</strong> → 电动机正转 → 门打开 → <strong>开门限位开关</strong>动作时停止</td>
+</tr>
+<tr>
+<td>2</td>
+<td>按<strong>关门按钮</strong> → <strong>延时 5 秒</strong> → 电动机反转 → 门关闭 → <strong>关门限位开关</strong>动作时停止</td>
+</tr>
+<tr>
+<td>3</td>
+<td>门的内侧设有<strong>暂停按钮</strong>，用于紧急停止</td>
+</tr>
+<tr>
+<td>4</td>
+<td>关门过程中若<strong>碰到障碍</strong>，应能触发安全动作</td>
+</tr>
+<tr>
+<td>5</td>
+<td>要求<strong>用触摸屏实现重复控制</strong></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>第 2 条的「延时 5 秒」是课堂上明确强调的：按关门按钮后<strong>不立即关门</strong>，先延时 5 秒再动作，给人员留出通过时间。</p>
+</blockquote>
+<p><strong>I&#x2F;O 分配</strong></p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>符号</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>输出</td>
+<td><strong>Y1</strong></td>
+<td>开门（电动机正转）</td>
+</tr>
+<tr>
+<td>输出</td>
+<td><strong>Y2</strong></td>
+<td>关门（电动机反转）</td>
+</tr>
+<tr>
+<td>输出</td>
+<td><strong>Y3</strong></td>
+<td>暂停 &#x2F; 状态指示</td>
+</tr>
+<tr>
+<td>输入</td>
+<td>开门按钮</td>
+<td>启动开门</td>
+</tr>
+<tr>
+<td>输入</td>
+<td>关门按钮</td>
+<td>启动关门（带 5 秒延时）</td>
+</tr>
+<tr>
+<td>输入</td>
+<td>暂停按钮</td>
+<td>紧急停止</td>
+</tr>
+<tr>
+<td>输入</td>
+<td>开门限位开关</td>
+<td>门开到位的信号</td>
+</tr>
+<tr>
+<td>输入</td>
+<td>关门限位开关</td>
+<td>门关到位的信号</td>
+</tr>
+<tr>
+<td>中间量</td>
+<td>中间继电器 &#x2F; 位存储器</td>
+<td>记录「正在开门」「正在关门」等状态</td>
+</tr>
+<tr>
+<td>中间量</td>
+<td>定时器</td>
+<td>实现 5 秒延时</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>课堂在分析程序时反复提到的 <strong>M1.1、M1.3</strong> 属于<strong>位存储器（中间继电器）</strong>，分别代表开门、关门相关的中间状态；限位开关信号则用于断开对应的支路。</p>
+</blockquote>
+<p><strong>程序结构分析</strong></p>
+<ol>
+<li><p><strong>开门支路</strong></p>
+<ul>
+<li>按下开门按钮 → 中间继电器动作 → 输出 Y1 接通 → 电动机正转；</li>
+<li>支路带<strong>自锁</strong>：松开按钮后继续保持；</li>
+<li>当<strong>开门限位开关</strong>动作时，断开该支路 → 门停在开到位处。</li>
+</ul>
+</li>
+<li><p><strong>关门支路</strong></p>
+<ul>
+<li>按下关门按钮 → <strong>定时器开始计时</strong>；</li>
+<li>计时到 <strong>5 秒</strong>后 → 输出 Y2 接通 → 电动机反转；</li>
+<li>支路同样带<strong>自锁</strong>；</li>
+<li>当<strong>关门限位开关</strong>动作时，断开该支路 → 门停在关到位处。</li>
+</ul>
+</li>
+<li><p><strong>暂停支路</strong></p>
+<ul>
+<li>按下暂停按钮 → 断开正在执行的支路 → 门立即停止。</li>
+</ul>
+</li>
+<li><p><strong>互锁</strong></p>
+<ul>
+<li>开门与关门<strong>不能同时接通</strong>，必须在程序或线路中互锁。</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>课堂原话大意：门在关闭过程中如果碰到东西，应当触发安全动作——这对应现实中的<strong>防夹保护</strong>。</p>
+</blockquote>
+<p><strong>HMI 画面</strong></p>
+<ul>
+<li>画面上放置<strong>按钮</strong>：启动（开门）、停止、暂停；</li>
+<li>放置<strong>指示灯</strong>：显示门的当前状态；</li>
+<li>每个对象都关联到上面 I&#x2F;O 表中的变量；</li>
+<li>最终效果：<strong>在现场按按钮和在屏幕上点按钮，效果一致</strong>。</li>
+</ul>
+<h3 id="4-5-电气控制线路复习"><a href="#4-5-电气控制线路复习" class="headerlink" title="4.5 电气控制线路复习"></a>4.5 电气控制线路复习</h3><p>课堂在讲 PLC 程序前，先回顾了继电器—接触器控制线路的基础：</p>
+<p><strong>三个基本要素</strong></p>
+<ol>
+<li><strong>启动按钮</strong>：常开触点，按下时接通；</li>
+<li><strong>中间继电器 &#x2F; 接触器线圈</strong>：得电动作，带动其触点翻转；</li>
+<li><strong>自锁触点</strong>：把接触器自己的常开触点并联在启动按钮两端。</li>
+</ol>
+<p><strong>自锁（记忆与保持）</strong></p>
+<ul>
+<li>按下启动按钮 → 线圈得电 → 其常开触点闭合；</li>
+<li>松开启动按钮 → 电流经<strong>自锁触点</strong>继续供给线圈 → <strong>电路保持通电</strong>。</li>
+</ul>
+<p>这就是电气控制里的「<strong>记忆与保持</strong>」——按一下，松手后电路自己记住「已启动」。</p>
+<p><strong>互锁</strong></p>
+<p>两条互斥支路（如正转与反转）之间，把对方的<strong>常闭触点</strong>串进自己的回路：</p>
+<ul>
+<li>正转支路串反转接触器的常闭触点；</li>
+<li>反转支路串正转接触器的常闭触点；</li>
+<li>结果：<strong>一个通了，另一个就通不了</strong>。</li>
+</ul>
+<p><strong>常开 &#x2F; 常闭触点</strong></p>
+<table>
+<thead>
+<tr>
+<th>触点</th>
+<th>未动作时</th>
+<th>动作后</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>常开（NO）</strong></td>
+<td>断开</td>
+<td>闭合</td>
+</tr>
+<tr>
+<td><strong>常闭（NC）</strong></td>
+<td>闭合</td>
+<td>断开</td>
+</tr>
+</tbody></table>
+<p><strong>线圈输出</strong></p>
+<p>程序的最后一级是<strong>线圈</strong>——它对应实际的输出继电器或接触器线圈，得电即动作。</p>
+<h2 id="五、例题与解题方法汇总"><a href="#五、例题与解题方法汇总" class="headerlink" title="五、例题与解题方法汇总"></a>五、例题与解题方法汇总</h2><h3 id="题型-1：根据控制要求做-I-O-分配表"><a href="#题型-1：根据控制要求做-I-O-分配表" class="headerlink" title="题型 1：根据控制要求做 I&#x2F;O 分配表"></a>题型 1：根据控制要求做 I&#x2F;O 分配表</h3><p><strong>步骤</strong></p>
+<ol>
+<li>数清有几个<strong>执行动作</strong> → 决定输出点数；</li>
+<li>数清有几个<strong>操作按钮 + 限位开关</strong> → 决定输入点数；</li>
+<li>需要记忆状态的，列出中间继电器；</li>
+<li>需要延时的，列出定时器。</li>
+</ol>
+<h3 id="题型-2：绘制带自锁与互锁的控制电路"><a href="#题型-2：绘制带自锁与互锁的控制电路" class="headerlink" title="题型 2：绘制带自锁与互锁的控制电路"></a>题型 2：绘制带自锁与互锁的控制电路</h3><p><strong>步骤</strong></p>
+<ol>
+<li>画出启动按钮 + 自锁触点并联；</li>
+<li>把停止（或限位）信号以<strong>常闭</strong>形式串在回路里；</li>
+<li>需要互锁的，把对方接触器的<strong>常闭触点</strong>串进来；</li>
+<li>最后接线圈。</li>
+</ol>
+<p><strong>要点</strong>：<strong>停止和限位用常闭，启动用常开</strong>——这是电气控制线路的基本约定。</p>
+<h3 id="题型-3：带延时的控制（如延时-5-秒关门）"><a href="#题型-3：带延时的控制（如延时-5-秒关门）" class="headerlink" title="题型 3：带延时的控制（如延时 5 秒关门）"></a>题型 3：带延时的控制（如延时 5 秒关门）</h3><p><strong>步骤</strong></p>
+<ol>
+<li>按关门按钮 → 启动<strong>定时器</strong>（不是直接启动电动机）；</li>
+<li>定时器到达设定值（5 秒）→ 其触点动作；</li>
+<li>用定时器触点去接通关门输出。</li>
+</ol>
+<p><strong>要点</strong>：分清<strong>通电延时</strong>与<strong>断电延时</strong>两种定时器，按题意选用。</p>
+<h3 id="题型-4：HMI-组态的步骤排序"><a href="#题型-4：HMI-组态的步骤排序" class="headerlink" title="题型 4：HMI 组态的步骤排序"></a>题型 4：HMI 组态的步骤排序</h3><p>正确顺序：</p>
+<blockquote>
+<p>添加 HMI 设备 → 选系列与型号 → 设备组态 → <strong>建立 HMI 连接</strong> → 关联变量 → 编辑画面</p>
+</blockquote>
+<p><strong>易错点</strong>：把「编辑画面」放在「建立连接」之前——这样画出来的对象是没有变量来源的。</p>
+<h2 id="六、术语速查表"><a href="#六、术语速查表" class="headerlink" title="六、术语速查表"></a>六、术语速查表</h2><table>
+<thead>
+<tr>
+<th>术语</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>HMI</td>
+<td>人机界面，即触摸屏</td>
+</tr>
+<tr>
+<td>WinCC</td>
+<td>西门子的人机界面组态软件</td>
+</tr>
+<tr>
+<td>博途 &#x2F; TIA Portal</td>
+<td>西门子的全集成自动化工程软件平台</td>
+</tr>
+<tr>
+<td>设备组态</td>
+<td>设置设备通信接口与硬件参数的界面</td>
+</tr>
+<tr>
+<td>HMI 连接</td>
+<td>HMI 与 PLC 之间的通信通道，必须先建立</td>
+</tr>
+<tr>
+<td>PLC 变量</td>
+<td>PLC 中的变量表，画面对象的绑定来源</td>
+</tr>
+<tr>
+<td>精简面板</td>
+<td>面向简单应用的 HMI 面板</td>
+</tr>
+<tr>
+<td>精智面板</td>
+<td>可做复杂画面的 HMI 面板</td>
+</tr>
+<tr>
+<td>移动面板</td>
+<td>可移动使用的 HMI 面板</td>
+</tr>
+<tr>
+<td>按键面板</td>
+<td>替代传统按钮的 HMI 面板</td>
+</tr>
+<tr>
+<td>PROFINET</td>
+<td>工业以太网通信协议</td>
+</tr>
+<tr>
+<td>位存储器 &#x2F; 中间继电器</td>
+<td>程序中用于记录中间状态的元件</td>
+</tr>
+<tr>
+<td>自锁</td>
+<td>松开按钮后电路自行保持通电</td>
+</tr>
+<tr>
+<td>互锁</td>
+<td>互斥支路之间互相封锁</td>
+</tr>
+<tr>
+<td>常开触点</td>
+<td>未动作时断开，动作后闭合</td>
+</tr>
+<tr>
+<td>常闭触点</td>
+<td>未动作时闭合，动作后断开</td>
+</tr>
+<tr>
+<td>限位开关</td>
+<td>检测运动部件是否到达指定位置的开关</td>
+</tr>
+<tr>
+<td>定时器</td>
+<td>实现延时动作的元件</td>
+</tr>
+<tr>
+<td>线圈</td>
+<td>程序的输出元件，对应实际执行器件</td>
+</tr>
+</tbody></table>
+<h2 id="七、课堂强调与复习重点"><a href="#七、课堂强调与复习重点" class="headerlink" title="七、课堂强调与复习重点"></a>七、课堂强调与复习重点</h2><ol>
+<li><strong>先建立 HMI 连接，再编辑画面</strong>——顺序反了对象就没有数据源。</li>
+<li>添加 HMI 设备时<strong>先选系列、再选型号</strong>，系列选错后面全错。</li>
+<li><strong>按钮替代不了逻辑</strong>：HMI 只是把按钮搬到屏幕上，控制逻辑仍在 PLC 里。</li>
+<li><strong>关门延时 5 秒</strong>是本题的关键细节，别漏。</li>
+<li><strong>开门与关门必须互锁</strong>。</li>
+<li><strong>限位开关要用常闭触点串在回路里</strong>，这样断线也能停机（故障安全）。</li>
+<li>电气控制的根基还是<strong>自锁与互锁</strong>，PLC 程序只是把线路「翻译」成梯形图。</li>
+<li>做项目先写<strong>控制要求</strong>，再做 <strong>I&#x2F;O 分配表</strong>，最后才写程序——顺序不要颠倒。</li>
+</ol>
+<h2 id="八、【以教材为准】待核对清单"><a href="#八、【以教材为准】待核对清单" class="headerlink" title="八、【以教材为准】待核对清单"></a>八、【以教材为准】待核对清单</h2><p>本节录音中教师大量使用口语化的操作指导，以下内容<strong>无法从录音中准确还原</strong>，请以教材与教师演示为准：</p>
+<ol>
+<li><strong>HMI 的具体型号</strong>：录音中出现「9 寸面板」等描述，但型号字母识别不清，请以教材第 168 页为准。</li>
+<li><strong>面板按钮的元件符号</strong>：课堂提到的按钮符号（识别为「SB1」「SB3」一类）识别不可靠，<strong>请以教材为准</strong>；本文统一改用「开门按钮 &#x2F; 关门按钮 &#x2F; 暂停按钮」描述。</li>
+<li><strong>限位开关的符号</strong>：课堂提到「SX3」，按电气控制惯例应为<strong>行程开关 SQ</strong>，但录音无法确认，请以教材为准。</li>
+<li><strong>中间继电器的编号</strong>：录音中出现的「M1.1」「M1.3」等编号在不同段落不一致（有时识别为 V1.3、L1.3），<strong>具体编号请以教材例题为准</strong>。</li>
+<li><strong>「暂停」输出的具体作用</strong>：录音中既提到 Y3 是暂停，也提到 Y3 是「指示灯」，二者关系未能确认。</li>
+<li><strong>延时 5 秒的作用位置</strong>：录音确认「按关门按钮后延时 5 秒再关门」，但延时是否同时作用于开门未提及。</li>
+<li><strong>WinCC 版本与面板的对应关系</strong>：本文按通行做法列出 Basic &#x2F; Comfort &#x2F; Advanced &#x2F; Professional，课堂上只提到「多个版本」，<strong>具体对应关系请查教材</strong>。</li>
+<li><strong>「碰到障碍触发安全」的实现方式</strong>：录音只提到要求，未讲实现手段（是压力开关还是力矩保护），请以教材为准。</li>
+<li><strong>作业页码</strong>：课堂布置了「177 页 9-1～9-5」「214 页 10-1～10-3」「179 页 7-8」，页码与题号识别基本可靠，但仍建议对照课本确认。</li>
+</ol>
+<h2 id="九、复习自测"><a href="#九、复习自测" class="headerlink" title="九、复习自测"></a>九、复习自测</h2><ol>
+<li>HMI 的全称是什么？它在控制系统中处于什么位置？</li>
+<li>为什么工业现场要用 HMI 替代传统按钮和指示灯？</li>
+<li>HMI 面板按形态大致分为哪四类？各适合什么场合？</li>
+<li>HMI 通常通过什么接口与 PLC 通信？还能接哪些外设？</li>
+<li>WinCC 是什么软件？它有哪些主要版本？</li>
+<li>在博途中添加 HMI 设备时，为什么要「先选系列、再选型号」？</li>
+<li>设备组态这一步主要设置什么？</li>
+<li>为什么必须<strong>先建立 HMI 连接、再编辑画面</strong>？</li>
+<li>画面上的指示灯是如何与 PLC 变量绑定的？</li>
+<li>画面按钮被按下时，对 PLC 变量执行什么动作？</li>
+<li>「HMI 组态是更深层的编辑」这句话怎么理解？</li>
+<li>自动伸缩门项目的五条控制要求分别是什么？</li>
+<li>画出该项目的 I&#x2F;O 分配表（至少列出 3 个输出、5 个输入）。</li>
+<li>按关门按钮后为什么要延时 5 秒？这 5 秒由什么元件实现？</li>
+<li>开门支路和关门支路为什么必须互锁？不互锁会有什么后果？</li>
+<li>限位开关为什么用常闭触点串在回路里？</li>
+<li>什么是自锁？它在电气控制中起什么作用？</li>
+<li>什么是互锁？画出正反转互锁的基本接法。</li>
+<li>常开触点和常闭触点在「未动作」时分别是什么状态？</li>
+<li>做这类项目时，正确的设计顺序是什么？</li>
+<li>电气控制线路中的「线圈」对应实际系统中的什么器件？</li>
+<li>PLC 程序与继电器控制线路之间是什么关系？</li>
+</ol>
+<h2 id="十、复习自测参考答案"><a href="#十、复习自测参考答案" class="headerlink" title="十、复习自测参考答案"></a>十、复习自测参考答案</h2><blockquote>
+<p>建议先自己做完第九部分，再对照这里。带「★」的是本题的重点。</p>
+</blockquote>
+<p><strong>1.</strong> HMI &#x3D; <strong>Human Machine Interface（人机界面）</strong>，日常就叫触摸屏。它位于<strong>操作人员与 PLC 之间</strong>，是人与控制系统交互的窗口：向上给操作者显示设备状态，向下与 PLC 交换数据。</p>
+<p><strong>2.</strong> ① 把设备运行状态<strong>可视化</strong>，操作者一眼就能看清门开没开、电动机转没转；② 用软件画面替代实物按钮和指示灯，<strong>减少柜内元件与接线</strong>；③ 工艺变了只需<strong>改画面，不用改硬件</strong>；④ 还能做报警、趋势、配方这些传统按钮做不到的功能。</p>
+<p><strong>3.</strong> <strong>精简面板</strong>（面向简单应用，功能基础）、<strong>精智面板</strong>（可做较复杂的画面与程序）、<strong>移动面板</strong>（可在移动过程中实时监测）、<strong>按键面板</strong>（传统按钮的创新替代方案）。</p>
+<p><strong>4.</strong> 通信一般通过 <strong>PROFINET</strong>（工业以太网）。此外通常带 <strong>USB</strong> 接口，可接键盘、鼠标、条码扫描器等外设。</p>
+<p><strong>5.</strong> WinCC 是<strong>西门子的人机界面组态软件</strong>，用于给 HMI 面板做画面。主要版本由简到繁为：<strong>Basic、Comfort、Advanced、Professional</strong>。</p>
+<p><strong>6. ★</strong> 因为<strong>型号是挂在系列下面的</strong>——先确定系列，才能列出该系列下可选的型号。系列决定了面板的能力范围（支持的画面复杂度、可用控件、配套的组态软件版本），型号进一步确定屏幕尺寸与接口配置。<strong>系列选错，后面就无法与手上的实物面板匹配，连接会失败。</strong></p>
+<p><strong>7.</strong> 设备组态主要设置设备的<strong>通信接口与硬件参数</strong>——即面板用哪个接口、以什么协议与 PLC 通信，以及模块的地址分配。</p>
+<p><strong>8. ★</strong> 因为画面上的每个对象（指示灯、按钮）都必须<strong>绑定一个 PLC 变量</strong>才能工作，而连接就是变量传输的通道。<strong>连接没建立，对象就没有数据源</strong>，画出来的东西是「死」的。所以必须先把连接建好，再画画面。</p>
+<p><strong>9.</strong> 在对象属性里指定它绑定的<strong>变量地址</strong>（如某个输出位或位存储器）。运行时 HMI 周期性读取该变量的值：为 1 时按设定的「亮」状态显示，为 0 时按「灭」状态显示。颜色、闪烁、动画都由这个值驱动。</p>
+<p><strong>10.</strong> 按钮按下时对变量执行<strong>写操作</strong>——通常是<strong>置位（Set）</strong>或<strong>复位（Reset）</strong>，也可以是「按下置位、松开复位」（点动）。具体动作在按钮的事件配置里设定。</p>
+<p><strong>11.</strong> 意思是：HMI 组态改的不只是<strong>画面长什么样</strong>，而是<strong>画面背后与 PLC 变量的绑定关系</strong>。你表面上在拖控件、调颜色，实际上是在配置「哪个控件读写哪个变量、在什么条件下动作」——这一层逻辑才是 HMI 的实质，所以它比单纯的「画图」深一层。</p>
+<p><strong>12.</strong> ① 按开门按钮 → 电动机正转 → 门打开 → <strong>开门限位开关</strong>动作时停止；② 按关门按钮 → <strong>延时 5 秒</strong> → 电动机反转 → 门关闭 → <strong>关门限位开关</strong>动作时停止；③ 门内侧设<strong>暂停按钮</strong>，用于紧急停止；④ 关门过程中<strong>碰到障碍</strong>应能触发安全动作；⑤ 要求<strong>用触摸屏实现重复控制</strong>。</p>
+<p><strong>13. ★</strong></p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>符号</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>输出</td>
+<td>Y1</td>
+<td>开门（电动机正转）</td>
+</tr>
+<tr>
+<td>输出</td>
+<td>Y2</td>
+<td>关门（电动机反转）</td>
+</tr>
+<tr>
+<td>输出</td>
+<td>Y3</td>
+<td>暂停 &#x2F; 状态指示</td>
+</tr>
+<tr>
+<td>输入</td>
+<td>开门按钮</td>
+<td>启动开门</td>
+</tr>
+<tr>
+<td>输入</td>
+<td>关门按钮</td>
+<td>启动关门（带 5 秒延时）</td>
+</tr>
+<tr>
+<td>输入</td>
+<td>暂停按钮</td>
+<td>紧急停止</td>
+</tr>
+<tr>
+<td>输入</td>
+<td>开门限位开关</td>
+<td>门开到位信号</td>
+</tr>
+<tr>
+<td>输入</td>
+<td>关门限位开关</td>
+<td>门关到位信号</td>
+</tr>
+<tr>
+<td>中间量</td>
+<td>中间继电器 &#x2F; 位存储器</td>
+<td>记录「正在开门 &#x2F; 正在关门」</td>
+</tr>
+<tr>
+<td>中间量</td>
+<td>定时器</td>
+<td>实现 5 秒延时</td>
+</tr>
+</tbody></table>
+<p><strong>14.</strong> 延时是为了<strong>给人员留出通过时间</strong>——按下关门按钮后门不立刻动，5 秒内人员可以安全通过或退出。这 5 秒由<strong>定时器</strong>实现：按关门按钮先启动定时器，定时到达后再接通关门输出。</p>
+<p><strong>15. ★</strong> 开门（Y1，正转）与关门（Y2，反转）如果同时接通，会造成<strong>主电路两相短路</strong>（正反转接触器同时吸合 → 电源相间短路），是严重事故。互锁就是让两条支路<strong>互相封锁</strong>：一个通了，另一个就通不了。</p>
+<p><strong>16. ★</strong> 用常闭触点串在回路里，是为了<strong>故障安全</strong>：正常时触点闭合、回路通畅；一旦<strong>导线断线、触点接触不良或限位开关损坏</strong>，回路立即断开，门停止动作。如果反过来用常开触点，断线时回路反而「以为已经到位」，会造成失控。这就是电气控制里「<strong>停止与保护一律用常闭</strong>」的原因。</p>
+<p><strong>17.</strong> 自锁：把接触器（或继电器）自己的<strong>常开辅助触点并联在启动按钮两端</strong>。按下启动按钮 → 线圈得电 → 常开触点闭合；松开按钮后，电流经这个触点继续供给线圈，<strong>电路自行保持通电</strong>。作用是实现信号的<strong>记忆与保持</strong>——「按一下，松手后电路记住已经启动」。</p>
+<p><strong>18. ★</strong> 互锁：把对方接触器的<strong>常闭触点</strong>串进自己的回路，使两条互斥支路不能同时通电。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs text">主回路：<br>  三相电源 --[KM1 主触点]-- 电动机（正转）<br>           --[KM2 主触点]-- 电动机（反转，两相对调）<br><br>控制回路（正转支路）：<br>  L --[SB0 停止(常闭)]--[SB1 正转(常开)]--[KM2 常闭]--+--[KM1 线圈]-- N<br>                                                      |<br>                                    [KM1 常开(自锁)]--+<br><br>控制回路（反转支路）：<br>  L --[SB0 停止(常闭)]--[SB2 反转(常开)]--[KM1 常闭]--+--[KM2 线圈]-- N<br>                                                      |<br>                                    [KM2 常开(自锁)]--+<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>记忆要点：<strong>正转支路串 KM2 的常闭触点，反转支路串 KM1 的常闭触点</strong>——用对方的常闭来封锁自己。</p>
+</blockquote>
+<p><strong>19.</strong> <strong>常开（NO）</strong>：未动作时<strong>断开</strong>，动作后闭合。<strong>常闭（NC）</strong>：未动作时<strong>闭合</strong>，动作后断开。</p>
+<p><strong>20.</strong> ① 先写清<strong>控制要求</strong>（有哪几个动作、什么条件启动、什么条件停止）；② 再做 <strong>I&#x2F;O 分配表</strong>（输出点数、输入点数、中间量、定时器）；③ 然后画<strong>电气原理图</strong>或写<strong>程序</strong>；④ 最后做 <strong>HMI 画面</strong>并与变量关联。顺序颠倒容易漏掉条件。</p>
+<p><strong>21.</strong> 线圈对应实际系统中的<strong>执行器件</strong>——输出继电器、中间继电器、接触器的线圈。在 PLC 里，线圈对应<strong>输出端子（Q）</strong>或<strong>位存储器（M）</strong>，得电即动作，进而驱动接触器、电磁阀、指示灯等。</p>
+<p><strong>22.</strong> PLC 程序（梯形图）与继电器控制线路是<strong>逻辑等价</strong>的：梯形图的触点对应线路里的常开&#x2F;常闭触点，线圈对应继电器&#x2F;接触器线圈，自锁、互锁这些结构一一对应。区别在于：继电器线路靠<strong>硬件接线</strong>实现，PLC 靠<strong>程序扫描</strong>实现——改逻辑不用改线，还能实现定时、计数、运算等继电器做不到的功能。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/PLC-HMI-%E7%BB%84%E6%80%81-%E7%BB%BC%E5%90%88%E8%AE%BE%E8%AE%A1/" class="print-no-link">#PLC HMI 组态 综合设计</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>HMI 触摸屏组态与自动伸缩门 PLC 控制系统</div>
+      <div>https://tdexxx.github.io/2026/10/14/02_电气控制与PLC/电气控制与PLC_HMI触摸屏组态与自动伸缩门_发布稿/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>tdexxx</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年10月14日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/10/14/08_%E6%B5%8B%E8%AF%95%E6%8A%80%E6%9C%AF%E4%B8%8E%E4%BF%A1%E5%8F%B7%E5%88%86%E6%9E%90/%E6%B5%8B%E8%AF%95%E6%8A%80%E6%9C%AF_%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0%E4%B8%8E%E9%A2%91%E8%B0%B1_%E5%8F%91%E5%B8%83%E7%A8%BF/" title="傅里叶级数与频谱：单边谱与双边谱">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">傅里叶级数与频谱：单边谱与双边谱</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/10/14/02_%E7%94%B5%E6%B0%94%E6%8E%A7%E5%88%B6%E4%B8%8EPLC/%E7%94%B5%E6%B0%94%E6%8E%A7%E5%88%B6%E4%B8%8EPLC_%E4%BF%A1%E5%8F%B7%E5%88%86%E6%9E%90%E4%B8%8EPLC%E5%90%88%E5%A0%82_%E9%80%90%E5%AD%97%E7%A8%BF_ASR%E5%8E%9F%E5%A7%8B/" title="信号分析与 PLC 合堂课堂逐字稿（ASR 原始）">
+                        <span class="hidden-mobile">信号分析与 PLC 合堂课堂逐字稿（ASR 原始）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

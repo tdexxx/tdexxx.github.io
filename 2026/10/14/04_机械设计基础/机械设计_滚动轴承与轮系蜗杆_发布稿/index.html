@@ -1,0 +1,1316 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="tdexxx">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="《机械设计基础》课堂笔记：轮系 · 滚动轴承（类型 &#x2F; 代号 &#x2F; 选型 &#x2F; 寿命）· 蜗杆蜗轮传动一、这节课讲了什么一次课讲了三块内容，滚动轴承是绝对主体（约占 60 分钟）：    模块 时长占比 内容    轮系（收尾复习） 约 10 分钟 定轴 &#x2F; 周转 &#x2F; 复合轮系的判别与传动比   滚动轴承 约 60 分钟 功用与结构 → 调心与偏位角">
+<meta property="og:type" content="article">
+<meta property="og:title" content="滚动轴承选型与寿命计算、轮系与蜗杆传动">
+<meta property="og:url" content="https://tdexxx.github.io/2026/10/14/04_%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1_%E6%BB%9A%E5%8A%A8%E8%BD%B4%E6%89%BF%E4%B8%8E%E8%BD%AE%E7%B3%BB%E8%9C%97%E6%9D%86_%E5%8F%91%E5%B8%83%E7%A8%BF/index.html">
+<meta property="og:site_name" content="tdexxx的博客">
+<meta property="og:description" content="《机械设计基础》课堂笔记：轮系 · 滚动轴承（类型 &#x2F; 代号 &#x2F; 选型 &#x2F; 寿命）· 蜗杆蜗轮传动一、这节课讲了什么一次课讲了三块内容，滚动轴承是绝对主体（约占 60 分钟）：    模块 时长占比 内容    轮系（收尾复习） 约 10 分钟 定轴 &#x2F; 周转 &#x2F; 复合轮系的判别与传动比   滚动轴承 约 60 分钟 功用与结构 → 调心与偏位角">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-10-14T07:44:21.000Z">
+<meta property="article:modified_time" content="2026-10-30T17:37:19.955Z">
+<meta property="article:author" content="tdexxx">
+<meta property="article:tag" content="机械设计 滚动轴承 蜗杆传动">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>滚动轴承选型与寿命计算、轮系与蜗杆传动 - tdexxx的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"tdexxx.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2022-12-10T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="滚动轴承选型与寿命计算、轮系与蜗杆传动"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-10-14 15:44" pubdate>
+          2026年10月14日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          45 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">滚动轴承选型与寿命计算、轮系与蜗杆传动</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="《机械设计基础》课堂笔记：轮系-·-滚动轴承（类型-代号-选型-寿命）·-蜗杆蜗轮传动"><a href="#《机械设计基础》课堂笔记：轮系-·-滚动轴承（类型-代号-选型-寿命）·-蜗杆蜗轮传动" class="headerlink" title="《机械设计基础》课堂笔记：轮系 · 滚动轴承（类型 &#x2F; 代号 &#x2F; 选型 &#x2F; 寿命）· 蜗杆蜗轮传动"></a>《机械设计基础》课堂笔记：轮系 · 滚动轴承（类型 &#x2F; 代号 &#x2F; 选型 &#x2F; 寿命）· 蜗杆蜗轮传动</h1><h2 id="一、这节课讲了什么"><a href="#一、这节课讲了什么" class="headerlink" title="一、这节课讲了什么"></a>一、这节课讲了什么</h2><p>一次课讲了三块内容，<strong>滚动轴承是绝对主体</strong>（约占 60 分钟）：</p>
+<table>
+<thead>
+<tr>
+<th>模块</th>
+<th>时长占比</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>轮系（收尾复习）</td>
+<td>约 10 分钟</td>
+<td>定轴 &#x2F; 周转 &#x2F; 复合轮系的判别与传动比</td>
+</tr>
+<tr>
+<td><strong>滚动轴承</strong></td>
+<td><strong>约 60 分钟</strong></td>
+<td>功用与结构 → 调心与偏位角 → 极限转速 → 分类 → 代号 → 常用类型 → 选型 → 受力 → 寿命</td>
+</tr>
+<tr>
+<td>蜗杆蜗轮传动（引入）</td>
+<td>约 15 分钟</td>
+<td>蜗杆蜗轮区分、参数、传动比</td>
+</tr>
+</tbody></table>
+<h2 id="二、核心结论速览"><a href="#二、核心结论速览" class="headerlink" title="二、核心结论速览"></a>二、核心结论速览</h2><ol>
+<li>轮系按轴的位置是否固定分为<strong>定轴轮系</strong>与<strong>周转轮系</strong>，两者叠加即为<strong>复合轮系</strong>。</li>
+<li>平面轮系传动比的方向用<strong>符号</strong>表达；空间轮系（轴不平行）必须用<strong>箭头</strong>表达。</li>
+<li>传动比中的符号项为 $(-1)^m$，$m$ 是<strong>外啮合齿轮的对数</strong>。</li>
+<li>周转轮系含<strong>行星架 $H$<strong>，用</strong>转化机构法（反转法）</strong>求解，公式中出现 $n_H$ 时要扣除。</li>
+<li>复合轮系先分别判定「哪些是定轴、哪些是周转」，各自列式后再联立。</li>
+<li>轴承的功用：把<strong>转动的轴</strong>与<strong>固定的机架</strong>连接起来，<strong>减少摩擦</strong>。</li>
+<li>滚动轴承四大件：<strong>内圈、外圈、滚动体、保持架</strong>；内圈随轴转动，外圈固定不动。</li>
+<li><strong>调心</strong>＝轴承具备自动调心功能；理论轴线与实际轴线的夹角叫<strong>偏位角</strong>。</li>
+<li><strong>极限转速</strong>：在保证一定润滑条件下轴承能承受的最高工作转速；轴的工作转速必须<strong>小于</strong>它。</li>
+<li>按承载方向分为<strong>向心轴承</strong>（径向）与<strong>推力轴承</strong>（轴向）。</li>
+<li><strong>接触角越大，承受轴向力的能力越大</strong>。</li>
+<li>按滚动体形状分为<strong>球轴承</strong>（点接触）与<strong>滚子轴承</strong>（线接触）。</li>
+<li>滚子轴承的承载能力约为球轴承的 <strong>1.5～3 倍</strong>，但极限转速更低。</li>
+<li>轴承基本代号（5 位）＝类型代号 ＋ 尺寸系列（宽度系列＋直径系列）＋ 内径代号。</li>
+<li>内径 10 &#x2F; 12 &#x2F; 15 &#x2F; 17 mm 对应代号 <strong>00 &#x2F; 01 &#x2F; 02 &#x2F; 03</strong>；内径 20～500 mm 时，<strong>内径代号 ＝ 内径 ÷ 5</strong>。</li>
+<li>公差等级由低到高：<strong>P0 &lt; P6 &lt; P5 &lt; P4 &lt; P2</strong>（P0 为普通级，代号中省略）。</li>
+<li><strong>3 类（圆锥滚子）和 7 类（角接触球）轴承必须成对使用</strong>，正装或反装。</li>
+<li>选型三步：<strong>先看载荷方向 → 再看载荷大小 → 最后看转速</strong>。</li>
+<li>纯径向载荷选深沟球（或圆柱滚子）；纯轴向选推力；径向＋轴向选角接触球或圆锥滚子。</li>
+<li>转速高选球轴承，转速低选滚子轴承；推力轴承极限转速最低，不宜用于高速。</li>
+<li><strong>基本额定寿命 $L_{10}$<strong>：一批相同轴承在相同条件下运转，</strong>10% 出现失效</strong>时的寿命（转数或小时）。</li>
+<li>寿命计算：$L_{10}&#x3D;(C&#x2F;P)^{\varepsilon}$（单位 $10^6$ 转），球轴承 $\varepsilon&#x3D;3$，滚子轴承 $\varepsilon&#x3D;10&#x2F;3$。</li>
+<li>蜗杆头数 $z_1$ 常用 1、2、4、6；蜗轮齿数 $z_2$ 一般取 28～80。</li>
+<li>蜗杆传动比 $i&#x3D;z_2&#x2F;z_1$，蜗杆为主动件。</li>
+</ol>
+<hr>
+<h2 id="三、知识结构树"><a href="#三、知识结构树" class="headerlink" title="三、知识结构树"></a>三、知识结构树</h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs text">机械设计基础（本次课）<br>|<br>|- 1. 轮系<br>|   |- 分类<br>|   |   |- 定轴轮系：各轴位置固定<br>|   |   |- 周转轮系：含行星架 H，轴线可动<br>|   |   `- 复合轮系 = 定轴 + 周转 的叠加<br>|   |- 传动比 i<br>|   |   |- 平面轮系：符号法 (-1)^m，m = 外啮合对数<br>|   |   `- 空间轮系：箭头法<br>|   |- 周转轮系求解：转化机构法（反转法）<br>|   `- 复合轮系步骤：分块 -&gt; 列式 -&gt; 找联系条件 -&gt; 联立<br>|<br>|- 2. 滚动轴承  ★主体<br>|   |- 功用：连接转轴与机架，减少摩擦<br>|   |- 结构：内圈 / 外圈 / 滚动体 / 保持架<br>|   |- 调心与偏位角<br>|   |- 极限转速<br>|   |- 分类<br>|   |   |- 按承载方向：向心 / 推力<br>|   |   |- 按滚动体形状：球 / 滚子<br>|   |   |- 单列 / 双列 / 多列<br>|   |   |- 调心 / 非调心<br>|   |   `- 可分离 / 不可分离<br>|   |- 代号：类型代号 + 尺寸系列 + 内径代号<br>|   |- 常用类型：调心球 / 圆锥滚子 / 深沟球 / 角接触球<br>|   |- 选型：载荷方向 -&gt; 载荷大小 -&gt; 转速 -&gt; 调心要求<br>|   |- 受力分析：最下方滚动体受力最大<br>|   `- 寿命：总寿命 / 基本额定寿命 L10<br>|<br>`- 3. 蜗杆蜗轮传动<br>    |- 参数：z1（蜗杆头数）、z2（蜗轮齿数）<br>    |- 传动比 i = z2 / z1<br>    `- 旋向：右旋 / 左旋<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="四、知识点详解"><a href="#四、知识点详解" class="headerlink" title="四、知识点详解"></a>四、知识点详解</h2><h3 id="4-1-轮系"><a href="#4-1-轮系" class="headerlink" title="4.1 轮系"></a>4.1 轮系</h3><h4 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h4><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>判别依据</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>定轴轮系</td>
+<td>各齿轮的<strong>轴的位置固定</strong></td>
+</tr>
+<tr>
+<td>周转轮系</td>
+<td>至少有一个齿轮的轴线<strong>绕另一轴线回转</strong>（含行星架 $H$）</td>
+</tr>
+<tr>
+<td>复合轮系</td>
+<td>定轴轮系与周转轮系的<strong>叠加</strong></td>
+</tr>
+</tbody></table>
+<h4 id="传动比"><a href="#传动比" class="headerlink" title="传动比"></a>传动比</h4><p>从<strong>首轴（输入轴）</strong>到<strong>末轴（输出轴）</strong>：</p>
+<ul>
+<li><strong>平面轮系</strong>（各轴平行）：用符号表达方向</li>
+</ul>
+<p>$$i_{1k}&#x3D;(-1)^{m}\frac{z_{2}z_{4}z_{6}\cdots}{z_{1}z_{3}z_{5}\cdots}$$</p>
+<p>即「<strong>所有从动轮齿数的连乘积 ÷ 所有主动轮齿数的连乘积</strong>」；其中 $m$ 为<strong>外啮合齿轮的对数</strong>——这是课堂上反复强调的「那个负号」的来源。</p>
+<ul>
+<li><strong>空间轮系</strong>（含锥齿轮、蜗杆蜗轮等轴不平行的场合）：<strong>不能用正负号</strong>，必须用<strong>箭头</strong>表示各轮的转向关系。</li>
+</ul>
+<h4 id="周转轮系的求解：转化机构法（反转法）"><a href="#周转轮系的求解：转化机构法（反转法）" class="headerlink" title="周转轮系的求解：转化机构法（反转法）"></a>周转轮系的求解：转化机构法（反转法）</h4><p>给整个轮系加上一个 $-n_H$ 的公共转速，使行星架「静止」，周转轮系就转化为定轴轮系，再按定轴轮系的方法列式。</p>
+<blockquote>
+<p>课堂原话要点：公式里的 $n_H$ 要<strong>扣除</strong>，因为它「找跨制做」——即由转化机构得来。行星架转速 $n_H$ 是周转轮系区别于定轴轮系的关键量。</p>
+</blockquote>
+<h4 id="复合轮系的解题步骤"><a href="#复合轮系的解题步骤" class="headerlink" title="复合轮系的解题步骤"></a>复合轮系的解题步骤</h4><ol>
+<li>先<strong>判定</strong>哪一部分是定轴轮系、哪一部分是周转轮系；</li>
+<li>各部分<strong>分别列</strong>传动比方程；</li>
+<li>找<strong>联系条件</strong>（同一构件的转速相等）；</li>
+<li><strong>联立求解</strong>。</li>
+</ol>
+<h4 id="装配条件"><a href="#装配条件" class="headerlink" title="装配条件"></a>装配条件</h4><p>周转轮系中各轮要能实际装上去，需满足：</p>
+<ul>
+<li><strong>同心条件</strong>：中心距相等；</li>
+<li><strong>装配条件</strong>：齿数满足特定关系；</li>
+<li><strong>邻接条件</strong>：相邻行星轮不干涉。</li>
+</ul>
+<blockquote>
+<p>课堂强调：「不合理的轮系结构改进」是重点，但不算很难——题型相对固定，多看例题即可。</p>
+</blockquote>
+<hr>
+<h3 id="4-2-滚动轴承的功用与结构"><a href="#4-2-滚动轴承的功用与结构" class="headerlink" title="4.2 滚动轴承的功用与结构"></a>4.2 滚动轴承的功用与结构</h3><h4 id="功用"><a href="#功用" class="headerlink" title="功用"></a>功用</h4><p>轴要<strong>转动</strong>，机架（轴承座）是<strong>固定</strong>的。要让两者既连接、又允许相对转动，就需要轴承——其核心作用是<strong>尽量减少轴与机架之间的摩擦</strong>。</p>
+<h4 id="结构（四大件）"><a href="#结构（四大件）" class="headerlink" title="结构（四大件）"></a>结构（四大件）</h4><table>
+<thead>
+<tr>
+<th>零件</th>
+<th>位置与作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>内圈</strong></td>
+<td>装在轴上，<strong>随轴转动</strong></td>
+</tr>
+<tr>
+<td><strong>外圈</strong></td>
+<td>装在轴承座孔内，<strong>固定不动</strong></td>
+</tr>
+<tr>
+<td><strong>滚动体</strong></td>
+<td>在内、外圈滚道之间滚动，是承载的核心</td>
+</tr>
+<tr>
+<td><strong>保持架</strong></td>
+<td>把滚动体均匀隔开，防止相互摩擦</td>
+</tr>
+</tbody></table>
+<p>要点补充：</p>
+<ul>
+<li>内圈的<strong>外表面</strong>、外圈的<strong>内表面</strong>上都开有<strong>沟槽（滚道）</strong>，滚动体在其中滚动；</li>
+<li>内圈随轴转、外圈固定，滚动体在两圈之间做复合运动；</li>
+<li>轴承两端常设<strong>防尘盖 &#x2F; 密封圈</strong>：防尘、防止润滑脂泄漏，并限制轴向窜动。</li>
+</ul>
+<hr>
+<h3 id="4-3-调心与偏位角"><a href="#4-3-调心与偏位角" class="headerlink" title="4.3 调心与偏位角"></a>4.3 调心与偏位角</h3><ul>
+<li>轴受力后会产生<strong>弯曲变形</strong>，实际轴线偏离理论轴线；</li>
+<li><strong>调心轴承</strong>：具备自动调心功能，能让轴<strong>回到原来的轴线位置</strong>；</li>
+<li><strong>偏位角（偏移角）</strong>：理论轴线与实际轴线之间的夹角——这是衡量调心能力的核心指标；</li>
+<li>调心球轴承的偏位角约为 <strong>2°～3°</strong>，超出后需改进结构才能适应。</li>
+</ul>
+<blockquote>
+<p>选调心轴承的场合：轴有明显的<strong>挠曲变形</strong>，或两轴承座孔<strong>同轴度差</strong>、安装难以对中时。</p>
+</blockquote>
+<hr>
+<h3 id="4-4-极限转速"><a href="#4-4-极限转速" class="headerlink" title="4.4 极限转速"></a>4.4 极限转速</h3><ul>
+<li><strong>定义</strong>：在保证一定润滑条件下，轴承能够承受的<strong>最高工作转速</strong>；</li>
+<li><strong>使用原则</strong>：轴的工作转速<strong>必须小于</strong>轴承的极限转速；</li>
+<li><strong>规律</strong>：<ul>
+<li>球轴承摩擦小 → 极限转速<strong>高</strong>；</li>
+<li>滚子轴承摩擦大 → 极限转速<strong>低</strong>；</li>
+<li>推力轴承极限转速<strong>最低</strong>，高速时滚动体有被甩出的风险。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="4-5-轴承的分类"><a href="#4-5-轴承的分类" class="headerlink" title="4.5 轴承的分类"></a>4.5 轴承的分类</h3><h4 id="按承载方向"><a href="#按承载方向" class="headerlink" title="按承载方向"></a>按承载方向</h4><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>承受的载荷</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>向心轴承</strong></td>
+<td>主要承受<strong>径向</strong>载荷（垂直于轴线）</td>
+</tr>
+<tr>
+<td><strong>推力轴承</strong></td>
+<td>主要承受<strong>轴向</strong>载荷（沿轴线方向）</td>
+</tr>
+</tbody></table>
+<p><strong>接触角 $\alpha$ 的作用</strong>：接触角越大，轴承承受<strong>轴向力</strong>的能力越强。</p>
+<ul>
+<li>$\alpha&#x3D;0$：接触方向与径向一致 → 典型为<strong>深沟球轴承</strong>；</li>
+<li>接触角增大 → <strong>角接触球轴承</strong>（$\alpha$ &#x3D; 15°、25°、40°）。</li>
+</ul>
+<h4 id="按滚动体形状"><a href="#按滚动体形状" class="headerlink" title="按滚动体形状"></a>按滚动体形状</h4><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>接触形式</th>
+<th>承载能力</th>
+<th>极限转速</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>球轴承</strong></td>
+<td>点接触</td>
+<td>较低</td>
+<td>较高（摩擦小）</td>
+</tr>
+<tr>
+<td><strong>滚子轴承</strong></td>
+<td>线接触</td>
+<td>较高（约为球轴承的 1.5～3 倍）</td>
+<td>较低（摩擦大）</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>课堂原话：「滚子轴承为什么比球轴承承载能力高？因为它是<strong>线接触</strong>。」</p>
+</blockquote>
+<h4 id="其他分类"><a href="#其他分类" class="headerlink" title="其他分类"></a>其他分类</h4><ul>
+<li>按滚动体列数：<strong>单列 &#x2F; 双列 &#x2F; 多列</strong>；</li>
+<li>按能否调心：<strong>调心 &#x2F; 非调心</strong>；</li>
+<li>按内外圈能否分离：<strong>可分离 &#x2F; 不可分离</strong>。</li>
+</ul>
+<hr>
+<h3 id="4-6-轴承代号"><a href="#4-6-轴承代号" class="headerlink" title="4.6 轴承代号"></a>4.6 轴承代号</h3><h4 id="基本代号的构成（5-位）"><a href="#基本代号的构成（5-位）" class="headerlink" title="基本代号的构成（5 位）"></a>基本代号的构成（5 位）</h4><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">6   2   08<br>|   |   |<br>|   |   `-- 内径代号（2 位）<br>|   `------ 尺寸系列代号（宽度系列 + 直径系列）<br>`---------- 类型代号（1 位）<br></code></pre></td></tr></table></figure>
+
+<h4 id="类型代号（常用）"><a href="#类型代号（常用）" class="headerlink" title="类型代号（常用）"></a>类型代号（常用）</h4><table>
+<thead>
+<tr>
+<th>代号</th>
+<th>轴承类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>调心球轴承</td>
+</tr>
+<tr>
+<td>2</td>
+<td>调心滚子轴承</td>
+</tr>
+<tr>
+<td>3</td>
+<td>圆锥滚子轴承</td>
+</tr>
+<tr>
+<td>5</td>
+<td>推力球轴承</td>
+</tr>
+<tr>
+<td>6</td>
+<td>深沟球轴承</td>
+</tr>
+<tr>
+<td>7</td>
+<td>角接触球轴承</td>
+</tr>
+<tr>
+<td>N</td>
+<td>圆柱滚子轴承</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>课堂强调：<strong>6 类是深沟球</strong>（最常用）、<strong>7 类是角接触球</strong>。</p>
+</blockquote>
+<h4 id="内径代号（必记）"><a href="#内径代号（必记）" class="headerlink" title="内径代号（必记）"></a>内径代号（必记）</h4><table>
+<thead>
+<tr>
+<th>内径 $d$</th>
+<th>内径代号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>10 mm</td>
+<td>00</td>
+</tr>
+<tr>
+<td>12 mm</td>
+<td>01</td>
+</tr>
+<tr>
+<td>15 mm</td>
+<td>02</td>
+</tr>
+<tr>
+<td>17 mm</td>
+<td>03</td>
+</tr>
+<tr>
+<td>20～480 mm（5 的倍数）</td>
+<td>$d \div 5$</td>
+</tr>
+<tr>
+<td>≥ 500 mm</td>
+<td>直接标注内径（用斜杠分隔）</td>
+</tr>
+</tbody></table>
+<p><strong>反向推算</strong>：已知内径代号 ≥ 04 时，内径 $d$ &#x3D; 内径代号 × 5（mm）。</p>
+<p>例：<code>6208</code> → 内径代号 08 → $d &#x3D; 8 \times 5 &#x3D; 40$ mm。</p>
+<h4 id="公差等级"><a href="#公差等级" class="headerlink" title="公差等级"></a>公差等级</h4><p>由低到高：<strong>P0 &lt; P6 &lt; P5 &lt; P4 &lt; P2</strong>。</p>
+<ul>
+<li><strong>P0</strong> 为普通级，在代号中<strong>省略</strong>；</li>
+<li>等级越高，旋转精度越好，价格也越高。</li>
+</ul>
+<h4 id="配置（成对安装）"><a href="#配置（成对安装）" class="headerlink" title="配置（成对安装）"></a>配置（成对安装）</h4><p>成对安装的角接触球轴承 &#x2F; 圆锥滚子轴承，用后置代号表示配置方式：</p>
+<table>
+<thead>
+<tr>
+<th>代号</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DF</td>
+<td>面对面</td>
+</tr>
+<tr>
+<td>DB</td>
+<td>背对背</td>
+</tr>
+<tr>
+<td>DT</td>
+<td>串联</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>课堂提到的「面对面」配置即 DF。</p>
+</blockquote>
+<hr>
+<h3 id="4-7-常用轴承类型详解"><a href="#4-7-常用轴承类型详解" class="headerlink" title="4.7 常用轴承类型详解"></a>4.7 常用轴承类型详解</h3><h4 id="调心球轴承（1-类）"><a href="#调心球轴承（1-类）" class="headerlink" title="调心球轴承（1 类）"></a>调心球轴承（1 类）</h4><ul>
+<li><strong>结构</strong>：外圈滚道为<strong>球面</strong>，滚动体为两列球（课堂上描述为「两个球、球上方有两个圆弧」）；</li>
+<li><strong>承载</strong>：以径向为主，可承受<strong>较小的轴向载荷</strong>；</li>
+<li><strong>极限转速</strong>：<strong>中等</strong>；</li>
+<li><strong>偏位角</strong>：约 2°～3°，具备自动调心能力。</li>
+</ul>
+<h4 id="圆锥滚子轴承（3-类）"><a href="#圆锥滚子轴承（3-类）" class="headerlink" title="圆锥滚子轴承（3 类）"></a>圆锥滚子轴承（3 类）</h4><ul>
+<li><strong>结构</strong>：外圈一端为<strong>大头</strong>、另一端为<strong>小端</strong>，滚动体为圆锥滚子；</li>
+<li><strong>安装</strong>：分<strong>正装</strong>与<strong>反装</strong>；</li>
+<li><strong>承载</strong>：由于是<strong>线接触</strong>，整体承载能力<strong>大于角接触球轴承</strong>（后者为点接触）；</li>
+<li><strong>使用</strong>：<strong>必须成对使用</strong>。</li>
+</ul>
+<h4 id="深沟球轴承（6-类）"><a href="#深沟球轴承（6-类）" class="headerlink" title="深沟球轴承（6 类）"></a>深沟球轴承（6 类）</h4><ul>
+<li><strong>最常用、性价比最高</strong>的一类；</li>
+<li><strong>承载</strong>：主要承受径向载荷，也能承受<strong>较小的轴向载荷</strong>；</li>
+<li><strong>极限转速</strong>：<strong>高</strong>（滚动体为球，摩擦小）。</li>
+</ul>
+<h4 id="角接触球轴承（7-类）"><a href="#角接触球轴承（7-类）" class="headerlink" title="角接触球轴承（7 类）"></a>角接触球轴承（7 类）</h4><ul>
+<li>接触角有 15°、25°、40° 等规格（对应不同后缀）；</li>
+<li>能同时承受径向载荷与<strong>较大的轴向载荷</strong>；</li>
+<li><strong>必须成对使用</strong>，采用面对面（DF）或背对背（DB）配置。</li>
+</ul>
+<hr>
+<h3 id="4-8-轴承类型的选用"><a href="#4-8-轴承类型的选用" class="headerlink" title="4.8 轴承类型的选用"></a>4.8 轴承类型的选用</h3><h4 id="第一步：按载荷方向"><a href="#第一步：按载荷方向" class="headerlink" title="第一步：按载荷方向"></a>第一步：按载荷方向</h4><table>
+<thead>
+<tr>
+<th>载荷情况</th>
+<th>推荐类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>纯径向</td>
+<td>深沟球轴承、圆柱滚子轴承</td>
+</tr>
+<tr>
+<td>纯轴向（小）</td>
+<td>推力球轴承</td>
+</tr>
+<tr>
+<td>纯轴向（大）</td>
+<td>推力滚子轴承</td>
+</tr>
+<tr>
+<td>径向 + 较小轴向</td>
+<td>深沟球轴承、角接触球轴承</td>
+</tr>
+<tr>
+<td>径向 + 较大轴向</td>
+<td>角接触球轴承（大接触角）、圆锥滚子轴承</td>
+</tr>
+</tbody></table>
+<h4 id="第二步：按载荷大小"><a href="#第二步：按载荷大小" class="headerlink" title="第二步：按载荷大小"></a>第二步：按载荷大小</h4><ul>
+<li>载荷<strong>大</strong> → 选<strong>滚子轴承</strong>（线接触，承载能力约为球轴承的 1.5～3 倍）；</li>
+<li>载荷<strong>小</strong> → 选<strong>球轴承</strong>。</li>
+</ul>
+<h4 id="第三步：按转速"><a href="#第三步：按转速" class="headerlink" title="第三步：按转速"></a>第三步：按转速</h4><ul>
+<li>转速<strong>高</strong> → 选<strong>球轴承</strong>（摩擦小，极限转速高）；</li>
+<li>转速<strong>低</strong> → 选<strong>滚子轴承</strong>；</li>
+<li><strong>推力轴承极限转速最低</strong>，高速场合不宜使用——转速很高时滚动体可能被甩出，此时应改用角接触球轴承等。</li>
+</ul>
+<h4 id="第四步：按调心要求"><a href="#第四步：按调心要求" class="headerlink" title="第四步：按调心要求"></a>第四步：按调心要求</h4><ul>
+<li>轴有挠曲变形、或轴承座孔同轴度差 → 选<strong>调心轴承</strong>。</li>
+</ul>
+<h4 id="经济性"><a href="#经济性" class="headerlink" title="经济性"></a>经济性</h4><p>一般情况下<strong>球轴承比滚子轴承便宜</strong>，因此优先选球轴承；但最终要结合载荷、转速等条件综合考虑。</p>
+<blockquote>
+<p>例外：<strong>3 类（圆锥滚子）和 7 类（角接触球）</strong>在使用时通常<strong>都需要成对安装</strong>（正装或反装）。</p>
+</blockquote>
+<hr>
+<h3 id="4-9-滚动轴承的受力分析"><a href="#4-9-滚动轴承的受力分析" class="headerlink" title="4.9 滚动轴承的受力分析"></a>4.9 滚动轴承的受力分析</h3><p>轴承受径向力 $F$ 时，各滚动体的受力<strong>并不相等</strong>：</p>
+<ul>
+<li>位于<strong>最下方</strong>的滚动体受力<strong>最大</strong>；</li>
+<li>越往两侧，滚动体受到的径向分力<strong>越小</strong>；</li>
+<li>到水平轴线附近时基本不受力。</li>
+</ul>
+<p><strong>滚动体的受力随时间变化</strong>：滚动体每转过一圈，只在<strong>下方受力区</strong>内受到载荷，且力的大小<strong>从小到大、再减小</strong>——即承受<strong>循环变化的接触应力</strong>。</p>
+<p><strong>主要失效形式</strong>：接触点的<strong>疲劳</strong>（点蚀）、<strong>磨损</strong>、<strong>塑性变形</strong>。</p>
+<blockquote>
+<p>因此轴承寿命计算主要围绕<strong>接触疲劳</strong>展开。</p>
+</blockquote>
+<hr>
+<h3 id="4-10-轴承的寿命"><a href="#4-10-轴承的寿命" class="headerlink" title="4.10 轴承的寿命"></a>4.10 轴承的寿命</h3><h4 id="两个基本概念"><a href="#两个基本概念" class="headerlink" title="两个基本概念"></a>两个基本概念</h4><table>
+<thead>
+<tr>
+<th>概念</th>
+<th>定义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>总寿命</strong></td>
+<td>轴承从开始运转到失效的全部时间（可用<strong>转数</strong>或<strong>小时</strong>表示）</td>
+</tr>
+<tr>
+<td><strong>基本额定寿命 $L_{10}$</strong></td>
+<td>一批相同轴承在相同条件下运转，其中 <strong>10% 出现失效</strong>（90% 仍能正常工作）时的寿命</td>
+</tr>
+</tbody></table>
+<h4 id="寿命计算公式"><a href="#寿命计算公式" class="headerlink" title="寿命计算公式"></a>寿命计算公式</h4><p>$$L_{10}&#x3D;\left(\frac{C}{P}\right)^{\varepsilon}$$</p>
+<p>$$L_{10h}&#x3D;\frac{10^{6}}{60n}\left(\frac{C}{P}\right)^{\varepsilon}$$</p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>含义</th>
+<th>单位</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$L_{10}$</td>
+<td>基本额定寿命（以 $10^6$ 转为单位）</td>
+<td>$10^6$ r</td>
+</tr>
+<tr>
+<td>$L_{10h}$</td>
+<td>基本额定寿命（以小时为单位）</td>
+<td>h</td>
+</tr>
+<tr>
+<td>$C$</td>
+<td>基本额定动载荷</td>
+<td>N</td>
+</tr>
+<tr>
+<td>$P$</td>
+<td>当量动载荷</td>
+<td>N</td>
+</tr>
+<tr>
+<td>$n$</td>
+<td>转速</td>
+<td>r&#x2F;min</td>
+</tr>
+<tr>
+<td>$\varepsilon$</td>
+<td>寿命指数：球轴承 $\varepsilon&#x3D;3$，滚子轴承 $\varepsilon&#x3D;10&#x2F;3$</td>
+<td>—</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>$C$ 越大，说明轴承能承受的载荷越大，寿命越长。</p>
+</blockquote>
+<h4 id="当量动载荷"><a href="#当量动载荷" class="headerlink" title="当量动载荷"></a>当量动载荷</h4><p>$$P&#x3D;XF_r+YF_a$$</p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$F_r$</td>
+<td>径向载荷</td>
+</tr>
+<tr>
+<td>$F_a$</td>
+<td>轴向载荷</td>
+</tr>
+<tr>
+<td>$X$</td>
+<td>径向动载荷系数</td>
+</tr>
+<tr>
+<td>$Y$</td>
+<td>轴向动载荷系数</td>
+</tr>
+</tbody></table>
+<ul>
+<li>$X$、$Y$ 需<strong>查表</strong>确定（课堂提及教材第 143 页的表）；</li>
+<li><strong>单列、双列、成对安装</strong>的轴承，$X$、$Y$ 取值<strong>不同</strong>，查表时要看清是哪一种。</li>
+</ul>
+<hr>
+<h3 id="4-11-蜗杆蜗轮传动（引入）"><a href="#4-11-蜗杆蜗轮传动（引入）" class="headerlink" title="4.11 蜗杆蜗轮传动（引入）"></a>4.11 蜗杆蜗轮传动（引入）</h3><h4 id="蜗杆与蜗轮的区分"><a href="#蜗杆与蜗轮的区分" class="headerlink" title="蜗杆与蜗轮的区分"></a>蜗杆与蜗轮的区分</h4><ul>
+<li><strong>蜗杆</strong>：外形类似一根<strong>圆柱（矩形）</strong>，是<strong>主动件</strong>；</li>
+<li><strong>蜗轮</strong>：外缘呈<strong>圆弧形</strong>，包住蜗杆，是<strong>从动件</strong>；</li>
+<li>两者啮合处的接触也是<strong>圆弧接触</strong>。</li>
+</ul>
+<h4 id="主要参数"><a href="#主要参数" class="headerlink" title="主要参数"></a>主要参数</h4><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>蜗杆头数 $z_1$</td>
+<td>常用 1、2、4、6</td>
+</tr>
+<tr>
+<td>蜗轮齿数 $z_2$</td>
+<td>一般取 28～80</td>
+</tr>
+<tr>
+<td>传动比 $i$</td>
+<td>$i&#x3D;z_2&#x2F;z_1$</td>
+</tr>
+<tr>
+<td>旋向</td>
+<td>右旋 &#x2F; 左旋</td>
+</tr>
+</tbody></table>
+<p><strong>举例</strong>：若 $z_1&#x3D;2$、要求 $i&#x3D;14$，则 $z_2 &#x3D; i \cdot z_1 &#x3D; 28$。</p>
+<blockquote>
+<p>课堂还提到蜗杆的<strong>直径系数</strong> $q$、模数等参数，以及与齿轮传动（直齿轮、斜齿轮、锥齿轮）的对比——这部分是下一节课的内容。</p>
+</blockquote>
+<hr>
+<h2 id="五、例题与解题方法汇总"><a href="#五、例题与解题方法汇总" class="headerlink" title="五、例题与解题方法汇总"></a>五、例题与解题方法汇总</h2><h3 id="题型-1：轮系传动比计算"><a href="#题型-1：轮系传动比计算" class="headerlink" title="题型 1：轮系传动比计算"></a>题型 1：轮系传动比计算</h3><ol>
+<li>判断是<strong>定轴</strong>、<strong>周转</strong>还是<strong>复合</strong>轮系；</li>
+<li>定轴部分：直接用 $i&#x3D;(-1)^m \times$ 齿数比；</li>
+<li>周转部分：用<strong>转化机构法</strong>（反转法），注意 $n_H$；</li>
+<li>复合轮系：分块列式 → 找联系条件 → 联立求解。</li>
+</ol>
+<h3 id="题型-2：轴承代号解读"><a href="#题型-2：轴承代号解读" class="headerlink" title="题型 2：轴承代号解读"></a>题型 2：轴承代号解读</h3><p><strong>例</strong>：解读 <code>6208</code>。</p>
+<ul>
+<li><code>6</code> → 类型代号：深沟球轴承；</li>
+<li><code>2</code> → 尺寸系列：轻系列（直径系列 2）；</li>
+<li><code>08</code> → 内径代号：$d &#x3D; 8 \times 5 &#x3D; 40$ mm。</li>
+</ul>
+<p><strong>例</strong>：解读 <code>30208</code>。</p>
+<ul>
+<li><code>3</code> → 圆锥滚子轴承；</li>
+<li><code>02</code> → 尺寸系列；</li>
+<li><code>08</code> → $d &#x3D; 40$ mm。</li>
+</ul>
+<h3 id="题型-3：轴承寿命计算"><a href="#题型-3：轴承寿命计算" class="headerlink" title="题型 3：轴承寿命计算"></a>题型 3：轴承寿命计算</h3><ol>
+<li>求出轴承的<strong>径向载荷 $F_r$</strong> 与**轴向载荷 $F_a$**；</li>
+<li>查表取 $X$、$Y$，算<strong>当量动载荷</strong> $P&#x3D;XF_r+YF_a$；</li>
+<li>代入 $L_{10}&#x3D;(C&#x2F;P)^{\varepsilon}$ 得寿命（$10^6$ 转）；</li>
+<li>需要小时数时，再用 $L_{10h}&#x3D;\frac{10^6}{60n}\left(\frac{C}{P}\right)^{\varepsilon}$。</li>
+</ol>
+<h3 id="题型-4：轴承类型选择"><a href="#题型-4：轴承类型选择" class="headerlink" title="题型 4：轴承类型选择"></a>题型 4：轴承类型选择</h3><p>按「<strong>载荷方向 → 载荷大小 → 转速 → 调心要求</strong>」四步逐一筛选。</p>
+<hr>
+<h2 id="六、术语速查表"><a href="#六、术语速查表" class="headerlink" title="六、术语速查表"></a>六、术语速查表</h2><table>
+<thead>
+<tr>
+<th>术语</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>定轴轮系</td>
+<td>各齿轮轴线位置固定的轮系</td>
+</tr>
+<tr>
+<td>周转轮系</td>
+<td>含行星架、轴线可动的轮系</td>
+</tr>
+<tr>
+<td>复合轮系</td>
+<td>定轴与周转轮系的组合</td>
+</tr>
+<tr>
+<td>行星架 $H$</td>
+<td>周转轮系中承载行星轮的构件</td>
+</tr>
+<tr>
+<td>转化机构法</td>
+<td>给轮系加 $-n_H$，把周转轮系转化为定轴轮系的方法</td>
+</tr>
+<tr>
+<td>同心条件</td>
+<td>周转轮系中中心距相等的装配条件</td>
+</tr>
+<tr>
+<td>偏位角</td>
+<td>理论轴线与实际轴线的夹角，衡量调心能力</td>
+</tr>
+<tr>
+<td>调心轴承</td>
+<td>能自动调整轴线位置的轴承</td>
+</tr>
+<tr>
+<td>极限转速</td>
+<td>保证一定润滑条件下允许的最高工作转速</td>
+</tr>
+<tr>
+<td>向心轴承</td>
+<td>主要承受径向载荷的轴承</td>
+</tr>
+<tr>
+<td>推力轴承</td>
+<td>主要承受轴向载荷的轴承</td>
+</tr>
+<tr>
+<td>接触角 $\alpha$</td>
+<td>滚动体与滚道接触点法线与径向的夹角</td>
+</tr>
+<tr>
+<td>点接触</td>
+<td>球与滚道的接触形式，承载能力低、摩擦小</td>
+</tr>
+<tr>
+<td>线接触</td>
+<td>滚子与滚道的接触形式，承载能力高、摩擦大</td>
+</tr>
+<tr>
+<td>基本额定动载荷 $C$</td>
+<td>使轴承达到 $10^6$ 转额定寿命的载荷</td>
+</tr>
+<tr>
+<td>当量动载荷 $P$</td>
+<td>把径向、轴向载荷折算成的等效载荷</td>
+</tr>
+<tr>
+<td>基本额定寿命 $L_{10}$</td>
+<td>10% 失效、90% 仍能工作时的寿命</td>
+</tr>
+<tr>
+<td>蜗杆头数 $z_1$</td>
+<td>蜗杆上螺旋线的条数，常用 1、2、4、6</td>
+</tr>
+<tr>
+<td>蜗轮齿数 $z_2$</td>
+<td>蜗轮的齿数，一般 28～80</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="七、课堂强调与复习重点"><a href="#七、课堂强调与复习重点" class="headerlink" title="七、课堂强调与复习重点"></a>七、课堂强调与复习重点</h2><ol>
+<li><strong>滚动轴承是本节重点</strong>，代号（尤其<strong>内径代号</strong>）和选型是必考内容。</li>
+<li>轮系中「<strong>不合理的结构改进</strong>」是重点，但题型固定，多练例题即可。</li>
+<li>传动比的<strong>符号</strong>只对平面轮系有效，空间轮系必须画箭头。</li>
+<li><strong>内径代号</strong>要背熟：10&#x2F;12&#x2F;15&#x2F;17 → 00&#x2F;01&#x2F;02&#x2F;03；20～500 → 内径 ÷ 5。</li>
+<li>选型口诀：<strong>先方向、后大小、再看转速、最后调心</strong>。</li>
+<li><strong>3 类和 7 类必须成对使用</strong>（正装 &#x2F; 反装）。</li>
+<li>寿命计算要区分<strong>转数</strong>（$L_{10}$）与<strong>小时数</strong>（$L_{10h}$），别把单位搞混。</li>
+<li>轴承寿命的设计原则：轴承的寿命应与轴上其他零件匹配，做到<strong>便于及时更换和维修</strong>。</li>
+</ol>
+<hr>
+<h2 id="八、【以教材为准】待核对清单"><a href="#八、【以教材为准】待核对清单" class="headerlink" title="八、【以教材为准】待核对清单"></a>八、【以教材为准】待核对清单</h2><p>以下内容课堂口述不够完整或存在识别歧义，<strong>请以教材为准</strong>：</p>
+<ol>
+<li><strong>内径 ≥ 500 mm 的代号表示方法</strong>：课堂只提到「用分数表示」，具体写法需查教材。</li>
+<li><strong>当量动载荷系数 $X$、$Y$ 的具体取值</strong>：需查教材第 143 页对应的表格，并区分单列 &#x2F; 双列 &#x2F; 成对安装。</li>
+<li><strong>蜗轮齿数下限</strong>：课堂口述为「28」，建议按教材确认（一般为 $z_2 \geq 28$）。</li>
+<li><strong>角接触球轴承后缀与接触角的对应关系</strong>（C &#x2F; AC &#x2F; B 分别对应 15° &#x2F; 25° &#x2F; 40°）：课堂只提到 15°，请核对教材。</li>
+<li><strong>圆锥滚子轴承正装 &#x2F; 反装的准确定义</strong>：课堂表述为「面对面 &#x2F; 背对背」，具体以教材图示为准。</li>
+<li><strong>老师提到的「F1～F5」系列符号</strong>：录音中该段识别不清，未能确定所指的力或系数，需对照教材或课件确认。</li>
+<li><strong>蜗杆直径系数 $q$ 与模数的关系</strong>：本节只作引入，待下节课展开。</li>
+</ol>
+<hr>
+<h2 id="九、复习自测"><a href="#九、复习自测" class="headerlink" title="九、复习自测"></a>九、复习自测</h2><ol>
+<li>定轴轮系与周转轮系的判别依据是什么？</li>
+<li>平面轮系传动比公式中的 $(-1)^m$，$m$ 代表什么？</li>
+<li>为什么空间轮系不能直接用正负号表示转向？</li>
+<li>简述转化机构法（反转法）的原理。</li>
+<li>复合轮系的解题步骤有哪几步？</li>
+<li>滚动轴承由哪四个基本零件组成？各自的作用是什么？</li>
+<li>内圈和外圈哪个随轴转动？</li>
+<li>什么是偏位角？调心轴承解决的是什么问题？</li>
+<li>极限转速的定义是什么？使用中有什么要求？</li>
+<li>按承载方向，轴承分为哪两类？</li>
+<li>接触角的大小对轴承性能有什么影响？</li>
+<li>球轴承与滚子轴承在接触形式、承载能力、极限转速上各有什么区别？</li>
+<li>轴承基本代号由哪几部分组成？</li>
+<li>内径为 45 mm 的轴承，其内径代号是多少？（答：09）</li>
+<li>写出 6208 各部分的含义，并计算其内径。</li>
+<li>轴承的公差等级从低到高依次是什么？</li>
+<li>哪两类轴承必须成对使用？</li>
+<li>轴承选型要考虑哪三个主要因素？各因素对应什么选型结论？</li>
+<li>什么是基本额定寿命 $L_{10}$？</li>
+<li>写出 $L_{10}$ 的计算公式，并说明 $\varepsilon$ 的取值。</li>
+<li>当量动载荷 $P$ 的表达式是什么？其中 $X$、$Y$ 如何确定？</li>
+<li>轴承受径向力时，哪个位置的滚动体受力最大？为什么滚动体承受的是循环应力？</li>
+<li>蜗杆和蜗轮在形状上如何区分？谁是主动件？</li>
+<li>已知蜗杆头数 $z_1&#x3D;2$、蜗轮齿数 $z_2&#x3D;40$，求传动比。</li>
+</ol>
+<hr>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1-%E6%BB%9A%E5%8A%A8%E8%BD%B4%E6%89%BF-%E8%9C%97%E6%9D%86%E4%BC%A0%E5%8A%A8/" class="print-no-link">#机械设计 滚动轴承 蜗杆传动</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>滚动轴承选型与寿命计算、轮系与蜗杆传动</div>
+      <div>https://tdexxx.github.io/2026/10/14/04_机械设计基础/机械设计_滚动轴承与轮系蜗杆_发布稿/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>tdexxx</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年10月14日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/10/14/02_%E7%94%B5%E6%B0%94%E6%8E%A7%E5%88%B6%E4%B8%8EPLC/%E7%94%B5%E6%B0%94%E6%8E%A7%E5%88%B6%E4%B8%8EPLC_%E4%BF%A1%E5%8F%B7%E5%88%86%E6%9E%90%E4%B8%8EPLC%E5%90%88%E5%A0%82_%E9%80%90%E5%AD%97%E7%A8%BF_ASR%E5%8E%9F%E5%A7%8B/" title="信号分析与 PLC 合堂课堂逐字稿（ASR 原始）">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">信号分析与 PLC 合堂课堂逐字稿（ASR 原始）</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/10/14/04_%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1_%E8%BD%AE%E7%B3%BB%E6%BB%9A%E5%8A%A8%E8%BD%B4%E6%89%BF%E8%9C%97%E6%9D%86_%E9%80%90%E5%AD%97%E7%A8%BF_ASR%E5%8E%9F%E5%A7%8B/" title="轮系、滚动轴承与蜗杆传动课堂逐字稿（ASR 原始）">
+                        <span class="hidden-mobile">轮系、滚动轴承与蜗杆传动课堂逐字稿（ASR 原始）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

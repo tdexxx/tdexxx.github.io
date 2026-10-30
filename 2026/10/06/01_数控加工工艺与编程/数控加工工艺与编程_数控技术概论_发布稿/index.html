@@ -1,0 +1,1091 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="tdexxx">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="数控技术概论笔记：数控与数控机床概念、加工六步流程、机床五大组成与开环&#x2F;半闭环&#x2F;闭环分类（含考点） 本文整理《数控技术绪论与机床基础》一讲。内容包括课程定位与考核要求、数控技术与数控机床的基本概念、从 NC 到 CNC 的发展历程、传统加工与数控加工的区别，重点讲清数控加工的六个工作步骤（程序编制→程序输入→译码→刀具补偿→插补→伺服控制与加工执行），尤其是难点”刀具补偿“和”">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数控技术概论：加工流程、机床组成与开闭环分类">
+<meta property="og:url" content="https://tdexxx.github.io/2026/10/06/01_%E6%95%B0%E6%8E%A7%E5%8A%A0%E5%B7%A5%E5%B7%A5%E8%89%BA%E4%B8%8E%E7%BC%96%E7%A8%8B/%E6%95%B0%E6%8E%A7%E5%8A%A0%E5%B7%A5%E5%B7%A5%E8%89%BA%E4%B8%8E%E7%BC%96%E7%A8%8B_%E6%95%B0%E6%8E%A7%E6%8A%80%E6%9C%AF%E6%A6%82%E8%AE%BA_%E5%8F%91%E5%B8%83%E7%A8%BF/index.html">
+<meta property="og:site_name" content="tdexxx的博客">
+<meta property="og:description" content="数控技术概论笔记：数控与数控机床概念、加工六步流程、机床五大组成与开环&#x2F;半闭环&#x2F;闭环分类（含考点） 本文整理《数控技术绪论与机床基础》一讲。内容包括课程定位与考核要求、数控技术与数控机床的基本概念、从 NC 到 CNC 的发展历程、传统加工与数控加工的区别，重点讲清数控加工的六个工作步骤（程序编制→程序输入→译码→刀具补偿→插补→伺服控制与加工执行），尤其是难点”刀具补偿“和”">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-10-06T14:09:02.000Z">
+<meta property="article:modified_time" content="2026-10-30T17:37:19.905Z">
+<meta property="article:author" content="tdexxx">
+<meta property="article:tag" content="数控编程 数控技术 概论">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>数控技术概论：加工流程、机床组成与开闭环分类 - tdexxx的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"tdexxx.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2022-12-10T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="数控技术概论：加工流程、机床组成与开闭环分类"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-10-06 22:09" pubdate>
+          2026年10月6日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          9.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          79 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">数控技术概论：加工流程、机床组成与开闭环分类</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="数控技术概论笔记：数控与数控机床概念、加工六步流程、机床五大组成与开环-半闭环-闭环分类（含考点）"><a href="#数控技术概论笔记：数控与数控机床概念、加工六步流程、机床五大组成与开环-半闭环-闭环分类（含考点）" class="headerlink" title="数控技术概论笔记：数控与数控机床概念、加工六步流程、机床五大组成与开环&#x2F;半闭环&#x2F;闭环分类（含考点）"></a>数控技术概论笔记：数控与数控机床概念、加工六步流程、机床五大组成与开环&#x2F;半闭环&#x2F;闭环分类（含考点）</h1><blockquote>
+<p>本文整理《数控技术绪论与机床基础》一讲。内容包括课程定位与考核要求、数控技术与数控机床的基本概念、从 NC 到 CNC 的发展历程、传统加工与数控加工的区别，重点讲清数控加工的<strong>六个工作步骤（程序编制→程序输入→译码→刀具补偿→插补→伺服控制与加工执行）</strong>，尤其是难点”<strong>刀具补偿</strong>“和”<strong>插补</strong>“；随后讲数控机床的<strong>五大组成部分</strong>（输入输出装置、数控装置、伺服系统、机床本体、测量反馈装置），以及两种最重要的分类——按运动轨迹分为<strong>点位、直线、轮廓控制</strong>，按伺服系统控制原理分为<strong>开环、半闭环、闭环控制</strong>（含三者精度、成本、维护与适用场合对比）。文末附流程与组成类比、典型例题、术语表、待核对清单和主动回忆题（含答案要点），适合绪论复习、期末梳理和后续编程学习打底。</p>
+</blockquote>
+<h2 id="一、核心结论"><a href="#一、核心结论" class="headerlink" title="一、核心结论"></a>一、核心结论</h2><ul>
+<li>本课程是机械专业核心课，共 <strong>24 学时（12 次出勤）</strong>，重点讲<strong>前五章（以数控编程为核心）</strong>；闭卷考试，成绩由期末考试、平时作业（约占 **20%**）和课堂表现构成；课程结束有课程设计，要求能编写中等复杂零件的控制程序。</li>
+<li><strong>数控（NC，数字控制）</strong>：用数字化信息（数字信号）对设备的运动及其生产（加工）过程进行控制的技术；对象不限于机床，还包括芯片设备、医疗设备等。</li>
+<li><strong>机床数控技术</strong>：用数字化信息对机床的运动及其加工过程进行控制；<strong>数控机床＝装有数控系统的机床</strong>，普通机床加装数控装置后也可称为数控机床，二者根本区别在于有没有数控系统。</li>
+<li>发展历程与计算机相似：<strong>电子管→晶体管→小规模集成电路</strong>，这三阶段只有硬件逻辑、没有计算机，统称 <strong>NC（数字控制）</strong>；小型计算机出现后进入 <strong>CNC（计算机数字控制，第一个 C 是 Computer）</strong> 时代，再发展到微处理器、个人计算机控制。</li>
+<li>传统加工靠工人按工序卡手动操作（手摇进给、肉眼看、卡尺量）；数控加工由编程员<strong>编好程序</strong>、经 U 盘&#x2F;WiFi 输入，机床自动加工，显著降低劳动强度（一人可看多台），但要求保证首件合格、会对刀找正。</li>
+<li><strong>数控加工六步流程</strong>：①程序编制 → ②程序输入 → ③译码 → ④刀具补偿 → ⑤插补 → ⑥位置控制与加工执行（伺服驱动）。</li>
+<li><strong>刀具补偿</strong>：编程按零件轮廓，实际切削由刀具完成，必须把零件轮廓换算成<strong>刀具中心（刀位点）的实际轨迹</strong>，分<strong>刀具半径补偿和长度补偿</strong>（如 G41 为刀具半径左补偿）。</li>
+<li><strong>插补</strong>：系统只知道起点、终点和轮廓类型，而机床只能走直线；插补对曲线进行<strong>数据点密化</strong>，把曲线分成许多微小直线段、逐段发给伺服系统去逼近曲线；点越密轮廓精度越高，点太少圆会变成多边形。</li>
+<li><strong>数控机床五大组成</strong>：输入输出装置、数控装置（核心&#x2F;大脑）、伺服系统（驱动执行）、机床本体（机械执行部件）、测量反馈装置（检测实际位移并回传）。</li>
+<li>按运动轨迹分三类（复杂度递增）：<strong>点位控制</strong>（只保证点坐标准确、移动中不切削，如钻&#x2F;镗&#x2F;冲）、<strong>直线控制</strong>（只能沿坐标轴方向或特定角度直线切削，应用少）、<strong>轮廓控制</strong>（多轴联动走任意曲线曲面，最复杂、应用最广，加工中心多属此类）。</li>
+<li>按伺服系统控制原理分三类：<ul>
+<li><strong>开环</strong>：无测量反馈、信号单向，多用步进电机，不能修正误差，结构简单成本低但精度差；</li>
+<li><strong>闭环</strong>：测量装置（光栅尺等）直接测最终执行部件（工作台&#x2F;刀架）位移并反馈比较、消除偏差，精度最高，但测量件受环境影响大、系统易不稳定、调试维护难、成本高；</li>
+<li><strong>半闭环</strong>：测量装置（编码器等）装在电机轴&#x2F;丝杠端，测转角<strong>间接推算</strong>位移，丝杠螺距误差和间隙不能完全消除、精度略低于闭环，但稳定、结构简单、维护方便、成本较低，<strong>现代数控机床应用最广</strong>。</li>
+</ul>
+</li>
+<li>数控框架（输入—控制—驱动—执行—反馈）具有普遍性，换成空调、流水线、打印机等设备同样成立，只是元件名称不同。</li>
+</ul>
+<h2 id="二、知识结构"><a href="#二、知识结构" class="headerlink" title="二、知识结构"></a>二、知识结构</h2><ul>
+<li>数控技术概论<ul>
+<li>课程定位：24 学时、前五章、闭卷、作业 20%、课程设计</li>
+<li>基本概念：数控 &#x2F; 机床数控技术 &#x2F; 数控机床；NC→CNC 发展史</li>
+<li>加工流程<ul>
+<li>传统加工 vs 数控加工</li>
+<li>六步：编程 → 输入 → 译码 → 刀具补偿 → 插补 → 伺服执行</li>
+<li>难点：刀具补偿（半径&#x2F;长度）、插补（数据密化、微直线逼近）</li>
+</ul>
+</li>
+<li>机床五大组成：输入输出 &#x2F; 数控装置 &#x2F; 伺服系统 &#x2F; 机床本体 &#x2F; 测量反馈</li>
+<li>分类<ul>
+<li>按运动轨迹：点位 &#x2F; 直线 &#x2F; 轮廓</li>
+<li>按伺服原理：开环 &#x2F; 半闭环 &#x2F; 闭环</li>
+<li>按功能、按工艺用途（了解）</li>
+</ul>
+</li>
+<li>特点、适用范围与发展趋势（智能化、多轴联动）</li>
+</ul>
+</li>
+</ul>
+<h2 id="三、详细笔记"><a href="#三、详细笔记" class="headerlink" title="三、详细笔记"></a>三、详细笔记</h2><h3 id="3-1-课程定位、考核与学习目标"><a href="#3-1-课程定位、考核与学习目标" class="headerlink" title="3.1 课程定位、考核与学习目标"></a>3.1 课程定位、考核与学习目标</h3><ul>
+<li><strong>课程性质</strong>：机械专业（或并入机械的原数控专业）核心课，共 <strong>24 学时、约 12 次出勤</strong>。章节较多，受学时限制<strong>重点讲前五章，核心是数控编程</strong>；机床结构、故障诊断等 6～9 章视时间再作介绍。</li>
+<li><strong>考核方式</strong>：闭卷、一张试卷；成绩由<strong>期末考试成绩＋平时作业（约占 20%）＋课堂表现（出勤等）</strong>构成。</li>
+<li><strong>学习目标（四类，重点在第 2 类）</strong>：<ol>
+<li>熟悉数控机床的结构、工作原理和机械部件的技术要求（一般性了解，因机床种类、厂家繁多，具体设备到岗位再深入）；</li>
+<li><strong>（重点）熟悉典型数控机床的自动编程系统与工作原理</strong>：掌握编程基础理论，能编写功能中等复杂零件的加工程序，并尽量具备加工能力——在没有真机的校区可用<strong>仿真软件验证程序</strong>，并练习对刀、找正等操作；</li>
+<li>了解数控系统的基本组成；</li>
+<li>具备查阅技术资料（编程手册、代码表）的能力——很多 G、M 代码记不住，要会查手册。</li>
+</ol>
+</li>
+<li><strong>课程设计</strong>：课程结束后安排，要求具备编写中等复杂零件控制程序的能力；因本课程未涵盖 CAD，绘图环节（手绘意义不大）将根据是否学过 CAD 再作调整。</li>
+<li>上课需自备教材（学校未订可自行网购，保证手头有书）。</li>
+</ul>
+<h3 id="3-2-数控技术与数控机床的基本概念"><a href="#3-2-数控技术与数控机床的基本概念" class="headerlink" title="3.2 数控技术与数控机床的基本概念"></a>3.2 数控技术与数控机床的基本概念</h3><ul>
+<li><strong>数控（数字控制，Numerical Control）</strong>：凡是用<strong>数字化的信号&#x2F;信息</strong>去控制一台机器的运动或生产过程，都可称为数控；其控制对象很广，除机床外还包括芯片制造设备上的电机、医疗设备等。</li>
+<li><strong>机床数控技术</strong>：把数控应用到机床上，即用数字化信息对<strong>机床的运动和加工过程进行控制</strong>的技术。数控系统一般包含数控装置、可编程控制器（PLC）、主轴驱动、进给装置等。</li>
+<li><strong>数控机床</strong>：<strong>装备（安装）了数控系统、并由该系统完成加工运动和辅助运动的机床</strong>。老式普通机床只要改装、加装数控装置，也能成为数控机床。数控机床与普通机床的根本区别，就在于<strong>是否装有数控系统</strong>。</li>
+<li>为什么课程以机床为数控的典型对象：<ul>
+<li>机床是”<strong>工作母机</strong>“，其他许多设备都靠机床加工制造；</li>
+<li>机床的控制精度、运动控制的复杂性、设备本身的复杂程度都高于一般机械；</li>
+<li>机床独立运动的坐标轴数量多（三轴、四轴、五轴联动），最具代表性；</li>
+<li>机械行业无论做结构、仿真还是嵌入式，几乎都会接触机床，学机床数控的普适性最强。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-3-数控技术的发展历程（NC-→-CNC）"><a href="#3-3-数控技术的发展历程（NC-→-CNC）" class="headerlink" title="3.3 数控技术的发展历程（NC → CNC）"></a>3.3 数控技术的发展历程（NC → CNC）</h3><ul>
+<li>数控技术的发展与计算机技术的发展历程相似，至今约 70 多年，大致经历：<ol>
+<li><strong>电子管</strong>数控；</li>
+<li><strong>晶体管</strong>数控；</li>
+<li><strong>小规模集成电路</strong>数控。</li>
+</ol>
+<ul>
+<li>以上三个阶段使用固定接线的硬件逻辑实现控制、内部没有计算机，统称为 <strong>NC（数字控制）</strong>；早期设备自由度不高（约三个坐标）。</li>
+</ul>
+<ol start="4">
+<li><strong>小型计算机</strong>出现后，用计算机存储的控制程序实现数字控制，进入 <strong>CNC（计算机数字控制，Computerized Numerical Control）</strong> 时代；此后又发展到用微处理器、个人计算机进行控制。今天所说的 CNC 操作员、数控编程，都是针对计算机控制的机床。</li>
+</ol>
+</li>
+<li>历史背景（了解，细节以教材为准）：20 世纪 40 年代，美国军方为加工直升机螺旋桨叶片等复杂精密零件，由 Parsons（帕森斯）公司提出设想、与麻省理工学院（MIT）合作，约在 <strong>1952 年研制出第一台三坐标数控铣床</strong>；此后日本、德国在数控机床和加工中心方面发展迅速。</li>
+<li>我国现状（了解）：高端五轴联动机床、加工中心仍较多采用德国、日本的数控系统和部件，国产高端数控有差距但在持续进步，相关人才紧缺。</li>
+</ul>
+<h3 id="3-4-传统加工与数控加工的区别"><a href="#3-4-传统加工与数控加工的区别" class="headerlink" title="3.4 传统加工与数控加工的区别"></a>3.4 传统加工与数控加工的区别</h3><p>以加工一个圆饼类零件为例：</p>
+<ul>
+<li><strong>传统（普通机床）加工路径</strong>：<ol>
+<li>技术人员根据图纸的形状、尺寸、材料、技术要求做<strong>工艺分析</strong>（用什么设备、分几道工序、走几次刀、每次切多深、何时测量）；</li>
+<li>填写<strong>工序卡</strong>（例如工序一：车端面，第一次走刀切 2 mm、第二次走刀切 1 mm，然后测量端面尺寸）；</li>
+<li>操作工拿着工序卡在普通机床上<strong>手动操作</strong>——手摇刀架进给、靠眼睛观察、用卡尺等量具测量，最终做出产品。</li>
+</ol>
+</li>
+<li><strong>数控加工路径</strong>：<ol>
+<li>同样先做工艺分析；</li>
+<li>由<strong>编程员编写加工程序</strong>（简单零件手工编程，复杂零件可用 CAM 软件自动生成）；</li>
+<li>程序文件存入 U 盘（或通过 WiFi&#x2F;通信）<strong>输入</strong>数控装置，早期也有纸带或在线输入；</li>
+<li>操作工完成装夹、对刀、首件确认后，机床即按程序<strong>自动运行</strong>。</li>
+</ol>
+</li>
+<li>区别与影响：数控加工把人从持续的手动操作中解放出来，<strong>显著降低劳动强度</strong>，一个工人可同时照看十几台机床，主要负责上下料、对刀和保证首件合格；加工一致性和复杂形状能力大幅提高。</li>
+</ul>
+<h3 id="3-5-数控加工的六个工作步骤（重点）"><a href="#3-5-数控加工的六个工作步骤（重点）" class="headerlink" title="3.5 数控加工的六个工作步骤（重点）"></a>3.5 数控加工的六个工作步骤（重点）</h3><p>从拿到图纸到加工出产品，数控加工（信息处理与执行）分为六步：</p>
+<ol>
+<li><strong>数控加工程序的编制</strong>：根据加工图纸上零件的形状、尺寸、材料和技术要求，确定工艺过程、工艺参数、刀具和切削用量等，把零件轮廓做数学处理（如把直线、点位换算成坐标 X、Y、Z 数值），再用规定的代码和程序段格式（G、M、S、F、T 等）编写程序，进行路径规划&#x2F;分段以确保正确，生成程序文件存储（U 盘等）。简单件由人工编写，复杂件可由 CAM 软件生成。</li>
+<li><strong>程序的输入</strong>：把加工程序、控制参数和补偿参数通过输入装置送入数控装置，常见方式是把存了程序的 U 盘插到机床 USB 口，也可用机床键盘直接键入或通过通信&#x2F;WiFi 传输。</li>
+<li><strong>译码（解码）</strong>：数控装置本质是一台专用计算机，不能直接执行程序段文本，需要按语法规则把程序段”翻译”成计算机能识别的数据格式（其中包含零件轮廓、起点终点、进给速度、切削液开关等信息）；译码同时进行语法检查，程序写错会<strong>报错提示</strong>。</li>
+<li><strong>刀具补偿</strong>：见 3.6。</li>
+<li><strong>插补</strong>：见 3.6。</li>
+<li><strong>位置控制与加工执行</strong>：插补输出的脉冲&#x2F;位移指令送给<strong>伺服系统</strong>，伺服电机按脉冲的数量、频率、方向转动，经联轴器、滚珠丝杠螺母副等把旋转变成工作台&#x2F;刀架的直线移动，并驱动主轴转动、刀具切削，最终把毛坯加工成产品；有反馈的系统在此过程中不断检测、比较、修正。</li>
+</ol>
+<blockquote>
+<p>岗位对应：前三步及补偿量的设定主要由<strong>编程员（技术岗）</strong>完成，译码、刀补运算、插补由数控装置内部自动完成；一线<strong>操作员</strong>负责装夹、对刀、上下料、首件检验和看护设备。小厂设备少时常一人兼任，大厂则分工明确。</p>
+</blockquote>
+<h3 id="3-6-难点详解：刀具补偿与插补"><a href="#3-6-难点详解：刀具补偿与插补" class="headerlink" title="3.6 难点详解：刀具补偿与插补"></a>3.6 难点详解：刀具补偿与插补</h3><h4 id="3-6-1-刀具补偿"><a href="#3-6-1-刀具补偿" class="headerlink" title="3.6.1 刀具补偿"></a>3.6.1 刀具补偿</h4><ul>
+<li><strong>为什么要补偿</strong>：编程时是按图纸上的<strong>零件轮廓</strong>（例如一个圆）编写坐标的，但真正切削的是刀具；刀具总有一定的半径和长度，刀位点（刀具中心&#x2F;刀尖基准点）并不在零件轮廓上。刀头可能偏左、偏右，刀具有长有短、刀尖方向各异，因此同一零件轮廓对应的<strong>刀具中心实际运动轨迹并不相同</strong>，必须经过补偿计算把”零件轮廓轨迹”换算成”刀具中心轨迹”。</li>
+<li><strong>两类补偿</strong>：<strong>刀具半径补偿</strong>和<strong>刀具长度补偿</strong>（后续编程章详讲）。</li>
+<li>举例：<strong>G41 表示刀具半径左补偿</strong>——沿刀具前进方向看，让刀具中心向零件轮廓左侧偏移一个刀具半径；与 G41 对应的还有右补偿 G42、取消补偿 G40。</li>
+</ul>
+<h4 id="3-6-2-插补"><a href="#3-6-2-插补" class="headerlink" title="3.6.2 插补"></a>3.6.2 插补</h4><ul>
+<li><strong>问题</strong>：编程时一般只给出轮廓的<strong>起点、终点和轮廓类型</strong>（直线&#x2F;圆弧等），而机床的执行部件本质上只能沿坐标轴做<strong>微小直线运动</strong>，并不能直接”画”出一条任意曲线。</li>
+<li><strong>插补的本质</strong>：数控系统根据输入的轮廓，边计算边在已知点之间”插入”一系列中间点，即对轮廓进行<strong>数据点密化</strong>，把曲线划分成许许多多微小的线段，每两个相邻点之间走一段微小直线，用大量微小直线段去<strong>逼近</strong>曲线轮廓（可理解为”插值”）。</li>
+<li><strong>精度关系</strong>：插补出的中间点越密，逼近误差越小、轮廓越光滑；点太少，加工圆时就会明显变成多边形，精度很差。</li>
+<li>插补运算在数控装置中实时完成，结果以脉冲形式不断送给伺服系统，常见有直线插补、圆弧插补等（程序中 <strong>G01 为直线插补</strong>）。</li>
+</ul>
+<h4 id="3-6-3-一个程序行示例（仅建立概念，第二章详讲）"><a href="#3-6-3-一个程序行示例（仅建立概念，第二章详讲）" class="headerlink" title="3.6.3 一个程序行示例（仅建立概念，第二章详讲）"></a>3.6.3 一个程序行示例（仅建立概念，第二章详讲）</h4><ul>
+<li><code>N5  G01 G41 X100.0 Y100.0 F100 M08</code>（示意，具体格式以教材&#x2F;系统为准）：<ul>
+<li><strong>N5</strong>：程序第 5 行的行号（顺序号），只用于标识，不产生动作；</li>
+<li><strong>G01</strong>：直线插补，刀具走直线；</li>
+<li><strong>G41</strong>：建立刀具半径左补偿；</li>
+<li><strong>X100.0 Y100.0</strong>：本程序段目标点坐标（100，100）；</li>
+<li><strong>F100</strong>：进给速度（具体单位随系统设定）；</li>
+<li><strong>M08</strong>：打开切削液（冷却泵开）。</li>
+</ul>
+</li>
+<li>这类代码逻辑简单、不涉及复杂算法，记不住时查编程手册即可，关键是不要写错格式。</li>
+</ul>
+<h3 id="3-7-数控机床的五大组成部分"><a href="#3-7-数控机床的五大组成部分" class="headerlink" title="3.7 数控机床的五大组成部分"></a>3.7 数控机床的五大组成部分</h3><p>数控机床一般由以下五部分组成，可与”电脑+打印机”、空调、流水线类比记忆：</p>
+<ol>
+<li><strong>输入输出装置（输入&#x2F;输出设备）</strong>：操作面板、键盘、显示器、USB 及通信接口等。用于输入和显示、修改、存储程序，设定参数、对刀操作，必要时打印。相当于普通电脑的鼠标、键盘、显示器。</li>
+<li><strong>数控装置（CNC 装置，核心，相当于”大脑&#x2F;主机”）</strong>：由硬件（微处理器、存储器、接口等）和软件组成，负责读入程序、译码、刀具补偿运算、插补运算，并向伺服系统输出控制信号，还具备信息处理、辅助控制和程序错误报警功能。</li>
+<li><strong>伺服系统（驱动与执行的桥梁，相当于”手&#x2F;肌肉”）</strong>：接收数控装置发来的微弱指令并进行功率放大，驱动运动部件；一般包括控制电路、功率放大电路和<strong>伺服电机（进给伺服电机、主轴电机）</strong>。若暂时不理解电路，可先简单把它理解为”受控的电机＋驱动”。电机轴通常经齿轮、联轴器、滚珠丝杠螺母副带动工作台、刀架运动。</li>
+<li><strong>机床本体（受控的机械主体）</strong>：完成实际切削的机械部分，包括：<ul>
+<li>主运动部件（主轴）、进给运动部件（工作台、导轨、滚珠丝杠、齿轮传动）；</li>
+<li>床身、立柱、底座等支撑框架，把各部件有机连成整体；</li>
+<li>辅助装置：冷却系统（冷却液箱）、排屑装置、润滑、液压气动、防护罩、油箱等（简单件、发热量小的加工可不用冷却液，故部分辅助装置可视情况配置）。</li>
+</ul>
+</li>
+<li><strong>测量反馈装置（相当于”眼睛”）</strong>：用测量元件检测执行部件（或电机轴）实际的位移、速度、方向并转换为信号反馈给数控装置，与指令比较后修正。常用测量元件有<strong>光栅尺（直线位移）、光电编码器（角位移）、旋转变压器、感应同步器</strong>等。</li>
+</ol>
+<blockquote>
+<p>类比：流水线靠红外传感器（输入）→处理器（数控装置）→电机（伺服）→导轨机构（本体），但流水线对多走 1 mm 少走 1 mm 不敏感，常没有测量反馈；精密机床必须有测量反馈。空调的面板（I&#x2F;O）→单片机&#x2F;处理器→压缩机（执行）→空调本体→测温反馈，也是同一框架。</p>
+</blockquote>
+<h3 id="3-8-数控机床的分类（一）：按运动控制轨迹"><a href="#3-8-数控机床的分类（一）：按运动控制轨迹" class="headerlink" title="3.8 数控机床的分类（一）：按运动控制轨迹"></a>3.8 数控机床的分类（一）：按运动控制轨迹</h3><p>按刀具相对工件的运动轨迹，复杂程度递增分为三类：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>控制要求</th>
+<th>运动中是否切削</th>
+<th>典型设备&#x2F;用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>点位控制</td>
+<td>只保证刀具从一点<strong>精确定位</strong>到目标点坐标，不控制两点间路径（走直线、S 形、绕圈均可）</td>
+<td>定位移动过程中<strong>不切削</strong>，到位后才加工</td>
+<td>数控钻床、镗床、冲床、点焊机、坐标测量；钻、镗、铰、冲、弹簧加工等</td>
+</tr>
+<tr>
+<td>直线控制</td>
+<td>除定位外，还能沿<strong>平行于坐标轴方向或与坐标轴成特定角度（如 30°&#x2F;45°&#x2F;60°）</strong>做直线进给切削</td>
+<td>移动中切削</td>
+<td>车台阶、铣平面&#x2F;台阶等规整机件；应用较少（较”鸡肋”），不能加工曲面</td>
+</tr>
+<tr>
+<td>轮廓控制（连续轨迹控制）</td>
+<td>对<strong>两个及以上坐标轴同时、连续、协调控制（多轴联动）</strong>，走出任意斜率直线、圆弧和空间曲线&#x2F;曲面</td>
+<td>连续切削</td>
+<td>加工复杂曲面、叶轮、叶片、模具；功能最强、最复杂、应用最广，现代加工中心多属此类</td>
+</tr>
+</tbody></table>
+<ul>
+<li>点位控制最简单但仍广泛用于孔加工；直线控制只能走坐标轴方向或特殊角度，加工圆&#x2F;曲面时多边形感明显、使用很少；轮廓控制最复杂，是现代数控机床的主流。</li>
+</ul>
+<h3 id="3-9-数控机床的分类（二）：按伺服系统控制原理（重点辨析）"><a href="#3-9-数控机床的分类（二）：按伺服系统控制原理（重点辨析）" class="headerlink" title="3.9 数控机床的分类（二）：按伺服系统控制原理（重点辨析）"></a>3.9 数控机床的分类（二）：按伺服系统控制原理（重点辨析）</h3><h4 id="3-9-1-开环控制系统"><a href="#3-9-1-开环控制系统" class="headerlink" title="3.9.1 开环控制系统"></a>3.9.1 开环控制系统</h4><ul>
+<li>结构：数控装置→伺服驱动→步进电机→执行部件，<strong>没有测量反馈装置</strong>，信号流单向。</li>
+<li>工作：步进电机按指令脉冲的数量、频率、方向转动，但系统<strong>不知道</strong>执行件实际走了多少、是否到位，无法检测和修正误差。</li>
+<li>特点：结构简单、成本低、容易维护、工作稳定；但<strong>精度差、抗干扰能力弱</strong>（丢步、误差无法纠正）。</li>
+<li>适用：精度要求不高、负载较轻的经济型&#x2F;小型&#x2F;老旧设备；现代成批生产、精度要求较高的机床很少采用。</li>
+</ul>
+<h4 id="3-9-2-闭环控制系统"><a href="#3-9-2-闭环控制系统" class="headerlink" title="3.9.2 闭环控制系统"></a>3.9.2 闭环控制系统</h4><ul>
+<li>结构：在执行部件（工作台、刀架等床身运动件）上<strong>直接安装测量装置（如光栅尺）</strong>，实时直接测量执行件的实际位移、速度、方向并反馈到数控装置。</li>
+<li>工作：数控装置把指令位移与反馈的实际位移进行比较（含 PID 运算），得出偏差，再令伺服电机驱动执行件减小并消除偏差，直到达到规定位置。</li>
+<li>特点：<ul>
+<li>优点：因为直接测量最终运动部件，理论上可以把整个驱动、传动链（联轴器、滚珠丝杠螺母副）的误差、反向间隙、失动量都包含在反馈环内加以补偿消除，<strong>位置精度最高</strong>；</li>
+<li>缺点：测量装置直接暴露在加工现场，易受油液、气体、温度、粉尘、铁屑影响而失真；机械传动的摩擦、刚性、间隙多为非线性，容易造成系统<strong>不稳定、甚至振荡</strong>；设计、安装、调试、维护都比较困难，成本高。</li>
+</ul>
+</li>
+<li>适用：精度要求很高的中大型、精密数控机床。</li>
+</ul>
+<h4 id="3-9-3-半闭环控制系统"><a href="#3-9-3-半闭环控制系统" class="headerlink" title="3.9.3 半闭环控制系统"></a>3.9.3 半闭环控制系统</h4><ul>
+<li>结构：把测量反馈装置（常用光电编码器）安装在<strong>伺服电机轴端或丝杠端部</strong>，而不是工作台&#x2F;刀架上。</li>
+<li>工作：测量电机轴（丝杠）的转角和转速，利用丝杠螺距等传动关系<strong>间接推算</strong>工作台&#x2F;刀架的直线位移，再与指令比较、修正。</li>
+<li>特点：<ul>
+<li>测量元件在电机端、环境好、不易受加工现场干扰，系统稳定性好；</li>
+<li>结构简单、调试维护方便、成本较低；</li>
+<li>但反馈环<strong>不包含（或只包含少量）机械传动环节</strong>，滚珠丝杠的螺距误差、反向间隙引起的位移误差无法被完全消除，<strong>精度略低于闭环</strong>，不过可通过误差补偿保持较高精度。</li>
+</ul>
+</li>
+<li>适用：兼顾精度、稳定性与成本，<strong>现代数控机床中应用最广泛</strong>。生活中的血压、水位恒值控制也常采用类似半闭环的反馈思想。</li>
+</ul>
+<h4 id="3-9-4-三者对比小结"><a href="#3-9-4-三者对比小结" class="headerlink" title="3.9.4 三者对比小结"></a>3.9.4 三者对比小结</h4><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>开环</th>
+<th>半闭环</th>
+<th>闭环</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>有无测量反馈</td>
+<td>无</td>
+<td>有（测电机&#x2F;丝杠转角，间接）</td>
+<td>有（直接测工作台&#x2F;刀架位移）</td>
+</tr>
+<tr>
+<td>常用元件</td>
+<td>步进电机</td>
+<td>伺服电机＋编码器</td>
+<td>伺服电机＋光栅尺等</td>
+</tr>
+<tr>
+<td>能否修正误差</td>
+<td>不能</td>
+<td>能（环外机械误差不能完全消除）</td>
+<td>能（可消除传动链误差、间隙）</td>
+</tr>
+<tr>
+<td>精度</td>
+<td>低</td>
+<td>较高（可补偿）</td>
+<td>最高</td>
+</tr>
+<tr>
+<td>稳定性&#x2F;维护</td>
+<td>稳定、维护易</td>
+<td>稳定、维护较易、成本适中</td>
+<td>易受干扰、易振荡、调试维护难、成本高</td>
+</tr>
+<tr>
+<td>应用</td>
+<td>经济型、低精度小设备</td>
+<td><strong>现代机床应用最广</strong></td>
+<td>高精度、大型精密机床</td>
+</tr>
+</tbody></table>
+<ul>
+<li>一句话判别：<strong>开环无反馈；闭环直接测最终执行件；半闭环测电机端、间接推算执行件。</strong></li>
+</ul>
+<h3 id="3-10-数控机床的其他分类、特点与发展趋势（了解）"><a href="#3-10-数控机床的其他分类、特点与发展趋势（了解）" class="headerlink" title="3.10 数控机床的其他分类、特点与发展趋势（了解）"></a>3.10 数控机床的其他分类、特点与发展趋势（了解）</h3><ul>
+<li>按功能水平可分经济型、普通型、高档（高级）型；按工艺用途可分数控车床、铣床、钻床、镗床、磨床、齿轮加工机床、加工中心，以及金属成型、激光切割、电火花等特种加工数控机床。</li>
+<li>数控加工的总体特点：加工精度高、一致性好、质量稳定；柔性好（换产品主要改程序）、生产率高；能完成复杂曲面、多轴联动加工；大大减轻体力劳动、对操作者编程与工艺知识要求提高；设备较贵、维护要求高。</li>
+<li>发展趋势：向高精度、高速度、高可靠性、复合化、多轴（五轴）联动、智能化（自适应加工、故障诊断）、网络化（物联网、工业 4.0、智能产线）方向发展。</li>
+</ul>
+<h2 id="四、例题、案例或类比"><a href="#四、例题、案例或类比" class="headerlink" title="四、例题、案例或类比"></a>四、例题、案例或类比</h2><h3 id="4-1-流程排序：数控加工六步"><a href="#4-1-流程排序：数控加工六步" class="headerlink" title="4.1 流程排序：数控加工六步"></a>4.1 流程排序：数控加工六步</h3><ul>
+<li>题目：把”伺服加工、程序编制、插补、程序输入、刀具补偿、译码”按数控加工顺序排列。</li>
+<li>答案：<strong>程序编制 → 程序输入 → 译码 → 刀具补偿 → 插补 → 位置控制与加工执行（伺服加工）</strong>。</li>
+</ul>
+<h3 id="4-2-刀具补偿与插补判断"><a href="#4-2-刀具补偿与插补判断" class="headerlink" title="4.2 刀具补偿与插补判断"></a>4.2 刀具补偿与插补判断</h3><ul>
+<li>问：编程坐标是按零件轮廓写的，为什么机床还要做刀具补偿？<ul>
+<li>答：实际切削由有半径、长度的刀具完成，刀位点不在轮廓上；必须经半径&#x2F;长度补偿把零件轮廓换算成刀具中心的实际轨迹，否则加工尺寸会偏。</li>
+</ul>
+</li>
+<li>问：为什么说机床不能直接加工曲线？插补怎样”加工”出圆？<ul>
+<li>答：机床只能沿坐标走微小直线；插补把圆密化成许多中间点，相邻点之间走微小直线段去逼近圆；点越密越接近圆，点太少就成了多边形。</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-3-五大组成类比（以打印机-空调为例）"><a href="#4-3-五大组成类比（以打印机-空调为例）" class="headerlink" title="4.3 五大组成类比（以打印机&#x2F;空调为例）"></a>4.3 五大组成类比（以打印机&#x2F;空调为例）</h3><ul>
+<li>打印机：鼠标键盘&#x2F;操作（输入输出）→电脑主机处理（数控装置）→打印机执行机构（伺服系统）→打印机本体（机床本体）；普通打印一般不检测打偏没有，故没有测量反馈，而精密机床必须有。</li>
+<li>空调：面板按键与显示（I&#x2F;O）→单片机&#x2F;控制板（数控装置）→压缩机驱动（伺服）→空调整机（本体）→温度传感器（测量反馈）。</li>
+</ul>
+<h3 id="4-4-点位、直线、轮廓的区分"><a href="#4-4-点位、直线、轮廓的区分" class="headerlink" title="4.4 点位、直线、轮廓的区分"></a>4.4 点位、直线、轮廓的区分</h3><ul>
+<li>数控钻床在两个坐标位置各钻一个孔，孔间怎么走都行——点位控制；</li>
+<li>只能沿水平&#x2F;竖直或 45°方向铣出规整台阶——直线控制；</li>
+<li>加工航空发动机叶片、模具型面等空间曲面，需多坐标同时联动——轮廓控制。</li>
+</ul>
+<h3 id="4-5-开环-半闭环-闭环辨析"><a href="#4-5-开环-半闭环-闭环辨析" class="headerlink" title="4.5 开环&#x2F;半闭环&#x2F;闭环辨析"></a>4.5 开环&#x2F;半闭环&#x2F;闭环辨析</h3><ul>
+<li>问：开环与闭环最根本的区别是什么？<ul>
+<li>答：开环没有测量反馈装置、信号单向、不能修正误差；闭环和半闭环都有反馈、能比较并消除偏差。</li>
+</ul>
+</li>
+<li>问：既然闭环精度最高，为什么现代大多数数控机床用半闭环？<ul>
+<li>答：闭环把光栅尺直接装在工作台上，易受切削环境干扰、机械非线性易使系统振荡，调试维护难、成本高；半闭环在电机端测转角间接推算，稳定、易维护、成本低，再用误差补偿即可满足多数精度要求，性价比最高、应用最广。</li>
+</ul>
+</li>
+</ul>
+<h2 id="五、术语、符号或关键表达"><a href="#五、术语、符号或关键表达" class="headerlink" title="五、术语、符号或关键表达"></a>五、术语、符号或关键表达</h2><table>
+<thead>
+<tr>
+<th>术语&#x2F;符号</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>NC</td>
+<td>数字控制（电子管&#x2F;晶体管&#x2F;集成电路硬件逻辑阶段，无计算机）</td>
+</tr>
+<tr>
+<td>CNC</td>
+<td>计算机数字控制（用计算机&#x2F;微处理器存储程序实现控制）</td>
+</tr>
+<tr>
+<td>数控技术</td>
+<td>用数字化信息控制设备运动与生产过程的技术</td>
+</tr>
+<tr>
+<td>数控机床</td>
+<td>装有数控系统、由其完成加工与辅助运动的机床</td>
+</tr>
+<tr>
+<td>六步流程</td>
+<td>编程→输入→译码→刀具补偿→插补→伺服控制与加工</td>
+</tr>
+<tr>
+<td>译码</td>
+<td>把程序段翻译成数控装置能识别的数据格式，并做语法检查报错</td>
+</tr>
+<tr>
+<td>刀具补偿</td>
+<td>把零件轮廓换算成刀具中心轨迹；分半径补偿、长度补偿</td>
+</tr>
+<tr>
+<td>G41&#x2F;G42&#x2F;G40</td>
+<td>刀具半径左补偿&#x2F;右补偿&#x2F;取消补偿</td>
+</tr>
+<tr>
+<td>G01</td>
+<td>直线插补；N 为程序段号；F 为进给速度；M08 开切削液</td>
+</tr>
+<tr>
+<td>插补</td>
+<td>数据点密化，用微小直线段实时逼近轮廓（直线&#x2F;圆弧插补）</td>
+</tr>
+<tr>
+<td>五大组成</td>
+<td>输入输出装置、数控装置、伺服系统、机床本体、测量反馈装置</td>
+</tr>
+<tr>
+<td>点位&#x2F;直线&#x2F;轮廓</td>
+<td>只控点定位&#x2F;沿坐标轴方向直线切削&#x2F;多轴联动走任意曲面</td>
+</tr>
+<tr>
+<td>开环</td>
+<td>无反馈、步进电机、精度低、成本低</td>
+</tr>
+<tr>
+<td>半闭环</td>
+<td>编码器测电机&#x2F;丝杠转角间接推算，稳定、应用最广</td>
+</tr>
+<tr>
+<td>闭环</td>
+<td>光栅尺等直接测执行件位移，精度最高、维护难成本高</td>
+</tr>
+<tr>
+<td>测量元件</td>
+<td>光栅尺、光电编码器、旋转变压器、感应同步器等</td>
+</tr>
+</tbody></table>
+<h2 id="六、课堂任务与复习安排"><a href="#六、课堂任务与复习安排" class="headerlink" title="六、课堂任务与复习安排"></a>六、课堂任务与复习安排</h2><ul>
+<li>绪论对应教材第 1 章，要求：<ol>
+<li>说清数控、机床数控技术、数控机床三个概念，能区分 NC 与 CNC；</li>
+<li>能按顺序复述数控加工六步流程，并重点讲明白刀具补偿和插补在做什么；</li>
+<li>熟记数控机床五大组成及其作用，能把该框架迁移到其他机电设备；</li>
+<li>能区分点位、直线、轮廓控制机床的特点和用途；</li>
+<li>能从”有无反馈、反馈取在哪里、精度&#x2F;稳定性&#x2F;成本&#x2F;应用”四方面辨析开环、半闭环、闭环。</li>
+</ol>
+</li>
+<li>准备教材、关注签到；后续前五章以编程为重点，将结合仿真软件练习程序编写、对刀与验证；课程结束有课程设计，需具备中等复杂零件编程能力。</li>
+</ul>
+<h2 id="七、待核对与疑问"><a href="#七、待核对与疑问" class="headerlink" title="七、待核对与疑问"></a>七、待核对与疑问</h2><table>
+<thead>
+<tr>
+<th>问题</th>
+<th>原因</th>
+<th>建议核对方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>第一台数控机床的年份、研制单位（约 1952 年 MIT 与 Parsons 合作的三坐标数控铣床）</td>
+<td>录音对人名、年份转写含糊</td>
+<td>查教材数控技术发展史一节</td>
+</tr>
+<tr>
+<td>成绩构成中期末与平时表现的具体比例（作业约 20%）</td>
+<td>课堂只明确作业占 20%</td>
+<td>以课程大纲&#x2F;老师公布为准</td>
+</tr>
+<tr>
+<td>G&#x2F;M 代码（G01、G41、G42、G40、M08、F、N）的完整格式</td>
+<td>本课仅举例建立概念</td>
+<td>以后续编程章和所用系统编程手册为准</td>
+</tr>
+<tr>
+<td>测量元件名称与归类（光栅、编码器、旋转变压器、感应同步器）</td>
+<td>课堂列举较快</td>
+<td>对照教材伺服与检测装置章节</td>
+</tr>
+<tr>
+<td>直线控制机床的具体典型机型</td>
+<td>老师也说现场少见、以教材为例</td>
+<td>以教材表述为准</td>
+</tr>
+<tr>
+<td>半闭环&#x2F;闭环的精度、安装位置图示</td>
+<td>本课为口述＋视频</td>
+<td>复习教材伺服系统控制方式框图</td>
+</tr>
+</tbody></table>
+<h2 id="八、复习与主动回忆"><a href="#八、复习与主动回忆" class="headerlink" title="八、复习与主动回忆"></a>八、复习与主动回忆</h2><h3 id="复习清单"><a href="#复习清单" class="headerlink" title="复习清单"></a>复习清单</h3><ol>
+<li>用 2 分钟说出课程学时、重点章节、考核与成绩构成、课程设计要求。</li>
+<li>用 3 分钟区分数控、机床数控技术、数控机床，说明 NC 与 CNC 的差别和发展阶段。</li>
+<li>用 2 分钟对比传统加工与数控加工的路径和人员分工。</li>
+<li>用 5 分钟按顺序复述六步流程，并重点解释译码、刀具补偿、插补各做什么。</li>
+<li>用 3 分钟说出机床五大组成及作用，并举空调&#x2F;打印机的对应部件。</li>
+<li>用 3 分钟比较点位、直线、轮廓控制机床。</li>
+<li>用 5 分钟从反馈有无、测量位置、精度、稳定性、成本、应用六方面比较开环、半闭环、闭环。</li>
+</ol>
+<h3 id="主动回忆题"><a href="#主动回忆题" class="headerlink" title="主动回忆题"></a>主动回忆题</h3><ol>
+<li>什么是数控技术？什么是数控机床？普通机床加装什么后也可称为数控机床？</li>
+<li>NC 和 CNC 有什么区别？数控技术发展经历了哪些主要阶段？</li>
+<li>与传统加工相比，数控加工在工艺准备和人员操作上有什么不同？编程员和操作员各负责什么？</li>
+<li>按顺序写出数控加工的六个工作步骤。</li>
+<li>什么是译码？程序有语法错误时系统会怎样？</li>
+<li>什么是刀具补偿？为什么必须进行刀具补偿？刀具补偿分哪两种？G41 表示什么？</li>
+<li>什么是插补？为什么机床能用一段段微小直线”加工”出曲线？插补点的疏密对精度有什么影响？</li>
+<li>数控机床由哪五大部分组成？各起什么作用？分别可类比为计算机&#x2F;人体的什么？</li>
+<li>点位控制、直线控制、轮廓控制机床在轨迹要求和用途上有何不同？钻床、加工中心各属于哪一类？</li>
+<li>开环、半闭环、闭环伺服系统的根本区别是什么？为什么闭环精度最高却最难维护？为什么半闭环应用最广？</li>
+</ol>
+<h3 id="答案要点"><a href="#答案要点" class="headerlink" title="答案要点"></a>答案要点</h3><ol>
+<li>数控技术是用数字化信息（数字信号）对设备运动和生产过程进行控制的技术，对象不限于机床；机床数控技术是用数字化信息控制机床运动和加工过程；数控机床是装有数控系统、由其完成加工运动和辅助运动的机床；普通机床加装数控装置（数控系统）后也可称为数控机床，有无数控系统是它与普通机床的根本区别。</li>
+<li>NC（数字控制）采用电子管、晶体管、小规模集成电路等固定硬件逻辑实现控制，内部没有计算机、靠硬件接线；CNC（计算机数字控制）用计算机&#x2F;微处理器按存储的程序实现控制，功能强、柔性好。发展阶段为电子管→晶体管→小规模集成电路（统称 NC）→小型计算机&#x2F;微处理器&#x2F;个人计算机控制（CNC）。</li>
+<li>传统加工由工人按工序卡在普通机床上手动摇刀、观察、测量完成；数控加工由编程员先做工艺分析并编好程序、输入机床，操作工装夹对刀后机床自动加工，一人可看多台、劳动强度低、一致性好。编程员负责工艺、编程和补偿量设定；操作员负责装夹、对刀、上下料、首件检验和设备看护。</li>
+<li>程序编制 → 程序输入 → 译码 → 刀具补偿 → 插补 → 位置控制与加工执行（伺服驱动加工）。</li>
+<li>译码是把人编写的程序段按语法规则翻译成数控装置（计算机）能识别的数据格式，提取轮廓、起终点、进给速度、辅助功能等信息；译码时进行语法检查，程序写错会报错、报警提示。</li>
+<li>编程按零件轮廓，而实际由有半径和长度的刀具切削，刀位点不在轮廓上，所以必须把零件轮廓换算成刀具中心（刀位点）的实际运动轨迹，即刀具补偿；分刀具半径补偿和刀具长度补偿；G41 是刀具半径左补偿（沿刀具前进方向刀心向左偏一个半径）。</li>
+<li>机床只能沿坐标走微小直线，不能直接走任意曲线；插补在起终点和轮廓类型已知的情况下实时计算并插入大量中间点（数据密化），相邻点之间走微小直线段去逼近曲线；中间点越密逼近误差越小、轮廓越光滑，点太少曲线会明显变成多边形。</li>
+<li>①输入输出装置（键盘、面板、显示器、接口，类比鼠标键盘显示器）；②数控装置（译码、刀补、插补、发指令，类比大脑&#x2F;主机）；③伺服系统（放大指令、驱动伺服电机，类比手&#x2F;肌肉）；④机床本体（主轴、工作台、导轨、丝杠、床身、冷却排屑等机械执行部分，类比躯干四肢）；⑤测量反馈装置（光栅、编码器等检测实际位移回传，类比眼睛）。</li>
+<li>点位控制只保证刀具精确定位到目标点坐标、两点间路径不限且移动中不切削，用于钻、镗、冲等；直线控制只能沿平行坐标轴方向或特定角度做直线切削，只能加工台阶等规整机件、应用少；轮廓控制能多坐标联动连续走出任意直线、圆弧和空间曲面，用于叶轮、模具等复杂零件，最复杂、应用最广。数控钻床属点位控制，现代加工中心多属轮廓控制。</li>
+<li>根本区别在测量反馈：开环无反馈、信号单向（多用步进电机），不能修正误差、精度最低；闭环把光栅尺等直接装在工作台&#x2F;刀架上测最终位移并反馈，能把传动链误差和间隙都纳入环内消除，精度最高，但测量件受油气温尘铁屑影响、机械非线性易引起振荡，调试维护难、成本高；半闭环把编码器装在电机&#x2F;丝杠端测转角间接推算位移，反馈环不含全部机械传动、精度略低，但环境好、系统稳定、结构简单、维护方便、成本较低，并可用补偿保证较高精度，故综合性价比最高、现代机床应用最广。</li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E6%8E%A7%E7%BC%96%E7%A8%8B-%E6%95%B0%E6%8E%A7%E6%8A%80%E6%9C%AF-%E6%A6%82%E8%AE%BA/" class="print-no-link">#数控编程 数控技术 概论</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>数控技术概论：加工流程、机床组成与开闭环分类</div>
+      <div>https://tdexxx.github.io/2026/10/06/01_数控加工工艺与编程/数控加工工艺与编程_数控技术概论_发布稿/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>tdexxx</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年10月6日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/10/06/07_%E7%94%B5%E5%B7%A5%E7%94%B5%E5%AD%90%E4%B8%8E%E7%94%B5%E8%B7%AF%E5%AE%9E%E9%AA%8C/%E7%94%B5%E5%B7%A5%E7%94%B5%E5%AD%90_%E7%94%B5%E5%B7%A5%E5%AE%9E%E9%AA%8C%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C_%E5%8F%91%E5%B8%83%E7%A8%BF/" title="电工实验基础操作与元件伏安特性测试">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">电工实验基础操作与元件伏安特性测试</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/10/06/02_%E7%94%B5%E6%B0%94%E6%8E%A7%E5%88%B6%E4%B8%8EPLC/%E7%94%B5%E6%B0%94%E6%8E%A7%E5%88%B6%E4%B8%8EPLC_%E7%94%B5%E5%8A%A8%E6%9C%BA%E6%8E%A7%E5%88%B6%E7%94%B5%E8%B7%AF%E8%BF%9B%E9%98%B6_%E5%8F%91%E5%B8%83%E7%A8%BF/" title="电动机控制电路进阶：正反转互锁、自动往返与星三角启动">
+                        <span class="hidden-mobile">电动机控制电路进阶：正反转互锁、自动往返与星三角启动</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

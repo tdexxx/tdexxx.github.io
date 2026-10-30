@@ -1,0 +1,976 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="tdexxx">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="液压泵类型结构与液压马达笔记：轴向柱塞泵（通轴&#x2F;斜轴、奇数柱塞、减震槽）、单双作用叶片泵（定子八段曲线、限压变量）、齿轮泵（排量公式、困油、径向力、端面补偿）、内啮合&#x2F;螺杆泵及高低速液压马达（含考点） 本文整理《液压泵结构原理与性能分析》一课，是在上一节”液压泵总论、三个必要条件、压力流量效率参数、柱塞泵变量入门”基础上，对各类液压泵具体结构与性能差异以及液压马达的系统讲解。内">
+<meta property="og:type" content="article">
+<meta property="og:title" content="液压泵类型结构与液压马达：柱塞泵、叶片泵、齿轮泵">
+<meta property="og:url" content="https://tdexxx.github.io/2026/10/07/03_%E6%B6%B2%E5%8E%8B%E4%BC%A0%E5%8A%A8/03_%E6%B6%B2%E5%8E%8B%E4%BC%A0%E5%8A%A8_%E6%B6%B2%E5%8E%8B%E6%B3%B5%E7%B1%BB%E5%9E%8B%E4%B8%8E%E6%B6%B2%E5%8E%8B%E9%A9%AC%E8%BE%BE/index.html">
+<meta property="og:site_name" content="tdexxx的博客">
+<meta property="og:description" content="液压泵类型结构与液压马达笔记：轴向柱塞泵（通轴&#x2F;斜轴、奇数柱塞、减震槽）、单双作用叶片泵（定子八段曲线、限压变量）、齿轮泵（排量公式、困油、径向力、端面补偿）、内啮合&#x2F;螺杆泵及高低速液压马达（含考点） 本文整理《液压泵结构原理与性能分析》一课，是在上一节”液压泵总论、三个必要条件、压力流量效率参数、柱塞泵变量入门”基础上，对各类液压泵具体结构与性能差异以及液压马达的系统讲解。内">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-10-06T17:01:47.000Z">
+<meta property="article:modified_time" content="2026-10-30T17:37:19.933Z">
+<meta property="article:author" content="tdexxx">
+<meta property="article:tag" content="液压传动 液压泵 液压马达">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>液压泵类型结构与液压马达：柱塞泵、叶片泵、齿轮泵 - tdexxx的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"tdexxx.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2022-12-10T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="液压泵类型结构与液压马达：柱塞泵、叶片泵、齿轮泵"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-10-07 01:01" pubdate>
+          2026年10月7日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          12k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          97 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">液压泵类型结构与液压马达：柱塞泵、叶片泵、齿轮泵</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="液压泵类型结构与液压马达笔记：轴向柱塞泵（通轴-斜轴、奇数柱塞、减震槽）、单双作用叶片泵（定子八段曲线、限压变量）、齿轮泵（排量公式、困油、径向力、端面补偿）、内啮合-螺杆泵及高低速液压马达（含考点）"><a href="#液压泵类型结构与液压马达笔记：轴向柱塞泵（通轴-斜轴、奇数柱塞、减震槽）、单双作用叶片泵（定子八段曲线、限压变量）、齿轮泵（排量公式、困油、径向力、端面补偿）、内啮合-螺杆泵及高低速液压马达（含考点）" class="headerlink" title="液压泵类型结构与液压马达笔记：轴向柱塞泵（通轴&#x2F;斜轴、奇数柱塞、减震槽）、单双作用叶片泵（定子八段曲线、限压变量）、齿轮泵（排量公式、困油、径向力、端面补偿）、内啮合&#x2F;螺杆泵及高低速液压马达（含考点）"></a>液压泵类型结构与液压马达笔记：轴向柱塞泵（通轴&#x2F;斜轴、奇数柱塞、减震槽）、单双作用叶片泵（定子八段曲线、限压变量）、齿轮泵（排量公式、困油、径向力、端面补偿）、内啮合&#x2F;螺杆泵及高低速液压马达（含考点）</h1><blockquote>
+<p>本文整理《液压泵结构原理与性能分析》一课，是在上一节”液压泵总论、三个必要条件、压力流量效率参数、柱塞泵变量入门”基础上，对<strong>各类液压泵具体结构与性能差异</strong>以及<strong>液压马达</strong>的系统讲解。内容分六部分：第一部分深化<strong>轴向柱塞泵</strong>——滑履与静压支承、配流盘减震槽、柱塞数为何取奇数、半轴式与通轴式、斜轴（弯轴）式结构及柱塞泵性能总评；第二部分讲<strong>叶片泵</strong>——单作用（偏心、可双向变量、限压式变量反馈）与双作用（定子内表面八段曲线、每转两次吸压油、径向力平衡、只能定量、叶片前倾）；第三部分讲<strong>外啮合齿轮泵</strong>——工作原理、排量近似公式 $V\approx6.66zm^{2}b$、端面泄漏&#x2F;径向力不平衡&#x2F;困油三大缺陷及浮动轴套、压力平衡槽、卸荷槽等改进；第四部分讲<strong>内啮合齿轮泵与螺杆泵</strong>；第五部分做各类泵性能对比与选型；第六部分讲<strong>液压马达</strong>——与泵的互逆关系、流量关系相反、高速齿轮&#x2F;叶片马达与低速大扭矩径向柱塞马达。文末附例题、对比与公式速查表、待核对清单和主动回忆题（含答案要点）。</p>
+</blockquote>
+<h2 id="一、核心结论"><a href="#一、核心结论" class="headerlink" title="一、核心结论"></a>一、核心结论</h2><ul>
+<li><strong>轴向柱塞泵细节</strong>：柱塞端部经滑履（滑鞋）与斜盘接触，滑履磨坏可更换，且柱塞空心、引压力油到滑履底面形成静压支承、减小摩擦磨损；配流盘上开<strong>减震槽（减震口）</strong>，让柱塞腔在高、低压切换前预先缓慢卸压，减小压力突变冲击；柱塞数经验上<strong>取奇数（如 9 个）比偶数（如 10 个）流量脉动更小</strong>；缸体内弹簧把柱塞&#x2F;滑履压向斜盘、把缸体压向配油盘以减小间隙。</li>
+<li><strong>半轴式与通轴式轴向柱塞泵</strong>：半轴（非通轴）式轴只在一端直接支承、另一端经花键带动缸体并由缸体外圈大轴承支承，导致大轴承和泵外形尺寸大；<strong>通轴式</strong>轴贯穿缸体、两端均有轴承支承，省去外圈大轴承，结构更紧凑、外形更小。</li>
+<li><strong>斜轴（弯轴&#x2F;行走）式轴向柱塞泵</strong>：传动圆盘与主轴做成一体，盘上球窝经球铰&#x2F;连杆连接柱塞（类似万向节），允许主轴与缸体轴线有夹角；结构非常紧凑，但球窝加工难度大、精度难控、成本高。可双缸并列、齿轮分动以增大排量，并靠错开相位角减小流量脉动（需实验验证）。</li>
+<li><strong>轴向柱塞泵总评</strong>：工作压力高、流量大、单位功率重量小、寿命长、易实现变量（改偏心距&#x2F;斜盘倾角）；缺点结构复杂、价格高、噪声较大、<strong>对油液污染敏感</strong>（配合间隙小，污染物沉积易卡死，长期停机再开机尤甚，须监测油液、及时更换）。</li>
+<li><strong>叶片泵</strong>：在转子轴向槽内插入矩形叶片，靠离心力（及叶片根部压力油）使叶片贴紧定子，由相邻叶片、定子内表面、转子外表面和配油盘围成密闭工作腔。</li>
+<li><strong>单作用叶片泵</strong>：转子与定子偏心，每转叶片伸缩一次、完成一次吸油和一次压油（一个吸油口、一个压油口）；改变偏心距 $e$ 的大小和方向可改变排量和流向，可做<strong>双向变量泵</strong>；加反馈油路即成<strong>限压式变量叶片泵</strong>——压力超过设定值时反馈力把偏心推到零、排量归零、停止供油，限制最高压力、起安全保护，是从开环控制到闭环（反馈）控制的转变。</li>
+<li><strong>双作用叶片泵（重点）</strong>：定子与转子<strong>同心</strong>，定子内表面由 <strong>8 段曲线</strong>组成（两段大圆弧、两段小圆弧加四段过渡曲线，过渡曲线常用等加速等减速曲线），转子每转一周叶片伸缩两次、完成<strong>两次吸油两次压油</strong>，配油盘上对称布置<strong>两个吸油口、两个压油口</strong>；径向力对称平衡、运转平稳；因结构对称、无偏心可调，<strong>只能做定量泵、不能变量，但可正反转（双向）</strong>；叶片相对转子法线<strong>前倾</strong>一个角度以减小压力角、改善受力。</li>
+<li><strong>外啮合齿轮泵原理</strong>：一对齿轮转动时，脱开啮合侧齿间槽容积增大而吸油、进入啮合侧齿间槽容积减小而压油，<strong>啮合线（啮合点）把吸油腔与压油腔隔开</strong>（重合度大于 1、至少两对齿同时接触）。</li>
+<li><strong>齿轮泵排量近似公式</strong>：$V\approx 6.66,z,m^{2}b$（$z$ 齿数、$m$ 模数、$b$ 齿宽；因齿间槽体积比轮齿体积略大，系数取比 $2\pi\approx6.28$ 略大的 6.66）；齿数越多（节圆直径一定）流量脉动越小。</li>
+<li><strong>齿轮泵总评</strong>：结构简单紧凑、零件少、价格低、抗污染能力强、自吸性能好、工作可靠；但流量压力脉动大、噪声大、泄漏较大、径向力不平衡、只能定量；用于工程机械、农机、机床润滑等对精度稳定性要求不高的低成本场合，不宜用于加工中心等微米级精度场合。</li>
+<li><strong>齿轮泵三大缺陷与改进（高频考点）</strong>：<ol>
+<li><strong>端面（轴向）间隙泄漏</strong>：是主要泄漏源（约占总泄漏 70%~80%），用<strong>浮动轴套&#x2F;浮动侧板</strong>引压力油自动补偿磨损间隙；</li>
+<li><strong>径向力不平衡</strong>：高压侧对齿轮轴产生单向合力、使轴承偏磨，用<strong>缩小压油口</strong>或开<strong>压力平衡槽</strong>（把高、低压油分别引到对侧）平衡；</li>
+<li><strong>困油现象</strong>：重合度 &gt;1 使两对齿之间形成既不通吸油口也不通压油口的封闭容积，其容积先变小（压力骤升、冲击）后变大（局部真空、气穴气蚀），在端盖或浮动轴套上开<strong>卸荷槽</strong>使封闭容积在缩小时通压油腔、增大时通吸油腔并保持两腔隔开。</li>
+</ol>
+</li>
+<li><strong>内啮合齿轮泵</strong>：小齿轮与内齿圈<strong>同向旋转</strong>、冲击小噪声低、结构紧凑，用月牙形隔板隔开吸压油腔，<strong>基本无困油</strong>；齿形有渐开线和摆线（摆线泵&#x2F;转子泵）；缺点内齿圈加工成本高，多用于机床润滑等特定场合。</li>
+<li><strong>螺杆泵</strong>：螺杆螺旋槽与泵体形成沿轴向推移的密闭容积，流量脉动极小、噪声低、密封性好、运转平稳，但螺杆螺旋面加工成本高、装配复杂，应用不广，用于对平稳性要求极高处。</li>
+<li><strong>选型</strong>：按工作压力、流量、变量要求、效率、脉动、噪声、抗污染、成本、结构复杂度等综合权衡——齿轮泵低压定量价廉抗污染，叶片泵中压、双作用定量&#x2F;单作用可变量、脉动较小，柱塞泵高压大流量高效易变量但娇贵价高。</li>
+<li><strong>液压马达</strong>：把液压能转换为旋转机械能的执行元件，符号为圆圈内实心三角、<strong>尖朝内</strong>（泵尖朝外）；排量指理想情况下轴转一周所需输入的油液体积。</li>
+<li><strong>马达与泵流量关系相反（考点）</strong>：马达输入油液有一部分泄漏，真正推动转动的流量小于输入流量，故<strong>马达实际（输入）流量大于理论流量</strong>；泵则是理论流量大于实际流量。</li>
+<li>马达按排量&#x2F;转向是否可调分单向定量、单向变量、双向定量、双向变量；因常需正反转，多采用对称结构。</li>
+<li><strong>高速马达</strong>：齿轮马达、叶片马达，转速高、扭矩小；齿轮马达靠高压油对齿面的作用力形成力矩，叶片马达多用双作用、叶片沿径向过圆心安装（不前倾）以兼顾正反转。</li>
+<li><strong>低速大扭矩马达</strong>：多为径向柱塞马达，如<strong>曲轴连杆式</strong>（类内燃机曲柄连杆）和<strong>内曲线式</strong>（柱塞滚轮沿定子内曲线运动、切向分力产生力矩），可直接驱动负载、<strong>无需减速器</strong>，最低稳定转速约 <strong>3 r&#x2F;min</strong>，用于挖掘机等工程机械重载低速场合，也可用于车辆上下坡储能。</li>
+</ul>
+<h2 id="二、知识结构"><a href="#二、知识结构" class="headerlink" title="二、知识结构"></a>二、知识结构</h2><ul>
+<li>轴向柱塞泵深化<ul>
+<li>滑履&#x2F;静压支承、减震槽、奇数柱塞、弹簧；半轴式 vs 通轴式；斜轴式；性能总评</li>
+</ul>
+</li>
+<li>叶片泵<ul>
+<li>结构；单作用（偏心、双向变量、限压式反馈）；双作用（八段曲线、两次吸压油、径向力平衡、定量、叶片前倾）</li>
+</ul>
+</li>
+<li>外啮合齿轮泵<ul>
+<li>原理、排量公式；优缺点与应用；三大缺陷（端面泄漏&#x2F;径向力&#x2F;困油）与改进</li>
+</ul>
+</li>
+<li>内啮合齿轮泵、螺杆泵</li>
+<li>各类泵性能对比与选型</li>
+<li>液压马达<ul>
+<li>与泵互逆、符号、流量关系相反；高速齿轮&#x2F;叶片马达；低速大扭矩径向柱塞马达</li>
+</ul>
+</li>
+</ul>
+<h2 id="三、详细笔记"><a href="#三、详细笔记" class="headerlink" title="三、详细笔记"></a>三、详细笔记</h2><h3 id="3-1-轴向柱塞泵的结构细节"><a href="#3-1-轴向柱塞泵的结构细节" class="headerlink" title="3.1 轴向柱塞泵的结构细节"></a>3.1 轴向柱塞泵的结构细节</h3><ul>
+<li><strong>滑履（滑鞋）与静压支承</strong>：柱塞端部并不直接以球面与斜盘硬摩擦，而是通过一个称为滑履的零件与斜盘接触；滑履属于易损件，磨坏后可以像”换鞋底”一样更换。柱塞做成空心并开设流道，把压力油引到滑履与斜盘的接触面之间形成油膜（静压支承&#x2F;液体润滑），使相对滑动面的间隙可以控制得很小，既减小摩擦磨损，又减小泄漏、提高容积效率。</li>
+<li><strong>配流盘减震槽（减震口）</strong>：柱塞在工作中要在吸油口（低压）与压油口（高压）之间切换，若直接由高压区转到低压区，柱塞腔内压力会发生突变、产生液压冲击。为此在配流盘上加工减震槽（预卸压槽&#x2F;减震口）：柱塞腔越过该区时先经过减震槽与低压侧缓慢连通，使腔内压力提前、平缓地降下来，再进入吸油区，从而减小压力突变和冲击（减震槽只能减小、不能完全消除冲击）。</li>
+<li><strong>柱塞数取奇数</strong>：受加工误差和外界扰动影响，柱塞泵瞬时输出流量会产生波动，称流量脉动，脉动大会影响液压系统稳定性。大量研究和实验得到经验：<strong>柱塞数取奇数（如 9 个）时的流量脉动率比相邻偶数（如 10 个）更小</strong>（并非柱塞越多脉动就一定越小，偶数个反而可能更大），设计时柱塞数一般取 3、5、7、9 等奇数。</li>
+<li><strong>缸体弹簧</strong>：缸体（缸套）内部设有弹簧，一方面经滑履把柱塞压紧贴在斜盘上，保证柱塞始终跟随斜盘曲面伸缩；另一方面把缸体压向配油盘，减小缸体与配油盘之间的间隙、降低泄漏。</li>
+</ul>
+<h3 id="3-2-斜盘式：半轴（非通轴）式与通轴式"><a href="#3-2-斜盘式：半轴（非通轴）式与通轴式" class="headerlink" title="3.2 斜盘式：半轴（非通轴）式与通轴式"></a>3.2 斜盘式：半轴（非通轴）式与通轴式</h3><ul>
+<li><strong>半轴（非通轴）式</strong>：主轴较短，只在一端有直接的轴承支承；另一端轴与缸体一般通过花键连接，缸体外圈再由一个大尺寸轴承支承（即轴先支承在缸体上、缸体再支承在外圈大轴承上）。由于缸体尺寸大，外圈轴承也要做得很大，导致整台泵的外形尺寸较大。</li>
+<li><strong>通轴式</strong>：主轴直接贯穿缸体，轴的两端都有轴承支承，不再依赖缸体外圈的大轴承，轴承可以做得较小，因而结构更紧凑、外形尺寸更小，原理与半轴式相近。</li>
+</ul>
+<h3 id="3-3-斜轴（弯轴-行走）式轴向柱塞泵"><a href="#3-3-斜轴（弯轴-行走）式轴向柱塞泵" class="headerlink" title="3.3 斜轴（弯轴&#x2F;行走）式轴向柱塞泵"></a>3.3 斜轴（弯轴&#x2F;行走）式轴向柱塞泵</h3><ul>
+<li>斜轴式与斜盘式的区别在于：<strong>传动圆盘与主轴连为一体（就是一个零件）</strong>，圆盘端面上加工若干球窝，柱塞通过连杆端部的球头（球铰）与圆盘相连，结构原理类似万向节——允许输入轴（圆盘）轴线与缸体轴线之间存在一个夹角，从而保证柱塞能在缸体孔中往复伸缩、使密闭容积交替变化。</li>
+<li>传动链：主轴→传动圆盘→连杆（柱塞杆）→柱塞→带动缸体旋转并使柱塞往复，完成吸油、压油。</li>
+<li>优点：整体结构非常紧凑；缺点：球窝（球铰）的加工难度大、加工精度不易保证、成本较高。</li>
+<li>为增大排量，可把两组缸体并列、共用一根主轴，通过齿轮分动同时带动两个缸体（相当于叠加排量）；若把两组缸体的相位角错开合适角度，还可减小总流量脉动（相位角若调得不合适反而会增大脉动，需通过实验测试确定）。</li>
+</ul>
+<h3 id="3-4-轴向柱塞泵性能总评"><a href="#3-4-轴向柱塞泵性能总评" class="headerlink" title="3.4 轴向柱塞泵性能总评"></a>3.4 轴向柱塞泵性能总评</h3><ul>
+<li>优点：工作压力高、流量大、单位功率的重量小（功率密度高、体积小重量轻）、寿命长、便于实现变量（改变偏心距或斜盘倾角即可调节排量）。</li>
+<li>缺点：结构相对复杂、价格较高、噪声较大；最突出的是<strong>抗污染能力差</strong>——柱塞与缸体孔配合间隙很小，若液压油被污染，杂质在缝隙中沉积（尤其长期停机后重新开机时）容易使柱塞卡死。因此使用中必须监测液压油污染程度、油液变脏或到期要及时更换。</li>
+</ul>
+<h3 id="3-5-叶片泵的基本结构"><a href="#3-5-叶片泵的基本结构" class="headerlink" title="3.5 叶片泵的基本结构"></a>3.5 叶片泵的基本结构</h3><ul>
+<li>转子是一个圆柱体，沿其轴向（长度方向）在圆周上均匀开出若干槽，槽内插入一块块矩形铁片，即<strong>叶片</strong>；定子是固定的内型面零件，转子两端由配油盘（前、后端盖）封住。</li>
+<li>转子转动时，叶片在<strong>离心力</strong>作用下从槽中甩出，贴紧定子内表面（很多泵还把压力油引入叶片根部，进一步把叶片顶出贴紧定子）。</li>
+<li>密闭工作腔由相邻两叶片、定子内表面、转子外表面以及两端配油盘围成；转子相对定子偏心（单作用）或定子内表面做成特殊曲线（双作用）时，相邻叶片间密闭腔的容积随转动周期性变化，从而吸油、压油。</li>
+</ul>
+<h3 id="3-6-单作用叶片泵与限压式变量泵"><a href="#3-6-单作用叶片泵与限压式变量泵" class="headerlink" title="3.6 单作用叶片泵与限压式变量泵"></a>3.6 单作用叶片泵与限压式变量泵</h3><ul>
+<li><strong>单作用叶片泵</strong>：转子与定子<strong>偏心</strong>安装。转子每转一周，每个叶片只伸出、缩回一次，相邻叶片间密闭腔完成一次增大（吸油）和一次减小（压油），即每转<strong>一次吸油、一次压油</strong>，配油盘上设一个吸油口、一个压油口。</li>
+<li>配油盘上隔开吸、压油窗口的隔墙（未切通部分）宽度必须大于相邻两叶片之间的间距，否则两叶片会同时跨过隔墙把吸、压油口连通。</li>
+<li>排量与叶片数、叶片宽度、定子与转子之间的偏心距（长短半径差）等有关；改变偏心距 $e$ 的大小可改变排量、改变偏心方向可使吸压油口互换（流向改变），故单作用叶片泵可做成<strong>双向变量泵</strong>。</li>
+<li><strong>限压式变量叶片泵（反馈式）</strong>：在普通单作用泵基础上增加反馈油路，把泵的输出压力反馈到定子上。当输出压力超过设定上限时，反馈液压力推动定子相对转子移动、使偏心距减小直至为零；偏心为零时排量为零、泵不再向外供油，系统压力便不再升高，从而<strong>限制最高压力、起安全（过载）保护和泄压作用</strong>。</li>
+<li>从控制角度看：普通泵给定输入就有输出、不检测结果，是<strong>开环控制</strong>；限压式变量泵把输出量（压力）反馈回来与设定上限比较、超限自动减小输出，构成<strong>闭环（反馈）控制</strong>。</li>
+</ul>
+<h3 id="3-7-双作用叶片泵（重点）"><a href="#3-7-双作用叶片泵（重点）" class="headerlink" title="3.7 双作用叶片泵（重点）"></a>3.7 双作用叶片泵（重点）</h3><ul>
+<li><strong>定子曲线（8 段）</strong>：双作用叶片泵的定子与转子<strong>同心</strong>，但定子内表面既不是圆也不是椭圆，而是由 <strong>8 段曲线</strong>围成：两段半径相同的大圆弧、两段半径相同的小圆弧（共 4 段圆弧），以及连接大、小圆弧的 <strong>4 段过渡曲线</strong>。因大、小圆弧半径不同、圆心位置不同，若直接相交会出现折角，叶片经过折角时其伸出量会突变、产生刚性冲击（类似车轮压过凸起或凹坑），故必须用平滑的过渡曲线连接；过渡曲线常采用<strong>等加速等减速曲线</strong>，其函数一般用插值方法求得，再在加工中心上加工出定子内曲面。</li>
+<li><strong>两次吸油、两次压油</strong>：在 8 段定子曲线约束下，转子每转一周，每个叶片要伸出、缩回两次，相邻叶片间密闭腔相应完成两次增大、两次减小，即<strong>每转两次吸油、两次压油</strong>，”双作用”由此得名；配油盘上必须对称设置<strong>两个吸油口和两个压油口（共 4 个油口）</strong>。</li>
+<li><strong>径向力平衡</strong>：两个吸油区（低压）和两个压油区（高压）在圆周上对称布置，作用在转子和轴上的径向液压力相互平衡，轴承受力状况好、磨损小、寿命长（这是双作用泵相对单作用泵和齿轮泵的重要优点）。</li>
+<li><strong>只能定量、可正反转</strong>：由于定子与转子同心、结构上下左右完全对称，没有偏心距可调，故<strong>双作用叶片泵只能做定量泵、不能变量</strong>；但可以正、反转，即能做双向泵。</li>
+<li><strong>叶片前倾</strong>：双作用叶片泵的叶片槽（叶片）并非严格沿转子径向（法线方向）开设，而是相对法线向转动方向前倾一个角度，目的是减小叶片所受的压力角、改善叶片在槽内的受力和滑动状况（对比：叶片马达为兼顾正反转，叶片不设前倾、沿径向过圆心安装）。</li>
+<li>双作用叶片泵流量脉动小、径向力平衡、运转平稳，但定子曲线加工讲究、成本相对较高。</li>
+</ul>
+<h3 id="3-8-外啮合齿轮泵的工作原理与排量"><a href="#3-8-外啮合齿轮泵的工作原理与排量" class="headerlink" title="3.8 外啮合齿轮泵的工作原理与排量"></a>3.8 外啮合齿轮泵的工作原理与排量</h3><ul>
+<li><strong>结构与原理</strong>：泵体内装一对参数相同、相互外啮合的齿轮，两端由端盖（轴套）封住，齿轮齿间槽（齿槽）、泵体内壁与端盖围成密闭容积。齿轮转动时，在轮齿逐渐脱开啮合的一侧，齿间槽让出来、密闭容积增大而形成负压吸油（吸油腔）；在轮齿逐渐进入啮合的一侧，轮齿占据齿间槽、密闭容积减小而把油压出（压油腔）。</li>
+<li><strong>配流（第三必要条件）</strong>：齿轮的啮合线（啮合接触点）天然地把吸油腔与压油腔隔开；为保证可靠隔开，齿轮重合度（重叠系数）大于 1，任何时刻至少有两对轮齿同时接触。</li>
+<li><strong>排量近似公式</strong>：齿轮每转一周，一个齿轮各齿间槽排出的油液体积之和近似等于齿间槽总容积，两个齿轮故乘以 2：</li>
+</ul>
+<p>$$V\approx 6.66,z,m^{2}b$$</p>
+<p>其中 $z$ 为齿数、$m$ 为模数、$b$ 为齿宽；理论上 $2\pi\approx6.28$，但齿间槽体积要比轮齿体积略大（否则轮齿无法进入齿槽、会卡死），故系数取略大的经验值 6.66。</p>
+<ul>
+<li><strong>流量脉动</strong>：齿轮泵瞬时流量脉动较大；在节圆（分度圆）直径一定时，齿数越多、模数越小，流量脉动越小。也可把两个齿轮泵&#x2F;齿轮组并列或串联并错开一定相位角，以增大排量、减小脉动。</li>
+</ul>
+<h3 id="3-9-外啮合齿轮泵的优缺点与应用"><a href="#3-9-外啮合齿轮泵的优缺点与应用" class="headerlink" title="3.9 外啮合齿轮泵的优缺点与应用"></a>3.9 外啮合齿轮泵的优缺点与应用</h3><ul>
+<li>优点：结构简单紧凑、零件数量少（往往不超过十种零件，两只手可数完）、价格低廉、<strong>抗污染能力强</strong>（油液不太干净也常能运转）、自吸（吸油）性能好、工作可靠、体积小。</li>
+<li>缺点：流量和压力脉动较大、噪声较大、泄漏较严重、径向力不平衡、只能做定量泵。</li>
+<li>应用：用于对成本敏感、对运动平稳性和精度要求不高的场合，如工程机械、农业机械、机床润滑系统等；不宜用于加工中心进给等要求微米级精度的液压驱动（振动会使精度无法保证）。</li>
+</ul>
+<h3 id="3-10-外啮合齿轮泵的三大结构缺陷与改进（高频考点）"><a href="#3-10-外啮合齿轮泵的三大结构缺陷与改进（高频考点）" class="headerlink" title="3.10 外啮合齿轮泵的三大结构缺陷与改进（高频考点）"></a>3.10 外啮合齿轮泵的三大结构缺陷与改进（高频考点）</h3><ol>
+<li><strong>端面（轴向）间隙泄漏及补偿</strong>：齿轮端面与端盖（轴套）之间、齿轮齿顶与泵体之间、轮齿啮合处都存在间隙而产生泄漏，其中<strong>齿轮端面与端盖&#x2F;轴套间的端面（轴向）间隙泄漏是最主要的泄漏源，约占总泄漏量的 70%~80%<strong>；齿轮工作中与端盖摩擦磨损后该间隙还会增大。改进措施是采用</strong>浮动轴套（浮动侧板）</strong>：把压力油引到浮动轴套外侧，靠液压力把轴套（侧板）自动压向齿轮端面，随磨损自动补偿间隙，保持较小的端面间隙。</li>
+<li><strong>径向力不平衡及平衡</strong>：齿轮一侧为低压吸油腔、另一侧为高压压油腔，沿齿顶圆周从吸油口到压油口压力逐渐升高，对齿轮和轴形成一个单向的径向合力，使轴承（或与端盖直接滑动摩擦的轴颈）单侧偏磨，降低齿轮寿命和装配精度。改进方法：①<strong>缩小压油口尺寸</strong>，减小高压油作用在齿轮上的面积；②在泵体或端盖上开设<strong>压力平衡槽</strong>，把高压油引到低压侧对应位置、低压油引到高压侧，使径向力相互平衡（理论上甚至可消除），但平衡槽加工复杂、传统铸造难加工，可借助金属粉末冶金或金属 3D 打印制造，成本较高。</li>
+<li><strong>困油现象及卸荷槽</strong>：为可靠隔开吸、压油腔，齿轮重合度 $\varepsilon&gt;1$，在一段时间内同时有两对轮齿啮合，于是在两对轮齿之间形成一个<strong>既不与吸油口相通、也不与压油口相通的封闭容积</strong>（注意它与泵正常工作的密闭容积不是同一概念）。齿轮连续转动时该封闭容积先由大变小、再由小变大：<ul>
+<li>容积变小时，腔内油液被封闭挤压、压力急剧升高，油液从缝隙强行挤出，产生振动、噪声并使轴承受冲击；</li>
+<li>容积再变大时，腔内形成局部真空（负压），溶于油中的气体析出形成气泡，气泡随后破灭造成<strong>气穴、气蚀</strong>（冲击、发热、剥蚀零件表面）。</li>
+<li>解决办法：在两端盖（若用浮动轴套则开在轴套端面）上对称开两个<strong>卸荷槽</strong>（矩形、半圆形等凹槽均可），使封闭容积在减小时通过卸荷槽与压油腔相通、在增大时与吸油腔相通，同时两槽之间仍保持吸、压油腔隔开，即可消除困油危害。</li>
+</ul>
+</li>
+</ol>
+<h3 id="3-11-内啮合齿轮泵"><a href="#3-11-内啮合齿轮泵" class="headerlink" title="3.11 内啮合齿轮泵"></a>3.11 内啮合齿轮泵</h3><ul>
+<li>结构：由一个小外齿轮和一个内齿圈相啮合，中间在齿间容积最大处用一块月牙形隔板（填隙件）把吸油腔和压油腔隔开；齿形可采用渐开线或摆线（内摆线，对应摆线泵&#x2F;转子泵），直齿、斜齿均可（斜齿接触更连续、承载更大，但加工成本更高）。</li>
+<li>优点：小齿轮与内齿圈<strong>同向旋转</strong>（外啮合两齿轮转向相反、啮合处相对速度大、冲击大），故冲击小、噪声低、运转平稳；小齿轮置于齿圈内，结构更紧凑；<strong>基本不存在困油现象</strong>。</li>
+<li>缺点：内齿圈（内齿）加工比外齿轮困难、成本高。</li>
+<li>应用：使用不如外啮合齿轮泵广泛，常用于机床润滑系统等特定场合。</li>
+</ul>
+<h3 id="3-12-螺杆泵"><a href="#3-12-螺杆泵" class="headerlink" title="3.12 螺杆泵"></a>3.12 螺杆泵</h3><ul>
+<li>可把螺杆理解为带螺旋齿的”齿轮”（相当于把斜齿齿轮的齿沿轴向拉长、螺旋），由一根主动螺杆和一根或两根从动螺杆（常见三螺杆）相互啮合，螺杆螺旋槽与泵体（衬套）形成密闭容积，螺杆转动时密闭容积沿轴向连续推移而实现吸油、压油。</li>
+<li>优点：流量（压力）脉动极小、噪声低、密封性好、运转平稳；缺点：螺杆螺旋面加工成本高、零件装配比较复杂。</li>
+<li>应用不如齿轮泵、叶片泵、柱塞泵广泛，主要用于对流量平稳性要求极高的场合。</li>
+</ul>
+<h3 id="3-13-各类液压泵性能对比与选型"><a href="#3-13-各类液压泵性能对比与选型" class="headerlink" title="3.13 各类液压泵性能对比与选型"></a>3.13 各类液压泵性能对比与选型</h3><ul>
+<li>选型应结合工况，从工作压力、流量大小、能否变量（流量调节）、效率、流量脉动、噪声、抗污染能力、结构复杂程度与价格、寿命等方面综合比较：<ul>
+<li><strong>齿轮泵</strong>：压力较低、定量、结构最简单、价格最低、抗污染最强、自吸好，但脉动噪声大、泄漏较大；</li>
+<li><strong>叶片泵</strong>：中等压力，双作用定量且径向力平衡、脉动较小，单作用可变量，定子曲线加工较讲究；</li>
+<li><strong>柱塞泵（径向&#x2F;轴向）</strong>：高压、大流量、效率高、单位功率重量小、寿命长、最易实现变量，但结构复杂、价格高、抗污染能力差、噪声较大。</li>
+</ul>
+</li>
+<li>没有绝对优劣，应按系统实际工作压力、执行元件速度与平稳性、精度、成本和维护条件选择，例如高精度机床进给不宜用齿轮泵，而工程机械、农机常用齿轮泵。</li>
+</ul>
+<h3 id="3-14-液压马达概述及与泵的区别"><a href="#3-14-液压马达概述及与泵的区别" class="headerlink" title="3.14 液压马达概述及与泵的区别"></a>3.14 液压马达概述及与泵的区别</h3><ul>
+<li><strong>作用与符号</strong>：液压马达是把液压能转换为旋转机械能的执行元件，输入具有一定压力和流量的液压油，由输出轴输出转矩和转速（如挖掘机行走马达、回转马达）。图形符号为圆圈内一个实心三角形、<strong>三角形尖朝内</strong>（表示压力油输入），与液压泵三角形尖朝外正好相反，务必区分。</li>
+<li><strong>排量</strong>：在理想（容积效率为 1）情况下，使马达轴旋转一周所需要输入的液压油体积；这与泵”转一周排出多少油”的描述方向相反。</li>
+<li><strong>流量关系相反（考点）</strong>：输入马达的压力油总有一部分从缝隙泄漏掉，真正进入工作腔推动马达转动的流量小于输入流量，因此<strong>马达的实际（输入）流量大于理论流量</strong>；而泵存在泄漏使实际排出流量减小，故<strong>泵的理论流量大于实际流量</strong>。</li>
+<li>马达同样有工作压力、排量、流量、容积效率、机械效率、转矩、转速等参数；按排量和转向能否调节，可分为单向定量、单向变量、双向定量、双向变量马达。</li>
+<li>马达与泵原理相同、结构相似，多数泵与马达在原理上可逆；由于液压马达通常要求能正、反转，所以马达往往采用进出油口对称、结构对称的形式。</li>
+</ul>
+<h3 id="3-15-高速液压马达（齿轮马达、叶片马达）"><a href="#3-15-高速液压马达（齿轮马达、叶片马达）" class="headerlink" title="3.15 高速液压马达（齿轮马达、叶片马达）"></a>3.15 高速液压马达（齿轮马达、叶片马达）</h3><ul>
+<li><strong>齿轮马达</strong>：高压油进入压油腔作用在齿轮齿面上，对齿轮回转中心形成不平衡的液压力矩，推动齿轮旋转输出转矩和转速；把进、出油口对调即反转，故齿轮马达在结构上做成对称形式。</li>
+<li><strong>叶片马达</strong>：高压油作用在伸出的叶片两侧，对转子回转中心形成力矩而转动；一般采用双作用结构，且叶片沿转子径向（过圆心方向）安装、不设前倾角，以保证正、反两个方向转动时叶片受力都合理。</li>
+<li>高速马达特点：转速较高、输出扭矩相对较小。工程案例：某振动设备在马达输出轴上加装偏心块（激振块）产生振动，马达转速可达约 6000 r&#x2F;min；对比高频电动机在极限（破坏性）工况下容易烧毁，液压马达寿命长、稳定可靠、能达到较高转速，缺点是能耗相对较高（具体转速数值以实际设备为准）。</li>
+</ul>
+<h3 id="3-16-低速大扭矩液压马达"><a href="#3-16-低速大扭矩液压马达" class="headerlink" title="3.16 低速大扭矩液压马达"></a>3.16 低速大扭矩液压马达</h3><ul>
+<li>低速大扭矩马达多为<strong>径向柱塞式</strong>，可直接与工作机构相连、<strong>不需要减速器</strong>就能输出很大扭矩，最低稳定转速可低至约 <strong>3 r&#x2F;min</strong>，特别适合工程机械、起重运输等重载、低速、直接驱动的场合。</li>
+<li><strong>曲轴连杆式径向柱塞马达</strong>：原理类似四冲程内燃机的曲柄连杆机构——高压油依次进入各缸（如 5 个缸）推动柱塞（活塞），经连杆带动曲轴旋转；高压油通过连杆对曲轴产生的作用力可分解为沿半径过圆心的分力（不产生力矩）和垂直于曲柄、不经过圆心的切向分力，后者对曲轴中心形成转矩，由配流轴按相位依次给各缸配油。区别在于内燃机靠燃油燃烧产生高温高压燃气，而马达靠高压液压油推动柱塞。</li>
+<li><strong>内曲线式径向柱塞马达</strong>：定子内表面做成特殊的内曲线轮廓（不是圆），柱塞端部带滚轮顶在内曲面上；高压油把柱塞推出压向内曲线时，曲面对滚轮产生反作用力，将其正交分解后切向分力带动缸体（转子）旋转；内曲线上有多个作用曲面，柱塞数较多，运转平稳、扭矩大、低速稳定性好。</li>
+<li>这类马达还可在车辆等设备上配合实现下坡能量回收&#x2F;上坡辅助等储能、助力功能。</li>
+</ul>
+<h2 id="四、例题与案例分析"><a href="#四、例题与案例分析" class="headerlink" title="四、例题与案例分析"></a>四、例题与案例分析</h2><h3 id="4-1-三个必要条件在各泵中的实现"><a href="#4-1-三个必要条件在各泵中的实现" class="headerlink" title="4.1 三个必要条件在各泵中的实现"></a>4.1 三个必要条件在各泵中的实现</h3><ul>
+<li>分别说明叶片泵、齿轮泵如何满足”密闭容积、容积周期性变化、配流装置隔开吸压油口”：叶片泵密闭腔由相邻叶片+定子+转子+配油盘围成，靠偏心&#x2F;定子曲线使容积变化，靠配油盘隔墙配流；齿轮泵密闭腔是齿间槽，靠轮齿进入&#x2F;脱开啮合使容积变化，靠啮合线配流。</li>
+</ul>
+<h3 id="4-2-单、双作用叶片泵对比"><a href="#4-2-单、双作用叶片泵对比" class="headerlink" title="4.2 单、双作用叶片泵对比"></a>4.2 单、双作用叶片泵对比</h3><ul>
+<li>从定子转子是否同心、定子内表面形状、每转吸压油次数、油口数量、径向力是否平衡、能否变量、能否正反转、叶片是否前倾等方面列表比较。</li>
+</ul>
+<h3 id="4-3-齿轮泵排量与脉动"><a href="#4-3-齿轮泵排量与脉动" class="headerlink" title="4.3 齿轮泵排量与脉动"></a>4.3 齿轮泵排量与脉动</h3><ul>
+<li>用 $V\approx6.66zm^{2}b$ 计算排量（注意单位），说明齿数增多时节圆直径一定为何脉动减小。</li>
+</ul>
+<h3 id="4-4-困油现象分析"><a href="#4-4-困油现象分析" class="headerlink" title="4.4 困油现象分析"></a>4.4 困油现象分析</h3><ul>
+<li>画图说明困油封闭容积如何先变小后变大，分别造成什么危害（压力骤升冲击、局部真空气穴气蚀），卸荷槽如何开设、为什么能消除困油又不使吸压油腔连通。</li>
+</ul>
+<h3 id="4-5-齿轮泵泄漏与径向力改进"><a href="#4-5-齿轮泵泄漏与径向力改进" class="headerlink" title="4.5 齿轮泵泄漏与径向力改进"></a>4.5 齿轮泵泄漏与径向力改进</h3><ul>
+<li>指出端面间隙泄漏占比（约 70%~80%）及浮动轴套补偿原理；说明径向力不平衡成因与缩小压油口、压力平衡槽两种改进方法。</li>
+</ul>
+<h3 id="4-6-泵与马达辨析"><a href="#4-6-泵与马达辨析" class="headerlink" title="4.6 泵与马达辨析"></a>4.6 泵与马达辨析</h3><ul>
+<li>比较液压泵与液压马达的能量转换方向、符号三角方向、排量含义、实际流量与理论流量的大小关系；判断齿轮&#x2F;叶片马达为何采用对称结构、叶片马达叶片为何不前倾。</li>
+</ul>
+<h2 id="五、对比、公式与术语速查表"><a href="#五、对比、公式与术语速查表" class="headerlink" title="五、对比、公式与术语速查表"></a>五、对比、公式与术语速查表</h2><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>关键内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>轴向柱塞泵</td>
+<td>高压大流量、高效、易变量、寿命长；结构复杂、价高、抗污染差、噪声较大</td>
+</tr>
+<tr>
+<td>滑履&#x2F;减震槽&#x2F;奇数柱塞</td>
+<td>滑履可换+静压支承；减震槽预卸压减冲击；柱塞取奇数（9 个）脉动小</td>
+</tr>
+<tr>
+<td>半轴式&#x2F;通轴式</td>
+<td>半轴式靠缸体外圈大轴承、外形大；通轴式轴穿缸体两端支承、紧凑</td>
+</tr>
+<tr>
+<td>斜轴式</td>
+<td>圆盘与轴一体、球铰连杆（类万向节）、紧凑；球窝加工贵</td>
+</tr>
+<tr>
+<td>单作用叶片泵</td>
+<td>偏心、每转一次吸压油、可双向变量；限压式靠反馈超载排量归零（闭环保护）</td>
+</tr>
+<tr>
+<td>双作用叶片泵</td>
+<td>同心、定子 8 段曲线（两大弧两小弧四过渡）、每转两次吸压油、4 油口、径向力平衡、只能定量可双向、叶片前倾</td>
+</tr>
+<tr>
+<td>外啮合齿轮泵</td>
+<td>齿间槽容积变化、啮合线配流；$V\approx6.66zm^{2}b$；简单价廉抗污染、脉动噪声大、定量</td>
+</tr>
+<tr>
+<td>齿轮泵缺陷①</td>
+<td>端面间隙泄漏约占 70%~80%→浮动轴套&#x2F;侧板压力油补偿</td>
+</tr>
+<tr>
+<td>齿轮泵缺陷②</td>
+<td>径向力不平衡→缩小压油口 &#x2F; 开压力平衡槽</td>
+</tr>
+<tr>
+<td>齿轮泵缺陷③</td>
+<td>困油（重合度&gt;1、封闭容积先小后大）→端盖&#x2F;轴套开卸荷槽</td>
+</tr>
+<tr>
+<td>内啮合齿轮泵</td>
+<td>同向旋转、冲击小、紧凑、月牙隔板、无困油；内齿圈成本高、用于润滑等</td>
+</tr>
+<tr>
+<td>螺杆泵</td>
+<td>脉动极小、噪声低、密封好；螺杆加工贵、装配复杂</td>
+</tr>
+<tr>
+<td>液压马达符号</td>
+<td>圆圈内实心三角、尖朝内（泵尖朝外）</td>
+</tr>
+<tr>
+<td>马达排量</td>
+<td>理想时轴转一周所需输入油液体积</td>
+</tr>
+<tr>
+<td>流量关系</td>
+<td>马达实际流量&gt;理论流量；泵理论流量&gt;实际流量</td>
+</tr>
+<tr>
+<td>高速马达</td>
+<td>齿轮马达、叶片马达（对称、叶片径向不倾），高转速小扭矩</td>
+</tr>
+<tr>
+<td>低速大扭矩马达</td>
+<td>径向柱塞（曲轴连杆式、内曲线式），免减速器、最低稳定约 3r&#x2F;min、重载</td>
+</tr>
+</tbody></table>
+<h2 id="六、课堂任务与复习安排"><a href="#六、课堂任务与复习安排" class="headerlink" title="六、课堂任务与复习安排"></a>六、课堂任务与复习安排</h2><ul>
+<li>课堂以提问方式复习了液压泵工作三个必要条件、双作用叶片泵定子 8 段曲线和径向力平衡问题。</li>
+<li>教师强调本课程是重要专业基础课、后续还有课程设计；考试难度不高但必须认真复习，敷衍应付有挂科风险。</li>
+<li>复习要求：<ol>
+<li>能讲清轴向柱塞泵滑履、减震槽、奇数柱塞、弹簧等细节及半轴&#x2F;通轴&#x2F;斜轴式区别与柱塞泵优缺点；</li>
+<li>能对比单、双作用叶片泵，重点掌握双作用定子 8 段曲线、两次吸压油、径向力平衡和”只能定量”；</li>
+<li>理解限压式变量叶片泵的反馈保护和开环&#x2F;闭环概念；</li>
+<li>掌握齿轮泵原理、排量公式、优缺点和三大缺陷（端面泄漏、径向力、困油）及对应改进措施；</li>
+<li>了解内啮合齿轮泵、螺杆泵的特点；</li>
+<li>能从多个性能维度对三类泵进行选型比较；</li>
+<li>掌握液压马达与泵的互逆关系、符号、流量关系相反，区分高速马达与低速大扭矩马达及其应用。</li>
+</ol>
+</li>
+</ul>
+<h2 id="七、待核对与疑问"><a href="#七、待核对与疑问" class="headerlink" title="七、待核对与疑问"></a>七、待核对与疑问</h2><table>
+<thead>
+<tr>
+<th>问题</th>
+<th>原因</th>
+<th>建议核对方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>齿轮泵排量系数 6.66 与公式形式</td>
+<td>录音口述，教材符号可能略有差异</td>
+<td>查教材齿轮泵排量公式</td>
+</tr>
+<tr>
+<td>单作用叶片泵排量公式中叶片数、宽度、偏心距 e 等具体形式</td>
+<td>录音未给完整公式</td>
+<td>查教材叶片泵排量推导</td>
+</tr>
+<tr>
+<td>柱塞数脉动率对比的具体数值（9 与 10）</td>
+<td>录音只举例未给表值</td>
+<td>查教材柱塞数—流量脉动率表</td>
+</tr>
+<tr>
+<td>振动马达转速（约 6000r&#x2F;min）及对比电机转速（1000 余转）</td>
+<td>录音数字含糊</td>
+<td>以案例设备实际参数为准</td>
+</tr>
+<tr>
+<td>低速大扭矩马达最低稳定转速（约 3r&#x2F;min）</td>
+<td>录音口述</td>
+<td>查教材&#x2F;样本参数</td>
+</tr>
+<tr>
+<td>双缸&#x2F;双泵并列是串联还是并联、相位角具体取值</td>
+<td>录音描述较口语</td>
+<td>查教材多泵组合结构</td>
+</tr>
+<tr>
+<td>斜齿内啮合、摆线泵（转子泵）名称与齿形</td>
+<td>录音术语混杂</td>
+<td>对照教材内啮合齿轮泵一节</td>
+</tr>
+</tbody></table>
+<h2 id="八、复习与主动回忆"><a href="#八、复习与主动回忆" class="headerlink" title="八、复习与主动回忆"></a>八、复习与主动回忆</h2><h3 id="复习清单"><a href="#复习清单" class="headerlink" title="复习清单"></a>复习清单</h3><ol>
+<li>用 4 分钟复述轴向柱塞泵的滑履、减震槽、奇数柱塞、弹簧和半轴&#x2F;通轴&#x2F;斜轴式区别。</li>
+<li>用 3 分钟说清柱塞泵高压高效但抗污染差的原因。</li>
+<li>用 5 分钟对比单作用与双作用叶片泵（偏心&#x2F;同心、次数、油口、平衡、变量、反转、叶片倾角）。</li>
+<li>用 3 分钟讲清限压式变量叶片泵的反馈保护与开环闭环。</li>
+<li>用 6 分钟讲清齿轮泵原理、排量公式和三大缺陷及改进。</li>
+<li>用 3 分钟比较内啮合齿轮泵、螺杆泵的特点。</li>
+<li>用 3 分钟从性能维度对齿轮泵&#x2F;叶片泵&#x2F;柱塞泵选型。</li>
+<li>用 5 分钟讲清液压马达与泵的区别、流量关系相反、高速与低速大扭矩马达。</li>
+</ol>
+<h3 id="主动回忆题"><a href="#主动回忆题" class="headerlink" title="主动回忆题"></a>主动回忆题</h3><ol>
+<li>轴向柱塞泵的滑履和柱塞为什么要做成空心并引压力油？配流盘上的减震槽起什么作用？</li>
+<li>轴向柱塞泵的柱塞数为什么一般取奇数（如 9 个而不是 10 个）？</li>
+<li>半轴式、通轴式、斜轴式轴向柱塞泵在轴的支承和结构紧凑性上各有什么区别？斜轴式的主要加工难点是什么？</li>
+<li>轴向柱塞泵有哪些主要优点和缺点？为什么它对油液污染特别敏感？</li>
+<li>单作用叶片泵和双作用叶片泵在定子转子位置、定子内表面形状、每转吸压油次数、油口数量、径向力平衡、能否变量、能否反转、叶片是否前倾上有何不同？</li>
+<li>双作用叶片泵的定子内表面为什么要做成 8 段曲线？过渡曲线为什么常用等加速等减速曲线？</li>
+<li>限压式变量叶片泵是怎样实现过载保护的？它体现了开环还是闭环控制？</li>
+<li>外啮合齿轮泵怎样实现吸油和压油、靠什么隔开吸压油腔？写出排量近似公式并说明系数为何取 6.66。</li>
+<li>齿轮泵的三大结构缺陷是什么？分别怎样改进？端面间隙泄漏约占多大比例？困油现象的封闭容积如何变化、各造成什么危害？</li>
+<li>液压马达与液压泵在能量转换、符号、排量含义和实际&#x2F;理论流量关系上有何区别？高速马达和低速大扭矩马达各有哪些类型、特点和应用？</li>
+</ol>
+<h3 id="答案要点"><a href="#答案要点" class="headerlink" title="答案要点"></a>答案要点</h3><ol>
+<li>柱塞空心并开设流道，是为了把压力油引到柱塞端部滑履与斜盘的接触面之间形成油膜（静压支承&#x2F;液体润滑），减小摩擦磨损和发热，滑履磨损后还可单独更换；滑履使相对滑动间隙可控、减小泄漏、提高效率。配流盘减震槽（预卸压口）让柱塞腔由高压区转入低压区前先经槽与低压侧缓慢连通、提前降低腔内压力，避免压力突变产生液压冲击（只能减小不能完全消除）。</li>
+<li>柱塞泵瞬时流量因加工误差、切换冲击存在流量脉动，影响系统稳定性；实验和经验表明柱塞数取奇数时流量脉动率比相邻偶数更小（并非柱塞越多脉动一定越小，偶数个反而可能更大），故常取 3、5、7、9 等奇数。</li>
+<li>半轴（非通轴）式主轴只在一端直接支承，另一端经花键带动缸体、由缸体外圈大轴承支承，因缸体和外圈轴承尺寸大，泵整体外形大；通轴式主轴贯穿缸体、两端都有轴承支承，省去外圈大轴承，结构更紧凑、外形更小。斜轴（弯轴）式传动圆盘与主轴做成一体、经球铰连杆连接柱塞（类万向节），允许轴与缸体有夹角，结构非常紧凑；主要加工难点是圆盘球窝（球铰）加工难度大、精度难控、成本高。</li>
+<li>优点：工作压力高、流量大、单位功率重量小（功率密度高）、寿命长、容易通过改变偏心距&#x2F;斜盘倾角实现变量。缺点：结构复杂、价格高、噪声较大、对油液污染敏感。敏感原因是柱塞与缸体孔配合间隙很小，油中杂质进入或长期停机后在缝隙沉积，容易使柱塞卡死，故须监测油液污染、及时换油。</li>
+<li>单作用：定子与转子偏心，定子内表面为圆，每转叶片伸缩一次、一次吸油一次压油，设一个吸油口一个压油口，径向力不平衡，改变偏心距大小和方向可改变排量与流向，可做双向变量泵。双作用：定子与转子同心，定子内表面为 8 段曲线，每转伸缩两次、两次吸油两次压油，设两个吸油口两个压油口且对称布置，径向力平衡、运转平稳，因结构对称无偏心可调只能做定量泵、不能变量，但可正反转，叶片相对法线前倾以减小压力角。</li>
+<li>双作用泵定子内表面有两段大圆弧、两段小圆弧，半径和圆心不同，若直接相交会形成折角，叶片经过折角时伸出量突变、产生刚性冲击（像压过凸坎&#x2F;凹坑），故必须用 4 段平滑过渡曲线把大、小圆弧连接起来；过渡曲线常用等加速等减速曲线（用插值求函数、再加工），使叶片伸缩速度和加速度变化平缓、减小冲击和噪声。</li>
+<li>限压式变量叶片泵在单作用泵上加反馈油路，把输出压力反馈到定子上；当压力超过设定上限，反馈液压力推动定子使偏心距减小直至为零，排量随之减到零、泵停止对外供油，系统压力不再升高，从而限制最高压力、实现过载安全保护和泄压。它把输出（压力）反馈回来与设定值比较并据此调节输出，属于闭环（反馈）控制；普通泵给定输入即输出、不检测结果，是开环控制。</li>
+<li>一对齿轮转动时，轮齿脱开啮合侧齿间槽容积增大形成负压而吸油，轮齿进入啮合侧齿间槽被占据、容积减小而压油；靠齿轮啮合线（重合度大于 1、至少两对齿同时接触）把吸油腔与压油腔隔开。排量近似公式 $V\approx6.66zm^{2}b$（z 齿数、m 模数、b 齿宽，两个齿轮）；理论系数为 $2\pi\approx6.28$，但齿间槽体积要比轮齿体积略大（否则轮齿无法进入齿槽会卡死），故系数取略大的经验值 6.66。</li>
+<li>三大缺陷：①端面（轴向）间隙泄漏，是最主要泄漏源、约占总泄漏 70%~80%，用浮动轴套&#x2F;浮动侧板引压力油自动补偿磨损间隙；②径向力不平衡，高压侧对齿轮轴产生单向合力使轴承偏磨，用缩小压油口或开压力平衡槽（引高压油到低压侧）平衡；③困油，重合度大于 1 使两对齿间形成与吸压油口都不通的封闭容积，该容积随转动先变小后变大——变小时油液被封闭挤压、压力骤升，引起振动噪声和轴承冲击，变大时形成局部真空、气体析出产生气泡并破灭，造成气穴气蚀；在端盖或浮动轴套端面对称开两个卸荷槽，使封闭容积缩小时通压油腔、增大时通吸油腔，同时保持吸压油腔隔开，即可消除困油。</li>
+<li>液压泵由电机&#x2F;内燃机带动，把机械能转换为液压能，符号三角尖朝外，排量指转一周排出的油液体积，因泄漏实际流量小于理论流量；液压马达输入压力油、输出旋转机械能，符号三角尖朝内，排量指理想时转一周所需输入的油液体积，因输入油有一部分泄漏，实际（输入）流量大于理论流量——二者流量大小关系正好相反。高速马达主要有齿轮马达、叶片马达，采用对称结构以适应正反转（叶片马达叶片沿径向过圆心、不前倾），转速高、扭矩小；低速大扭矩马达多为径向柱塞式，如曲轴连杆式（类内燃机曲柄连杆、配流轴配油）和内曲线式（滚轮沿定子内曲线、切向分力产生力矩），扭矩大、可直接驱动负载、无需减速器，最低稳定转速约 3r&#x2F;min，用于挖掘机等工程机械重载低速场合。</li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%B6%B2%E5%8E%8B%E4%BC%A0%E5%8A%A8-%E6%B6%B2%E5%8E%8B%E6%B3%B5-%E6%B6%B2%E5%8E%8B%E9%A9%AC%E8%BE%BE/" class="print-no-link">#液压传动 液压泵 液压马达</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>液压泵类型结构与液压马达：柱塞泵、叶片泵、齿轮泵</div>
+      <div>https://tdexxx.github.io/2026/10/07/03_液压传动/03_液压传动_液压泵类型与液压马达/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>tdexxx</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年10月7日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/10/07/04_%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1_%E5%B8%A6%E4%BC%A0%E5%8A%A8_%E5%8F%91%E5%B8%83%E7%A8%BF/" title="带传动原理与受力分析：欧拉公式与弹性滑动">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">带传动原理与受力分析：欧拉公式与弹性滑动</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/10/07/03_%E6%B6%B2%E5%8E%8B%E4%BC%A0%E5%8A%A8/02_%E6%B6%B2%E5%8E%8B%E4%BC%A0%E5%8A%A8_%E6%B6%B2%E5%8E%8B%E6%B3%B5%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E4%B8%8E%E6%80%A7%E8%83%BD%E5%8F%82%E6%95%B0/" title="液压泵工作原理与性能参数：排量、流量与效率特性">
+                        <span class="hidden-mobile">液压泵工作原理与性能参数：排量、流量与效率特性</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

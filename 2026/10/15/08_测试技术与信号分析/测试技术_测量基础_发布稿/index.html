@@ -1,0 +1,1020 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="tdexxx">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="机械工程测试技术笔记（测量基础篇）：测试&#x2F;测量&#x2F;试验与静动态测量、测量系统组成与三大应用、量纲与计量单位、测量计量测试四要素、基准检定与量值传递、直接&#x2F;间接&#x2F;组合测量、传感器与变送器检测器、准确度等级与量程真值、误差分类及精密度正确度准确度 本篇是《机械工程测试技术》（又称测试信号处理&#x2F;工程测试技术）开课阶段的基础课，重点建立”测试”这门课的总体框">
+<meta property="og:type" content="article">
+<meta property="og:title" content="测试技术测量基础：测量系统、误差与精度">
+<meta property="og:url" content="https://tdexxx.github.io/2026/10/15/08_%E6%B5%8B%E8%AF%95%E6%8A%80%E6%9C%AF%E4%B8%8E%E4%BF%A1%E5%8F%B7%E5%88%86%E6%9E%90/%E6%B5%8B%E8%AF%95%E6%8A%80%E6%9C%AF_%E6%B5%8B%E9%87%8F%E5%9F%BA%E7%A1%80_%E5%8F%91%E5%B8%83%E7%A8%BF/index.html">
+<meta property="og:site_name" content="tdexxx的博客">
+<meta property="og:description" content="机械工程测试技术笔记（测量基础篇）：测试&#x2F;测量&#x2F;试验与静动态测量、测量系统组成与三大应用、量纲与计量单位、测量计量测试四要素、基准检定与量值传递、直接&#x2F;间接&#x2F;组合测量、传感器与变送器检测器、准确度等级与量程真值、误差分类及精密度正确度准确度 本篇是《机械工程测试技术》（又称测试信号处理&#x2F;工程测试技术）开课阶段的基础课，重点建立”测试”这门课的总体框">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-10-15T14:03:47.000Z">
+<meta property="article:modified_time" content="2026-10-30T17:37:19.973Z">
+<meta property="article:author" content="tdexxx">
+<meta property="article:tag" content="测试技术 测量基础 误差分析">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>测试技术测量基础：测量系统、误差与精度 - tdexxx的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"tdexxx.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2022-12-10T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="测试技术测量基础：测量系统、误差与精度"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-10-15 22:03" pubdate>
+          2026年10月15日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          8.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          71 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">测试技术测量基础：测量系统、误差与精度</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="机械工程测试技术笔记（测量基础篇）：测试-测量-试验与静动态测量、测量系统组成与三大应用、量纲与计量单位、测量计量测试四要素、基准检定与量值传递、直接-间接-组合测量、传感器与变送器检测器、准确度等级与量程真值、误差分类及精密度正确度准确度"><a href="#机械工程测试技术笔记（测量基础篇）：测试-测量-试验与静动态测量、测量系统组成与三大应用、量纲与计量单位、测量计量测试四要素、基准检定与量值传递、直接-间接-组合测量、传感器与变送器检测器、准确度等级与量程真值、误差分类及精密度正确度准确度" class="headerlink" title="机械工程测试技术笔记（测量基础篇）：测试&#x2F;测量&#x2F;试验与静动态测量、测量系统组成与三大应用、量纲与计量单位、测量计量测试四要素、基准检定与量值传递、直接&#x2F;间接&#x2F;组合测量、传感器与变送器检测器、准确度等级与量程真值、误差分类及精密度正确度准确度"></a>机械工程测试技术笔记（测量基础篇）：测试&#x2F;测量&#x2F;试验与静动态测量、测量系统组成与三大应用、量纲与计量单位、测量计量测试四要素、基准检定与量值传递、直接&#x2F;间接&#x2F;组合测量、传感器与变送器检测器、准确度等级与量程真值、误差分类及精密度正确度准确度</h1><blockquote>
+<p>本篇是《机械工程测试技术》（又称测试信号处理&#x2F;工程测试技术）开课阶段的基础课，重点建立”测试”这门课的总体框架和一整套计量测量基本概念：测试与测量、试验的关系，静态与动态测量，测量系统的组成与应用场景，量纲与单位，测量、计量、测试的区别，基准、检定与量值传递，测量方法分类，传感器&#x2F;变送器&#x2F;检测器，计量器具的准确度等级、量程、真值与不确定度，以及误差的三种表示方法、三类性质划分和精密度&#x2F;正确度&#x2F;准确度的区别。这些概念是后续信号分析、传感器、计算机测试系统各章的共同语言。</p>
+</blockquote>
+<hr>
+<h2 id="一、核心结论（先记住这-16-条）"><a href="#一、核心结论（先记住这-16-条）" class="headerlink" title="一、核心结论（先记住这 16 条）"></a>一、核心结论（先记住这 16 条）</h2><ol>
+<li><strong>测试 &#x3D; 测量 + 试验</strong>：测量是把被测量与标准量进行比较、用数值和单位表示；试验是在产品运行或给定实验条件下获取定量信息的研究过程。带有试验研究性质、为分析优化服务的测量称为测试。</li>
+<li>测量分<strong>静态测量</strong>（被测量不随时间变化，如量桌子长度）和<strong>动态测量</strong>（被测量实时随时间变化，如用示波器测电压波形）；本课程重点研究<strong>动态测量</strong>。</li>
+<li>测量系统（测试系统）的三大应用：<strong>①产品开发与工程分析；②过程与系统控制（闭环反馈）；③状态监测与故障诊断</strong>。</li>
+<li>用于反馈控制的测量系统有两个基本要求：<strong>不失真、响应及时（滞后小）</strong>；只作显示记录时可放宽实时性，但仍要求不失真。</li>
+<li>一般测量系统的组成链路：<strong>被测量 → 传感器（敏感元件 + 转换元件）→ 信号调理电路 → 信号处理&#x2F;模数(A&#x2F;D)转换 → 计算机分析处理 → 显示&#x2F;记录&#x2F;反馈控制</strong>。</li>
+<li><strong>传感器直接感受被测量</strong>（输入量必为被测量），并按一定规律把它转换成与之对应的可用电信号（电压、电流、电阻、电荷等）。</li>
+<li><strong>量纲</strong>表示物理量的”类别&#x2F;性质”（长度、质量、时间等），可定性区分、定量比较；<strong>单位</strong>是量纲的具体度量标准。基本量纲（长度 L、质量 M、时间 T、热力学温度 Θ、电流 I、物质的量 N、发光强度 J）对应 SI 七个基本单位；其余物理量为导出量，其量纲由基本量纲组合得到。</li>
+<li>常见量纲：速度 $[v]&#x3D;LT^{-1}$、加速度 $[a]&#x3D;LT^{-2}$、力 $[F]&#x3D;MLT^{-2}$（由 $F&#x3D;ma$）；<strong>弧度 rad &#x3D; 弧长&#x2F;半径、球面度 sr &#x3D; 球面面积&#x2F;半径²，都是无量纲的辅助单位</strong>。</li>
+<li><strong>测量四要素</strong>：测量对象、计量单位、测量方法、测量误差（测量结果的准确度）。</li>
+<li>标准（基准）分国际标准、国家标准、部门&#x2F;地方标准、企业标准等，级别依次传递；日常用来校准工作量具的是<strong>工作基准</strong>（如校准游标卡尺用量块&#x2F;标准件）。</li>
+<li><strong>检定&#x2F;校准与量值传递</strong>：把国家基准通过各级计量标准逐级传递到现场工作计量器具；计量器具要按计量检定规程定期检定，判断其是否失准、能否继续使用。</li>
+<li>测量方法按获得结果的方式分：<strong>直接测量</strong>（被测量直接与标准比较、读数即结果）、<strong>间接测量</strong>（先测若干直接量、再按已知函数关系算出被测量）、<strong>组合测量</strong>（在不同条件下测多组数据，通过联立&#x2F;拟合求出待求系数）。</li>
+<li><strong>传感器、变送器都是特殊的测量变换器</strong>：变换器输入与输出有确定函数关系；输出量就是被测量的是传感器，输出为统一标准信号的是变送器；<strong>检测器只判断某量是否存在或是否越限（开关量），不给出连续数值</strong>。</li>
+<li>计量器具主要性能指标：<strong>准确度（精度）等级、测量范围（量程&#x2F;标称范围）、灵敏度、分辨力、稳定性</strong>等；准确度等级用<strong>最大引用误差</strong>的百分数命名（如 0.5 级），量程是标尺规定的被测量上下限范围。</li>
+<li><strong>真值客观存在但通常测不到</strong>，工程上用<strong>约定真值</strong>（更高精度仪器测得值、理论值或经修正后的平均值）代替；完整的测量结果应包含被测量的最佳估计值和<strong>测量不确定度</strong>。</li>
+<li>误差三种表示：<strong>绝对误差 $\delta&#x3D;x-x_0$、相对误差 $\gamma_x&#x3D;\delta&#x2F;x_0$、引用误差 $\gamma_m&#x3D;\delta&#x2F;x_m$（除以满量程）</strong>；按性质分<strong>系统误差（有规律、可修正）、随机误差（无规律、只能用统计方法减小）、粗大误差（异常值、应剔除）</strong>；<strong>精密度反映随机误差小、正确度反映系统误差小、准确度是两者的综合</strong>。</li>
+</ol>
+<hr>
+<h2 id="二、知识结构（本节脉络）"><a href="#二、知识结构（本节脉络）" class="headerlink" title="二、知识结构（本节脉络）"></a>二、知识结构（本节脉络）</h2><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs awk">机械工程测试技术·测量基础<br>│<br>├─ 一、测试、测量、试验；静态测量 vs 动态测量<br>├─ 二、测量系统三大应用（开发分析 <span class="hljs-regexp">/ 闭环控制 /</span> 监测诊断）<br>├─ 三、测量系统一般组成（传感器→调理→A/D→计算机→显示反馈）<br>├─ 四、量纲与计量单位（基本量<span class="hljs-regexp">/导出量、SI、辅助单位 rad/</span>sr）<br>├─ 五、测量、计量、测试；测量四要素<br>├─ 六、标准与基准、计量检定、量值传递<br>├─ 七、测量方法：直接 <span class="hljs-regexp">/ 间接 /</span> 组合<br>├─ 八、传感器 <span class="hljs-regexp">/ 测量变换器 /</span> 变送器 / 检测器<br>├─ 九、计量器具性能指标（准确度等级、量程、真值/约定真值、不确定度）<br>├─ 十、误差表示：绝对 <span class="hljs-regexp">/ 相对 /</span> 引用<br>├─ 十一、误差性质：系统 <span class="hljs-regexp">/ 随机 /</span> 粗大<br>├─ 十二、精密度、正确度、准确度（射箭靶心类比）<br>└─ 十三、基本误差、重复性误差、回程（变差）误差<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="三、详细知识点笔记"><a href="#三、详细知识点笔记" class="headerlink" title="三、详细知识点笔记"></a>三、详细知识点笔记</h2><h3 id="（一）测试、测量与试验；静态与动态测量"><a href="#（一）测试、测量与试验；静态与动态测量" class="headerlink" title="（一）测试、测量与试验；静态与动态测量"></a>（一）测试、测量与试验；静态与动态测量</h3><ul>
+<li><strong>测量</strong>：把被测物理量与同性质的标准量（计量单位）进行比较，确定被测量是标准量多少倍的认识过程，结果用”数值 + 单位”表示。</li>
+<li><strong>试验（实验）</strong>：在机械装备研究、产品改造和整个产品寿命周期中都不可或缺；是在实际运行或人为设定的实验条件下，获取被测量定量数据（如电梯运行温度、运行参数）以认识对象、检验设计的过程。</li>
+<li><strong>测试</strong>：测量与试验的结合，即”具有试验研究性质的测量”。区别于随手量一下桌子长度这种无研究目的的测量；例如为优化空调出风而去测量出风口温度、为改进设计而测电机转速和传送带振动，都属于测试。</li>
+<li><strong>静态测量</strong>：测量期间被测量可认为不随时间变化，重复测量结果一致（如量桌子长度，今天量 1.51、明天量 1.52，差异只是误差）。</li>
+<li><strong>动态测量</strong>：被测量随时间实时变化（如电工学中用示波器测电压波形），需要实时跟踪并记录随时间变化的量。本课程以动态测量为主要研究对象。</li>
+</ul>
+<h3 id="（二）测量系统的三大应用"><a href="#（二）测量系统的三大应用" class="headerlink" title="（二）测量系统的三大应用"></a>（二）测量系统的三大应用</h3><ol>
+<li><strong>产品开发与工程分析</strong>：在设计、改进产品时测量电机转速、传送带振动幅度等参数，用于优化最初设计。</li>
+<li><strong>过程与系统控制</strong>：测量装置把被控量（如速度）反馈给控制系统，与数控课讲的<strong>开环、半闭环、闭环控制系统</strong>对应。反馈测量不仅要准确，还必须<strong>及时</strong>——若延迟很久（比喻”过了 5 分钟才把信号送进去”），系统修正的就是过时状态，控制就会失效。</li>
+<li><strong>状态监测与故障诊断</strong>：设备运行时实时查看各物理量是否正常，用于在线监测、报警和故障诊断。</li>
+</ol>
+<blockquote>
+<p>对测量系统构成的要求随用途不同而不同：用于反馈控制强调”不失真 + 小滞后”；只作显示记录时主要要求不失真，对滞后可放宽。</p>
+</blockquote>
+<h3 id="（三）测量系统的一般组成"><a href="#（三）测量系统的一般组成" class="headerlink" title="（三）测量系统的一般组成"></a>（三）测量系统的一般组成</h3><p>最简单、最典型的测量系统由以下环节串联组成：</p>
+<ol>
+<li><strong>传感器</strong>：内部含<strong>敏感元件</strong>（直接感受被测量）和<strong>转换元件</strong>（把感受到的量变换成电信号）；输入是被测量（非电量，如温度、位移、应变、液位），输出是与之对应的电信号（电压、电流、电阻、电荷等）。</li>
+<li><strong>信号调理电路（中间变换电路）</strong>：对传感器输出的微弱信号进行放大、滤波、阻抗变换、线性化等处理。</li>
+<li><strong>信号处理与模数转换（A&#x2F;D）</strong>：计算机只能识别数字信号，需把连续的模拟信号经采样、量化转换成数字信号。</li>
+<li><strong>计算机（分析处理）</strong>：对数字信号做运算、分析、存储。</li>
+<li><strong>输出与反馈</strong>：显示、记录，或作为控制量反馈给执行机构，用于过程控制、调整或监测报警。</li>
+</ol>
+<h3 id="（四）课程内容与学习要求（教师说明）"><a href="#（四）课程内容与学习要求（教师说明）" class="headerlink" title="（四）课程内容与学习要求（教师说明）"></a>（四）课程内容与学习要求（教师说明）</h3><ul>
+<li>本课程计划约 40 学时、实际约 30 学时，无法讲完全书十三章；第七~十三章多为<strong>量仪&#x2F;仪器设备</strong>类内容（知道原理但不结合实物操作意义有限），安排自学。</li>
+<li>课堂重点讲到第五章（或第六章一部分），主体分三块：<strong>①信号与信号处理；②测试技术与传感器（常用传感器原理）；③计算机测试系统及其典型应用</strong>。</li>
+<li>要保证测试结果准确，需具备两方面条件：被测量要与标准量进行比较（即测量器具要经过校准&#x2F;检定），并保证测量过程、测量方法科学规范。</li>
+</ul>
+<h3 id="（五）量纲与计量单位"><a href="#（五）量纲与计量单位" class="headerlink" title="（五）量纲与计量单位"></a>（五）量纲与计量单位</h3><h4 id="1-量纲与单位的概念"><a href="#1-量纲与单位的概念" class="headerlink" title="1. 量纲与单位的概念"></a>1. 量纲与单位的概念</h4><ul>
+<li><strong>量纲</strong>表示物理量的物理性质（类别），如长度、质量、时间属于不同量纲；同一量纲可以定性区分、定量比较（1 米、2 米都是长度，可比较大小）。</li>
+<li><strong>单位</strong>是量纲的具体度量尺度；量纲符号表示物理量的性质，本身不带”大小”，而单位（如米、毫米）有具体大小、可选择。</li>
+</ul>
+<h4 id="2-基本量与导出量"><a href="#2-基本量与导出量" class="headerlink" title="2. 基本量与导出量"></a>2. 基本量与导出量</h4><ul>
+<li>国际单位制（SI）规定七个<strong>基本量&#x2F;基本单位</strong>：长度（米 m）、质量（千克 kg）、时间（秒 s）、热力学温度（开尔文 K）、电流（安培 A）、物质的量（摩尔 mol）、发光强度（坎德拉 cd）。</li>
+<li>其余物理量为<strong>导出量</strong>，其量纲由基本量纲按物理定义式组合得到：<ul>
+<li>速度 &#x3D; 路程&#x2F;时间：$[v]&#x3D;LT^{-1}$；</li>
+<li>加速度：$[a]&#x3D;LT^{-2}$；</li>
+<li>力由牛顿第二定律 $F&#x3D;ma$：$[F]&#x3D;MLT^{-2}$；</li>
+<li>电阻、压强等也都可由基本量纲推出。</li>
+</ul>
+</li>
+<li><strong>辅助单位</strong>：<ul>
+<li><strong>平面角——弧度（rad）</strong>：圆弧长度除以半径（弧长与半径相等时所对的圆心角为 1 rad），无量纲；</li>
+<li><strong>立体角——球面度（sr）</strong>：球面被截面积除以半径的平方，无量纲。</li>
+</ul>
+</li>
+</ul>
+<h3 id="（六）测量、计量、测试与测量四要素"><a href="#（六）测量、计量、测试与测量四要素" class="headerlink" title="（六）测量、计量、测试与测量四要素"></a>（六）测量、计量、测试与测量四要素</h3><ul>
+<li><strong>测量</strong>：前述确定量值的过程。</li>
+<li><strong>计量</strong>：保证单位统一、量值准确可靠的活动与体系（涉及基准、标准、检定、量值传递），强调统一性、准确性和法制性。</li>
+<li><strong>测试</strong>：测量 + 试验，带研究性质的测量。</li>
+<li><strong>测量四要素</strong>：<ol>
+<li><strong>测量对象</strong>（被测量及其特性）；</li>
+<li><strong>计量单位</strong>；</li>
+<li><strong>测量方法</strong>（含测量器具和测量原理）；</li>
+<li><strong>测量误差（测量结果的准确度）</strong>。</li>
+</ol>
+</li>
+</ul>
+<h3 id="（七）标准、基准与计量检定（量值传递）"><a href="#（七）标准、基准与计量检定（量值传递）" class="headerlink" title="（七）标准、基准与计量检定（量值传递）"></a>（七）标准、基准与计量检定（量值传递）</h3><ul>
+<li><strong>标准（计量基准&#x2F;标准器）</strong>：用来定义、保存、复现和传递计量单位量值的物质载体或装置。按层级分为国际标准（基准）、国家标准、部门&#x2F;地方标准、企业（工作）标准等，自上而下级别和精度依次传递。</li>
+<li><strong>工作基准（工作标准）</strong>：现场用于校准工作计量器具的标准，如用<strong>量块</strong>校准游标卡尺、千分尺的零位和示值。</li>
+<li><strong>量值传递</strong>：把国家基准所复现的单位量值，通过各级计量标准逐级传递到日常工作计量器具，保证全国量值统一。</li>
+<li><strong>检定（计量器具检定）</strong>：按法定的<strong>计量检定规程</strong>，检查计量器具的示值是否准确、是否失准或损坏，决定其能否继续使用；不能”随便看看就说它准”。</li>
+<li><strong>校准</strong>：在规定条件下确定计量器具示值与对应标准量值之间关系的操作，必要时给出修正值。</li>
+</ul>
+<h3 id="（八）测量方法的分类"><a href="#（八）测量方法的分类" class="headerlink" title="（八）测量方法的分类"></a>（八）测量方法的分类</h3><h4 id="1-直接测量"><a href="#1-直接测量" class="headerlink" title="1. 直接测量"></a>1. 直接测量</h4><p>被测量直接与标准量比较，或由计量器具直接读出被测量，无需经过函数关系换算。如用游标卡尺直接测长度、用万用表测电压。</p>
+<h4 id="2-间接测量"><a href="#2-间接测量" class="headerlink" title="2. 间接测量"></a>2. 间接测量</h4><p>先测量与被测量有确定函数关系的一个或几个直接量，再按公式计算出被测量。例如：</p>
+<ul>
+<li>测车速：通过测量距离和时间由 $v&#x3D;s&#x2F;t$ 算出；</li>
+<li>测圆柱体体积：没有合适量具直接测体积时，测直径 $d$ 和高 $h$，由 $V&#x3D;\dfrac{\pi d^2}{4}h$ 算出；</li>
+<li>玻璃液体温度计测温度本质上也是间接测量：利用液体体积（液柱高度）随温度变化，由液柱高度反推温度。</li>
+</ul>
+<h4 id="3-组合测量"><a href="#3-组合测量" class="headerlink" title="3. 组合测量"></a>3. 组合测量</h4><p>当某些待求参数不能由单次测量直接得到时，在不同条件下测量多组数据，通过解联立方程或数据拟合求出参数。例如求电阻的温度系数：在多个温度下分别测量电阻值，把数据描成 $R$–$T$ 曲线并拟合，从而得到电阻随温度变化的系数。</p>
+<h3 id="（九）传感器、测量变换器、变送器、检测器"><a href="#（九）传感器、测量变换器、变送器、检测器" class="headerlink" title="（九）传感器、测量变换器、变送器、检测器"></a>（九）传感器、测量变换器、变送器、检测器</h3><ul>
+<li><strong>传感器</strong>：直接作用于被测量（<strong>输入量一定就是被测量</strong>），按一定规律将其转换为电量的器件或装置。如热电偶把温度转换成热电势（电压）、电阻应变片把应变转换成电阻变化、液位计把液位高度转换成相应信号。</li>
+<li><strong>测量变换器</strong>：输入量与输出量之间有确定函数关系的测量器件的统称。<ul>
+<li>若其<strong>输出量就是被测量</strong>（输入即被测量并直接给出量值），它就是<strong>传感器</strong>；</li>
+<li>若其<strong>输出为统一标准信号</strong>（如标准电流、标准电压、标准气压信号，便于远传和接口统一），它就是<strong>变送器</strong>。</li>
+<li>传感器和变送器都是特殊的测量变换器。</li>
+</ul>
+</li>
+<li><strong>检测器（检测元件&#x2F;开关）</strong>：只检查某个被测量<strong>是否存在、是否达到或超过设定阈值</strong>，输出开关（通&#x2F;断）信号，不给出连续量值。例如空调温度达到设定值就开&#x2F;停机、设备某参数超过阈值多少次就报警——它只判”有没有、超没超”。</li>
+</ul>
+<h3 id="（十）计量器具的主要性能指标"><a href="#（十）计量器具的主要性能指标" class="headerlink" title="（十）计量器具的主要性能指标"></a>（十）计量器具的主要性能指标</h3><ol>
+<li><strong>准确度（精度）等级</strong>：用计量器具在规定条件下的<strong>最大引用误差</strong>（去掉百分号后的数值）来划分等级，如 0.1、0.2、0.5、1.0、1.5、2.5 级等。等级数越小，准确度越高。例如量程 0～155、准确度等级 0.5 级的仪表，其允许的最大引用误差为 0.5%，允许最大绝对误差约为满量程 ×0.5%[具体数值以教材例题为准]。</li>
+<li><strong>标称范围（量程&#x2F;测量范围）</strong>：计量器具标尺所规定的被测量取值范围（下限～上限），如 0～30、5～155；量程是选择仪表的重要依据，被测量一般应落在量程的合理区段。</li>
+<li><strong>灵敏度</strong>：输出变化量与引起该变化的输入变化量之比；<strong>分辨力</strong>：仪表能可靠分辨的最小被测量变化。</li>
+<li><strong>稳定性、漂移</strong>：在规定时间和条件下保持计量性能不变的能力。</li>
+</ol>
+<h3 id="（十一）真值、约定真值与测量不确定度"><a href="#（十一）真值、约定真值与测量不确定度" class="headerlink" title="（十一）真值、约定真值与测量不确定度"></a>（十一）真值、约定真值与测量不确定度</h3><ul>
+<li><strong>真值</strong>：被测量客观存在的真实值，通常无法确切测得。</li>
+<li><strong>约定真值</strong>：人为约定的、充分接近真值的量值，常用：①更高准确度等级计量器具的测得值；②理论定义值；③经过修正或多次平均后的值。工程计算和误差评定中以约定真值代替真值。</li>
+<li><strong>测量不确定度</strong>：表征被测量值分散性的参数。由于测量有误差，完整的测量结果应给出被测量的最佳估计值，并附上测量不确定度（或误差范围），而不能只给一个孤零零的数值。</li>
+</ul>
+<h3 id="（十二）误差的三种表示方法"><a href="#（十二）误差的三种表示方法" class="headerlink" title="（十二）误差的三种表示方法"></a>（十二）误差的三种表示方法</h3><p>设测量结果为 $x$，被测量真值（约定真值）为 $x_0$，仪表量程上限（满刻度值）为 $x_m$：</p>
+<ol>
+<li><strong>绝对误差</strong>：</li>
+</ol>
+<p>$$<br>\delta&#x3D;x-x_0<br>$$</p>
+<p>有正负、有量纲（与被测量同单位），反映测量值偏离真值的大小和方向。</p>
+<ol start="2">
+<li><strong>相对误差</strong>：</li>
+</ol>
+<p>$$<br>\gamma_x&#x3D;\frac{\delta}{x_0}\times100%\approx\frac{\delta}{x}\times100%<br>$$</p>
+<p>无量纲（百分数），更能反映测量的准确程度；衡量同一被测量不同测量结果的优劣用相对误差。</p>
+<ol start="3">
+<li><strong>引用误差（满度误差）</strong>：</li>
+</ol>
+<p>$$<br>\gamma_m&#x3D;\frac{\delta}{x_m}\times100%<br>$$</p>
+<p>分母取仪表<strong>量程上限（满刻度值）</strong>而非被测量本身；它是划分仪表<strong>准确度等级</strong>的依据。</p>
+<blockquote>
+<p>例：0～100℃ 温度计测某点，绝对误差、相对误差、引用误差的分母各不相同——相对误差除以真值，引用误差除以满量程 100℃。被测量越接近满量程，相对误差越接近引用误差、测量越准；被测量远小于满量程时相对误差会很大，这也是选表时被测量宜落在量程 2&#x2F;3 以上区段的原因。</p>
+</blockquote>
+<h3 id="（十三）误差按性质分类"><a href="#（十三）误差按性质分类" class="headerlink" title="（十三）误差按性质分类"></a>（十三）误差按性质分类</h3><table>
+<thead>
+<tr>
+<th>类别</th>
+<th>特征</th>
+<th>处理方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>系统误差</strong></td>
+<td>大小和方向固定或按确定规律变化（由仪器、方法、环境、人员等固定因素引起）</td>
+<td>可通过校准、加修正值、改进方法等<strong>修正和消除</strong></td>
+</tr>
+<tr>
+<td><strong>随机误差</strong></td>
+<td>大小和方向随机、单次不可预知（由大量微小随机因素造成）</td>
+<td>不能消除，只能通过多次测量取平均、按<strong>统计规律</strong>估计和减小</td>
+</tr>
+<tr>
+<td><strong>粗大误差</strong></td>
+<td>明显超出正常误差范围的异常值（读错、记错、仪器故障、误操作）</td>
+<td>有充分证据判明后<strong>予以剔除</strong>，但不得随意删除正常数据</td>
+</tr>
+</tbody></table>
+<h3 id="（十四）精密度、正确度、准确度（射箭靶心类比）"><a href="#（十四）精密度、正确度、准确度（射箭靶心类比）" class="headerlink" title="（十四）精密度、正确度、准确度（射箭靶心类比）"></a>（十四）精密度、正确度、准确度（射箭靶心类比）</h3><p>用打靶着弹点分布说明三个概念：</p>
+<ul>
+<li><strong>精密度（精度）</strong>：多次测量结果彼此接近、分散小（着弹点很集中但可能整体偏在一边），反映<strong>随机误差小</strong>；</li>
+<li><strong>正确度</strong>：测量结果的平均值接近真值（着弹点平均位置靠近靶心，但各点可能较分散），反映<strong>系统误差小</strong>；</li>
+<li><strong>准确度（精确度）</strong>：既集中又对准靶心，是精密度和正确度的<strong>综合</strong>，反映系统误差与随机误差都小。</li>
+</ul>
+<p>关系：精密度高不一定正确度高（集中但偏），正确度高也不一定精密度高（平均准但分散）；只有两者都高，准确度才高。</p>
+<h3 id="（十五）基本误差、重复性误差与回程误差"><a href="#（十五）基本误差、重复性误差与回程误差" class="headerlink" title="（十五）基本误差、重复性误差与回程误差"></a>（十五）基本误差、重复性误差与回程误差</h3><ul>
+<li><strong>基本误差</strong>：计量器具在规定的<strong>标准（参比）工作条件</strong>下，由于本身制造精度限制所固有的误差（同一被测量多次测量示值也会有微小差别，如某量反复测得 10.01、10.012、10.01 附近波动）。</li>
+<li><strong>重复性误差</strong>：在相同条件下对同一被测量进行多次连续测量，结果之间的不一致程度。</li>
+<li><strong>回程误差（滞后误差&#x2F;变差）</strong>：对同一被测量，当被测量从增大方向趋近和从减小方向趋近时，仪表示值不一致（”走过去”和”走回来”读数不同），由间隙、摩擦、滞后等造成，是仪表重要的性能指标。</li>
+</ul>
+<hr>
+<h2 id="四、例题与案例汇总"><a href="#四、例题与案例汇总" class="headerlink" title="四、例题与案例汇总"></a>四、例题与案例汇总</h2><table>
+<thead>
+<tr>
+<th>例题</th>
+<th>已知&#x2F;情景</th>
+<th>求解与结论</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>静&#x2F;动态判断</td>
+<td>量桌子长度；示波器测电压波形</td>
+<td>前者被测量不随时间变化→静态测量；后者随时间变化→动态测量</td>
+</tr>
+<tr>
+<td>间接测量</td>
+<td>求圆柱体体积、车速</td>
+<td>测直径和高由 $V&#x3D;\pi d^2h&#x2F;4$ 算；测距离时间由 $v&#x3D;s&#x2F;t$ 算</td>
+</tr>
+<tr>
+<td>组合测量</td>
+<td>求电阻温度系数</td>
+<td>多温度下测电阻、描点拟合 $R$–$T$ 曲线求系数</td>
+</tr>
+<tr>
+<td>误差三表示</td>
+<td>0～100℃ 温度计，真值与示值给定</td>
+<td>绝对误差 $\delta&#x3D;x-x_0$；相对误差 $\delta&#x2F;x_0$；引用误差 $\delta&#x2F;100$</td>
+</tr>
+<tr>
+<td>准确度等级</td>
+<td>量程 0～155、0.5 级</td>
+<td>最大引用误差 0.5%，允许最大绝对误差≈量程×0.5%[以教材数值为准]</td>
+</tr>
+<tr>
+<td>打靶类比</td>
+<td>着弹点集中但偏靶心；分散但均值居中；又集中又居中</td>
+<td>分别对应精密度高、正确度高、准确度高</td>
+</tr>
+<tr>
+<td>传感器辨析</td>
+<td>热电偶、应变片、液位计、空调温控开关</td>
+<td>前三者是传感器（输入即被测量、输出电量）；温控开关是检测器（只判越限通断）</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="五、术语与公式速查表"><a href="#五、术语与公式速查表" class="headerlink" title="五、术语与公式速查表"></a>五、术语与公式速查表</h2><table>
+<thead>
+<tr>
+<th>术语&#x2F;公式</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>测试 &#x3D; 测量 + 试验</td>
+<td>带试验研究性质的测量</td>
+</tr>
+<tr>
+<td>静态&#x2F;动态测量</td>
+<td>被测量不随&#x2F;随时间变化；本课重动态</td>
+</tr>
+<tr>
+<td>测量系统组成</td>
+<td>传感器（敏感+转换元件）→调理电路→A&#x2F;D→计算机→显示&#x2F;反馈</td>
+</tr>
+<tr>
+<td>三大应用</td>
+<td>产品开发分析、过程控制（闭环反馈）、状态监测与故障诊断</td>
+</tr>
+<tr>
+<td>反馈测量要求</td>
+<td>不失真、滞后小（及时）</td>
+</tr>
+<tr>
+<td>量纲&#x2F;单位</td>
+<td>量纲表物理性质；单位是具体度量尺度</td>
+</tr>
+<tr>
+<td>SI 七基本量</td>
+<td>长度 m、质量 kg、时间 s、温度 K、电流 A、物质的量 mol、发光强度 cd</td>
+</tr>
+<tr>
+<td>导出量纲</td>
+<td>$[v]&#x3D;LT^{-1}$、$[a]&#x3D;LT^{-2}$、$[F]&#x3D;MLT^{-2}$</td>
+</tr>
+<tr>
+<td>辅助单位</td>
+<td>弧度 rad&#x3D;弧长&#x2F;半径、球面度 sr&#x3D;面积&#x2F;半径²（均无量纲）</td>
+</tr>
+<tr>
+<td>测量四要素</td>
+<td>对象、单位、方法、误差（准确度）</td>
+</tr>
+<tr>
+<td>量值传递</td>
+<td>国家基准→各级标准→工作计量器具</td>
+</tr>
+<tr>
+<td>检定&#x2F;校准</td>
+<td>按检定规程判定器具是否失准；确定示值与标准关系、给修正值</td>
+</tr>
+<tr>
+<td>测量方法</td>
+<td>直接测量 &#x2F; 间接测量（函数换算）&#x2F; 组合测量（多组拟合）</td>
+</tr>
+<tr>
+<td>传感器</td>
+<td>输入即被测量，按规律输出电量</td>
+</tr>
+<tr>
+<td>变送器</td>
+<td>输出统一标准信号的测量变换器</td>
+</tr>
+<tr>
+<td>检测器</td>
+<td>只判有无&#x2F;越限，输出开关量</td>
+</tr>
+<tr>
+<td>准确度等级</td>
+<td>以最大引用误差百分数命名，等级数越小越准</td>
+</tr>
+<tr>
+<td>量程（标称范围）</td>
+<td>标尺规定的下限～上限</td>
+</tr>
+<tr>
+<td>真值&#x2F;约定真值</td>
+<td>真值难测；用高精度测得值&#x2F;理论值&#x2F;修正值代替</td>
+</tr>
+<tr>
+<td>测量结果</td>
+<td>最佳估计值 + 测量不确定度</td>
+</tr>
+<tr>
+<td>绝对误差</td>
+<td>$\delta&#x3D;x-x_0$</td>
+</tr>
+<tr>
+<td>相对误差</td>
+<td>$\gamma_x&#x3D;\delta&#x2F;x_0\times100%$</td>
+</tr>
+<tr>
+<td>引用误差</td>
+<td>$\gamma_m&#x3D;\delta&#x2F;x_m\times100%$（$x_m$ 满量程）</td>
+</tr>
+<tr>
+<td>系统&#x2F;随机&#x2F;粗大误差</td>
+<td>有规律可修正 &#x2F; 随机统计减小 &#x2F; 异常剔除</td>
+</tr>
+<tr>
+<td>精密度&#x2F;正确度&#x2F;准确度</td>
+<td>随机误差小 &#x2F; 系统误差小 &#x2F; 两者综合</td>
+</tr>
+<tr>
+<td>基本&#x2F;重复性&#x2F;回程误差</td>
+<td>标准条件固有误差 &#x2F; 多次测量不一致 &#x2F; 正反行程示值差</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="六、课堂任务-学习要求"><a href="#六、课堂任务-学习要求" class="headerlink" title="六、课堂任务 &#x2F; 学习要求"></a>六、课堂任务 &#x2F; 学习要求</h2><ol>
+<li>能说清测试、测量、试验三者关系，并判断静态&#x2F;动态测量实例。</li>
+<li>能画出测量系统的一般组成框图，说明传感器、调理电路、A&#x2F;D、计算机各环节作用。</li>
+<li>掌握 SI 基本量与基本单位，会由物理定义式写出常见导出量的量纲，知道弧度、球面度是无量纲辅助单位。</li>
+<li>能区分测量、计量、测试，背出测量四要素；理解量值传递和检定&#x2F;校准的意义。</li>
+<li>能判断直接、间接、组合测量实例；能区分传感器、变送器、检测器。</li>
+<li>会计算绝对误差、相对误差、引用误差，理解准确度等级如何由引用误差确定。</li>
+<li>能区分系统、随机、粗大误差，理解精密度、正确度、准确度的区别，了解基本、重复性、回程误差。</li>
+</ol>
+<hr>
+<h2 id="七、待核对-以教材为准"><a href="#七、待核对-以教材为准" class="headerlink" title="七、待核对 &#x2F; 以教材为准"></a>七、待核对 &#x2F; 以教材为准</h2><ol>
+<li>录音中准确度等级例题”量程 155、0.5 级、误差 0.68”等数字为口语还原，具体量程与允许误差[以教材例题为准]。</li>
+<li>课程章节安排（讲到第五章还是第六章、第七~十三章自学）以教师教学计划和教材目录为准。</li>
+<li>量纲符号中发光强度、物质的量等基本量的符号各教材写法略有差异，本文采用通用写法，[以教材为准]。</li>
+<li>灵敏度、分辨力、稳定性等性能指标的严格定义与公式在后续章节展开，本篇按课堂口径作概念性介绍。</li>
+<li>录音个别专有名词为语音识别近似（如”黑色与支装”应为”设备运行&#x2F;状态监测”类含义），已按上下文还原，[以课堂原意为准]。</li>
+</ol>
+<hr>
+<h2 id="八、复习自测（主动回忆，先自己答再看答案）"><a href="#八、复习自测（主动回忆，先自己答再看答案）" class="headerlink" title="八、复习自测（主动回忆，先自己答再看答案）"></a>八、复习自测（主动回忆，先自己答再看答案）</h2><p><strong>1. 测试、测量、试验三者是什么关系？</strong><br>答：测试是测量与试验的结合，即具有试验研究性质、为分析认识对象服务的测量；测量是把被测量与标准量比较定量，试验是在运行或实验条件下获取定量信息。</p>
+<p><strong>2. 静态测量和动态测量如何区分？本课程重点研究哪一种？</strong><br>答：测量期间被测量不随时间变化的是静态测量（量桌子长度），随时间实时变化的是动态测量（示波器测波形）；本课程重点研究动态测量。</p>
+<p><strong>3. 测量系统有哪三大应用？</strong><br>答：①产品开发与工程分析；②过程与系统控制（闭环&#x2F;半闭环反馈）；③状态监测与故障诊断。</p>
+<p><strong>4. 用于反馈控制的测量系统有哪两个基本要求？</strong><br>答：不失真（准确跟踪被测量）和响应及时（滞后小），否则系统按过时信号调节会失控；只作显示时主要要求不失真。</p>
+<p><strong>5. 画出测量系统的一般组成框图。</strong><br>答：被测量→传感器（敏感元件+转换元件）→信号调理电路→信号处理&#x2F;A&#x2F;D 转换→计算机分析处理→显示记录&#x2F;反馈控制。</p>
+<p><strong>6. 传感器由哪两部分组成？输入和输出各是什么？</strong><br>答：由敏感元件（感受被测量）和转换元件（把感受量变成电信号）组成；输入一定是被测量（非电量），输出是与之对应的电信号（电压、电流、电阻、电荷等）。</p>
+<p><strong>7. 什么是量纲？什么是单位？</strong><br>答：量纲表示物理量的物理性质&#x2F;类别（长度、质量、时间），可定性区分、定量比较；单位是量纲的具体度量尺度，有具体大小、可选择。</p>
+<p><strong>8. 写出 SI 七个基本量及其单位。</strong><br>答：长度 m、质量 kg、时间 s、热力学温度 K、电流 A、物质的量 mol、发光强度 cd。</p>
+<p><strong>9. 写出速度、加速度、力的量纲。</strong><br>答：$[v]&#x3D;LT^{-1}$、$[a]&#x3D;LT^{-2}$；由 $F&#x3D;ma$ 得 $[F]&#x3D;MLT^{-2}$。</p>
+<p><strong>10. 弧度和球面度是怎样定义的？它们是有量纲单位吗？</strong><br>答：弧度&#x3D;圆弧长&#x2F;半径，球面度&#x3D;球冠面积&#x2F;半径²；二者都是无量纲的辅助单位。</p>
+<p><strong>11. 测量的四个要素是什么？</strong><br>答：测量对象、计量单位、测量方法、测量误差（结果的准确度）。</p>
+<p><strong>12. 什么是量值传递？为什么要对计量器具进行检定？</strong><br>答：把国家基准复现的量值经各级标准逐级传递到工作计量器具，保证量值统一；检定是按检定规程检查器具示值是否失准、能否继续使用。</p>
+<p><strong>13. 什么是工作基准？举例说明。</strong><br>答：现场用来校准工作计量器具的标准，如用量块校准游标卡尺、千分尺的零位和示值。</p>
+<p><strong>14. 直接测量、间接测量、组合测量有何区别？各举一例。</strong><br>答：直接测量读数即被测量（卡尺测长度）；间接测量先测直接量再按函数关系算（测圆柱直径和高算体积）；组合测量在多条件下测多组数据联立&#x2F;拟合求参数（多温度测电阻拟合温度系数）。</p>
+<p><strong>15. 玻璃液体温度计测温度为什么属于间接测量？</strong><br>答：它实际测的是感温液柱高度（体积变化），再利用液柱高度与温度的对应关系间接得到温度。</p>
+<p><strong>16. 传感器、变送器、检测器有什么区别？</strong><br>答：传感器输入即被测量并输出对应电量；变送器输出统一标准信号，二者都是特殊的测量变换器；检测器只判断被测量是否存在或越限，输出开关量，不给出连续数值。</p>
+<p><strong>17. 仪表的准确度等级是怎样规定的？</strong><br>答：以仪表在规定条件下的最大引用误差（去掉百分号的数值）命名，如 0.5 级表示最大引用误差为 0.5%，等级数越小准确度越高。</p>
+<p><strong>18. 什么是量程（标称范围）？选择仪表量程时应注意什么？</strong><br>答：量程是标尺规定的被测量下限到上限的范围；被测量应落在量程合理区段（一般靠近满量程的 2&#x2F;3 以上），否则相对误差偏大。</p>
+<p><strong>19. 什么是约定真值？通常怎么取得？</strong><br>答：真值难确切测得，用充分接近真值的约定真值代替，可取更高精度仪器的测得值、理论定义值或经修正&#x2F;多次平均后的值。</p>
+<p><strong>20. 完整的测量结果为什么要带不确定度？</strong><br>答：测量不可避免存在误差，只给一个数值不能反映结果的可靠程度，故应给出最佳估计值并附测量不确定度（误差范围）。</p>
+<p><strong>21. 写出绝对误差、相对误差、引用误差的公式并说明分母区别。</strong><br>答：绝对误差 $\delta&#x3D;x-x_0$；相对误差 $\gamma_x&#x3D;\delta&#x2F;x_0$；引用误差 $\gamma_m&#x3D;\delta&#x2F;x_m$（$x_m$ 为满量程上限）。相对误差除以真值，引用误差除以满量程。</p>
+<p><strong>22. 为什么划分仪表准确度等级用引用误差而不是相对误差？</strong><br>答：同一仪表在不同刻度处测不同大小的被测量，相对误差随被测量变化；用满量程归一化的引用误差才能统一表征仪表本身的准确度水平并划分等级。</p>
+<p><strong>23. 系统误差、随机误差、粗大误差各有什么特征？分别如何处理？</strong><br>答：系统误差固定或按规律变化，可校准、加修正值消除；随机误差单次无规律，不能消除，只能多次平均、按统计规律减小；粗大误差是异常值，有充分证据时剔除。</p>
+<p><strong>24. 精密度、正确度、准确度有何区别？用打靶说明。</strong><br>答：精密度高指着弹点集中（随机误差小）但可能整体偏离；正确度高指平均位置靠近靶心（系统误差小）但可能分散；准确度高指又集中又居中，是两者综合。</p>
+<p><strong>25. 什么是回程误差？</strong><br>答：对同一被测量，从增大方向和减小方向趋近时仪表示值不一致（”走过去”与”走回来”读数不同），由间隙、摩擦、滞后造成，也称变差或滞后误差。</p>
+<hr>
+<blockquote>
+<p><strong>收尾记忆</strong>：测量基础这一章抓住”<strong>一条链路、一套语言、一组误差</strong>“——链路是”传感器→调理→A&#x2F;D→计算机→显示&#x2F;反馈”，语言是量纲&#x2F;单位、测量计量测试、基准检定、直接间接组合测量、传感器&#x2F;变送器&#x2F;检测器；误差是核心考点，记住”绝对减真值、相对除真值、引用除满程”，以及”系统误差看正确度、随机误差看精密度、两者都小看准确度，粗大异常要剔除”。</p>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%B5%8B%E8%AF%95%E6%8A%80%E6%9C%AF-%E6%B5%8B%E9%87%8F%E5%9F%BA%E7%A1%80-%E8%AF%AF%E5%B7%AE%E5%88%86%E6%9E%90/" class="print-no-link">#测试技术 测量基础 误差分析</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>测试技术测量基础：测量系统、误差与精度</div>
+      <div>https://tdexxx.github.io/2026/10/15/08_测试技术与信号分析/测试技术_测量基础_发布稿/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>tdexxx</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年10月15日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/10/15/08_%E6%B5%8B%E8%AF%95%E6%8A%80%E6%9C%AF%E4%B8%8E%E4%BF%A1%E5%8F%B7%E5%88%86%E6%9E%90/%E6%B5%8B%E8%AF%95%E6%8A%80%E6%9C%AF_%E4%BF%A1%E5%8F%B7%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80_%E5%8F%91%E5%B8%83%E7%A8%BF/" title="信号分析基础：信号分类、傅里叶级数与频谱">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">信号分析基础：信号分类、傅里叶级数与频谱</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/10/15/01_%E6%95%B0%E6%8E%A7%E5%8A%A0%E5%B7%A5%E5%B7%A5%E8%89%BA%E4%B8%8E%E7%BC%96%E7%A8%8B/%E6%95%B0%E6%8E%A7%E5%8A%A0%E5%B7%A5%E5%B7%A5%E8%89%BA%E4%B8%8E%E7%BC%96%E7%A8%8B_%E9%80%90%E7%82%B9%E6%AF%94%E8%BE%83%E6%B3%95%E6%8F%92%E8%A1%A5%E5%8E%9F%E7%90%86_%E5%8F%91%E5%B8%83%E7%A8%BF/" title="逐点比较法插补原理：直线与圆弧偏差判别">
+                        <span class="hidden-mobile">逐点比较法插补原理：直线与圆弧偏差判别</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

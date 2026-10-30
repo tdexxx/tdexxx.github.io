@@ -1,0 +1,1123 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="tdexxx">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="机械制造工艺笔记：工艺过程五概念辨析、生产纲领与生产类型、工件装夹与六点定位原理（含考点） 本文整理《机械制造工艺基础与定位原理》一讲。前半部分讲清机械制造的生产过程、工艺过程，重点辨析工序、安装、工位、工步、走刀五个逐级包含的概念，给出”是不是同一道工序”的三要素判断法和多个典型例子，说明工步与走刀、粗车与精车的区别；后半部分讲生产纲领计算、生产类型划分与柔性化趋势，以及工件装夹（定位＋夹紧）、">
+<meta property="og:type" content="article">
+<meta property="og:title" content="工艺过程概念、生产类型与六点定位原理">
+<meta property="og:url" content="https://tdexxx.github.io/2026/10/06/06_%E6%9C%BA%E6%A2%B0%E5%88%B6%E9%80%A0%E5%B7%A5%E8%89%BA%E4%B8%8E%E5%A4%B9%E5%85%B7/%E6%9C%BA%E6%A2%B0%E5%88%B6%E9%80%A0%E5%B7%A5%E8%89%BA_%E5%B7%A5%E8%89%BA%E5%9F%BA%E7%A1%80%E4%B8%8E%E5%85%AD%E7%82%B9%E5%AE%9A%E4%BD%8D_%E5%8F%91%E5%B8%83%E7%A8%BF/index.html">
+<meta property="og:site_name" content="tdexxx的博客">
+<meta property="og:description" content="机械制造工艺笔记：工艺过程五概念辨析、生产纲领与生产类型、工件装夹与六点定位原理（含考点） 本文整理《机械制造工艺基础与定位原理》一讲。前半部分讲清机械制造的生产过程、工艺过程，重点辨析工序、安装、工位、工步、走刀五个逐级包含的概念，给出”是不是同一道工序”的三要素判断法和多个典型例子，说明工步与走刀、粗车与精车的区别；后半部分讲生产纲领计算、生产类型划分与柔性化趋势，以及工件装夹（定位＋夹紧）、">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-10-06T13:48:43.000Z">
+<meta property="article:modified_time" content="2026-10-30T17:37:19.963Z">
+<meta property="article:author" content="tdexxx">
+<meta property="article:tag" content="机械制造工艺 定位原理">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>工艺过程概念、生产类型与六点定位原理 - tdexxx的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"tdexxx.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2022-12-10T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="工艺过程概念、生产类型与六点定位原理"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-10-06 21:48" pubdate>
+          2026年10月6日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          10k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          84 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">工艺过程概念、生产类型与六点定位原理</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="机械制造工艺笔记：工艺过程五概念辨析、生产纲领与生产类型、工件装夹与六点定位原理（含考点）"><a href="#机械制造工艺笔记：工艺过程五概念辨析、生产纲领与生产类型、工件装夹与六点定位原理（含考点）" class="headerlink" title="机械制造工艺笔记：工艺过程五概念辨析、生产纲领与生产类型、工件装夹与六点定位原理（含考点）"></a>机械制造工艺笔记：工艺过程五概念辨析、生产纲领与生产类型、工件装夹与六点定位原理（含考点）</h1><blockquote>
+<p>本文整理《机械制造工艺基础与定位原理》一讲。前半部分讲清机械制造的<strong>生产过程、工艺过程</strong>，重点辨析<strong>工序、安装、工位、工步、走刀</strong>五个逐级包含的概念，给出”是不是同一道工序”的三要素判断法和多个典型例子，说明工步与走刀、粗车与精车的区别；后半部分讲<strong>生产纲领计算、生产类型划分与柔性化趋势</strong>，以及工件<strong>装夹（定位＋夹紧）</strong>、三种装夹方式、<strong>六点定位原理</strong>和支承钉&#x2F;支承板、圆柱销、菱形销、心轴、V 形块、定位套、顶尖等常用定位元件各自限制的自由度（含老师指出的一处教材编辑错误）。文末附定位元件限制自由度总表、判断例题、术语公式表、待核对清单和主动回忆题（含答案要点），适合课后复习与考前梳理。</p>
+</blockquote>
+<h2 id="一、核心结论"><a href="#一、核心结论" class="headerlink" title="一、核心结论"></a>一、核心结论</h2><ul>
+<li><strong>生产过程</strong>是把原材料&#x2F;毛坯变成产品所经历的全部环节，分为<strong>直接生产过程</strong>（直接改变加工对象形状、尺寸、性能，如铸造、锻造、焊接、热处理、机械加工）和<strong>辅助生产过程</strong>（不直接改变但必不可少，如设备维修、运输、仓储）。</li>
+<li><strong>工艺过程</strong>是直接生产过程中的一部分（从属关系，不是等号），工艺过程由若干<strong>工序</strong>组成。</li>
+<li>工艺过程逐级细分为：<strong>工序 ⊃ 安装 ⊃ 工位 ⊃ 工步 ⊃ 走刀</strong>。</li>
+<li><strong>工序</strong>判断三要素（三者都不变才算同一道工序）：①操作人员不变；②工作地点不变（同一台机床&#x2F;同一工作地，机台变了就算变）；③加工连续完成（中途若插入热处理等脱离机床的环节，连续性被打断）。</li>
+<li><strong>安装</strong>＝工件一次装夹后完成的那部分工序内容（轴调头再夹就是两次安装）；<strong>工位</strong>＝一次安装中工件在机床上占据的每个位置所完成的内容（分度盘转位）；<strong>工步</strong>＝加工表面、刀具、切削速度、进给量都不变时完成的内容；<strong>走刀</strong>＝同一工步内为去除大余量而进行的每一次切削（每去一层材料为一次走刀）。</li>
+<li><strong>粗车外圆后再精车外圆是两个工步，不是同一工步的两次走刀</strong>，因为粗、精车的切削速度和进给量不同。</li>
+<li>当只有一次安装、一个工位时，工序、安装、工位三者所完成的内容相同（等同）。</li>
+<li><strong>工艺系统</strong>由物质分系统（工件、机床、夹具、刀具、量具）、能量分系统（动力&#x2F;电能）、信息分系统（数控装置等，普通机床没有）组成。</li>
+<li>零件<strong>年生产纲领</strong> $N&#x3D;Q,n,(1+\alpha)(1+\beta)$（$Q$ 产品年产量、$n$ 每台产品含该零件数、$\alpha$ 备品率、$\beta$ 废品率）。</li>
+<li>生产类型分<strong>单件生产、成批生产（小批&#x2F;中批&#x2F;大批）、大量生产</strong>；工艺特点上归并为<strong>单件小批、中批、大批大量</strong>三类；单件小批用通用设备工装、大批大量用专用设备工装；现代制造向<strong>柔性化生产（FMS）</strong>发展。</li>
+<li><strong>装夹＝定位＋夹紧</strong>：定位是使工件在机床&#x2F;夹具上占据正确位置，夹紧是定位后防止加工中移位，二者不能混。</li>
+<li>三种装夹方式：<strong>夹具装夹</strong>（高效高精、流水线常用）、<strong>直接找正</strong>（百分表&#x2F;划线盘，精度高但效率低、单件小批）、<strong>划线找正</strong>（先画线再找正，精度效率都低、复杂件用）。</li>
+<li>空间自由刚体有 <strong>6 个自由度</strong>（沿 X、Y、Z 移动，绕 X、Y、Z 转动）；用<strong>合理分布的 6 个支承点</strong>限制全部 6 个自由度，即<strong>六点定位原理</strong>。</li>
+<li>经典分布：底面 3 点限制沿 Z 移动＋绕 X、绕 Y 转动；侧面 2 点（水平排列）限制沿 Y 移动＋绕 Z 转动；端面 1 点限制沿 X 移动。</li>
+<li>常用定位元件：支承钉&#x2F;支承板用于平面；短圆柱销限 2 个移动自由度、长圆柱销限 2 移动＋2 转动共 4 个、菱形销只限 1 个移动；V 形块、定位套限外圆的 2 个移动；大锥度心轴限 5 个（只留绕自身轴转动）。</li>
+<li>组合定位时各元件约束若不重复可直接相加；若同一自由度被重复限制则出现<strong>重复约束（过定位）</strong>，需具体分析。</li>
+</ul>
+<h2 id="二、知识结构"><a href="#二、知识结构" class="headerlink" title="二、知识结构"></a>二、知识结构</h2><ul>
+<li>机械制造工艺基础与定位<ul>
+<li>生产过程与工艺过程<ul>
+<li>直接生产过程 &#x2F; 辅助生产过程</li>
+<li>工序 → 安装 → 工位 → 工步 → 走刀</li>
+<li>工序判断三要素（人、地点、连续性）</li>
+<li>工艺系统（物质 &#x2F; 能量 &#x2F; 信息）</li>
+</ul>
+</li>
+<li>生产纲领与生产类型<ul>
+<li>年生产纲领公式、生产批量</li>
+<li>单件 &#x2F; 成批（小中大）&#x2F; 大量；单件小批、中批、大批大量</li>
+<li>通用 vs 专用；柔性化生产</li>
+</ul>
+</li>
+<li>工件装夹与定位<ul>
+<li>装夹＝定位＋夹紧</li>
+<li>三种装夹方式（夹具 &#x2F; 直接找正 &#x2F; 划线找正）</li>
+<li>六点定位原理（6 自由度、6 支承点）</li>
+<li>定位元件：平面（支承钉&#x2F;板）、内孔（销&#x2F;心轴&#x2F;菱形销）、外圆（V 形块&#x2F;定位套）、圆锥面（顶尖&#x2F;锥度心轴）</li>
+<li>组合定位与重复约束</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="三、详细笔记"><a href="#三、详细笔记" class="headerlink" title="三、详细笔记"></a>三、详细笔记</h2><h3 id="3-1-生产过程及其分类"><a href="#3-1-生产过程及其分类" class="headerlink" title="3.1 生产过程及其分类"></a>3.1 生产过程及其分类</h3><ul>
+<li><strong>生产过程</strong>：从原材料（或半成品）进厂，一直到把成品制造出来的全部相互关联的劳动过程的总和。例如把一根圆棒加工成一根轴，涉及运输、机加工、热处理、检验、包装等所有环节，都属于生产过程。</li>
+<li>按是否直接改变加工对象，分为两类：<ul>
+<li><strong>直接生产过程（基本生产过程）</strong>：使加工对象的<strong>形状、尺寸或性能</strong>发生变化的过程，如毛坯制造（铸造、锻造）、焊接、热处理（如表面淬火）、零件的机械加工等。</li>
+<li><strong>辅助生产过程</strong>：不直接改变加工对象的形状、尺寸、性能，但又是必不可少的过程，如设备与夹具的维修、零件的运输、仓储保管等。</li>
+</ul>
+</li>
+<li>生产过程可以由一个车间或一个工厂完成，但多数情况下由多个工厂、车间<strong>协作</strong>完成（小厂很难同时具备铸造、锻造、热处理、焊接等全套能力）。</li>
+</ul>
+<h3 id="3-2-工艺过程与工序"><a href="#3-2-工艺过程与工序" class="headerlink" title="3.2 工艺过程与工序"></a>3.2 工艺过程与工序</h3><ul>
+<li><strong>工艺过程</strong>：在生产过程中，直接改变生产对象的形状、尺寸、性能或位置，使之成为成品或半成品的那部分过程；它是<strong>直接生产过程中的一部分</strong>（是包含关系，不是画等号）。按工种可分铸造工艺、锻造工艺、焊接工艺、机械加工工艺、热处理工艺、装配工艺等。</li>
+<li><strong>工序</strong>是工艺过程的基本组成单元，也是制订工艺规程、安排生产、核算工时与设备的基本单位。</li>
+<li><strong>工序的定义</strong>：一个（或一组）工人，在<strong>同一个工作地</strong>（同一台机床或同一个工作地点），对<strong>一个（或同时对几个）工件所连续完成</strong>的那一部分工艺过程。</li>
+</ul>
+<h3 id="3-3-工序判断三要素（必考）"><a href="#3-3-工序判断三要素（必考）" class="headerlink" title="3.3 工序判断三要素（必考）"></a>3.3 工序判断三要素（必考）</h3><p>判断所完成的内容是不是同一道工序，看三个要素是否都保持不变：</p>
+<ol>
+<li><strong>操作人员不变</strong>：是同一个（或同一组）工人完成（这一点最直观、最好判断）。</li>
+<li><strong>工作地点不变</strong>：必须在同一台机床或同一个工作地。判断时直接看”机台”有没有变——<ul>
+<li>设备<strong>类型</strong>变了（车床 → 铣床），工作地点变了；</li>
+<li>即使类型相同，但是<strong>两台不同的机床</strong>（车床 A → 车床 B），工作地点也算变了。</li>
+</ul>
+</li>
+<li><strong>加工连续完成</strong>：加工过程要连续，中途不能有使工件脱离该工作地的插入环节（如中途送去热处理、电镀再回来），否则连续性被打断。</li>
+</ol>
+<p><strong>典型例子（务必会判）：</strong></p>
+<ul>
+<li><strong>例 1（单件小批，一台车床＋一台铣床）</strong>：同一工人先在一台车床上把一根轴小端、大端需要车的内容全部车完（中间调头、两次装夹），再把轴移到铣床上铣键槽。<ul>
+<li>车削全部在同一台车床、同一工人、连续完成 → 是<strong>工序一</strong>（虽然内容很多、含两次装夹）；</li>
+<li>铣键槽移到了铣床，工作地点改变 → 是<strong>工序二</strong>。合计 <strong>2 道工序</strong>。</li>
+<li>这种”一车多能、把车削集中在一台车床”的安排只适合单件小批；流水线若这样，车床工序占用时间太长，铣床工序长时间空闲等待，不均衡。</li>
+</ul>
+</li>
+<li><strong>例 2（大批大量，两台车床分工）</strong>：车床 A 只车小端，工件拆下后直接传给车床 B 车大端。虽然 A、B 都是车床（类型相同），但是<strong>两台不同的机床、工作地点不同</strong>，所以仍是 <strong>2 道工序</strong>。</li>
+<li><strong>例 3（中途插入热处理）</strong>：在同一台车床 A 上车完小端，把工件送去热处理，再回到同一台车床 A 车大端。操作人员、工作地点都没变，但<strong>加工连续性被热处理打断</strong>，因此分成 <strong>3 道工序</strong>（车—热处理—车）。</li>
+</ul>
+<h3 id="3-4-安装、工位、工步、走刀"><a href="#3-4-安装、工位、工步、走刀" class="headerlink" title="3.4 安装、工位、工步、走刀"></a>3.4 安装、工位、工步、走刀</h3><p>一道工序还可以逐级细分，层级关系为：<strong>工序 ⊃ 安装 ⊃ 工位 ⊃ 工步 ⊃ 走刀</strong>。</p>
+<h4 id="3-4-1-安装（装夹）"><a href="#3-4-1-安装（装夹）" class="headerlink" title="3.4.1 安装（装夹）"></a>3.4.1 安装（装夹）</h4><ul>
+<li><strong>定义</strong>：工件在机床或夹具上<strong>每一次装夹（定位并夹紧）后所完成的那一部分工序内容</strong>，称为一次安装。</li>
+<li>一道工序可以只有一次安装，也可以有多次安装。</li>
+<li>例：车轴时先用卡盘夹住大端、车小端（<strong>第一次安装</strong>）；再调头夹住小端、车大端（<strong>第二次安装</strong>）。所以例 1 中的车床工序包含 <strong>2 次安装</strong>。</li>
+<li>应尽量减少安装次数，因为多一次装夹就多一次装夹误差、也多耗费辅助时间。</li>
+</ul>
+<h4 id="3-4-2-工位"><a href="#3-4-2-工位" class="headerlink" title="3.4.2 工位"></a>3.4.2 工位</h4><ul>
+<li><strong>定义</strong>：在一次安装中，工件在机床上所占据的<strong>每一个位置</strong>上完成的那部分安装内容，称为一个工位。</li>
+<li>典型场合：钻床、铣床、组合机床上使用<strong>回转工作台（分度盘）</strong>。工件一次装夹到位后，分度盘带着工件依次旋转到不同工位，由固定在各工位的刀具依次完成钻、扩、铰等加工——自始至终只有一次安装，却有多个工位。</li>
+<li>工位靠分度&#x2F;移位获得，可减少装夹次数、提高效率；车床上较少见。</li>
+</ul>
+<h4 id="3-4-3-工步"><a href="#3-4-3-工步" class="headerlink" title="3.4.3 工步"></a>3.4.3 工步</h4><ul>
+<li><strong>定义</strong>：在<strong>加工表面、切削刀具、切削速度、进给量都保持不变</strong>的情况下所连续完成的那部分工位内容，称为一个工步。这四个要素中任何一个改变，一般就成为另一个工步。</li>
+<li>例（车轴小端）：车端面、钻（打）中心孔、车外圆、切退刀槽、倒角——各步加工表面不同（切退刀槽所用刀具往往也不同），所以是 <strong>5 个工步</strong>。初学时可先用”加工表面是否相同”做初步判断。</li>
+<li><strong>复合工步</strong>：为提高效率，在一个工位上用<strong>几把刀同时加工几个表面</strong>（如回转盘上镗刀与两把车刀同时切削，或用前钻后铰的复合钻头一次完成钻、铰）。对其中每一把刀单独看，其加工表面和切削用量都不变，按工艺规程把它们合记为<strong>一个（复合）工步</strong>。</li>
+</ul>
+<h4 id="3-4-4-走刀（进给次数）"><a href="#3-4-4-走刀（进给次数）" class="headerlink" title="3.4.4 走刀（进给次数）"></a>3.4.4 走刀（进给次数）</h4><ul>
+<li><strong>定义</strong>：在<strong>同一个工步</strong>内，如果被加工表面的加工余量很大、一次切不下来（例如要切去 10～15 mm，一刀切 4 mm 以上容易损坏刀具和工件），需要分几次切削，则<strong>刀具在加工表面上每切除一层材料（每切削一次）称为一次走刀</strong>。</li>
+<li>走刀的前提：同一工步内，加工表面、刀具、切削速度、进给量<strong>都不变</strong>，只是分层重复切削。例：同一外圆、同一把刀、同样的切削用量，分两刀切除余量，就是该工步下的<strong>两次走刀</strong>。</li>
+<li><strong>易错点：粗车外圆后再精车外圆，不是两次走刀，而是两个工步。</strong>因为粗车和精车的切削速度、进给量不同（粗车可快些、误差留给精车修正；精车速度与进给量要小以保证质量），切削用量改变了，工步就变了。<strong>只有先属于同一个工步，才谈得上其中有几次走刀。</strong></li>
+</ul>
+<h4 id="3-4-5-层级关系与两点说明"><a href="#3-4-5-层级关系与两点说明" class="headerlink" title="3.4.5 层级关系与两点说明"></a>3.4.5 层级关系与两点说明</h4><ul>
+<li>一道工序可含若干安装；一次安装可含若干工位；一个工位可含若干工步；一个工步可含若干走刀。</li>
+<li>若某工序<strong>只有一次安装、一个工位</strong>，则工序、安装、工位三者完成的内容相同、彼此等同。</li>
+<li>实际编写工艺规程时通常只写到”<strong>工序—工步—走刀</strong>“，一般不专门列出安装和工位（安装是一次装夹动作、工位是工件位置）；但<strong>考试和课本按完整层级出题，答题以课本层级为准</strong>。</li>
+<li>课堂练习答案要点：工步是”<strong>工位</strong>“当中的一部分；安装是”<strong>工序</strong>“当中的一部分；”同一把刀、同一表面、切削用量不变，每切削一次”指的是”<strong>走刀</strong>“，而不是工步。</li>
+</ul>
+<h3 id="3-5-工艺系统（生产系统）"><a href="#3-5-工艺系统（生产系统）" class="headerlink" title="3.5 工艺系统（生产系统）"></a>3.5 工艺系统（生产系统）</h3><ul>
+<li>机械加工需要一系列条件支持，支持零件进行机械加工的所有条件因素统称为<strong>工艺系统</strong>，可分为三个分系统：<ul>
+<li><strong>物质分系统</strong>：工件、机床，以及工具（夹具、刀具、量具等）；</li>
+<li><strong>能量分系统</strong>：为加工提供动力（现代机床主要是电能供应）；</li>
+<li><strong>信息分系统</strong>：进行控制、管理的信息装置，如数控机床的数控装置。</li>
+</ul>
+</li>
+<li>普通（甚至手摇）机床没有数控装置，因此<strong>信息分系统不一定具备</strong>；但物质和能量分系统是加工所必需的。</li>
+</ul>
+<h3 id="3-6-生产纲领与生产批量（了解、会套公式）"><a href="#3-6-生产纲领与生产批量（了解、会套公式）" class="headerlink" title="3.6 生产纲领与生产批量（了解、会套公式）"></a>3.6 生产纲领与生产批量（了解、会套公式）</h3><ul>
+<li><strong>生产纲领</strong>：企业在计划期内生产产品（或零件）的数量和进度。计划期为一年时称<strong>年生产纲领</strong>，是车间&#x2F;工段设计工艺规程的重要依据文件。</li>
+<li><strong>零件年生产纲领</strong>：</li>
+</ul>
+<p>$$N &#x3D; Q,n,(1+\alpha)(1+\beta)$$</p>
+<ul>
+<li>$Q$：产品的年产量（台&#x2F;年）；</li>
+<li>$n$：每台产品中该种零件的数量（件&#x2F;台）；</li>
+<li>$\alpha$：备品率（为退换、备件准备的百分数）；</li>
+<li>$\beta$：废品率（生产中允许报废的百分数）。</li>
+<li>举例（仅说明算法，数字为假设）：产品年产 2000 台、每台用 2 个某零件，则正常需 4000 件；若备品率 15%、废品率 4%，再分别乘 $(1+15%)$、$(1+4%)$ 得到年生产纲领。</li>
+<li><strong>生产批量</strong>：一次投入或产出的同一产品（零件）的数量，与年纲领、零件储备天数和全年工作天数有关（公式不要求，注意分母是”全年工作天数”而不是 365 天）。</li>
+</ul>
+<h3 id="3-7-生产类型及其工艺特点、柔性化趋势"><a href="#3-7-生产类型及其工艺特点、柔性化趋势" class="headerlink" title="3.7 生产类型及其工艺特点、柔性化趋势"></a>3.7 生产类型及其工艺特点、柔性化趋势</h3><ul>
+<li>根据年生产纲领大小、生产专业化程度和设备类型，生产类型划分为：<ul>
+<li><strong>单件生产</strong>；</li>
+<li><strong>成批生产</strong>：又分<strong>小批、中批、大批</strong>生产；</li>
+<li><strong>大量生产</strong>。</li>
+</ul>
+</li>
+<li>由于<strong>单件生产与小批生产</strong>的工艺特点基本一致，合称<strong>单件小批生产</strong>；<strong>大批生产与大量生产</strong>工艺特点基本一致，合称<strong>大批大量生产</strong>。因此工艺特点上通常归纳为三类：<strong>单件小批生产、中批生产、大批大量生产</strong>。</li>
+<li>工艺特点对比：<ul>
+<li><strong>单件小批生产</strong>：大量采用<strong>通用机床、通用夹具、通用刀具和量具</strong>，依赖工人技术水平，产品切换灵活、但效率低、成本高、质量一致性较依赖操作者。</li>
+<li><strong>大批大量生产</strong>：广泛采用<strong>专用机床、专用夹具、高效专用刀具与自动线</strong>，分工细、效率高、单件成本低，但专用工装只针对特定产品。</li>
+<li><strong>中批生产</strong>：介于两者之间，通用与专用工装并用。</li>
+</ul>
+</li>
+<li><strong>柔性化趋势</strong>：上述传统划分正逐渐过时。大批大量生产专用设备&#x2F;专用夹具太多，产品一更新换代旧工装就用不上，难以适应市场快速变化；单件小批虽切换灵活却产量不足。现代制造业更多向<strong>柔性制造（如柔性制造系统 FMS、成组工艺、柔性夹具、数控加工中心）</strong>发展，用通用化、可编程的设备兼顾”能快速换产”与”有一定批量效率”。</li>
+</ul>
+<h3 id="3-8-工件的装夹：定位与夹紧"><a href="#3-8-工件的装夹：定位与夹紧" class="headerlink" title="3.8 工件的装夹：定位与夹紧"></a>3.8 工件的装夹：定位与夹紧</h3><ul>
+<li>加工前首先要解决”工件怎样正确地装到机床上”。<strong>装夹包含两个性质不同的过程：</strong><ul>
+<li><strong>定位</strong>：使工件在机床或夹具上占据一个<strong>正确（确定）的位置</strong>，保证工件与刀具之间的相对位置正确，从而加工出符合形状、尺寸、表面粗糙度和性能要求的零件——解决”位置对不对”。</li>
+<li><strong>夹紧</strong>：工件定位后，将其压紧夹牢，使其在加工过程中<strong>始终保持</strong>这一正确位置，防止因切削力、惯性力等发生位移——解决”加工中动不动”。</li>
+</ul>
+</li>
+<li>定位与夹紧不能混淆：定位只负责”取得正确位置”，夹紧负责”保持正确位置”；夹紧主要与夹具的夹紧机构有关。</li>
+</ul>
+<p><strong>装夹的三种方式：</strong></p>
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>做法</th>
+<th>特点与适用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>夹具装夹</td>
+<td>靠夹具上的定位元件定位、夹紧元件夹紧</td>
+<td>效率高、精度稳定，流水线&#x2F;成批大量最常用</td>
+</tr>
+<tr>
+<td>直接找正装夹</td>
+<td>用百分表、划线盘等在机床上直接找正工件位置再夹紧</td>
+<td>定位精度可较高，但效率低、很依赖工人技术，用于单件小批、暂无专用夹具时</td>
+</tr>
+<tr>
+<td>划线找正装夹</td>
+<td>先在工件上划出找正线、加工线，再按线找正夹紧</td>
+<td>精度与效率都较低，用于形状复杂、夹具难设计的毛坯件</td>
+</tr>
+</tbody></table>
+<h3 id="3-9-六点定位原理"><a href="#3-9-六点定位原理" class="headerlink" title="3.9 六点定位原理"></a>3.9 六点定位原理</h3><ul>
+<li>空间中一个不受约束的自由刚体有 <strong>6 个自由度</strong>：沿 X、Y、Z 三个坐标轴的<strong>移动</strong>（记作沿 X、沿 Y、沿 Z），和绕 X、Y、Z 三个坐标轴的<strong>转动</strong>（记作绕 X、绕 Y、绕 Z）。</li>
+<li>在夹具中通常用<strong>支承点（约束点）</strong>来限制自由度，<strong>一个合理布置的支承点限制一个自由度</strong>；用<strong>合理分布的 6 个支承点</strong>就能把工件的 6 个自由度全部限制，使工件位置完全确定，这就是<strong>六点定位原理（完全定位）</strong>。</li>
+<li>关键在”<strong>合理分布</strong>“——不是随便摆 6 个点都叫六点定位，支承点的位置必须布置得当、各自独立地限制相应自由度。</li>
+</ul>
+<p><strong>长方体（箱体&#x2F;板类）工件的经典六点布置（坐标系：X 沿长度、Y 沿宽度、Z 沿高度）：</strong></p>
+<ul>
+<li><strong>底面布置 3 个支承点（不共线）</strong>：工件沿 Z 移动会脱离三点，绕 X 转动、绕 Y 转动也会使某些点脱离，故限制 <strong>沿 Z 移动、绕 X 转动、绕 Y 转动</strong> 3 个自由度；而沿 X、沿 Y 小距离移动和绕 Z 转动不会脱离底面三点，故不限制。</li>
+<li><strong>侧面布置 2 个支承点（两点水平排列，连线不要平行于 Z 轴）</strong>：限制 <strong>沿 Y 移动、绕 Z 转动</strong> 2 个自由度。若两点沿竖直（Z）方向排列，则绕 Z 转动约束不住、布置不合理。</li>
+<li><strong>端面布置 1 个支承点（挡销）</strong>：限制 <strong>沿 X 移动</strong> 1 个自由度。</li>
+<li>合计 3＋2＋1＝6 个支承点，恰好限制 6 个自由度。</li>
+<li>分析方法：判断某个运动是否被限制，就设想工件做该运动，看它是否会与相应支承点<strong>脱离接触</strong>（只要有一个点脱开，该自由度就被限制）；分析时可把定位面想象成足够大，只看小范围偏离。</li>
+</ul>
+<h3 id="3-10-平面定位元件：支承钉与支承板"><a href="#3-10-平面定位元件：支承钉与支承板" class="headerlink" title="3.10 平面定位元件：支承钉与支承板"></a>3.10 平面定位元件：支承钉与支承板</h3><p>工件以平面定位时，常用支承钉、支承板（对应课本表 1-7，约第 16 页）。</p>
+<ul>
+<li><strong>1 个支承钉</strong>：相当于 1 个支承点，限制 <strong>1 个自由度</strong>。</li>
+<li><strong>2 个支承钉 ≡ 1 块窄（条形）支承板</strong>：限制 <strong>2 个自由度</strong>（在侧面布置时为沿某轴移动＋绕竖直轴转动，课堂坐标系下为沿 Y 移动、绕 Z 转动）。</li>
+<li><strong>3 个支承钉（不共线）≡ 2 块条形（槽形）支承板 ≡ 1 块矩形（大）支承板</strong>：限制 <strong>3 个自由度</strong>（在底面时为沿 Z 移动、绕 X 转动、绕 Y 转动）。</li>
+<li><strong>教材纠错（老师课堂明确指出）</strong>：课本在”两个支承钉”一处，把第二个被限制的自由度印成了”绕 Y 轴转动”，这是编辑&#x2F;书写错误；按上述脱离接触法分析，板足够大时绕 Y 转动不会脱离两支点，两个支承钉限制的应是”<strong>沿 Y 移动和绕 Z 转动</strong>“。复习时以课堂讲的分析方法为准，并对照教材表 1-7 确认。</li>
+<li>工程上两个支承钉可以用一块支承板等效代替，反之亦然；具体约束数随支承点数量和布置而定。</li>
+</ul>
+<h3 id="3-11-内孔（圆孔）定位元件：定位销、菱形销与心轴"><a href="#3-11-内孔（圆孔）定位元件：定位销、菱形销与心轴" class="headerlink" title="3.11 内孔（圆孔）定位元件：定位销、菱形销与心轴"></a>3.11 内孔（圆孔）定位元件：定位销、菱形销与心轴</h3><p>工件以内孔表面定位时采用定心定位，常用圆柱定位销、心轴等，关键要区分<strong>长、短</strong>（接触长度不同，限制自由度不同）。</p>
+<ul>
+<li><strong>短圆柱销（短销）</strong>：与孔接触长度短，限制 <strong>2 个自由度</strong>——沿 Y、沿 Z 方向的移动；因为接触短，工件仍可绕 Y、绕 Z 轻微倾斜摆动，故不能限制这两个转动。</li>
+<li><strong>长圆柱销（长销）</strong>：接触长度大，除沿 Y、沿 Z 移动外，还能阻止绕 Y、绕 Z 的倾斜，限制 <strong>4 个自由度</strong>——沿 Y、沿 Z 移动 ＋ 绕 Y、绕 Z 转动。</li>
+<li><strong>两段短圆柱销</strong>（中间有一段不接触）：总的作用与一根长圆柱销相同，限制 4 个自由度。</li>
+<li><strong>菱形销（削边销）</strong>：在短圆柱销基础上把两侧削成菱形，只在一个方向上起约束，<strong>只限制 1 个移动自由度</strong>（沿其长轴垂直&#x2F;削边方向，课堂坐标系下为沿 Z 移动）。它常用于”一面两销”组合定位，与圆柱销配合以避免两销同时定心造成的过定位。</li>
+<li><strong>圆柱心轴</strong>：长圆柱心轴约束同长销（4 个），短圆柱心轴约束同短销（2 个）。</li>
+<li><strong>小锥度心轴</strong>：锥度很小、与孔是小过盈配合，约束情况类似短圆柱销，限制沿 Y、沿 Z <strong>2 个移动自由度</strong>（注意与下面的大锥度心轴区分）。</li>
+<li>课堂还讨论了”长轴配小平面、短轴配大平面”的组合（属组合定位内容）：其中小平面可套用平面支承点的方法分析，长、短轴与大、小平面的搭配是为了避免重复约束、保证接触可靠。</li>
+</ul>
+<h3 id="3-12-外圆柱面与圆锥面定位元件"><a href="#3-12-外圆柱面与圆锥面定位元件" class="headerlink" title="3.12 外圆柱面与圆锥面定位元件"></a>3.12 外圆柱面与圆锥面定位元件</h3><ul>
+<li><strong>工件以外圆柱面定位</strong>，常用定心或支承定位：<ul>
+<li><strong>V 形块（V 型铁）</strong>：工件外圆搁在 V 形槽中，沿 Z 向上运动会脱离 V 形块、沿 X 移动会滚出，故限制 <strong>沿 X、沿 Z 移动 2 个自由度</strong>；两块 V 形块（或长 V 形块）约束相应增加。</li>
+<li><strong>定位套（定位环）</strong>：外圆插入定位套中，同样限制 <strong>沿 X、沿 Z 移动 2 个自由度</strong>。V 形块与定位套作用类似，V 形块对中性好、装拆方便，定位套结构简单。</li>
+</ul>
+</li>
+<li><strong>工件以圆锥面定位</strong>，常用顶尖、锥度心轴：<ul>
+<li><strong>大锥度心轴（接触面大、锥度大）</strong>：与孔接触面大，限制 <strong>5 个自由度</strong>，只留下绕工件自身轴线的转动不限制。务必与只限制 2 个移动自由度的<strong>小锥度心轴</strong>区分开。</li>
+<li><strong>固定顶尖与浮动（活动）顶尖</strong>：用于轴类两端中心孔定位。固定顶尖约束较多；浮动顶尖内有弹簧、可沿轴向伸缩，始终顶住工件，因此<strong>不限制沿轴向（自身轴线方向）的移动</strong>。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-13-组合定位与重复约束（过定位）"><a href="#3-13-组合定位与重复约束（过定位）" class="headerlink" title="3.13 组合定位与重复约束（过定位）"></a>3.13 组合定位与重复约束（过定位）</h3><ul>
+<li>实际夹具常由几个定位元件组合起来定位。分析规则：<ul>
+<li>若各定位元件限制的自由度<strong>互不重复</strong>，则把各自限制的自由度<strong>直接相加</strong>即可（如六点定位中底面 3 点、侧面 2 点、端面 1 点）。</li>
+<li>若组合后某个自由度被<strong>两个（或多个）元件重复限制</strong>，就出现<strong>重复约束（过定位）</strong>，不能简单相加，要具体分析其接触和变形情况。</li>
+</ul>
+</li>
+<li>例：固定顶尖与浮动顶尖组合时，若分别单看，两者对沿 Y、沿 Z 移动都有约束、会发生重复；组合后这部分被重复限制，而沿轴向移动由浮动顶尖的弹簧”让出”，最终组合实际限制<strong>沿 X、Y、Z 三个移动＋绕 Y、绕 Z 两个转动（共 5 个）</strong>，保留绕工件自身轴线的转动。</li>
+<li>设计夹具时一般应避免或消除有害的过定位（提高元件制造精度、采用浮动&#x2F;自位结构等），这部分在后续夹具设计课中进一步学习。</li>
+</ul>
+<h2 id="四、例题、案例或实验"><a href="#四、例题、案例或实验" class="headerlink" title="四、例题、案例或实验"></a>四、例题、案例或实验</h2><h3 id="4-1-判工序：一根阶梯轴的加工流程"><a href="#4-1-判工序：一根阶梯轴的加工流程" class="headerlink" title="4.1 判工序：一根阶梯轴的加工流程"></a>4.1 判工序：一根阶梯轴的加工流程</h3><ul>
+<li>情境：单件小批，同一工人在一台车床上先夹大端车小端（车端面、钻中心孔、车外圆、切退刀槽、倒角），调头夹小端车大端（车端面、钻中心孔、车外圆、倒角），然后送到铣床铣键槽。</li>
+<li>分析：<ul>
+<li>车床上全部车削：同一人、同一台车床、连续完成 → <strong>工序一</strong>，其中调头两次装夹 → 含 <strong>2 次安装</strong>；每次安装下又分若干工步（小端 5 个工步、大端 4 个工步）。</li>
+<li>铣床铣键槽：工作地点由车床变为铣床 → <strong>工序二</strong>。</li>
+<li>合计 <strong>2 道工序</strong>。</li>
+</ul>
+</li>
+<li>变式：若车到一半送去热处理再回来车，则连续性中断，应再拆出热处理工序。</li>
+</ul>
+<h3 id="4-2-判工步与走刀"><a href="#4-2-判工步与走刀" class="headerlink" title="4.2 判工步与走刀"></a>4.2 判工步与走刀</h3><ul>
+<li>问：同一外圆面、同一把外圆车刀，因余量大分两刀切成尺寸，是几个工步、几次走刀？<ul>
+<li>答：加工表面、刀具、切削速度、进给量都不变，是<strong>一个工步、两次走刀</strong>。</li>
+</ul>
+</li>
+<li>问：粗车外圆后再精车外圆到尺寸，是几次走刀吗？<ul>
+<li>答：不是。粗车与精车切削速度、进给量不同，是<strong>两个工步</strong>；每个工步内部若分层切削，再各自计走刀次数。</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-3-六点定位分析"><a href="#4-3-六点定位分析" class="headerlink" title="4.3 六点定位分析"></a>4.3 六点定位分析</h3><ul>
+<li>一块长方形工件放在夹具上：底面 3 个不共线支承钉、侧面 2 个水平排列支承钉、端面 1 个挡销。问各限制哪些自由度？<ul>
+<li>答：底面 3 点限沿 Z 移动、绕 X 转动、绕 Y 转动；侧面 2 点限沿 Y 移动、绕 Z 转动；端面 1 点限沿 X 移动；共 6 点限制全部 6 个自由度，工件完全定位。</li>
+</ul>
+</li>
+<li>追问：侧面两点若沿竖直方向排列会怎样？答：绕 Z 转动约束不住，属布置不合理。</li>
+</ul>
+<h3 id="4-4-定位元件与自由度匹配"><a href="#4-4-定位元件与自由度匹配" class="headerlink" title="4.4 定位元件与自由度匹配"></a>4.4 定位元件与自由度匹配</h3><ul>
+<li>短圆柱销限哪几个？长圆柱销为何比短销多两个？菱形销为何只限一个？<ul>
+<li>答：短销接触短，只限沿 Y、沿 Z 两个移动；长销接触长，还能阻止绕 Y、绕 Z 倾斜，故多限两个转动、共 4 个；菱形销削边后只在一个方向定心，故只限 1 个移动。</li>
+</ul>
+</li>
+<li>大锥度心轴 vs 小锥度心轴？<ul>
+<li>答：大锥度接触面大限 5 个（只留绕自身轴转动）；小锥度类似短销只限 2 个移动。</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-5-概念归属选择题（课堂练习类型）"><a href="#4-5-概念归属选择题（课堂练习类型）" class="headerlink" title="4.5 概念归属选择题（课堂练习类型）"></a>4.5 概念归属选择题（课堂练习类型）</h3><ul>
+<li>“工步是下列哪一项的一部分？”→ 工位（按课本层级 工序＞安装＞工位＞工步＞走刀）。</li>
+<li>“安装是下列哪一项的一部分？”→ 工序。</li>
+<li>“同一把刀、同一表面、切削用量不变，每切削一次称为什么？”→ 走刀。</li>
+</ul>
+<h2 id="五、术语、公式或关键表达"><a href="#五、术语、公式或关键表达" class="headerlink" title="五、术语、公式或关键表达"></a>五、术语、公式或关键表达</h2><table>
+<thead>
+<tr>
+<th>术语</th>
+<th>关键表达</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>直接&#x2F;辅助生产过程</td>
+<td>是否直接改变加工对象形状、尺寸、性能</td>
+</tr>
+<tr>
+<td>工序三要素</td>
+<td>操作人员不变、工作地点（机台）不变、加工连续</td>
+</tr>
+<tr>
+<td>安装</td>
+<td>一次装夹后完成的那部分工序；调头再夹＝两次安装</td>
+</tr>
+<tr>
+<td>工位</td>
+<td>一次安装中工件每个位置完成的内容（分度盘转位）</td>
+</tr>
+<tr>
+<td>工步</td>
+<td>加工表面、刀具、切削速度、进给量均不变；多刀同时加工为复合工步</td>
+</tr>
+<tr>
+<td>走刀</td>
+<td>同一工步内每切除一层材料为一次走刀；粗车→精车是两个工步</td>
+</tr>
+<tr>
+<td>层级</td>
+<td>工序 ⊃ 安装 ⊃ 工位 ⊃ 工步 ⊃ 走刀</td>
+</tr>
+<tr>
+<td>工艺系统</td>
+<td>物质（机床&#x2F;工件&#x2F;夹具&#x2F;刀量具）＋能量＋信息（数控，可有可无）</td>
+</tr>
+<tr>
+<td>年生产纲领</td>
+<td>$N&#x3D;Q,n,(1+\alpha)(1+\beta)$，$\alpha$ 备品率、$\beta$ 废品率</td>
+</tr>
+<tr>
+<td>生产类型</td>
+<td>单件、成批（小&#x2F;中&#x2F;大）、大量；工艺特点归并为单件小批、中批、大批大量</td>
+</tr>
+<tr>
+<td>装夹</td>
+<td>定位（取得正确位置）＋夹紧（保持位置、防加工中移位）</td>
+</tr>
+<tr>
+<td>三种装夹方式</td>
+<td>夹具装夹、直接找正、划线找正</td>
+</tr>
+<tr>
+<td>六点定位</td>
+<td>合理分布 6 个支承点限制 6 个自由度；底 3、侧 2、端 1</td>
+</tr>
+</tbody></table>
+<p><strong>常用定位元件限制自由度一览表（沿&#x2F;绕坐标轴，随工件坐标系约定而变，掌握分析方法）</strong></p>
+<table>
+<thead>
+<tr>
+<th>定位面</th>
+<th>定位元件</th>
+<th>限制的自由度数</th>
+<th>限制内容（课堂坐标系）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>平面</td>
+<td>1 个支承钉</td>
+<td>1</td>
+<td>1 个（如沿 Z 移动）</td>
+</tr>
+<tr>
+<td>平面</td>
+<td>2 个支承钉 ≡ 1 块窄支承板</td>
+<td>2</td>
+<td>沿 Y 移动、绕 Z 转动</td>
+</tr>
+<tr>
+<td>平面</td>
+<td>3 个支承钉 ≡ 2 块条形板 ≡ 1 块矩形板</td>
+<td>3</td>
+<td>沿 Z 移动、绕 X 转动、绕 Y 转动</td>
+</tr>
+<tr>
+<td>内孔</td>
+<td>短圆柱销 &#x2F; 短心轴 &#x2F; 小锥度心轴</td>
+<td>2</td>
+<td>沿 Y、沿 Z 移动</td>
+</tr>
+<tr>
+<td>内孔</td>
+<td>长圆柱销 &#x2F; 长心轴（或两段短销）</td>
+<td>4</td>
+<td>沿 Y、沿 Z 移动；绕 Y、绕 Z 转动</td>
+</tr>
+<tr>
+<td>内孔</td>
+<td>菱形销（削边销）</td>
+<td>1</td>
+<td>削边方向上的 1 个移动（如沿 Z 移动）</td>
+</tr>
+<tr>
+<td>外圆</td>
+<td>V 形块 &#x2F; 定位套</td>
+<td>2</td>
+<td>沿 X、沿 Z 移动</td>
+</tr>
+<tr>
+<td>圆锥面</td>
+<td>大锥度心轴</td>
+<td>5</td>
+<td>除绕自身轴线转动外的 5 个</td>
+</tr>
+<tr>
+<td>圆锥面</td>
+<td>固定顶尖＋浮动顶尖组合</td>
+<td>5（有重复约束）</td>
+<td>沿 X、Y、Z 移动；绕 Y、Z 转动，留绕自身轴转动</td>
+</tr>
+</tbody></table>
+<h2 id="六、课堂任务与复习安排"><a href="#六、课堂任务与复习安排" class="headerlink" title="六、课堂任务与复习安排"></a>六、课堂任务与复习安排</h2><ul>
+<li>本节对应教材 1.2、1.3、1.4：1.2（生产过程、工艺过程、五概念、工艺系统）和 1.4（定位原理、定位元件）是<strong>重点</strong>，1.3（生产纲领、生产类型）一般了解、公式不要求硬考计算。</li>
+<li>复习时重点做到：<ol>
+<li>能默写并解释<strong>工序、安装、工位、工步、走刀</strong>五个概念及其层级包含关系；</li>
+<li>会用”人、地点、连续性”三要素判断工序数量，会数一道工序里的安装、工步、走刀；</li>
+<li>能区分工步与走刀、说清粗车&#x2F;精车为何是两个工步；</li>
+<li>能默画六点定位的”3-2-1”支承点分布并说出各限制哪些自由度；</li>
+<li>熟记定位元件限制自由度总表，会分析短销&#x2F;长销&#x2F;菱形销&#x2F;V 形块&#x2F;锥度心轴&#x2F;顶尖组合。</li>
+</ol>
+</li>
+<li>后续夹具设计、定位误差分析都建立在本节定位原理之上，务必把单个定位元件的约束分析练熟。</li>
+</ul>
+<h2 id="七、待核对与疑问"><a href="#七、待核对与疑问" class="headerlink" title="七、待核对与疑问"></a>七、待核对与疑问</h2><table>
+<thead>
+<tr>
+<th>问题</th>
+<th>原因</th>
+<th>建议核对方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>年生产纲领公式中备品率、废品率符号（$\alpha$、$\beta$）与公式形式</td>
+<td>老师提到新旧教材公式写法略有差异</td>
+<td>以现行课本公式为准，对照课堂板书</td>
+</tr>
+<tr>
+<td>各生产类型划分的具体年纲领数量界限</td>
+<td>课堂只举例、未给分界数字表</td>
+<td>查教材 1.3 生产类型划分表</td>
+</tr>
+<tr>
+<td>两个支承钉第二约束”绕 Y &#x2F; 绕 Z 转动”</td>
+<td>老师明确指出现行课本该处为编辑错误，正确应为绕 Z 转动</td>
+<td>以课堂分析为准，对照课本表 1-7 并向老师确认</td>
+</tr>
+<tr>
+<td>各定位元件约束的具体坐标轴方向</td>
+<td>课堂采用特定坐标系，坐标轴随工件摆放而变</td>
+<td>重点掌握”脱离接触”分析法，坐标轴以题目图示为准</td>
+</tr>
+<tr>
+<td>菱形销限制方向、固定&#x2F;浮动顶尖组合的自由度</td>
+<td>录音转写较口语化</td>
+<td>对照课本表 1-7 与夹具设计章节</td>
+</tr>
+<tr>
+<td>教材页码（第 9 页层级定义、约第 16 页表 1-7）</td>
+<td>口述页码可能有版本差异</td>
+<td>以本班所用教材实际页码为准</td>
+</tr>
+</tbody></table>
+<h2 id="八、复习与主动回忆"><a href="#八、复习与主动回忆" class="headerlink" title="八、复习与主动回忆"></a>八、复习与主动回忆</h2><h3 id="复习清单"><a href="#复习清单" class="headerlink" title="复习清单"></a>复习清单</h3><ol>
+<li>用 2 分钟区分直接生产过程与辅助生产过程，并举出铸造、锻造、焊接、热处理、运输、维修各属哪类。</li>
+<li>用 3 分钟复述工序定义和判断三要素，各举一个”换机床””同类型两台机床””插热处理”的例子。</li>
+<li>用 4 分钟说清安装、工位、工步、走刀的定义和层级关系，解释分度盘、多刀复合工步、分层切削、粗精车。</li>
+<li>用 2 分钟说出工艺系统的三个分系统，并举出没有信息分系统的机床。</li>
+<li>用 2 分钟写明年生产纲领公式及各符号含义，说出三类（归并后）生产类型与通用&#x2F;专用工装的对应关系。</li>
+<li>用 3 分钟区分定位与夹紧，比较三种装夹方式的精度、效率和适用场合。</li>
+<li>用 5 分钟默画六点定位”3-2-1”分布并逐项说明限制的自由度。</li>
+<li>用 5 分钟熟记定位元件限制自由度总表，能即时回答短销、长销、菱形销、V 形块、大&#x2F;小锥度心轴、顶尖组合各限几个自由度。</li>
+</ol>
+<h3 id="主动回忆题"><a href="#主动回忆题" class="headerlink" title="主动回忆题"></a>主动回忆题</h3><ol>
+<li>铸造、锻造、焊接、热处理、机械加工、设备维修、零件运输、仓储各属于直接生产过程还是辅助生产过程？工艺过程和直接生产过程是什么关系？</li>
+<li>判断是否同一道工序的三个要素是什么？同一工人在车床 A 车完小端、转到车床 B 车大端，是一道还是两道工序？为什么？</li>
+<li>在同一台车床上车轴，中途把工件送去热处理后再回来继续车，工序应如何划分？</li>
+<li>安装、工位、工步、走刀分别是如何定义的？它们之间的层级关系是什么？</li>
+<li>车轴小端时”车端面、钻中心孔、车外圆、切退刀槽、倒角”为什么是 5 个工步？几把刀同时加工几个表面算什么？</li>
+<li>同一外圆、同一把刀、同样切削用量分两刀切完，是几个工步、几次走刀？粗车后再精车为什么不能算两次走刀？</li>
+<li>工艺系统由哪三个分系统组成？普通手摇机床缺少哪个分系统？</li>
+<li>写出零件年生产纲领公式并解释各符号；单件小批与大批大量生产在设备、夹具上最主要的区别是什么？为什么现代制造强调柔性化？</li>
+<li>定位和夹紧有什么区别？夹具装夹、直接找正、划线找正各适用于什么场合？</li>
+<li>完整叙述六点定位原理，说明长方体底面 3 点、侧面 2 点、端面 1 点各限制哪些自由度；并说出短圆柱销、长圆柱销、菱形销、V 形块、大锥度心轴各自限制几个自由度。</li>
+</ol>
+<h3 id="答案要点"><a href="#答案要点" class="headerlink" title="答案要点"></a>答案要点</h3><ol>
+<li>铸造、锻造、焊接、热处理、机械加工直接改变形状&#x2F;尺寸&#x2F;性能，属直接生产过程；维修、运输、仓储不直接改变但必不可少，属辅助生产过程。工艺过程是直接生产过程中直接改变对象形状、尺寸、性能或位置的那一部分，是被包含关系。</li>
+<li>三要素：操作人员不变、工作地点（机台）不变、加工连续。车床 A 与车床 B 是两台不同机床、工作地点改变，因而是两道工序（同类型设备但机台不同也算变）。</li>
+<li>热处理使工件脱离车床、打断了加工连续性，应划分为车削—热处理—车削共三道工序。</li>
+<li>安装是一次装夹后完成的工序内容；工位是一次安装中工件每个位置完成的内容；工步是加工表面、刀具、切削速度、进给量都不变时完成的内容；走刀是同一工步内每切除一层材料的一次切削。层级：工序⊃安装⊃工位⊃工步⊃走刀。</li>
+<li>这五步加工表面各不相同（切退刀槽刀具也往往不同），加工表面一变就是另一工步，故为 5 个工步。一个工位上几把刀同时分别加工不同表面、各自切削用量不变，合记为一个复合工步。</li>
+<li>加工表面、刀具、切削用量都不变，只是分层去余量，是一个工步、两次走刀。粗车与精车的切削速度、进给量不同，工步要素改变，属两个工步，不能称为同一工步的两次走刀。</li>
+<li>物质分系统（工件、机床、夹具、刀具、量具）、能量分系统（动力&#x2F;电能）、信息分系统（数控装置等）；普通&#x2F;手摇机床没有数控装置，因而没有信息分系统。</li>
+<li>$N&#x3D;Q,n(1+\alpha)(1+\beta)$：$Q$ 产品年产量、$n$ 每台产品含该零件数、$\alpha$ 备品率、$\beta$ 废品率。单件小批多用通用机床、通用夹具，换产灵活但效率低；大批大量多用专用机床、专用夹具，效率高但难换产。因专用工装难以适应产品快速更新换代，现代制造趋向柔性化（FMS、成组工艺、柔性夹具、数控机床），兼顾换产能力与批量效率。</li>
+<li>定位是使工件取得正确（确定）位置，夹紧是定位后使其在加工中始终保持该位置、防止受力移位，二者不可混。夹具装夹高效稳定，用于成批大量&#x2F;流水线；直接找正精度较高但效率低、依赖技术，用于单件小批；划线找正精度效率都低，用于复杂毛坯、夹具难设计时。</li>
+<li>空间刚体有沿 X&#x2F;Y&#x2F;Z 移动、绕 X&#x2F;Y&#x2F;Z 转动共 6 个自由度，用合理分布的 6 个支承点全部限制即六点定位（完全定位）。底面 3 点限沿 Z 移动、绕 X 与绕 Y 转动；侧面水平 2 点限沿 Y 移动、绕 Z 转动；端面 1 点限沿 X 移动。短圆柱销限沿 Y、沿 Z 移动 2 个；长圆柱销在此基础上再加绕 Y、绕 Z 转动共 4 个；菱形销只限削边方向 1 个移动；V 形块（定位套）限沿 X、沿 Z 移动 2 个；大锥度心轴限除绕自身轴转动外的 5 个。</li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%9C%BA%E6%A2%B0%E5%88%B6%E9%80%A0%E5%B7%A5%E8%89%BA-%E5%AE%9A%E4%BD%8D%E5%8E%9F%E7%90%86/" class="print-no-link">#机械制造工艺 定位原理</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>工艺过程概念、生产类型与六点定位原理</div>
+      <div>https://tdexxx.github.io/2026/10/06/06_机械制造工艺与夹具/机械制造工艺_工艺基础与六点定位_发布稿/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>tdexxx</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年10月6日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/10/06/02_%E7%94%B5%E6%B0%94%E6%8E%A7%E5%88%B6%E4%B8%8EPLC/%E7%94%B5%E6%B0%94%E6%8E%A7%E5%88%B6%E4%B8%8EPLC_%E7%94%B5%E5%8A%A8%E6%9C%BA%E6%8E%A7%E5%88%B6%E7%94%B5%E8%B7%AF%E8%BF%9B%E9%98%B6_%E5%8F%91%E5%B8%83%E7%A8%BF/" title="电动机控制电路进阶：正反转互锁、自动往返与星三角启动">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">电动机控制电路进阶：正反转互锁、自动往返与星三角启动</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/10/06/02_%E7%94%B5%E6%B0%94%E6%8E%A7%E5%88%B6%E4%B8%8EPLC/%E7%94%B5%E6%B0%94%E6%8E%A7%E5%88%B6%E4%B8%8EPLC_%E4%BD%8E%E5%8E%8B%E7%94%B5%E5%99%A8%E4%B8%8E%E6%8E%A7%E5%88%B6%E7%94%B5%E8%B7%AF_%E5%8F%91%E5%B8%83%E7%A8%BF/" title="低压电器与异步电动机点动、自锁、多地控制电路">
+                        <span class="hidden-mobile">低压电器与异步电动机点动、自锁、多地控制电路</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

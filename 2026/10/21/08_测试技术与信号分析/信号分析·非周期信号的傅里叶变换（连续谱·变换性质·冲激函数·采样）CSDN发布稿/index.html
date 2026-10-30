@@ -1,0 +1,1235 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="tdexxx">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="信号分析：非周期信号的傅里叶变换（连续谱 · 变换性质 · 冲激函数 · 采样） 本篇为信号分析课程整理，接上一讲”傅里叶级数与频谱”继续。这一讲把研究对象从周期信号推进到非周期信号，核心是三件事：  为什么要用傅里叶变换——周期信号的频谱是离散的，非周期信号没有”基频”，只能用积分把周期推广到无穷； 傅里叶变换的性质——线性、奇偶性、共轭对称、对称性、尺度变换、时移、频移、微分积分、卷积定理，这">
+<meta property="og:type" content="article">
+<meta property="og:title" content="非周期信号的傅里叶变换：连续谱、性质与采样">
+<meta property="og:url" content="https://tdexxx.github.io/2026/10/21/08_%E6%B5%8B%E8%AF%95%E6%8A%80%E6%9C%AF%E4%B8%8E%E4%BF%A1%E5%8F%B7%E5%88%86%E6%9E%90/%E4%BF%A1%E5%8F%B7%E5%88%86%E6%9E%90%C2%B7%E9%9D%9E%E5%91%A8%E6%9C%9F%E4%BF%A1%E5%8F%B7%E7%9A%84%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%EF%BC%88%E8%BF%9E%E7%BB%AD%E8%B0%B1%C2%B7%E5%8F%98%E6%8D%A2%E6%80%A7%E8%B4%A8%C2%B7%E5%86%B2%E6%BF%80%E5%87%BD%E6%95%B0%C2%B7%E9%87%87%E6%A0%B7%EF%BC%89CSDN%E5%8F%91%E5%B8%83%E7%A8%BF/index.html">
+<meta property="og:site_name" content="tdexxx的博客">
+<meta property="og:description" content="信号分析：非周期信号的傅里叶变换（连续谱 · 变换性质 · 冲激函数 · 采样） 本篇为信号分析课程整理，接上一讲”傅里叶级数与频谱”继续。这一讲把研究对象从周期信号推进到非周期信号，核心是三件事：  为什么要用傅里叶变换——周期信号的频谱是离散的，非周期信号没有”基频”，只能用积分把周期推广到无穷； 傅里叶变换的性质——线性、奇偶性、共轭对称、对称性、尺度变换、时移、频移、微分积分、卷积定理，这">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-10-21T13:23:19.000Z">
+<meta property="article:modified_time" content="2026-10-30T17:37:19.971Z">
+<meta property="article:author" content="tdexxx">
+<meta property="article:tag" content="信号分析 傅里叶变换 采样 CSDN">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>非周期信号的傅里叶变换：连续谱、性质与采样 - tdexxx的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"tdexxx.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2022-12-10T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="非周期信号的傅里叶变换：连续谱、性质与采样"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-10-21 21:23" pubdate>
+          2026年10月21日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          7.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          64 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">非周期信号的傅里叶变换：连续谱、性质与采样</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="信号分析：非周期信号的傅里叶变换（连续谱-·-变换性质-·-冲激函数-·-采样）"><a href="#信号分析：非周期信号的傅里叶变换（连续谱-·-变换性质-·-冲激函数-·-采样）" class="headerlink" title="信号分析：非周期信号的傅里叶变换（连续谱 · 变换性质 · 冲激函数 · 采样）"></a>信号分析：非周期信号的傅里叶变换（连续谱 · 变换性质 · 冲激函数 · 采样）</h1><blockquote>
+<p>本篇为信号分析课程整理，接上一讲”傅里叶级数与频谱”继续。这一讲把研究对象从<strong>周期信号</strong>推进到<strong>非周期信号</strong>，核心是三件事：</p>
+<ol>
+<li><strong>为什么要用傅里叶变换</strong>——周期信号的频谱是离散的，非周期信号没有”基频”，只能用积分把周期推广到无穷；</li>
+<li><strong>傅里叶变换的性质</strong>——线性、奇偶性、共轭对称、对称性、尺度变换、时移、频移、微分积分、卷积定理，这是解题的主要工具；</li>
+<li><strong>冲激函数与采样</strong>——$\delta(t)$ 是连接”时域常数”与”频域冲激”的桥梁，也是把模拟信号变成计算机能处理的数字信号的关键。</li>
+</ol>
+<p>老师在本讲反复强调一个<strong>极易混淆的点</strong>：算数值时看的是**时间变量 $t$<strong>，判断频域奇偶性时看的是</strong>频率变量 $\omega$**，两者不能混。</p>
+<p>文中公式统一采用行内数学写法；课堂口述与教材符号不一致、或录音模糊处，均标注【以教材为准】。</p>
+</blockquote>
+<hr>
+<h2 id="一、这节课讲了什么"><a href="#一、这节课讲了什么" class="headerlink" title="一、这节课讲了什么"></a>一、这节课讲了什么</h2><p><strong>第一段（约 11:00–40:00）从”周期”走到”非周期”。</strong><br>先用复数的三种表示（代数式、三角式、指数式）和<strong>欧拉公式</strong>把”指数”与”三角”打通——这是后面所有推导的工具。然后判断信号的周期性：<strong>满足狄利克雷条件</strong>（绝对可积、有限个间断点、有限个极值点）的函数才能做变换。周期信号的频谱是<strong>一根一根离散的谱线</strong>；非周期信号没有基频，谱线间隔趋于零，于是<strong>离散谱变成连续谱</strong>，求和变成积分，这就是<strong>傅里叶变换</strong>。</p>
+<p><strong>第二段（约 40:00–1:10:00）讲变换的性质。</strong><br>老师按”看哪一张图、记哪一个公式”的方式过了一遍：<strong>奇偶性</strong>（实部是偶函数、虚部是奇函数）、<strong>共轭对称性</strong>、<strong>对称性</strong>（时域与频域的对称）、<strong>尺度变换</strong>（时域压缩则频域展宽、幅值成反比）、<strong>时移</strong>（乘一个 $e^{-j\omega t_0}$）、<strong>频移</strong>（频谱搬移）、<strong>微分与积分</strong>、<strong>卷积定理</strong>（时域卷积对应频域相乘）。老师明确说：<strong>这些性质不要求证明，会用就行</strong>。</p>
+<p><strong>第三段（约 1:10:00–1:28:00）讲冲激函数与采样。</strong><br>$\delta(t)$ 的两个关键特征：<strong>函数值只在 $t &#x3D; 0$ 处”无穷”、面积为 1</strong>。由此推出 $\delta(t)$ 的频谱是常数 1，$\delta(t - t_0)$ 的频谱是 $e^{-j\omega t_0}$。最后讲到<strong>采样</strong>：计算机只能识别数字，所以必须把连续的模拟信号按一定时间间隔取成离散序列。</p>
+<p><strong>第四段（约 1:28:00–1:40:00）收尾。</strong><br>讲了时域与频域的对称关系：<strong>时域是常数（一条水平直线）时，频域是一个冲激；时域是冲激时，频域是常数</strong>。并用敲玻璃杯、敲铁棍的例子说明冲激响应的频谱是”全频段都有”。</p>
+<hr>
+<h2 id="二、核心结论速览"><a href="#二、核心结论速览" class="headerlink" title="二、核心结论速览"></a>二、核心结论速览</h2><ol>
+<li><strong>欧拉公式是全部推导的工具</strong>：$e^{j\theta} &#x3D; \cos\theta + j\sin\theta$，由此可把三角函数写成复指数，也可反过来。</li>
+<li><strong>周期信号的频谱是离散的</strong>（一根一根谱线），<strong>非周期信号的频谱是连续的</strong>（一条曲线）。这是本讲最核心的对比。</li>
+<li><strong>从周期到非周期的关键一步</strong>：让周期 $T \to \infty$，谱线间隔趋于零，离散谱就”挤”成了连续谱，求和变成积分。</li>
+<li><strong>傅里叶变换的物理意义</strong>：把一个非周期信号分解成<strong>无穷多个频率连续分布的复指数分量之和</strong>，每个频率上的”密度”就是频谱。</li>
+<li><strong>狄利克雷条件</strong>（能做变换的前提）：① 绝对可积；② 有限个间断点；③ 有限个极值点。</li>
+<li><strong>正弦、余弦函数不满足绝对可积</strong>，所以严格说不能直接做傅里叶变换——它们的变换要用<strong>冲激函数</strong>表示。</li>
+<li><strong>奇偶性</strong>：若 $f(t)$ 是实函数，则其频谱的<strong>实部是偶函数、虚部是奇函数</strong>。</li>
+<li><strong>幅频是偶函数、相频是奇函数</strong>（对实信号而言）。</li>
+<li>**判断频域奇偶性时，看的是频率变量 $\omega$，不是时间 $t$**——这是最容易错的地方。</li>
+<li><strong>共轭对称性</strong>：实信号 $f(t)$ 的频谱满足 $F(-\omega) &#x3D; F^{*}(\omega)$。</li>
+<li><strong>对称性</strong>：时域与频域的形式可以互换——时域是常数则频域是冲激，时域是冲激则频域是常数。</li>
+<li><strong>尺度变换</strong>：$f(at)$ 的频谱是 $\frac{1}{\lvert a \rvert} F(\frac{\omega}{a})$。</li>
+<li><strong>尺度变换的直观含义</strong>：<strong>时域压缩 → 频域展宽；时域展宽 → 频域压缩</strong>；且<strong>幅值成反比</strong>（面积守恒）。</li>
+<li><strong>时移性质</strong>：$f(t - t_0)$ 的频谱是 $F(\omega) e^{-j\omega t_0}$——<strong>只改变相位，不改变幅频</strong>。</li>
+<li><strong>频移性质</strong>：$f(t) e^{j\omega_0 t}$ 的频谱是 $F(\omega - \omega_0)$——<strong>频谱整体搬移</strong>，这是调制的基础。</li>
+<li><strong>微分性质</strong>：时域微分对应频域乘 $j\omega$。</li>
+<li><strong>积分性质</strong>：时域积分对应频域除以 $j\omega$。</li>
+<li><strong>卷积定理</strong>：<strong>时域卷积 ↔ 频域相乘</strong>；<strong>时域相乘 ↔ 频域卷积</strong>（除以 $2\pi$）。</li>
+<li><strong>冲激函数 $\delta(t)$ 的两个特征</strong>：只在 $t &#x3D; 0$ 处有”值”，<strong>面积为 1</strong>。</li>
+<li><strong>$\delta(t)$ 的频谱是常数 1</strong>——即冲激包含所有频率成分，且各频率分量等幅。</li>
+<li>**$\delta(t - t_0)$ 的频谱是 $e^{-j\omega t_0}$**——幅频仍为 1，只有相位随频率线性变化。</li>
+<li><strong>$\delta(t)$ 的筛选性质</strong>：$f(t)\delta(t) &#x3D; f(0)\delta(t)$；$\int f(t)\delta(t - t_0) dt &#x3D; f(t_0)$。</li>
+<li><strong>时域乘冲激 &#x3D; 采样</strong>：$f(t)\delta(t - t_0)$ 只保留 $t_0$ 时刻的值。</li>
+<li><strong>采样的必要性</strong>：计算机只能处理离散数字，模拟信号（时间和幅值都连续）必须采样、量化后才能进入计算机。</li>
+<li><strong>采样间隔决定能保留多高的频率</strong>——间隔太大就会丢失高频信息（后续的采样定理）。</li>
+<li>**时域越”窄”，频域越”宽”**：一个极短的脉冲，其频谱覆盖极宽的频带。</li>
+<li>**时域越”平”（变化慢），频域越”窄”**：常数（完全不变化）的频谱只是一个冲激（只有零频）。</li>
+<li><strong>性质不要求证明，但必须会用</strong>：老师明确说这些性质”会用就行”，重点是能对着式子做变换、能判断奇偶性。</li>
+<li><strong>符号要看清</strong>：时移是 $e^{-j\omega t_0}$，频移是乘 $e^{j\omega_0 t}$，指数上的正负号与变量是 $t$ 还是 $\omega$ 都要分清。</li>
+<li><strong>做题顺序</strong>：先判断信号是周期还是非周期 → 选级数还是变换 → 套性质化简 → 最后检查量纲与对称性是否合理。</li>
+</ol>
+<hr>
+<h2 id="三、知识结构树"><a href="#三、知识结构树" class="headerlink" title="三、知识结构树"></a>三、知识结构树</h2><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs gherkin">信号分析 · 非周期信号的傅里叶变换<br>|<span class="hljs-string"></span><br><span class="hljs-string"></span>|<span class="hljs-string">- 1. 数学工具</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 复数三种表示：代数式 / 三角式 / 指数式</span><br><span class="hljs-string"></span>|<span class="hljs-string">   `- 欧拉公式 e^(j*theta) = cos + j*sin</span><br><span class="hljs-string"></span>|<br>|<span class="hljs-string">- 2. 从周期到非周期</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 狄利克雷条件：绝对可积 / 有限间断点 / 有限极值点</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 周期信号：离散谱（谱线）</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 非周期信号：连续谱（曲线）</span><br><span class="hljs-string"></span>|<span class="hljs-string">   `- T -&gt; 无穷，求和 -&gt; 积分</span><br><span class="hljs-string"></span>|<br>|<span class="hljs-string">- 3. 傅里叶变换</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 正变换 F(w) = 积分 f(t) e^(-jwt) dt</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 反变换 f(t) = (1/2pi) 积分 F(w) e^(jwt) dw</span><br><span class="hljs-string"></span>|<span class="hljs-string">   `- 物理意义：分解为连续频率的复指数分量之和</span><br><span class="hljs-string"></span>|<br>|<span class="hljs-string">- 4. 变换的性质</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 线性</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 奇偶性：实部偶、虚部奇；幅频偶、相频奇</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 共轭对称性</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 对称性（时域与频域互换）</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 尺度变换：时域压缩 -&gt; 频域展宽，幅值成反比</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 时移：乘 e^(-j*w*t0)，只改相位</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 频移：频谱搬移（调制基础）</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 微分 / 积分：乘除 j*w</span><br><span class="hljs-string"></span>|<span class="hljs-string">   `- 卷积定理：时域卷积 &lt;-&gt; 频域相乘</span><br><span class="hljs-string"></span>|<br>|<span class="hljs-string">- 5. 冲激函数</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 定义特征：t=0 处集中，面积为 1</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- delta(t) &lt;-&gt; 1</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- delta(t-t0) &lt;-&gt; e^(-j*w*t0)</span><br><span class="hljs-string"></span>|<span class="hljs-string">   `- 筛选性质与乘积性质</span><br><span class="hljs-string"></span>|<br>`- 6. 采样<br>    |<span class="hljs-string">- 模拟信号：时间连续、幅值连续</span><br><span class="hljs-string">    </span>|<span class="hljs-string">- 数字信号：时间离散、幅值离散</span><br><span class="hljs-string">    </span>|<span class="hljs-string">- 时域乘冲激串 = 采样</span><br><span class="hljs-string">    `- 采样间隔与可保留的最高频率</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="四、知识点详解"><a href="#四、知识点详解" class="headerlink" title="四、知识点详解"></a>四、知识点详解</h2><h3 id="4-1-复数的三种表示与欧拉公式"><a href="#4-1-复数的三种表示与欧拉公式" class="headerlink" title="4.1 复数的三种表示与欧拉公式"></a>4.1 复数的三种表示与欧拉公式</h3><p><strong>（1）三种表示</strong></p>
+<table>
+<thead>
+<tr>
+<th>表示法</th>
+<th>形式</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>代数式</td>
+<td>$A &#x3D; a + jb$</td>
+<td>便于加减</td>
+</tr>
+<tr>
+<td>三角式</td>
+<td>$A &#x3D; \lvert A \rvert (\cos\theta + j\sin\theta)$</td>
+<td>便于看幅值与相位</td>
+</tr>
+<tr>
+<td>指数式</td>
+<td>$A &#x3D; \lvert A \rvert e^{j\theta}$</td>
+<td>便于乘除与做变换</td>
+</tr>
+</tbody></table>
+<p>三种表示之间可以互相转换：</p>
+<ul>
+<li>幅值：$\lvert A \rvert &#x3D; \sqrt{a^2 + b^2}$</li>
+<li>相位：$\theta &#x3D; \arctan\frac{b}{a}$</li>
+</ul>
+<p><strong>（2）欧拉公式</strong></p>
+<p>$e^{j\theta} &#x3D; \cos\theta + j\sin\theta$</p>
+<p>由此可反解出：</p>
+<p>$\cos\theta &#x3D; \frac{e^{j\theta} + e^{-j\theta}}{2}, \sin\theta &#x3D; \frac{e^{j\theta} - e^{-j\theta}}{2j}$</p>
+<blockquote>
+<p><strong>为什么要反复用它</strong>：傅里叶变换的核就是 $e^{-j\omega t}$，而实际信号常写成 $\cos$、$\sin$。<strong>把三角式换成指数式</strong>，才能把”积分三角函数”变成”积分指数函数”，计算量大幅下降。老师强调这是”指数与三角函数互换”的基本功。</p>
+</blockquote>
+<h3 id="4-2-周期信号与非周期信号"><a href="#4-2-周期信号与非周期信号" class="headerlink" title="4.2 周期信号与非周期信号"></a>4.2 周期信号与非周期信号</h3><p><strong>（1）判断能不能做变换：狄利克雷条件</strong></p>
+<p>一个函数要能展开成傅里叶形式，需满足：</p>
+<ol>
+<li><strong>绝对可积</strong>：$\int_{-\infty}^{\infty} \lvert f(t) \rvert dt &lt; \infty$；</li>
+<li><strong>有限个间断点</strong>（且都是第一类间断点）；</li>
+<li><strong>有限个极值点</strong>。</li>
+</ol>
+<p><strong>（2）一个重要的反例</strong></p>
+<p><strong>正弦、余弦函数不满足绝对可积</strong>——它们在无穷区间上的积分不收敛。所以严格来说，$\sin\omega_0 t$、$\cos\omega_0 t$ 不能直接做傅里叶变换。它们的变换要借助<strong>冲激函数</strong>表示（见 4.6）。</p>
+<p><strong>（3）两类信号的频谱形态</strong></p>
+<table>
+<thead>
+<tr>
+<th>信号类型</th>
+<th>频谱形态</th>
+<th>数学工具</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>周期信号</strong></td>
+<td><strong>离散谱</strong>（一根一根谱线，间隔 $\omega_0$）</td>
+<td>傅里叶级数（求和）</td>
+</tr>
+<tr>
+<td><strong>非周期信号</strong></td>
+<td><strong>连续谱</strong>（一条连续曲线）</td>
+<td>傅里叶变换（积分）</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>从离散到连续的那一步</strong>：让周期 $T \to \infty$。此时基频 $\omega_0 &#x3D; 2\pi&#x2F;T \to 0$，谱线间隔趋于零，离散的谱线就”挤”成了连续的曲线，级数的求和也就变成了积分。</p>
+</blockquote>
+<h3 id="4-3-傅里叶变换的定义与物理意义"><a href="#4-3-傅里叶变换的定义与物理意义" class="headerlink" title="4.3 傅里叶变换的定义与物理意义"></a>4.3 傅里叶变换的定义与物理意义</h3><p><strong>（1）定义</strong></p>
+<p>正变换：</p>
+<p>$F(\omega) &#x3D; \int_{-\infty}^{\infty} f(t) e^{-j\omega t} dt$</p>
+<p>反变换：</p>
+<p>$f(t) &#x3D; \frac{1}{2\pi}\int_{-\infty}^{\infty} F(\omega) e^{j\omega t} d\omega$</p>
+<p><strong>（2）物理意义</strong></p>
+<p>傅里叶变换把非周期信号 $f(t)$ 分解成<strong>无穷多个频率连续分布的复指数分量</strong> $e^{j\omega t}$ 的叠加。$F(\omega)$ 表示<strong>单位频率间隔上的复振幅</strong>（频谱密度）。</p>
+<ul>
+<li>$\lvert F(\omega) \rvert$ 是<strong>幅频特性</strong>（幅度谱密度）；</li>
+<li>$\arg F(\omega)$ 是<strong>相频特性</strong>（相位谱）。</li>
+</ul>
+<blockquote>
+<p><strong>与级数的区别</strong>：级数给出的是”某个离散频率上的<strong>振幅</strong>“，变换给出的是”某个频率附近的<strong>密度</strong>“。所以变换的量纲里多一个”每单位频率”。</p>
+</blockquote>
+<h3 id="4-4-离散谱与连续谱"><a href="#4-4-离散谱与连续谱" class="headerlink" title="4.4 离散谱与连续谱"></a>4.4 离散谱与连续谱</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>周期信号（级数）</th>
+<th>非周期信号（变换）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>谱线</td>
+<td>离散、等间隔</td>
+<td>连续、无间隔</td>
+</tr>
+<tr>
+<td>幅度</td>
+<td>有限值（各次谐波振幅）</td>
+<td>密度（单位频率的幅度）</td>
+</tr>
+<tr>
+<td>基频</td>
+<td>有明确基频 $\omega_0$</td>
+<td>无基频</td>
+</tr>
+<tr>
+<td>画法</td>
+<td>一根根竖线（线谱）</td>
+<td>一条连续曲线</td>
+</tr>
+<tr>
+<td>周期 $T \to \infty$ 后</td>
+<td>谱线间隔 $\to 0$</td>
+<td>变成连续谱</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>理解要点</strong>：连续谱并不是”每个频率上都有一个有限振幅”，而是”每个频率上有一个<strong>密度值</strong>“。所以在连续谱图上取某一点，读出的不是振幅，而是密度。</p>
+</blockquote>
+<h3 id="4-5-傅里叶变换的性质"><a href="#4-5-傅里叶变换的性质" class="headerlink" title="4.5 傅里叶变换的性质"></a>4.5 傅里叶变换的性质</h3><p>老师明确说：<strong>这些性质不要求证明，会用就行</strong>。下面按”能用来干什么”来组织。</p>
+<h4 id="4-5-1-线性"><a href="#4-5-1-线性" class="headerlink" title="4.5.1 线性"></a>4.5.1 线性</h4><p>$a f_1(t) + b f_2(t) \longleftrightarrow a F_1(\omega) + b F_2(\omega)$</p>
+<p>叠加原理，最基础的一条。</p>
+<h4 id="4-5-2-奇偶性（本节最易错）"><a href="#4-5-2-奇偶性（本节最易错）" class="headerlink" title="4.5.2 奇偶性（本节最易错）"></a>4.5.2 奇偶性（本节最易错）</h4><p>设 $f(t)$ 为<strong>实函数</strong>，则其频谱：</p>
+<ul>
+<li><strong>实部是偶函数</strong>：$\mathrm{Re}[F(-\omega)] &#x3D; \mathrm{Re}[F(\omega)]$</li>
+<li><strong>虚部是奇函数</strong>：$\mathrm{Im}[F(-\omega)] &#x3D; -\mathrm{Im}[F(\omega)]$</li>
+</ul>
+<p>由此推出：</p>
+<ul>
+<li><strong>幅频特性是偶函数</strong>：$\lvert F(-\omega) \rvert &#x3D; \lvert F(\omega) \rvert$</li>
+<li><strong>相频特性是奇函数</strong>：$\varphi(-\omega) &#x3D; -\varphi(\omega)$</li>
+</ul>
+<blockquote>
+<p><strong>⚠️ 最容易错的地方</strong>：老师专门强调——<strong>算数值（判断积分是否为零）时，看的是时间变量 $t$ 的奇偶性；判断频域是偶函数还是奇函数时，看的是频率变量 $\omega$ 的奇偶性</strong>。这两件事很容易混，考试里”跑偏”多半出在这里。</p>
+<p>具体说：$F(\omega)$ 的实部表达式里含 $\cos\omega t$（$\omega$ 的偶函数），虚部含 $\sin\omega t$（$\omega$ 的奇函数）。所以**”实部偶、虚部奇”是从 $\cos$、$\sin$ 关于 $\omega$ 的奇偶性直接得来的**，与 $t$ 的奇偶性是两回事。</p>
+</blockquote>
+<h4 id="4-5-3-共轭对称性"><a href="#4-5-3-共轭对称性" class="headerlink" title="4.5.3 共轭对称性"></a>4.5.3 共轭对称性</h4><p>对实信号：</p>
+<p>$F(-\omega) &#x3D; F^{*}(\omega)$</p>
+<p>即负频率处的频谱是正频率处频谱的共轭。<strong>负频率不是”负的物理频率”，而是数学表示的需要</strong>。</p>
+<h4 id="4-5-4-对称性（时域与频域互换）"><a href="#4-5-4-对称性（时域与频域互换）" class="headerlink" title="4.5.4 对称性（时域与频域互换）"></a>4.5.4 对称性（时域与频域互换）</h4><p>时域与频域在形式上是对称的：</p>
+<table>
+<thead>
+<tr>
+<th>时域</th>
+<th>频域</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>常数（一条水平直线）</td>
+<td><strong>冲激</strong>（只有零频分量）</td>
+</tr>
+<tr>
+<td><strong>冲激</strong></td>
+<td>常数（全频段等幅）</td>
+</tr>
+<tr>
+<td>矩形脉冲</td>
+<td>抽样函数（$\mathrm{Sa}$ 型）</td>
+</tr>
+<tr>
+<td>抽样函数</td>
+<td>矩形脉冲</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>老师用”敲玻璃杯””敲铁棍”举例：敲击产生的是一个极短的脉冲（近似冲激），而它的频谱覆盖很宽的频带——所以能听到”叮”的一声里含很多泛音。<strong>时域越窄，频域越宽</strong>，这就是对称性的直观体现。</p>
+</blockquote>
+<h4 id="4-5-5-尺度变换"><a href="#4-5-5-尺度变换" class="headerlink" title="4.5.5 尺度变换"></a>4.5.5 尺度变换</h4><p>$f(at) \longleftrightarrow \frac{1}{\lvert a \rvert} F(\frac{\omega}{a})$</p>
+<p><strong>直观含义（重要）</strong>：</p>
+<ul>
+<li><strong>时域压缩</strong>（$a &gt; 1$，波形变窄）→ <strong>频域展宽</strong>（频谱变宽）；</li>
+<li><strong>时域展宽</strong>（$a &lt; 1$，波形变宽）→ <strong>频域压缩</strong>（频谱变窄）；</li>
+<li><strong>幅值成反比</strong>：因为面积（能量）要守恒，波形变窄则高度必然变大，反之亦然。</li>
+</ul>
+<blockquote>
+<p>老师的说法是”脉宽跟幅值是相反的”——<strong>脉冲越窄，频谱越宽、幅值越低</strong>。这是信号分析里非常常用的直觉。</p>
+</blockquote>
+<h4 id="4-5-6-时移"><a href="#4-5-6-时移" class="headerlink" title="4.5.6 时移"></a>4.5.6 时移</h4><p>$f(t - t_0) \longleftrightarrow F(\omega) e^{-j\omega t_0}$</p>
+<p><strong>要点</strong>：</p>
+<ul>
+<li><strong>只改变相位，不改变幅频</strong>——$\lvert e^{-j\omega t_0} \rvert &#x3D; 1$，所以幅度谱完全不变；</li>
+<li>相位改变量与频率成<strong>线性</strong>关系（$\omega t_0$）；</li>
+<li>正负号：$f(t - t_0)$ 对应 $e^{-j\omega t_0}$；若是 $f(t + t_0)$，则对应 $e^{+j\omega t_0}$。</li>
+</ul>
+<h4 id="4-5-7-频移"><a href="#4-5-7-频移" class="headerlink" title="4.5.7 频移"></a>4.5.7 频移</h4><p>$f(t) e^{j\omega_0 t} \longleftrightarrow F(\omega - \omega_0)$</p>
+<p><strong>要点</strong>：</p>
+<ul>
+<li>时域乘一个复指数，等于把<strong>整个频谱搬到 $\omega_0$ 处</strong>；</li>
+<li>这是<strong>调制</strong>的数学基础（把基带信号搬到载频上）；</li>
+<li>若乘的是 $\cos\omega_0 t$，则频谱被搬成”左右各一份、幅度减半”。</li>
+</ul>
+<h4 id="4-5-8-微分与积分"><a href="#4-5-8-微分与积分" class="headerlink" title="4.5.8 微分与积分"></a>4.5.8 微分与积分</h4><table>
+<thead>
+<tr>
+<th>运算</th>
+<th>频域效果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>时域微分 $\frac{d f(t)}{dt}$</td>
+<td>乘 $j\omega$</td>
+</tr>
+<tr>
+<td>时域积分 $\int_{-\infty}^{t} f(\tau) d\tau$</td>
+<td>除以 $j\omega$（另加直流项）</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>用途</strong>：把微分方程变成代数方程——这正是用傅里叶变换解线性系统响应的原理。</p>
+</blockquote>
+<h4 id="4-5-9-卷积定理"><a href="#4-5-9-卷积定理" class="headerlink" title="4.5.9 卷积定理"></a>4.5.9 卷积定理</h4><p>$f_1(t) * f_2(t) \longleftrightarrow F_1(\omega) F_2(\omega)$</p>
+<p>反过来：</p>
+<p>$f_1(t) f_2(t) \longleftrightarrow \frac{1}{2\pi} F_1(\omega) * F_2(\omega)$</p>
+<p><strong>要点</strong>：</p>
+<ul>
+<li><strong>时域卷积 ↔ 频域相乘</strong>（最常用）；</li>
+<li><strong>时域相乘 ↔ 频域卷积</strong>（要除以 $2\pi$）；</li>
+<li>卷积定理是”系统分析”的核心工具：系统的输出 &#x3D; 输入卷积冲激响应，在频域就变成”输入频谱 × 系统频率响应”。</li>
+</ul>
+<blockquote>
+<p>老师说卷积”也很重要”，并且特别提醒：**时域卷积对应频域相乘，别记反成”卷积对卷积”**。</p>
+</blockquote>
+<h3 id="4-6-冲激函数及其频谱"><a href="#4-6-冲激函数及其频谱" class="headerlink" title="4.6 冲激函数及其频谱"></a>4.6 冲激函数及其频谱</h3><h4 id="4-6-1-冲激函数的两个特征"><a href="#4-6-1-冲激函数的两个特征" class="headerlink" title="4.6.1 冲激函数的两个特征"></a>4.6.1 冲激函数的两个特征</h4><p>$\delta(t)$ 不能用普通函数理解，要用<strong>两个特征</strong>来把握：</p>
+<ol>
+<li>**在 $t &#x3D; 0$ 处”集中”**：$t \ne 0$ 时 $\delta(t) &#x3D; 0$；</li>
+<li><strong>面积为 1</strong>：$\int_{-\infty}^{\infty} \delta(t) dt &#x3D; 1$。</li>
+</ol>
+<blockquote>
+<p>老师强调：**不要纠缠”它在 $t&#x3D;0$ 处的值到底是多大”**，只要抓住”面积为 1”这个本质即可。用面积来理解，后面所有性质都顺。</p>
+</blockquote>
+<h4 id="4-6-2-重要变换对"><a href="#4-6-2-重要变换对" class="headerlink" title="4.6.2 重要变换对"></a>4.6.2 重要变换对</h4><table>
+<thead>
+<tr>
+<th>时域</th>
+<th>频域</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$\delta(t)$</td>
+<td>$1$</td>
+</tr>
+<tr>
+<td>$\delta(t - t_0)$</td>
+<td>$e^{-j\omega t_0}$</td>
+</tr>
+<tr>
+<td>$1$</td>
+<td>$2\pi \delta(\omega)$</td>
+</tr>
+<tr>
+<td>$e^{j\omega_0 t}$</td>
+<td>$2\pi \delta(\omega - \omega_0)$</td>
+</tr>
+<tr>
+<td>$\cos\omega_0 t$</td>
+<td>$\pi[\delta(\omega - \omega_0) + \delta(\omega + \omega_0)]$</td>
+</tr>
+</tbody></table>
+<p><strong>理解 $\delta(t) \leftrightarrow 1$<strong>：冲激在时域上”无限窄”，按尺度变换的直觉，频域就”无限宽”——所以频谱是常数，</strong>所有频率分量等幅</strong>。</p>
+<p>**理解 $\delta(t - t_0) \leftrightarrow e^{-j\omega t_0}$**：这只是把 $\delta(t)$ 时移了 $t_0$，按 4.5.6 的时移性质，幅频仍为 1，只多了一个线性相位。</p>
+<h4 id="4-6-3-冲激函数的两个运算性质"><a href="#4-6-3-冲激函数的两个运算性质" class="headerlink" title="4.6.3 冲激函数的两个运算性质"></a>4.6.3 冲激函数的两个运算性质</h4><p><strong>（1）乘积（筛选）性质</strong></p>
+<p>$f(t)\delta(t - t_0) &#x3D; f(t_0)\delta(t - t_0)$</p>
+<p>即：$f(t)$ 与冲激相乘，只在冲激所在处”取出” $f$ 的值，其余全被”压成零”。</p>
+<p><strong>（2）积分（取样）性质</strong></p>
+<p>$\int_{-\infty}^{\infty} f(t)\delta(t - t_0) dt &#x3D; f(t_0)$</p>
+<blockquote>
+<p>这两条是<strong>采样</strong>的数学基础：把信号与冲激串相乘，就等于在冲激的位置上”取出”信号值。</p>
+</blockquote>
+<h3 id="4-7-采样：从模拟信号到数字信号"><a href="#4-7-采样：从模拟信号到数字信号" class="headerlink" title="4.7 采样：从模拟信号到数字信号"></a>4.7 采样：从模拟信号到数字信号</h3><h4 id="4-7-1-两类信号的差别"><a href="#4-7-1-两类信号的差别" class="headerlink" title="4.7.1 两类信号的差别"></a>4.7.1 两类信号的差别</h4><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>时间</th>
+<th>幅值</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>模拟信号</strong></td>
+<td>连续</td>
+<td>连续</td>
+<td>话筒输出的电压</td>
+</tr>
+<tr>
+<td><strong>数字信号</strong></td>
+<td>离散</td>
+<td>离散（量化后）</td>
+<td>计算机里的数</td>
+</tr>
+</tbody></table>
+<p><strong>计算机只能识别数字</strong>，所以模拟信号必须经过<strong>采样（时间离散化）+ 量化（幅值离散化）</strong>才能进入计算机。</p>
+<h4 id="4-7-2-采样的数学描述"><a href="#4-7-2-采样的数学描述" class="headerlink" title="4.7.2 采样的数学描述"></a>4.7.2 采样的数学描述</h4><p>理想采样就是用<strong>冲激串</strong>去乘原信号：</p>
+<p>$f_s(t) &#x3D; f(t) \sum_{n&#x3D;-\infty}^{\infty} \delta(t - nT_s) &#x3D; \sum_{n&#x3D;-\infty}^{\infty} f(nT_s)\delta(t - nT_s)$</p>
+<p>其中 $T_s$ 为采样间隔，$f_s &#x3D; 1&#x2F;T_s$ 为采样频率。</p>
+<p>按 4.6.3 的乘积性质，采样后只剩下各采样时刻的值——<strong>这就是离散序列的来源</strong>。</p>
+<h4 id="4-7-3-采样间隔的影响"><a href="#4-7-3-采样间隔的影响" class="headerlink" title="4.7.3 采样间隔的影响"></a>4.7.3 采样间隔的影响</h4><ul>
+<li><strong>采样间隔越小</strong>（采样频率越高），保留的信息越完整；</li>
+<li><strong>采样间隔越大</strong>，高频信息丢失越多，严重时会产生”混叠”（后续采样定理的内容）。</li>
+</ul>
+<blockquote>
+<p>老师的提示：采样不是”随便取几个点”，间隔大小直接决定能不能还原原信号。这部分内容会与后面的<strong>采样定理</strong>衔接。</p>
+</blockquote>
+<hr>
+<h2 id="五、例题与解题方法汇总"><a href="#五、例题与解题方法汇总" class="headerlink" title="五、例题与解题方法汇总"></a>五、例题与解题方法汇总</h2><h3 id="题型-1：判断信号是周期还是非周期，选级数还是变换"><a href="#题型-1：判断信号是周期还是非周期，选级数还是变换" class="headerlink" title="题型 1：判断信号是周期还是非周期，选级数还是变换"></a>题型 1：判断信号是周期还是非周期，选级数还是变换</h3><p><strong>解题步骤</strong>：</p>
+<ol>
+<li>看信号是否重复出现——<strong>周期信号</strong>用傅里叶级数（离散谱）；</li>
+<li>若信号只在有限区间非零、或没有重复周期——<strong>非周期信号</strong>用傅里叶变换（连续谱）；</li>
+<li>检查是否满足<strong>狄利克雷条件</strong>（绝对可积、有限间断点、有限极值点）。</li>
+</ol>
+<h3 id="题型-2：判断频谱的奇偶性"><a href="#题型-2：判断频谱的奇偶性" class="headerlink" title="题型 2：判断频谱的奇偶性"></a>题型 2：判断频谱的奇偶性</h3><p><strong>解题步骤</strong>：</p>
+<ol>
+<li>确认 $f(t)$ 是<strong>实函数</strong>；</li>
+<li>写出 $F(\omega) &#x3D; \int f(t)(\cos\omega t - j\sin\omega t) dt$；</li>
+<li>看实部（含 $\cos\omega t$）→ 关于 $\omega$ 是<strong>偶函数</strong>；</li>
+<li>看虚部（含 $\sin\omega t$）→ 关于 $\omega$ 是<strong>奇函数</strong>；</li>
+<li>由此得幅频偶、相频奇。</li>
+</ol>
+<p><strong>易错点</strong>：把”$f(t)$ 关于 $t$ 的奇偶性”与”$F(\omega)$ 关于 $\omega$ 的奇偶性”混为一谈。</p>
+<h3 id="题型-3：用性质求变换（不必积分）"><a href="#题型-3：用性质求变换（不必积分）" class="headerlink" title="题型 3：用性质求变换（不必积分）"></a>题型 3：用性质求变换（不必积分）</h3><p><strong>常用套路</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>已知</th>
+<th>要求</th>
+<th>用哪条性质</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$F(\omega)$</td>
+<td>$f(t - t_0)$ 的频谱</td>
+<td>时移：乘 $e^{-j\omega t_0}$</td>
+</tr>
+<tr>
+<td>$F(\omega)$</td>
+<td>$f(at)$ 的频谱</td>
+<td>尺度变换：$\frac{1}{\lvert a \rvert}F(\frac{\omega}{a})$</td>
+</tr>
+<tr>
+<td>$F(\omega)$</td>
+<td>$f(t)e^{j\omega_0 t}$ 的频谱</td>
+<td>频移：$F(\omega - \omega_0)$</td>
+</tr>
+<tr>
+<td>$F(\omega)$</td>
+<td>$\frac{df}{dt}$ 的频谱</td>
+<td>微分：乘 $j\omega$</td>
+</tr>
+<tr>
+<td>$F_1, F_2$</td>
+<td>$f_1 * f_2$ 的频谱</td>
+<td>卷积定理：$F_1 F_2$</td>
+</tr>
+</tbody></table>
+<h3 id="题型-4：冲激函数的运算"><a href="#题型-4：冲激函数的运算" class="headerlink" title="题型 4：冲激函数的运算"></a>题型 4：冲激函数的运算</h3><p><strong>要点</strong>：</p>
+<ul>
+<li>见到 $f(t)\delta(t - t_0)$，直接用乘积性质化为 $f(t_0)\delta(t - t_0)$；</li>
+<li>见到 $\int f(t)\delta(t - t_0)dt$，直接等于 $f(t_0)$；</li>
+<li>见到 $\delta(t)$ 的频谱，直接写 1；$\delta(t - t_0)$ 写 $e^{-j\omega t_0}$。</li>
+</ul>
+<h3 id="题型-5：解释”时域窄则频域宽”"><a href="#题型-5：解释”时域窄则频域宽”" class="headerlink" title="题型 5：解释”时域窄则频域宽”"></a>题型 5：解释”时域窄则频域宽”</h3><p><strong>答题要点</strong>：由<strong>尺度变换性质</strong>，$f(at)$ 的频谱是 $\frac{1}{\lvert a \rvert}F(\frac{\omega}{a})$。时域压缩对应 $a &gt; 1$，频谱被”拉宽” $a$ 倍，同时幅值降为 $\frac{1}{a}$。极端情况：冲激（无限窄）对应常数频谱（无限宽）；常数（无限宽）对应冲激频谱（无限窄）。</p>
+<hr>
+<h2 id="六、术语速查表"><a href="#六、术语速查表" class="headerlink" title="六、术语速查表"></a>六、术语速查表</h2><table>
+<thead>
+<tr>
+<th>术语</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>欧拉公式</td>
+<td>$e^{j\theta} &#x3D; \cos\theta + j\sin\theta$，连接指数与三角</td>
+</tr>
+<tr>
+<td>狄利克雷条件</td>
+<td>函数能展开为傅里叶形式的充分条件：绝对可积、有限个间断点、有限个极值点</td>
+</tr>
+<tr>
+<td>绝对可积</td>
+<td>$\int_{-\infty}^{\infty} \lvert f(t) \rvert dt$ 收敛</td>
+</tr>
+<tr>
+<td>傅里叶变换</td>
+<td>把非周期信号分解为连续频率的复指数分量的积分变换</td>
+</tr>
+<tr>
+<td>频谱密度</td>
+<td>单位频率间隔上的复振幅，即 $F(\omega)$</td>
+</tr>
+<tr>
+<td>幅频特性</td>
+<td>频谱的模 $\lvert F(\omega) \rvert$</td>
+</tr>
+<tr>
+<td>相频特性</td>
+<td>频谱的辐角 $\arg F(\omega)$</td>
+</tr>
+<tr>
+<td>离散谱</td>
+<td>周期信号的频谱，由一根根等间隔谱线组成</td>
+</tr>
+<tr>
+<td>连续谱</td>
+<td>非周期信号的频谱，是连续曲线</td>
+</tr>
+<tr>
+<td>共轭对称性</td>
+<td>实信号的频谱满足 $F(-\omega) &#x3D; F^{*}(\omega)$</td>
+</tr>
+<tr>
+<td>尺度变换</td>
+<td>$f(at)$ 的频谱为 $\frac{1}{\lvert a \rvert}F(\frac{\omega}{a})$</td>
+</tr>
+<tr>
+<td>时移性质</td>
+<td>$f(t - t_0)$ 的频谱为 $F(\omega)e^{-j\omega t_0}$，只改相位</td>
+</tr>
+<tr>
+<td>频移性质</td>
+<td>$f(t)e^{j\omega_0 t}$ 的频谱为 $F(\omega - \omega_0)$，频谱搬移</td>
+</tr>
+<tr>
+<td>卷积定理</td>
+<td>时域卷积对应频域相乘</td>
+</tr>
+<tr>
+<td>冲激函数</td>
+<td>$\delta(t)$，只在 $t&#x3D;0$ 处集中、面积为 1 的广义函数</td>
+</tr>
+<tr>
+<td>筛选性质</td>
+<td>$f(t)\delta(t - t_0) &#x3D; f(t_0)\delta(t - t_0)$</td>
+</tr>
+<tr>
+<td>采样</td>
+<td>用冲激串乘信号，使时间离散化</td>
+</tr>
+<tr>
+<td>采样间隔</td>
+<td>相邻采样点之间的时间 $T_s$</td>
+</tr>
+<tr>
+<td>采样频率</td>
+<td>$f_s &#x3D; 1&#x2F;T_s$</td>
+</tr>
+<tr>
+<td>量化</td>
+<td>把采样后的幅值离散化</td>
+</tr>
+<tr>
+<td>模拟信号</td>
+<td>时间连续、幅值连续的信号</td>
+</tr>
+<tr>
+<td>数字信号</td>
+<td>时间离散、幅值离散的信号</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="七、课堂强调与复习重点"><a href="#七、课堂强调与复习重点" class="headerlink" title="七、课堂强调与复习重点"></a>七、课堂强调与复习重点</h2><ol>
+<li><strong>周期信号用级数（离散谱）、非周期信号用变换（连续谱）</strong>——先分清对象再动笔。</li>
+<li><strong>欧拉公式要能双向使用</strong>：既能把 $e^{j\theta}$ 拆成 $\cos + j\sin$，也能把 $\cos$、$\sin$ 合成 $e^{j\theta}$ 形式。</li>
+<li><strong>奇偶性判断看变量</strong>：算数值看 $t$，判频域奇偶看 $\omega$。这是本讲第一易错点。</li>
+<li><strong>幅频偶、相频奇</strong>（对实信号）。</li>
+<li><strong>时移只改相位不改幅频</strong>——因为 $e^{-j\omega t_0}$ 的模为 1。</li>
+<li><strong>尺度变换幅值成反比</strong>——时域压缩则频域展宽且幅值降低。</li>
+<li><strong>卷积定理别记反</strong>：时域卷积 ↔ 频域相乘。</li>
+<li>**冲激函数抓”面积 &#x3D; 1”**，不要纠结某点的值。</li>
+<li><strong>$\delta(t) \leftrightarrow 1$、$\delta(t - t_0) \leftrightarrow e^{-j\omega t_0}$</strong> 这两个变换对要背下来。</li>
+<li><strong>性质不要求证明，但必须会用</strong>——老师明确说了这一点，复习时把精力放在”怎么用”上。</li>
+<li><strong>正弦、余弦不满足绝对可积</strong>，其变换要靠冲激函数表示。</li>
+<li><strong>采样 &#x3D; 时域乘冲激串</strong>，这是模拟到数字的数学本质。</li>
+<li><strong>时域越窄、频域越宽</strong>——用敲玻璃杯的例子建立直觉。</li>
+<li><strong>正负号要小心</strong>：$e^{-j\omega t_0}$（时移）与 $e^{j\omega_0 t}$（频移），指数上的符号和变量都不能混。</li>
+</ol>
+<hr>
+<h2 id="八、【以教材为准】待核对清单"><a href="#八、【以教材为准】待核对清单" class="headerlink" title="八、【以教材为准】待核对清单"></a>八、【以教材为准】待核对清单</h2><p>本讲录音环境噪声较大、ASR 识别质量偏弱（出现大量”字幕志愿者”类幻觉），以下条目建议对照教材核对：</p>
+<ol>
+<li><strong>狄利克雷条件的表述</strong>。录音口述为”体质有限、间断也有限、职位合计”，正文按标准表述写为”绝对可积、有限个间断点、有限个极值点”，<strong>以教材为准</strong>。</li>
+<li><strong>变换对的系数</strong>。正文中 $1 \leftrightarrow 2\pi\delta(\omega)$、$\cos\omega_0 t \leftrightarrow \pi[\delta(\omega - \omega_0) + \delta(\omega + \omega_0)]$ 等按常用约定给出；若教材采用 $f$（而非 $\omega$）作变量或采用不同归一化，系数会不同，<strong>以教材为准</strong>。</li>
+<li><strong>反变换的系数</strong>。正文采用 $\frac{1}{2\pi}$ 前置的对称形式，**部分教材采用 $1&#x2F;(2\pi)$ 分配在正反变换各 $\frac{1}{\sqrt{2\pi}}$**，请对照教材。</li>
+<li><strong>卷积定理中”时域相乘对应频域卷积”的系数</strong>。正文按 $\frac{1}{2\pi}$ 给出，<strong>以教材为准</strong>。</li>
+<li><strong>积分性质的附加项</strong>。时域积分在频域除以 $j\omega$ 之外还可能含直流项，正文按简写处理，<strong>以教材为准</strong>。</li>
+<li><strong>“尺度变换”一节的例题数值</strong>。录音中出现”面积由 A 变成 2H””负 G 乘以 1.5”等表述，听录不清，正文只讲结论不引用数值，<strong>以教材例题为准</strong>。</li>
+<li><strong>冲激函数的定义方式</strong>。正文按”面积 &#x3D; 1”的特征描述，<strong>部分教材用极限定义（矩形脉冲宽度趋于零）</strong>，以教材为准。</li>
+<li><strong>采样部分的深度</strong>。本讲只讲到”采样 &#x3D; 时域乘冲激串”与”采样间隔影响”，<strong>采样定理（奈奎斯特）应在后续章节</strong>，以教学进度为准。</li>
+<li><strong>课程名称</strong>。本篇标题按内容写为”信号分析”，若教学计划中课程名为《测试技术》或《信号与系统》，请自行调整。</li>
+<li><strong>教材页码</strong>。录音中提到的页码（如 183 页等）属于另一门课的内容，与本篇无关。</li>
+</ol>
+<hr>
+<h2 id="九、复习自测（20-题）"><a href="#九、复习自测（20-题）" class="headerlink" title="九、复习自测（20 题）"></a>九、复习自测（20 题）</h2><p><strong>基础（1–6）</strong></p>
+<ol>
+<li>写出欧拉公式，并用它表示 $\cos\theta$ 与 $\sin\theta$。</li>
+<li>周期信号与非周期信号的频谱形态有什么本质区别？</li>
+<li>写出狄利克雷条件的三个要点。</li>
+<li>为什么正弦、余弦函数不能直接做傅里叶变换？</li>
+<li>从傅里叶级数过渡到傅里叶变换，关键的一步是什么？</li>
+<li>傅里叶变换的物理意义是什么？</li>
+</ol>
+<p><strong>性质（7–13）</strong></p>
+<ol start="7">
+<li>设 $f(t)$ 为实函数，其频谱的实部和虚部分别是什么奇偶性？幅频与相频呢？</li>
+<li>判断频谱奇偶性时应该看哪个变量？算积分时又该看哪个变量？</li>
+<li>写出尺度变换性质，并说明”时域压缩”对频域的影响。</li>
+<li>写出时移性质，并说明它是否改变幅频特性。</li>
+<li>写出频移性质，并说明它在工程上的典型用途。</li>
+<li>写出卷积定理（时域卷积对应什么）。</li>
+<li>时域微分与时域积分分别对应频域的什么运算？</li>
+</ol>
+<p><strong>冲激与采样（14–17）</strong></p>
+<ol start="14">
+<li>冲激函数 $\delta(t)$ 有哪两个关键特征？</li>
+<li>写出 $\delta(t)$ 与 $\delta(t - t_0)$ 的傅里叶变换。</li>
+<li>写出冲激函数的乘积（筛选）性质与积分（取样）性质。</li>
+<li>什么是采样？用数学式子表示理想采样过程。</li>
+</ol>
+<p><strong>综合（18–20）</strong></p>
+<ol start="18">
+<li>已知 $f(t)$ 的频谱为 $F(\omega)$，求 $f(2t - 3)$ 的频谱。</li>
+<li>解释”时域越窄，频域越宽”，并用冲激函数与常数的例子说明。</li>
+<li>为什么说”时移只改变相位”？请从数学上说明。</li>
+</ol>
+<hr>
+<h2 id="十、复习自测参考答案"><a href="#十、复习自测参考答案" class="headerlink" title="十、复习自测参考答案"></a>十、复习自测参考答案</h2><p><strong>1.</strong> $e^{j\theta} &#x3D; \cos\theta + j\sin\theta$；由此 $\cos\theta &#x3D; \frac{e^{j\theta} + e^{-j\theta}}{2}$，$\sin\theta &#x3D; \frac{e^{j\theta} - e^{-j\theta}}{2j}$。</p>
+<p><strong>2.</strong> <strong>周期信号的频谱是离散的</strong>（一根一根等间隔谱线）；<strong>非周期信号的频谱是连续的</strong>（一条连续曲线）。原因是周期信号有明确的基频 $\omega_0$，只能含 $\omega_0$ 的整数倍频率；非周期信号没有基频，谱线间隔趋于零，于是连成一片。</p>
+<p><strong>3.</strong> ① <strong>绝对可积</strong>：$\int_{-\infty}^{\infty} \lvert f(t) \rvert dt$ 收敛；② <strong>有限个间断点</strong>；③ <strong>有限个极值点</strong>。</p>
+<p><strong>4.</strong> 因为它们<strong>不满足绝对可积条件</strong>——在无穷区间上积分不收敛。所以严格意义上不能直接做傅里叶变换，其变换需借助<strong>冲激函数</strong>表示。</p>
+<p><strong>5.</strong> 让<strong>周期 $T \to \infty$<strong>。此时基频 $\omega_0 &#x3D; 2\pi&#x2F;T \to 0$，谱线间隔趋于零，离散谱”挤”成连续谱，级数的</strong>求和变成积分</strong>。</p>
+<p><strong>6.</strong> 把非周期信号分解成<strong>无穷多个频率连续分布的复指数分量之和</strong>；$F(\omega)$ 表示单位频率间隔上的复振幅（频谱密度）。</p>
+<p><strong>7.</strong> 频谱的<strong>实部是偶函数</strong>、<strong>虚部是奇函数</strong>；<strong>幅频特性是偶函数</strong>、<strong>相频特性是奇函数</strong>。</p>
+<p><strong>8.</strong> 判断频域奇偶性时看**频率变量 $\omega$<strong>；计算积分（判断某部分是否为零）时看</strong>时间变量 $t$**。两者不能混——这正是本节强调的易错点。</p>
+<p><strong>9.</strong> $f(at) \longleftrightarrow \frac{1}{\lvert a \rvert}F(\frac{\omega}{a})$。<strong>时域压缩</strong>（$a &gt; 1$）时，频域<strong>展宽</strong> $a$ 倍，同时**幅值降为原来的 $1&#x2F;a$**（面积守恒）。</p>
+<p><strong>10.</strong> $f(t - t_0) \longleftrightarrow F(\omega)e^{-j\omega t_0}$。<strong>不改变幅频特性</strong>，因为 $\lvert e^{-j\omega t_0} \rvert &#x3D; 1$，只附加一个与频率成线性的相位。</p>
+<p><strong>11.</strong> $f(t)e^{j\omega_0 t} \longleftrightarrow F(\omega - \omega_0)$。<strong>频谱整体搬移</strong>到 $\omega_0$ 处，典型用途是<strong>调制</strong>（把基带信号搬到载频上）。</p>
+<p><strong>12.</strong> $f_1(t) * f_2(t) \longleftrightarrow F_1(\omega)F_2(\omega)$，即<strong>时域卷积对应频域相乘</strong>。</p>
+<p><strong>13.</strong> 时域<strong>微分</strong>对应频域<strong>乘 $j\omega$<strong>；时域</strong>积分</strong>对应频域**除以 $j\omega$**（另含直流项）。</p>
+<p><strong>14.</strong> ① 在 $t &#x3D; 0$ 处”集中”（$t \ne 0$ 时为零）；② <strong>面积为 1</strong>，即 $\int_{-\infty}^{\infty}\delta(t)dt &#x3D; 1$。</p>
+<p><strong>15.</strong> $\delta(t) \longleftrightarrow 1$；$\delta(t - t_0) \longleftrightarrow e^{-j\omega t_0}$。</p>
+<p><strong>16.</strong> 乘积（筛选）性质：$f(t)\delta(t - t_0) &#x3D; f(t_0)\delta(t - t_0)$；积分（取样）性质：$\int_{-\infty}^{\infty} f(t)\delta(t - t_0)dt &#x3D; f(t_0)$。</p>
+<p><strong>17.</strong> 采样是把<strong>时间连续</strong>的模拟信号按一定间隔取成<strong>时间离散</strong>的序列。理想采样用冲激串乘原信号：</p>
+<p>$f_s(t) &#x3D; f(t)\sum_{n&#x3D;-\infty}^{\infty}\delta(t - nT_s) &#x3D; \sum_{n&#x3D;-\infty}^{\infty} f(nT_s)\delta(t - nT_s)$</p>
+<p><strong>18.</strong> 先用尺度变换：$f(2t) \longleftrightarrow \frac{1}{2}F(\frac{\omega}{2})$；再用时移：$f(2(t - 1.5))$ 相当于时移 $1.5$，故</p>
+<p>$f(2t - 3) \longleftrightarrow \frac{1}{2}F(\frac{\omega}{2})e^{-j\omega \cdot 1.5}$</p>
+<p><strong>19.</strong> 由尺度变换性质，时域压缩对应频域展宽且幅值成反比。极端例子：<strong>冲激</strong>在时域上无限窄，其频谱是<strong>常数</strong>（覆盖全部频率、等幅）；反过来，<strong>常数</strong>在时域上无限宽（完全不变化），其频谱只是一个<strong>冲激</strong>（只有零频分量）。所以”时域越窄，频域越宽”。</p>
+<p><strong>20.</strong> 时移后的频谱为 $F(\omega)e^{-j\omega t_0}$，其模为 $\lvert F(\omega) \rvert \cdot \lvert e^{-j\omega t_0} \rvert &#x3D; \lvert F(\omega) \rvert \cdot 1 &#x3D; \lvert F(\omega) \rvert$，<strong>模不变</strong>，所以幅频特性不变；改变的只是辐角，即相位附加了 $-\omega t_0$ 这一线性项。因此说”时移只改变相位”。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E4%BF%A1%E5%8F%B7%E5%88%86%E6%9E%90-%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2-%E9%87%87%E6%A0%B7-CSDN/" class="print-no-link">#信号分析 傅里叶变换 采样 CSDN</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>非周期信号的傅里叶变换：连续谱、性质与采样</div>
+      <div>https://tdexxx.github.io/2026/10/21/08_测试技术与信号分析/信号分析·非周期信号的傅里叶变换（连续谱·变换性质·冲激函数·采样）CSDN发布稿/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>tdexxx</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年10月21日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/10/21/02_%E7%94%B5%E6%B0%94%E6%8E%A7%E5%88%B6%E4%B8%8EPLC/%E7%94%B5%E6%B0%94%E6%8E%A7%E5%88%B6%E4%B8%8EPLC%C2%B7%E5%AE%9A%E6%97%B6%E5%99%A8%E5%BA%94%E7%94%A8%E4%B8%8E%E4%B8%A4%E7%A7%8D%E6%B6%B2%E4%BD%93%E6%B7%B7%E5%90%88%E8%A3%85%E7%BD%AE%E6%8E%A7%E5%88%B6%EF%BC%88TON-TOF%C2%B7%E9%97%AA%E7%83%81%E7%94%B5%E8%B7%AF%C2%B7%E5%8D%95%E6%8C%89%E9%92%AE%E6%8E%A7%E5%88%B6%C2%B7IO%E5%88%86%E9%85%8D%E4%B8%8E%E6%A2%AF%E5%BD%A2%E5%9B%BE%EF%BC%89CSDN%E5%8F%91%E5%B8%83%E7%A8%BF/" title="定时器应用与两种液体混合装置控制">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">定时器应用与两种液体混合装置控制</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/10/21/04_%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80%C2%B7%E8%AF%BE%E5%A0%82%E9%80%90%E5%AD%97%E7%A8%BF%EF%BC%88%E6%BB%9A%E5%8A%A8%E8%BD%B4%E6%89%BF%E4%B9%A0%E9%A2%98%E8%AF%BE%EF%BC%89ASR%E5%8E%9F%E5%A7%8B/" title="滚动轴承习题课课堂逐字稿（ASR 原始）">
+                        <span class="hidden-mobile">滚动轴承习题课课堂逐字稿（ASR 原始）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

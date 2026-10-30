@@ -1,0 +1,1257 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="tdexxx">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="数控加工工艺与编程：环形槽零件铣削编程、刀具半径补偿 G41&#x2F;G42、对刀操作、加工中心换刀与孔加工工艺综合例题 本篇为《数控加工工艺与编程》课堂讲解整理。前半部分讲槽类（环形）零件的数控铣削编程全流程：图纸分析、路径规划、起刀点坐标系（G92&#x2F;G54）、下刀方式、圆弧方向判断 G02&#x2F;G03、环切进刀极限位置计算，以及刀具半径补偿 G41&#x2F;G42 + D0">
+<meta property="og:type" content="article">
+<meta property="og:title" content="环形槽零件铣削编程与刀具半径补偿 G41&#x2F;G42">
+<meta property="og:url" content="https://tdexxx.github.io/2026/10/14/01_%E6%95%B0%E6%8E%A7%E5%8A%A0%E5%B7%A5%E5%B7%A5%E8%89%BA%E4%B8%8E%E7%BC%96%E7%A8%8B/%E6%95%B0%E6%8E%A7%E5%8A%A0%E5%B7%A5%E5%B7%A5%E8%89%BA%E4%B8%8E%E7%BC%96%E7%A8%8B_%E6%A7%BD%E7%B1%BB%E9%9B%B6%E4%BB%B6%E9%93%A3%E5%89%8A%E4%B8%8E%E5%88%80%E8%A1%A5_%E5%8F%91%E5%B8%83%E7%A8%BF/index.html">
+<meta property="og:site_name" content="tdexxx的博客">
+<meta property="og:description" content="数控加工工艺与编程：环形槽零件铣削编程、刀具半径补偿 G41&#x2F;G42、对刀操作、加工中心换刀与孔加工工艺综合例题 本篇为《数控加工工艺与编程》课堂讲解整理。前半部分讲槽类（环形）零件的数控铣削编程全流程：图纸分析、路径规划、起刀点坐标系（G92&#x2F;G54）、下刀方式、圆弧方向判断 G02&#x2F;G03、环切进刀极限位置计算，以及刀具半径补偿 G41&#x2F;G42 + D0">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-10-13T18:40:05.000Z">
+<meta property="article:modified_time" content="2026-10-30T17:37:19.906Z">
+<meta property="article:author" content="tdexxx">
+<meta property="article:tag" content="数控编程 铣削 刀补">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>环形槽零件铣削编程与刀具半径补偿 G41/G42 - tdexxx的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"tdexxx.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2022-12-10T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="环形槽零件铣削编程与刀具半径补偿 G41/G42"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-10-14 02:40" pubdate>
+          2026年10月14日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          9.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          80 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">环形槽零件铣削编程与刀具半径补偿 G41/G42</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="数控加工工艺与编程：环形槽零件铣削编程、刀具半径补偿-G41-G42、对刀操作、加工中心换刀与孔加工工艺综合例题"><a href="#数控加工工艺与编程：环形槽零件铣削编程、刀具半径补偿-G41-G42、对刀操作、加工中心换刀与孔加工工艺综合例题" class="headerlink" title="数控加工工艺与编程：环形槽零件铣削编程、刀具半径补偿 G41&#x2F;G42、对刀操作、加工中心换刀与孔加工工艺综合例题"></a>数控加工工艺与编程：环形槽零件铣削编程、刀具半径补偿 G41&#x2F;G42、对刀操作、加工中心换刀与孔加工工艺综合例题</h1><blockquote>
+<p>本篇为《数控加工工艺与编程》课堂讲解整理。前半部分讲<strong>槽类（环形）零件的数控铣削编程全流程</strong>：图纸分析、路径规划、起刀点坐标系（G92&#x2F;G54）、下刀方式、圆弧方向判断 G02&#x2F;G03、环切进刀极限位置计算，以及<strong>刀具半径补偿 G41&#x2F;G42 + D01</strong> 的原理与使用；中间穿插一段<strong>加工视频讲解</strong>（装夹、对刀、程序执行、切屑判断）；后半部分是三个<strong>综合例题</strong>：盖板零件编程（刀补类型与建立时机）、加工中心与换刀（选刀 T__ 与换刀 M06）、孔加工工艺（钻-扩-铰、粗镗-半精镗-精镗、螺纹底孔与倒角）。全篇公式统一用 <code>$...$</code> 书写；课堂口述中含糊、与教材符号不一致处均标注【以教材为准】。</p>
+</blockquote>
+<hr>
+<h2 id="一、核心结论（先记住这-24-条）"><a href="#一、核心结论（先记住这-24-条）" class="headerlink" title="一、核心结论（先记住这 24 条）"></a>一、核心结论（先记住这 24 条）</h2><ol>
+<li><strong>槽类零件加工前先做图纸分析</strong>：看清哪些区域要铣掉。本例是环形槽零件，中间环形部分被挖空，属于要去除的材料。</li>
+<li>环形槽的路径规划有<strong>两种方案</strong>：①先铣内圈、再逐步向外环切到边缘；②内外轮廓分别铣出，再在中间来回”扫”掉多余区域。</li>
+<li>选哪种方案看<strong>零件尺寸与刀具直径之比</strong>。本例零件仅 70mm、刀具 8mm（接近 1cm），方案②来回扫太费时，故采用<strong>方案①：由内向外环切</strong>。</li>
+<li>起刀点坐标系可用 <strong>G92</strong> 设定。<strong>做题或客户展示时用 G92</strong>，因为起刀点坐标已明确给出、直接照写即可；<strong>实际生产更常用 G54 等工件坐标系</strong>（逐字稿听录为”G50”，按加工中心习惯应为 G54，【以教材为准】）。</li>
+<li><strong>键槽铣刀可以轴向进给</strong>（垂直扎下去），普通立铣刀不行。本例槽深仅 3.98mm，可直接用键槽铣刀扎入；<strong>槽深较大时必须先钻孔或用其他方式引入</strong>。</li>
+<li>下刀&#x2F;移刀的顺序：<strong>先保持 Z 高度不变平移到目标位置，再下降 Z</strong>。这样可避免平移途中撞到工件上的凸起。</li>
+<li>圆弧插补方向判断：<strong>沿刀具前进方向看</strong>，顺时针用 <strong>G02</strong>，逆时针用 <strong>G03</strong>。判断时要站在刀具前进的方向上观察。</li>
+<li><strong>圆弧超过 180° 必须分两段编写</strong>（一段圆弧指令无法表达大于半圆的弧）。</li>
+<li>环切时每次向外进刀的位置<strong>存在极限</strong>，受刀具半径和轮廓半径共同约束，不能无限外移。</li>
+<li>刀具半径补偿分<strong>左补偿 G41</strong> 与<strong>右补偿 G42</strong>。判断方法：<strong>沿刀具前进方向看，刀具位于工件（紧挨着的那一侧）的左边→左补，右边→右补</strong>。</li>
+<li>直接按”刀具中心轨迹”编程（把偏置量写死进坐标）的<strong>致命缺点</strong>：刀具磨损或更换后，整个程序要重写。</li>
+<li>正确做法：用 <strong>G41&#x2F;G42 + D01（刀补号）</strong>，把刀具半径值放在<strong>机床的刀补表</strong>里。刀具磨损时只需在机床面板改刀补值（例如半径 4 改成 3.6），程序一行都不用动。</li>
+<li><strong>刀补必须在刀具第一次靠近工件时建立</strong>，通常安排在<strong>斜线切入段</strong>，例如 <code>G41 G01 ... D01</code>。</li>
+<li>切入点&#x2F;切出点<strong>用斜线切入比直接垂直靠入好</strong>，直接靠入容易在工件表面留下接痕。</li>
+<li>与工件<strong>已加工表面接触</strong>的移动用 <strong>G01</strong>；G00 定位速度快，但用于精加工表面附近时容易刮伤表面。G00 本身不算错，但接触段建议用 G01。</li>
+<li>加工完成后退刀到安全高度，再返回起刀点&#x2F;原点。</li>
+<li><strong>加工中心 &#x3D; 工序集中</strong>：一次装夹即可完成铣平面、钻孔、扩孔、铰孔、攻螺纹等多道工序，因此是<strong>多工序、多刀具</strong>加工。</li>
+<li>加工中心的核心工艺原则之一是<strong>先面后孔</strong>：先加工面、再加工孔。若先加工孔再加工面，孔容易因材料变形而超差。</li>
+<li>换刀需<strong>足够的换刀空间</strong>，避免换刀时撞刀；程序很长时<strong>必须认真检查</strong>，并把不同工序内容安排到<strong>子程序</strong>中，用 <strong>M98 P__ 调用、M99 返回</strong>。</li>
+<li>应尽量减少空行程：<strong>同一把刀尽可能多加工表面</strong>，减少换刀与走空刀次数。</li>
+<li>换刀用 <strong>T__ M06</strong>；<strong>备刀（选刀）</strong>是提前告诉机床”下一把要用 T__”，让刀库在换刀后自动把它转到换刀位。<strong>选刀与换刀是两件事，极易混淆</strong>。</li>
+<li>孔加工按<strong>精度</strong>选工艺：精度要求高的大孔（如 Φ60）用<strong>粗镗→半精镗→精镗</strong>；小孔用<strong>钻→扩→铰</strong>；螺纹孔先<strong>打底孔→倒角→攻螺纹</strong>。</li>
+<li><strong>切削用量总规律</strong>：粗加工→半精加工→精加工，<strong>转速逐级提高、进给量逐级降低</strong>；镗孔尺寸<strong>逐步逼近</strong>（如粗镗到 58、半精镗到 59.5、精镗到 60）。</li>
+<li><strong>对刀要点</strong>：主轴必须转动、接近工件时必须放慢速度。X&#x2F;Y 向对刀值 &#x3D; <strong>刀具接触点 + 刀具半径 + 零件半边长</strong>；Z 向以<strong>工件上表面</strong>为基准，不加半径和半边。</li>
+</ol>
+<hr>
+<h2 id="二、知识结构（本讲在课程中的位置）"><a href="#二、知识结构（本讲在课程中的位置）" class="headerlink" title="二、知识结构（本讲在课程中的位置）"></a>二、知识结构（本讲在课程中的位置）</h2><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs gherkin">数控加工工艺与编程 · 综合编程与工艺<br>|<span class="hljs-string"></span><br><span class="hljs-string"></span>|<span class="hljs-string">- 1. 槽类（环形）零件数控铣削编程</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 图纸分析：中间环形区域需铣掉</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 路径规划两方案</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 方案一：由内圈向外环切到边缘（本例采用）</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">   `- 方案二：内外轮廓分别加工 + 中间来回清角</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 起刀点坐标系：G92（做题）/ G54（生产）</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 下刀方式：键槽铣刀轴向进给 + 先平移后下降</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 圆弧方向判断 G02 / G03 与 180 度分段</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 环切进刀极限位置计算</span><br><span class="hljs-string"></span>|<span class="hljs-string">   `- 刀具半径补偿 G41 / G42 + D01</span><br><span class="hljs-string"></span>|<br>|<span class="hljs-string">- 2. 加工视频讲解：装夹、对刀、程序执行</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 装夹要点：清屑、垫铁留位、敲实、垫铁不动</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 对刀要点：主轴转、接近慢；X/Y 加半径与半边，Z 不加</span><br><span class="hljs-string"></span>|<span class="hljs-string">   `- 切屑形态与材料判断</span><br><span class="hljs-string"></span>|<br>|<span class="hljs-string">- 3. 盖板零件编程综合例题</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 难点：无 CAD 图，节点坐标靠三角函数算</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 重点：刀补类型判断 + 刀补建立时机</span><br><span class="hljs-string"></span>|<span class="hljs-string">   `- 程序结构：G92 -&gt; G90 G00 -&gt; S M03 -&gt; G43 -&gt; G01 -&gt; G02/G03 -&gt; M09 -&gt; M30</span><br><span class="hljs-string"></span>|<br>|<span class="hljs-string">- 4. 加工中心与换刀</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 工序集中、多工序多刀具</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 工艺分析：先面后孔、换刀空间、子程序 M98/M99</span><br><span class="hljs-string"></span>|<span class="hljs-string">   `- 选刀 T__ 与换刀 M06</span><br><span class="hljs-string"></span>|<br>`- 5. 孔加工工艺综合例题<br>    |<span class="hljs-string">- 读图：粗糙度符号与加工面判断</span><br><span class="hljs-string">    </span>|<span class="hljs-string">- 大孔：粗镗 - 半精镗 - 精镗</span><br><span class="hljs-string">    </span>|<span class="hljs-string">- 小孔：钻 - 扩 - 铰</span><br><span class="hljs-string">    </span>|<span class="hljs-string">- 螺纹孔：底孔 - 倒角 - 攻丝</span><br><span class="hljs-string">    `- 切削用量：粗到精，转速升、进给降</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="三、详细知识点"><a href="#三、详细知识点" class="headerlink" title="三、详细知识点"></a>三、详细知识点</h2><h3 id="（一）槽类（环形）零件：图纸分析与路径规划"><a href="#（一）槽类（环形）零件：图纸分析与路径规划" class="headerlink" title="（一）槽类（环形）零件：图纸分析与路径规划"></a>（一）槽类（环形）零件：图纸分析与路径规划</h3><h4 id="1-图纸分析"><a href="#1-图纸分析" class="headerlink" title="1. 图纸分析"></a>1. 图纸分析</h4><p>拿到图纸第一步是<strong>看懂要加工哪些区域</strong>。本例是环形槽零件：</p>
+<ul>
+<li>中间环形部分是<strong>挖空的</strong>，即环形区域内的材料都要被铣掉；</li>
+<li>中间还留下一个小凸台（直径较小）；</li>
+<li>零件整体很小，约 <strong>70mm</strong>，加工刀具直径 <strong>8mm</strong>（接近 1cm）。</li>
+</ul>
+<h4 id="2-两种路径规划方案"><a href="#2-两种路径规划方案" class="headerlink" title="2. 两种路径规划方案"></a>2. 两种路径规划方案</h4><table>
+<thead>
+<tr>
+<th>方案</th>
+<th>做法</th>
+<th>适用情形</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>方案一</td>
+<td>先铣内圈，再逐步<strong>向外环切</strong>，一直到边缘</td>
+<td>零件小、刀具相对大（本例）</td>
+</tr>
+<tr>
+<td>方案二</td>
+<td>先铣内轮廓、再铣外轮廓，然后在中间<strong>来回扫</strong>掉多余区域</td>
+<td>零件大、刀具相对小，需要大量清角</td>
+</tr>
+</tbody></table>
+<p>本例零件只有 70mm 而刀具 8mm，若用方案二在中间来回扫非常费时，<strong>因此采用方案一</strong>：先铣内圈，往前移动一档再铣一圈，一直移到边缘，把回形部分全部铣出来。</p>
+<blockquote>
+<p>关键点：<strong>方案选择取决于零件尺寸与刀具直径的比例</strong>，不是随便挑一个。</p>
+</blockquote>
+<h3 id="（二）起刀点坐标系：G92-与-G54"><a href="#（二）起刀点坐标系：G92-与-G54" class="headerlink" title="（二）起刀点坐标系：G92 与 G54"></a>（二）起刀点坐标系：G92 与 G54</h3><ul>
+<li>起刀点（刀具起始位置）是完整工艺过程的一部分，与坐标系、基准一起构成编程的起点。</li>
+<li>若图纸<strong>已明确给出起刀点坐标</strong>，编程时可用 <strong>G92</strong> 直接设定工件坐标系，把该位置写进程序——<strong>做题、客户展示时这样做最直观</strong>，也让阅卷&#x2F;审图人一眼看出你清楚起刀点在哪。</li>
+<li><strong>实际生产中更多使用 G54 等工件坐标系</strong>，因为起刀点是机床的固定参考位置，用 G92 每次都要重新建立，不如 G54 稳定。</li>
+<li>逐字稿此处听录为”G50”，按加工中心习惯应为 <strong>G54</strong>；车床侧才常用 G50 设定坐标系，<strong>【以教材为准】</strong>。</li>
+</ul>
+<h3 id="（三）下刀方式与刀具选择"><a href="#（三）下刀方式与刀具选择" class="headerlink" title="（三）下刀方式与刀具选择"></a>（三）下刀方式与刀具选择</h3><h4 id="1-键槽铣刀-vs-立铣刀"><a href="#1-键槽铣刀-vs-立铣刀" class="headerlink" title="1. 键槽铣刀 vs 立铣刀"></a>1. 键槽铣刀 vs 立铣刀</h4><ul>
+<li><strong>键槽铣刀</strong>：端部有切削刃、<strong>可以轴向进给</strong>（垂直扎下去），适合加工键槽、环形槽这类需要”扎入”的场合。</li>
+<li><strong>普通立铣刀</strong>：端刃不能用于轴向进给，不能直接扎入。</li>
+<li>本例槽深仅 <strong>3.98mm</strong>，很浅，键槽铣刀可以直接扎进去。</li>
+<li><strong>若槽较厚</strong>：不能直接用铣刀扎入，必须<strong>先用钻头钻孔</strong>，或<strong>从边缘斜向引入</strong>。</li>
+</ul>
+<h4 id="2-下刀与移刀的顺序"><a href="#2-下刀与移刀的顺序" class="headerlink" title="2. 下刀与移刀的顺序"></a>2. 下刀与移刀的顺序</h4><p>正确的移刀方式是<strong>分两步</strong>：</p>
+<ol>
+<li><strong>保持 Z 高度不变</strong>，先做平面内的平移（X&#x2F;Y 移动）到目标点上方；</li>
+<li><strong>再缓慢下降 Z</strong> 到设定位置。</li>
+</ol>
+<p>这样做的目的是<strong>避免平移途中撞到工件上的凸起</strong>。本例中间没有阻碍，理论上可以直接平移，但养成”先平移后下降”的习惯更安全。</p>
+<h4 id="3-安全距离与下刀"><a href="#3-安全距离与下刀" class="headerlink" title="3. 安全距离与下刀"></a>3. 安全距离与下刀</h4><ul>
+<li>先下降到<strong>安全距离</strong>（本例约 Z-1mm）；</li>
+<li>再用 <strong>G01 直线插补</strong>下到加工深度 <strong>Z-3.98</strong>；</li>
+<li>小零件一般<strong>不需要切削液</strong>。</li>
+</ul>
+<h3 id="（四）圆弧插补方向判断（G02-G03）"><a href="#（四）圆弧插补方向判断（G02-G03）" class="headerlink" title="（四）圆弧插补方向判断（G02 &#x2F; G03）"></a>（四）圆弧插补方向判断（G02 &#x2F; G03）</h3><ul>
+<li><strong>判断方法</strong>：沿刀具前进方向观察。<ul>
+<li>刀具轨迹呈<strong>顺时针</strong> → <strong>G02</strong>；</li>
+<li>刀具轨迹呈<strong>逆时针</strong> → <strong>G03</strong>。</li>
+</ul>
+</li>
+<li>观察时要站在”刀具前进的方向”上，而不是站在机床外面随便看，否则很容易判反。</li>
+<li><strong>圆弧超过 180° 时必须分两段编写</strong>。本例中有的圆弧已超过 180°，不能一段写完。</li>
+</ul>
+<h3 id="（五）环切进刀位置的极限计算（易错点）"><a href="#（五）环切进刀位置的极限计算（易错点）" class="headerlink" title="（五）环切进刀位置的极限计算（易错点）"></a>（五）环切进刀位置的极限计算（易错点）</h3><p>环切时每次向外进刀，<strong>位置有极限</strong>，不能想当然地一路外移。</p>
+<ul>
+<li>设某处圆弧半径为 $4$，则刀具中心最极限只能走到 $Y&#x3D;21$（贴着边缘），**不能走到 $Y&#x3D;22$**。</li>
+<li>原因是：程序里写的是<strong>刀具中心轨迹</strong>，实际加工出的轮廓还要再”加上”一个刀具半径。</li>
+<li>举例说明这个坑：<ul>
+<li>内圈轨迹半径 $R14$，刀具半径 $4$；</li>
+<li>最终轮廓半径应为 $R18$（$14+4$）；</li>
+<li>如果同学下意识把刀”整个平移上去”，最终轨迹会变成 $R26$，<strong>超过零件 $R25$ 的范围</strong>，直接撞出工件。</li>
+</ul>
+</li>
+<li>因此<strong>必须清楚刀具中心最大能移到什么位置</strong>，这是本讲最容易出错的地方之一。</li>
+</ul>
+<h3 id="（六）刀具半径补偿-G41-G42-D01（本讲重点）"><a href="#（六）刀具半径补偿-G41-G42-D01（本讲重点）" class="headerlink" title="（六）刀具半径补偿 G41 &#x2F; G42 + D01（本讲重点）"></a>（六）刀具半径补偿 G41 &#x2F; G42 + D01（本讲重点）</h3><h4 id="1-不写刀补会有什么问题"><a href="#1-不写刀补会有什么问题" class="headerlink" title="1. 不写刀补会有什么问题"></a>1. 不写刀补会有什么问题</h4><p>如果按”刀具中心轨迹”编程（即把偏置量直接算进坐标里，例如写出 $Y21$）：</p>
+<ul>
+<li><strong>刀具更换</strong>（如 8mm 换成 10mm）→ 程序必须<strong>全部重写</strong>；</li>
+<li><strong>刀具磨损</strong>（如 8mm 磨损成 7.8mm）→ 程序同样要<strong>重新写</strong>。</li>
+</ul>
+<p>一旦刀具发生变化，整个程序就要大规模返工，工作量成倍增加。</p>
+<h4 id="2-用刀补怎么解决"><a href="#2-用刀补怎么解决" class="headerlink" title="2. 用刀补怎么解决"></a>2. 用刀补怎么解决</h4><ul>
+<li>程序中只写<strong>零件轮廓轨迹</strong>（理论上应该走的轮廓）；</li>
+<li>用 <strong>G41（左补）&#x2F; G42（右补）</strong> 告诉机床”要往哪一侧偏”；</li>
+<li>用 <strong>D01（刀补号）</strong> 告诉机床”偏多少”——具体的半径值放在<strong>机床的刀补表</strong>里。</li>
+</ul>
+<p>这样刀具磨损时，只需在<strong>机床控制面板</strong>上把刀补值从 4 改成 3.6，<strong>整个程序一行都不用改</strong>。这也是推荐在<strong>有偏置&#x2F;补偿功能的机床</strong>上使用 <code>G41 + D01</code> 搭配的原因。</p>
+<h4 id="3-左补还是右补？"><a href="#3-左补还是右补？" class="headerlink" title="3. 左补还是右补？"></a>3. 左补还是右补？</h4><p>判断规则：<strong>沿着刀具的前进方向看，刀具位于工件的哪一侧</strong>。</p>
+<ul>
+<li>刀具在工件<strong>左侧</strong> → <strong>左补偿 G41</strong>；</li>
+<li>刀具在工件<strong>右侧</strong> → <strong>右补偿 G42</strong>。</li>
+</ul>
+<p>注意：这里的”工件”必须是<strong>与刀具紧挨着的那一侧工件</strong>。环形槽左右都有材料，容易判错，要看清刀具紧挨的是哪一边。</p>
+<h4 id="4-刀补建立与取消"><a href="#4-刀补建立与取消" class="headerlink" title="4. 刀补建立与取消"></a>4. 刀补建立与取消</h4><ul>
+<li><strong>建立时机</strong>：<strong>刀具第一次靠近工件时</strong>建立。通常是先从外部安全位置<strong>斜线切入</strong>到轮廓起点，在<strong>这段斜线里</strong>把刀补建起来。</li>
+<li>写法示例：<code>G41 G01 X... Y... D01</code>（在切入段建立刀补）。</li>
+<li><strong>取消</strong>：加工完成后用 <strong>G40</strong> 取消刀补。</li>
+<li>若程序中同时用到两把刀的补偿，刀补号会不同（D01、D02…），<strong>不能随手写</strong>；不用的刀补记得取消掉。</li>
+</ul>
+<h4 id="5-切入点-切出点"><a href="#5-切入点-切出点" class="headerlink" title="5. 切入点&#x2F;切出点"></a>5. 切入点&#x2F;切出点</h4><ul>
+<li><strong>用斜线切入</strong>优于直接垂直靠入。</li>
+<li>原因：直接靠过来容易在工件表面<strong>留下接痕</strong>；斜线切入、斜线切出，接痕更容易控制，表面质量更好。</li>
+</ul>
+<h3 id="（七）加工视频讲解：装夹、对刀与程序执行"><a href="#（七）加工视频讲解：装夹、对刀与程序执行" class="headerlink" title="（七）加工视频讲解：装夹、对刀与程序执行"></a>（七）加工视频讲解：装夹、对刀与程序执行</h3><h4 id="1-装夹要点（四条）"><a href="#1-装夹要点（四条）" class="headerlink" title="1. 装夹要点（四条）"></a>1. 装夹要点（四条）</h4><ol>
+<li><strong>清理干净</strong>：虎钳口的切屑要清理干净，<strong>装夹面也要清理干净</strong>——否则工件放不平、加工精度受影响。</li>
+<li><strong>垫铁选择要合适</strong>：要<strong>保留刀具的下刀位置</strong>，避免铣到虎钳（垫铁高度、位置不当会让刀具切到夹具）。</li>
+<li><strong>工件必须敲实</strong>：工件要敲实到位。敲击时用<strong>较软的材料</strong>（如木锤、铜棒），不要用很硬的工具直接敲，以免损伤工件。</li>
+<li><strong>垫铁不能移动</strong>：敲好之后，垫铁不允许再移动。</li>
+</ol>
+<h4 id="2-对刀操作（两个要点-计算方法）"><a href="#2-对刀操作（两个要点-计算方法）" class="headerlink" title="2. 对刀操作（两个要点 + 计算方法）"></a>2. 对刀操作（两个要点 + 计算方法）</h4><p>对刀 &#x3D; 把工件坐标系原点在机床坐标系中的坐标值确定出来。本例工件坐标系原点设在<strong>工件中心</strong>。</p>
+<p><strong>两个要点：</strong></p>
+<ol>
+<li><strong>主轴必须转动</strong>（对刀时让主轴转起来，避免刀具单点接触、也便于观察）；</li>
+<li><strong>接近工件时速度必须放慢</strong>——远离工件时可以快速移动，接近时必须慢下来。走太快会直接切进工件，造成过切。</li>
+</ol>
+<p><strong>计算方法：</strong></p>
+<ul>
+<li>X&#x2F;Y 向：<strong>原点坐标 &#x3D; 刀具接触点 + 刀具半径 + 零件半边长</strong>。<br>因为刀具是圆的，接触的是外圆边缘，所以要<strong>同时加上刀具半径和零件的一半边长</strong>，才能算到中心。</li>
+<li>Z 向：以<strong>工件上表面</strong>为基准，<strong>不加半径、不加半边</strong>。原点就在这一表面的上方，靠近即可。</li>
+<li>演示中用到的操作：<code>点击测量 → 选择刀具 → 点击确认 → 输入半径 → 点击计算 → 点击确认</code>。</li>
+</ul>
+<p><strong>对刀检验：</strong></p>
+<ul>
+<li>用 <strong>MDI（MDA）方式</strong>输入指令检验，例如 <code>M3 S800</code> 让主轴转起来，观察对刀点是否正确。</li>
+</ul>
+<h4 id="3-程序执行与切削观察"><a href="#3-程序执行与切削观察" class="headerlink" title="3. 程序执行与切削观察"></a>3. 程序执行与切削观察</h4><ul>
+<li>程序执行：在<strong>自动</strong>模式下选中程序，检查参数（进给倍率、快速倍率等），按<strong>启动</strong>。</li>
+<li>切削过程可观察到：先下降 Z-3.98，再逆时针铣出轮廓。</li>
+<li><strong>切屑形态可判断材料</strong>：<ul>
+<li>切屑呈<strong>脆性、不连续</strong> → 材料塑性较差；</li>
+<li>塑性好的材料切屑会像”卷发”一样连续卷曲；</li>
+<li><strong>铝合金较软</strong>，切屑不必强求及时排出，影响不大；若是钢件且排屑不畅，会影响表面质量。</li>
+</ul>
+</li>
+</ul>
+<h3 id="（八）综合例-1：盖板零件编程（刀补类型与建立时机）"><a href="#（八）综合例-1：盖板零件编程（刀补类型与建立时机）" class="headerlink" title="（八）综合例 1：盖板零件编程（刀补类型与建立时机）"></a>（八）综合例 1：盖板零件编程（刀补类型与建立时机）</h3><h4 id="1-题目与难点"><a href="#1-题目与难点" class="headerlink" title="1. 题目与难点"></a>1. 题目与难点</h4><ul>
+<li>盖板零件，外形约 <strong>180 × 180</strong>，厚度 <strong>12mm</strong>（”180x180x890”为口述听录，以题图为准）。</li>
+<li>工件上已有孔：<strong>3 个螺纹孔</strong>，以及<strong>沉头孔</strong>（逐字稿听录为”承头孔&#x2F;孤孔”，以题图为准）。</li>
+<li>窄边留 <strong>5mm 加工余量</strong>。</li>
+<li>工件原点定位在 <strong>A 点</strong>。</li>
+<li>使用 <strong>10mm 立铣刀</strong>（”力洗刀”应为”立铣刀”）：立铣刀既能铣平面，也能铣侧面的平板面，适合本例。</li>
+</ul>
+<p><strong>最大难点是”原点与节点坐标的确定”<strong>：本题</strong>没有 CAD 图，只有草图</strong>，无法直接在 CAD 上量取。</p>
+<ul>
+<li>若有 CAD 图或三维模型，可直接测量各点坐标，很省事；</li>
+<li>只有草图时，必须<strong>用三角函数计算</strong>节点坐标（如 C 点、E 点、D 点）。</li>
+</ul>
+<h4 id="2-重点：刀补的类型与建立时机"><a href="#2-重点：刀补的类型与建立时机" class="headerlink" title="2. 重点：刀补的类型与建立时机"></a>2. 重点：刀补的类型与建立时机</h4><p>本题真正要问的是两个问题：</p>
+<ol>
+<li><strong>用左刀补还是右刀补？</strong></li>
+<li><strong>刀补在程序的哪一段建立？</strong></li>
+</ol>
+<p>判断依据仍是本讲反复强调的规则：</p>
+<ul>
+<li><strong>沿刀具前进方向看，刀具在紧挨着的工件哪一侧</strong>——在左侧即<strong>左补 G41</strong>。</li>
+<li><strong>刀补一定要在刀具第一次靠近工件时建立</strong>。本例中刀具从起刀点经<strong>斜线切入</strong>回到轮廓起点，<strong>刀补就在这段斜线里建立</strong>（例如在 N30 段建立）。</li>
+<li>建立后要<strong>沿着整条加工路径检查一遍</strong>：会不会中途从左侧跑到右侧。有的轨迹一开始在左、后面跑到右边，这种情况要特别留意，不能只看最开始的判断。</li>
+<li>加工结束用 <strong>G40 取消刀补</strong>。</li>
+</ul>
+<h4 id="3-切入与切出"><a href="#3-切入与切出" class="headerlink" title="3. 切入与切出"></a>3. 切入与切出</h4><ul>
+<li>采用<strong>斜线切入</strong>，不要直接靠过来，避免留下接痕。</li>
+<li>程序结尾直接拉回起刀位置即可；但由于是斜线退出，最好先向外抬起再退回。</li>
+</ul>
+<h4 id="4-程序结构（框架）"><a href="#4-程序结构（框架）" class="headerlink" title="4. 程序结构（框架）"></a>4. 程序结构（框架）</h4><figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs gcode">O____                 程序号<br><span class="hljs-name">G92</span> X__ Y__ Z__       设定工件坐标系（也可用 <span class="hljs-name">G54</span>）<br><span class="hljs-name">G90</span> <span class="hljs-name">G00</span> Z__           绝对编程，快速下降到安全高度<br>S____ <span class="hljs-name">M03</span>             主轴正转、设定转速<br><span class="hljs-name">G43</span> Z__ H__           刀具长度补偿<br><span class="hljs-name">G00</span> X__ Y__           快速定位到切入点上方<br><span class="hljs-name">G01</span> Z-__ F__          直线插补下刀<br><span class="hljs-name">G41</span> <span class="hljs-name">G01</span> X__ Y__ D<span class="hljs-number">01</span>   斜线切入并建立刀补<br><span class="hljs-name">G02</span>/<span class="hljs-name">G03</span> ...           圆弧插补（顺/逆时针按前进方向判断）<br><span class="hljs-name">G01</span> ...               直线插补<br><span class="hljs-name">G40</span>                   取消刀补<br><span class="hljs-name">G00</span> Z__               抬刀到安全高度<br><span class="hljs-name">M09</span>                   冷却液关<br><span class="hljs-name">M30</span>                   程序结束并复位<br></code></pre></td></tr></table></figure>
+
+<p><strong>M02 与 M30 的区别（课堂强调）：</strong></p>
+<ul>
+<li><strong>M02</strong>：程序结束，<strong>光标停在程序末尾</strong>；</li>
+<li><strong>M30</strong>：程序结束并<strong>复位</strong>，<strong>光标回到程序开头</strong>，便于重复运行同一程序。</li>
+</ul>
+<h3 id="（九）加工中心与换刀"><a href="#（九）加工中心与换刀" class="headerlink" title="（九）加工中心与换刀"></a>（九）加工中心与换刀</h3><h4 id="1-加工中心是什么"><a href="#1-加工中心是什么" class="headerlink" title="1. 加工中心是什么"></a>1. 加工中心是什么</h4><ul>
+<li>车削、铣削是目前用得最多的加工方式；此外还有五轴加工（本讲因课时关系不展开）。</li>
+<li><strong>加工中心</strong>的特点：<strong>工序高度集中</strong>，一次装夹就能完成铣平面、钻孔、铰孔、攻螺纹等多道工序。</li>
+<li>因此它是<strong>多工序、多刀具</strong>的加工，需要<strong>来回换刀</strong>。</li>
+<li>注意：并不是所有零件都要上加工中心。像简单的键槽，用普通铣床就够；加工中心适合<strong>复杂曲面、多工序集中</strong>的零件。</li>
+</ul>
+<h4 id="2-加工中心的工艺分析要点"><a href="#2-加工中心的工艺分析要点" class="headerlink" title="2. 加工中心的工艺分析要点"></a>2. 加工中心的工艺分析要点</h4><ol>
+<li><strong>先面后孔</strong>：一定要先加工面、再加工孔。若先加工孔再加工面，材料变形容易让孔超差。</li>
+<li><strong>合理安排工序组合</strong>：例如”先铣一刀再钻”还是”先钻再铣”，要结合零件结构与变形综合考虑。</li>
+<li><strong>保证换刀空间</strong>：换刀需要有足够空间，避免换刀时撞刀；现在多采用”刀具先移动到一个固定距离再开始换刀”的方式。</li>
+<li><strong>认真检查程序</strong>：加工程序往往很长，一个简单零件写下来就可能写满一整版，加工前必须仔细检查。</li>
+<li><strong>工序分到子程序</strong>：把不同工序的内容安排到不同<strong>子程序</strong>中，主程序用 <strong>M98 P__ 调用</strong>，子程序用 <strong>M99 返回</strong>。这样程序结构清晰、便于检查和调试。</li>
+<li><strong>减少空行程</strong>：让<strong>同一把刀尽可能多加工表面</strong>，减少走空刀和换刀次数。</li>
+</ol>
+<h4 id="3-刀库与换刀动作"><a href="#3-刀库与换刀动作" class="headerlink" title="3. 刀库与换刀动作"></a>3. 刀库与换刀动作</h4><ul>
+<li>加工中心比传统铣床多两样东西：<strong>换刀机械手</strong>和<strong>刀库</strong>。</li>
+<li>机械手是<strong>半圆卡爪</strong>形式，卡住刀具即可取放；与传统的机械手结构略有不同。</li>
+<li>常见刀库为<strong>盘式（圆盘式）刀库</strong>：刀库转到对应刀位 → 机械手伸入卡住刀具 → 取出 → 把要装的刀放进去。</li>
+</ul>
+<h4 id="4-选刀（备刀）与换刀"><a href="#4-选刀（备刀）与换刀" class="headerlink" title="4. 选刀（备刀）与换刀"></a>4. 选刀（备刀）与换刀</h4><p>这是<strong>极易混淆</strong>的一对概念：</p>
+<ul>
+<li><strong>换刀</strong>：<code>T01 M06</code> —— 把主轴上现有的刀取下，换上 T01。</li>
+<li><strong>选刀（备刀）</strong>：在换刀的同时告诉机床”<strong>下一把要用 T02</strong>“，机床的刀库就会在换刀完成后<strong>自动把 T02 转到取刀位置</strong>，下次换刀时直接取用，节省时间。</li>
+<li>程序示例：</li>
+</ul>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs gams">N10 T01 M06      换上 <span class="hljs-number">1</span> 号刀<br><span class="hljs-function"><span class="hljs-title">N20</span></span> ... T02      备刀：告诉机床下一把用 <span class="hljs-number">2</span> 号刀<br><span class="hljs-function"><span class="hljs-title">N30</span></span> ...<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>关键提醒</strong>：当程序中同时出现 <code>T01</code> 和 <code>T02</code> 时，一定要分清<strong>执行到某一段时主轴上到底是哪把刀</strong>。T02 是”备用”，此时它还没装上主轴。</li>
+<li>选刀能有效缩短换刀辅助时间，尤其对<strong>锥度较大、换刀行程长</strong>的场合更有意义；课本上有讲这个知识点，但例题中往往省略了选刀步骤。</li>
+</ul>
+<h3 id="（十）综合例-2：孔加工工艺（读图与工艺路线）"><a href="#（十）综合例-2：孔加工工艺（读图与工艺路线）" class="headerlink" title="（十）综合例 2：孔加工工艺（读图与工艺路线）"></a>（十）综合例 2：孔加工工艺（读图与工艺路线）</h3><h4 id="1-读图与加工面判断"><a href="#1-读图与加工面判断" class="headerlink" title="1. 读图与加工面判断"></a>1. 读图与加工面判断</h4><p>拿到零件图，先<strong>从技术要求&#x2F;粗糙度符号判断哪些面需要加工</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>部位</th>
+<th>图面信息</th>
+<th>判断</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>四个边缘</td>
+<td>尺寸 16（或 15），无公差、无粗糙度要求</td>
+<td>毛坯面，不重要，一般不加工</td>
+</tr>
+<tr>
+<td>A 面</td>
+<td>无公差、无粗糙度要求</td>
+<td>可能也是毛坯面</td>
+</tr>
+<tr>
+<td>B 面</td>
+<td>有 <strong>Ra6.3</strong> 要求</td>
+<td><strong>需要加工</strong>：粗铣 → 精铣即可达到 6.3</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>粗糙度符号</strong>：新国标写作 <strong>Ra2.5</strong> 这类形式；老国标是不带 Ra 的小三角符号。<strong>画图时不要用老国标</strong>。</li>
+<li>加工顺序遵循<strong>先面后孔</strong>：先把 B 面铣出来，再加工孔。</li>
+</ul>
+<h4 id="2-各类孔的工艺路线"><a href="#2-各类孔的工艺路线" class="headerlink" title="2. 各类孔的工艺路线"></a>2. 各类孔的工艺路线</h4><p><strong>（1）大圆孔 Φ60（精度要求 0.8）</strong></p>
+<ul>
+<li>孔径大，<strong>不能用钻头钻</strong>（钻头太粗不合适），也不适合”钻扩铰”。</li>
+<li>精度 0.8 要求高，需采用<strong>镗孔</strong>：<strong>粗镗 → 半精镗 → 精镗</strong>，可达 0.1~0.4 的精度。</li>
+<li>因此这个孔要<strong>粗镗一下</strong>。</li>
+</ul>
+<p><strong>（2）小孔 Φ16（精度 0.8）</strong></p>
+<ul>
+<li>采用<strong>钻 → 扩 → 铰</strong>的工艺即可达到 0.4~0.8 的精度，满足 0.8 要求。</li>
+<li>具体步骤：<ol>
+<li>先钻 <strong>Φ9.8 底孔</strong>；</li>
+<li><strong>扩孔</strong>到 Φ11.8 &#x2F; Φ11.85；</li>
+<li><strong>铰孔</strong>到 Φ12。</li>
+</ol>
+</li>
+<li>该孔有台阶（”阶梯孔”），一般用于装螺纹头。</li>
+</ul>
+<p><strong>（3）螺纹孔 M16</strong></p>
+<ul>
+<li><strong>不可能直接做螺纹</strong>，必须先<strong>打底孔</strong>。</li>
+<li>步骤：<strong>打底孔 → 倒角 → 攻螺纹</strong>。<ul>
+<li>底孔直径：口述为 12.66，【以教材为准】（应按螺纹规格查表确定底孔直径）；</li>
+<li>打完底孔后要<strong>打倒角</strong>，可用 <strong>Φ18 的钻头直接压一下</strong>做出倒角；</li>
+<li>最后<strong>攻螺纹</strong>。</li>
+</ul>
+</li>
+</ul>
+<p><strong>（4）均布缺口</strong></p>
+<ul>
+<li>零件上均布 6 个缺口（约 5mm），位置精度要求较高（约 1.8），可用<strong>钻-扩-铰</strong>方式加工。</li>
+</ul>
+<h4 id="3-倒角的做法（实用技巧）"><a href="#3-倒角的做法（实用技巧）" class="headerlink" title="3. 倒角的做法（实用技巧）"></a>3. 倒角的做法（实用技巧）</h4><ul>
+<li>倒角一般<strong>不用专门的倒角钻</strong>，而是用<strong>比孔径大的钻头</strong>压出倒角：钻头边缘是斜的，往下压一点就能在孔口压出倒角。</li>
+<li><strong>压多深需要计算</strong>（例如 C1 还是 C0.5），但倒角本身只是为了方便攻丝时丝锥进入，<strong>只要大概可以就行</strong>。</li>
+<li>现场做法：先用一个指定值试，例如 <code>G43 Z2</code>（用长度补偿把刀具压到 Z2），跑过去看一下倒角大小是否合适；不合适就<strong>在机床面板上直接改刀补值</strong>，而不要回去改程序。</li>
+</ul>
+<h4 id="4-切削用量与镗孔尺寸的逐步逼近"><a href="#4-切削用量与镗孔尺寸的逐步逼近" class="headerlink" title="4. 切削用量与镗孔尺寸的逐步逼近"></a>4. 切削用量与镗孔尺寸的逐步逼近</h4><ul>
+<li><strong>总规律</strong>：粗加工 → 半精加工 → 精加工，<strong>转速逐级提高、进给量逐级降低</strong>。<ul>
+<li>例如转速从 400 提到 500；进给从 60 降到 50 再降到 40。</li>
+</ul>
+</li>
+<li><strong>镗孔尺寸逐步逼近</strong>：<ul>
+<li>粗镗<strong>不要直接干到 60</strong>，否则留给精加工的余量就没有了；</li>
+<li>正确做法：粗镗到 <strong>58</strong> → 半精镗到 <strong>59.5</strong> → 精镗到 <strong>60</strong>；</li>
+<li>原则是<strong>一开始挤得多一点，后面越来越少</strong>。</li>
+</ul>
+</li>
+<li><strong>自检方法</strong>：用这套规律去检查自己写的切削用量对不对——粗加工、半精加工、精加工的转速是不是递增、进给是不是递减，如果不是，说明参数设置有问题。</li>
+</ul>
+<h4 id="5-程序中的坐标值怎么来（易错点）"><a href="#5-程序中的坐标值怎么来（易错点）" class="headerlink" title="5. 程序中的坐标值怎么来（易错点）"></a>5. 程序中的坐标值怎么来（易错点）</h4><p>以某段程序为例：</p>
+<ul>
+<li>快速定位到 <code>X-135 Y45</code>，再下刀；</li>
+<li>关键问题是：<strong>X-135、X-85 这些值是怎么来的？</strong></li>
+<li>判断依据是<strong>刀具直径</strong>：<ul>
+<li>只需要让<strong>刀具中心走到零件边缘</strong>即可把要加工的区域全部覆盖；</li>
+<li>若走得更远（例如 X135），只是<strong>多走空刀、浪费时间</strong>；</li>
+<li>因此在 <code>X-85</code> 处就可以下刀，不必等到 <code>X-135</code>。</li>
+</ul>
+</li>
+<li>下刀深度：粗加工为 Z-3.5；精加工则为 Z-(0.5+3.5)，即把精加工余量 0.5 也算进去。</li>
+<li><strong>毛坯高度推算</strong>：毛坯高度 &#x3D; 零件高度 + 精加工余量 + 粗加工切削深度。口述数据为 15 + 0.5 + 3.5，【以教材&#x2F;题图为准】。</li>
+<li>中心钻：<strong>不是直接往下钻</strong>，而是先用<strong>中心钻</strong>打一个定心孔（”一段一个中心孔”），再钻底孔。</li>
+</ul>
+<hr>
+<h2 id="四、典型例题与解题方法汇总"><a href="#四、典型例题与解题方法汇总" class="headerlink" title="四、典型例题与解题方法汇总"></a>四、典型例题与解题方法汇总</h2><table>
+<thead>
+<tr>
+<th>例题</th>
+<th>核心方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>环形槽路径规划</td>
+<td>看零件尺寸与刀具直径之比；本例 70mm 零件 + 8mm 刀，采用由内向外环切</td>
+</tr>
+<tr>
+<td>起刀点坐标系设定</td>
+<td>做题&#x2F;演示用 G92（起刀点已给）；生产用 G54</td>
+</tr>
+<tr>
+<td>下刀方式</td>
+<td>键槽铣刀可轴向进给；先保持 Z 平移到位，再下降 Z</td>
+</tr>
+<tr>
+<td>圆弧方向判断</td>
+<td>沿刀具前进方向看：顺时针 G02、逆时针 G03；超过 180 度分两段</td>
+</tr>
+<tr>
+<td>环切极限位置</td>
+<td>刀具中心轨迹半径 + 刀具半径 &#x3D; 实际轮廓半径；不能无限外移（如 Y21 而非 Y22）</td>
+</tr>
+<tr>
+<td>刀具半径补偿</td>
+<td>G41 左补 &#x2F; G42 右补；判断看刀具在紧挨工件哪一侧；配 D01，半径值放机床刀补表</td>
+</tr>
+<tr>
+<td>刀补建立时机</td>
+<td>刀具第一次靠近工件时，在斜线切入段建立（如 G41 G01 … D01）</td>
+</tr>
+<tr>
+<td>切入点选择</td>
+<td>斜线切入优于垂直靠入，避免表面接痕</td>
+</tr>
+<tr>
+<td>接触段进给</td>
+<td>已加工表面附近用 G01；G00 快但易刮伤表面</td>
+</tr>
+<tr>
+<td>装夹</td>
+<td>清屑、清装夹面；垫铁留出下刀位；工件敲实；垫铁不动</td>
+</tr>
+<tr>
+<td>对刀计算</td>
+<td>X&#x2F;Y：接触点 + 刀具半径 + 零件半边；Z：以工件上表面为基准不加</td>
+</tr>
+<tr>
+<td>对刀检验</td>
+<td>MDI 方式输入 M3 S800 检验对刀点</td>
+</tr>
+<tr>
+<td>加工顺序</td>
+<td>先面后孔，防止孔变形</td>
+</tr>
+<tr>
+<td>大孔工艺</td>
+<td>精度高用粗镗 - 半精镗 - 精镗（可达 0.1~0.4）</td>
+</tr>
+<tr>
+<td>小孔工艺</td>
+<td>钻 - 扩 - 铰（可达 0.4~0.8）</td>
+</tr>
+<tr>
+<td>螺纹孔工艺</td>
+<td>打底孔 - 倒角 - 攻螺纹</td>
+</tr>
+<tr>
+<td>倒角技巧</td>
+<td>用大一号钻头压出；G43 Z2 试压，现场在面板改刀补值</td>
+</tr>
+<tr>
+<td>镗孔尺寸</td>
+<td>逐步逼近：58 -&gt; 59.5 -&gt; 60</td>
+</tr>
+<tr>
+<td>切削用量</td>
+<td>粗到精：转速递增、进给递减</td>
+</tr>
+<tr>
+<td>换刀与备刀</td>
+<td>T__ M06 换刀；备刀提前把下一把刀转到取刀位</td>
+</tr>
+<tr>
+<td>长程序管理</td>
+<td>分到子程序，M98 P__ 调用、M99 返回；减少空行程</td>
+</tr>
+</tbody></table>
+<p><strong>槽类零件编程标准解题步骤（务必掌握）：</strong></p>
+<ol>
+<li>读图纸，明确<strong>哪些区域要去除</strong>（本例为环形区域）；</li>
+<li>按<strong>零件尺寸与刀具直径之比</strong>选择路径规划方案；</li>
+<li>确定<strong>工件坐标系原点与起刀点</strong>，选择 G92 或 G54；</li>
+<li>规划走刀路线，逐段写出直线&#x2F;圆弧指令，注意<strong>圆弧方向与 180 度分段</strong>；</li>
+<li>计算<strong>环切各次的进刀位置</strong>，校验是否超出零件范围；</li>
+<li>用 <strong>G41&#x2F;G42 + D01</strong> 代替写死的偏置坐标，并在<strong>斜线切入段建立刀补</strong>；</li>
+<li>检查<strong>刀补建立与取消</strong>是否成对、刀具侧别是否全程一致；</li>
+<li>退刀到安全高度，写 M09、M30 结束。</li>
+</ol>
+<hr>
+<h2 id="五、术语与指令速查表"><a href="#五、术语与指令速查表" class="headerlink" title="五、术语与指令速查表"></a>五、术语与指令速查表</h2><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>指令 &#x2F; 表示</th>
+<th>作用与要点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>设定工件坐标系</td>
+<td>G92</td>
+<td>由起刀点设定；做题&#x2F;演示常用，生产多用 G54</td>
+</tr>
+<tr>
+<td>工件坐标系选择</td>
+<td>G54（逐字稿听录为 G50）</td>
+<td>实际生产常用；【以教材为准】</td>
+</tr>
+<tr>
+<td>快速定位</td>
+<td>G00</td>
+<td>速度快，接触已加工表面时慎用</td>
+</tr>
+<tr>
+<td>直线插补</td>
+<td>G01</td>
+<td>切削进给，接触段优先使用</td>
+</tr>
+<tr>
+<td>顺时针圆弧</td>
+<td>G02</td>
+<td>沿刀具前进方向看为顺时针</td>
+</tr>
+<tr>
+<td>逆时针圆弧</td>
+<td>G03</td>
+<td>沿刀具前进方向看为逆时针</td>
+</tr>
+<tr>
+<td>左刀补</td>
+<td>G41</td>
+<td>沿前进方向，刀具在工件左侧</td>
+</tr>
+<tr>
+<td>右刀补</td>
+<td>G42</td>
+<td>沿前进方向，刀具在工件右侧</td>
+</tr>
+<tr>
+<td>取消刀补</td>
+<td>G40</td>
+<td>加工结束后取消</td>
+</tr>
+<tr>
+<td>刀补号</td>
+<td>D01 &#x2F; D02</td>
+<td>指定刀补表里的半径值</td>
+</tr>
+<tr>
+<td>刀具长度补偿</td>
+<td>G43</td>
+<td>长度方向补偿，Z 向使用</td>
+</tr>
+<tr>
+<td>主轴正转</td>
+<td>M03 S__</td>
+<td>设定转速并正转</td>
+</tr>
+<tr>
+<td>冷却液关</td>
+<td>M09</td>
+<td>关闭冷却</td>
+</tr>
+<tr>
+<td>程序结束</td>
+<td>M02</td>
+<td>结束，光标停在程序末尾</td>
+</tr>
+<tr>
+<td>程序结束并复位</td>
+<td>M30</td>
+<td>结束并复位，光标回到程序开头</td>
+</tr>
+<tr>
+<td>换刀</td>
+<td>T__ M06</td>
+<td>换上指定编号的刀具</td>
+</tr>
+<tr>
+<td>备刀（选刀）</td>
+<td>T__</td>
+<td>提前把下一把刀转到换刀位</td>
+</tr>
+<tr>
+<td>子程序调用</td>
+<td>M98 P__</td>
+<td>调用子程序</td>
+</tr>
+<tr>
+<td>子程序返回</td>
+<td>M99</td>
+<td>子程序结束并返回主程序</td>
+</tr>
+<tr>
+<td>键槽铣刀</td>
+<td>刀具</td>
+<td>可轴向进给，能垂直扎入</td>
+</tr>
+<tr>
+<td>立铣刀</td>
+<td>刀具</td>
+<td>端刃不能轴向进给，不能直接扎入</td>
+</tr>
+<tr>
+<td>中心钻</td>
+<td>刀具</td>
+<td>打定心孔，便于后续钻头定位</td>
+</tr>
+<tr>
+<td>粗镗 &#x2F; 半精镗 &#x2F; 精镗</td>
+<td>工艺</td>
+<td>大孔高精度加工，可达 0.1~0.4</td>
+</tr>
+<tr>
+<td>钻 &#x2F; 扩 &#x2F; 铰</td>
+<td>工艺</td>
+<td>小孔加工，可达 0.4~0.8</td>
+</tr>
+<tr>
+<td>底孔</td>
+<td>工艺</td>
+<td>攻螺纹前先钻底孔</td>
+</tr>
+<tr>
+<td>先面后孔</td>
+<td>原则</td>
+<td>先加工面再加工孔，防止孔变形</td>
+</tr>
+<tr>
+<td>斜线切入</td>
+<td>工艺</td>
+<td>优于垂直靠入，减少表面接痕</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="六、课堂任务与复习要求"><a href="#六、课堂任务与复习要求" class="headerlink" title="六、课堂任务与复习要求"></a>六、课堂任务与复习要求</h2><ol>
+<li>能对环形槽类零件<strong>独立完成图纸分析、路径规划与走刀路线设计</strong>。</li>
+<li><strong>掌握刀具半径补偿 G41&#x2F;G42 的判断方法与建立时机</strong>，能说清”为什么用刀补比直接写偏置坐标好”。</li>
+<li>会用<strong>斜线切入&#x2F;切出</strong>，理解其对表面质量的意义。</li>
+<li>掌握<strong>装夹四要点</strong>与<strong>对刀两要点</strong>，会计算 X&#x2F;Y、Z 向的对刀值。</li>
+<li>能对零件图做<strong>粗糙度与加工面判断</strong>，并据此确定加工工艺路线。</li>
+<li>掌握三类孔的工艺：大孔（镗）、小孔（钻扩铰）、螺纹孔（底孔-倒角-攻丝）。</li>
+<li>理解**加工中心”工序集中、多工序多刀具”**的特点，掌握选刀与换刀的区别。</li>
+<li>会用<strong>子程序（M98&#x2F;M99）</strong>组织长程序，并说明减少空行程的思路。</li>
+</ol>
+<hr>
+<h2 id="七、待核对与以教材为准的地方"><a href="#七、待核对与以教材为准的地方" class="headerlink" title="七、待核对与以教材为准的地方"></a>七、待核对与以教材为准的地方</h2><ol>
+<li><strong>起刀点坐标系</strong>：课堂口述为”G50”，按加工中心习惯应为 <strong>G54</strong>（G50 多用于车床坐标系设定），<strong>以教材符号为准</strong>。</li>
+<li>环形槽零件的<strong>具体尺寸</strong>（零件 70mm、刀具 8mm、槽深 3.98mm、各半径 R14&#x2F;R18&#x2F;R25 等）为口述记录，<strong>以题图为准</strong>。</li>
+<li><strong>刀补判断</strong>：本讲第一个例子判断为<strong>左刀补 G41</strong>，末尾又演示了一例判断为<strong>右刀补 G42</strong>。判断规则一致（沿前进方向看刀具在紧挨工件的哪一侧），具体取左还是取右<strong>取决于题目的走刀方向</strong>，做题时按图判断。</li>
+<li>盖板零件的<strong>外形尺寸与孔的数量&#x2F;规格</strong>（口述”180x180x890”、”3 个螺纹孔”、”承头孔&#x2F;孤孔”）识别含糊，<strong>以题图为准</strong>。</li>
+<li><strong>螺纹底孔直径</strong>（口述 M16 底孔为 12.66）<strong>必须按螺纹规格查表确定</strong>，本稿不代为确定。</li>
+<li><strong>毛坯高度推算</strong>（口述 15 + 0.5 + 3.5）与”粗加工余量 1.5”等数据识别含糊，<strong>以教材&#x2F;题图为准</strong>。</li>
+<li>切削用量的具体数值（转速 400&#x2F;500、进给 60&#x2F;50&#x2F;40、镗孔 58&#x2F;59.5&#x2F;60）为课堂举例，<strong>实际取值以教材表格与机床手册为准</strong>。</li>
+<li>加工中心换刀与备刀的程序段写法（如 <code>N10 T01 M06</code>）为课堂示意，<strong>具体格式以所用系统（FANUC 等）说明书为准</strong>。</li>
+<li>本讲末尾约 1:44 之后为<strong>与课程无关的录音内容</strong>（另一段视频&#x2F;现场对话，含”中文字幕志愿者”等），已剔除，未纳入整理。</li>
+<li>录音开头约 0 至 10 分钟<strong>无有效讲课语音</strong>（课堂尚未开始或音频未捕捉到人声），故本篇内容自约 10 分钟处开始。</li>
+</ol>
+<hr>
+<h2 id="八、复习自测（20-题，含答案与提示）"><a href="#八、复习自测（20-题，含答案与提示）" class="headerlink" title="八、复习自测（20 题，含答案与提示）"></a>八、复习自测（20 题，含答案与提示）</h2><p><strong>1. 环形槽零件有哪两种路径规划方案？本例为什么选第一种？</strong><br>答：①先铣内圈、逐步向外环切到边缘；②内外轮廓分别加工后，在中间来回扫掉多余区域。本例零件仅 70mm 而刀具 8mm，方案②来回扫太费时，故选方案①。</p>
+<p><strong>2. 起刀点坐标系什么时候用 G92，什么时候用 G54？</strong><br>答：起刀点坐标已明确给出、做题或客户展示时用 G92，直观易读；实际生产更多用 G54 等工件坐标系。逐字稿听录为”G50”，以教材为准。</p>
+<p><strong>3. 为什么键槽铣刀可以直接扎下去，立铣刀不行？</strong><br>答：键槽铣刀端部有切削刃、可以轴向进给；普通立铣刀端刃不能用于轴向进给，不能垂直扎入。槽较厚时应先钻孔或从边缘引入。</p>
+<p><strong>4. 移刀为什么要”先平移、后下降”？</strong><br>答：避免平移途中撞到工件上的凸起。先保持 Z 高度不变完成 X&#x2F;Y 移动，再缓慢下降 Z，更安全。</p>
+<p><strong>5. 圆弧方向怎么判断？超过 180° 怎么办？</strong><br>答：沿刀具前进方向看，顺时针为 G02、逆时针为 G03；圆弧超过 180° 必须分两段编写。</p>
+<p><strong>6. 环切时为什么不能无限向外进刀？举例说明。</strong><br>答：程序写的是刀具中心轨迹，实际轮廓还要加上刀具半径，超出零件范围就会撞出工件。例如内圈轨迹 R14、刀具半径 4，最终轮廓 R18；若整个平移会到 R26，超过 R25 的范围。</p>
+<p><strong>7. 不用刀补、直接把偏置写进坐标，有什么坏处？</strong><br>答：刀具更换（8mm 换 10mm）或磨损（8mm 变 7.8mm）后，整个程序都要重写，工作量成倍增加。</p>
+<p><strong>8. 用 G41&#x2F;G42 + D01 有什么好处？</strong><br>答：程序只写零件轮廓，偏置量和半径值由刀补号 D01 在机床刀补表里给出。刀具变化时只需在机床面板改刀补值，程序一行不用动。</p>
+<p><strong>9. 怎么判断该用左刀补还是右刀补？</strong><br>答：沿刀具前进方向看，刀具位于<strong>紧挨着的</strong>那侧工件的左边→左补 G41；右边→右补 G42。环形槽左右都有材料，要看清刀具紧挨哪一侧。</p>
+<p><strong>10. 刀补应该在什么时候建立？</strong><br>答：刀具第一次靠近工件时建立，通常安排在斜线切入段，写成 <code>G41 G01 ... D01</code>；加工结束用 G40 取消。</p>
+<p><strong>11. 为什么推荐用斜线切入而不是直接靠入？</strong><br>答：直接靠入容易在工件表面留下接痕；斜线切入、切出更容易控制接痕，表面质量更好。</p>
+<p><strong>12. 已加工表面附近为什么用 G01 而不用 G00？</strong><br>答：G00 速度快，容易刮伤已加工表面；接触段用 G01 慢速进给更稳妥。G00 本身不算错，但接触段建议用 G01。</p>
+<p><strong>13. 工件装夹有哪几个要点？</strong><br>答：①清理虎钳口切屑与装夹面；②垫铁选择要保留刀具下刀位置、避免铣到虎钳；③工件必须敲实（用软材料敲）；④敲好后垫铁不能移动。</p>
+<p><strong>14. 对刀有哪两个要点？X&#x2F;Y 向对刀值怎么算？</strong><br>答：要点是主轴必须转动、接近工件时必须放慢速度。X&#x2F;Y 向：原点坐标 &#x3D; 刀具接触点 + 刀具半径 + 零件半边长。</p>
+<p><strong>15. Z 向对刀为什么不加半径和半边？</strong><br>答：Z 向以工件上表面为基准，原点就在该表面上方，靠近即可，不涉及半径与半边长。</p>
+<p><strong>16. 怎么检验对刀是否正确？</strong><br>答：用 MDI（MDA）方式输入指令检验，例如 <code>M3 S800</code> 让主轴转动，观察对刀点。</p>
+<p><strong>17. 加工中心”工序集中”带来哪些工艺要求？</strong><br>答：①先面后孔，防止孔变形；②合理组合工序（先铣还是先钻）；③保证足够换刀空间避免撞刀；④程序很长必须仔细检查；⑤把不同工序分到子程序，用 M98 P__ 调用、M99 返回；⑥同一把刀尽可能多加工表面，减少空行程。</p>
+<p><strong>18. 选刀和换刀有什么区别？</strong><br>答：换刀 <code>T__ M06</code> 是把主轴上的刀换成指定刀；选刀（备刀）是提前告诉机床下一把用哪把刀，让刀库把它转到取刀位。两者极易混淆，要分清执行到某段时主轴上是哪把刀。</p>
+<p><strong>19. 大孔、小孔、螺纹孔分别用什么工艺路线？</strong><br>答：大孔（如 Φ60、精度 0.8）用粗镗-半精镗-精镗（可达 0.1<del>0.4）；小孔（如 Φ16）用钻-扩-铰（可达 0.4</del>0.8）；螺纹孔先打底孔，再倒角，最后攻螺纹。</p>
+<p><strong>20. 镗孔为什么不能一次镗到尺寸？切削用量有什么总规律？</strong><br>答：一次镗到尺寸就没有精加工余量了。应逐步逼近，如粗镗 58、半精镗 59.5、精镗 60，一开始挤得多、后面越来越少。切削用量总规律：粗加工→半精→精加工，转速逐级提高、进给量逐级降低。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E6%8E%A7%E7%BC%96%E7%A8%8B-%E9%93%A3%E5%89%8A-%E5%88%80%E8%A1%A5/" class="print-no-link">#数控编程 铣削 刀补</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>环形槽零件铣削编程与刀具半径补偿 G41/G42</div>
+      <div>https://tdexxx.github.io/2026/10/14/01_数控加工工艺与编程/数控加工工艺与编程_槽类零件铣削与刀补_发布稿/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>tdexxx</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年10月14日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/10/14/04_%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1_%E8%BD%AE%E7%B3%BB%E6%BB%9A%E5%8A%A8%E8%BD%B4%E6%89%BF%E8%9C%97%E6%9D%86_%E9%80%90%E5%AD%97%E7%A8%BF_ASR%E5%8E%9F%E5%A7%8B/" title="轮系、滚动轴承与蜗杆传动课堂逐字稿（ASR 原始）">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">轮系、滚动轴承与蜗杆传动课堂逐字稿（ASR 原始）</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/10/14/01_%E6%95%B0%E6%8E%A7%E5%8A%A0%E5%B7%A5%E5%B7%A5%E8%89%BA%E4%B8%8E%E7%BC%96%E7%A8%8B/%E6%95%B0%E6%8E%A7%E5%8A%A0%E5%B7%A5%E5%B7%A5%E8%89%BA%E4%B8%8E%E7%BC%96%E7%A8%8B_%E8%AF%BE%E5%A0%82%E9%80%90%E5%AD%97%E7%A8%BF1_ASR%E5%8E%9F%E5%A7%8B/" title="《数控加工工艺与编程》课堂逐字稿（ASR 原始）">
+                        <span class="hidden-mobile">《数控加工工艺与编程》课堂逐字稿（ASR 原始）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

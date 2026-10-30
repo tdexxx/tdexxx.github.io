@@ -1,0 +1,1021 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="tdexxx">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="PLC S7-1200 博途笔记（第八章 用户程序结构 + 第七章习题）：FC函数&#x2F;FB函数块&#x2F;OB组织块&#x2F;DB数据块、局部变量#、单实例与多重背景、程序循环OB1与扫描周期、时间中断&#x2F;延时中断&#x2F;循环中断、TON&#x2F;TOF定时器、S置位保持、P&#x2F;N上下沿、CTU&#x2F;CTD&#x2F;CTUD计数器，含走廊灯与三台电机顺序启">
+<meta property="og:type" content="article">
+<meta property="og:title" content="S7-1200 用户程序结构：FC、FB、OB、DB 与定时器">
+<meta property="og:url" content="https://tdexxx.github.io/2026/10/15/02_%E7%94%B5%E6%B0%94%E6%8E%A7%E5%88%B6%E4%B8%8EPLC/%E7%94%B5%E6%B0%94%E6%8E%A7%E5%88%B6%E4%B8%8EPLC_%E7%94%A8%E6%88%B7%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84FC-FB-OB-DB_%E5%8F%91%E5%B8%83%E7%A8%BF/index.html">
+<meta property="og:site_name" content="tdexxx的博客">
+<meta property="og:description" content="PLC S7-1200 博途笔记（第八章 用户程序结构 + 第七章习题）：FC函数&#x2F;FB函数块&#x2F;OB组织块&#x2F;DB数据块、局部变量#、单实例与多重背景、程序循环OB1与扫描周期、时间中断&#x2F;延时中断&#x2F;循环中断、TON&#x2F;TOF定时器、S置位保持、P&#x2F;N上下沿、CTU&#x2F;CTD&#x2F;CTUD计数器，含走廊灯与三台电机顺序启">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-10-15T14:03:47.000Z">
+<meta property="article:modified_time" content="2026-10-30T17:37:19.925Z">
+<meta property="article:author" content="tdexxx">
+<meta property="article:tag" content="PLC S7-1200 程序结构">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>S7-1200 用户程序结构：FC、FB、OB、DB 与定时器 - tdexxx的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"tdexxx.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2022-12-10T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="S7-1200 用户程序结构：FC、FB、OB、DB 与定时器"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-10-15 22:03" pubdate>
+          2026年10月15日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          7.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          65 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">S7-1200 用户程序结构：FC、FB、OB、DB 与定时器</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="PLC-S7-1200-博途笔记（第八章-用户程序结构-第七章习题）：FC函数-FB函数块-OB组织块-DB数据块、局部变量-、单实例与多重背景、程序循环OB1与扫描周期、时间中断-延时中断-循环中断、TON-TOF定时器、S置位保持、P-N上下沿、CTU-CTD-CTUD计数器，含走廊灯与三台电机顺序启动例题"><a href="#PLC-S7-1200-博途笔记（第八章-用户程序结构-第七章习题）：FC函数-FB函数块-OB组织块-DB数据块、局部变量-、单实例与多重背景、程序循环OB1与扫描周期、时间中断-延时中断-循环中断、TON-TOF定时器、S置位保持、P-N上下沿、CTU-CTD-CTUD计数器，含走廊灯与三台电机顺序启动例题" class="headerlink" title="PLC S7-1200 博途笔记（第八章 用户程序结构 + 第七章习题）：FC函数&#x2F;FB函数块&#x2F;OB组织块&#x2F;DB数据块、局部变量#、单实例与多重背景、程序循环OB1与扫描周期、时间中断&#x2F;延时中断&#x2F;循环中断、TON&#x2F;TOF定时器、S置位保持、P&#x2F;N上下沿、CTU&#x2F;CTD&#x2F;CTUD计数器，含走廊灯与三台电机顺序启动例题"></a>PLC S7-1200 博途笔记（第八章 用户程序结构 + 第七章习题）：FC函数&#x2F;FB函数块&#x2F;OB组织块&#x2F;DB数据块、局部变量#、单实例与多重背景、程序循环OB1与扫描周期、时间中断&#x2F;延时中断&#x2F;循环中断、TON&#x2F;TOF定时器、S置位保持、P&#x2F;N上下沿、CTU&#x2F;CTD&#x2F;CTUD计数器，含走廊灯与三台电机顺序启动例题</h1><blockquote>
+<p>本篇前半讲评博途（TIA Portal）第七章课后习题（7-30～7-44），复习常开常闭、NOT 取反、比较、数学运算与移动、TON&#x2F;TOF 定时器、置位保持、上升沿&#x2F;下降沿、加&#x2F;减&#x2F;加减计数器等基本指令；后半进入第八章新内容——<strong>PLC 用户程序结构</strong>，系统讲 FC 函数、FB 函数块、OB 组织块、DB 数据块、背景数据块与多重背景、程序循环 OB1 与扫描周期，以及时间中断、延时中断、循环中断等中断组织块，并完成”走廊灯延时熄灭、再按重新计时”和”三台电机顺序启动&#x2F;停止”两道典型编程题。第七章指令是基础，第八章程序块结构化编程是重点。</p>
+</blockquote>
+<hr>
+<h2 id="一、核心结论（先记住这-18-条）"><a href="#一、核心结论（先记住这-18-条）" class="headerlink" title="一、核心结论（先记住这 18 条）"></a>一、核心结论（先记住这 18 条）</h2><ol>
+<li>S7-1200 用户程序由不同的<strong>块（Block）</strong>组成，核心是 <strong>OB 组织块、FC 函数、FB 函数块、DB 数据块</strong>。</li>
+<li><strong>OB 组织块</strong>是操作系统与用户程序的接口，由操作系统调用；其中 <strong>OB1（Main，程序循环组织块）</strong>是主程序，CPU 运行时被<strong>周期性循环调用</strong>，新建工程时默认生成。</li>
+<li>一个项目至少有一个程序循环 OB（OB1）；可有多个，按 OB 编号<strong>由小到大依次执行</strong>；程序循环 OB 优先级最低，可被高优先级的中断 OB 打断。</li>
+<li>CPU 执行一次程序循环 OB 所需时间即<strong>程序循环扫描周期</strong>（课堂举例约 150 ms 量级），普通定时器的定时精度受扫描周期影响。</li>
+<li><strong>FC（函数&#x2F;功能）</strong>是用户编写的、完成特定任务的<strong>子程序</strong>，有 Input&#x2F;Output&#x2F;InOut&#x2F;Temp 接口参数，<strong>没有自己的背景数据块，执行完后内部临时数据全部释放、不保存</strong>。</li>
+<li>FC 内的局部变量在程序编辑器中前面自动加 <strong><code>#</code></strong> 号；在 OB 中调用 FC 时，框外传入的实参（全局符号）自动加双引号。</li>
+<li><strong>FB（函数块&#x2F;功能块）</strong>也是用户子程序，但<strong>拥有自己的背景数据块（Instance DB）</strong>，可保存数据；其接口除 Input&#x2F;Output&#x2F;InOut&#x2F;Temp 外还有 <strong>Static（静态变量）</strong>，静态变量在执行结束后仍保持。</li>
+<li>FC 适合做纯运算、处理完即释放；FB 适合需要记忆&#x2F;保持状态（如内含定时器、计数器）的功能封装。</li>
+<li>FB 可被 OB 或其他块调用；调用单个 FB 时系统为每次调用生成一个背景 DB，称<strong>单实例</strong>。</li>
+<li><strong>多重背景（Multi-instance）</strong>：在一个 FB 内多次调用别的 FB（如多个 TON&#x2F;TOF、多台电机），把它们的背景数据集中存放在外层 FB 的一个背景 DB 中，避免生成大量零散背景 DB，便于管理上百台设备。</li>
+<li>FC&#x2F;FB 都可用 <strong>LAD 梯形图</strong>或 <strong>SCL 结构化文本</strong>（类高级语言）编写；SCL 适合表达数学运算和复杂逻辑。</li>
+<li><strong>TON 是接通延时定时器</strong>（输入接通后延时到设定值输出才接通；输入断开立即停止计时并复位）；<strong>TOF 是断电延时定时器</strong>（输入断开后延时一段时间输出才断开），可类比”断电后小车还滑行一段”。</li>
+<li>定时器有 <strong>PT（预设时间）、ET（当前&#x2F;已计时时间）、Q（输出位）、IN（输入）、R（复位）</strong>等端子；ET 实时显示当前计时值，可用 ET 与设定值比较实现区间输出。</li>
+<li><strong>S 置位 &#x2F; R 复位</strong>具有<strong>记忆保持</strong>功能：置位后即使输入（如 I0.0）断开，该位仍保持上一次状态，直到被复位。</li>
+<li><strong>P 上升沿 &#x2F; N 下降沿</strong>指令检测信号跳变，只在跳变后的<strong>一个扫描周期</strong>输出脉冲，常用于”按一下触发一次”；可与置位保持配合。</li>
+<li>计数器：<strong>CTU 加计数器、CTD 减计数器、CTUD 加减计数器</strong>；<strong>PV 预设值、CV 当前值、Q 输出、R 复位、LD 装载</strong>；CTD 的 LD 按下后 CV 回到装载值 PV。</li>
+<li><strong>中断组织块</strong>包括时间中断、延时中断、循环中断、硬件中断等；<strong>延时中断由硬件&#x2F;系统级实现，定时精度高于受扫描周期影响的普通定时器</strong>，用于高精度延时。</li>
+<li>时间中断可按每分钟&#x2F;每小时&#x2F;每天&#x2F;每月或指定日期触发，配套 SET（设置）、QRY&#x2F;QUERY（查询）、ACT（激活）、CAN（取消）指令；延时中断在触发条件（如输入由 1 变 0）后延时固定时间再执行中断 OB，也有启动 SRT、取消 CAN、查询 QRY 指令。</li>
+</ol>
+<hr>
+<h2 id="二、知识结构（本节脉络）"><a href="#二、知识结构（本节脉络）" class="headerlink" title="二、知识结构（本节脉络）"></a>二、知识结构（本节脉络）</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-type">PLC</span> <span class="hljs-type">S7</span><span class="hljs-operator">-</span><span class="hljs-number">1200</span> 博途<br><span class="hljs-operator">│</span><br><span class="hljs-operator">├─</span> 第七章 基本指令（习题讲评复习）<br><span class="hljs-operator">│</span>   <span class="hljs-operator">├─</span> 位逻辑：常开<span class="hljs-operator">/</span>常闭<span class="hljs-operator">、</span><span class="hljs-type">NOT</span> 取反<span class="hljs-operator">、</span>线圈<br><span class="hljs-operator">│</span>   <span class="hljs-operator">├─</span> 比较指令（大于<span class="hljs-regexp">/小于/</span>等于<span class="hljs-operator">…</span>）<br><span class="hljs-operator">│</span>   <span class="hljs-operator">├─</span> 数学函数（加减乘除<span class="hljs-operator">、</span>可自定义公式）<span class="hljs-operator">、</span><span class="hljs-type">MOV</span> 移动<br><span class="hljs-operator">│</span>   <span class="hljs-operator">├─</span> 定时器：<span class="hljs-type">TON</span> 接通延时 <span class="hljs-operator">/</span> <span class="hljs-type">TOF</span> 断电延时（<span class="hljs-type">IN</span><span class="hljs-regexp">/PT/</span><span class="hljs-type">ET</span><span class="hljs-regexp">/Q/</span><span class="hljs-type">R）</span><br><span class="hljs-operator">│</span>   <span class="hljs-operator">├─</span> 置位 <span class="hljs-type">S</span> <span class="hljs-operator">/</span> 复位 <span class="hljs-type">R（记忆保持）</span><br><span class="hljs-operator">│</span>   <span class="hljs-operator">├─</span> 边沿：<span class="hljs-type">P</span> 上升沿 <span class="hljs-operator">/</span> <span class="hljs-type">N</span> 下降沿（一个扫描周期脉冲）<br><span class="hljs-operator">│</span>   <span class="hljs-operator">└─</span> 计数器：<span class="hljs-type">CTU</span> <span class="hljs-operator">/</span> <span class="hljs-type">CTD</span> <span class="hljs-operator">/</span> <span class="hljs-type">CTUD（PV</span><span class="hljs-regexp">/CV/</span><span class="hljs-type">Q</span><span class="hljs-regexp">/R/</span><span class="hljs-type">LD）</span><br><span class="hljs-operator">│</span><br><span class="hljs-operator">└─</span> 第八章 用户程序结构（新授重点）<br>    <span class="hljs-operator">├─</span> 块：<span class="hljs-type">OB</span> 组织块 <span class="hljs-operator">/</span> <span class="hljs-type">FC</span> 函数 <span class="hljs-operator">/</span> <span class="hljs-type">FB</span> 函数块 <span class="hljs-operator">/</span> <span class="hljs-type">DB</span> 数据块<br>    <span class="hljs-operator">├─</span> <span class="hljs-type">FC：子程序</span><span class="hljs-operator">、</span>接口参数<span class="hljs-operator">、</span>局部变量#<span class="hljs-operator">、</span>无背景<span class="hljs-type">DB</span><span class="hljs-operator">、</span>执行完释放<br>    <span class="hljs-operator">├─</span> <span class="hljs-type">FB：背景数据块</span><span class="hljs-operator">、</span><span class="hljs-type">Static</span> 静态变量<span class="hljs-operator">、</span>单实例<br>    <span class="hljs-operator">├─</span> 多重背景：一个背景<span class="hljs-type">DB集中管理多个实例（多台电机）</span><br>    <span class="hljs-operator">├─</span> 编程语言：<span class="hljs-type">LAD</span> 梯形图 <span class="hljs-operator">/</span> <span class="hljs-type">SCL</span> 结构化文本<br>    <span class="hljs-operator">└─</span> <span class="hljs-type">OB</span> 组织块<br>        <span class="hljs-operator">├─</span> 程序循环 <span class="hljs-type">OB（OB1</span><span class="hljs-operator">/</span><span class="hljs-type">Main）：循环扫描</span><span class="hljs-operator">、</span>优先级<span class="hljs-operator">、</span>扫描周期<br>        <span class="hljs-operator">├─</span> 启动 <span class="hljs-type">OB</span><br>        <span class="hljs-operator">└─</span> 中断 <span class="hljs-type">OB</span><br>            <span class="hljs-operator">├─</span> 时间中断（<span class="hljs-type">Time</span><span class="hljs-operator">-</span>of<span class="hljs-operator">-</span>day：<span class="hljs-type">SET</span><span class="hljs-regexp">/QRY/</span><span class="hljs-type">ACT</span><span class="hljs-operator">/</span><span class="hljs-type">CAN）</span><br>            <span class="hljs-operator">├─</span> 延时中断（<span class="hljs-type">Delay：SRT</span><span class="hljs-regexp">/CAN/</span><span class="hljs-type">QRY，高精度）</span><br>            <span class="hljs-operator">├─</span> 循环中断（<span class="hljs-type">Cyclic，周期执行）</span><br>            <span class="hljs-operator">└─</span> 硬件中断<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="三、详细知识点笔记"><a href="#三、详细知识点笔记" class="headerlink" title="三、详细知识点笔记"></a>三、详细知识点笔记</h2><h3 id="（一）第七章基本指令复习（结合习题）"><a href="#（一）第七章基本指令复习（结合习题）" class="headerlink" title="（一）第七章基本指令复习（结合习题）"></a>（一）第七章基本指令复习（结合习题）</h3><h4 id="1-位逻辑与取反"><a href="#1-位逻辑与取反" class="headerlink" title="1. 位逻辑与取反"></a>1. 位逻辑与取反</h4><ul>
+<li><strong>常开触点、常闭触点、输出线圈</strong>是最基本的位逻辑元素。</li>
+<li><strong>NOT 为取反指令</strong>，把它前面的逻辑运算结果取反：例如 I0.2 接通，经过 NOT 后其后的常闭逻辑状态被翻转（习题 7-36：I0.2 接通时，经 NOT 使对应输出断开）。</li>
+</ul>
+<h4 id="2-比较与数学运算、移动"><a href="#2-比较与数学运算、移动" class="headerlink" title="2. 比较与数学运算、移动"></a>2. 比较与数学运算、移动</h4><ul>
+<li><strong>比较指令</strong>：对两个数做大于、小于、等于、大于等于、小于等于、不等于比较，条件成立则触点接通（”比大小”）。</li>
+<li><strong>数学函数</strong>：加、减、乘、除等运算；还可以由用户<strong>自定义函数关系式（PT&#x2F;BT 公式）</strong>进行计算。</li>
+<li><strong>MOV（移动）指令</strong>：把源操作数传送到目的地址。</li>
+</ul>
+<h4 id="3-定时器-TON-TOF"><a href="#3-定时器-TON-TOF" class="headerlink" title="3. 定时器 TON &#x2F; TOF"></a>3. 定时器 TON &#x2F; TOF</h4><ul>
+<li><strong>TON（接通延时，On-Delay）</strong>：输入 IN 接通后开始计时，当前值 ET 从 0 增加，当 ET ≥ PT（预设时间）时输出 Q 接通并保持；<strong>输入 IN 一旦断开，定时器立即停止计时并复位（当前值清零、Q 断开）</strong>。</li>
+<li><strong>TOF（断电延时，Off-Delay）</strong>：输入接通时输出立即接通；输入断开后开始延时，经过 PT 时间输出才断开。可比喻为”断电后小车靠惯性继续滑行一段才停”。</li>
+<li>端子含义：<strong>IN 输入、PT 预设时间、ET 当前已计时时间（实时显示）、Q 输出、R 复位</strong>。</li>
+<li>利用 ET 实时值可做区间判断：如 PT&#x3D;10 s，另加一条”ET ≥ 5 s 即输出”的比较，则在第 5～10 秒区间输出就接通（习题 7-31 结论）。</li>
+</ul>
+<h4 id="4-置位-S-复位-R（记忆保持）"><a href="#4-置位-S-复位-R（记忆保持）" class="headerlink" title="4. 置位 S &#x2F; 复位 R（记忆保持）"></a>4. 置位 S &#x2F; 复位 R（记忆保持）</h4><ul>
+<li><strong>S（Set 置位）</strong>：一旦条件满足把位置 1 并<strong>保持</strong>；即使驱动条件（如 I0.0）随后断开，该位仍记住上一次状态、保持为 1，直到 <strong>R（Reset 复位）</strong>把它清零。</li>
+<li>因此 S&#x2F;R 具有记忆功能，是典型的启保停之外的另一种保持手段。</li>
+</ul>
+<h4 id="5-上升沿-P-下降沿-N"><a href="#5-上升沿-P-下降沿-N" class="headerlink" title="5. 上升沿 P &#x2F; 下降沿 N"></a>5. 上升沿 P &#x2F; 下降沿 N</h4><ul>
+<li><strong>P（上升沿）</strong>：检测输入信号由 0 变 1 的跳变，仅在跳变后的<strong>一个扫描周期</strong>内输出一个脉冲。</li>
+<li><strong>N（下降沿）</strong>：检测由 1 变 0 的跳变，同样只接通一个扫描周期。</li>
+<li>常用于按钮”按一下只动作一次”，避免长按期间重复执行；可与 M 中间标志、S 置位组合实现触发保持。</li>
+</ul>
+<h4 id="6-计数器-CTU-CTD-CTUD"><a href="#6-计数器-CTU-CTD-CTUD" class="headerlink" title="6. 计数器 CTU &#x2F; CTD &#x2F; CTUD"></a>6. 计数器 CTU &#x2F; CTD &#x2F; CTUD</h4><ul>
+<li><strong>CTU 加计数器</strong>：每来一个计数脉冲当前值 CV 加 1，达到预设值 PV 时输出 Q 接通；R 复位清零。</li>
+<li><strong>CTD 减计数器</strong>：每来一个脉冲 CV 减 1；<strong>LD（装载）端</strong>按下时把 CV 重新装载为 PV（回到初始装载值），此时 Q 不接通（习题 7-30：按 I0.3 装载，CV 飞回 PV&#x3D;3，Q 不接通，选最后一项 D）。</li>
+<li><strong>CTUD 加减计数器</strong>：既可加又可减，带加计数端、减计数端、装载 LD、复位 R。</li>
+<li>公共端子：<strong>PV 预设值、CV 当前值、Q 输出、R 复位、LD 装载</strong>。</li>
+</ul>
+<h4 id="7-部分习题答案（课堂口径，-以教材-题图为准-）"><a href="#7-部分习题答案（课堂口径，-以教材-题图为准-）" class="headerlink" title="7. 部分习题答案（课堂口径，[以教材&#x2F;题图为准]）"></a>7. 部分习题答案（课堂口径，[以教材&#x2F;题图为准]）</h4><table>
+<thead>
+<tr>
+<th>题号</th>
+<th>考点</th>
+<th>课堂结论</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>7-30</td>
+<td>CTD 减计数器、LD 装载</td>
+<td>按装载端 I0.3 后 CV 回到 PV&#x3D;3，Q 不接通，选最后一项（D）</td>
+</tr>
+<tr>
+<td>7-31</td>
+<td>TON 时序、ET 区间</td>
+<td>PT&#x3D;10 s，加 ET≥5 s 比较，则 5～10 秒区间输出接通，选最后一项</td>
+</tr>
+<tr>
+<td>7-32 &#x2F; 7-34</td>
+<td>基本指令时序</td>
+<td>按题图分析（课堂带过）</td>
+</tr>
+<tr>
+<td>7-35</td>
+<td>指令判断</td>
+<td>答案 C</td>
+</tr>
+<tr>
+<td>7-36</td>
+<td>NOT 取反</td>
+<td>I0.2 接通经取反使其后逻辑断开</td>
+</tr>
+<tr>
+<td>7-37</td>
+<td>时序&#x2F;数值</td>
+<td>答案 005</td>
+</tr>
+<tr>
+<td>7-38</td>
+<td>TON 时序图改错</td>
+<td>B 错：TON 输入断开应<strong>停止计时并复位</strong>，且 Q 是延时到才接通、不是输入一接通立即变 1</td>
+</tr>
+<tr>
+<td>7-40</td>
+<td>边沿&#x2F;置位综合</td>
+<td>答案 D</td>
+</tr>
+<tr>
+<td>7-41</td>
+<td>置位保持</td>
+<td>答案 B（第二个）</td>
+</tr>
+<tr>
+<td>7-42</td>
+<td>综合判断</td>
+<td>答案 C</td>
+</tr>
+<tr>
+<td>7-44</td>
+<td>综合</td>
+<td>答案第二个</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>7-38 关键辨析：TON 在 I0.0 接通后开始计时，当前值增加到 5 s（PT）时 Q 才接通；输入断开时 TON 停止计时并复位——把 Q 画成输入接通立即变 1、或输入断开仍继续计时的时序图都是错误的。</p>
+</blockquote>
+<h3 id="（二）第八章-用户程序结构：块的分类"><a href="#（二）第八章-用户程序结构：块的分类" class="headerlink" title="（二）第八章 用户程序结构：块的分类"></a>（二）第八章 用户程序结构：块的分类</h3><p>S7-1200 在博途中把用户程序组织成若干”块”，主要包括：</p>
+<ul>
+<li><strong>OB（Organization Block，组织块）</strong>：操作系统与用户程序之间的接口，由操作系统自动调用，决定程序的执行结构（循环、启动、中断）。</li>
+<li><strong>FC（Function，函数&#x2F;功能）</strong>：用户编写的子程序，无固定存储区。</li>
+<li><strong>FB（Function Block，函数块&#x2F;功能块）</strong>：用户编写的、带背景数据块的子程序。</li>
+<li><strong>DB（Data Block，数据块）</strong>：存放程序数据的存储区，分全局数据块和 FB 的背景数据块。</li>
+<li>此外还有<strong>交叉引用（Cross-reference）</strong>功能，可查看某一变量&#x2F;地址在程序各处被使用的位置（类似论文里标注引用编号①②③的对应关系）。</li>
+</ul>
+<h3 id="（三）FC-函数（功能）"><a href="#（三）FC-函数（功能）" class="headerlink" title="（三）FC 函数（功能）"></a>（三）FC 函数（功能）</h3><ol>
+<li>FC 是用户编写的、用于完成某一特定任务的子程序，包含与调用块交换信息的<strong>输入&#x2F;输出接口参数</strong>，执行后把结果返回给调用块（OB 或 FB）。</li>
+<li>FC 的接口区可声明：<ul>
+<li><strong>Input（输入）</strong>：调用时传入；</li>
+<li><strong>Output（输出）</strong>：执行结果返回；</li>
+<li><strong>InOut（输入输出）</strong>：既传入又返回；</li>
+<li><strong>Temp（临时变量）</strong>：仅本次执行有效。</li>
+</ul>
+</li>
+<li><strong>FC 没有专用的背景数据块</strong>，执行完成后其临时数据被全部释放、不保存（类比手机里某些 APP 退出后内存立即释放）。</li>
+<li>FC 内使用的局部变量，程序编辑器自动在变量名前加 **<code>#</code>**（如 <code>#目标1</code>、<code>#pick_one</code>，名称可自行修改）；在 OB1 中调用 FC 时，框外连接的全局实参自动加双引号。</li>
+<li>FC 主要用于运算、数据处理等不需要记忆的场合，可被 OB、FB 多次调用，使程序结构化、便于复用。</li>
+</ol>
+<h3 id="（四）FB-函数块与背景数据块"><a href="#（四）FB-函数块与背景数据块" class="headerlink" title="（四）FB 函数块与背景数据块"></a>（四）FB 函数块与背景数据块</h3><ol>
+<li>FB 同样是完成特定任务的子程序，但它<strong>拥有自己的背景数据块（Instance DB）</strong>，执行结束后数据仍被保存。</li>
+<li>FB 接口除 Input&#x2F;Output&#x2F;InOut&#x2F;Temp 外，还可有 <strong>Static（静态变量）</strong>，静态变量存储在背景 DB 中、具有保持能力，可减少在块外重复定义大量全局变量。</li>
+<li>当 FB 中使用 TON&#x2F;TOF 定时器、计数器等本身需要背景数据的指令时，必须为其分配背景数据；把定时器封装在 FB 中更规范。</li>
+<li>调用 FB 时（如在 OB1 中调用一个”电动机控制 FB”），系统弹出调用选项对话框，输入背景数据块名称（可用默认名），确认后自动生成该 FB 的背景 DB。</li>
+</ol>
+<h3 id="（五）单实例与多重背景（重点-难点）"><a href="#（五）单实例与多重背景（重点-难点）" class="headerlink" title="（五）单实例与多重背景（重点&#x2F;难点）"></a>（五）单实例与多重背景（重点&#x2F;难点）</h3><ul>
+<li><strong>单实例（Single instance）</strong>：每调用一次 FB，就单独生成一个背景数据块。若一个 FB（如电动机控制块）要控制很多台（上百台）电机，就会生成上百个背景 DB，数据块数量庞大、不便于管理。</li>
+<li><strong>多重背景（Multi-instance）</strong>：把多个被调用 FB（或多个定时器&#x2F;电机实例）的背景数据，集中存放到<strong>外层 FB 的同一个背景数据块</strong>中，由外层 FB 统一管理，显著减少背景 DB 数量。</li>
+<li>建立多重背景的一般步骤（博途）：<ol>
+<li>添加新块、选择<strong>函数块 FB</strong>，设置编号与编程语言，确认生成 FB；</li>
+<li>打开 FB，在<strong>接口区</strong>声明需要的多重背景（如电动机类型、1 号&#x2F;2 号电机实例，静态变量类型选为对应 FB）；</li>
+<li>在 OB（主程序）中调用该外层 FB，为不同实例选择对应选项（如 1 号电机选实例一、2 号电机选实例二）；</li>
+<li>所有实例的数据集中在外层 FB 的一个背景 DB 中，主程序中可统一显示&#x2F;调用多台设备。</li>
+</ol>
+</li>
+<li>这样一个程序控制多台甚至上百台电机时，只需要管理少量（甚至一个）背景 DB，结构清晰、便于维护。</li>
+</ul>
+<h3 id="（六）编程语言：LAD-与-SCL"><a href="#（六）编程语言：LAD-与-SCL" class="headerlink" title="（六）编程语言：LAD 与 SCL"></a>（六）编程语言：LAD 与 SCL</h3><ul>
+<li><strong>LAD（梯形图）</strong>：以触点、线圈、功能框图形化表达，直观、接近继电器电路。</li>
+<li><strong>SCL（结构化控制语言）</strong>：类似高级语言（Pascal 风格），用语句表达运算和逻辑，适合数学计算、循环、复杂条件；FC&#x2F;FB 均可选用 SCL 编写，在博途中可对 SCL 程序进行仿真调试。</li>
+</ul>
+<h3 id="（七）OB-组织块"><a href="#（七）OB-组织块" class="headerlink" title="（七）OB 组织块"></a>（七）OB 组织块</h3><h4 id="1-程序循环组织块-OB1（Main）"><a href="#1-程序循环组织块-OB1（Main）" class="headerlink" title="1. 程序循环组织块 OB1（Main）"></a>1. 程序循环组织块 OB1（Main）</h4><ul>
+<li>CPU 处于 RUN（工作）状态时，<strong>周期性循环执行</strong> OB1，它是主程序；新建工程时默认生成 OB1。</li>
+<li>一个项目<strong>至少有一个</strong>程序循环 OB；可以有多个，编号必须符合系统规定，多个程序循环 OB 按<strong>编号由小到大依次执行</strong>。</li>
+<li>程序循环 OB 的优先级最低，<strong>可被更高优先级的中断组织块中断</strong>；优先级数值越大优先级越高。</li>
+<li>CPU 循环执行一次 OB 所需时间称为<strong>程序循环扫描周期</strong>（课堂举例全程约 150 ms，具体随程序长短变化）。</li>
+</ul>
+<h4 id="2-启动组织块"><a href="#2-启动组织块" class="headerlink" title="2. 启动组织块"></a>2. 启动组织块</h4><ul>
+<li>在 CPU 从 STOP 转 RUN 的启动阶段执行一次，用于上电初始化。</li>
+</ul>
+<h4 id="3-中断组织块（时间-延时-循环-硬件中断）"><a href="#3-中断组织块（时间-延时-循环-硬件中断）" class="headerlink" title="3. 中断组织块（时间&#x2F;延时&#x2F;循环&#x2F;硬件中断）"></a>3. 中断组织块（时间&#x2F;延时&#x2F;循环&#x2F;硬件中断）</h4><p>中断 OB 由特定事件触发、可打断 OB1 的循环执行，执行完后返回断点继续。</p>
+<p><strong>（1）时间中断（Time-of-day interrupt）</strong></p>
+<ul>
+<li>可设置在指定的日期时间到达后触发，并可按<strong>每分钟、每小时、每天、每月</strong>等周期执行；例如设定到 2026 年（或 2036 年）某月某日某时触发一次。</li>
+<li>配套指令（在扩展指令→中断→时间中断中）：<ul>
+<li><strong>SET_TOD（设置时间中断）</strong>：设定触发日期时间；</li>
+<li><strong>ACT（激活时间中断）</strong>；</li>
+<li><strong>CAN_TOD（取消时间中断）</strong>；</li>
+<li><strong>QRY_TOD（查询时间中断状态）</strong>。</li>
+</ul>
+</li>
+<li>建立方式：添加新块→组织块→选择 Time-of-day（时间中断）OB；在程序中用设置指令写入目标时间，触发时执行该 OB（例：每次触发让 MW2 加 1，再传送到 FB 块做累计，可一直累加到设定的若干年后）。</li>
+</ul>
+<p><strong>（2）延时中断（Delay interrupt）——高精度延时</strong></p>
+<ul>
+<li>普通 TON&#x2F;TOF 定时器的工作与 PLC <strong>循环扫描方式</strong>有关，定时精度受扫描周期影响、精度有限。</li>
+<li><strong>延时中断由系统&#x2F;硬件级实现</strong>：在触发条件出现后，经过设定的精确延时再执行对应的中断 OB，定时精度高，适合需要高精度延时的场合。</li>
+<li>建立方式：添加新块→组织块→选择延时中断（Delay）OB（如 OB20）。</li>
+<li>工作过程示例：当输入 I0.0 <strong>由 1 变 0</strong>（下降沿）时启动延时中断，延时 5 s 后执行 OB20，把 Q0.x 置位（如走廊灯 5 s 后熄灭）；若在延时到达前取消（如条件由 0 变回 1），则 OB20 不执行。</li>
+<li>配套指令：<strong>SRT_DLY（启动延时中断）、CAN_DLY（取消）、QRY_DLY（查询状态）</strong>。</li>
+</ul>
+<p><strong>（3）循环中断（Cyclic interrupt）与硬件中断</strong></p>
+<ul>
+<li><strong>循环中断 OB</strong>：按固定时间间隔周期性执行（如每隔固定毫秒执行一次），用于周期采样、PID 等。</li>
+<li><strong>硬件中断 OB</strong>：由高速 I&#x2F;O 上的硬件事件（如高速计数、模块报警）立即触发。</li>
+</ul>
+<hr>
+<h2 id="四、典型编程例题"><a href="#四、典型编程例题" class="headerlink" title="四、典型编程例题"></a>四、典型编程例题</h2><h3 id="例题-1：走廊灯（玄关灯）延时熄灭、再按重新计时"><a href="#例题-1：走廊灯（玄关灯）延时熄灭、再按重新计时" class="headerlink" title="例题 1：走廊灯（玄关灯）延时熄灭、再按重新计时"></a>例题 1：走廊灯（玄关灯）延时熄灭、再按重新计时</h3><p><strong>控制要求</strong>：来人按一下按钮 I0.0，灯 Q0.0 点亮并保持；点亮 30 s 后自动熄灭；如果在这 30 s 内又有人按一次按钮，则<strong>重新从 0 开始计时</strong>（30 s 顺延）。</p>
+<p><strong>编程思路（梯形图）</strong>：</p>
+<ol>
+<li>按钮 I0.0 是常开点动信号，先用<strong>上升沿 P</strong>检测”按一下”，驱动中间继电器 M0.0 产生一个扫描周期脉冲；</li>
+<li>用 M0.0 的常开触点去<strong>置位（S）Q0.0</strong>（或用 M0.0 接通 TON 并自锁），使灯点亮保持；</li>
+<li>同时用 M0.0 启动（或复位重启）<strong>接通延时定时器 TON，PT&#x3D;30 s</strong>；</li>
+<li>用 TON 延时到后接通的<strong>常闭触点</strong>串在 Q0.0 的保持回路中：30 s 到，常闭点断开，Q0.0 失电熄灭；</li>
+<li>“再按重新计时”：每次 M0.0 脉冲都对 TON 进行一次复位&#x2F;重新触发（用 M0.0 常闭点切断定时器输入使其当前值清零，再重新计时），从而实现 30 s 从头开始。</li>
+</ol>
+<p><strong>要点</strong>：</p>
+<ul>
+<li>标准写法建议用<strong>中间继电器 M0.0</strong> 过渡（而不是直接用 Q0.0 触点），逻辑更清晰、规范；</li>
+<li>定时器线圈、Q 线圈、定时器常闭延时触点的位置要分清：延时闭合的常开点到时间接通，用来断开灯回路时取其<strong>常闭</strong>触点；</li>
+<li>上升沿 P 保证按一次只触发一次，避免按住按钮期间反复动作。</li>
+</ul>
+<h3 id="例题-2：三台电动机顺序启动、顺序停止"><a href="#例题-2：三台电动机顺序启动、顺序停止" class="headerlink" title="例题 2：三台电动机顺序启动、顺序停止"></a>例题 2：三台电动机顺序启动、顺序停止</h3><p><strong>控制要求</strong>：按下启动按钮 I0.0 后：</p>
+<ul>
+<li>第一台电机 Q0.0 立即启动；</li>
+<li>10 s 后第二台电机 Q0.1 自动启动；</li>
+<li>再经过 5 s（即启动后 15 s）第三台电机 Q0.2 自动启动，<strong>同时第一台电机 Q0.0 停止</strong>；</li>
+<li>之后按工艺要求延时停其余电机（课堂以 T37&#x2F;T38&#x2F;T39 三个定时器逐级实现）。</li>
+</ul>
+<p><strong>编程思路（分三段写最清楚）</strong>：</p>
+<ol>
+<li><strong>第一台电机段</strong>：I0.0 启动并自锁 Q0.0（或置位）；同时启动定时器 T37，PT&#x3D;10 s；</li>
+<li><strong>第二台电机段</strong>：T37 延时 10 s 到、其常开触点闭合，启动 Q0.1 并自锁，同时启动 T38，PT&#x3D;5 s；</li>
+<li><strong>第三台电机段</strong>：T38 再延时 5 s 到、常开触点闭合，启动 Q0.2；同时用 T38（或 T39）触点断开 Q0.0，使第一台停止；后续需要停第二台时再用 T39 定时断开 Q0.1。</li>
+</ol>
+<p><strong>要点与课堂纠错</strong>：</p>
+<ul>
+<li>推荐<strong>按”第一台&#x2F;第二台&#x2F;第三台”分成三个程序段</strong>分别写，每段配自己的定时器，逻辑清楚、不易漏；</li>
+<li>定时器编号（如 T37、T38、T39）和 Q0.0&#x2F;Q0.1&#x2F;Q0.2、中间标志 M 要一一对应、在图上标注清楚；</li>
+<li>注意每台电机”启动谁、停谁”：第三台启动的同时第一台停止，不要误把第二台也停掉；</li>
+<li>必要时在中间加中间继电器（如 M 位）来统一控制前级，使梯形图更规范。</li>
+</ul>
+<hr>
+<h2 id="五、术语与指令速查表"><a href="#五、术语与指令速查表" class="headerlink" title="五、术语与指令速查表"></a>五、术语与指令速查表</h2><table>
+<thead>
+<tr>
+<th>术语&#x2F;指令</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>OB 组织块</td>
+<td>操作系统与用户程序接口，被系统调用</td>
+</tr>
+<tr>
+<td>OB1 &#x2F; Main</td>
+<td>程序循环组织块、主程序，RUN 时周期循环执行</td>
+</tr>
+<tr>
+<td>扫描周期</td>
+<td>CPU 循环执行一次 OB1 的时间（举例约 150 ms）</td>
+</tr>
+<tr>
+<td>FC 函数</td>
+<td>用户子程序，无背景 DB，执行完数据释放</td>
+</tr>
+<tr>
+<td>FB 函数块</td>
+<td>带背景数据块的用户子程序，可保持数据</td>
+</tr>
+<tr>
+<td>DB 数据块</td>
+<td>存放数据，分全局 DB 与背景 DB</td>
+</tr>
+<tr>
+<td>接口参数</td>
+<td>Input &#x2F; Output &#x2F; InOut &#x2F; Temp；FB 另有 Static</td>
+</tr>
+<tr>
+<td><code>#</code> 局部变量</td>
+<td>FC&#x2F;FB 内局部变量自动加 #；全局实参加双引号</td>
+</tr>
+<tr>
+<td>单实例</td>
+<td>每次调用 FB 生成一个独立背景 DB</td>
+</tr>
+<tr>
+<td>多重背景</td>
+<td>多个实例数据集中到一个背景 DB，便于管理多台设备</td>
+</tr>
+<tr>
+<td>LAD &#x2F; SCL</td>
+<td>梯形图 &#x2F; 结构化文本两种编程语言</td>
+</tr>
+<tr>
+<td>TON</td>
+<td>接通延时：IN 接通延时 PT 后 Q 通，IN 断立即复位</td>
+</tr>
+<tr>
+<td>TOF</td>
+<td>断电延时：IN 断后延时 PT 才使 Q 断</td>
+</tr>
+<tr>
+<td>IN&#x2F;PT&#x2F;ET&#x2F;Q&#x2F;R</td>
+<td>定时器输入&#x2F;预设时间&#x2F;当前时间&#x2F;输出&#x2F;复位</td>
+</tr>
+<tr>
+<td>S &#x2F; R</td>
+<td>置位保持 &#x2F; 复位清零（有记忆）</td>
+</tr>
+<tr>
+<td>P &#x2F; N</td>
+<td>上升沿（0→1）&#x2F; 下降沿（1→0），接通一个扫描周期</td>
+</tr>
+<tr>
+<td>CTU &#x2F; CTD &#x2F; CTUD</td>
+<td>加 &#x2F; 减 &#x2F; 加减计数器</td>
+</tr>
+<tr>
+<td>PV &#x2F; CV &#x2F; Q &#x2F; R &#x2F; LD</td>
+<td>预设值 &#x2F; 当前值 &#x2F; 输出 &#x2F; 复位 &#x2F; 装载</td>
+</tr>
+<tr>
+<td>时间中断</td>
+<td>指定日期或按分&#x2F;时&#x2F;天&#x2F;月触发；SET&#x2F;ACT&#x2F;CAN&#x2F;QRY</td>
+</tr>
+<tr>
+<td>延时中断</td>
+<td>触发后精确延时再执行中断 OB；SRT&#x2F;CAN&#x2F;QRY，精度高于普通定时器</td>
+</tr>
+<tr>
+<td>循环中断</td>
+<td>按固定周期间隔执行</td>
+</tr>
+<tr>
+<td>硬件中断</td>
+<td>高速 I&#x2F;O 硬件事件触发</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="六、课堂任务-学习要求"><a href="#六、课堂任务-学习要求" class="headerlink" title="六、课堂任务 &#x2F; 学习要求"></a>六、课堂任务 &#x2F; 学习要求</h2><ol>
+<li>能说清 OB、FC、FB、DB 四类块的作用与区别，重点掌握 FC 无背景 DB（执行完释放）与 FB 有背景 DB（可保持）的区别。</li>
+<li>会在 FC&#x2F;FB 接口区声明 Input&#x2F;Output&#x2F;InOut&#x2F;Temp&#x2F;Static 变量，理解局部变量 <code>#</code> 和全局符号双引号的含义。</li>
+<li>理解单实例与多重背景的区别，能在博途中按步骤建立多重背景 FB，说明它为什么便于控制多台电机。</li>
+<li>掌握 OB1 的循环扫描机制、多个程序循环 OB 的执行顺序、优先级与扫描周期概念。</li>
+<li>能区分时间中断、延时中断、循环中断、硬件中断的用途，知道延时中断精度高于受扫描周期影响的普通 TON&#x2F;TOF。</li>
+<li>熟练使用 TON&#x2F;TOF、S&#x2F;R、P&#x2F;N、CTU&#x2F;CTD&#x2F;CTUD，并能读懂、判断时序图（尤其 TON 输入断开要停止计时并复位）。</li>
+<li>能独立画出”走廊灯 30 s 延时熄灭、再按重新计时”和”三台电机顺序启动&#x2F;停止”的梯形图。</li>
+</ol>
+<hr>
+<h2 id="七、待核对-以教材为准"><a href="#七、待核对-以教材为准" class="headerlink" title="七、待核对 &#x2F; 以教材为准"></a>七、待核对 &#x2F; 以教材为准</h2><ol>
+<li>各习题（7-30～7-44）的选项字母与答案为课堂口述还原，选项顺序可能因教材版本不同而变化，[以教材题图和标准答案为准]。</li>
+<li>扫描周期”约 150 ms”为课堂举例，实际值取决于程序长度和 CPU 型号，[以实际监控值为准]。</li>
+<li>时间中断、延时中断的具体指令名（SET_TOD&#x2F;ACT&#x2F;CAN_TOD&#x2F;QRY_TOD、SRT_DLY&#x2F;CAN_DLY&#x2F;QRY_DLY）和中断 OB 编号（如 OB20）随博途版本&#x2F;CPU 略有差异，[以所用软件指令目录为准]。</li>
+<li>三台电机例题中定时器编号 T37&#x2F;T38&#x2F;T39、各段延时（10 s、5 s、再 10 s）以课堂题图为准，本文按课堂口径整理。</li>
+<li>多重背景建立过程中的菜单名称（”添加新块→函数块&#x2F;组织块”等）随 TIA Portal 版本略有不同，[以实际软件界面为准]。</li>
+</ol>
+<hr>
+<h2 id="八、复习自测（主动回忆，先自己答再看答案）"><a href="#八、复习自测（主动回忆，先自己答再看答案）" class="headerlink" title="八、复习自测（主动回忆，先自己答再看答案）"></a>八、复习自测（主动回忆，先自己答再看答案）</h2><p><strong>1. S7-1200 用户程序主要由哪几类块组成？</strong><br>答：OB 组织块、FC 函数、FB 函数块、DB 数据块。</p>
+<p><strong>2. FC 和 FB 最根本的区别是什么？</strong><br>答：FC 没有自己的背景数据块，执行完临时数据全部释放、不保存；FB 拥有背景数据块，含静态变量，执行后数据可保持。</p>
+<p><strong>3. FC&#x2F;FB 的接口参数有哪些？FB 比 FC 多哪一类？</strong><br>答：Input、Output、InOut、Temp；FB 还可有 Static（静态变量），保存在背景 DB 中。</p>
+<p><strong>4. FC 内的局部变量前面为什么有一个 <code>#</code>？OB 调用时框外实参为什么加双引号？</strong><br>答：<code>#</code> 表示该变量是本块的局部变量，由编辑器自动添加；双引号表示全局符号（实参），用于区分局部与全局。</p>
+<p><strong>5. 什么是背景数据块？单实例和多重背景有什么区别？</strong><br>答：背景 DB 是分配给 FB、专门保存其参数和静态数据的数据块。单实例是每调用一次 FB 生成一个独立背景 DB；多重背景是把多个实例的数据集中到外层 FB 的一个背景 DB 中统一管理。</p>
+<p><strong>6. 控制上百台电机时为什么推荐用多重背景？</strong><br>答：单实例会生成上百个背景 DB，数量庞大、难管理；多重背景把它们集中在一个背景 DB 里，结构清晰、占用和维护成本低。<br><strong>7. 简述建立多重背景的步骤。</strong><br>答：新建外层 FB→在其接口区 Static 中声明各实例（选对应 FB 类型）→在 OB 中调用外层 FB 并为各实例选择对应项→数据集中存入外层 FB 的背景 DB。</p>
+<p><strong>8. OB1 是什么？它是怎样被执行的？</strong><br>答：OB1（Main）是程序循环组织块、主程序，CPU 在 RUN 时周期性循环调用它，新建工程默认生成。</p>
+<p><strong>9. 多个程序循环 OB 按什么顺序执行？能被中断吗？</strong><br>答：按 OB 编号由小到大依次执行；程序循环 OB 优先级最低，可被高优先级的中断 OB 打断。</p>
+<p><strong>10. 什么是扫描周期？普通定时器精度为什么受它影响？</strong><br>答：CPU 循环执行一次 OB1 所需时间；普通 TON&#x2F;TOF 在扫描中被刷新，定时分辨率受扫描周期限制，故高精度延时要用延时中断。</p>
+<p><strong>11. TON 和 TOF 有什么区别？</strong><br>答：TON 是接通延时，输入接通后延时到才输出、输入断开立即复位；TOF 是断电延时，输入断开后延时一段时间输出才断开。</p>
+<p><strong>12. TON 的 IN、PT、ET、Q、R 各是什么？</strong><br>答：IN 输入、PT 预设时间、ET 当前已计时时间（实时）、Q 输出、R 复位。</p>
+<p><strong>13. TON 输入断开时定时器应如何动作？</strong><br>答：立即停止计时并复位，当前值清零、Q 断开；时序图若画成断开后继续计时或 Q 立即接通都是错的（7-38 考点）。</p>
+<p><strong>14. S 置位为什么有记忆功能？</strong><br>答：置位后该位保持为 1，即使驱动输入断开也不变，直到 R 复位才清零。</p>
+<p><strong>15. P 上升沿和 N 下降沿分别检测什么？输出多长？</strong><br>答：P 检测 0→1 跳变、N 检测 1→0 跳变；都只在跳变后接通一个扫描周期，用于”按一下触发一次”。</p>
+<p><strong>16. CTU、CTD、CTUD 分别是什么？LD 端什么作用？</strong><br>答：加、减、加减计数器；LD 装载端按下后把当前值 CV 重新装回预设值 PV（CTD 7-30 考点）。</p>
+<p><strong>17. CTD 计数器按装载端后 CV 和 Q 如何变化？</strong><br>答：CV 回到装载值 PV（题中为 3），此时 Q 不接通。</p>
+<p><strong>18. 时间中断能按哪些周期触发？配套哪些指令？</strong><br>答：可指定日期时间，或按每分钟&#x2F;每小时&#x2F;每天&#x2F;每月触发；配套 SET 设置、ACT 激活、CAN 取消、QRY 查询。</p>
+<p><strong>19. 延时中断与普通定时器相比有什么优势？怎样触发？</strong><br>答：延时中断由系统&#x2F;硬件级实现、精度高，不受扫描周期影响；触发条件（如输入由 1 变 0）出现后延时设定时间再执行中断 OB，可用 SRT 启动、CAN 取消、QRY 查询。</p>
+<p><strong>20. 循环中断和硬件中断分别用于什么场合？</strong><br>答：循环中断按固定周期执行（周期采样、PID）；硬件中断由高速 I&#x2F;O 硬件事件即时触发。</p>
+<p><strong>21. 走廊灯例题为什么要用上升沿 P 和中间继电器 M0.0？</strong><br>答：上升沿保证按一次只触发一次、不重复；中间继电器把按钮脉冲与灯保持&#x2F;定时器复位逻辑分开，梯形图更规范，且便于每次按下都重新触发定时器实现”再按重新计时”。</p>
+<p><strong>22. 走廊灯如何实现 30 s 到自动熄灭？</strong><br>答：TON 设 PT&#x3D;30 s，用其延时闭合常开点对应的常闭触点串入灯 Q0.0 的保持回路，30 s 到常闭点断开、灯灭。</p>
+<p><strong>23. 三台电机顺序控制为什么建议分三个程序段？</strong><br>答：按第一台、第二台、第三台分段，各配 T37&#x2F;T38&#x2F;T39 定时器，启动&#x2F;停止对象清晰、不易漏停或误停。</p>
+<p><strong>24. 写出三台电机的时序关系。</strong><br>答：按 I0.0→Q0.0 立即启动并启动 T37（10 s）；T37 到→Q0.1 启动、启动 T38（5 s）；T38 到→Q0.2 启动同时 Q0.0 停止；需要时再由 T39 停 Q0.1。</p>
+<p><strong>25. LAD 和 SCL 各有什么特点？</strong><br>答：LAD 梯形图图形化、接近继电器电路、直观；SCL 是类高级语言的结构化文本，适合数学运算和复杂逻辑，FC&#x2F;FB 都可用它编写并仿真。</p>
+<hr>
+<blockquote>
+<p><strong>收尾记忆</strong>：第八章抓住”<strong>四类块、两种函数、一套中断</strong>“——OB 管执行结构（OB1 循环扫描、中断 OB 处理事件）、FC 是用完即释放的子程序（局部变量 <code>#</code>）、FB 是带背景 DB 能记忆的子程序、多重背景用一个 DB 管多个实例；定时器记”TON 接通延时、TOF 断电延时、输入断 TON 立即复位”，边沿记”P 上 N 下只通一个扫描周期”，计数器记”CTU 加 CTD 减 CTUD 加减、LD 装载回 PV”；高精度延时别用普通定时器，要用延时中断。</p>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/PLC-S7-1200-%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84/" class="print-no-link">#PLC S7-1200 程序结构</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>S7-1200 用户程序结构：FC、FB、OB、DB 与定时器</div>
+      <div>https://tdexxx.github.io/2026/10/15/02_电气控制与PLC/电气控制与PLC_用户程序结构FC-FB-OB-DB_发布稿/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>tdexxx</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年10月15日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/10/15/03_%E6%B6%B2%E5%8E%8B%E4%BC%A0%E5%8A%A8/%E6%B6%B2%E5%8E%8B%E4%BC%A0%E5%8A%A8_%E6%B6%B2%E5%8E%8B%E9%98%80%E4%B8%8E%E9%BD%BF%E8%BD%AE%E4%BC%A0%E5%8A%A8_%E9%80%90%E5%AD%97%E7%A8%BF/" title="液压阀与齿轮传动课堂逐字稿">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">液压阀与齿轮传动课堂逐字稿</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/10/15/02_%E7%94%B5%E6%B0%94%E6%8E%A7%E5%88%B6%E4%B8%8EPLC/%E7%94%B5%E6%B0%94%E6%8E%A7%E5%88%B6%E4%B8%8EPLC_S7-1200%E7%BC%96%E7%A8%8B_%E9%80%90%E5%AD%97%E7%A8%BF/" title="S7-1200 编程课堂逐字稿">
+                        <span class="hidden-mobile">S7-1200 编程课堂逐字稿</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

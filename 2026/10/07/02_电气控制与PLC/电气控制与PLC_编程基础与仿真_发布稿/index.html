@@ -1,0 +1,923 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="tdexxx">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="PLC编程基础与仿真笔记：S7-PLCSIM仿真变量为何必须选M（不能选I&#x2F;Q）、起保停梯形图仿真、二进制&#x2F;十六进制与字节字双字、原码反码补码与BCD码、与或非逻辑、IEC 61131-3五种语言及LAD&#x2F;FBD&#x2F;SCL的选择（含考点） 本文整理《PLC 编程基础与仿真技术》一课。这是在 S7-1200 硬件认识、启保停实训之后的一节编程入门与上机仿真课，内">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PLC 编程基础与 PLCSIM 仿真：数制、码制与 IEC 语言">
+<meta property="og:url" content="https://tdexxx.github.io/2026/10/07/02_%E7%94%B5%E6%B0%94%E6%8E%A7%E5%88%B6%E4%B8%8EPLC/%E7%94%B5%E6%B0%94%E6%8E%A7%E5%88%B6%E4%B8%8EPLC_%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E4%B8%8E%E4%BB%BF%E7%9C%9F_%E5%8F%91%E5%B8%83%E7%A8%BF/index.html">
+<meta property="og:site_name" content="tdexxx的博客">
+<meta property="og:description" content="PLC编程基础与仿真笔记：S7-PLCSIM仿真变量为何必须选M（不能选I&#x2F;Q）、起保停梯形图仿真、二进制&#x2F;十六进制与字节字双字、原码反码补码与BCD码、与或非逻辑、IEC 61131-3五种语言及LAD&#x2F;FBD&#x2F;SCL的选择（含考点） 本文整理《PLC 编程基础与仿真技术》一课。这是在 S7-1200 硬件认识、启保停实训之后的一节编程入门与上机仿真课，内">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-10-06T17:25:23.000Z">
+<meta property="article:modified_time" content="2026-10-30T17:37:19.927Z">
+<meta property="article:author" content="tdexxx">
+<meta property="article:tag" content="PLC S7-1200 编程基础 仿真">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>PLC 编程基础与 PLCSIM 仿真：数制、码制与 IEC 语言 - tdexxx的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"tdexxx.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2022-12-10T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="PLC 编程基础与 PLCSIM 仿真：数制、码制与 IEC 语言"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-10-07 01:25" pubdate>
+          2026年10月7日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          55 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">PLC 编程基础与 PLCSIM 仿真：数制、码制与 IEC 语言</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="PLC编程基础与仿真笔记：S7-PLCSIM仿真变量为何必须选M（不能选I-Q）、起保停梯形图仿真、二进制-十六进制与字节字双字、原码反码补码与BCD码、与或非逻辑、IEC-61131-3五种语言及LAD-FBD-SCL的选择（含考点）"><a href="#PLC编程基础与仿真笔记：S7-PLCSIM仿真变量为何必须选M（不能选I-Q）、起保停梯形图仿真、二进制-十六进制与字节字双字、原码反码补码与BCD码、与或非逻辑、IEC-61131-3五种语言及LAD-FBD-SCL的选择（含考点）" class="headerlink" title="PLC编程基础与仿真笔记：S7-PLCSIM仿真变量为何必须选M（不能选I&#x2F;Q）、起保停梯形图仿真、二进制&#x2F;十六进制与字节字双字、原码反码补码与BCD码、与或非逻辑、IEC 61131-3五种语言及LAD&#x2F;FBD&#x2F;SCL的选择（含考点）"></a>PLC编程基础与仿真笔记：S7-PLCSIM仿真变量为何必须选M（不能选I&#x2F;Q）、起保停梯形图仿真、二进制&#x2F;十六进制与字节字双字、原码反码补码与BCD码、与或非逻辑、IEC 61131-3五种语言及LAD&#x2F;FBD&#x2F;SCL的选择（含考点）</h1><blockquote>
+<p>本文整理《PLC 编程基础与仿真技术》一课。这是在 S7-1200 硬件认识、启保停实训之后的一节编程入门与上机仿真课，内容分三部分：第一部分讲<strong>博途（TIA Portal）配套仿真软件 S7-PLCSIM 的使用</strong>，重点是仿真时变量类型必须选 <strong>M（中间变量）而不能选 I&#x2F;Q</strong> 这一最常见错误，并用起保停电路做仿真演示；第二部分复习 PLC 编程所必需的<strong>数字编码与逻辑运算基础</strong>——二进制&#x2F;十六进制、字节&#x2F;字&#x2F;双字、原码反码补码、BCD 码、与或非；第三部分讲 <strong>IEC 61131-3 标准的五种编程语言</strong>，重点对比 S7-1200 使用的 LAD（梯形图）、FBD（功能块图）、SCL（结构化文本）三种语言及其适用场合、新建程序块时如何选择语言。文末附仿真步骤表、语言对比表、待核对清单和主动回忆题（含答案要点）。</p>
+</blockquote>
+<h2 id="一、核心结论"><a href="#一、核心结论" class="headerlink" title="一、核心结论"></a>一、核心结论</h2><ul>
+<li>博途配套的 <strong>S7-PLCSIM 仿真软件</strong>（课程使用 V16&#x2F;V20 等版本）可以仿真 S7-1200 的绝大部分指令、几乎支持 S7-PLC 的全部常用指令，使学习者在<strong>没有 PLC 实物</strong>的情况下也能快速熟悉指令和元件、验证程序逻辑。</li>
+<li><strong>仿真最关键的易错点</strong>：在 S7-PLCSIM 仿真环境中修改变量时，变量类型必须选 <strong>M（中间变量&#x2F;位存储器）</strong>；若选 <strong>I（输入）或 Q（输出）</strong>，程序将无法被仿真驱动、运行不出来。而在<strong>实物 PLC</strong> 上则可以正常使用 I0.0、I0.1、Q0.0 等 I&#x2F;Q 地址。</li>
+<li>I、Q、M 三类变量：<strong>I 是输入</strong>（接按钮、传感器等，实物由外部信号驱动）、<strong>Q 是输出</strong>（接接触器线圈、指示灯等执行元件）、<strong>M 是中间变量（中间继电器&#x2F;位存储器）</strong>；仿真时没有真实外部信号，只能靠把 M 位置 0&#x2F;置 1 来模拟输入，故必须改用 M。</li>
+<li>仿真操作流程：安装并启动 S7-PLCSIM → 在博途中搜索、配对并启动模拟仿真平台 → 把编写好的程序<strong>下载到仿真模块（启动模块）</strong> → 在仿真界面用鼠标改变 M 变量的 0&#x2F;1 状态，即可观察线圈、触点的得电&#x2F;失电，完成功能验证（实物调试时则用网线或无线把程序下载到真实 PLC）。</li>
+<li>起保停仿真现象：按下启动按钮（使对应位置 1）→ 输出线圈得电，梯形图中得电的导线&#x2F;线圈显示为<strong>绿色</strong>；与启动按钮并联的自锁（自保持）触点闭合维持线圈得电，并进一步控制主回路接触器、驱动电动机；按下停止按钮 → 线圈失电、自锁解除，整条线路断电。</li>
+<li>必须能读懂的经典继电器&#x2F;梯形图控制电路：<strong>点动控制、连续（长动&#x2F;起保停）控制、三相异步电动机正反转控制</strong>；起保停的核心是”启动常开按钮 + 与之并联的自锁常开触点 + 串联的停止常闭按钮”。</li>
+<li>数字基础：二进制按权展开、二进制与十六进制相互转换（4 位二进制对应 1 位十六进制，权为 8421）；<strong>字节 Byte &#x3D; 8 位、字 Word &#x3D; 2 字节 &#x3D; 16 位、双字 DWord &#x3D; 2 字 &#x3D; 4 字节 &#x3D; 32 位</strong>；程序中用前缀区分常数进制（如 2# 表示二进制、16# 表示十六进制）。</li>
+<li><strong>原码、反码、补码</strong>：最高位为符号位（0 表示正、1 表示负）；<strong>正数的原码、反码、补码完全相同</strong>；负数的反码是符号位不变、数值位按位取反，负数的补码是其反码末位加 1。计算机内部有符号数一般用补码表示和运算。</li>
+<li><strong>BCD 码</strong>：用 4 位二进制数表示 1 位十进制数（8421BCD），每一位范围为 0000<del>1001，对应十进制 0</del>9；可方便地表示年月日、计数等十进制信息。</li>
+<li>三种基本逻辑运算与梯形图触点一一对应：<strong>与运算 &#x3D; 常开触点串联</strong>（两者都为真输出才真）、<strong>或运算 &#x3D; 常开触点并联</strong>（任一为真输出即真）、<strong>非运算 &#x3D; 常闭触点</strong>（输入 0 输出 1、输入 1 输出 0）；多个触点串并联可实现复杂逻辑。</li>
+<li>PLC 编程语言遵循国际电工委员会 <strong>IEC 61131-3</strong> 标准，共五种：<strong>LAD 梯形图、ST（SCL）结构化文本、FBD 功能块图、IL 指令表、SFC 顺序功能图</strong>；S7-1200 在博途中主要使用 <strong>LAD、FBD、SCL 三种</strong>。</li>
+<li><strong>LAD 梯形图</strong>最直观、最接近继电器控制电路，适合实现简单逻辑控制（如起保停），并配有通电延时定时器（TON）、断电延时定时器（TOF）、计数器等指令；<strong>SCL 结构化文本</strong>类似 C、Java、Python 等高级语言，用 If…Then、Case、For、While 等语句构建分支与循环，适合复杂运算、算法和数据管理，机械专业掌握 SCL 竞争力更强。</li>
+<li>在博途中”添加新块（函数 FC&#x2F;函数块 FB）”时要为该块选择编程语言（LAD 或 SCL 等），程序块名称只能用英文（可加数字），如”机械一二班起保停”程序块需用英文命名。</li>
+</ul>
+<h2 id="二、知识结构"><a href="#二、知识结构" class="headerlink" title="二、知识结构"></a>二、知识结构</h2><ul>
+<li>S7-PLCSIM 仿真软件<ul>
+<li>作用、版本、下载与配对启动；仿真 vs 实物的变量区别（M 与 I&#x2F;Q）；仿真操作步骤</li>
+<li>起保停仿真演示、经典控制电路读图</li>
+</ul>
+</li>
+<li>数字编码基础<ul>
+<li>二进制&#x2F;十六进制转换；字节、字、双字；常数表示</li>
+<li>原码、反码、补码；BCD 码</li>
+</ul>
+</li>
+<li>基本逻辑运算<ul>
+<li>与（串联）、或（并联）、非（常闭）；复杂串并联逻辑</li>
+</ul>
+</li>
+<li>IEC 61131-3 编程语言<ul>
+<li>五种语言；S7-1200 的 LAD&#x2F;FBD&#x2F;SCL；LAD 与 SCL 对比与选择；新建块选语言</li>
+</ul>
+</li>
+</ul>
+<h2 id="三、详细笔记"><a href="#三、详细笔记" class="headerlink" title="三、详细笔记"></a>三、详细笔记</h2><h3 id="3-1-S7-PLCSIM-仿真软件及其作用"><a href="#3-1-S7-PLCSIM-仿真软件及其作用" class="headerlink" title="3.1 S7-PLCSIM 仿真软件及其作用"></a>3.1 S7-PLCSIM 仿真软件及其作用</h3><ul>
+<li>S7-PLCSIM 是博途（TIA Portal）配套的 PLC 模拟仿真软件（课程演示使用了 V16、V20 等版本）。它在计算机内部虚拟出一台 PLC，可仿真 S7-1200 的大部分功能、几乎支持 S7-PLC 的全部常用指令。</li>
+<li>作用：在没有 PLC 实物、没有接线和外部按钮&#x2F;指示灯的情况下，学习者可以先在软件中编写、下载、运行程序，快速熟悉各种指令和元件、验证控制逻辑，降低实训成本、提高上机效率；后期再到实物 PLC 上调试。</li>
+<li>仿真与实物的连接方式：仿真时程序下载到计算机内的虚拟 PLC；实物调试时，编程计算机通过网线（也可无线）与真实 PLC 连接，再把程序下载进 PLC，启动后即可控制实际设备。</li>
+</ul>
+<h3 id="3-2-仿真变量必须选-M（本节最重要的考点-易错点）"><a href="#3-2-仿真变量必须选-M（本节最重要的考点-易错点）" class="headerlink" title="3.2 仿真变量必须选 M（本节最重要的考点&#x2F;易错点）"></a>3.2 仿真变量必须选 M（本节最重要的考点&#x2F;易错点）</h3><ul>
+<li>PLC 的变量（地址）按区域主要分三类：<ul>
+<li><strong>I（输入映像区）</strong>：接外部输入元件，如启动&#x2F;停止按钮、行程开关、传感器，实物运行时由外部信号决定其 0&#x2F;1；</li>
+<li><strong>Q（输出映像区）</strong>：接外部执行元件，如接触器&#x2F;继电器线圈、指示灯、电磁阀；</li>
+<li><strong>M（位存储器&#x2F;中间变量，相当于中间继电器）</strong>：用于程序内部存储中间状态、自锁&#x2F;互锁信号，不直接对应外部端子。</li>
+</ul>
+</li>
+<li><strong>在 S7-PLCSIM 仿真中，没有真实的外部按钮去驱动 I 点，也没有真实负载反映 Q 点</strong>。如果把需要手动改变的变量命名为 I 或 Q，仿真时无法对其置位&#x2F;复位，程序就”运行不出来”。正确做法是把这类变量改成 <strong>M 区变量（如 M0.0、M0.1）</strong>，在仿真界面用鼠标点击即可让 M 位在 0、1 之间切换，用 M 位模拟现场输入信号，程序才能被驱动。</li>
+<li>在<strong>实物 PLC</strong> 上，I0.0、I0.1、Q0.0 等地址由真实接线和外部元件驱动，可以正常使用，不存在此限制。</li>
+<li>记忆要点：<strong>仿真用 M、实物可用 I&#x2F;Q</strong>；上机时若发现程序”点了没反应”，首先检查变量类型是否误选成了 I&#x2F;Q。</li>
+</ul>
+<h3 id="3-3-仿真操作步骤"><a href="#3-3-仿真操作步骤" class="headerlink" title="3.3 仿真操作步骤"></a>3.3 仿真操作步骤</h3><ol>
+<li>安装并打开博途与配套的 S7-PLCSIM 仿真软件；</li>
+<li>在博途中编写好程序（如起保停梯形图），启动仿真、搜索并与虚拟 PLC 配对，软件会自动弹出&#x2F;进入模拟仿真平台；</li>
+<li>把程序<strong>下载到仿真模块（启动模块）</strong>，令虚拟 PLC 处于运行状态；</li>
+<li>在仿真变量界面把需要模拟的输入改为 M 变量，用鼠标将其置 1（模拟按下）或置 0（模拟松开）；</li>
+<li>观察梯形图中导线、触点、线圈颜色变化（得电通常显示为绿色）和 M&#x2F;Q 变量状态，验证逻辑是否正确。</li>
+</ol>
+<h3 id="3-4-起保停电路的仿真与读图"><a href="#3-4-起保停电路的仿真与读图" class="headerlink" title="3.4 起保停电路的仿真与读图"></a>3.4 起保停电路的仿真与读图</h3><ul>
+<li><strong>起保停（连续&#x2F;长动控制）</strong>是 PLC 最经典、必须掌握的梯形图：<ul>
+<li>启动按钮用<strong>常开触点</strong>，停止按钮用<strong>常闭触点</strong>；</li>
+<li>输出线圈（如 Q0.0，仿真时可用 M 位代替）的一个<strong>常开辅助触点与启动按钮并联</strong>，构成自锁（自保持）支路；</li>
+<li>按下启动→线圈得电并由自身常开触点保持得电（”保”），线圈再去控制主回路接触器从而驱动电动机；按下停止（常闭断开）→线圈失电、自锁解除，全线断电。</li>
+</ul>
+</li>
+<li>仿真现象：按下启动按钮，线圈及得电支路变为绿色并保持；按下停止按钮，绿色消失、线路断电。</li>
+<li>为便于在线修改、调试，工程上常把启动信号单独用一个输入点引出（增加 I 点），再驱动中间继电器&#x2F;线圈，修改逻辑时不必改动主接线，实现的功能不变。</li>
+<li>课程要求能读懂的第二章经典控制电路还包括：<strong>点动控制</strong>（按下就转、松开就停，无自锁）、<strong>连续控制（起保停）</strong>、<strong>三相异步电动机正反转控制</strong>（含互锁）。这些电路的逻辑都要能在梯形图中识别。</li>
+</ul>
+<h3 id="3-5-数制与编码基础"><a href="#3-5-数制与编码基础" class="headerlink" title="3.5 数制与编码基础"></a>3.5 数制与编码基础</h3><ul>
+<li><strong>二进制与十六进制</strong>：二进制只有 0、1，按权（$2^{n}$）展开即可化为十进制，如二进制 $1011&#x3D;1\times2^{3}+0\times2^{2}+1\times2^{1}+1\times2^{0}&#x3D;11$。二进制转十六进制时，从小数点起每 4 位分为一组，每组按 8、4、2、1 的权换算成 1 位十六进制数（0<del>9、A</del>F）；反之 1 位十六进制对应 4 位二进制。</li>
+<li><strong>数据长度单位</strong>：<ul>
+<li>1 字节（Byte，B）&#x3D; 8 位（bit）；</li>
+<li>1 字（Word，W）&#x3D; 2 字节 &#x3D; 16 位；</li>
+<li>1 双字（Double Word，DWord，DW）&#x3D; 2 字 &#x3D; 4 字节 &#x3D; 32 位。</li>
+</ul>
+</li>
+<li><strong>常数的进制表示</strong>：在程序中常加前缀以区分进制，例如用 2# 开头表示二进制常数、用 16# 开头表示十六进制常数（具体写法以博途&#x2F;教材为准）。</li>
+<li><strong>原码、反码、补码</strong>：<ul>
+<li>约定最高位为符号位，0 表示正数、1 表示负数，其余为数值位；</li>
+<li><strong>正数</strong>：原码、反码、补码三者相同；</li>
+<li><strong>负数的反码</strong>：符号位保持为 1 不变，数值位逐位取反（0 变 1、1 变 0）；</li>
+<li><strong>负数的补码</strong>：在其反码的基础上末位加 1；</li>
+<li>计算机中有符号整数通常以补码形式存储和运算，可把减法化为加法、简化运算器。</li>
+</ul>
+</li>
+<li><strong>BCD 码（二—十进制编码）</strong>：用 4 位二进制数表示 1 位十进制数字，最常用的是 8421BCD 码；每一位十进制数字对应 0000<del>1001（即 0</del>9），1010~1111 为非法码。多位十进制数逐位编码，例如日期、时间、计数显示等可用 BCD 码表示，便于人与十进制习惯对应。</li>
+</ul>
+<h3 id="3-6-基本逻辑运算与梯形图触点"><a href="#3-6-基本逻辑运算与梯形图触点" class="headerlink" title="3.6 基本逻辑运算与梯形图触点"></a>3.6 基本逻辑运算与梯形图触点</h3><ul>
+<li><strong>与（AND）逻辑</strong>：对应常开触点<strong>串联</strong>。只有所有串联触点都闭合（条件都为真）时，输出线圈才得电；逻辑表达式可写为 $Q&#x3D;A\cdot B$。</li>
+<li><strong>或（OR）逻辑</strong>：对应常开触点<strong>并联</strong>。只要并联支路中有一个触点闭合（任一条件为真），输出就得电；$Q&#x3D;A+B$。</li>
+<li><strong>非（NOT）逻辑</strong>：对应<strong>常闭触点</strong>。输入为 0 时触点导通、输出为 1，输入为 1 时触点断开、输出为 0，即输出与输入相反。</li>
+<li>实际控制中，把若干常开&#x2F;常闭触点按串联、并联组合，即可实现”与、或、非”复合的复杂条件判断，这正是梯形图编程的基础。</li>
+</ul>
+<h3 id="3-7-IEC-61131-3-与-PLC-的五种编程语言"><a href="#3-7-IEC-61131-3-与-PLC-的五种编程语言" class="headerlink" title="3.7 IEC 61131-3 与 PLC 的五种编程语言"></a>3.7 IEC 61131-3 与 PLC 的五种编程语言</h3><ul>
+<li>PLC 编程语言由国际电工委员会 <strong>IEC 61131-3</strong> 标准统一规定，标准给出五种编程语言：<ol>
+<li><strong>梯形图 LAD（LD）</strong>：以类似继电器控制电路的图形符号（母线、触点、线圈、功能框）编程，最直观、应用最广；</li>
+<li><strong>结构化文本 ST（西门子称 SCL）</strong>：类似高级语言的文本式语言，用语句、表达式编程；</li>
+<li><strong>功能块图 FBD（FBD）</strong>：以功能框（与门、或门、定时器、计数器等功能模块）和连线编程，类似数字逻辑电路图；</li>
+<li><strong>指令表 IL（STL 类）</strong>：类似汇编的逐条指令（助记符）列表，逐步执行，现已较少使用；</li>
+<li><strong>顺序功能图 SFC（GRAPH&#x2F;顺序控制）</strong>：用”步—转换—动作”描述顺序控制流程，适合按工步推进的自动化过程（课程后续章节讲解）。</li>
+</ol>
+</li>
+<li><strong>S7-1200 在博途中主要使用 LAD、FBD、SCL 三种语言</strong>。</li>
+</ul>
+<h3 id="3-8-LAD-与-SCL-的特点、选择与新建块"><a href="#3-8-LAD-与-SCL-的特点、选择与新建块" class="headerlink" title="3.8 LAD 与 SCL 的特点、选择与新建块"></a>3.8 LAD 与 SCL 的特点、选择与新建块</h3><ul>
+<li><strong>LAD 梯形图</strong>：图形化、直观易懂、与继电器控制电路对应紧密，最适合实现简单的逻辑控制（点动、起保停、互锁、联锁等）；指令库中还包括定时器（如通电延时 TON、断电延时 TOF）、计数器（触发一次计一次数）、比较、传送、运算等功能指令。</li>
+<li><strong>SCL 结构化文本</strong>：文本化语言，语法类似 C、Java、C++、Python，使用 <strong>If…Then（条件分支）、Case（多分支选择）、For、While（循环）</strong> 等语句构建程序结构，适合实现大量数学运算、复杂算法、数据处理与管理；缺点是不如梯形图直观。对机械专业学生而言，在掌握梯形图的基础上再掌握 SCL，在竞赛、就业中优势更大。</li>
+<li><strong>语言选择原则</strong>：简单开关量逻辑、互锁联锁优先用 LAD（直观、便于现场人员读图维护）；复杂计算、循环、批量数据处理、通信数据管理用 SCL 更简洁；二者可在同一项目中混用（不同程序块用不同语言）。</li>
+<li><strong>新建程序块时选择语言</strong>：在博途中”添加新块”（组织块 OB、函数 FC、函数块 FB 等）时，需要为该块选择编程语言——选 LAD 则进入梯形图编辑、选 SCL 则进入文本编辑；程序块名称只能使用英文字母（可含数字），例如为”机械 1、2 班起保停”程序块命名时应写成英文标识符。梯形图中可直接从指令列表把启动按钮触点、线圈等拖入网络（程序段）编辑，操作简洁。</li>
+</ul>
+<h2 id="四、上机操作与案例"><a href="#四、上机操作与案例" class="headerlink" title="四、上机操作与案例"></a>四、上机操作与案例</h2><h3 id="4-1-起保停仿真完整操作"><a href="#4-1-起保停仿真完整操作" class="headerlink" title="4.1 起保停仿真完整操作"></a>4.1 起保停仿真完整操作</h3><ul>
+<li>新建项目、添加 CPU（S7-1200），在 OB1 中用 LAD 编写起保停：启动常开触点与自锁常开触点并联，再与停止常闭触点、输出线圈串联；</li>
+<li>启动 S7-PLCSIM 并下载程序；<strong>把启动、停止信号改用 M 变量</strong>（如启动 M0.0、停止 M0.1，输出可用 M 或观察 Q）；</li>
+<li>将 M0.0 置 1 再置 0（点按启动），观察线圈得电并自锁、线路变绿；将 M0.1 动作（常闭断开）模拟停止，观察线圈失电、自锁解除。</li>
+</ul>
+<h3 id="4-2-仿真”程序不运行”的排查"><a href="#4-2-仿真”程序不运行”的排查" class="headerlink" title="4.2 仿真”程序不运行”的排查"></a>4.2 仿真”程序不运行”的排查</h3><ul>
+<li>现象：点击变量但线圈无反应。排查顺序：①变量是否误设为 I&#x2F;Q（仿真应改为 M）；②程序是否已下载到仿真模块并处于运行状态；③触点常开&#x2F;常闭、自锁支路、停止按钮逻辑是否接对；④是否处于监控（在线）状态。</li>
+</ul>
+<h3 id="4-3-数制与补码换算练习"><a href="#4-3-数制与补码换算练习" class="headerlink" title="4.3 数制与补码换算练习"></a>4.3 数制与补码换算练习</h3><ul>
+<li>把二进制 10111001 转十进制&#x2F;十六进制；判断一个负数的原码、反码、补码；把十进制数（如日期 2026、计数 27）写成 8421BCD 码；判断字节、字、双字各含多少位。</li>
+</ul>
+<h3 id="4-4-同一功能用-LAD-与-SCL-实现"><a href="#4-4-同一功能用-LAD-与-SCL-实现" class="headerlink" title="4.4 同一功能用 LAD 与 SCL 实现"></a>4.4 同一功能用 LAD 与 SCL 实现</h3><ul>
+<li>起保停既可用 LAD（启动常开并联自锁、停止常闭串联线圈）实现，也可在新建 FC&#x2F;FB 时选择 SCL，用 If 等语句判断启动、停止和自保持状态实现；体会两种语言的优缺点和选用场合。</li>
+</ul>
+<h2 id="五、仿真步骤与语言对比速查表"><a href="#五、仿真步骤与语言对比速查表" class="headerlink" title="五、仿真步骤与语言对比速查表"></a>五、仿真步骤与语言对比速查表</h2><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>关键内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>仿真软件</td>
+<td>博途配套 S7-PLCSIM（V16&#x2F;V20 等），可仿真 S7-1200 大部分指令</td>
+</tr>
+<tr>
+<td>仿真变量</td>
+<td>必须选 M（中间变量），不能选 I&#x2F;Q；实物 PLC 可用 I&#x2F;Q</td>
+</tr>
+<tr>
+<td>I&#x2F;Q&#x2F;M 含义</td>
+<td>I 输入、Q 输出、M 中间变量（位存储器&#x2F;中间继电器）</td>
+</tr>
+<tr>
+<td>仿真步骤</td>
+<td>启动 PLCSIM→搜索配对→下载到仿真模块→M 位置 0&#x2F;1→监控得电（绿色）</td>
+</tr>
+<tr>
+<td>起保停</td>
+<td>启动常开 ∥ 自锁常开，再串停止常闭与线圈；按启动自锁、按停止解除</td>
+</tr>
+<tr>
+<td>必读电路</td>
+<td>点动、连续（起保停&#x2F;长动）、三相异步电动机正反转（含互锁）</td>
+</tr>
+<tr>
+<td>数据单位</td>
+<td>1 字节&#x3D;8 位；1 字&#x3D;2 字节&#x3D;16 位；1 双字&#x3D;2 字&#x3D;4 字节&#x3D;32 位</td>
+</tr>
+<tr>
+<td>进制</td>
+<td>二进制按权展开；4 位二进制↔1 位十六进制（8421）；2#、16# 前缀</td>
+</tr>
+<tr>
+<td>原反补码</td>
+<td>正数三码相同；负数反码符号位不变数值取反，补码&#x3D;反码+1</td>
+</tr>
+<tr>
+<td>BCD 码</td>
+<td>4 位二进制表 1 位十进制，0000<del>1001 对应 0</del>9（8421BCD）</td>
+</tr>
+<tr>
+<td>与&#x2F;或&#x2F;非</td>
+<td>与&#x3D;常开串联；或&#x3D;常开并联；非&#x3D;常闭触点</td>
+</tr>
+<tr>
+<td>编程标准</td>
+<td>IEC 61131-3 五种语言：LAD、ST&#x2F;SCL、FBD、IL、SFC</td>
+</tr>
+<tr>
+<td>S7-1200 主用</td>
+<td>LAD 梯形图、FBD 功能块图、SCL 结构化文本</td>
+</tr>
+<tr>
+<td>LAD</td>
+<td>直观、适合简单逻辑；含 TON&#x2F;TOF 定时器、计数器等</td>
+</tr>
+<tr>
+<td>SCL</td>
+<td>类 C&#x2F;Python，If&#x2F;Case&#x2F;For&#x2F;While，适合复杂算法与数据管理</td>
+</tr>
+<tr>
+<td>新建块</td>
+<td>添加 FC&#x2F;FB 时选语言（LAD&#x2F;SCL），块名只能用英文</td>
+</tr>
+</tbody></table>
+<h2 id="六、课堂任务与复习安排"><a href="#六、课堂任务与复习安排" class="headerlink" title="六、课堂任务与复习安排"></a>六、课堂任务与复习安排</h2><ul>
+<li>上机任务：下载并安装 S7-PLCSIM，完成博途与仿真平台的配对、程序下载；用 M 变量成功仿真起保停电路，观察启动自锁、停止解除的现象。</li>
+<li>复习要求：<ol>
+<li>牢记仿真时变量必须选 M、不能选 I&#x2F;Q，并能解释原因，能排查”程序不运行”；</li>
+<li>能独立画出并讲解点动、起保停、正反转电路的梯形图逻辑；</li>
+<li>熟练进行二进制&#x2F;十六进制&#x2F;十进制换算，记住字节、字、双字位数；</li>
+<li>会求正数、负数的原码、反码、补码，理解 BCD 码；</li>
+<li>能把与、或、非逻辑对应到串联、并联、常闭触点；</li>
+<li>记住 IEC 61131-3 五种语言，重点掌握 LAD、FBD、SCL，能说明 LAD 与 SCL 的特点和选用场合；</li>
+<li>会在博途中新建程序块并正确选择编程语言、用英文命名。</li>
+</ol>
+</li>
+</ul>
+<h2 id="七、待核对与疑问"><a href="#七、待核对与疑问" class="headerlink" title="七、待核对与疑问"></a>七、待核对与疑问</h2><table>
+<thead>
+<tr>
+<th>问题</th>
+<th>原因</th>
+<th>建议核对方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>常数进制前缀的准确写法（2#、16# 等）</td>
+<td>录音口语带过</td>
+<td>查博途&#x2F;S7-1200 教材常数表示</td>
+</tr>
+<tr>
+<td>BCD 码正负数最高四位符号表示（1111&#x2F;0000）</td>
+<td>录音表述含糊</td>
+<td>查教材 BCD&#x2F;带符号 BCD 码</td>
+</tr>
+<tr>
+<td>S7-PLCSIM 具体版本号（V16&#x2F;V20）</td>
+<td>录音提到博主版本</td>
+<td>以机房实际安装版本为准</td>
+</tr>
+<tr>
+<td>五种语言中 IL 指令表、SFC 在博途中的确切名称</td>
+<td>录音列举较口语</td>
+<td>查 IEC 61131-3 与博途文档</td>
+</tr>
+<tr>
+<td>定时器&#x2F;计数器指令助记符（TON&#x2F;TOF&#x2F;CTU 等）</td>
+<td>录音只提”通电&#x2F;断电延时、计数”</td>
+<td>查 S7-1200 指令表</td>
+</tr>
+<tr>
+<td>仿真下载、配对菜单的具体名称与步骤</td>
+<td>录音为现场演示口述</td>
+<td>上机对照博途+PLCSIM 操作</td>
+</tr>
+</tbody></table>
+<h2 id="八、复习与主动回忆"><a href="#八、复习与主动回忆" class="headerlink" title="八、复习与主动回忆"></a>八、复习与主动回忆</h2><h3 id="复习清单"><a href="#复习清单" class="headerlink" title="复习清单"></a>复习清单</h3><ol>
+<li>用 3 分钟说清 S7-PLCSIM 的作用和仿真下载步骤。</li>
+<li>用 4 分钟讲透”仿真变量为什么必须选 M、不能选 I&#x2F;Q”，并说出 I&#x2F;Q&#x2F;M 的含义。</li>
+<li>用 4 分钟画出起保停梯形图并描述仿真现象，比较点动与长动。</li>
+<li>用 5 分钟复习进制换算、字节&#x2F;字&#x2F;双字、原反补码、BCD 码。</li>
+<li>用 3 分钟把与、或、非对应到梯形图触点。</li>
+<li>用 5 分钟说出 IEC 61131-3 五种语言，对比 LAD 与 SCL 的特点和选用。</li>
+<li>用 2 分钟说明在博途新建程序块时如何选语言、命名有何要求。</li>
+</ol>
+<h3 id="主动回忆题"><a href="#主动回忆题" class="headerlink" title="主动回忆题"></a>主动回忆题</h3><ol>
+<li>S7-PLCSIM 仿真软件有什么作用？没有 PLC 实物时能做什么？</li>
+<li>为什么在仿真环境中变量必须选 M，而不能选 I 或 Q？实物 PLC 上也有这个限制吗？</li>
+<li>I、Q、M 分别代表什么区域？各接什么元件或起什么作用？</li>
+<li>简述用 S7-PLCSIM 仿真一个程序的操作步骤。</li>
+<li>画出起保停梯形图，说明启动、自锁、停止各由什么触点实现；仿真时按下启动、停止按钮分别看到什么现象？</li>
+<li>点动控制和连续（长动）控制的区别是什么？正反转控制为什么要互锁？</li>
+<li>字节、字、双字各是多少位？二进制怎样转十六进制？</li>
+<li>正数和负数的原码、反码、补码分别怎么求？什么是 BCD 码？</li>
+<li>与、或、非三种逻辑分别对应梯形图中触点的什么连接方式？</li>
+<li>IEC 61131-3 规定了哪五种编程语言？S7-1200 主要用哪三种？LAD 和 SCL 各适合什么场合？新建程序块时要注意什么？</li>
+</ol>
+<h3 id="答案要点"><a href="#答案要点" class="headerlink" title="答案要点"></a>答案要点</h3><ol>
+<li>S7-PLCSIM 是博途配套的仿真软件，可在计算机中虚拟一台 PLC，仿真 S7-1200 的大部分指令和元件；在没有 PLC 实物、不接线的情况下就能编写、下载、运行程序，熟悉指令、验证逻辑，降低实训成本，之后再到实物上调。</li>
+<li>仿真时没有真实外部按钮和负载，I 点无法被外部信号驱动、Q 点也无真实负载，若把需要手动改变的变量设为 I&#x2F;Q，就无法置位复位、程序运行不出来；改用 M 中间变量后，可用鼠标把 M 位置 0&#x2F;置 1 来模拟输入。实物 PLC 上 I&#x2F;Q 由真实接线和元件驱动，可以正常使用，没有这一限制。</li>
+<li>I 是输入映像区，接按钮、行程开关、传感器等输入元件；Q 是输出映像区，接接触器&#x2F;继电器线圈、指示灯、电磁阀等执行元件；M 是位存储器（中间变量，相当于中间继电器），用于程序内部保存中间状态、自锁互锁信号，不直接对应外部端子。</li>
+<li>打开博途写好程序→启动 S7-PLCSIM 并搜索、配对虚拟 PLC→把程序下载到仿真（启动）模块并运行→把需模拟的输入改为 M 变量并用鼠标置 0&#x2F;1→在线监控触点、线圈、导线颜色（得电变绿），验证逻辑。</li>
+<li>启动按钮用常开触点，输出线圈的一个常开辅助触点与启动按钮并联实现自锁（自保持），停止按钮用常闭触点串联在线路中。仿真时按启动（M 位置 1）线圈得电、自锁触点闭合保持，线路变绿并控制主回路电动机；按停止（常闭断开）线圈失电、自锁解除，整条线断电。</li>
+<li>点动控制没有自锁，按下按钮运转、松开即停；连续（长动&#x2F;起保停）有自锁触点，按一次启动后即使松开按钮仍持续运转，直到按停止。正反转控制若两个方向同时接通会造成电源相间短路，故必须设置互锁（电气互锁&#x2F;机械互锁），保证正转、反转接触器不能同时得电。</li>
+<li>1 字节&#x3D;8 位；1 字&#x3D;2 字节&#x3D;16 位；1 双字&#x3D;2 字&#x3D;4 字节&#x3D;32 位。二进制转十六进制时从小数点起每 4 位分一组，每组按 8421 权换成 1 位十六进制（0<del>9、A</del>F），反之 1 位十六进制展开为 4 位二进制。</li>
+<li>最高位为符号位（0 正 1 负）；正数的原码、反码、补码相同；负数反码是符号位不变、数值位逐位取反，负数补码是反码末位加 1；计算机有符号数多用补码运算。BCD 码是用 4 位二进制表示 1 位十进制数的编码（8421BCD 中 0000<del>1001 分别表示 0</del>9），便于表示和显示十进制数据。</li>
+<li>与运算对应常开触点串联（全部闭合才得电，$Q&#x3D;A\cdot B$）；或运算对应常开触点并联（任一闭合即得电，$Q&#x3D;A+B$）；非运算对应常闭触点（输入 0 输出 1、输入 1 输出 0）。触点串并联组合可实现复杂复合逻辑。</li>
+<li>IEC 61131-3 规定五种语言：梯形图 LAD、结构化文本 ST（SCL）、功能块图 FBD、指令表 IL、顺序功能图 SFC；S7-1200 在博途中主要用 LAD、FBD、SCL。LAD 直观、接近继电器电路，适合点动、起保停、互锁等简单逻辑；SCL 类似 C&#x2F;Python，用 If&#x2F;Case&#x2F;For&#x2F;While，适合复杂运算、算法和数据管理。新建 FC&#x2F;FB 等程序块时要在添加块时选择该块语言（LAD 或 SCL），且程序块名只能用英文字母（可含数字）。</li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/PLC-S7-1200-%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80-%E4%BB%BF%E7%9C%9F/" class="print-no-link">#PLC S7-1200 编程基础 仿真</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>PLC 编程基础与 PLCSIM 仿真：数制、码制与 IEC 语言</div>
+      <div>https://tdexxx.github.io/2026/10/07/02_电气控制与PLC/电气控制与PLC_编程基础与仿真_发布稿/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>tdexxx</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年10月7日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/10/07/01_%E6%95%B0%E6%8E%A7%E5%8A%A0%E5%B7%A5%E5%B7%A5%E8%89%BA%E4%B8%8E%E7%BC%96%E7%A8%8B/%E6%95%B0%E6%8E%A7%E5%8A%A0%E5%B7%A5%E5%B7%A5%E8%89%BA%E4%B8%8E%E7%BC%96%E7%A8%8B_%E8%BD%A6%E5%BA%8A%E7%BC%96%E7%A8%8B%E4%B8%8E%E5%9C%86%E5%BC%A7%E6%8F%92%E8%A1%A5_%E5%8F%91%E5%B8%83%E7%A8%BF/" title="数控车床编程与圆弧插补：G02/G03 与 I/K、R 编程">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">数控车床编程与圆弧插补：G02/G03 与 I/K、R 编程</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/10/07/04_%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1_%E5%B8%A6%E4%BC%A0%E5%8A%A8_%E5%8F%91%E5%B8%83%E7%A8%BF/" title="带传动原理与受力分析：欧拉公式与弹性滑动">
+                        <span class="hidden-mobile">带传动原理与受力分析：欧拉公式与弹性滑动</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

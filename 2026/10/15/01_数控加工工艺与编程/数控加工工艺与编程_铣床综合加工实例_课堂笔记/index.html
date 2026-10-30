@@ -1,0 +1,1214 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="tdexxx">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="数控铣床综合加工工艺与编程实例笔记：四孔三把刀完整程序（G81&#x2F;G83&#x2F;G99、超越量）与平面铣削工艺（粗半精铣、面铣刀选径、往复&#x2F;绕圈走刀、刀路基点坐标计算） 本篇对应一节”数控铣床&#x2F;加工中心综合加工工艺与编程”实例课。课程不讲新指令，而是用两个由浅入深的完整零件，把前面学过的刀具、工件坐标系、刀具补偿、固定循环等指令串成”零件图分析 → 毛坯&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数控铣床综合加工实例：四孔三把刀程序与平面铣削工艺">
+<meta property="og:url" content="https://tdexxx.github.io/2026/10/15/01_%E6%95%B0%E6%8E%A7%E5%8A%A0%E5%B7%A5%E5%B7%A5%E8%89%BA%E4%B8%8E%E7%BC%96%E7%A8%8B/%E6%95%B0%E6%8E%A7%E5%8A%A0%E5%B7%A5%E5%B7%A5%E8%89%BA%E4%B8%8E%E7%BC%96%E7%A8%8B_%E9%93%A3%E5%BA%8A%E7%BB%BC%E5%90%88%E5%8A%A0%E5%B7%A5%E5%AE%9E%E4%BE%8B_%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="tdexxx的博客">
+<meta property="og:description" content="数控铣床综合加工工艺与编程实例笔记：四孔三把刀完整程序（G81&#x2F;G83&#x2F;G99、超越量）与平面铣削工艺（粗半精铣、面铣刀选径、往复&#x2F;绕圈走刀、刀路基点坐标计算） 本篇对应一节”数控铣床&#x2F;加工中心综合加工工艺与编程”实例课。课程不讲新指令，而是用两个由浅入深的完整零件，把前面学过的刀具、工件坐标系、刀具补偿、固定循环等指令串成”零件图分析 → 毛坯&#x2F;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-10-15T14:03:47.000Z">
+<meta property="article:modified_time" content="2026-10-30T17:37:19.917Z">
+<meta property="article:author" content="tdexxx">
+<meta property="article:tag" content="数控编程 铣削 加工实例">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>数控铣床综合加工实例：四孔三把刀程序与平面铣削工艺 - tdexxx的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"tdexxx.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2022-12-10T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="数控铣床综合加工实例：四孔三把刀程序与平面铣削工艺"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-10-15 22:03" pubdate>
+          2026年10月15日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          12k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          103 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">数控铣床综合加工实例：四孔三把刀程序与平面铣削工艺</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="数控铣床综合加工工艺与编程实例笔记：四孔三把刀完整程序（G81-G83-G99、超越量）与平面铣削工艺（粗半精铣、面铣刀选径、往复-绕圈走刀、刀路基点坐标计算）"><a href="#数控铣床综合加工工艺与编程实例笔记：四孔三把刀完整程序（G81-G83-G99、超越量）与平面铣削工艺（粗半精铣、面铣刀选径、往复-绕圈走刀、刀路基点坐标计算）" class="headerlink" title="数控铣床综合加工工艺与编程实例笔记：四孔三把刀完整程序（G81&#x2F;G83&#x2F;G99、超越量）与平面铣削工艺（粗半精铣、面铣刀选径、往复&#x2F;绕圈走刀、刀路基点坐标计算）"></a>数控铣床综合加工工艺与编程实例笔记：四孔三把刀完整程序（G81&#x2F;G83&#x2F;G99、超越量）与平面铣削工艺（粗半精铣、面铣刀选径、往复&#x2F;绕圈走刀、刀路基点坐标计算）</h1><blockquote>
+<p>本篇对应一节”数控铣床&#x2F;加工中心综合加工工艺与编程”实例课。课程不讲新指令，而是用两个由浅入深的完整零件，把前面学过的刀具、工件坐标系、刀具补偿、固定循环等指令串成”<strong>零件图分析 → 毛坯&#x2F;机床&#x2F;夹具 → 加工阶段与工序卡 → 刀具 → 坐标系 → 走刀方式 → 刀路基点坐标 → 完整程序</strong>“的完整工艺编程流程：</p>
+<ul>
+<li><strong>任务一（孔系加工）</strong>：在 $50\times50\times10\text{ mm}$ 板上加工 4 个 $\phi10$、基孔制、表面粗糙度 $Ra,1.6$ 的孔，用”中心钻—麻花钻—铰刀”三把刀，逐段讲清三段完整程序怎么写、相邻工序之间程序怎么改；</li>
+<li><strong>任务二（平面铣削）</strong>：铣一个 $100\times100\times22\text{ mm}$ 六面体&#x2F;平板件，讲粗铣—半精铣—精铣的工艺安排、面铣刀直径怎么选、往复&#x2F;绕圈两种走刀方式，以及面铣刀路”基点坐标”如何自己计算。</li>
+</ul>
+<p>指令的定义、刀具与刀柄系统、G43&#x2F;G44 长度补偿由来、各固定循环（G73&#x2F;G83&#x2F;G81&#x2F;G76&#x2F;G87&#x2F;G84）的参数表，本篇只在用到时简要回顾，详细手册见同系列《数控铣床与加工中心笔记》。本篇聚焦”<strong>拿到零件后工艺怎么定、程序怎么落地、刀路点怎么算</strong>“。</p>
+</blockquote>
+<hr>
+<h2 id="一、核心结论（先记住这-12-条）"><a href="#一、核心结论（先记住这-12-条）" class="headerlink" title="一、核心结论（先记住这 12 条）"></a>一、核心结论（先记住这 12 条）</h2><ol>
+<li><strong>数控编程的终点是工艺，不是指令</strong>。拿到一个零件先想：分几道工序、每道工序几个工步、用几把刀、走什么路线、坐标系原点选在哪；G 代码只是实现工艺的手段。</li>
+<li><strong>孔加工有一条固定工艺链</strong>：中心钻定心（预钻锥坑）→ 麻花钻钻孔 →（扩孔修正）→ 铰孔或镗孔保证精度。越往后精度越高、去除余量越小。</li>
+<li><strong>孔的最终工序由表面粗糙度和精度反推</strong>：<ul>
+<li>钻孔、扩孔只能到 $Ra,3.2\sim6.3$（扩孔约 IT10）；</li>
+<li>铰孔可达 $Ra,0.4\sim1.6$、IT6~9，<strong>不能纠正孔的位置误差</strong>；</li>
+<li>镗孔粗镗 $Ra,6.3\sim12.5$、半精镗 $1.6\sim3.2$、精镗 $0.1\sim0.4$，能纠正位置&#x2F;形状误差。</li>
+<li>本课 $\phi10$、$Ra,1.6$ 的孔：钻、扩达不到，精镗精度过剩、半精镗勉强，<strong>最终选铰孔</strong>最经济。</li>
+</ul>
+</li>
+<li><strong>加工中心带刀库、随机换刀，程序开头必须先写换刀指令</strong>（如 <code>T01 M06</code>），不能默认主轴上当前就是你要用的 1 号刀——上一个程序用完后停在哪把刀是不确定的。</li>
+<li><strong>换刀后的标准程序开头</strong>：换刀 → <code>G54</code>（工件坐标系）→ <code>G90</code>（绝对编程）→ <code>G17</code>（XY 平面，铣床默认可省）→ <code>G49</code>（取消上一把刀遗留的长度补偿）→ <code>G00 Z100</code>（抬到安全高度，防止换刀点未知而撞刀）→ <code>S…</code>（主轴转速）→ <code>G43 H01</code>（建立本刀长度正补偿）。</li>
+<li><strong>G54 与 G92 的本质区别</strong>：G54 的零点偏移量在控制面板里直接输入、<strong>不用改程序</strong>，操作员实测后自己改即可，适合大批量；G92 是程序里给定坐标系，对刀值一变就要改程序。</li>
+<li><strong>固定循环里 G98&#x2F;G99 决定退刀平面</strong>：G98 退回初始平面（用于越过夹具&#x2F;凸台等障碍、或全部加工完），G99 退回 R 平面（连续加工同高度多个孔时效率高）。<strong>同一平面连续钻 4 个孔用 G99 更快</strong>。</li>
+<li><strong>钻通孔必须加”超越量”，不能只钻到板厚</strong>：因为麻花钻钻尖是 $118°$ 左右的锥尖，只钻到板厚会在出口两侧留下没钻掉的残料。钻通孔超越量经验取 $0.3D+(1\sim3)\text{ mm}$；镗通孔约 $1\sim3\text{ mm}$，铰通孔约 $3\sim5\text{ mm}$。</li>
+<li><strong>薄板可一次钻穿用 G81；厚板&#x2F;深孔要排屑必须改用 G83（或 G73）并写 Q</strong>：Q 是每次往复的切深；G83 钻—抬—钻把深孔里的铁屑&#x2F;铝屑带出来，G73 是高速深孔往复断屑。</li>
+<li><strong>铰孔余量很小（直径上约 $0.1\sim0.2\text{ mm}$）、不产生大量切屑，一般用 G81 一次铰成</strong>（即使板较厚），不要照搬钻孔的 G83。</li>
+<li><strong>平面铣削要分粗铣—半精铣—精铣</strong>，精度要求高时不能一刀成型；三道程序结构完全相同，<strong>只改三处：背吃刀量（Z 向切深）、侧向（横向）进给量、主轴转速</strong>。</li>
+<li><strong>面铣刀直径要大于被铣面宽度、分刀走刀时相邻刀路要重叠</strong>：铣 $100\text{ mm}$ 宽的面选 $\phi63$ 面铣刀（半径 $31.5$）走两刀，不能正好选 $\phi50$，否则两刀之间会留下一条没铣到的棱（残脊）。刀路的”安全高度、起点、终点”等基点坐标要自己根据”零件半宽 + 刀具半径 + 安全余量”算出来。</li>
+</ol>
+<hr>
+<h2 id="二、知识结构（这节课的脉络）"><a href="#二、知识结构（这节课的脉络）" class="headerlink" title="二、知识结构（这节课的脉络）"></a>二、知识结构（这节课的脉络）</h2><figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs gcode">数控铣床综合加工工艺与编程实例<br>│<br>├─ 任务一：板类零件的孔系加工（<span class="hljs-number">50</span>×<span class="hljs-number">50</span>×<span class="hljs-number">10</span>，<span class="hljs-number">4</span>×φ<span class="hljs-number">10</span>，Ra<span class="hljs-number">1.6</span>，基孔制）<br>│   ├─ <span class="hljs-number">1.</span> 孔加工工艺链与最终工序选择<br>│   │     中心钻定心 → 麻花钻钻孔 → 扩孔<span class="hljs-comment">(修正)</span> → 铰孔 / 镗孔<br>│   │     按 Ra、IT 反推：钻扩 <span class="hljs-number">3.2</span>~<span class="hljs-number">6.3</span> / 铰 <span class="hljs-number">0.4</span>~<span class="hljs-number">1.6</span> / 镗 <span class="hljs-number">0.1</span>~<span class="hljs-number">0.4</span><br>│   ├─ <span class="hljs-number">2.</span> 加工中心程序标准开头（为什么必须先换刀）<br>│   │     T__ <span class="hljs-name">M06</span> → <span class="hljs-name">G54</span> → <span class="hljs-name">G90</span> → <span class="hljs-name">G17</span> → <span class="hljs-name">G49</span> → <span class="hljs-name">G00</span> Z安全 → S → <span class="hljs-name">G43</span> H__<br>│   │     <span class="hljs-name">G54</span> <span class="hljs-attr">vs G92</span>；<span class="hljs-name">G43</span> 长度正补偿；<span class="hljs-name">G49</span> 取消<br>│   ├─ <span class="hljs-number">3.</span> 固定循环 <span class="hljs-name">G81</span> 与三平面、各地址字<br>│   │     初始平面 / R平面 / 孔底平面；<span class="hljs-name">G98</span> / <span class="hljs-name">G99</span><br>│   │     X Y Z R Q P F L 各自含义；Q 的两种含义<br>│   ├─ <span class="hljs-number">4.</span> 三把刀三段程序（相邻工序只改少量字段）<br>│   │     T<span class="hljs-number">01</span> 中心钻：S<span class="hljs-number">1500</span>、Z−<span class="hljs-number">2</span>、R<span class="hljs-number">5</span>、F<span class="hljs-number">50</span>、<span class="hljs-name">G81</span>（定心）<br>│   │     T<span class="hljs-number">02</span> 麻花钻 φ<span class="hljs-number">9.8</span>：S<span class="hljs-number">600</span>~<span class="hljs-number">800</span>、超越量 <span class="hljs-number">0.3</span>D+<span class="hljs-comment">(1~3)</span>、Z−<span class="hljs-number">14</span><br>│   │     T<span class="hljs-number">03</span> 铰刀 φ<span class="hljs-number">10</span>：小余量、<span class="hljs-name">G81</span>、超越量 <span class="hljs-number">3</span>~<span class="hljs-number">5</span><br>│   ├─ <span class="hljs-number">5.</span> 厚板深孔：<span class="hljs-name">G81</span> → <span class="hljs-name">G83</span>/<span class="hljs-name">G73</span>，加 Q 每次切深（排屑/断屑）<br>│   └─ <span class="hljs-number">6.</span> 仿真软件验证：三段程序分别调用、刀库取刀、实际上机对刀<br>│<br>└─ 任务二：六面体/平板件的平面铣削（成品 <span class="hljs-number">100</span>×<span class="hljs-number">100</span>×<span class="hljs-number">22</span>）<br>    ├─ <span class="hljs-number">1.</span> 图样分析：未注 Ra<span class="hljs-number">3.2</span>、平行度/位置度 <span class="hljs-number">0.02</span>（两丝）、关键面与高度<br>    ├─ <span class="hljs-number">2.</span> 粗糙度可达性：铣能到多少、何时要磨、铝合金不能磨<br>    ├─ <span class="hljs-number">3.</span> 毛坯选择：<span class="hljs-number">105</span>×<span class="hljs-number">105</span>×<span class="hljs-number">27</span> 还是 <span class="hljs-number">110</span>×<span class="hljs-number">110</span>×<span class="hljs-number">32</span>（由加工余量定）<br>    ├─ <span class="hljs-number">4.</span> 机床与夹具：立式数控铣床/加工中心、平口钳（通用夹具）、定位与自由度<br>    ├─ <span class="hljs-number">5.</span> 加工阶段：粗铣 → 半精铣 → 精铣；工序卡 / 刀具卡（吃刀量、转速、进给）<br>    ├─ <span class="hljs-number">6.</span> 坐标系：立式铣床 Z 轴、X/Y 正方向判定；工作原点取上表面中心<br>    ├─ <span class="hljs-number">7.</span> 面铣刀直径选择 φ<span class="hljs-number">63</span>（走两刀、不能 φ<span class="hljs-number">50</span> 留棱）<br>    ├─ <span class="hljs-number">8.</span> 两种走刀方式：往复（之字/S/A 字形）、绕圈（外圈往里、C 字形）<br>    ├─ <span class="hljs-number">9.</span> 刀路基点坐标计算：Z<span class="hljs-number">90</span> 安全高、X<span class="hljs-number">90</span>/Y−<span class="hljs-number">25</span> 起止点、Z−<span class="hljs-number">2.01</span> 精铣深度<br>    └─ <span class="hljs-number">10.</span> 面铣程序与优化：刀在工件外可直接下刀（省 Z<span class="hljs-number">5</span>）；粗半精只改三处<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="三、详细知识点笔记"><a href="#三、详细知识点笔记" class="headerlink" title="三、详细知识点笔记"></a>三、详细知识点笔记</h2><h3 id="（一）孔加工工艺链：先把”孔能怎么加工”理清楚"><a href="#（一）孔加工工艺链：先把”孔能怎么加工”理清楚" class="headerlink" title="（一）孔加工工艺链：先把”孔能怎么加工”理清楚"></a>（一）孔加工工艺链：先把”孔能怎么加工”理清楚</h3><p>加工一个有精度要求的孔，从无到有通常不是一把刀一次成型，而是按”<strong>定心 → 钻孔 → 修正&#x2F;精加工</strong>“分几步。课堂以一个看似最简单的零件引入：一块 $50\times50\text{ mm}$、厚 $10\text{ mm}$ 的方板，要在一个表面上加工出呈十字分布（半径 $16\text{ mm}$ 的圆周上：$(16,0)$、$(0,16)$、$(-16,0)$、$(0,-16)$）的 <strong>4 个 $\phi10$ 通孔</strong>，孔为**基孔制、表面粗糙度要求 $Ra,1.6$**。</p>
+<h4 id="1-为什么要先”中心钻定心（预钻锥坑）”"><a href="#1-为什么要先”中心钻定心（预钻锥坑）”" class="headerlink" title="1. 为什么要先”中心钻定心（预钻锥坑）”"></a>1. 为什么要先”中心钻定心（预钻锥坑）”</h4><ul>
+<li>麻花钻的前端不是一个尖点，而是有一定长度的<strong>横刃</strong>。横刃在实体表面直接钻入时<strong>定心性差</strong>：容易打滑、钻头轴线不稳定，即使要求孔轴线与上表面垂直（$90°$），也很容易钻偏，孔位精度难以保证。</li>
+<li>所以先用<strong>中心钻（小直径定心钻）</strong>在每个孔位钻一个小锥坑，给后续麻花钻导向、定位。</li>
+<li>**工艺要点：中心钻定心时主轴转速一定要高，一般要大于 $1000\text{ r&#x2F;min}$，课堂取约 $1500\text{ r&#x2F;min}$**；转速太低定心锥坑质量差。</li>
+</ul>
+<h4 id="2-麻花钻钻孔：成型但精度有限"><a href="#2-麻花钻钻孔：成型但精度有限" class="headerlink" title="2. 麻花钻钻孔：成型但精度有限"></a>2. 麻花钻钻孔：成型但精度有限</h4><ul>
+<li>定心后用麻花钻把孔的大致形状钻出来。钻孔存在两个固有问题：<strong>孔位精度不高</strong>（可能偏一点）、<strong>轴线容易歪斜</strong>（与端面的垂直度差）。</li>
+<li>尺寸上一般不会”要 $\phi10$ 就用 $\phi10$ 钻头一次钻成”，而是钻到略小（课堂用 $\phi9.8$ 麻花钻），给最后的精加工（铰孔）留出约 $0.1\sim0.2\text{ mm}$ 的余量。</li>
+<li>钻孔表面粗糙度一般只能到 $Ra,3.2\sim6.3$，达不到 $1.6$。</li>
+</ul>
+<h4 id="3-扩孔、铰孔、镗孔：三种提高孔精度的手段对比"><a href="#3-扩孔、铰孔、镗孔：三种提高孔精度的手段对比" class="headerlink" title="3. 扩孔、铰孔、镗孔：三种提高孔精度的手段对比"></a>3. 扩孔、铰孔、镗孔：三种提高孔精度的手段对比</h4><table>
+<thead>
+<tr>
+<th>工序</th>
+<th>加工对象</th>
+<th>直径加工余量（课堂口径）</th>
+<th>经济精度</th>
+<th>表面粗糙度 $Ra$</th>
+<th>能否纠正孔位&#x2F;形状误差</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>中心钻定心</td>
+<td>实体表面</td>
+<td>—</td>
+<td>—</td>
+<td>锥坑，不评</td>
+<td>—</td>
+<td>定心、导向，转速 &gt;1000 r&#x2F;min</td>
+</tr>
+<tr>
+<td>麻花钻钻孔</td>
+<td>实体钻孔</td>
+<td>—</td>
+<td>较低</td>
+<td>$3.2\sim6.3\ \mu m$</td>
+<td>—</td>
+<td>成型，孔位&#x2F;垂直度差</td>
+</tr>
+<tr>
+<td><strong>扩孔</strong></td>
+<td>只能对<strong>已有孔</strong>扩修，不能在实体上钻孔</td>
+<td>较大，约 $2\sim4\text{ mm}$</td>
+<td>约 IT10</td>
+<td>$3.2\sim6.3\ \mu m$</td>
+<td>可在一定程度上修正孔的圆度、垂直度</td>
+<td>生产率较高、质量较稳定</td>
+</tr>
+<tr>
+<td><strong>铰孔</strong></td>
+<td>已有孔的微量精加工</td>
+<td>粗铰约 $0.15\sim0.35$、精铰约 $0.05\sim0.1$（课堂口径，[以教材为准]）</td>
+<td>IT6~9</td>
+<td>$0.4\sim1.6\ \mu m$</td>
+<td><strong>不能纠正孔的位置误差</strong>，只能提高尺寸与表面质量</td>
+<td>切削力小、余量小；钻后也可直接铰</td>
+</tr>
+<tr>
+<td><strong>镗孔（粗&#x2F;半精&#x2F;精）</strong></td>
+<td>已有孔，可去粗、半精、精</td>
+<td>视情况</td>
+<td>精镗很高</td>
+<td>粗镗 $6.3\sim12.5$；半精镗 $1.6\sim3.2$；精镗 $0.1\sim0.4\ \mu m$</td>
+<td><strong>能纠正孔的位置度、垂直度等</strong></td>
+<td>精度最高但成本高</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>余量数值为课堂口述的经验范围，不同教材&#x2F;手册按孔径、材料有具体表格，正式工艺请[以教材&#x2F;工艺手册为准]。</p>
+</blockquote>
+<p><strong>本题如何反推最终工序</strong>：要求 $Ra,1.6$。</p>
+<ul>
+<li>只钻、只扩：$3.2\sim6.3$，<strong>达不到</strong>；</li>
+<li>铰孔：$0.4\sim1.6$，<strong>正好覆盖 1.6，可达</strong>；</li>
+<li>镗孔：半精镗最好才到 $1.6$（多数在 $1.6\sim3.2$，勉强、不稳定），精镗 $0.1\sim0.4$ 精度”太高”、经济性差。</li>
+</ul>
+<p>所以本题最终工艺定为：<strong>① 中心钻定心 → ② 麻花钻钻孔（$\phi9.8$）→ ③ 铰孔（铰到 $\phi10$）</strong>，共三把刀、三道工序。</p>
+<hr>
+<h3 id="（二）加工中心程序的”标准开头”：为什么每道工序都要先换刀"><a href="#（二）加工中心程序的”标准开头”：为什么每道工序都要先换刀" class="headerlink" title="（二）加工中心程序的”标准开头”：为什么每道工序都要先换刀"></a>（二）加工中心程序的”标准开头”：为什么每道工序都要先换刀</h3><p>加工中心（带刀库）与普通数控铣不同：刀具不是操作者亲手装在主轴上，而是<strong>刀库按程序自动、随机换刀</strong>。因此程序启动时，主轴上当前是哪把刀并不确定——可能是上一个工件、上一道程序用完后留下的任意一把刀，甚至不是本程序三把刀中的任何一把。</p>
+<p><strong>所以每道工序（每把刀）程序的第一步必须是换刀</strong>，把需要的刀明确换出来，例如：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">T01 M06   （换 1 号刀：中心钻）<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><code>T01</code>：选 1 号刀；<code>M06</code>：执行换刀动作。三把刀依次编号 T01（中心钻）、T02（麻花钻）、T03（铰刀）。</li>
+<li>课堂特别提醒：写完第一道工序后，第二道工序最容易犯的错就是”第一道已经是 T01 了，第二道直接往下写、忘记换 T02”。<strong>每换一把刀都要重新写换刀指令。</strong></li>
+</ul>
+<p>换刀之后，进入一段相对固定的”安全初始化”程序：</p>
+<table>
+<thead>
+<tr>
+<th>程序字</th>
+<th>含义</th>
+<th>为什么要写</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>G54</code></td>
+<td>选用 G54 工件坐标系（零点偏移）</td>
+<td>告诉机床工件原点在哪；偏移量在面板输入</td>
+</tr>
+<tr>
+<td><code>G90</code></td>
+<td>绝对坐标编程</td>
+<td>所有坐标都相对工件原点，直观、不易错</td>
+</tr>
+<tr>
+<td><code>G17</code></td>
+<td>选择 XY 加工平面</td>
+<td>铣床默认就是 XY（G17），<strong>可写可不写</strong>；类似车床默认 XZ 平面</td>
+</tr>
+<tr>
+<td><code>G49</code></td>
+<td>取消刀具长度补偿</td>
+<td>刀补是<strong>模态</strong>的，换刀后先取消上一把刀遗留的长度补偿，防止错位</td>
+</tr>
+<tr>
+<td><code>G00 Z100</code></td>
+<td>快速抬到安全高度（如 Z100）</td>
+<td>换刀后刀具实际位置未知（机床故障时可能不在起刀点），先把 Z 抬到远离工件的安全高度，防止直接撞到工件；钻孔时 XY 不动，只需把 Z 拉高</td>
+</tr>
+<tr>
+<td><code>S1500 M03</code></td>
+<td>主轴正转、给定转速</td>
+<td>中心钻 &gt;1000 r&#x2F;min，取约 1500；钻头取 600~800</td>
+</tr>
+<tr>
+<td><code>G43 H01</code></td>
+<td>建立刀具长度<strong>正</strong>补偿，调用 H01 号补偿值</td>
+<td>让机床按本刀实际长度修正 Z 向位置</td>
+</tr>
+</tbody></table>
+<h4 id="1-G54-与-G92-的区别（高频考点）"><a href="#1-G54-与-G92-的区别（高频考点）" class="headerlink" title="1. G54 与 G92 的区别（高频考点）"></a>1. G54 与 G92 的区别（高频考点）</h4><ul>
+<li><strong>G92（设定工件坐标系）</strong>：坐标系是在<strong>程序里</strong>给定的。对刀值一旦变化（今天量出是 $100,100$，过两天刀具磨损&#x2F;重装后变成 $105,105$），就要<strong>回到程序里改坐标</strong>；而程序员往往在办公室、操作员在机床旁，沟通改动都很麻烦。</li>
+<li><strong>G54（零点偏移）</strong>：偏移量保存在<strong>控制面板</strong>对应的存储项里，操作员在面板上直接输入实测值（$100,100$ 或后来的 $105,105$）即可，<strong>程序一个字都不用改</strong>。</li>
+<li>结论：<strong>大批量、实际生产中普遍用 G54</strong>，改动方便、不依赖程序员。</li>
+</ul>
+<h4 id="2-G43-长度”正”补偿怎么理解"><a href="#2-G43-长度”正”补偿怎么理解" class="headerlink" title="2. G43 长度”正”补偿怎么理解"></a>2. G43 长度”正”补偿怎么理解</h4><p><code>G43</code> 是刀具长度正补偿，配合 H 代码（如 H01）读取该刀的长度补偿值。所谓”正补偿”，是指沿相应轴的<strong>正方向</strong>叠加一个偏置：若 H01 中存的长度值为 $50\text{ mm}$、程序给定某 Z 位置，机床会按补偿把刀位点沿 Z 正方向修正相应量。学习时要理解它”到底往哪个方向补、补的是什么”，而不能只记住”刀补”两个字。换刀后用 <code>G49</code> 取消，再用 <code>G43 H02</code> 建立新刀补偿。</p>
+<hr>
+<h3 id="（三）钻孔固定循环-G81：三个平面与-X-Y-Z-R-Q-P-F-L"><a href="#（三）钻孔固定循环-G81：三个平面与-X-Y-Z-R-Q-P-F-L" class="headerlink" title="（三）钻孔固定循环 G81：三个平面与 X&#x2F;Y&#x2F;Z&#x2F;R&#x2F;Q&#x2F;P&#x2F;F&#x2F;L"></a>（三）钻孔固定循环 G81：三个平面与 X&#x2F;Y&#x2F;Z&#x2F;R&#x2F;Q&#x2F;P&#x2F;F&#x2F;L</h3><h4 id="1-三个平面（必须非常清楚）"><a href="#1-三个平面（必须非常清楚）" class="headerlink" title="1. 三个平面（必须非常清楚）"></a>1. 三个平面（必须非常清楚）</h4><p>固定循环在 Z 向上涉及三个高度平面：</p>
+<ol>
+<li><strong>初始平面（初始位置）</strong>：循环开始前刀具所在的一个较高的安全高度，课堂取 $Z30$（与 XY 位置无关，只看 Z）。</li>
+<li><strong>R 平面（参考平面&#x2F;安全接近平面）</strong>：刀具从初始平面快速下降、在距工件表面一定安全距离处转为工进的那个平面。课堂取 $R5$（工件上方 $5\text{ mm}$）。<ul>
+<li>经验：工件表面<strong>已加工</strong>过时 R 平面距表面约 $2\sim5\text{ mm}$；若是<strong>毛坯</strong>表面可放到约 $10\text{ mm}$。</li>
+</ul>
+</li>
+<li><strong>孔底平面</strong>：钻孔最终到达的 Z 坐标，由孔深（通孔还要加超越量）决定。</li>
+</ol>
+<p>动作顺序：快速定位到孔位 XY 上方（初始平面高度）→ 快速下降到 R 平面 → 以进给速度钻削到孔底 → 退回。</p>
+<h4 id="2-G98-与-G99：退回到哪个平面"><a href="#2-G98-与-G99：退回到哪个平面" class="headerlink" title="2. G98 与 G99：退回到哪个平面"></a>2. G98 与 G99：退回到哪个平面</h4><ul>
+<li><code>G98</code>：钻孔结束后<strong>退回初始平面</strong>；</li>
+<li><code>G99</code>：钻孔结束后<strong>退回 R 平面</strong>。</li>
+</ul>
+<p><strong>选择原则</strong>：</p>
+<ul>
+<li>在<strong>同一高度平面上连续加工多个孔、中间没有障碍</strong>时，用 <strong>G99</strong>——只退到 R 平面就快速移到下一个孔位，空行程短、效率高；</li>
+<li>当孔之间有需要越过的夹具、凸台、肋板等障碍，或全部孔加工完要离开时，用 <strong>G98</strong> 退回较高的初始平面。</li>
+<li>本题 4 个孔在同一平面、表面无凸起障碍，<strong>用 G99 更合适（更快）</strong>；用 G98 也不算错，只是每孔多走一段行程、稍慢。</li>
+</ul>
+<h4 id="3-各地址字含义"><a href="#3-各地址字含义" class="headerlink" title="3. 各地址字含义"></a>3. 各地址字含义</h4><table>
+<thead>
+<tr>
+<th>地址字</th>
+<th>含义</th>
+<th>本课取值&#x2F;说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>X_ Y_</code></td>
+<td>孔位坐标（孔心）</td>
+<td>四孔：X16 Y0；X0 Y16；X−16 Y0；X0 Y−16</td>
+</tr>
+<tr>
+<td><code>Z_</code></td>
+<td>孔底 Z 坐标</td>
+<td>中心钻 Z−2；麻花钻&#x2F;铰刀通孔 Z−14（含超越量）</td>
+</tr>
+<tr>
+<td><code>R_</code></td>
+<td>R 平面 Z 坐标</td>
+<td>R5</td>
+</tr>
+<tr>
+<td><code>Q_</code></td>
+<td>两种含义：① G73&#x2F;G83 中为<strong>每次进给深度（步进切深）</strong>；② G76&#x2F;G87 镗孔中为孔底<strong>让刀量（横向偏移量）</strong></td>
+<td>G81 普通钻削不写 Q</td>
+</tr>
+<tr>
+<td><code>P_</code></td>
+<td>孔底<strong>停留时间</strong>，单位为毫秒（ms）</td>
+<td>中心钻&#x2F;钻通孔一般不停留，不写</td>
+</tr>
+<tr>
+<td><code>F_</code></td>
+<td>进给速度</td>
+<td>中心钻 F50；钻孔、铰孔按工艺取</td>
+</tr>
+<tr>
+<td><code>L_</code></td>
+<td>循环重复次数</td>
+<td>钻一次可省略&#x2F;取 1</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Q 的两种含义要分清</strong>：在 G73、G83 这类”深孔往复排屑&#x2F;断屑”循环里，Q 是<strong>每次往下钻多深</strong>；在 G76、G87 精镗&#x2F;背镗循环里，Q 是加工到孔底后镗刀<strong>横向让刀的偏移量</strong>（防止退刀划伤已加工面）。普通 G81 一次钻成，既没有”钻—抬—再钻”的步进，也没有孔底让刀，所以<strong>不写 Q</strong>；中心钻只是定个锥坑、孔底粗糙无所谓，也<strong>不需要 P 停留</strong>。</p>
+</blockquote>
+<h4 id="4-取消固定循环"><a href="#4-取消固定循环" class="headerlink" title="4. 取消固定循环"></a>4. 取消固定循环</h4><ul>
+<li>用 <code>G80</code> 取消固定循环模态；或在后续程序段中写入 G00&#x2F;G01 等 01 组指令也能结束循环。</li>
+<li>课堂在每把刀加工完 4 个孔后用 <code>G80</code> 结束循环，再 <code>G49</code> 取消刀补、<code>G00 Z100</code> 退回初始安全位置。</li>
+</ul>
+<hr>
+<h3 id="（四）任务一完整程序：三把刀三段（逐段讲思路）"><a href="#（四）任务一完整程序：三把刀三段（逐段讲思路）" class="headerlink" title="（四）任务一完整程序：三把刀三段（逐段讲思路）"></a>（四）任务一完整程序：三把刀三段（逐段讲思路）</h3><blockquote>
+<p>下面按课堂板书的思路还原三段程序的<strong>关键程序段与数值</strong>，用于理解”相邻工序之间程序怎么改”。不同系统格式略有差异，[以教材&#x2F;机床系统为准]。</p>
+</blockquote>
+<h4 id="1-第一段：T01-中心钻定心（G81）"><a href="#1-第一段：T01-中心钻定心（G81）" class="headerlink" title="1. 第一段：T01 中心钻定心（G81）"></a>1. 第一段：T01 中心钻定心（G81）</h4><p>程序思路（板书程序段号可能写成 N05、N10、N15……中间插行不必把后续序号全部重排，只要顺序正确即可）：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs text">T01 M06            ；换 1 号中心钻（刀库随机换刀，必须先换）<br>G54 G90 G17        ；工件坐标系、绝对编程、XY 平面（G17 可省）<br>G49                ；取消上一把刀遗留长度补偿<br>G00 Z100           ；先抬到安全高度<br>S1500 M03          ；中心钻高转速（&gt;1000，取 1500）<br>G43 G00 Z30 H01    ；建立 1 号刀长度正补偿，到初始平面 Z30<br>G99 G81 X16  Y0  Z-2.0  R5  F50   ；钻第1孔锥坑，退回 R 平面<br>        X0   Y16                  ；第2孔（模态，只写变化的孔位）<br>        X-16 Y0                   ；第3孔<br>        X0   Y-16                 ；第4孔<br>G80                ；取消固定循环<br>G49 G00 Z100       ；取消刀补、回安全高度<br>M05                ；主轴停（按系统要求）<br>M30 / M02          ；程序结束<br></code></pre></td></tr></table></figure>
+
+<p>要点：</p>
+<ul>
+<li>中心钻只钻一个浅锥坑（课堂示例孔底约 $Z-2$，定心即可），R 平面取 $5$，进给可小些（F50）；</li>
+<li>用 G99 连续加工 4 孔；G81 一次成型，<strong>不写 Q、不写 P</strong>；</li>
+<li>固定循环指令与孔位坐标是模态的，第 2~4 孔只需写出变化的 X&#x2F;Y。</li>
+</ul>
+<h4 id="2-第二段：T02-麻花钻钻孔（-phi9-8-）——重点是”超越量”"><a href="#2-第二段：T02-麻花钻钻孔（-phi9-8-）——重点是”超越量”" class="headerlink" title="2. 第二段：T02 麻花钻钻孔（$\phi9.8$）——重点是”超越量”"></a>2. 第二段：T02 麻花钻钻孔（$\phi9.8$）——重点是”超越量”</h4><p>在第一段基础上<strong>复制后只改必须改的地方</strong>：</p>
+<ol>
+<li><strong>换刀</strong>：<code>T02 M06</code>；</li>
+<li><strong>转速</strong>：从中心钻的 1500 降到常规钻削的 <strong>S600~800</strong>（钻削太猛容易把孔钻偏）；</li>
+<li><strong>长度补偿号</strong>：<code>G43 … H02</code>（2 号刀一般用 2 号刀补，是否同号取决于两把刀实际是否共用补偿值，通常要改）；</li>
+<li><strong>孔底 Z：必须算超越量，不能写成 Z−10</strong>。</li>
+</ol>
+<p><strong>超越量（钻通孔为什么要多钻一段）</strong>：</p>
+<p>麻花钻钻尖是约 $118°$ 的锥尖。若板厚 $10\text{ mm}$、孔底只写到 $Z-10$，则钻尖到达底面时，锥尖两侧还有一部分材料没被切除，孔口会残留两个”小角”、没有真正钻穿。因此要再多钻一段”超越量”，让整个钻尖（包括两侧刃）穿出底面。</p>
+<p>经验公式（课堂口径）：</p>
+<p>$$<br>\text{钻通孔超越量} \approx 0.3D + (1\sim3)\ \text{mm}<br>$$</p>
+<p>其中 $D$ 为钻头直径。本题 $D\approx9.8\approx10\text{ mm}$：</p>
+<p>$$<br>0.3\times 10 + (1\sim3) &#x3D; 3 + 1\sim3 &#x3D; 4\sim6\text{ mm}<br>$$</p>
+<p>小孔取下限附近，课堂取约 $4\text{ mm}$，故孔底：</p>
+<p>$$<br>Z &#x3D; -(10 + 4) &#x3D; -14\text{ mm}<br>$$</p>
+<ul>
+<li>导入量（刀具从 R 平面接近工件的距离）一般 $2\sim10\text{ mm}$（已加工面 $2\sim5$），R5 已满足；</li>
+<li>薄板一次钻穿，仍用 <strong>G81</strong>，无 Q、无 P（钻穿即抬，不在孔底停留）；</li>
+<li>4 个孔位坐标不变，G80&#x2F;G49&#x2F;G00 Z100 收尾与第一段相同。</li>
+</ul>
+<blockquote>
+<p>课堂把”超越量”和车螺纹时的导入&#x2F;导出距离类比：螺纹刀切入前、切出后都要留一段距离，钻孔在钻穿前、钻穿后同样要考虑超越量。</p>
+</blockquote>
+<h4 id="3-厚板-深孔：G81-要改成-G83（或-G73）并加-Q"><a href="#3-厚板-深孔：G81-要改成-G83（或-G73）并加-Q" class="headerlink" title="3. 厚板&#x2F;深孔：G81 要改成 G83（或 G73）并加 Q"></a>3. 厚板&#x2F;深孔：G81 要改成 G83（或 G73）并加 Q</h4><p>上面 $10\text{ mm}$ 薄板可以一刀直接钻穿。但如果板厚加到 $50$、$80$、$100\text{ mm}$，就<strong>不能用 G81 一次钻到底</strong>，最直观的原因是<strong>排屑</strong>：</p>
+<ul>
+<li>一刀钻太深，钻头两个刃槽来不及把大量铁屑（钢件）&#x2F;铝屑排出和带走，切屑堵在孔里会拉伤孔壁、增大切削热，甚至使细长钻头变形、折断。</li>
+<li>解决办法是”<strong>钻进去—抬刀—再钻进去—再抬刀</strong>“，靠每次抬刀把切屑带出孔外：<ul>
+<li><strong>G83（深孔钻削循环，往复排屑）</strong>：每次钻到 Q 深度就退回（充分排屑），再快进到距孔底一定距离继续钻；</li>
+<li><strong>G73（高速深孔钻削往复&#x2F;断屑循环）</strong>：以较小的退刀量高速往复，主要用于断屑。</li>
+</ul>
+</li>
+<li>改用 G83 时<strong>必须增加 Q</strong>，告诉机床”每次往下钻多深”。例如 $50\text{ mm}$ 厚板可取每次切深约 $Q8$（$8\text{ mm}$ 左右）；退刀量多数主流系统自带默认值。</li>
+<li>程序其余部分与 G81 基本相同，只把 G81 改成 G83、补上 Q，并按材料调整转速。</li>
+</ul>
+<h4 id="4-第三段：T03-铰孔（铰到-phi10-）"><a href="#4-第三段：T03-铰孔（铰到-phi10-）" class="headerlink" title="4. 第三段：T03 铰孔（铰到 $\phi10$）"></a>4. 第三段：T03 铰孔（铰到 $\phi10$）</h4><ul>
+<li><strong>换刀</strong> <code>T03 M06</code>，<code>G43 … H03</code>；</li>
+<li>铰孔是在 $\phi9.8$ 底孔上只切除约 $0.1\sim0.2\text{ mm}$ 的很小余量，切屑极少，<strong>排屑不再是主要矛盾</strong>，即使板较厚一般也能一次铰成，所以<strong>若第二段用了 G83，铰孔这段要改回 G81</strong>；</li>
+<li>铰孔**超越量取 $3\sim5\text{ mm}$**（比钻、镗通孔略大，保证铰刀整个校准部分穿出、得到完整圆柱面）；</li>
+<li>铰削转速通常比钻削更低、进给按铰削工艺选取（课堂口述”可由约 800 降到 600 左右”，并强调转速不是本段重点，具体[以教材&#x2F;手册为准]；进给量数值录音不清，[待核对]）；</li>
+<li>铰孔主要保证尺寸精度与 $Ra,1.6$ 的表面质量，<strong>不能纠正底孔的位置误差</strong>，所以前道钻孔&#x2F;定心的孔位必须准。</li>
+</ul>
+<p>三段程序合起来，就是”定心—钻孔—铰孔”三把刀、结构高度相似的三段固定循环程序。</p>
+<hr>
+<h3 id="（五）仿真验证与实操提醒"><a href="#（五）仿真验证与实操提醒" class="headerlink" title="（五）仿真验证与实操提醒"></a>（五）仿真验证与实操提醒</h3><ul>
+<li>在没有足够机床练习时，可先用数控仿真软件验证程序：建好毛坯、装好刀，逐段调用程序观察刀路。课堂使用的较老软件需要<strong>手动把三段程序分别调用三次</strong>（分别调出 O0001&#x2F;O0002&#x2F;O0003 运行），可看到加工中心从刀库取刀、G83 加工时抬刀排屑（铁屑随抬刀向上飞出）等动作。</li>
+<li>仿真能验证程序逻辑与刀路，但<strong>最后的对刀、刀具位置测量必须在真实机床上完成</strong>，这是仿真替代不了的。</li>
+<li>再次强调：仿真里能直观看到”刀是从刀库里换出来的”，这正是程序开头<strong>必须先写换刀</strong>的原因——你无法假设主轴上已经是目标刀具。</li>
+</ul>
+<hr>
+<h3 id="（六）任务二：六面体-平板件的平面铣削工艺分析"><a href="#（六）任务二：六面体-平板件的平面铣削工艺分析" class="headerlink" title="（六）任务二：六面体&#x2F;平板件的平面铣削工艺分析"></a>（六）任务二：六面体&#x2F;平板件的平面铣削工艺分析</h3><p>第二个任务是一个平板类零件（课堂示例成品尺寸约 $100\times100\times22\text{ mm}$，外形为六面体&#x2F;T 型板类），重点不在新指令，而在<strong>走一遍完整的平面加工工艺规程</strong>，为后续更复杂的图纸（教材 3-3 之类）和实训打基础。</p>
+<h4 id="1-读图：先找”关键控制尺寸”"><a href="#1-读图：先找”关键控制尺寸”" class="headerlink" title="1. 读图：先找”关键控制尺寸”"></a>1. 读图：先找”关键控制尺寸”</h4><ul>
+<li>图中未单独标注粗糙度的表面，按”<strong>其余 $Ra,3.2$</strong>“之类的统一要求处理（课堂示例为未注 $Ra,3.2$，个别面 $6.3$）。</li>
+<li>重点关注标注的形位公差：示例中基准面与上表面之间有较高的<strong>平行度&#x2F;位置度要求，公差 $0.02\text{ mm}$（俗称”两丝”，$1\text{ 丝}&#x3D;0.01\text{ mm}$）</strong>，高度方向也有 $0.02$ 的要求。</li>
+<li>因此这个看似简单的方块，<strong>关键控制两处：两个平面（基准面与上表面的平行度&#x2F;位置度）和一个高度尺寸</strong>。这些关键尺寸在检验时会重点检测，加工时必须保证。</li>
+</ul>
+<h4 id="2-各粗糙度用什么工艺能达到"><a href="#2-各粗糙度用什么工艺能达到" class="headerlink" title="2. 各粗糙度用什么工艺能达到"></a>2. 各粗糙度用什么工艺能达到</h4><ul>
+<li>$Ra,6.3$、$3.2$、甚至 $0.8$ 一档，用<strong>粗铣—半精铣—精铣</strong>一般就能达到，不需要磨削；</li>
+<li>到 $Ra,0.4$、$0.8$ 更高要求时，铣削往往达不到：<ul>
+<li><strong>钢件</strong>可以上砂轮磨削；</li>
+<li><strong>铝合金等有色金属不宜磨削</strong>（易堵塞砂轮），要考虑其他光整加工方案。</li>
+</ul>
+</li>
+<li>本题 $Ra,3.2&#x2F;6.3$ 用面铣刀分粗、半精、精铣即可。</li>
+</ul>
+<h4 id="3-机床、夹具与定位"><a href="#3-机床、夹具与定位" class="headerlink" title="3. 机床、夹具与定位"></a>3. 机床、夹具与定位</h4><ul>
+<li>机床：<strong>立式数控铣床&#x2F;加工中心</strong>（主轴竖直、工作台水平，工件平放、铣刀自上而下加工）。</li>
+<li>夹具：平板件用<strong>通用夹具——机用平口钳（虎钳）</strong>即可：把零件放在钳口中间，靠扳手旋转带动钳口夹紧。</li>
+<li>定位：以毛坯的<strong>下半面（底面）和两个侧面</strong>定位（不要依赖已加工&#x2F;靠上的面），据此分析限制了哪些自由度；定位面要避开需要加工的部位。</li>
+</ul>
+<h4 id="4-加工阶段、毛坯选择与工艺卡片"><a href="#4-加工阶段、毛坯选择与工艺卡片" class="headerlink" title="4. 加工阶段、毛坯选择与工艺卡片"></a>4. 加工阶段、毛坯选择与工艺卡片</h4><ul>
+<li>因为尺寸精度、形状精度要求较高，<strong>不能只粗铣一刀</strong>，要分<strong>粗铣 → 半精铣 → 精铣</strong>多道工序（工步）。</li>
+<li><strong>毛坯尺寸要按加工余量反选</strong>：成品 $100\times100\times22$，毛坯是选 $105\times105\times27$ 还是 $110\times110\times32$，取决于各面留多少加工余量（余量大小由工艺学&#x2F;工艺手册确定）。</li>
+<li>生产中要填写<strong>工序卡、刀具卡</strong>：写明零件与毛坯尺寸、机床设备、夹具、工序&#x2F;工步&#x2F;走刀划分、每道工步用的刀具、背吃刀量（切削深度）、主轴转速、进给量等。<ul>
+<li>课堂示例：粗铣、半精铣、精铣<strong>都用同一把面铣刀（盘形面铣刀）</strong>；</li>
+<li>背吃刀量（Z 向切深）逐级减小，示例约为 **粗铣 $1.2$、半精铣 $0.5$、精铣 $0.3\text{ mm}$**（[以教材&#x2F;手册为准]）；</li>
+<li>主轴转速示例约为 <strong>220 &#x2F; 200 &#x2F; 180 r&#x2F;min</strong> 一档（录音对应关系不清，[以教材为准]）；</li>
+<li>进给量按粗加工取大、精加工取小的原则查手册确定。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="（七）立式铣床坐标系与工作原点"><a href="#（七）立式铣床坐标系与工作原点" class="headerlink" title="（七）立式铣床坐标系与工作原点"></a>（七）立式铣床坐标系与工作原点</h3><ul>
+<li><strong>Z 轴</strong>：与主轴轴线平行。立式铣床主轴竖直，<strong>Z 轴垂直向上为正</strong>（刀具远离工件方向为正）。通用判据：工件旋转的机床（车床）Z 轴平行于工件回转轴线；刀具旋转的机床（铣床&#x2F;钻床&#x2F;镗床）Z 轴平行于刀具回转轴线。</li>
+<li><strong>X 轴</strong>：Z 轴垂直布置时，对<strong>单立柱</strong>机床，”面对刀具主轴向立柱方向看”，<strong>右手边方向为 X 正方向</strong>。</li>
+<li><strong>Y 轴</strong>：由右手直角坐标系按 X、Z 确定（垂直于 X、Z，沿立柱&#x2F;前后方向）。</li>
+<li>坐标方向判错会导致整个程序走反，务必结合机床（正着看&#x2F;背着看）练熟。</li>
+<li><strong>工作原点（程序原点）</strong>：平板件一般取<strong>上表面的对角线交点（上表面中心）</strong>，这样四方向尺寸对称、基点坐标好算；Z 零点取在上表面。</li>
+</ul>
+<hr>
+<h3 id="（八）面铣刀直径选择与两种平面走刀方式"><a href="#（八）面铣刀直径选择与两种平面走刀方式" class="headerlink" title="（八）面铣刀直径选择与两种平面走刀方式"></a>（八）面铣刀直径选择与两种平面走刀方式</h3><h4 id="1-面铣刀直径怎么选"><a href="#1-面铣刀直径怎么选" class="headerlink" title="1. 面铣刀直径怎么选"></a>1. 面铣刀直径怎么选</h4><ul>
+<li>面铣刀（盘铣刀）直径规格较大，课堂给的范围约为 $\phi50\sim\phi500\text{ mm}$（[以刀具手册为准]）。</li>
+<li>选刀原则：<strong>刀具直径应大于单个刀路要覆盖的宽度，并让相邻两刀有重叠</strong>，避免留下残脊。</li>
+<li>铣 $100\text{ mm}$ 宽的面：<ul>
+<li>若<strong>正好选 $\phi50$<strong>（半径 $25$），两刀恰好相切时中间容易留下一条没铣到的</strong>小棱（残脊）</strong>，不可取；</li>
+<li>课堂选 <strong>$\phi63$ 面铣刀（半径 $31.5$）</strong>，走两刀即可完整覆盖 $100\text{ mm}$ 宽度且有重叠，这也是选 63 而不是 50 的原因。</li>
+</ul>
+</li>
+<li>要对尺寸有概念：$100\text{ mm}$ 就是 $10\text{ cm}$，一把 $\phi63$ 的面铣刀走两次就能铣完，零件其实很小，不要把数值想象得很大。</li>
+</ul>
+<h4 id="2-两种走刀方式"><a href="#2-两种走刀方式" class="headerlink" title="2. 两种走刀方式"></a>2. 两种走刀方式</h4><ol>
+<li><strong>往复铣（行切）</strong>：刀具沿一个方向走一条直线、抬刀&#x2F;不抬刀横移一个步距、再反向走，呈”之”字形 &#x2F; S 形 &#x2F; A 字形往返。编程简单，应用广。</li>
+<li><strong>绕圈铣（环切）</strong>：刀具先沿毛坯外围绕一圈，再向内缩一个步距绕一圈，一圈圈向里收（C 字形&#x2F;螺旋状）。适合轮廓&#x2F;型腔，侧壁与底面质量较均匀。</li>
+</ol>
+<ul>
+<li>对正方形&#x2F;六边形等对称件，可把轮廓看作其外接圆&#x2F;外接正方形处理，刀位基点可取到对称中心附近来规划。</li>
+</ul>
+<hr>
+<h3 id="（九）平面铣削的”刀路基点坐标”怎么算（本节最核心的新增能力）"><a href="#（九）平面铣削的”刀路基点坐标”怎么算（本节最核心的新增能力）" class="headerlink" title="（九）平面铣削的”刀路基点坐标”怎么算（本节最核心的新增能力）"></a>（九）平面铣削的”刀路基点坐标”怎么算（本节最核心的新增能力）</h3><p>以前的例题通常把刀路的 A、B、C、D 各点坐标直接给你；这节课要求<strong>自己确定每个基点在哪</strong>。以原点取上表面中心、被铣面 $100\times100$（半宽 $50$）、面铣刀 $\phi63$（半径 $r&#x3D;31.5$）为例：</p>
+<h4 id="1-安全（提高）点为什么取-Z90"><a href="#1-安全（提高）点为什么取-Z90" class="headerlink" title="1. 安全（提高）点为什么取 Z90"></a>1. 安全（提高）点为什么取 Z90</h4><ul>
+<li>换刀&#x2F;起刀时刀具要抬到一个”无论 XY 在哪都不会碰到工件或夹具”的高度。</li>
+<li>零件边缘距中心 $50$，刀具半径 $31.5$，当刀心在边缘外侧时，刀具最低点在水平方向距中心可达 $50+31.5&#x3D;81.5\text{ mm}$。</li>
+<li>所以 Z 向安全高度至少要大于约 $81.5\text{ mm}$（课堂取 $85$ 以上），<strong>取 Z90 留余量</strong>；若只取 Z80，刀还没开始走就可能碰到工件后边。另一侧对应取 $Z-90$（指刀路走到负向端点时的对称位置&#x2F;越程，含义随坐标系方向，[以课堂板书图为准]）。</li>
+</ul>
+<h4 id="2-起点-Y-为什么取-−25（而不是极限的-−31-5）"><a href="#2-起点-Y-为什么取-−25（而不是极限的-−31-5）" class="headerlink" title="2. 起点 Y 为什么取 −25（而不是极限的 −31.5）"></a>2. 起点 Y 为什么取 −25（而不是极限的 −31.5）</h4><ul>
+<li>面铣刀半径 $31.5$，要让一刀覆盖到面的边缘，刀心极限位置可到与边缘相切处，即 $Y&#x3D;\pm31.5$。</li>
+<li>但<strong>不能贴着极限走</strong>：正好相切时边缘处切削最不充分、容易留下残料&#x2F;棱，所以要再多探出一些（至少到约 $Y&#x3D;\pm30$），保险取 **$Y&#x3D;-25$**（与另一侧 $Y&#x3D;+25$ 对称、居中），两刀（$Y&#x3D;-25$、$Y&#x3D;+25$）即可完整覆盖并重叠铣完 $100\text{ mm}$ 宽。</li>
+<li>即”<strong>刀心到边的距离 &#x3D; 零件半宽 + 刀具半径 + 安全余量</strong>“，$Y-25$ 是兼顾覆盖与重叠后的稳妥取值。</li>
+</ul>
+<h4 id="3-Z-向切深：粗铣、半精铣、精铣与-Z−2-01"><a href="#3-Z-向切深：粗铣、半精铣、精铣与-Z−2-01" class="headerlink" title="3. Z 向切深：粗铣、半精铣、精铣与 Z−2.01"></a>3. Z 向切深：粗铣、半精铣、精铣与 Z−2.01</h4><ul>
+<li>每道工步的 Z 坐标由该阶段去除多少材料决定：<ul>
+<li>若粗铣一刀去除 $1.5\text{ mm}$，则粗铣下刀到 $Z&#x3D;-1.5$；</li>
+<li>课堂示例最终精铣完成后总切深约 $Z&#x3D;-2.01$（即把厚度方向预留的约 $2\text{ mm}$ 余量分粗、半精、精逐层铣完，末刀留约 $0.01\text{ mm}$ 量级的光整量，[以教材为准]）。</li>
+</ul>
+</li>
+<li>半精铣、精铣的 Z 值按各自背吃刀量（约 $1.2&#x2F;0.5&#x2F;0.3$ 的分层）累计确定；录音中粗铣切深同时出现 1.2 与 1.5 的口述，数字对应关系[待核对]，以工艺卡&#x2F;教材为准。</li>
+</ul>
+<h4 id="4-基点-1→2→3→4"><a href="#4-基点-1→2→3→4" class="headerlink" title="4. 基点 1→2→3→4"></a>4. 基点 1→2→3→4</h4><p>确定走刀方式后，把刀路与零件轮廓的交点&#x2F;越程点依次编号为基点 1、2、3、4，逐一算出坐标（思路与以往”A 点走到 B 点再到 C 点”相同，区别只是 A 点位置现在要自己定）。对圆形&#x2F;六边形可视为外接圆，起刀点可直接取到中心延长线上，简化计算。</p>
+<hr>
+<h3 id="（十）面铣程序与”最快程序”优化"><a href="#（十）面铣程序与”最快程序”优化" class="headerlink" title="（十）面铣程序与”最快程序”优化"></a>（十）面铣程序与”最快程序”优化</h3><p>课堂给出的面铣主体程序思路（一把面铣刀，通用机床手动换刀时可省换刀段）：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs text">G54 G90            ；工件坐标系、绝对编程<br>G00 X0 Y0 Z100     ；快速到安全位置（简单件一把刀，通用机床可无 M06）<br>G43 H01            ；建立长度补偿<br>S… M03             ；主轴转速（按粗/半精/精取）<br>G00 X90 Y-25       ；快速定位到工件外侧起点上空（X90、Y−25 均在毛坯外）<br>G00 Z5             ；降到安全接近高度 Z5<br>G01 Z-1.2 F200     ；工进下刀到粗铣切深（示例 1.2），F200<br>G01 X… Y… …        ；按基点走刀铣面（往复/绕圈）<br>……<br>G00 Z100           ；抬刀<br>M05 M30<br></code></pre></td></tr></table></figure>
+
+<p><strong>程序优化（课堂思考题：哪一步可以省）</strong>：</p>
+<ul>
+<li>上面程序”能实现，但不是最快”。起点 <code>X90 Y-25</code> 已经在<strong>工件轮廓之外的上空</strong>，刀具下方没有工件，因此**可以直接工进下到切削深度（如直接到 $Z-1.2$）再走刀，不必先停在 $Z5$**——这一步 <code>G00 Z5</code> 可以省略。</li>
+<li>安全距离要结合刀具位置判断：当刀具悬在工件上方时必须留 R 平面&#x2F;安全高度；当刀具本就在工件外侧时，安全应通过”水平位置在工件外 + 足够高度移动”来保证，而不是机械地多加一个 Z5。</li>
+<li>要能”读懂程序有没有多余动作”，而不是看到程序能跑就认为最优。</li>
+</ul>
+<p><strong>粗铣、半精铣、精铣三段程序的关系</strong>：程序结构、刀路、基点完全一样，<strong>只有三处不同</strong>——</p>
+<ol>
+<li><strong>背吃刀量（Z 向切深）</strong>；</li>
+<li><strong>侧向（横向）进给量&#x2F;步距</strong>；</li>
+<li><strong>主轴转速 S（及进给 F）</strong>。</li>
+</ol>
+<p>复制程序改这三处即可。</p>
+<hr>
+<h3 id="（十一）完整工艺编程流程总结（实训-课程设计照此走）"><a href="#（十一）完整工艺编程流程总结（实训-课程设计照此走）" class="headerlink" title="（十一）完整工艺编程流程总结（实训&#x2F;课程设计照此走）"></a>（十一）完整工艺编程流程总结（实训&#x2F;课程设计照此走）</h3><figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs gcode">① 分析零件图：尺寸、毛坯形状、各项精度（尺寸/形位公差、Ra），找出关键控制面与尺寸<br>② 选毛坯：按各面加工余量反推毛坯尺寸<br>③ 选机床、夹具：立式数控铣床/加工中心；平板用平口钳，分析定位与自由度<br>④ 划分加工阶段与工序/工步：粗→半精→精；填工序卡<br>⑤ 选刀具、填刀具卡：面铣刀直径、孔加工刀具（中心钻/钻头/扩孔钻/铰刀/镗刀）<br>⑥ 建立工件坐标系、选工作原点（平板取上表面中心，Z<span class="hljs-number">0</span> 在上表面）<br>⑦ 定走刀方式：孔加工固定循环与 <span class="hljs-name">G98</span>/<span class="hljs-name">G99</span>；平面往复或绕圈<br>⑧ 计算刀路各基点坐标（含安全高度、越程、超越量）<br>⑨ 编程序：换刀→坐标系→<span class="hljs-name">G90</span>/<span class="hljs-name">G17</span>/<span class="hljs-name">G49</span>→安全高度→S→<span class="hljs-name">G43</span> H→循环/走刀→<span class="hljs-name">G80</span>/<span class="hljs-name">G49</span>/回零<br>⑩ 仿真校验 → 机床对刀、试切、测量<br></code></pre></td></tr></table></figure>
+
+<p>课堂强调：在学校把这套”零件分析 + 工艺 + 程序 + 仿真&#x2F;实操”走扎实，到相关岗位（编程员、操作员）基本能直接上手；其中<strong>进给量、切削速度等具体用量</strong>本系列课未展开，正式工艺需查切削用量手册（实训前会再指导查表）。</p>
+<hr>
+<h2 id="四、例题与案例汇总"><a href="#四、例题与案例汇总" class="headerlink" title="四、例题与案例汇总"></a>四、例题与案例汇总</h2><h3 id="例题-1：-50-times50-times10-板-4-孔加工（基孔制、-Ra-1-6-）"><a href="#例题-1：-50-times50-times10-板-4-孔加工（基孔制、-Ra-1-6-）" class="headerlink" title="例题 1：$50\times50\times10$ 板 4 孔加工（基孔制、$Ra,1.6$）"></a>例题 1：$50\times50\times10$ 板 4 孔加工（基孔制、$Ra,1.6$）</h3><ul>
+<li><strong>零件</strong>：$50\times50\times10\text{ mm}$ 方板；4 个 $\phi10$ 通孔，孔心在半径 $16\text{ mm}$ 的圆周上：$(16,0)$、$(0,16)$、$(-16,0)$、$(0,-16)$；基孔制、$Ra,1.6$。</li>
+<li><strong>工艺决策</strong>：<ul>
+<li>钻&#x2F;扩只能到 $Ra,3.2\sim6.3$，铰可达 $0.4\sim1.6$，镗精度过剩 → 选<strong>中心钻→钻（$\phi9.8$）→铰（$\phi10$）</strong>三把刀；</li>
+</ul>
+</li>
+<li><strong>关键数值</strong>：<ul>
+<li>中心钻 T01：S1500（&gt;1000）、G81、Z−2、R5、F50、G99；</li>
+<li>麻花钻 T02（$\phi9.8$）：S600~800、G81、超越量 $0.3D+(1\sim3)&#x3D;4\sim6$ 取 4、<strong>Z−14</strong>；</li>
+<li>铰刀 T03（$\phi10$）：小余量、改回 G81、铰孔超越量 $3\sim5$；</li>
+<li>每段：换刀→G54&#x2F;G90&#x2F;G17&#x2F;G49&#x2F;G00 Z100→S→G43 H→G99 G81 四孔→G80→G49 G00 Z100。</li>
+</ul>
+</li>
+<li><strong>拓展</strong>：若板厚 50~100 mm，钻孔段 G81 改 <strong>G83</strong> 并加 <strong>Q</strong>（如 Q8）往复排屑；铰孔段仍用 G81。</li>
+</ul>
+<h3 id="例题-2：-100-times100-times22-六面体平板平面铣削"><a href="#例题-2：-100-times100-times22-六面体平板平面铣削" class="headerlink" title="例题 2：$100\times100\times22$ 六面体平板平面铣削"></a>例题 2：$100\times100\times22$ 六面体平板平面铣削</h3><ul>
+<li><strong>零件与精度</strong>：成品约 $100\times100\times22$；未注 $Ra,3.2$（个别 6.3）；基准面与上表面平行度&#x2F;位置度 $0.02$（两丝），关键控两平面 + 高度。</li>
+<li><strong>毛坯&#x2F;装夹</strong>：按余量选 $105\times105\times27$ 或 $110\times110\times32$；立式铣床 + 平口钳，底面与两侧定位。</li>
+<li><strong>加工</strong>：粗铣—半精铣—精铣，同一把面铣刀；背吃刀量约 $1.2&#x2F;0.5&#x2F;0.3$、转速约 $220&#x2F;200&#x2F;180$（[以教材为准]）。</li>
+<li><strong>刀具与走刀</strong>：选 $\phi63$ 面铣刀（$r&#x3D;31.5$）走两刀，不选 $\phi50$（留棱）；往复或绕圈。</li>
+<li><strong>基点（原点上表面中心）</strong>：<ul>
+<li>安全高度 Z90（$50+31.5&#x3D;81.5$，取 ≥85，取 90）；</li>
+<li>起点 $X90,Y-25$（在工件外；Y 极限 −31.5，留余量取 −25），两刀 $Y&#x3D;\pm25$；</li>
+<li>粗铣下刀 $Z-1.2$（或 −1.5），最终精铣约 $Z-2.01$；</li>
+<li>优化：刀在工件外可直接下到切削深度、省去 Z5。</li>
+</ul>
+</li>
+<li><strong>三段程序差异</strong>：仅背吃刀量、侧向进给量、转速三处。</li>
+</ul>
+<hr>
+<h2 id="五、术语-公式-指令速查表"><a href="#五、术语-公式-指令速查表" class="headerlink" title="五、术语 &#x2F; 公式 &#x2F; 指令速查表"></a>五、术语 &#x2F; 公式 &#x2F; 指令速查表</h2><table>
+<thead>
+<tr>
+<th>类别</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>孔工艺链</td>
+<td>中心钻定心 → 麻花钻钻孔 →（扩孔修正）→ 铰孔 &#x2F; 镗孔</td>
+</tr>
+<tr>
+<td>钻&#x2F;扩 $Ra$</td>
+<td>$3.2\sim6.3\ \mu m$（扩孔约 IT10，扩孔余量约 $2\sim4$ mm）</td>
+</tr>
+<tr>
+<td>铰孔</td>
+<td>IT6~9，$Ra,0.4\sim1.6$；粗铰余量约 $0.15\sim0.35$、精铰 $0.05\sim0.1$；<strong>不能纠正孔位</strong>；通孔超越量 $3\sim5$ mm</td>
+</tr>
+<tr>
+<td>镗孔</td>
+<td>粗 $6.3\sim12.5$、半精 $1.6\sim3.2$、精 $0.1\sim0.4\ \mu m$；能纠正位置&#x2F;形状；通孔超越量约 $1\sim3$ mm</td>
+</tr>
+<tr>
+<td>钻通孔超越量</td>
+<td>$\Delta z \approx 0.3D+(1\sim3)\text{ mm}$；本题 $D\approx10$ 得 $4\sim6$，取 4，Z−14</td>
+</tr>
+<tr>
+<td>中心钻转速</td>
+<td>$&gt;1000\text{ r&#x2F;min}$（取约 1500）；麻花钻约 $600\sim800\text{ r&#x2F;min}$</td>
+</tr>
+<tr>
+<td>三平面</td>
+<td>初始平面（Z30）&#x2F; R 平面（R5，已加工面 2~5、毛坯约 10）&#x2F; 孔底平面</td>
+</tr>
+<tr>
+<td>G98 &#x2F; G99</td>
+<td>退回初始平面 &#x2F; 退回 R 平面；同面连续多孔用 G99</td>
+</tr>
+<tr>
+<td>G81</td>
+<td>普通钻孔（浅孔&#x2F;薄板一次钻成、铰孔），无 Q、P</td>
+</tr>
+<tr>
+<td>G83 &#x2F; G73</td>
+<td>深孔往复<strong>排屑</strong> &#x2F; 高速深孔往复<strong>断屑</strong>，须写 Q（每次切深，如 Q8）</td>
+</tr>
+<tr>
+<td>G76 &#x2F; G87</td>
+<td>精镗 &#x2F; 背镗，Q 为孔底<strong>让刀量</strong></td>
+</tr>
+<tr>
+<td>循环地址字</td>
+<td>X Y 孔位；Z 孔底；R R 平面；Q 切深&#x2F;让刀量；P 孔底停留(ms)；F 进给；L 次数</td>
+</tr>
+<tr>
+<td>G80 &#x2F; G49</td>
+<td>取消固定循环 &#x2F; 取消长度补偿</td>
+</tr>
+<tr>
+<td>G54 &#x2F; G92</td>
+<td>面板零点偏移（不改程序、宜批量）&#x2F; 程序内设定坐标系（改值要改程序）</td>
+</tr>
+<tr>
+<td>G43 &#x2F; G44</td>
+<td>刀具长度正补偿 &#x2F; 负补偿，配 H 代码</td>
+</tr>
+<tr>
+<td>标准开头</td>
+<td>T__ M06 → G54 → G90 → G17 → G49 → G00 Z100 → S__ M03 → G43 H__</td>
+</tr>
+<tr>
+<td>平面加工阶段</td>
+<td>粗铣 → 半精铣 → 精铣；三段仅改 背吃刀量 &#x2F; 侧向进给量 &#x2F; 转速</td>
+</tr>
+<tr>
+<td>面铣刀选径</td>
+<td>刀径 &gt; 单刀覆盖宽度、相邻刀路重叠；铣 100 mm 面选 $\phi63$（$r&#x3D;31.5$）走两刀，忌 $\phi50$ 留棱</td>
+</tr>
+<tr>
+<td>走刀方式</td>
+<td>往复（之字&#x2F;S&#x2F;A 字形）&#x2F; 绕圈（外圈向里、C 字形）</td>
+</tr>
+<tr>
+<td>基点计算</td>
+<td>安全高 ≥ 零件半宽 + 刀半径 + 余量（$50+31.5&#x3D;81.5$，取 Z90）；起点越程 $Y&#x3D;\pm25$（极限 $\pm31.5$）</td>
+</tr>
+<tr>
+<td>形位公差</td>
+<td>$0.02\text{ mm}&#x3D;$ 两丝（$1$ 丝 $&#x3D;0.01\text{ mm}$）</td>
+</tr>
+<tr>
+<td>夹具</td>
+<td>平板件用平口钳（虎钳），底面 + 两侧定位</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="六、课堂任务-实训要点"><a href="#六、课堂任务-实训要点" class="headerlink" title="六、课堂任务 &#x2F; 实训要点"></a>六、课堂任务 &#x2F; 实训要点</h2><ol>
+<li>能对一个带精度要求的孔系零件，独立判断该用”钻—扩—铰—镗”中的哪几道工序，并说明依据（$Ra$、IT、是否需纠正孔位）。</li>
+<li>能完整写出加工中心”换刀 + 安全初始化 + 固定循环 + 取消回零”的三段（三把刀）程序，并说清相邻两段之间哪些字段必须改（刀号、转速、H 号、孔底 Z&#x2F;超越量、循环指令 G81↔G83）。</li>
+<li>会算钻、铰、镗通孔的超越量，能正确写出通孔孔底 Z 坐标，不犯”只钻到板厚”的错误。</li>
+<li>能根据板厚判断 G81 与 G83&#x2F;G73 的取舍，并正确给出 Q。</li>
+<li>能对平板类零件做完整工艺分析：读图找关键面&#x2F;尺寸 → 选毛坯 → 选机床夹具 → 划分粗半精 → 选面铣刀直径 → 选走刀方式 → 计算基点坐标 → 编程。</li>
+<li>能在仿真软件中调用、校验程序，并理解最终对刀测量必须上机完成。</li>
+</ol>
+<hr>
+<h2 id="七、待核对-以教材为准（录音不清或口语化处）"><a href="#七、待核对-以教材为准（录音不清或口语化处）" class="headerlink" title="七、待核对 &#x2F; 以教材为准（录音不清或口语化处）"></a>七、待核对 &#x2F; 以教材为准（录音不清或口语化处）</h2><ol>
+<li>铰孔的<strong>进给量具体数值</strong>、以及铰孔转速（”约 800 降到 600”）录音表述不清，[待核对]，按铰削用量手册选取。</li>
+<li>平面铣削<strong>背吃刀量</strong>同时出现粗铣 1.2 与 1.5 的口述、精铣总切深 Z−2.01 的精确分层关系，录音数字混淆，[以教材&#x2F;工艺卡为准]。</li>
+<li>面铣<strong>转速 220&#x2F;200&#x2F;180</strong> 与粗&#x2F;半精&#x2F;精的对应关系录音不清（且与”精铣转速常更高”的一般经验需对照），[以教材为准]。</li>
+<li>面铣刀直径范围”约 50~500 mm”、最小规格等为课堂口述，[以刀具手册为准]。</li>
+<li>扩孔、铰孔余量（直径&#x2F;单边口径）及 IT 等级为课堂经验值，不同教材按孔径分段，[以教材为准]。</li>
+<li>板书中 Z90&#x2F;Z−90、基点编号与具体 X&#x2F;Y 数值以课堂配套图纸为准，本篇按口述思路还原。</li>
+<li>程序格式（M03&#x2F;M05&#x2F;M30、程序段号、G81 书写顺序）不同系统略有差异，[以所用机床系统手册为准]。</li>
+</ol>
+<hr>
+<h2 id="八、复习自测（主动回忆，先自己答再看答案）"><a href="#八、复习自测（主动回忆，先自己答再看答案）" class="headerlink" title="八、复习自测（主动回忆，先自己答再看答案）"></a>八、复习自测（主动回忆，先自己答再看答案）</h2><p><strong>1. 为什么加工中心每把刀程序开头都必须先写换刀指令？</strong><br>答：刀库随机换刀，程序启动时主轴上是哪把刀不确定（可能是上一工件&#x2F;程序留下的），必须用 T__ M06 明确换出本工序需要的刀，否则会用错刀直接导致废品或撞刀。</p>
+<p><strong>2. 写出加工中心换刀后的标准初始化程序段，并说明 G49、G00 Z100 的作用。</strong><br>答：T__ M06 → G54 → G90 →（G17）→ G49 → G00 Z100 → S__ M03 → G43 H__。G49 取消上一把刀模态遗留的长度补偿；G00 Z100 在换刀后刀具实际位置未知时先抬到安全高度，防止撞工件。</p>
+<p><strong>3. G54 与 G92 建立工件坐标系有何区别？实际大批量生产为何多用 G54？</strong><br>答：G92 坐标系写在程序里，对刀值一变就要改程序；G54 零点偏移存在控制面板里，操作员实测后直接改偏移量、程序不动，便于现场调整，适合大批量。</p>
+<p><strong>4. 孔加工工艺链的一般顺序是什么？中心钻定心为何转速要高？</strong><br>答：中心钻定心 → 麻花钻钻孔 →（扩孔修正）→ 铰孔或镗孔。麻花钻横刃定心性差、易偏，中心钻先钻锥坑导向；定心转速一般 &gt;1000 r&#x2F;min（约 1500），锥坑质量好。</p>
+<p><strong>5. 钻孔、扩孔、铰孔、镗孔各自能达到的 Ra 大致是多少？铰孔能否纠正孔的位置偏差？</strong><br>答：钻、扩约 Ra 3.2<del>6.3（扩约 IT10）；铰 Ra 0.4</del>1.6、IT6<del>9；镗粗 6.3</del>12.5、半精 1.6<del>3.2、精 0.1</del>0.4。铰孔余量小、是”顺着底孔”精加工，不能纠正孔的位置误差；要纠正位置度&#x2F;垂直度需镗孔。</p>
+<p><strong>6. 本题 $\phi10$、Ra1.6 的孔为什么最终选铰孔而不是扩孔或精镗？</strong><br>答：扩孔只到 Ra3.2<del>6.3 达不到 1.6；半精镗最好才勉强到 1.6、不稳定，精镗 Ra0.1</del>0.4 精度过剩、不经济；铰孔稳定覆盖 Ra0.4~1.6 且效率高，故选铰。</p>
+<p><strong>7. G98 和 G99 的区别？同一平面连续钻 4 个孔选哪个？为什么？</strong><br>答：G98 退回初始平面，G99 退回 R 平面。同高度平面连续多孔、无障碍时选 G99，空行程短、效率高；要越过夹具&#x2F;凸台或全部结束时才用 G98。</p>
+<p><strong>8. 固定循环中 R、Z、Q、P、F、L 各表示什么？Q 在哪两类循环里含义不同？</strong><br>答：R 为 R 平面高度，Z 为孔底坐标，F 为进给，L 为重复次数，P 为孔底停留时间(ms)；Q 在 G73&#x2F;G83 中是每次步进切深，在 G76&#x2F;G87 中是镗孔孔底让刀量。</p>
+<p><strong>9. 为什么 G81 钻中心孔、钻薄板通孔时通常不写 Q 和 P？</strong><br>答：G81 一次钻成，没有”钻—抬—再钻”的步进（故无步进 Q），也没有镗孔让刀；中心孔&#x2F;通孔钻到即退、不在孔底停留（故无 P）。</p>
+<p><strong>10. 钻通孔为什么要加超越量？$\phi9.8$ 钻头钻 10 mm 厚板，超越量和孔底 Z 怎么取？</strong><br>答：钻尖是约 118° 锥尖，只钻到板厚会在出口两侧留残料；超越量 ≈0.3D+(1<del>3)&#x3D;0.3×10+1</del>3&#x3D;4~6，取 4，孔底 Z&#x3D;−(10+4)&#x3D;−14。</p>
+<p><strong>11. 厚板&#x2F;深孔为什么不能用 G81 一刀钻穿？应改用什么、补哪个参数？</strong><br>答：一刀钻太深切屑排不出来，会拉伤孔壁、憋断钻头。改用 G83（深孔往复排屑）或 G73（高速断屑），并写 Q 指定每次切深（如 50 mm 厚取 Q8）。</p>
+<p><strong>12. 铰孔段为什么常把 G83 改回 G81？铰通孔超越量取多少？</strong><br>答：铰孔只切除约 0.1<del>0.2 mm 极小余量、切屑很少，排屑不是问题，一般一次铰成，故用 G81；铰通孔超越量取 3</del>5 mm，保证校准部分完整穿出。</p>
+<p><strong>13. 平板件平面铣削为什么要分粗铣、半精铣、精铣？三段程序差别在哪？</strong><br>答：精度（尺寸、平行度&#x2F;位置度、Ra）要求高，一刀成型无法保证，需分层逐步提高精度。三段刀路结构完全相同，只改三处：背吃刀量（Z 切深）、侧向进给量（步距）、主轴转速（进给）。</p>
+<p><strong>14. 铣 100 mm 宽的平面为什么选 $\phi63$ 面铣刀走两刀，而不选 $\phi50$？</strong><br>答：$\phi50$（r25）两刀恰好相切时中间易留残棱；$\phi63$（r31.5）两刀有重叠，能完整覆盖 100 mm 宽度且无棱。选刀要求刀径大于单刀覆盖宽度、相邻刀路重叠。</p>
+<p><strong>15. 面铣刀路的安全高度为什么取 Z90？起点 Y 为什么取 −25 而不是 −31.5？</strong><br>答：零件半宽 50、刀半径 31.5，刀在边缘外侧时水平可达 50+31.5&#x3D;81.5，安全高度须大于它，取 Z90 留余量；Y&#x3D;−31.5 是刀与边相切的极限，边缘切削不充分易留残料，取 Y−25（与 +25 对称）保证重叠铣净。</p>
+<p><strong>16. 课堂说面铣程序”能实现但不是最快”，可省的是哪一步？前提是什么？</strong><br>答：当起点（如 X90 Y−25）本就在工件轮廓之外、刀下无工件时，可直接工进下到切削深度再走刀，省去先降到 Z5 这一步；安全由”水平位置在工件外 + 足够高度快速移动”保证。</p>
+<p><strong>17. 立式数控铣床的 Z 轴如何确定？单立柱机床 X 轴正方向如何判定？平板件工作原点常取哪？</strong><br>答：Z 轴平行刀具（主轴）轴线，立式机床 Z 竖直、向上为正；Z 垂直时面对刀具主轴向立柱看，右手边为 X 正方向，Y 由右手坐标系确定；平板件程序原点一般取上表面对角线中心、Z0 在上表面。</p>
+<p><strong>18. 说出从拿到零件到出程序的完整工艺编程流程。</strong><br>答：读图分析（尺寸&#x2F;精度&#x2F;Ra&#x2F;关键面）→ 选毛坯 → 选机床夹具、分析定位 → 划分加工阶段与工序工步（工序卡）→ 选刀具（刀具卡）→ 建坐标系选原点 → 定走刀方式 → 算刀路基点（安全高&#x2F;越程&#x2F;超越量）→ 编程 → 仿真校验 → 上机对刀试切测量。</p>
+<p><strong>19. $0.02\text{ mm}$ 的平行度俗称多少？加工这种关键面时检验和工艺上要注意什么？</strong><br>答：俗称”两丝”（1 丝&#x3D;0.01 mm）。它是重点检验项，工艺上要以基准面定位、分粗半精铣保证平行度与高度，末道精铣控制表面质量与尺寸。</p>
+<p><strong>20. 同样要得到 Ra0.4~0.8 的表面，钢件和铝合金在”能否磨削”上有何区别？</strong><br>答：钢件可用砂轮磨削达到更高表面质量；铝合金等有色金属不宜磨削（易堵塞砂轮），需采用其他光整加工方案。</p>
+<hr>
+<blockquote>
+<p><strong>收尾记忆</strong>：这节课没有新 G 代码，核心是把指令”装进工艺里”。孔加工记住”<strong>定心—钻—（扩）—铰&#x2F;镗，按 Ra 反推，通孔加超越量，深孔用 G83 加 Q</strong>“；平面铣削记住”<strong>粗半精分层、面铣刀要够大并重叠、往复或绕圈、基点按半宽+半径+余量自己算</strong>“。把这两个实例的完整流程独立默写一遍，综合编程题就有了通用模板。</p>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E6%8E%A7%E7%BC%96%E7%A8%8B-%E9%93%A3%E5%89%8A-%E5%8A%A0%E5%B7%A5%E5%AE%9E%E4%BE%8B/" class="print-no-link">#数控编程 铣削 加工实例</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>数控铣床综合加工实例：四孔三把刀程序与平面铣削工艺</div>
+      <div>https://tdexxx.github.io/2026/10/15/01_数控加工工艺与编程/数控加工工艺与编程_铣床综合加工实例_课堂笔记/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>tdexxx</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年10月15日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/10/15/01_%E6%95%B0%E6%8E%A7%E5%8A%A0%E5%B7%A5%E5%B7%A5%E8%89%BA%E4%B8%8E%E7%BC%96%E7%A8%8B/%E6%95%B0%E6%8E%A7%E5%8A%A0%E5%B7%A5%E5%B7%A5%E8%89%BA%E4%B8%8E%E7%BC%96%E7%A8%8B_%E8%BD%A6%E5%89%8A%E7%BC%96%E7%A8%8B_%E9%80%90%E5%AD%97%E7%A8%BF/" title="数控车削编程课堂逐字稿">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">数控车削编程课堂逐字稿</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/10/15/01_%E6%95%B0%E6%8E%A7%E5%8A%A0%E5%B7%A5%E5%B7%A5%E8%89%BA%E4%B8%8E%E7%BC%96%E7%A8%8B/%E6%95%B0%E6%8E%A7%E5%8A%A0%E5%B7%A5%E5%B7%A5%E8%89%BA%E4%B8%8E%E7%BC%96%E7%A8%8B_%E9%93%A3%E5%89%8A%E7%BC%96%E7%A8%8B_%E9%80%90%E5%AD%97%E7%A8%BF/" title="数控铣削编程课堂逐字稿">
+                        <span class="hidden-mobile">数控铣削编程课堂逐字稿</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

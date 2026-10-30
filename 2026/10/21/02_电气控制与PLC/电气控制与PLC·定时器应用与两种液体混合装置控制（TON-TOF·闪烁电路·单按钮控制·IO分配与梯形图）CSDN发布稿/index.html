@@ -1,0 +1,1314 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="tdexxx">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="电气控制与PLC：定时器应用与两种液体混合装置控制（TON&#x2F;TOF · 闪烁电路 · 单按钮控制 · I&#x2F;O 分配与梯形图） 本篇为《电气控制与PLC》课堂整理。这节课的主线是**从”继电器逻辑”过渡到”程序逻辑”**，然后用三个由浅入深的实例把定时器用透：  定时器的两种基本用法——接通延时 TON 与关断延时 TOF，两者的动作时刻完全不同，这是最容易记混的地方； 闪烁电路">
+<meta property="og:type" content="article">
+<meta property="og:title" content="定时器应用与两种液体混合装置控制">
+<meta property="og:url" content="https://tdexxx.github.io/2026/10/21/02_%E7%94%B5%E6%B0%94%E6%8E%A7%E5%88%B6%E4%B8%8EPLC/%E7%94%B5%E6%B0%94%E6%8E%A7%E5%88%B6%E4%B8%8EPLC%C2%B7%E5%AE%9A%E6%97%B6%E5%99%A8%E5%BA%94%E7%94%A8%E4%B8%8E%E4%B8%A4%E7%A7%8D%E6%B6%B2%E4%BD%93%E6%B7%B7%E5%90%88%E8%A3%85%E7%BD%AE%E6%8E%A7%E5%88%B6%EF%BC%88TON-TOF%C2%B7%E9%97%AA%E7%83%81%E7%94%B5%E8%B7%AF%C2%B7%E5%8D%95%E6%8C%89%E9%92%AE%E6%8E%A7%E5%88%B6%C2%B7IO%E5%88%86%E9%85%8D%E4%B8%8E%E6%A2%AF%E5%BD%A2%E5%9B%BE%EF%BC%89CSDN%E5%8F%91%E5%B8%83%E7%A8%BF/index.html">
+<meta property="og:site_name" content="tdexxx的博客">
+<meta property="og:description" content="电气控制与PLC：定时器应用与两种液体混合装置控制（TON&#x2F;TOF · 闪烁电路 · 单按钮控制 · I&#x2F;O 分配与梯形图） 本篇为《电气控制与PLC》课堂整理。这节课的主线是**从”继电器逻辑”过渡到”程序逻辑”**，然后用三个由浅入深的实例把定时器用透：  定时器的两种基本用法——接通延时 TON 与关断延时 TOF，两者的动作时刻完全不同，这是最容易记混的地方； 闪烁电路">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-10-21T13:24:25.000Z">
+<meta property="article:modified_time" content="2026-10-30T17:37:19.930Z">
+<meta property="article:author" content="tdexxx">
+<meta property="article:tag" content="PLC 定时器 梯形图 CSDN">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>定时器应用与两种液体混合装置控制 - tdexxx的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"tdexxx.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2022-12-10T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="定时器应用与两种液体混合装置控制"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-10-21 21:24" pubdate>
+          2026年10月21日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          8.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          69 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">定时器应用与两种液体混合装置控制</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="电气控制与PLC：定时器应用与两种液体混合装置控制（TON-TOF-·-闪烁电路-·-单按钮控制-·-I-O-分配与梯形图）"><a href="#电气控制与PLC：定时器应用与两种液体混合装置控制（TON-TOF-·-闪烁电路-·-单按钮控制-·-I-O-分配与梯形图）" class="headerlink" title="电气控制与PLC：定时器应用与两种液体混合装置控制（TON&#x2F;TOF · 闪烁电路 · 单按钮控制 · I&#x2F;O 分配与梯形图）"></a>电气控制与PLC：定时器应用与两种液体混合装置控制（TON&#x2F;TOF · 闪烁电路 · 单按钮控制 · I&#x2F;O 分配与梯形图）</h1><blockquote>
+<p>本篇为《电气控制与PLC》课堂整理。这节课的主线是**从”继电器逻辑”过渡到”程序逻辑”**，然后用三个由浅入深的实例把定时器用透：</p>
+<ol>
+<li><strong>定时器的两种基本用法</strong>——接通延时 TON 与关断延时 TOF，两者的动作时刻完全不同，这是最容易记混的地方；</li>
+<li><strong>闪烁电路</strong>——用两个定时器做出”亮 3 秒、灭 2 秒”的循环；</li>
+<li><strong>单按钮控制（二分频电路）</strong>——为了省一个输入点，用一个按钮实现启停切换；</li>
+<li><strong>综合实例：两种液体混合装置</strong>——从控制要求 → I&#x2F;O 分配表 → 硬件接线 → 梯形图，完整走一遍小型控制系统的设计流程。</li>
+</ol>
+<p>文中公式统一采用行内数学写法；课堂口述与教材符号不一致、或录音模糊处，均标注【以教材为准】。</p>
+</blockquote>
+<hr>
+<h2 id="一、这节课讲了什么"><a href="#一、这节课讲了什么" class="headerlink" title="一、这节课讲了什么"></a>一、这节课讲了什么</h2><p><strong>第一段（约 2:00–2:02）从继电器逻辑讲到 PLC。</strong><br>老师先做了一个对照：<strong>机械式继电器</strong>靠触点通断实现逻辑，触点是”物理的”；<strong>PLC</strong> 内部是”逻辑触点”，用程序里的软元件实现同样的功能。所以继电器-接触器电路里的<strong>自锁、互锁、正反转</strong>，在 PLC 里都能一一对应地”翻译”过来——只是把”接线”变成了”写程序”。老师用<strong>电动机正反转</strong>做了示范：<code>SB1</code> 正转、<code>SB2</code> 反转，<code>KM1</code> 与 <code>KM2</code>、<code>KM3</code> 之间必须<strong>互锁</strong>。</p>
+<p><strong>第二段（约 2:02–2:15）定时器的两种用法。</strong><br>这是本讲的技术核心。老师反复强调：</p>
+<ul>
+<li><strong>TON（接通延时）</strong>：输入闭合后<strong>要等设定的时间</strong>，输出才动作；</li>
+<li><strong>TOF（关断延时）</strong>：输入闭合时<strong>立即动作</strong>，输入断开后<strong>再延时</strong>才复位。</li>
+</ul>
+<p>一句话概括：**TON 延时的是”来”，TOF 延时的是”走”**。</p>
+<p><strong>第三段（约 2:03–2:07）闪烁电路。</strong><br>用两个定时器串起来，让指示灯”亮 3 秒、灭 2 秒”地循环。老师现场演示了时序：闭合开关 → 定时器 1 计时 → 时间到 → 灯亮并启动定时器 2 → 定时器 2 时间到 → 灯灭并复位定时器 1 → 循环。</p>
+<p><strong>第四段（约 2:50–3:00）单按钮控制。</strong><br>为了<strong>节省一个输入点</strong>，用一个按钮实现”按一下启动、再按一下停止”。这个电路又叫<strong>二分频电路</strong>——因为输出信号的频率正好是输入按钮信号频率的一半。老师讲了两种写法（教材上的 A、B 两种电路），核心都是靠<strong>中间继电器 + 上升沿</strong>实现状态翻转。</p>
+<p><strong>第五段（约 3:00–3:22）综合实例：两种液体混合装置。</strong><br>这是一个完整的小型控制系统设计题：容器里有 A、B 两种液体，靠三个液位传感器（高位 L1、中位 L2、低位 L3）检测液面，要求按”加 A 液 → 加 B 液 → 搅拌 20 秒 → 放液 → 再延时 5 秒 → 循环”的顺序自动运行。老师带着做了<strong>I&#x2F;O 分配表</strong>、<strong>硬件接线</strong>（<code>QF</code> 断路器、<code>KM</code> 接触器、PLC 电源）和<strong>梯形图</strong>。</p>
+<hr>
+<h2 id="二、核心结论速览"><a href="#二、核心结论速览" class="headerlink" title="二、核心结论速览"></a>二、核心结论速览</h2><ol>
+<li><strong>继电器-接触器电路与 PLC 程序是一一对应的</strong>：物理触点 ↔ 逻辑触点，接线 ↔ 编程。</li>
+<li><strong>自锁、互锁、正反转这些基本环节，在 PLC 里用软元件照样实现</strong>，思路完全一样。</li>
+<li><strong>正反转必须有互锁</strong>：<code>KM1</code>（正转）与 <code>KM2</code>（反转）的常闭触点要串在对方的线圈回路里，防止同时吸合造成短路。</li>
+<li><strong>PLC 硬件接线要先分清输入与输出</strong>：按钮、限位开关、传感器接<strong>输入</strong>（I 区）；接触器线圈、指示灯、电磁阀接<strong>输出</strong>（Q 区）。</li>
+<li><strong>电源要单独考虑</strong>：PLC 本体供电、输入回路供电、输出负载供电可能是不同的电源，接线时要看清。</li>
+<li><strong>断路器 <code>QF</code> 用于主回路与各分支的短路&#x2F;过载保护</strong>，不同回路用不同编号（<code>QF1</code>、<code>QF2</code>、<code>QF3</code>）。</li>
+<li><strong>TON &#x3D; 接通延时</strong>：输入<strong>闭合后延时</strong>，延时到输出才动作。</li>
+<li><strong>TOF &#x3D; 关断延时</strong>：输入<strong>闭合时立即动作</strong>，输入<strong>断开后延时</strong>才复位。</li>
+<li><strong>一句话记法</strong>：**TON 延时”来”，TOF 延时”走”**。</li>
+<li><strong>TON 的输入端断开时，输出立即复位、当前值清零</strong>；TOF 的输入端闭合时，输出立即置位、当前值清零。</li>
+<li><strong>闪烁电路 &#x3D; 两个定时器 + 一个自复位</strong>：定时器 1 控制”灭”的时间，定时器 2 控制”亮”的时间，交替循环。</li>
+<li>**闪烁电路的本质是”振荡”**：输出状态不断翻转，翻转周期 &#x3D; 两个定时时间之和。</li>
+<li><strong>单按钮控制（二分频电路）</strong> 的目的：<strong>节省一个输入点</strong>，用一个按钮完成启停切换。</li>
+<li><strong>叫”二分频”的原因</strong>：输出信号的频率是按钮信号频率的<strong>一半</strong>——按两次才完成一个完整周期。</li>
+<li>**单按钮控制的关键是”上升沿”**：只在按钮按下的那一瞬间产生一个扫描周期的脉冲，用这个脉冲去翻转状态。</li>
+<li><strong>单按钮控制的两种写法</strong>（教材上的电路 A 与电路 B）思路一致，区别在于用中间继电器还是用输出自身来做状态记忆。</li>
+<li><strong>调试单按钮电路要盯住”复位”那一步</strong>：按下第二次时，必须把第一次置位的中间继电器复位，否则状态翻不过来。</li>
+<li><strong>设计一个控制系统的标准流程</strong>：<strong>控制要求 → I&#x2F;O 分配表 → 硬件接线图 → 梯形图 → 调试</strong>。</li>
+<li><strong>I&#x2F;O 分配表是设计与编程的桥梁</strong>：把每个按钮、传感器、执行元件对应到一个具体的 I 或 Q 地址，后面写程序才不会乱。</li>
+<li><strong>地址分配要有规律</strong>：输入按”启动 → 停止 → 各传感器”的顺序排，输出按”动作先后”排，便于阅读与查错。</li>
+<li>**液位控制的核心是”顺序 + 互锁”**：每个液位信号触发下一个动作，同时要保证同一时刻不会有两个进液阀同时打开。</li>
+<li><strong>定时器可以级联</strong>：前一个定时器的完成位可以作为后一个的启动条件，从而实现多段时间控制。</li>
+<li><strong>液体混合装置的完整流程</strong>：启动 → 加 A 至中位 → 加 B 至高位 → 搅拌 20 秒 → 放液至下限 → 再延时 5 秒 → 关闭并循环。</li>
+<li><strong>“再延时 5 秒”的作用</strong>：液面到下限时容器里还有残液，延时 5 秒让残液排空，避免下次配比不准。</li>
+<li><strong>梯形图要按”从左到右、从上到下”的顺序扫描</strong>，写程序时要想清楚每个扫描周期里各元件的状态变化。</li>
+<li><strong>自锁回路是”持续运行”的基础</strong>：启动按钮是瞬动的，必须靠输出自身的常开触点并联在启动按钮上，才能松手后继续运行。</li>
+<li><strong>停止信号必须用常闭触点串在回路里</strong>（或在程序里用常闭逻辑），这样断线时也能停机，符合安全要求。</li>
+<li><strong>程序调试的常用手段</strong>：看状态表&#x2F;监视表、看定时器当前值、单步或分段运行。</li>
+<li><strong>经验设计法的局限</strong>：它依赖”典型基本环节”的积累，复杂系统容易出现逻辑漏洞，需要反复修改完善。</li>
+<li><strong>顺序控制更适合用步进&#x2F;顺控指令</strong>，但当题目规模不大时，用基本逻辑 + 定时器也能实现。</li>
+</ol>
+<hr>
+<h2 id="三、知识结构树"><a href="#三、知识结构树" class="headerlink" title="三、知识结构树"></a>三、知识结构树</h2><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs gherkin">电气控制与PLC · 定时器应用与综合实例<br>|<span class="hljs-string"></span><br><span class="hljs-string"></span>|<span class="hljs-string">- 1. 从继电器逻辑到 PLC</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 机械触点（物理）  &lt;-&gt;  逻辑触点（软元件）</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 自锁 / 互锁 / 正反转的对应</span><br><span class="hljs-string"></span>|<span class="hljs-string">   `- 正反转必须互锁（KM1 与 KM2 常闭互串）</span><br><span class="hljs-string"></span>|<br>|<span class="hljs-string">- 2. 硬件接线</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 主回路：QF 断路器 + KM 接触器 + 电动机</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 控制回路：按钮、限位、传感器 -&gt; I 区</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 输出回路：KM 线圈、电磁阀、指示灯 -&gt; Q 区</span><br><span class="hljs-string"></span>|<span class="hljs-string">   `- 电源：PLC 本体 / 输入 / 输出 分别确认</span><br><span class="hljs-string"></span>|<br>|<span class="hljs-string">- 3. 定时器</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- TON 接通延时：闭合后延时动作</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- TOF 关断延时：闭合立即动作，断开后延时复位</span><br><span class="hljs-string"></span>|<span class="hljs-string">   `- 记忆口诀：TON 延时&quot;来&quot;，TOF 延时&quot;走&quot;</span><br><span class="hljs-string"></span>|<br>|<span class="hljs-string">- 4. 典型环节</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 闪烁电路（两个定时器 + 自复位）</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">   `- 亮 3 秒 / 灭 2 秒的循环</span><br><span class="hljs-string"></span>|<span class="hljs-string">   `- 单按钮控制（二分频电路）</span><br><span class="hljs-string"></span>|<span class="hljs-string">       </span>|<span class="hljs-string">- 目的：节省一个输入点</span><br><span class="hljs-string"></span>|<span class="hljs-string">       </span>|<span class="hljs-string">- 关键：上升沿 + 中间继电器翻转</span><br><span class="hljs-string"></span>|<span class="hljs-string">       `- 两种写法：电路 A / 电路 B</span><br><span class="hljs-string"></span>|<br>`- 5. 综合实例：两种液体混合装置<br>    |<span class="hljs-string">- 控制要求：加 A -&gt; 加 B -&gt; 搅拌 20s -&gt; 放液 -&gt; 延时 5s -&gt; 循环</span><br><span class="hljs-string">    </span>|<span class="hljs-string">- I/O 分配表</span><br><span class="hljs-string">    </span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 输入：SB1 启动 / SB2 停止 / S1 高位 / S2 中位 / S3 低位</span><br><span class="hljs-string">    </span>|<span class="hljs-string">   `- 输出：A 液阀 / B 液阀 / 搅拌机 / 放液阀</span><br><span class="hljs-string">    </span>|<span class="hljs-string">- 硬件接线（QF1/QF2/QF3 + KM + PLC 电源）</span><br><span class="hljs-string">    `- 梯形图</span><br><span class="hljs-string">        </span>|<span class="hljs-string">- 启动自锁</span><br><span class="hljs-string">        </span>|<span class="hljs-string">- 液位顺序控制</span><br><span class="hljs-string">        </span>|<span class="hljs-string">- 搅拌定时 20s</span><br><span class="hljs-string">        `- 放液与延时 5s 复位</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="四、知识点详解"><a href="#四、知识点详解" class="headerlink" title="四、知识点详解"></a>四、知识点详解</h2><h3 id="4-1-继电器-接触器控制与-PLC-控制的对应关系"><a href="#4-1-继电器-接触器控制与-PLC-控制的对应关系" class="headerlink" title="4.1 继电器-接触器控制与 PLC 控制的对应关系"></a>4.1 继电器-接触器控制与 PLC 控制的对应关系</h3><table>
+<thead>
+<tr>
+<th>继电器-接触器电路</th>
+<th>PLC 程序</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>物理触点（常开&#x2F;常闭）</td>
+<td>软元件触点（常开&#x2F;常闭）</td>
+</tr>
+<tr>
+<td>线圈（KM、KA）</td>
+<td>输出线圈（Q）、中间继电器（M）</td>
+</tr>
+<tr>
+<td>时间继电器（KT）</td>
+<td>定时器（TON&#x2F;TOF）</td>
+</tr>
+<tr>
+<td>导线连接</td>
+<td>程序连线（梯形图）</td>
+</tr>
+<tr>
+<td>自锁（自身常开触点并联启动按钮）</td>
+<td>同样的自锁逻辑</td>
+</tr>
+<tr>
+<td>互锁（对方常闭触点串入线圈回路）</td>
+<td>同样的互锁逻辑</td>
+</tr>
+</tbody></table>
+<p><strong>结论</strong>：继电器电路会画，PLC 程序就会写——**只是把”接线”换成”编程”**。老师说”机械的辅助也可以理解成一个逻辑的辅助”，说的就是这个对应关系。</p>
+<h3 id="4-2-PLC-硬件接线：电动机正反转"><a href="#4-2-PLC-硬件接线：电动机正反转" class="headerlink" title="4.2 PLC 硬件接线：电动机正反转"></a>4.2 PLC 硬件接线：电动机正反转</h3><p><strong>（1）主回路</strong></p>
+<ul>
+<li>**<code>QF1</code>**：总电源断路器，做短路与过载保护；</li>
+<li>**<code>KM1</code>**：正转接触器；</li>
+<li>**<code>KM2</code>、<code>KM3</code>**：反转接触器（两相调换实现反转）；</li>
+<li>**<code>FR</code>**：热继电器，做过载保护。</li>
+</ul>
+<p><strong>（2）控制回路</strong></p>
+<ul>
+<li><code>SB1</code>：正转启动按钮 → 接输入 <code>I0.0</code>；</li>
+<li><code>SB2</code>：反转启动按钮 → 接输入 <code>I0.1</code>；</li>
+<li><code>SB3</code>：停止按钮 → 接输入 <code>I0.2</code>（【以教材为准】，编号按实际分配）。</li>
+</ul>
+<p><strong>（3）互锁</strong></p>
+<p>正反转<strong>必须互锁</strong>：<code>KM1</code> 的常闭触点串在 <code>KM2</code> 的线圈回路里，<code>KM2</code> 的常闭触点串在 <code>KM1</code> 的线圈回路里。这样即使误操作同时按下两个启动按钮，也不会造成主回路短路。</p>
+<blockquote>
+<p><strong>为什么必须互锁</strong>：正转与反转是两相调换，如果两个接触器同时吸合，相当于<strong>相间短路</strong>，会烧毁接触器甚至引发事故。</p>
+</blockquote>
+<p><strong>（4）输出侧</strong></p>
+<p>接触器线圈、指示灯接 Q 区输出。注意：<strong>PLC 输出点的容量有限</strong>，驱动接触器线圈时要注意电压等级与电流是否匹配。</p>
+<h3 id="4-3-定时器：TON-与-TOF"><a href="#4-3-定时器：TON-与-TOF" class="headerlink" title="4.3 定时器：TON 与 TOF"></a>4.3 定时器：TON 与 TOF</h3><p>这是本讲最重要的一组概念，两者<strong>动作时刻完全相反</strong>。</p>
+<h4 id="4-3-1-接通延时-TON"><a href="#4-3-1-接通延时-TON" class="headerlink" title="4.3.1 接通延时 TON"></a>4.3.1 接通延时 TON</h4><p><strong>动作逻辑</strong>：</p>
+<ol>
+<li>输入条件<strong>闭合</strong>（变为 ON）；</li>
+<li>定时器开始计时，当前值从 0 递增；</li>
+<li>当前值<strong>达到设定值</strong>时，定时器输出位<strong>置位</strong>（动作）；</li>
+<li>输入条件<strong>断开</strong>时，输出位<strong>立即复位</strong>，当前值<strong>清零</strong>。</li>
+</ol>
+<p><strong>特点</strong>：<strong>延时发生在”来”的时候</strong>——要等够时间才动作。</p>
+<p><strong>典型应用</strong>：启动后延时若干秒再动作（如星三角启动的切换、搅拌时间的控制）。</p>
+<h4 id="4-3-2-关断延时-TOF"><a href="#4-3-2-关断延时-TOF" class="headerlink" title="4.3.2 关断延时 TOF"></a>4.3.2 关断延时 TOF</h4><p><strong>动作逻辑</strong>：</p>
+<ol>
+<li>输入条件<strong>闭合</strong>时，输出位<strong>立即置位</strong>（动作），当前值清零；</li>
+<li>输入条件<strong>断开</strong>时，定时器开始计时；</li>
+<li>当前值<strong>达到设定值</strong>时，输出位<strong>复位</strong>（释放）。</li>
+</ol>
+<p><strong>特点</strong>：<strong>延时发生在”走”的时候</strong>——先动作，断电后再拖一段时间才复位。</p>
+<p><strong>典型应用</strong>：停机后风扇继续运转一段时间（冷却）、关断后延时关闭某设备。</p>
+<h4 id="4-3-3-两者的区别（务必记牢）"><a href="#4-3-3-两者的区别（务必记牢）" class="headerlink" title="4.3.3 两者的区别（务必记牢）"></a>4.3.3 两者的区别（务必记牢）</h4><table>
+<thead>
+<tr>
+<th>对比项</th>
+<th>TON（接通延时）</th>
+<th>TOF（关断延时）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>输入闭合时</td>
+<td>开始计时，<strong>延时后</strong>动作</td>
+<td><strong>立即</strong>动作</td>
+</tr>
+<tr>
+<td>输入断开时</td>
+<td><strong>立即</strong>复位</td>
+<td>开始计时，<strong>延时后</strong>复位</td>
+</tr>
+<tr>
+<td>延时发生在</td>
+<td><strong>动作之前</strong></td>
+<td><strong>动作之后</strong></td>
+</tr>
+<tr>
+<td>记忆口诀</td>
+<td>延时”来”</td>
+<td>延时”走”</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>老师课堂上的验证方式</strong>：设定 9 秒的 TON，闭合开关后要<strong>等 9 秒</strong>输出才动作，灯才亮；而设定 7 秒的 TOF，闭合时灯<strong>立刻</strong>亮，断开后还要<strong>再亮 7 秒</strong>才灭。用”看灯什么时候亮、什么时候灭”就能把两者区分开。</p>
+</blockquote>
+<h3 id="4-4-闪烁电路（用两个定时器实现）"><a href="#4-4-闪烁电路（用两个定时器实现）" class="headerlink" title="4.4 闪烁电路（用两个定时器实现）"></a>4.4 闪烁电路（用两个定时器实现）</h3><p><strong>目标</strong>：让指示灯按”亮 3 秒、灭 2 秒”的节奏循环闪烁。</p>
+<p><strong>实现思路</strong>：用<strong>两个定时器交替</strong>，一个管”亮”的时间，一个管”灭”的时间，互相触发、互为复位。</p>
+<p><strong>时序分析</strong>（设 T1 控制灭的时间 2 秒，T2 控制亮的时间 3 秒）：</p>
+<table>
+<thead>
+<tr>
+<th>时刻</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0 s</td>
+<td>开关闭合，灯灭，T1 开始计时</td>
+</tr>
+<tr>
+<td>2 s</td>
+<td>T1 到，灯亮，T2 开始计时</td>
+</tr>
+<tr>
+<td>5 s</td>
+<td>T2 到，灯灭，同时复位 T1</td>
+</tr>
+<tr>
+<td>5 s 起</td>
+<td>T1 重新计时，进入下一循环</td>
+</tr>
+</tbody></table>
+<p><strong>关键点</strong>：</p>
+<ol>
+<li><strong>两个定时器互为”启动&#x2F;复位”条件</strong>，形成闭环振荡；</li>
+<li><strong>闪烁周期 &#x3D; 两个定时时间之和</strong>（本例 2 + 3 &#x3D; 5 秒）；</li>
+<li>占空比由两个时间之比决定（本例亮 3 秒、灭 2 秒，占空比 60%）；</li>
+<li>若只需”亮”而不需要精确占空比，也可以用<strong>系统时钟脉冲</strong>（如 1 Hz 特殊继电器）实现简单闪烁。</li>
+</ol>
+<blockquote>
+<p><strong>为什么用两个定时器而不是一个</strong>：一个定时器只能产生”一次”延时，要形成”循环”必须有”复位自己”的环节，而这个复位要靠另一个定时器来完成。</p>
+</blockquote>
+<h3 id="4-5-单按钮控制（二分频电路）"><a href="#4-5-单按钮控制（二分频电路）" class="headerlink" title="4.5 单按钮控制（二分频电路）"></a>4.5 单按钮控制（二分频电路）</h3><h4 id="4-5-1-为什么要做这个电路"><a href="#4-5-1-为什么要做这个电路" class="headerlink" title="4.5.1 为什么要做这个电路"></a>4.5.1 为什么要做这个电路</h4><p><strong>目的：节省一个输入点。</strong></p>
+<p>正常情况下启停需要两个按钮（启动 + 停止）。如果 PLC 输入点紧张，可以用<strong>一个按钮</strong>实现”按一下启动、再按一下停止”，这叫<strong>单按钮控制</strong>。</p>
+<h4 id="4-5-2-为什么叫”二分频”"><a href="#4-5-2-为什么叫”二分频”" class="headerlink" title="4.5.2 为什么叫”二分频”"></a>4.5.2 为什么叫”二分频”</h4><p>按钮每按一次产生一个脉冲。而输出（设备运行状态）要<strong>按两次</strong>才完成一个”开—关”的完整周期。所以输出信号的频率是按钮信号频率的<strong>一半</strong>——这就是”<strong>二分频</strong>“名称的由来。</p>
+<h4 id="4-5-3-实现要点"><a href="#4-5-3-实现要点" class="headerlink" title="4.5.3 实现要点"></a>4.5.3 实现要点</h4><p>**核心是”上升沿”**：</p>
+<ol>
+<li>只在按钮<strong>按下的那一瞬间</strong>产生一个<strong>只持续一个扫描周期</strong>的脉冲（上升沿）；</li>
+<li>用这个脉冲去<strong>翻转</strong>状态（置位或复位）；</li>
+<li>第二次按下时，脉冲把第一次置位的中间继电器<strong>复位</strong>，于是输出关闭。</li>
+</ol>
+<p><strong>教材上的两种写法</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>写法</th>
+<th>状态记忆方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>电路 A</td>
+<td>用<strong>中间继电器</strong>（M）记忆当前状态</td>
+</tr>
+<tr>
+<td>电路 B</td>
+<td>用<strong>输出自身</strong>的常开&#x2F;常闭触点参与翻转</td>
+</tr>
+</tbody></table>
+<p>两者思路一致，区别只在”状态存在哪里”。老师说两种都是对的。</p>
+<h4 id="4-5-4-调试时的注意点"><a href="#4-5-4-调试时的注意点" class="headerlink" title="4.5.4 调试时的注意点"></a>4.5.4 调试时的注意点</h4><p>按下第二次时，必须确认<strong>第一次置位的中间继电器被复位</strong>。老师现场就专门问了这个问题：”为什么这个中间继电器变成了 0？”——答案是<strong>按下的那个脉冲同时触发了复位</strong>。这一步没处理好，按钮就会”只能开不能关”。</p>
+<h3 id="4-6-综合实例：两种液体混合装置控制系统"><a href="#4-6-综合实例：两种液体混合装置控制系统" class="headerlink" title="4.6 综合实例：两种液体混合装置控制系统"></a>4.6 综合实例：两种液体混合装置控制系统</h3><h4 id="4-6-1-控制要求"><a href="#4-6-1-控制要求" class="headerlink" title="4.6.1 控制要求"></a>4.6.1 控制要求</h4><p>容器内有 A、B 两种液体，需按比例混合后排出。用三个液位传感器检测液面：</p>
+<table>
+<thead>
+<tr>
+<th>传感器</th>
+<th>位置</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>S1（L1）</strong></td>
+<td>高位</td>
+<td>检测 B 液加满</td>
+</tr>
+<tr>
+<td><strong>S2（L2）</strong></td>
+<td>中位</td>
+<td>检测 A 液加到位</td>
+</tr>
+<tr>
+<td><strong>S3（L3）</strong></td>
+<td>低位</td>
+<td>检测放液到底</td>
+</tr>
+</tbody></table>
+<p><strong>工作流程</strong>：</p>
+<ol>
+<li>按<strong>启动按钮 SB1</strong> → 打开 <strong>A 液阀</strong>，注入 A 液；</li>
+<li>液面升到 <strong>中位 L2</strong> → 关闭 A 液阀，打开 <strong>B 液阀</strong>；</li>
+<li>液面升到 <strong>高位 L1</strong> → 关闭 B 液阀，<strong>启动搅拌机</strong>并<strong>定时 20 秒</strong>；</li>
+<li>20 秒到 → 停止搅拌，打开<strong>放液阀</strong>；</li>
+<li>液面降到 <strong>低位 L3</strong> → 继续放液并<strong>定时 5 秒</strong>；</li>
+<li>5 秒到 → 关闭放液阀，一次循环结束（可回到步骤 1 继续）；</li>
+<li>任何时候按<strong>停止按钮 SB2</strong> → 全部输出停止，回到初始状态。</li>
+</ol>
+<blockquote>
+<p><strong>“再延时 5 秒”的意义</strong>：液面刚到下限时，容器底部与管路里还有残液。延时 5 秒让残液排空，否则下一次配比会偏多，混合比例就不准了。</p>
+</blockquote>
+<h4 id="4-6-2-I-O-分配表"><a href="#4-6-2-I-O-分配表" class="headerlink" title="4.6.2 I&#x2F;O 分配表"></a>4.6.2 I&#x2F;O 分配表</h4><table>
+<thead>
+<tr>
+<th>类别</th>
+<th>元件</th>
+<th>说明</th>
+<th>地址</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>输入</td>
+<td>SB1</td>
+<td>启动按钮（常开）</td>
+<td><code>I0.0</code></td>
+</tr>
+<tr>
+<td>输入</td>
+<td>SB2</td>
+<td>停止按钮（常闭）</td>
+<td><code>I0.1</code></td>
+</tr>
+<tr>
+<td>输入</td>
+<td>S1</td>
+<td>高位液位传感器</td>
+<td><code>I0.2</code></td>
+</tr>
+<tr>
+<td>输入</td>
+<td>S2</td>
+<td>中位液位传感器</td>
+<td><code>I0.3</code></td>
+</tr>
+<tr>
+<td>输入</td>
+<td>S3</td>
+<td>低位液位传感器</td>
+<td><code>I0.4</code></td>
+</tr>
+<tr>
+<td>输出</td>
+<td>YV1</td>
+<td>A 液进液阀</td>
+<td><code>Q0.0</code></td>
+</tr>
+<tr>
+<td>输出</td>
+<td>YV2</td>
+<td>B 液进液阀</td>
+<td><code>Q0.1</code></td>
+</tr>
+<tr>
+<td>输出</td>
+<td>M1</td>
+<td>搅拌电动机</td>
+<td><code>Q0.2</code></td>
+</tr>
+<tr>
+<td>输出</td>
+<td>YV3</td>
+<td>放液阀</td>
+<td><code>Q0.3</code></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>地址编号以实际分配为准</strong>，本表按”启动 → 停止 → 各传感器”与”按动作先后”的规律编排，便于阅读。<strong>【以教材为准】</strong></p>
+</blockquote>
+<h4 id="4-6-3-硬件接线"><a href="#4-6-3-硬件接线" class="headerlink" title="4.6.3 硬件接线"></a>4.6.3 硬件接线</h4><p><strong>主回路与保护</strong>：</p>
+<ul>
+<li>**<code>QF1</code>**：总电源断路器；</li>
+<li>**<code>QF2</code>**：PLC 电源回路断路器；</li>
+<li>**<code>QF3</code>**：输出负载回路断路器；</li>
+<li>**<code>KM</code>**：搅拌电动机接触器（若电动机功率较大，经接触器驱动）。</li>
+</ul>
+<p><strong>电源</strong>：</p>
+<ul>
+<li>PLC 本体供电（交流或直流，按机型）；</li>
+<li>输入回路供电（按钮与传感器）；</li>
+<li>输出回路供电（电磁阀、接触器线圈）。</li>
+</ul>
+<p><strong>接线顺序</strong>：电源 → <code>QF</code> → PLC → 输入元件（按钮、传感器）→ 输出元件（电磁阀、接触器）→ 负载。</p>
+<blockquote>
+<p><strong>注意</strong>：<strong>输入与输出不能接反</strong>。按钮、传感器是”给信号”的，接 I 区；电磁阀、接触器是”被执行”的，接 Q 区。接反了轻则不动作，重则损坏模块。</p>
+</blockquote>
+<h4 id="4-6-4-梯形图分析"><a href="#4-6-4-梯形图分析" class="headerlink" title="4.6.4 梯形图分析"></a>4.6.4 梯形图分析</h4><p>梯形图按”<strong>启动自锁 → 顺序控制 → 定时 → 复位</strong>“四段来组织：</p>
+<p><strong>（1）启动与自锁</strong></p>
+<p><code>I0.0</code>（SB1）与 <code>Q0.0</code>（或一个中间继电器 M）的常开触点<strong>并联</strong>，形成自锁；<code>I0.1</code>（SB2）的常闭触点<strong>串联</strong>在回路中作为停止条件。</p>
+<blockquote>
+<p><strong>为什么要自锁</strong>：按钮是瞬动的，松手就断开。必须靠自身触点并联，才能”松手后继续运行”。</p>
+</blockquote>
+<p><strong>（2）顺序控制（液位链）</strong></p>
+<ul>
+<li><code>I0.0</code> 启动 → 置位 <code>Q0.0</code>（A 液阀）；</li>
+<li><code>I0.3</code>（中位 S2）到 → 复位 <code>Q0.0</code>、置位 <code>Q0.1</code>（B 液阀）；</li>
+<li><code>I0.2</code>（高位 S1）到 → 复位 <code>Q0.1</code>、置位 <code>Q0.2</code>（搅拌机）并启动定时器 T1（20 秒）；</li>
+<li>T1 到 → 复位 <code>Q0.2</code>、置位 <code>Q0.3</code>（放液阀）；</li>
+<li><code>I0.4</code>（低位 S3）到 → 启动定时器 T2（5 秒）；</li>
+<li>T2 到 → 复位 <code>Q0.3</code>，循环结束。</li>
+</ul>
+<p><strong>（3）互锁</strong></p>
+<p>A 液阀与 B 液阀之间要<strong>互锁</strong>（同一时刻只能开一个），放液阀与进液阀之间也应互锁（放液时不进液）。</p>
+<p><strong>（4）停止与复位</strong></p>
+<p><code>I0.1</code>（SB2）动作时，<strong>复位所有输出与定时器</strong>，系统回到初始状态。</p>
+<blockquote>
+<p><strong>老师的提醒</strong>：这类程序”看起来逻辑很清楚，实际写的时候很容易漏掉某一步的复位”。建议<strong>先画时序图</strong>（横轴时间、纵轴各元件状态），把每一步的”谁开谁关”标清楚，再照着写梯形图。</p>
+</blockquote>
+<hr>
+<h2 id="五、例题与解题方法汇总"><a href="#五、例题与解题方法汇总" class="headerlink" title="五、例题与解题方法汇总"></a>五、例题与解题方法汇总</h2><h3 id="题型-1：把继电器-接触器电路改写成-PLC-梯形图"><a href="#题型-1：把继电器-接触器电路改写成-PLC-梯形图" class="headerlink" title="题型 1：把继电器-接触器电路改写成 PLC 梯形图"></a>题型 1：把继电器-接触器电路改写成 PLC 梯形图</h3><p><strong>解题步骤</strong>：</p>
+<ol>
+<li>列出原电路的<strong>输入元件</strong>（按钮、限位、传感器）与<strong>输出元件</strong>（接触器、电磁阀、指示灯）；</li>
+<li>做 <strong>I&#x2F;O 分配表</strong>；</li>
+<li>逐个回路”翻译”：串联 → 与逻辑（触点串联），并联 → 或逻辑（触点并联）；</li>
+<li><strong>自锁</strong>：输出自身常开触点并联在启动条件上；</li>
+<li><strong>互锁</strong>：对方常闭触点串入本回路；</li>
+<li>检查是否有遗漏的复位条件。</li>
+</ol>
+<h3 id="题型-2：用定时器实现延时动作"><a href="#题型-2：用定时器实现延时动作" class="headerlink" title="题型 2：用定时器实现延时动作"></a>题型 2：用定时器实现延时动作</h3><p><strong>判断用哪种定时器</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>要求</th>
+<th>用哪个</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>启动后<strong>等一段时间</strong>才动作</td>
+<td><strong>TON</strong></td>
+</tr>
+<tr>
+<td>停机后<strong>继续运行</strong>一段时间才停</td>
+<td><strong>TOF</strong></td>
+</tr>
+<tr>
+<td>循环通断（闪烁）</td>
+<td><strong>两个定时器交替</strong></td>
+</tr>
+</tbody></table>
+<p><strong>易错点</strong>：把 TON 和 TOF 的动作时刻记反——记住”<strong>TON 延时来，TOF 延时走</strong>“。</p>
+<h3 id="题型-3：设计闪烁电路"><a href="#题型-3：设计闪烁电路" class="headerlink" title="题型 3：设计闪烁电路"></a>题型 3：设计闪烁电路</h3><p><strong>解题步骤</strong>：</p>
+<ol>
+<li>确定”亮”与”灭”的时间；</li>
+<li>定时器 1 控制”灭”的时长，定时器 2 控制”亮”的时长；</li>
+<li>定时器 1 的完成位 → 点亮输出 + 启动定时器 2；</li>
+<li>定时器 2 的完成位 → 熄灭输出 + 复位定时器 1；</li>
+<li>校验：周期 &#x3D; 两时间之和，占空比 &#x3D; 亮时间 &#x2F; 周期。</li>
+</ol>
+<h3 id="题型-4：单按钮启停（二分频）"><a href="#题型-4：单按钮启停（二分频）" class="headerlink" title="题型 4：单按钮启停（二分频）"></a>题型 4：单按钮启停（二分频）</h3><p><strong>解题步骤</strong>：</p>
+<ol>
+<li>取按钮的<strong>上升沿</strong>，得到一个扫描周期的脉冲；</li>
+<li>用这个脉冲去<strong>翻转</strong>状态（未运行则置位，运行中则复位）；</li>
+<li>用中间继电器记忆当前状态；</li>
+<li>调试重点：确认第二次按下时<strong>第一次的置位被复位</strong>。</li>
+</ol>
+<h3 id="题型-5：小型顺序控制系统设计（如液体混合装置）"><a href="#题型-5：小型顺序控制系统设计（如液体混合装置）" class="headerlink" title="题型 5：小型顺序控制系统设计（如液体混合装置）"></a>题型 5：小型顺序控制系统设计（如液体混合装置）</h3><p><strong>标准流程</strong>：</p>
+<ol>
+<li><strong>写控制要求</strong>：按时间顺序列出每一步的动作与转换条件；</li>
+<li><strong>做 I&#x2F;O 分配表</strong>：输入、输出各占多少点，地址怎么排；</li>
+<li><strong>画时序图</strong>：横轴时间，纵轴各元件状态，把”谁开谁关”标清楚；</li>
+<li><strong>画硬件接线图</strong>：电源、<code>QF</code>、<code>KM</code>、输入元件、输出负载；</li>
+<li><strong>写梯形图</strong>：自锁段 → 顺序段 → 定时段 → 复位段；</li>
+<li><strong>加互锁与保护</strong>：进液阀之间互锁、停止按钮全局复位；</li>
+<li><strong>调试</strong>：分段运行，用状态表监视各元件与定时器当前值。</li>
+</ol>
+<hr>
+<h2 id="六、术语速查表"><a href="#六、术语速查表" class="headerlink" title="六、术语速查表"></a>六、术语速查表</h2><table>
+<thead>
+<tr>
+<th>术语</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>机械触点</td>
+<td>继电器、接触器中靠物理接触通断的触点</td>
+</tr>
+<tr>
+<td>逻辑触点</td>
+<td>PLC 内部由程序控制的软元件触点</td>
+</tr>
+<tr>
+<td>自锁</td>
+<td>输出自身常开触点并联在启动条件上，实现松手后继续运行</td>
+</tr>
+<tr>
+<td>互锁</td>
+<td>把对方的常闭触点串入本回路，防止两个输出同时动作</td>
+</tr>
+<tr>
+<td>常开触点</td>
+<td>未动作时断开、动作时闭合的触点</td>
+</tr>
+<tr>
+<td>常闭触点</td>
+<td>未动作时闭合、动作时断开的触点</td>
+</tr>
+<tr>
+<td>中间继电器</td>
+<td>PLC 内部用于记忆状态、扩展触点的软元件（M 区）</td>
+</tr>
+<tr>
+<td>TON</td>
+<td>接通延时定时器，输入闭合后延时动作</td>
+</tr>
+<tr>
+<td>TOF</td>
+<td>关断延时定时器，输入闭合立即动作、断开后延时复位</td>
+</tr>
+<tr>
+<td>当前值</td>
+<td>定时器已累计的时间</td>
+</tr>
+<tr>
+<td>设定值</td>
+<td>定时器要达到的时间</td>
+</tr>
+<tr>
+<td>上升沿</td>
+<td>信号由 OFF 变 ON 的那一瞬间</td>
+</tr>
+<tr>
+<td>二分频</td>
+<td>输出频率为输入频率一半的电路，即单按钮启停</td>
+</tr>
+<tr>
+<td>闪烁电路</td>
+<td>用定时器实现输出周期性通断的电路</td>
+</tr>
+<tr>
+<td>占空比</td>
+<td>一个周期内输出为 ON 的时间所占比例</td>
+</tr>
+<tr>
+<td>I&#x2F;O 分配表</td>
+<td>把输入输出元件对应到具体 I&#x2F;Q 地址的表格</td>
+</tr>
+<tr>
+<td>QF</td>
+<td>断路器，用于短路与过载保护</td>
+</tr>
+<tr>
+<td>KM</td>
+<td>接触器，用于主回路通断</td>
+</tr>
+<tr>
+<td>FR</td>
+<td>热继电器，用于电动机过载保护</td>
+</tr>
+<tr>
+<td>YV</td>
+<td>电磁阀</td>
+</tr>
+<tr>
+<td>经验设计法</td>
+<td>依据典型基本环节、结合控制要求逐步修改完善梯形图的设计方法</td>
+</tr>
+<tr>
+<td>扫描周期</td>
+<td>PLC 完成一次”输入采样—程序执行—输出刷新”的时间</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="七、课堂强调与复习重点"><a href="#七、课堂强调与复习重点" class="headerlink" title="七、课堂强调与复习重点"></a>七、课堂强调与复习重点</h2><ol>
+<li><strong>TON 与 TOF 的动作时刻是反的</strong>——这是本讲第一易错点，务必用”看灯什么时候亮、什么时候灭”来验证。</li>
+<li><strong>正反转必须互锁</strong>，否则相间短路。</li>
+<li><strong>自锁靠输出自身的常开触点并联</strong>，不能只靠按钮。</li>
+<li><strong>停止信号要串常闭</strong>，符合”断线即停机”的安全原则。</li>
+<li><strong>闪烁电路要两个定时器</strong>，一个定时器做不出循环。</li>
+<li><strong>闪烁周期 &#x3D; 两个定时时间之和</strong>，占空比 &#x3D; 亮时间 &#x2F; 周期。</li>
+<li><strong>单按钮控制的关键是上升沿</strong>，且第二次按下必须复位第一次的置位。</li>
+<li><strong>“二分频”这个名字来自输出频率是输入的一半</strong>。</li>
+<li><strong>I&#x2F;O 分配表是设计与编程的桥梁</strong>，先做表再写程序。</li>
+<li><strong>输入接 I 区、输出接 Q 区，不能接反</strong>。</li>
+<li><strong>电源要分三路确认</strong>：PLC 本体、输入回路、输出回路。</li>
+<li><strong>写顺序控制程序前先画时序图</strong>，能避免漏掉复位。</li>
+<li><strong>互锁不只用在正反转</strong>：进液阀之间、进液与放液之间也要互锁。</li>
+<li><strong>“再延时 5 秒”是为了排空残液</strong>，这类”看似多余”的步骤往往是保证工艺精度的关键。</li>
+<li><strong>经验设计法依赖典型环节的积累</strong>，复杂系统容易有漏洞，要反复调试完善。</li>
+</ol>
+<hr>
+<h2 id="八、【以教材为准】待核对清单"><a href="#八、【以教材为准】待核对清单" class="headerlink" title="八、【以教材为准】待核对清单"></a>八、【以教材为准】待核对清单</h2><p>本讲录音后段（约 2:15–2:50）夹杂大量无关交谈与习题对答案，ASR 识别质量偏弱，以下条目建议对照教材核对：</p>
+<ol>
+<li><strong>I&#x2F;O 地址分配</strong>。正文中 <code>I0.0</code>～<code>I0.4</code>、<code>Q0.0</code>～<code>Q0.3</code> 为按规律编排的示例，<strong>实际地址以教材或课堂下发的分配表为准</strong>。</li>
+<li><strong>液位传感器的符号与高低位对应</strong>。录音中”L1 高位、L2 中位、L3 低位”的表述基本一致，但个别处顺序有出入，<strong>以教材为准</strong>。</li>
+<li><strong>搅拌时间与延时时间</strong>。录音中为”搅拌 20 秒””再延时 5 秒”，<strong>以教材例题数值为准</strong>。</li>
+<li><strong>闪烁电路的时间参数</strong>。课堂演示为”亮 3 秒、灭 2 秒”，<strong>具体数值以教材为准</strong>。</li>
+<li><strong>TON 与 TOF 的教材符号</strong>。不同 PLC 平台（西门子、三菱等）的定时器指令名与参数表示不同，正文用通用名称 TON&#x2F;TOF，<strong>具体指令以所用平台与教材为准</strong>。</li>
+<li><strong>单按钮控制的两种电路</strong>。录音提到教材上的”电路 A”与”电路 B”，正文只讲思路差异，<strong>具体梯形图以教材为准</strong>。</li>
+<li><strong>教材页码</strong>。录音中提到”183 页””185～187 页””10-3、10-4 题”等，均为听录，<strong>以教材实际页码为准</strong>。</li>
+<li><strong>断路器编号</strong>。正文用 <code>QF1</code>（总电源）、<code>QF2</code>（PLC 电源）、<code>QF3</code>（输出负载），<strong>具体编号以教材接线图为准</strong>。</li>
+<li><strong>正反转接触器数量</strong>。录音中提到 <code>KM2</code>、<code>KM3</code> 用于反转，<strong>部分教材的反转只用一个接触器（配合换相）</strong>，以教材为准。</li>
+<li><strong>停止按钮的常开&#x2F;常闭</strong>。正文按”停止用常闭”的安全惯例表述，<strong>若教材例题用常开，请按教材</strong>。</li>
+<li><strong>液体混合装置的循环方式</strong>。录音中循环结束后的行为（自动重新开始还是等待再次启动）表述不清，正文写为”可回到步骤 1 继续”，<strong>以教材为准</strong>。</li>
+</ol>
+<hr>
+<h2 id="九、复习自测（20-题）"><a href="#九、复习自测（20-题）" class="headerlink" title="九、复习自测（20 题）"></a>九、复习自测（20 题）</h2><p><strong>基础（1–6）</strong></p>
+<ol>
+<li>继电器-接触器电路与 PLC 程序有哪些对应关系？请至少列出四组。</li>
+<li>电动机正反转为什么必须互锁？互锁是怎么实现的？</li>
+<li>PLC 的输入元件与输出元件分别接在哪个区？各举两个例子。</li>
+<li>什么是自锁？为什么需要自锁？</li>
+<li>停止按钮为什么通常用常闭触点？</li>
+<li>一个完整的控制系统设计流程包括哪几步？</li>
+</ol>
+<p><strong>定时器（7–12）</strong></p>
+<ol start="7">
+<li>简述 TON（接通延时）的动作过程。</li>
+<li>简述 TOF（关断延时）的动作过程。</li>
+<li>TON 与 TOF 的核心区别是什么？用一句口诀概括。</li>
+<li>若要求”启动后延时 10 秒电动机才启动”，应选用哪种定时器？</li>
+<li>若要求”停机后风扇继续运行 30 秒再停”，应选用哪种定时器？</li>
+<li>定时器的”当前值”和”设定值”分别指什么？</li>
+</ol>
+<p><strong>典型环节（13–16）</strong></p>
+<ol start="13">
+<li>闪烁电路为什么需要两个定时器？一个定时器能否实现？</li>
+<li>设闪烁电路”亮 3 秒、灭 2 秒”，其闪烁周期与占空比各是多少？</li>
+<li>单按钮控制（二分频电路）的目的是什么？为什么叫”二分频”？</li>
+<li>单按钮控制中”上升沿”起什么作用？调试时最容易出什么问题？</li>
+</ol>
+<p><strong>综合（17–20）</strong></p>
+<ol start="17">
+<li>两种液体混合装置的工作流程分哪几步？</li>
+<li>该装置中”液面到下限后再延时 5 秒”的作用是什么？</li>
+<li>请为两种液体混合装置列出 I&#x2F;O 分配表（输入 5 点、输出 4 点）。</li>
+<li>若要求”加 A 液与加 B 液不能同时进行”，在梯形图中应如何实现？</li>
+</ol>
+<hr>
+<h2 id="十、复习自测参考答案"><a href="#十、复习自测参考答案" class="headerlink" title="十、复习自测参考答案"></a>十、复习自测参考答案</h2><p><strong>1.</strong> ① 物理触点 ↔ 逻辑触点；② 线圈（KM&#x2F;KA）↔ 输出线圈（Q）&#x2F;中间继电器（M）；③ 时间继电器（KT）↔ 定时器（TON&#x2F;TOF）；④ 导线连接 ↔ 梯形图连线；⑤ 自锁、互锁等基本环节一一对应。</p>
+<p><strong>2.</strong> 因为正转与反转是<strong>两相调换</strong>，若两个接触器同时吸合，相当于<strong>相间短路</strong>，会烧毁接触器甚至引发事故。实现方式：把 <code>KM1</code> 的常闭触点串在 <code>KM2</code> 线圈回路里，把 <code>KM2</code> 的常闭触点串在 <code>KM1</code> 线圈回路里，形成<strong>相互封锁</strong>。</p>
+<p><strong>3.</strong> 输入元件接 <strong>I 区</strong>，例如按钮、限位开关、液位传感器；输出元件接 <strong>Q 区</strong>，例如接触器线圈、电磁阀、指示灯。</p>
+<p><strong>4.</strong> 自锁是把输出自身的常开触点<strong>并联</strong>在启动条件上。因为按钮是<strong>瞬动</strong>的（松手即断开），必须靠自锁触点维持回路导通，设备才能持续运行。</p>
+<p><strong>5.</strong> 因为常闭触点在<strong>正常情况下是闭合的</strong>，一旦线路断线或按钮损坏，回路就断开、设备停机——符合”<strong>故障安全</strong>“原则。若用常开，断线时反而无法停机。</p>
+<p><strong>6.</strong> <strong>控制要求 → I&#x2F;O 分配表 → 硬件接线图 → 梯形图 → 调试</strong>（复杂系统还应先画时序图）。</p>
+<p><strong>7.</strong> 输入闭合 → 开始计时、当前值递增 → 当前值达到设定值时输出<strong>置位</strong>（动作）→ 输入断开时输出<strong>立即复位</strong>、当前值清零。<strong>延时发生在动作之前。</strong></p>
+<p><strong>8.</strong> 输入闭合时输出<strong>立即置位</strong>（动作）、当前值清零 → 输入断开 → 开始计时 → 当前值达到设定值时输出<strong>复位</strong>。<strong>延时发生在动作之后。</strong></p>
+<p><strong>9.</strong> TON **延时”来”**（闭合后延时动作）；TOF **延时”走”**（断开后延时复位）。两者的延时时刻正好相反。</p>
+<p><strong>10.</strong> 用 <strong>TON（接通延时）</strong>——启动后等 10 秒再动作。</p>
+<p><strong>11.</strong> 用 <strong>TOF（关断延时）</strong>——断开后继续运行 30 秒再停。</p>
+<p><strong>12.</strong> <strong>当前值</strong>是定时器已经累计的时间；<strong>设定值</strong>是要达到的目标时间。当前值达到设定值时定时器动作。</p>
+<p><strong>13.</strong> 因为一个定时器只能产生<strong>一次</strong>延时，无法自己复位形成循环。必须用<strong>两个定时器交替</strong>：一个的完成位启动另一个，另一个的完成位复位第一个，才能形成<strong>闭环振荡</strong>。</p>
+<p><strong>14.</strong> 周期 &#x3D; 3 + 2 &#x3D; <strong>5 秒</strong>；占空比 &#x3D; 3 &#x2F; 5 &#x3D; **60%**。</p>
+<p><strong>15.</strong> 目的是<strong>节省一个输入点</strong>——用一个按钮实现”按一下启动、再按一下停止”。叫”二分频”是因为输出（运行状态）的<strong>频率是按钮信号频率的一半</strong>：按两次才完成一个完整的”开—关”周期。</p>
+<p><strong>16.</strong> 上升沿把”按钮一直按着”变成”<strong>只持续一个扫描周期的脉冲</strong>“，这样才能做到”按一次翻转一次”，否则按住不放会连续翻转。调试时最容易出的问题是：<strong>第二次按下时没有把第一次置位的中间继电器复位</strong>，导致”只能开不能关”。</p>
+<p><strong>17.</strong> ① 按启动按钮 → 打开 A 液阀；② 液面到中位 L2 → 关 A 阀、开 B 阀；③ 液面到高位 L1 → 关 B 阀、启动搅拌并定时 20 秒；④ 20 秒到 → 停搅拌、开放液阀；⑤ 液面降到下限 L3 → 定时 5 秒；⑥ 5 秒到 → 关放液阀，循环结束。</p>
+<p><strong>18.</strong> 因为液面刚到下限时，容器底部与管路里<strong>还有残液</strong>。延时 5 秒让残液排空，否则下次配比时液量偏多，混合比例就不准了。</p>
+<p><strong>19.</strong></p>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>元件</th>
+<th>说明</th>
+<th>地址</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>输入</td>
+<td>SB1</td>
+<td>启动按钮</td>
+<td><code>I0.0</code></td>
+</tr>
+<tr>
+<td>输入</td>
+<td>SB2</td>
+<td>停止按钮</td>
+<td><code>I0.1</code></td>
+</tr>
+<tr>
+<td>输入</td>
+<td>S1</td>
+<td>高位传感器</td>
+<td><code>I0.2</code></td>
+</tr>
+<tr>
+<td>输入</td>
+<td>S2</td>
+<td>中位传感器</td>
+<td><code>I0.3</code></td>
+</tr>
+<tr>
+<td>输入</td>
+<td>S3</td>
+<td>低位传感器</td>
+<td><code>I0.4</code></td>
+</tr>
+<tr>
+<td>输出</td>
+<td>YV1</td>
+<td>A 液进液阀</td>
+<td><code>Q0.0</code></td>
+</tr>
+<tr>
+<td>输出</td>
+<td>YV2</td>
+<td>B 液进液阀</td>
+<td><code>Q0.1</code></td>
+</tr>
+<tr>
+<td>输出</td>
+<td>M1</td>
+<td>搅拌电动机</td>
+<td><code>Q0.2</code></td>
+</tr>
+<tr>
+<td>输出</td>
+<td>YV3</td>
+<td>放液阀</td>
+<td><code>Q0.3</code></td>
+</tr>
+</tbody></table>
+<p>（地址编号可按实际分配调整，关键是<strong>规律清晰、不重复</strong>。）</p>
+<p><strong>20.</strong> 在 A 液阀与 B 液阀的回路中<strong>互相串入对方的常闭触点</strong>（互锁）：<code>Q0.0</code> 的回路串 <code>Q0.1</code> 的常闭触点，<code>Q0.1</code> 的回路串 <code>Q0.0</code> 的常闭触点。这样任一时刻只能有一个进液阀得电。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/PLC-%E5%AE%9A%E6%97%B6%E5%99%A8-%E6%A2%AF%E5%BD%A2%E5%9B%BE-CSDN/" class="print-no-link">#PLC 定时器 梯形图 CSDN</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>定时器应用与两种液体混合装置控制</div>
+      <div>https://tdexxx.github.io/2026/10/21/02_电气控制与PLC/电气控制与PLC·定时器应用与两种液体混合装置控制（TON-TOF·闪烁电路·单按钮控制·IO分配与梯形图）CSDN发布稿/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>tdexxx</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年10月21日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/10/23/03_%E6%B6%B2%E5%8E%8B%E4%BC%A0%E5%8A%A8/00_%E6%B6%B2%E5%8E%8B%E4%BC%A0%E5%8A%A8_%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0%EF%BC%88%E7%AC%AC1-3%E7%AB%A0+%E7%AC%AC4%E7%AB%A01-4%E8%8A%82+%E7%AC%AC6%E7%AB%A0%EF%BC%89/" title="液压传动期末复习：第 1–3 章、第 4 章与第 6 章">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">液压传动期末复习：第 1–3 章、第 4 章与第 6 章</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/10/21/08_%E6%B5%8B%E8%AF%95%E6%8A%80%E6%9C%AF%E4%B8%8E%E4%BF%A1%E5%8F%B7%E5%88%86%E6%9E%90/%E4%BF%A1%E5%8F%B7%E5%88%86%E6%9E%90%C2%B7%E9%9D%9E%E5%91%A8%E6%9C%9F%E4%BF%A1%E5%8F%B7%E7%9A%84%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%EF%BC%88%E8%BF%9E%E7%BB%AD%E8%B0%B1%C2%B7%E5%8F%98%E6%8D%A2%E6%80%A7%E8%B4%A8%C2%B7%E5%86%B2%E6%BF%80%E5%87%BD%E6%95%B0%C2%B7%E9%87%87%E6%A0%B7%EF%BC%89CSDN%E5%8F%91%E5%B8%83%E7%A8%BF/" title="非周期信号的傅里叶变换：连续谱、性质与采样">
+                        <span class="hidden-mobile">非周期信号的傅里叶变换：连续谱、性质与采样</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

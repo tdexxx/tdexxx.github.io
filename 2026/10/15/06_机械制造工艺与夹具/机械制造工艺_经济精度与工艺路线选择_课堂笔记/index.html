@@ -1,0 +1,1143 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="tdexxx">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="机械加工经济精度与工艺路线选择笔记：加工方法选择四依据、外圆三条典型路线（车削&#x2F;磨削&#x2F;金刚石车）与孔加工三条路线（钻扩铰&#x2F;拉削&#x2F;镗削）、数控与组合机床选用 本节是机械制造工艺学的一节复习 + 新授课。前半节通过第一次作业（长方体上开不通槽&#x2F;通槽的自由度分析）讲评，复习”六点定位、完全&#x2F;不完全&#x2F;欠&#x2F;过定位、粗基准与精基准">
+<meta property="og:type" content="article">
+<meta property="og:title" content="加工经济精度与典型表面加工路线选择">
+<meta property="og:url" content="https://tdexxx.github.io/2026/10/15/06_%E6%9C%BA%E6%A2%B0%E5%88%B6%E9%80%A0%E5%B7%A5%E8%89%BA%E4%B8%8E%E5%A4%B9%E5%85%B7/%E6%9C%BA%E6%A2%B0%E5%88%B6%E9%80%A0%E5%B7%A5%E8%89%BA_%E7%BB%8F%E6%B5%8E%E7%B2%BE%E5%BA%A6%E4%B8%8E%E5%B7%A5%E8%89%BA%E8%B7%AF%E7%BA%BF%E9%80%89%E6%8B%A9_%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="tdexxx的博客">
+<meta property="og:description" content="机械加工经济精度与工艺路线选择笔记：加工方法选择四依据、外圆三条典型路线（车削&#x2F;磨削&#x2F;金刚石车）与孔加工三条路线（钻扩铰&#x2F;拉削&#x2F;镗削）、数控与组合机床选用 本节是机械制造工艺学的一节复习 + 新授课。前半节通过第一次作业（长方体上开不通槽&#x2F;通槽的自由度分析）讲评，复习”六点定位、完全&#x2F;不完全&#x2F;欠&#x2F;过定位、粗基准与精基准">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-10-15T14:03:47.000Z">
+<meta property="article:modified_time" content="2026-10-30T17:37:19.966Z">
+<meta property="article:author" content="tdexxx">
+<meta property="article:tag" content="机械制造工艺 经济精度 工艺路线">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>加工经济精度与典型表面加工路线选择 - tdexxx的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"tdexxx.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2022-12-10T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="加工经济精度与典型表面加工路线选择"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-10-15 22:03" pubdate>
+          2026年10月15日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          12k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          99 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">加工经济精度与典型表面加工路线选择</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="机械加工经济精度与工艺路线选择笔记：加工方法选择四依据、外圆三条典型路线（车削-磨削-金刚石车）与孔加工三条路线（钻扩铰-拉削-镗削）、数控与组合机床选用"><a href="#机械加工经济精度与工艺路线选择笔记：加工方法选择四依据、外圆三条典型路线（车削-磨削-金刚石车）与孔加工三条路线（钻扩铰-拉削-镗削）、数控与组合机床选用" class="headerlink" title="机械加工经济精度与工艺路线选择笔记：加工方法选择四依据、外圆三条典型路线（车削&#x2F;磨削&#x2F;金刚石车）与孔加工三条路线（钻扩铰&#x2F;拉削&#x2F;镗削）、数控与组合机床选用"></a>机械加工经济精度与工艺路线选择笔记：加工方法选择四依据、外圆三条典型路线（车削&#x2F;磨削&#x2F;金刚石车）与孔加工三条路线（钻扩铰&#x2F;拉削&#x2F;镗削）、数控与组合机床选用</h1><blockquote>
+<p>本节是机械制造工艺学的一节<strong>复习 + 新授课</strong>。前半节通过第一次作业（长方体上开不通槽&#x2F;通槽的自由度分析）讲评，复习”六点定位、完全&#x2F;不完全&#x2F;欠&#x2F;过定位、粗基准与精基准原则”；后半节进入<strong>新内容</strong>——<strong>经济精度、加工方法选择、加工设备选择、外圆表面与孔的典型加工路线</strong>，教你拿到一个表面的精度（公差等级 + 表面粗糙度）和材料、批量要求后，如何查”加工方案表”反推出最终工序、再向前排出整条工艺路线，并结合设备数量与经济性择优。</p>
+<p>定位自由度、定位元件（六点定位、一面两孔、菱形销、V 形块、双顶针等）、粗&#x2F;精基准原则的完整手册，见同系列《机械加工工艺规程与定位基准设计笔记》《机床夹具组合定位与自由度分析笔记》，本篇只在作业讲评中简要回顾，重点放在<strong>加工方法与工艺路线的选择决策</strong>。</p>
+</blockquote>
+<hr>
+<h2 id="一、核心结论（先记住这-14-条）"><a href="#一、核心结论（先记住这-14-条）" class="headerlink" title="一、核心结论（先记住这 14 条）"></a>一、核心结论（先记住这 14 条）</h2><ol>
+<li><strong>分析定位自由度的”笨办法”最可靠</strong>：把工件的 6 个自由度（沿 X&#x2F;Y&#x2F;Z 移动、绕 X&#x2F;Y&#x2F;Z 转动）全部列出来，结合加工要求逐个判断”允不允许”，不允许的就必须限制；熟练后再提速。</li>
+<li><strong>坐标轴必须直接画在零件图上，不能只用文字描述</strong>。文字描述的坐标轴一旦与后面约束的自由度自相矛盾，整题就错；答案是跟着坐标轴走的，坐标轴建得不同，结论就不同。</li>
+<li><strong>不通槽（盲槽）通常要限制全部 6 个自由度＝完全定位；通槽&#x2F;通孔沿其贯通方向的移动可以不限制＝不完全定位</strong>。</li>
+<li><strong>不完全定位与欠定位都是”限制的自由度少于 6”，本质区别在是否满足加工技术要求</strong>：满足要求、少限制也能加工出合格品的是<strong>不完全定位（合理）</strong>；该限制的没限制、加工出来不合格的是<strong>欠定位（不允许）</strong>。过定位是同一自由度被重复限制。</li>
+<li><strong>粗基准四原则</strong>：①保证加工面与不加工面间的相互位置关系（优先以<strong>不加工面</strong>为粗基准）；②保证重要加工面余量均匀（要保证哪面余量均匀，就选哪面的毛坯面）；③便于装夹（选平整光洁面，避开分模面飞边、浇冒口残留）；④粗基准一般<strong>不得重复作为主要基准</strong>使用（可作第二、第三辅助基准）。</li>
+<li><strong>精基准四原则</strong>：①基准重合（工艺基准尽量与设计基准重合）；②基准统一（尽量用同一组精基准加工尽可能多的面）；③互为基准（相互位置精度高的两个面反复互为基准、逐次加工）；④自为基准（以加工面自身找正为基准，如导轨磨削）。</li>
+<li><strong>回转体铸件（套、盘、泵体等）在无特殊说明时，外圆与内孔默认要求同轴</strong>；当外圆不加工、内孔要加工时，按”保证相互位置关系”原则应<strong>以不加工的外圆面为粗基准</strong>先加工内孔与端面。</li>
+<li><strong>经济精度</strong>：在正常加工条件（合格的设备、工艺装备、技术合格的工人、不延长加工时间）下，某种加工方法所能稳定保证的加工精度和表面粗糙度。精度越高成本越高，<strong>满足要求即可，不要盲目追求更高精度</strong>。</li>
+<li><strong>选择加工方法（最终工序）的四个依据</strong>：①看懂加工面的公差等级与 $Ra$ 要求及图纸符号；②考虑零件材料的加工性（<strong>钢可磨、铝铜等软材料不能磨</strong>）；③生产批量与生产节拍；④企业现有加工设备与经济性。</li>
+<li><strong>查”加工方案表”三步法</strong>：先按公差等级 + $Ra$ 初筛出”能达到要求的最终工序”→ 再剔除不适合该材料的方法（如金刚石车主要加工有色金属、不加工钢）→ 再剔除精度严重过剩、成本高的方法 → 留下<strong>最接近要求</strong>的那个；然后由最终工序<strong>向前反推</strong>前道工序。</li>
+<li><strong>外圆表面三条典型路线</strong>：<ul>
+<li>一般钢件：<strong>粗车→半精车→精车</strong>（约 IT7、$Ra,1.25$ 一档，以课本为准）；</li>
+<li>钢件淬火、要求 IT6、$Ra,0.8&#x2F;0.4$：<strong>粗车→半精车→粗磨→精磨</strong>（淬火马氏体硬，精车车不动，必须磨）；</li>
+<li>铝、铜等非铁金属要求 IT6、$Ra,0.8&#x2F;0.4$：<strong>粗车→半精车→精车→金刚石车</strong>（有色金属不能磨，金刚石车可达 $Ra,0.05$ 甚至更高）。</li>
+</ul>
+</li>
+<li><strong>孔加工三条典型路线</strong>：<ul>
+<li>中小孔最常用：<strong>钻→扩→铰</strong>（铰后约 IT6~9，铰刀是定尺寸刀具，直接得到基准孔 H7）；</li>
+<li>大批大量、深孔或成组孔求效率：毛坯无孔 <strong>钻→粗拉→精拉</strong>；已有精度差的铸孔则 <strong>粗镗→粗拉→精拉</strong>；</li>
+<li>孔位精度要求高、毛坯差：<strong>钻→半精镗→精镗（→金刚镗&#x2F;浮动镗）</strong>。</li>
+</ul>
+</li>
+<li><strong>扩孔能修正底孔轻微的轴线偏斜，铰孔不能修正轴线位置、只能提高尺寸精度与表面粗糙度</strong>；底孔歪斜严重（如明显偏 $45°$）扩孔也救不回来。</li>
+<li><strong>加工设备要与零件和批量匹配</strong>：产品变换快、形状复杂、精度高用<strong>数控机床&#x2F;加工中心</strong>；产品稳定、大批大量（如年产数万件且多年不变）用可调可拆改的<strong>组合机床</strong>；回转体优先车床、平面&#x2F;箱体优先铣床&#x2F;加工中心，”能用但不适配”会显著抬高成本、降低效率。</li>
+</ol>
+<hr>
+<h2 id="二、知识结构（这节课的脉络）"><a href="#二、知识结构（这节课的脉络）" class="headerlink" title="二、知识结构（这节课的脉络）"></a>二、知识结构（这节课的脉络）</h2><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs awk">机械制造工艺：从定位基准复习 → 加工方法与工艺路线选择<br>│<br>├─ 一、作业讲评：定位自由度分析（复习）<br>│   ├─ 方法：<span class="hljs-number">6</span> 个自由度逐个判断<span class="hljs-string">&quot;允不允许&quot;</span>，坐标轴必须画在图上<br>│   ├─ 不通槽=完全定位(<span class="hljs-number">6</span>)；通槽/通孔沿贯通方向移动可不限制=不完全定位(<span class="hljs-number">5</span>)<br>│   ├─ 完全 <span class="hljs-regexp">/ 不完全 /</span> 欠 / 过 定位的定义与判别<br>│   └─ 定位元件：六点定位（支撑板+支撑钉）、一面两孔（大平面+短圆柱销+短菱形销）<br>│<br>├─ 二、粗/精基准原则与例题（复习 + 综合应用）<br>│   ├─ 粗基准四原则：相互位置 <span class="hljs-regexp">/ 余量均匀 /</span> 便于装夹 / 不重复使用<br>│   ├─ 精基准四原则：基准重合 <span class="hljs-regexp">/ 基准统一 /</span> 互为基准 / 自为基准<br>│   ├─ 四种常见定位组合：两顶尖、一面两孔、大平面+短销、小平面+长销<br>│   └─ 例题：杠杆/拨叉、重要孔余量均匀、泵体、飞铁（盘类复杂件）<br>│<br>├─ 三、经济精度与加工方法选择（新内容）<br>│   ├─ 经济精度的定义与<span class="hljs-string">&quot;适度精度&quot;</span>思想<br>│   ├─ 选择加工方法的四个依据（识图、材料、批量、设备/经济）<br>│   ├─ 加工方案查表三步法（初筛→剔材料不符→剔精度过剩→反推前道）<br>│   └─ 例：φ<span class="hljs-number">200</span>、<span class="hljs-number">45</span> 钢、Ra0.<span class="hljs-number">8</span>、IT6 左右 → 最终工序选精密磨<br>│<br>├─ 四、加工设备选择<br>│   ├─ 数控机床/加工中心：换产快、复杂、高精度<br>│   ├─ 组合机床：大批大量、模块化可调（区别于专用机床）<br>│   └─ 机床类型/规格与零件形状、尺寸、精度相适应<br>│<br>└─ 五、典型加工路线（新内容重点）<br>    ├─ 外圆：①粗车-半精车-精车 ②钢件淬火加磨削 ③有色金属金刚石车<br>    │        更高：研磨 <span class="hljs-regexp">/ 砂带磨 /</span> 精密磨削 / 抛光<br>    ├─ 孔：①钻-扩-铰 ②钻<span class="hljs-regexp">/粗镗-粗拉-精拉 ③钻-半精镗-精镗(-金刚镗/</span>浮动镗)<br>    └─ 路线图用法：按 IT+Ra 反查路线，再按设备台数、批量、经济性择优<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="三、详细知识点笔记"><a href="#三、详细知识点笔记" class="headerlink" title="三、详细知识点笔记"></a>三、详细知识点笔记</h2><h3 id="（一）作业讲评：定位自由度分析（复习）"><a href="#（一）作业讲评：定位自由度分析（复习）" class="headerlink" title="（一）作业讲评：定位自由度分析（复习）"></a>（一）作业讲评：定位自由度分析（复习）</h3><h4 id="1-基本方法：把-6-个自由度列全，逐个判断"><a href="#1-基本方法：把-6-个自由度列全，逐个判断" class="headerlink" title="1. 基本方法：把 6 个自由度列全，逐个判断"></a>1. 基本方法：把 6 个自由度列全，逐个判断</h4><p>以”在一个长方体上表面加工一条槽”为例。工件在空间有 6 个自由度：沿 X、Y、Z 三个方向的移动，和绕 X、Y、Z 三个轴的转动。初期判断不清时，就把这 6 个自由度全写出来，结合”如果保留这个自由度，加工出来的槽还合不合格”逐个判断：</p>
+<ul>
+<li><strong>沿 X 移动</strong>：槽要求位于长方体正中，若能左右移动，槽的左右位置无法保证 → 必须限制；</li>
+<li><strong>绕 X 转动</strong>：槽底要与底面平行，若工件能绕 X 翘起，铣刀会把翘起的尖角铣掉、槽底变斜面 → 必须限制；</li>
+<li><strong>沿 Y 移动、绕 Y 转动</strong>：同理影响槽的位置与槽底平行度 → 必须限制；</li>
+<li><strong>沿 Z 移动</strong>：若能上下移动，槽深忽大忽小，深度无法保证 → 必须限制；</li>
+<li><strong>绕 Z 转动</strong>：若能在水平面内转动，槽的方向会偏 → 必须限制。</li>
+</ul>
+<h4 id="2-不通槽与通槽的区别（高频考点）"><a href="#2-不通槽与通槽的区别（高频考点）" class="headerlink" title="2. 不通槽与通槽的区别（高频考点）"></a>2. 不通槽与通槽的区别（高频考点）</h4><ul>
+<li><strong>不通槽（盲槽）</strong>：槽在长度方向两端都有边界，上述 6 个自由度都要限制，属于<strong>完全定位（限制 6 个自由度）</strong>。</li>
+<li><strong>通槽</strong>：沿槽贯通的那个方向（设为 Y 向）没有位置要求，刀具一路铣通即可，因此<strong>沿 Y 方向的移动可以不限制</strong>，只限制 5 个自由度。</li>
+<li><strong>通孔</strong>同理：沿孔轴线方向的移动不影响孔本身，可以不限制。</li>
+<li>判题技巧：看到”通”字（通槽、通孔），第一时间反应——<strong>沿其贯通&#x2F;轴线方向的移动自由度通常不需要约束</strong>。</li>
+</ul>
+<h4 id="3-四种定位情况的定义与区别"><a href="#3-四种定位情况的定义与区别" class="headerlink" title="3. 四种定位情况的定义与区别"></a>3. 四种定位情况的定义与区别</h4><table>
+<thead>
+<tr>
+<th>定位情况</th>
+<th>限制自由度数</th>
+<th>是否满足加工要求</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>完全定位</td>
+<td>6</td>
+<td>满足</td>
+<td>6 个自由度全部被限制</td>
+</tr>
+<tr>
+<td>不完全定位</td>
+<td>&lt;6（如 5、4、3）</td>
+<td><strong>满足</strong></td>
+<td>在保证加工技术要求的前提下，某些自由度本就不必限制，<strong>合理、允许</strong></td>
+</tr>
+<tr>
+<td>欠定位</td>
+<td>&lt;6</td>
+<td><strong>不满足</strong></td>
+<td>该限制的自由度没有限制，加工出来必然不合格，<strong>绝对不允许</strong></td>
+</tr>
+<tr>
+<td>过定位（重复定位）</td>
+<td>—</td>
+<td>—</td>
+<td>同一个自由度被两个或多个定位元件重复限制；可能引起干涉、变形或装夹不稳，需具体分析</td>
+</tr>
+</tbody></table>
+<p><strong>不完全定位 vs 欠定位（最易混淆）</strong>：两者限制的自由度都少于 6，区别只在”<strong>少限制之后还能不能加工出合格件</strong>“。通槽少限制沿槽向移动，照样合格，是不完全定位；盲槽若漏限制了某个影响槽位&#x2F;槽深的自由度，就是欠定位。</p>
+<h4 id="4-实现定位的元件（复习）"><a href="#4-实现定位的元件（复习）" class="headerlink" title="4. 实现定位的元件（复习）"></a>4. 实现定位的元件（复习）</h4><ul>
+<li><strong>六点定位</strong>：底面用一块矩形（大）支撑板限制 3 个自由度，侧面用一条条形（窄）支撑板限制 2 个，端面用一个支撑钉限制 1 个，合计 6 点。</li>
+<li><strong>一面两孔</strong>：用一个大平面 + 一个短圆柱销 + 一个短菱形销（削边销），可迅速、可靠地限制箱体&#x2F;板类零件的 6 个自由度；菱形销用于补偿两孔间距误差、避免过定位。</li>
+</ul>
+<blockquote>
+<p>作业常见错误提醒：坐标轴不要只用文字写在旁边，要<strong>直接画在题图上</strong>，并与每个定位元件限制的自由度一一对应，避免”文字坐标轴”和”实际约束”打架。</p>
+</blockquote>
+<hr>
+<h3 id="（二）粗基准、精基准原则与综合例题（复习-应用）"><a href="#（二）粗基准、精基准原则与综合例题（复习-应用）" class="headerlink" title="（二）粗基准、精基准原则与综合例题（复习 + 应用）"></a>（二）粗基准、精基准原则与综合例题（复习 + 应用）</h3><h4 id="1-粗基准四原则（用毛坯面定位）"><a href="#1-粗基准四原则（用毛坯面定位）" class="headerlink" title="1. 粗基准四原则（用毛坯面定位）"></a>1. 粗基准四原则（用毛坯面定位）</h4><ol>
+<li><strong>保证相互位置关系原则</strong>：当零件上同时有加工面与不加工面、且二者有位置要求时，应选<strong>不加工面</strong>作粗基准。<ul>
+<li>典型：回转体铸件（套筒、炮弹体、泵体等）外圆与内孔铸出时轴线往往不重合，而使用要求外圆与内孔同轴。若用三爪卡盘夹不加工的外圆、车内孔，则加工后内孔与外圆同轴（只是各处余量不均）；若反过来夹（撑）内孔去车外圆，余量虽均匀但内外圆偏心保留下来。<strong>回转体优先保证同轴，故选不加工外圆为粗基准。</strong></li>
+</ul>
+</li>
+<li><strong>保证加工余量合理分配原则</strong>：要保证哪个重要表面的加工余量均匀，就直接选该表面的毛坯面作粗基准。<ul>
+<li>车床床身导轨例：方案一以导轨面为粗基准加工床脚、再以加工过的床脚为精基准加工导轨，导轨面用的是精基准、切除余量较均匀；方案二以床脚毛坯面为粗基准加工导轨，床脚毛坯面精度差（可能带斜度），导轨余量难保证均匀。要保证导轨余量均匀，就应选导轨毛坯面为粗基准。</li>
+</ul>
+</li>
+<li><strong>便于装夹原则</strong>：粗基准虽为毛坯面，也应尽量选相对平整、光洁、面积足够的面；避开锻造&#x2F;铸造分模面的飞边、浇冒口（帽子）切割残留等凹凸不平处，以保证定位可靠、夹紧方便。</li>
+<li><strong>粗基准一般不得重复使用原则</strong>：毛坯面粗糙、每次装夹位置误差大（可能相差数毫米），不能作为<strong>主要定位基准</strong>在多道工序中重复使用；但允许作为第二、第三辅助基准出现。</li>
+</ol>
+<h4 id="2-精基准四原则（用已加工面定位）"><a href="#2-精基准四原则（用已加工面定位）" class="headerlink" title="2. 精基准四原则（用已加工面定位）"></a>2. 精基准四原则（用已加工面定位）</h4><ol>
+<li><strong>基准重合原则</strong>：尽量使定位用的工艺基准与零件的设计基准重合（设计、工艺、测量、装配基准尽量统一），避免基准不重合误差。</li>
+<li><strong>基准统一原则</strong>：当用某一个（组）面定位能加工出大部分表面时，应尽快先把这个面加工出来，后续尽量都以它为精基准。基准重合与基准统一有时会矛盾，需权衡哪个影响更大。</li>
+<li><strong>互为基准原则</strong>：当两个表面相互位置精度要求都很高时，可反复以彼此为基准、每次只加工去一点点，逐步提高位置精度。如主轴的锥孔与支承轴颈、齿轮的齿面与安装基准孔。</li>
+<li><strong>自为基准原则</strong>：以被加工面自身作为定位基准（用百分表等找正工件使该面处于正确位置后再加工）。如高精度导轨磨削、床身平面加工，要求该面自身已有一定的平整基础。</li>
+</ol>
+<h4 id="3-四种最常见的定位基准组合（优先考虑）"><a href="#3-四种最常见的定位基准组合（优先考虑）" class="headerlink" title="3. 四种最常见的定位基准组合（优先考虑）"></a>3. 四种最常见的定位基准组合（优先考虑）</h4><table>
+<thead>
+<tr>
+<th>零件类型</th>
+<th>常用定位组合</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>轴类</td>
+<td>两端<strong>顶尖孔</strong>（左固定顶尖、右活动顶尖）</td>
+<td>主轴转动靠鸡心夹头&#x2F;拨盘驱动；细长轴为防弯曲变形，中间加中心架&#x2F;跟刀架</td>
+</tr>
+<tr>
+<td>箱体、盖板、平面类</td>
+<td><strong>一面两孔</strong>：大平面 + 短圆柱销 + 菱形销</td>
+<td>限制 6 个自由度，箱体加工最典型</td>
+</tr>
+<tr>
+<td>较短的套、盘类</td>
+<td><strong>大平面 + 短销</strong></td>
+<td>大平面限 3 个、短销限 2 个</td>
+</tr>
+<tr>
+<td>较长的套类</td>
+<td><strong>小平面 + 长销</strong></td>
+<td>长销限制较多自由度</td>
+</tr>
+</tbody></table>
+<h4 id="4-基准选择综合例题"><a href="#4-基准选择综合例题" class="headerlink" title="4. 基准选择综合例题"></a>4. 基准选择综合例题</h4><p><strong>例 1（杠杆&#x2F;拨叉类，说明粗基准不重复 + 防转）</strong>：零件有 $\phi16$ 基准孔和外圆，要求孔与外圆同轴，另有推刀槽和几个小孔。</p>
+<ul>
+<li>第一步按”保证相互位置关系”，以不加工的外圆面为粗基准，三爪自定心卡盘夹外圆，车出 $\phi16$ 内孔、端面，并顺带车推刀槽；</li>
+<li>后续各孔不能再以外圆为粗基准（重复装夹外圆轴线对不准，且违反粗基准不重复原则），应改用<strong>已加工的孔 + 端面作精基准</strong>；</li>
+<li>若零件外形不是圆形（要加工的孔有方位要求），仅靠”端面 + 孔”（无论大平面短销还是小平面长销）都<strong>不能限制工件绕孔轴线的转动</strong>，此时要增加一个毛坯侧面作<strong>第二&#x2F;第三辅助基准来防转</strong>；夹具体对应位置会做成凹口&#x2F;挡销。</li>
+</ul>
+<p><strong>例 2（重要孔要求余量均匀）</strong>：某重要孔要求加工余量均匀。</p>
+<ul>
+<li>按粗基准原则②，应<strong>以该重要孔自身（毛坯孔）为粗基准</strong>；但只用一个孔定位（长销&#x2F;短销）无法阻止工件绕孔轴转动，所以要”孔 + 其他面”组合；</li>
+<li>常用<strong>一面两孔</strong>方案：底面大平面 + 一短圆柱销 + 另一孔处锥形（菱形）销，完全限制 6 个自由度；</li>
+<li>先以该孔为粗基准铣出与孔有位置度要求的两个侧面（使后续精基准与设计基准重合，满足基准重合与基准统一），再以加工出的两侧面为精基准加工该孔，保证孔余量均匀。</li>
+</ul>
+<p><strong>例 3（泵体&#x2F;液压单体，回转体同轴）</strong>：外圆不加工、内孔与两端止口要求同轴。</p>
+<ul>
+<li>以不加工的外圆面为粗基准；优先夹<strong>较长的一段外圆</strong>（长夹爪比短夹爪限制的自由度多、更稳），用三爪卡盘夹左侧外圆，加工右端面与右端内孔（内孔车到能容纳镗刀的深度）；</li>
+<li>加工左端面与左端内孔时，<strong>不要再夹外圆</strong>（粗基准不重复、且保证两端内孔同轴），改用<strong>撑开式（涨簧&#x2F;涨胎）卡盘从内孔里撑住已加工孔</strong>，以孔为精基准加工左端。</li>
+</ul>
+<p><strong>例 4（飞铁&#x2F;盘类复杂件，完整基准转换）</strong>[零件名以图纸为准]：铸件、批量约 500 件；除标注粗糙度的表面外其余不加工。需加工：上部 $\phi40$ 外圆区的端面 a、$\phi20,\text{H7}$ 内孔、$\phi12$ 小孔，以及 b、c、d 等端面。</p>
+<ul>
+<li>读图：外圆表面无粗糙度标注（”不去除材料”符号）→ 外圆<strong>不加工</strong>；$\phi20$ 孔、各端面有去除材料的粗糙度要求 → 要加工。</li>
+<li>要求 $\phi20$ 与 $\phi40$ 同轴，按原则①以<strong>不加工的上部 $\phi40$ 外圆为粗基准</strong>（上部较长、好装夹；下部太短不好夹），三爪卡盘夹住，车出 $\phi20,\text{H7}$ 孔和 a 端面；</li>
+<li>三爪（弹性&#x2F;涨套）夹持约限制 4 个自由度，<strong>不限制绕轴线转动和沿轴线移动</strong>；</li>
+<li>再以 <strong>a 面 + $\phi20$ 孔为精基准</strong>（小平面 + 短销），并增加一个毛坯侧面作辅助基准防转：<ul>
+<li>a 面是 d 面的设计基准 → 优先加工 d 面；</li>
+<li>$\phi20$ 轴线是 $\phi12$ 小孔位置的设计基准 → 加工 $\phi12$ 孔；</li>
+<li>c 面尺寸不能直接得到，由尺寸链间接保证（如 $9.5+10&#x3D;19.5\pm0.1$，[数值以图纸为准]）；</li>
+</ul>
+</li>
+<li>最后 b 面的设计基准是 c 面，按基准重合原则<strong>以 c 面为精基准加工 b 面</strong>。</li>
+<li>这就是”粗基准（外圆）→ 精基准（a 面+孔，含侧面辅助）→ 精基准（c 面）”的完整基准转换链。</li>
+</ul>
+<hr>
+<h3 id="（三）经济精度（重要概念）"><a href="#（三）经济精度（重要概念）" class="headerlink" title="（三）经济精度（重要概念）"></a>（三）经济精度（重要概念）</h3><p><strong>定义</strong>：经济精度是指在<strong>正常的加工条件</strong>下——采用符合质量标准的设备、工艺装备（夹具、刀具等），由技术水平符合要求的工人操作，<strong>不延长加工时间</strong>——某种加工方法所能<strong>稳定保证</strong>的加工精度和表面粗糙度。</p>
+<p>理解要点：</p>
+<ul>
+<li>任何加工方法，只要不计成本、不惜工时，都可能做到比”经济精度”更高的精度，但那是以高成本、低效率为代价的，不经济；</li>
+<li>加工精度和表面粗糙度要求越高，成本越高；<strong>只要能满足零件的使用要求即可，不要盲目提高精度</strong>（”太好”也是浪费）；</li>
+<li>制定工艺时，应让每道工序的要求落在该工序加工方法的经济精度范围内；工艺路线设计、加工方法选择都建立在经济精度概念之上。</li>
+</ul>
+<hr>
+<h3 id="（四）加工方法（最终工序）的选择依据"><a href="#（四）加工方法（最终工序）的选择依据" class="headerlink" title="（四）加工方法（最终工序）的选择依据"></a>（四）加工方法（最终工序）的选择依据</h3><p>选择某一表面的加工方法（尤其是<strong>最后一道工序</strong>），主要从四方面考虑：</p>
+<ol>
+<li><strong>看懂加工表面的精度与粗糙度要求（最基本能力）</strong>：<ul>
+<li>要能判断公差 $0.02$ 与 $0.04$ 哪个要求高、$Ra,1.6$ 与 $Ra,2.5$ 哪个要求高（数值越小要求越高）；</li>
+<li>要认得”去除材料&#x2F;不去除材料”的粗糙度符号（带延长线三角、勾形等），判断该面是否加工；还要认得焊接符号等；</li>
+<li>例：外圆、端面只标”不去除材料”符号即表示该面保持毛坯状态、不加工。</li>
+</ul>
+</li>
+<li><strong>考虑零件材料的加工性</strong>：<ul>
+<li><strong>钢件可以磨削</strong>；<strong>铝、铜等质地较软的有色金属不能磨削</strong>——砂轮由磨粒颗粒构成，磨铝时铝屑会填满、堵塞磨粒间隙，砂轮磨钢可加工几千件，磨铝可能一两件就报废，成本极低效；</li>
+<li>有色金属高精度外圆应走”金刚石车”而不是磨削。</li>
+</ul>
+</li>
+<li><strong>考虑生产批量与生产节拍</strong>：单件小批与大批大量采用的设备、夹具、工艺方法不同（大批大量可用拉削、组合机床等高效方案）。</li>
+<li><strong>考虑企业现有加工设备与经济性</strong>：优先利用车间已有的、合适的设备，避免不必要的高成本加工。</li>
+</ol>
+<hr>
+<h3 id="（五）加工方案查表法（课本表-2-4、2-5-等）"><a href="#（五）加工方案查表法（课本表-2-4、2-5-等）" class="headerlink" title="（五）加工方案查表法（课本表 2-4、2-5 等）"></a>（五）加工方案查表法（课本表 2-4、2-5 等）</h3><p>教材给出了外圆、孔、平面等表面的”加工方案—能达到的公差等级—表面粗糙度”对照表（外圆&#x2F;孔见表 2-4、2-5 一类，平面另有类似表）。<strong>不要求背表，要求会查表、会选</strong>。</p>
+<p><strong>查表三步法</strong>：</p>
+<ol>
+<li><strong>初筛</strong>：按零件要求的公差等级和 $Ra$，在表中找出所有”能达到该要求”的加工方法，作为<strong>最终工序</strong>的候选；</li>
+<li><strong>剔除材料不符的</strong>：如金刚石车（金刚石精密车削）主要用于<strong>非铁金属（铝、铜等）</strong>，很少用来加工钢件，钢件即使其精度满足也要排除；</li>
+<li><strong>剔除精度过剩的</strong>：把那些精度”太好”（明显高于要求、成本更高）的方法去掉，留下<strong>与要求最接近、最经济</strong>的方法作为最终工序；</li>
+<li>确定最终工序后，再按加工阶段<strong>向前反推</strong>前道工序（如最终是精磨，则前道是粗磨，再前道是半精车、粗车）。</li>
+</ol>
+<p><strong>例题：加工 $\phi200\text{ mm}$ 的 45 钢（碳素结构钢）外圆，要求 $Ra,0.8$、公差等级约 IT6（不低于 IT6，即 IT6~9 中取较高者）。</strong></p>
+<ul>
+<li>粗车、半精车、精车：精车一般只能到 $Ra,1.25$ 一档（以课本表为准），<strong>达不到 0.8</strong>，排除；</li>
+<li>金刚石车：精度够，但主要加工有色金属、<strong>不适合 45 钢</strong>，排除；</li>
+<li>铣削（粗铣&#x2F;半精铣&#x2F;精铣）：外圆表面不用铣、且粗糙度也达不到 0.8，排除；</li>
+<li><strong>精密磨（精磨）</strong>：可达约 $Ra,0.08\sim0.32$，且<strong>钢可以磨</strong>，满足要求 → 选<strong>精密磨作为最终工序</strong>；</li>
+<li>珩磨、超精加工等虽也能达到，但精度”太好”、成本更高，不选；</li>
+<li>由精磨向前反推工艺路线：<strong>粗车 → 半精车 → 粗磨 → 精磨（精密磨）</strong>。</li>
+</ul>
+<hr>
+<h3 id="（六）加工设备的选择"><a href="#（六）加工设备的选择" class="headerlink" title="（六）加工设备的选择"></a>（六）加工设备的选择</h3><p>设备型号繁多，只需掌握大类选择原则：</p>
+<ol>
+<li><strong>数控机床 &#x2F; 加工中心</strong>：适合产品变换周期短（换产频繁）、零件形状复杂、核心表面加工困难、加工精度要求较高的场合。</li>
+<li><strong>组合机床</strong>：适合产品基本不变、<strong>大批大量生产</strong>（如一年两三万件、预计未来 5~10 年仍保持该批量）。它用专为该零件设计的<strong>模块化专用部件</strong>拼合而成——与”专用机床”的区别是：专用机床不加工该零件就基本闲置，而组合机床的部件可以拆散、重新拼装成加工其他零件的机床，柔性更好。</li>
+<li><strong>机床类型要与加工表面形状相适应</strong>：<ul>
+<li>回转体表面（外圆、内孔）主要用车床（或相应回转加工机床），不要用铣床去铣外圆——虽然”能做”，但效率低、成本高；</li>
+<li>平面、台阶、沟槽、箱体孔系等用铣床&#x2F;加工中心更合适；</li>
+<li>硬要用不适配的机床（如车床车平面键槽、铣床铣长外圆），成本和效率都会变差。</li>
+</ul>
+</li>
+<li><strong>机床规格&#x2F;档次要与零件尺寸、精度相适应</strong>：同样是车床，价格从十几万到上百万不等，能达到的精度不同；精度要求高才用好机床，一般配合件用普通设备即可。实际一个车间往往设备数量多但种类少（就四五类），普通工艺员选择余地有限，设备选型多在新建车间、生产计划&#x2F;采购环节遇到。</li>
+</ol>
+<hr>
+<h3 id="（七）外圆表面的典型加工路线"><a href="#（七）外圆表面的典型加工路线" class="headerlink" title="（七）外圆表面的典型加工路线"></a>（七）外圆表面的典型加工路线</h3><p>不要求死记硬背每条路线和对应精度，但要知道”<strong>某条路线大致加工什么要求、什么材料的零件</strong>“。</p>
+<h4 id="路线①：粗车-→-半精车-→-精车（最常用）"><a href="#路线①：粗车-→-半精车-→-精车（最常用）" class="headerlink" title="路线①：粗车 → 半精车 → 精车（最常用）"></a>路线①：粗车 → 半精车 → 精车（最常用）</h4><ul>
+<li>适用于大部分回转体（套、盘、轴）零件；</li>
+<li>经济精度约 IT7 及以下、表面粗糙度约 $Ra,1.25$ 一档（以课本表为准；现代数控车床精车常可稳定到 $Ra,0.8$，个别可达 $0.08$，但考试以课本数值为准）。</li>
+</ul>
+<h4 id="路线②（钢件、要求更高且需淬火）：粗车-→-半精车-→-粗磨-→-精磨"><a href="#路线②（钢件、要求更高且需淬火）：粗车-→-半精车-→-粗磨-→-精磨" class="headerlink" title="路线②（钢件、要求更高且需淬火）：粗车 → 半精车 → 粗磨 → 精磨"></a>路线②（钢件、要求更高且需淬火）：粗车 → 半精车 → 粗磨 → 精磨</h4><ul>
+<li>适用：钢件半精车后还要<strong>淬火（热处理）</strong>，公差等级约 IT6、$Ra,0.8$ 或 $0.4$；</li>
+<li>原因有二：①精车达不到 IT6&#x2F;$Ra,0.8$；②淬火后形成<strong>马氏体</strong>、硬度很高，再用硬质合金车刀精车往往车不动、刀具磨损严重，因此淬火后的精加工必须用<strong>磨削</strong>。</li>
+</ul>
+<h4 id="路线③（有色金属、要求更高）：粗车-→-半精车-→-精车-→-金刚石车"><a href="#路线③（有色金属、要求更高）：粗车-→-半精车-→-精车-→-金刚石车" class="headerlink" title="路线③（有色金属、要求更高）：粗车 → 半精车 → 精车 → 金刚石车"></a>路线③（有色金属、要求更高）：粗车 → 半精车 → 精车 → 金刚石车</h4><ul>
+<li>适用：铝、铜等非铁金属，要求 IT6、$Ra,0.8&#x2F;0.4$；</li>
+<li><strong>有色金属不能磨</strong>（堵砂轮），故不走磨削路线，而用<strong>金刚石车</strong>；</li>
+<li>金刚石车特点：车刀刀头为金刚石；使用<strong>精密车床</strong>，主轴常采用<strong>液体静压或空气静压轴承</strong>、导轨采用液体&#x2F;空气静压导轨，运动平稳、进给均匀，可获得很高的尺寸精度和极低的表面粗糙度，极限可达 $Ra,0.05$ 甚至更好；非铁金属高精度外圆多走此路线。</li>
+</ul>
+<h4 id="钢件比精磨更高的光整加工：研磨、砂带磨、精密磨削、抛光"><a href="#钢件比精磨更高的光整加工：研磨、砂带磨、精密磨削、抛光" class="headerlink" title="钢件比精磨更高的光整加工：研磨、砂带磨、精密磨削、抛光"></a>钢件比精磨更高的光整加工：研磨、砂带磨、精密磨削、抛光</h4><p>钢件在精磨之后若还要进一步提高，可采用研磨、砂带磨、精密磨削、抛光等工艺：</p>
+<ul>
+<li><strong>研磨</strong>：工件作<strong>回转运动</strong>，研具（套在工件外，材料常用铸铁、铜、铝、硬木等）沿轴向作<strong>往复移动</strong>（手动或自动），工件与研具之间加研磨剂；可显著提高尺寸精度与表面质量。</li>
+<li><strong>砂带磨</strong>：用环形砂带（类似传送带）高速运动，工件缓慢转动并作缓慢的进给&#x2F;近远运动贴近砂带；支撑砂带的接触轮一般用<strong>较软的橡胶轮</strong>，而不用刚性钢轮。</li>
+<li><strong>抛光</strong>：进一步降低粗糙度、获得光亮表面，多用于光整装饰或高配合要求场合。</li>
+</ul>
+<hr>
+<h3 id="（八）孔的典型加工路线"><a href="#（八）孔的典型加工路线" class="headerlink" title="（八）孔的典型加工路线"></a>（八）孔的典型加工路线</h3><h4 id="路线①：钻-→-扩-→-铰（中小孔最常用）"><a href="#路线①：钻-→-扩-→-铰（中小孔最常用）" class="headerlink" title="路线①：钻 → 扩 → 铰（中小孔最常用）"></a>路线①：钻 → 扩 → 铰（中小孔最常用）</h4><ul>
+<li>大多数中小尺寸孔用”先钻、再扩、再铰”即可；铰孔后经济精度约 IT6~9、表面粗糙度约 $Ra,0.4\sim1.6$（[以教材表为准]）。</li>
+<li>两个关键注意点：<ol>
+<li><strong>扩孔具有修复底孔轴线轻微偏斜的能力</strong>：若钻孔轴线轻微歪斜，扩孔可在一定程度上修正；但歪得太厉害（夸张到约 $45°$）则无法修复。</li>
+<li><strong>铰孔不能修正孔的轴线位置</strong>，只能提高孔的尺寸精度和表面粗糙度；铰刀是<strong>定尺寸（规格）刀具</strong>，铰出的孔直接就是标准的<strong>基准孔 H7</strong>。</li>
+</ol>
+</li>
+</ul>
+<h4 id="路线②：拉削（大批大量、高效率）"><a href="#路线②：拉削（大批大量、高效率）" class="headerlink" title="路线②：拉削（大批大量、高效率）"></a>路线②：拉削（大批大量、高效率）</h4><ul>
+<li>钻—扩—铰每个孔都要逐件循环，深孔还要往复排屑，大批量生产效率低；此时可用<strong>拉床拉削</strong>（粗拉 → 精拉），一次行程完成成形，特别适合成组&#x2F;成系列的孔和内形。</li>
+<li>按毛坯有无预制孔分两种走法：<ul>
+<li>毛坯上<strong>没有孔</strong>：<strong>钻 → 粗拉 → 精拉</strong>（先用钻头制出底孔）；</li>
+<li>毛坯是<strong>铸件、已有的铸孔尺寸精度很差</strong>：不能省掉预加工直接拉，应 <strong>粗镗 → 粗拉 → 精拉</strong>；</li>
+<li>若是模锻件、预制孔本身尺寸精度较好，可不经钻&#x2F;镗直接粗拉 → 精拉。</li>
+</ul>
+</li>
+</ul>
+<h4 id="路线③：钻-→-半精镗-→-精镗（→-金刚镗-浮动镗）"><a href="#路线③：钻-→-半精镗-→-精镗（→-金刚镗-浮动镗）" class="headerlink" title="路线③：钻 → 半精镗 → 精镗（→ 金刚镗 &#x2F; 浮动镗）"></a>路线③：钻 → 半精镗 → 精镗（→ 金刚镗 &#x2F; 浮动镗）</h4><ul>
+<li>当<strong>孔的位置精度要求很高、但初始毛坯条件较差</strong>时，靠钻扩铰难以保证孔位，应采用镗削路线：钻 → 半精镗 → 精镗，要求更高时用金刚镗（精密镗）或浮动镗；</li>
+<li>镗孔的突出优点是<strong>能够纠正孔的位置度、垂直度误差</strong>（与铰孔形成对比）。</li>
+<li>磨孔（内圆磨削）相对少见，一般在淬硬孔等特定场合使用。</li>
+</ul>
+<h4 id="孔路线小结（最常见的三条）"><a href="#孔路线小结（最常见的三条）" class="headerlink" title="孔路线小结（最常见的三条）"></a>孔路线小结（最常见的三条）</h4><ol>
+<li>钻 → 扩 → 铰（中小孔、最常见）；</li>
+<li>钻（或粗镗）→ 粗拉 → 精拉（大批大量、求效率）；</li>
+<li>钻 → 半精镗 → 精镗（→ 金刚镗&#x2F;浮动镗）（孔位精度高、毛坯差）。</li>
+</ol>
+<hr>
+<h3 id="（九）工艺路线图的使用与方案择优"><a href="#（九）工艺路线图的使用与方案择优" class="headerlink" title="（九）工艺路线图的使用与方案择优"></a>（九）工艺路线图的使用与方案择优</h3><p>教材的”典型工艺路线图”是制定工艺路线的工具，<strong>不是用来死记硬背的</strong>，初学阶段用它给一个参考路径：</p>
+<ol>
+<li>拿到零件某表面，明确其<strong>公差等级（如 IT6）和表面粗糙度（如 $Ra,0.8$）</strong>；</li>
+<li>到路线图&#x2F;加工方案表上反查：哪些路线的末端工序能达到该 IT 和 $Ra$，得到一个或几个<strong>初步方案</strong>；</li>
+<li>对候选方案再做综合比较、择优：<ul>
+<li><strong>设备数量与换产</strong>：如某方案钻—半精镗—精镗—浮动镗只需一台镗床&#x2F;加工中心，而另一方案钻—半精镗—粗磨—精磨要两台设备（镗床 + 磨床），在没有复合机床时前者更省事；</li>
+<li><strong>材料是否适配</strong>：钢可磨、铝不磨；</li>
+<li><strong>生产批量与经济性</strong>：大批大量优先拉削、组合机床等高效方案；单件小批以通用机床为主；</li>
+<li>是否需要手工修配（如铰后手工铰修）等。</li>
+</ul>
+</li>
+<li>初学按”粗加工→半精加工→精加工”的顺序排；熟练后并不一定严格按图分段，可结合现场设备灵活组织（例如钻、半精镗之后也可根据需要穿插其他工序），但前提是理解每条路线”为什么这样走”。</li>
+</ol>
+<hr>
+<h2 id="四、例题与案例汇总"><a href="#四、例题与案例汇总" class="headerlink" title="四、例题与案例汇总"></a>四、例题与案例汇总</h2><table>
+<thead>
+<tr>
+<th>例题</th>
+<th>要求&#x2F;条件</th>
+<th>选择与路线</th>
+<th>依据</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>长方体不通槽</td>
+<td>槽居中、槽底平行、槽深确定</td>
+<td>限制 6 个自由度＝完全定位</td>
+<td>任一自由度不限制都会使槽位&#x2F;槽深&#x2F;方向不合格</td>
+</tr>
+<tr>
+<td>长方体通槽</td>
+<td>沿槽长方向贯通</td>
+<td>沿贯通方向移动可不限制＝不完全定位(5)</td>
+<td>少限制仍能加工合格件</td>
+</tr>
+<tr>
+<td>杠杆&#x2F;拨叉</td>
+<td>$\phi16$ 孔与外圆同轴、另有方位孔</td>
+<td>外圆粗基准车孔与端面→孔+端面精基准钻其余孔；非圆处加侧面辅助防转</td>
+<td>相互位置原则、粗基准不重复、绕轴转动需限制</td>
+</tr>
+<tr>
+<td>重要孔余量均匀</td>
+<td>该孔加工余量要求均匀</td>
+<td>以该孔为粗基准，一面两孔完全定位，先铣两侧面再以侧面精基准加工孔</td>
+<td>余量均匀原则、基准重合&#x2F;统一</td>
+</tr>
+<tr>
+<td>泵体（液压件）</td>
+<td>外圆不加工、内孔与止口同轴</td>
+<td>夹较长外圆（粗基准）加工右端→涨套撑内孔（精基准）加工左端</td>
+<td>相互位置原则、粗基准不重复</td>
+</tr>
+<tr>
+<td>飞铁&#x2F;盘类铸件</td>
+<td>$\phi40$ 外圆不加工、$\phi20$H7 孔、$\phi12$ 孔、各端面</td>
+<td>外圆粗基准车 $\phi20$ 孔与 a 面→a 面+孔（加侧面防转）精基准加工 d、$\phi12$、c（尺寸链 19.5±0.1）→c 面精基准加工 b 面</td>
+<td>四原则综合、基准重合</td>
+</tr>
+<tr>
+<td>$\phi200$ 45 钢外圆</td>
+<td>$Ra,0.8$、约 IT6</td>
+<td>最终工序选精密磨；路线 粗车→半精车→粗磨→精磨</td>
+<td>精车达不到、金刚石车不加工钢、钢可磨</td>
+</tr>
+<tr>
+<td>45 钢外圆需淬火</td>
+<td>IT6、$Ra,0.8&#x2F;0.4$</td>
+<td>粗车→半精车→粗磨→精磨</td>
+<td>淬火马氏体硬、车不动，必须磨</td>
+</tr>
+<tr>
+<td>铝合金外圆高精度</td>
+<td>IT6、$Ra,0.8&#x2F;0.4$</td>
+<td>粗车→半精车→精车→金刚石车</td>
+<td>铝不能磨；金刚石车+静压主轴可达 $Ra,0.05$</td>
+</tr>
+<tr>
+<td>中小孔</td>
+<td>一般精度</td>
+<td>钻→扩→铰（得 H7）</td>
+<td>扩可修正轻微轴线偏斜、铰不修正轴线只提尺寸&#x2F;Ra</td>
+</tr>
+<tr>
+<td>成批深孔&#x2F;成组孔</td>
+<td>大批量求效率</td>
+<td>无孔：钻→粗拉→精拉；有铸孔：粗镗→粗拉→精拉</td>
+<td>拉削高效，铸件底孔差需先粗镗</td>
+</tr>
+<tr>
+<td>孔位精度高、毛坯差</td>
+<td>位置度要求高</td>
+<td>钻→半精镗→精镗（→金刚镗&#x2F;浮动镗）</td>
+<td>镗能纠正孔位&#x2F;垂直度</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="五、术语-原则-路线速查表"><a href="#五、术语-原则-路线速查表" class="headerlink" title="五、术语 &#x2F; 原则 &#x2F; 路线速查表"></a>五、术语 &#x2F; 原则 &#x2F; 路线速查表</h2><table>
+<thead>
+<tr>
+<th>类别</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>6 自由度</td>
+<td>沿 X&#x2F;Y&#x2F;Z 移动 + 绕 X&#x2F;Y&#x2F;Z 转动</td>
+</tr>
+<tr>
+<td>完全&#x2F;不完全&#x2F;欠&#x2F;过定位</td>
+<td>限 6 &#x2F; 满足要求时限&lt;6（合理）&#x2F; 该限未限不合格（禁止）&#x2F; 同一自由度重复限制</td>
+</tr>
+<tr>
+<td>六点定位</td>
+<td>大支撑板(3)+条形支撑板(2)+支撑钉(1)&#x3D;6</td>
+</tr>
+<tr>
+<td>一面两孔</td>
+<td>大平面 + 短圆柱销 + 短菱形销（菱形销补偿孔距误差、防过定位）</td>
+</tr>
+<tr>
+<td>粗基准四原则</td>
+<td>①相互位置（以不加工面为粗基准）②重要面余量均匀 ③便于装夹 ④不重复作主要基准</td>
+</tr>
+<tr>
+<td>精基准四原则</td>
+<td>①基准重合 ②基准统一 ③互为基准 ④自为基准</td>
+</tr>
+<tr>
+<td>四种定位组合</td>
+<td>两顶尖（轴）&#x2F; 一面两孔（箱体）&#x2F; 大平面+短销（短套盘）&#x2F; 小平面+长销（长套）</td>
+</tr>
+<tr>
+<td>经济精度</td>
+<td>正常设备、合格工人、不延长工时下能稳定保证的精度与 Ra；满足要求即可</td>
+</tr>
+<tr>
+<td>加工方法选择四依据</td>
+<td>①识图（IT、Ra、符号）②材料加工性（钢磨&#x2F;铝不磨）③批量节拍 ④现有设备与经济</td>
+</tr>
+<tr>
+<td>查表三步</td>
+<td>按 IT+Ra 初筛 → 剔材料不符（金刚石车不加工钢）→ 剔精度过剩 → 选最接近并反推前道</td>
+</tr>
+<tr>
+<td>外圆路线①</td>
+<td>粗车→半精车→精车；约 IT7、$Ra,1.25$（课本口径）</td>
+</tr>
+<tr>
+<td>外圆路线②（钢·淬火）</td>
+<td>粗车→半精车→粗磨→精磨；IT6、$Ra,0.8&#x2F;0.4$；淬火马氏体硬需磨</td>
+</tr>
+<tr>
+<td>外圆路线③（有色金属）</td>
+<td>粗车→半精车→精车→金刚石车；IT6、$Ra,0.8&#x2F;0.4$，极限 $Ra,0.05$；静压主轴&#x2F;导轨</td>
+</tr>
+<tr>
+<td>钢件更高光整</td>
+<td>研磨（工件回转、研具轴向往复、研磨剂；研具铸铁&#x2F;铜&#x2F;铝&#x2F;硬木）、砂带磨（橡胶接触轮）、精密磨削、抛光</td>
+</tr>
+<tr>
+<td>孔路线①</td>
+<td>钻→扩→铰；IT6~9、$Ra,0.4\sim1.6$；铰刀定尺寸→基准孔 H7；扩修轴线、铰不修轴线</td>
+</tr>
+<tr>
+<td>孔路线②（大批大量）</td>
+<td>无孔 钻→粗拉→精拉；有铸孔 粗镗→粗拉→精拉；模锻预制孔好可直接拉</td>
+</tr>
+<tr>
+<td>孔路线③（孔位高）</td>
+<td>钻→半精镗→精镗（→金刚镗&#x2F;浮动镗）；镗能纠正孔位&#x2F;垂直度</td>
+</tr>
+<tr>
+<td>设备选择</td>
+<td>换产快&#x2F;复杂&#x2F;高精→数控加工中心；大批大量稳定→组合机床（模块化可重组）；回转体用车、平面用铣</td>
+</tr>
+<tr>
+<td>关键材料结论</td>
+<td>钢可磨；铝、铜等软有色金属不能磨（堵砂轮，钢磨数千件 vs 铝磨几件）</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="六、课堂任务-实训要点"><a href="#六、课堂任务-实训要点" class="headerlink" title="六、课堂任务 &#x2F; 实训要点"></a>六、课堂任务 &#x2F; 实训要点</h2><ol>
+<li>会对给定零件（含不通槽&#x2F;通槽、通孔）逐个判断 6 个自由度哪些必须限制，并正确判定完全&#x2F;不完全&#x2F;欠&#x2F;过定位；坐标轴必须画在图上。</li>
+<li>能针对套、盘、轴、箱体、杠杆、泵体等典型零件，按粗&#x2F;精基准原则说出粗基准、各道精基准及定位元件组合，并解释基准转换链。</li>
+<li>理解经济精度含义，能说明”为什么不是精度选得越高越好”。</li>
+<li>给定表面的材料、公差等级、$Ra$、批量，会用加工方案表”初筛—剔除—反推”确定最终工序和完整工艺路线。</li>
+<li>能背出并区分外圆三条、孔三条典型加工路线，说清钢件淬火为什么必须磨、有色金属为什么用金刚石车而不能磨。</li>
+<li>会在数控机床、组合机床、通用机床之间按零件形状、批量、精度做合理选择。</li>
+</ol>
+<hr>
+<h2 id="七、待核对-以教材为准（录音不清或口语化处）"><a href="#七、待核对-以教材为准（录音不清或口语化处）" class="headerlink" title="七、待核对 &#x2F; 以教材为准（录音不清或口语化处）"></a>七、待核对 &#x2F; 以教材为准（录音不清或口语化处）</h2><ol>
+<li>铰孔后的粗糙度录音表述为”6-9、0.3 万”等，本文按常见的 IT6~9、$Ra,0.4\sim1.6$ 整理，具体数值[以教材表 2-4&#x2F;2-5 为准]。</li>
+<li>精车经济粗糙度课本取约 $Ra,1.25$，教师同时提到现代数控车床精车可达 $0.8$ 甚至 $0.08$，考试[以课本为准]。</li>
+<li>“飞铁 200、产量 500 件”的零件名称、各端面字母（a&#x2F;b&#x2F;c&#x2F;d）与尺寸链数值（$9.5+10&#x3D;19.5\pm0.1$）系按口述还原，[以配套图纸为准]。</li>
+<li>金刚石车、研磨、砂带磨、珩磨、浮动镗等能达到的具体 $Ra$ 区间，不同教材略有差异，[以教材&#x2F;工艺手册为准]。</li>
+<li>组合机床”年产两三万件、5~10 年不变”为课堂举例的量级，非固定阈值。</li>
+<li>各类加工方案表（外圆、孔、平面）的具体公差等级与粗糙度对照，需查课本第 37 页附近表 2-4、2-5，本文不复制全表。</li>
+</ol>
+<hr>
+<h2 id="八、复习自测（主动回忆，先自己答再看答案）"><a href="#八、复习自测（主动回忆，先自己答再看答案）" class="headerlink" title="八、复习自测（主动回忆，先自己答再看答案）"></a>八、复习自测（主动回忆，先自己答再看答案）</h2><p><strong>1. 判断定位自由度最稳妥的方法是什么？坐标轴为什么必须画在图上？</strong><br>答：把 6 个自由度（沿&#x2F;绕 X、Y、Z）全部列出，结合加工要求逐个判断”允不允许”，不允许就限制。坐标轴若只用文字描述，容易与实际约束的自由度冲突，且答案随坐标轴建法不同而不同，所以必须直接画在题图上。</p>
+<p><strong>2. 不通槽和通槽分别限制几个自由度？为什么？</strong><br>答：不通槽一般限制全部 6 个（完全定位）；通槽沿贯通方向的移动不影响加工，可不限制，限制 5 个（不完全定位）。</p>
+<p><strong>3. 不完全定位和欠定位都少于 6 个自由度，如何区分？</strong><br>答：看少限制后能否加工出合格件。能保证技术要求、少限制也合格的是不完全定位（合理）；该限制的没限制、加工不合格的是欠定位（禁止）。</p>
+<p><strong>4. 什么是过定位？一面两孔中为什么第二个销用菱形销？</strong><br>答：同一自由度被两个以上元件重复限制即过定位，可能造成干涉&#x2F;装夹不稳。一面两孔中第二个销用菱形（削边）销是为补偿两孔间距误差、避免两圆柱销造成过定位。</p>
+<p><strong>5. 背出粗基准四原则。</strong><br>答：①保证加工面与不加工面的相互位置关系（优先以不加工面为粗基准）；②保证重要加工面余量均匀；③便于装夹（选平整光洁面、避飞边浇冒口）；④粗基准一般不得重复作为主要基准。</p>
+<p><strong>6. 背出精基准四原则并各举一例。</strong><br>答：①基准重合（定位基准与设计基准重合）；②基准统一（用同一组精基准加工尽量多的面）；③互为基准（主轴锥孔与轴颈、齿轮齿面与安装孔反复互为基准）；④自为基准（导轨磨削用百分表按导轨自身找正）。</p>
+<p><strong>7. 回转体铸件外圆不加工、内孔要加工且要求同轴，粗基准选哪个面？为什么？</strong><br>答：选不加工的外圆面为粗基准先加工内孔，可保证加工后内孔与外圆同轴（各处切除余量不均但同轴）；若反过来以孔定位加工外圆，毛坯内外圆的偏心会保留下来。</p>
+<p><strong>8. 粗基准为什么不能重复作为主要基准？杠杆零件加工后续孔时该用什么定位？</strong><br>答：毛坯面粗糙、每次装夹位置误差大（可达数毫米），重复使用无法保证位置精度。后续应以已加工的孔 + 端面作精基准；外形非圆、有方位要求时再加毛坯侧面作辅助基准防止绕孔轴转动。</p>
+<p><strong>9. 四种最常见的定位基准组合分别对应什么零件？</strong><br>答：轴类用两顶尖孔（配拨盘、细长轴加中心架&#x2F;跟刀架）；箱体&#x2F;盖板用一面两孔；短套盘用大平面+短销；长套用小平面+长销。</p>
+<p><strong>10. 什么是经济精度？为什么不能盲目提高加工精度？</strong><br>答：在合格设备、合格工人、不延长工时的正常条件下，某方法能稳定保证的精度与粗糙度。精度越高成本越高，满足使用要求即可，过高精度属于浪费。</p>
+<p><strong>11. 选择加工方法（最终工序）的四个依据是什么？</strong><br>答：①看懂加工面的公差等级、Ra 和图纸符号；②材料加工性（钢可磨、铝铜不能磨）；③生产批量与节拍；④企业现有设备与经济性。</p>
+<p><strong>12. 为什么铝、铜等有色金属不宜磨削？</strong><br>答：铝铜质地软，磨屑会堵塞砂轮磨粒间隙，使砂轮很快失效（磨钢可数千件，磨铝可能几件就报废），故有色金属高精度外圆用金刚石车而非磨削。</p>
+<p><strong>13. 叙述查加工方案表选最终工序的步骤。</strong><br>答：按公差等级+Ra 初筛所有能达到的方法→剔除不适合该材料的（如金刚石车不加工钢）→剔除精度过剩、成本高的→选最接近要求的作为最终工序，再由它向前反推前道工序。</p>
+<p><strong>14. $\phi200$ 的 45 钢外圆要求 Ra0.8、约 IT6，最终工序选什么？完整路线是什么？</strong><br>答：精车只到约 Ra1.25 达不到、金刚石车不适合钢、铣不适合外圆，精密磨可达 Ra0.08~0.32 且钢可磨，故选精磨；路线为粗车→半精车→粗磨→精磨。</p>
+<p><strong>15. 钢件半精车后要淬火、要求 IT6、Ra0.8，为什么后续用磨而不用精车？</strong><br>答：一是精车达不到 IT6&#x2F;Ra0.8；二是淬火形成高硬度马氏体，车刀难切削、磨损严重，故淬火后的精加工用磨削。</p>
+<p><strong>16. 铝合金外圆要求 IT6、Ra0.4，走哪条路线？金刚石车的设备有什么特点？</strong><br>答：粗车→半精车→精车→金刚石车（铝不能磨）。金刚石车用金刚石车刀和精密车床，主轴与导轨常采用液体&#x2F;空气静压结构，运动平稳、进给均匀，极限可达 Ra0.05。</p>
+<p><strong>17. 外圆表面三条典型加工路线分别是什么？</strong><br>答：①粗车—半精车—精车（一般钢件，约 IT7、Ra1.25）；②粗车—半精车—粗磨—精磨（钢件淬火、IT6、Ra0.8&#x2F;0.4）；③粗车—半精车—精车—金刚石车（有色金属、IT6、Ra0.8&#x2F;0.4）。</p>
+<p><strong>18. 研磨时工件和研具各做什么运动？研具常用什么材料？</strong><br>答：工件作回转运动，研具沿轴向往复移动（手动或自动），之间加研磨剂；研具材料常用铸铁、铜、铝、硬木等。</p>
+<p><strong>19. 砂带磨的接触轮为什么常用橡胶软轮？</strong><br>答：砂带高速运动、工件缓慢转动并作近远进给，用较软的橡胶接触轮可获得均匀、贴合的接触与较好的表面质量，避免刚性钢轮接触过硬。</p>
+<p><strong>20. 孔加工最常用的三条路线是什么？</strong><br>答：①钻→扩→铰（中小孔）；②钻（或粗镗）→粗拉→精拉（大批大量拉削）；③钻→半精镗→精镗（→金刚镗&#x2F;浮动镗，孔位精度高）。</p>
+<p><strong>21. 扩孔和铰孔在”修正底孔”能力上有何区别？铰孔为什么常直接得到 H7？</strong><br>答：扩孔能修正底孔轻微的轴线偏斜（严重歪斜修不回）；铰孔不能修正轴线位置，只提高尺寸精度和表面粗糙度。铰刀是定尺寸（规格）刀具，故铰出的孔直接就是标准基准孔 H7。</p>
+<p><strong>22. 大批量拉削孔时，毛坯无孔和已有精度差的铸孔，路线有何不同？</strong><br>答：无预制孔走钻→粗拉→精拉；铸件已有铸孔但精度差，应先粗镗修正再粗拉→精拉，不能省掉预加工直接拉；模锻预制孔精度好时才可直接粗拉→精拉。</p>
+<p><strong>23. 孔位置度要求很高、毛坯条件又差时，为什么选镗削而不是铰削？</strong><br>答：铰孔不能纠正孔的轴线&#x2F;位置误差，只能顺着底孔精加工；镗孔（半精镗、精镗）能纠正孔的位置度和垂直度，故孔位要求高时用镗削路线。</p>
+<p><strong>24. 数控机床和组合机床分别适合什么生产条件？组合机床与专用机床有何区别？</strong><br>答：换产快、形状复杂、精度高用数控机床&#x2F;加工中心；产品稳定、大批大量（年产数万件且多年不变）用组合机床。组合机床由模块化专用部件拼成，产品停产可拆散重组加工其他零件；专用机床则基本只能加工特定零件、通用性差。</p>
+<p><strong>25. 为什么强调机床类型要与加工表面形状相适应？</strong><br>答：回转体用车床、平面和孔系用铣床&#x2F;加工中心是经济高效的匹配；硬用铣床铣外圆或车床铣平面键槽，虽然”能做”，但效率低、成本高、质量也难保证。</p>
+<hr>
+<blockquote>
+<p><strong>收尾记忆</strong>：这节课把工艺设计从”会选基准”推进到”会选方法、会排路线”。一句话串起来——<strong>先按自由度和粗&#x2F;精基准原则把工件”装夹定位”好，再按表面的 IT 与 $Ra$、材料（钢磨铝不磨）、批量、设备，用加工方案表反查最终工序、向前排出路线</strong>：外圆记住”车、磨、金刚石车”三条，孔记住”钻扩铰、拉、镗”三条，并始终用”经济精度、满足要求即可”来约束你的选择。</p>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%9C%BA%E6%A2%B0%E5%88%B6%E9%80%A0%E5%B7%A5%E8%89%BA-%E7%BB%8F%E6%B5%8E%E7%B2%BE%E5%BA%A6-%E5%B7%A5%E8%89%BA%E8%B7%AF%E7%BA%BF/" class="print-no-link">#机械制造工艺 经济精度 工艺路线</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>加工经济精度与典型表面加工路线选择</div>
+      <div>https://tdexxx.github.io/2026/10/15/06_机械制造工艺与夹具/机械制造工艺_经济精度与工艺路线选择_课堂笔记/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>tdexxx</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年10月15日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/10/15/04_%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1_%E9%BD%BF%E8%BD%AE%E4%BC%A0%E5%8A%A8%E5%8F%97%E5%8A%9B%E4%B8%8E%E5%BC%BA%E5%BA%A6_%E4%B9%A0%E9%A2%98%E6%80%BB%E7%BB%93/" title="齿轮传动受力分析与强度计算习题总结">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">齿轮传动受力分析与强度计算习题总结</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/10/15/08_%E6%B5%8B%E8%AF%95%E6%8A%80%E6%9C%AF%E4%B8%8E%E4%BF%A1%E5%8F%B7%E5%88%86%E6%9E%90/%E6%B5%8B%E8%AF%95%E6%8A%80%E6%9C%AF_%E4%BF%A1%E5%8F%B7%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80_%E5%8F%91%E5%B8%83%E7%A8%BF/" title="信号分析基础：信号分类、傅里叶级数与频谱">
+                        <span class="hidden-mobile">信号分析基础：信号分类、傅里叶级数与频谱</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

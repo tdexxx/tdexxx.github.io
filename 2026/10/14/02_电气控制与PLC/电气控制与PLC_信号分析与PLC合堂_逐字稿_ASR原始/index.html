@@ -1,0 +1,1866 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="tdexxx">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="课堂录音逐字稿（信号分析 · 电气控制与PLC&#x2F;HMI） 录音时间：2026-10-14 13:55　时长 03:33:16　转写：faster-whisper large-v3（本地 CPU）   说明：本稿为语音识别原始输出，仅做了繁体转简体，未做人工校订。本次录音环境噪声较大，识别偏差与幻觉片段明显多于前两次，同音字&#x2F;专业术语存在大量误判（如「双边符字符」应为「双边幅度谱">
+<meta property="og:type" content="article">
+<meta property="og:title" content="信号分析与 PLC 合堂课堂逐字稿（ASR 原始）">
+<meta property="og:url" content="https://tdexxx.github.io/2026/10/14/02_%E7%94%B5%E6%B0%94%E6%8E%A7%E5%88%B6%E4%B8%8EPLC/%E7%94%B5%E6%B0%94%E6%8E%A7%E5%88%B6%E4%B8%8EPLC_%E4%BF%A1%E5%8F%B7%E5%88%86%E6%9E%90%E4%B8%8EPLC%E5%90%88%E5%A0%82_%E9%80%90%E5%AD%97%E7%A8%BF_ASR%E5%8E%9F%E5%A7%8B/index.html">
+<meta property="og:site_name" content="tdexxx的博客">
+<meta property="og:description" content="课堂录音逐字稿（信号分析 · 电气控制与PLC&#x2F;HMI） 录音时间：2026-10-14 13:55　时长 03:33:16　转写：faster-whisper large-v3（本地 CPU）   说明：本稿为语音识别原始输出，仅做了繁体转简体，未做人工校订。本次录音环境噪声较大，识别偏差与幻觉片段明显多于前两次，同音字&#x2F;专业术语存在大量误判（如「双边符字符」应为「双边幅度谱">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-10-14T14:05:30.000Z">
+<meta property="article:modified_time" content="2026-10-30T17:37:19.924Z">
+<meta property="article:author" content="tdexxx">
+<meta property="article:tag" content="电气控制 PLC 课堂逐字稿 ASR">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>信号分析与 PLC 合堂课堂逐字稿（ASR 原始） - tdexxx的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"tdexxx.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2022-12-10T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="信号分析与 PLC 合堂课堂逐字稿（ASR 原始）"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-10-14 22:05" pubdate>
+          2026年10月14日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          14k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          121 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">信号分析与 PLC 合堂课堂逐字稿（ASR 原始）</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="课堂录音逐字稿（信号分析-·-电气控制与PLC-HMI）"><a href="#课堂录音逐字稿（信号分析-·-电气控制与PLC-HMI）" class="headerlink" title="课堂录音逐字稿（信号分析 · 电气控制与PLC&#x2F;HMI）"></a>课堂录音逐字稿（信号分析 · 电气控制与PLC&#x2F;HMI）</h1><blockquote>
+<p>录音时间：2026-10-14 13:55　时长 03:33:16　转写：faster-whisper large-v3（本地 CPU）</p>
+</blockquote>
+<blockquote>
+<p>说明：本稿为<strong>语音识别原始输出</strong>，仅做了繁体转简体，<strong>未做人工校订</strong>。<br>本次录音环境噪声较大，识别偏差与幻觉片段明显多于前两次，<br>同音字&#x2F;专业术语存在大量误判（如「双边符字符」应为「双边幅度谱」、「涡轮&#x2F;走向」应为「蜗轮&#x2F;轴承」、<br>「PRC&#x2F;P2C」应为「PLC」、「出锅瓶&#x2F;人间界面」应为「触摸屏&#x2F;人机界面」、「伸缩本」应为「伸缩门」等），<br>精确表述请以同目录的两份 CSDN 发布稿为准。</p>
+</blockquote>
+<blockquote>
+<p>内容分布：00:10—01:45 信号分析（傅里叶级数与频谱）；01:45—01:55 环境音；<br>01:55—03:30 电气控制与PLC&#x2F;HMI组态；03:30 结束。</p>
+</blockquote>
+<hr>
+<p><strong>[00:04:14]</strong> 很慢啊,为什么我已经写过了它也要重新游动?</p>
+<p><strong>[00:10:01]</strong> 我们在没有经过之前,原始电流波形是这样的,它增加很多,因为我们的影响对流线是比较明显。</p>
+<p><strong>[00:10:21]</strong> 现在原始电流波形它增加很多,那么通过复习业展开之后,我们发现,这么几个不同频率的,</p>
+<p><strong>[00:10:29]</strong> 三五力量 四五力量 五五力量 六五力量 七五力量 八五力量</p>
+<p><strong>[00:10:35]</strong> 能的频率 从信号数构成的</p>
+<p><strong>[00:10:39]</strong> 这边是下面的一个分支组</p>
+<p><strong>[00:10:41]</strong> 那么我们可以通过一些手段</p>
+<p><strong>[00:10:43]</strong> 把一些过渺膏 包裹成的</p>
+<p><strong>[00:10:51]</strong> 这边 这边 这边 压力 暗料</p>
+<p><strong>[00:10:53]</strong> 我们把它过渺膏</p>
+<p><strong>[00:10:55]</strong> 我们现在 进入的过程</p>
+<p><strong>[00:10:57]</strong> 都是 生酸氮线</p>
+<p><strong>[00:10:59]</strong> 生酸氯线是我们过渺膏的一个东西</p>
+<p><strong>[00:11:03]</strong> 大家可以看到,当我们过滤的东西越多,越起来越多的情况</p>
+<p><strong>[00:11:11]</strong> 这个是我们在工程上面非常常用的</p>
+<p><strong>[00:11:14]</strong> 信号进行分替</p>
+<p><strong>[00:11:16]</strong> 我们过滤要求的高频率到低频率信号</p>
+<p><strong>[00:11:20]</strong> 或者说,选择一些我们感兴趣的信号</p>
+<p><strong>[00:11:24]</strong> 就那个窗口函数</p>
+<p><strong>[00:11:26]</strong> 只有这几个频率能够通过我们这个窗口</p>
+<p><strong>[00:11:30]</strong> 其他的频率无难通过</p>
+<p><strong>[00:11:32]</strong> 你可以去选择一些你感兴趣的频率信号</p>
+<p><strong>[00:11:35]</strong> 这个教育课程都是非常常见的</p>
+<p><strong>[00:11:38]</strong> 特别是电子录音课</p>
+<p><strong>[00:11:40]</strong> 电子录音课的记录</p>
+<p><strong>[00:11:42]</strong> 我们知道</p>
+<p><strong>[00:11:45]</strong> 那么</p>
+<p><strong>[00:11:46]</strong> 理论的最实况</p>
+<p><strong>[00:11:53]</strong> 因为这样的一个</p>
+<p><strong>[00:12:03]</strong> 就是这样子</p>
+<p><strong>[00:12:09]</strong> 画图</p>
+<p><strong>[00:12:18]</strong> 你可以帮我看一下</p>
+<p><strong>[00:13:05]</strong> 我们最原始的不体验</p>
+<p><strong>[00:13:07]</strong> 提示了一个</p>
+<p><strong>[00:13:07]</strong> 它不是从A0到C0</p>
+<p><strong>[00:13:25]</strong> 从A2到B1到B3</p>
+<p><strong>[00:13:40]</strong> 这是它最原始的</p>
+<p><strong>[00:13:43]</strong> 没有经过任何变化的时候</p>
+<p><strong>[00:13:46]</strong> 经过下脚排出的变化之后,它可以选择A0和A3</p>
+<p><strong>[00:13:59]</strong> 这边是A1,A2,A3,A2,A3</p>
+<p><strong>[00:14:08]</strong> 这个是B上,我们的一个Bn可以选择</p>
+<p><strong>[00:14:29]</strong> Bn它得以0分的O,O的O分之1,B的O分之1</p>
+<p><strong>[00:16:08]</strong> 那么我们这边先把虾蚁和虾蚁,虾蚁和虾蚁的相位置拿下来</p>
+<p><strong>[00:16:44]</strong> 顺序和顺序之间,顺序和顺序的相位置</p>
+<p><strong>[00:16:54]</strong> A0和A1,下面B1</p>
+<p><strong>[00:16:57]</strong> 这个公式比较关键的,它现在形式一样</p>
+<p><strong>[00:17:10]</strong> 所以就是 假设你收集到数字</p>
+<p><strong>[00:18:09]</strong> 现在你可以啊</p>
+<p><strong>[00:18:10]</strong> 大概是几等于A</p>
+<p><strong>[00:18:12]</strong> 然后你交流的这个位置相应的</p>
+<p><strong>[00:18:15]</strong> 靠过去D级</p>
+<p><strong>[00:18:16]</strong> 然后再几等于0</p>
+<p><strong>[00:18:18]</strong> 这个时率变成这样一个频率的状态</p>
+<p><strong>[00:18:22]</strong> 那猜给人们看看前面多少</p>
+<p><strong>[00:18:29]</strong> 那么就是9A0</p>
+<p><strong>[00:18:35]</strong> 那A0怎么计时</p>
+<p><strong>[00:19:51]</strong> 只是说</p>
+<p><strong>[00:20:48]</strong> A是德语,A是主语号</p>
+<p><strong>[00:20:54]</strong> 这边有一个C0是奥克斯语</p>
+<p><strong>[00:21:00]</strong> Cb是奥克斯语</p>
+<p><strong>[00:21:04]</strong> 或者说C1是德语,C0是主语号</p>
+<p><strong>[00:21:08]</strong> 我们就用这个示范</p>
+<p><strong>[00:21:11]</strong> 这边的标格都一样</p>
+<p><strong>[00:21:14]</strong> 有太多环节,大家可以看得出来</p>
+<p><strong>[00:21:16]</strong> 我们把A096开始就给它说出来</p>
+<p><strong>[00:21:18]</strong> A0德语号就是A</p>
+<p><strong>[00:21:20]</strong> 我们看一下A2</p>
+<p><strong>[00:21:24]</strong> A2是成语小,A2是小D2</p>
+<p><strong>[00:21:26]</strong> 所以我们要分别去说小D2</p>
+<p><strong>[00:21:43]</strong> 我们可以测试</p>
+<p><strong>[00:21:51]</strong> 我们没有能分析它是一函数还是二函数</p>
+<p><strong>[00:21:59]</strong> 在这边是一个函数的形式</p>
+<p><strong>[00:22:02]</strong> 那么左下角的N是一个函数</p>
+<p><strong>[00:22:06]</strong> 所以我们可以看N是一个微函的形式</p>
+<p><strong>[00:23:54]</strong> 下一个比方微函的形式</p>
+<p><strong>[00:24:06]</strong> 它原来是下一个分块</p>
+<p><strong>[00:24:09]</strong> 我们想要做它从零到</p>
+<p><strong>[00:24:14]</strong> 1的圆形式</p>
+<p><strong>[00:24:16]</strong> 所以它原来是下一个分块</p>
+<p><strong>[00:24:19]</strong> 在1乘以2的形式卷起</p>
+<p><strong>[00:24:22]</strong> 三一的分派</p>
+<p><strong>[00:24:25]</strong> 与成三立</p>
+<p><strong>[00:24:26]</strong> 好 后面有一个临时</p>
+<p><strong>[00:24:28]</strong> 三一的临时</p>
+<p><strong>[00:24:29]</strong> 可以消掉一下</p>
+<p><strong>[00:24:31]</strong> 就是真相</p>
+<p><strong>[00:24:32]</strong> 前面的三一的分派</p>
+<p><strong>[00:24:34]</strong> 和分派</p>
+<p><strong>[00:24:35]</strong> 锻炼下来还是得临</p>
+<p><strong>[00:24:40]</strong> 四A 临时</p>
+<p><strong>[00:24:41]</strong> 分派和分派</p>
+<p><strong>[00:24:50]</strong> 与成三立</p>
+<p><strong>[00:24:54]</strong> 与成三立</p>
+<p><strong>[00:24:56]</strong> 与成三立</p>
+<p><strong>[00:25:23]</strong> 与成三立</p>
+<p><strong>[00:25:24]</strong> 与成三立</p>
+<p><strong>[00:27:50]</strong> 与成三立</p>
+<p><strong>[00:27:51]</strong> 与成三立</p>
+<p><strong>[00:27:56]</strong> 与成三立</p>
+<p><strong>[00:28:34]</strong> 与成三立</p>
+<p><strong>[00:28:35]</strong> 与成三立</p>
+<p><strong>[00:28:36]</strong> 与成三立</p>
+<p><strong>[00:28:52]</strong> 与成三立</p>
+<p><strong>[00:29:08]</strong> 与成三立</p>
+<p><strong>[00:29:21]</strong> 做的目标是5CN</p>
+<p><strong>[00:29:24]</strong> 那表达这个东西给大家细化一点点</p>
+<p><strong>[00:29:29]</strong> 现在这下还是直接探索</p>
+<p><strong>[00:29:32]</strong> 细化一点点</p>
+<p><strong>[00:30:00]</strong> 后半部分为《电气控制与PLC》课程，涉及继电器、接触点、常开触点、常闭触点、常闭触点、常闭触点、常闭触点、常闭触点、常闭触点、常闭触点、常闭触点、常闭触点。</p>
+<p><strong>[00:40:03]</strong> 放放网络</p>
+<p><strong>[00:40:05]</strong> 够火antex-i- slider</p>
+<p><strong>[00:40:08]</strong> 地板键</p>
+<p><strong>[00:40:11]</strong> 有位置解码</p>
+<p><strong>[00:40:16]</strong> 用电球骂</p>
+<p><strong>[00:40:19]</strong> 装滚拖机</p>
+<p><strong>[00:40:21]</strong> 了解</p>
+<p><strong>[00:40:24]</strong> 然后我们会有期待它</p>
+<p><strong>[00:40:26]</strong> 那用口塞语的话很一样</p>
+<p><strong>[00:40:29]</strong> 它的一个是to的a-n</p>
+<p><strong>[00:40:31]</strong> a-n混成d-n</p>
+<p><strong>[00:40:33]</strong> 因为d-n的语</p>
+<p><strong>[00:40:35]</strong> 这个时候助座标你可以想像</p>
+<p><strong>[00:40:38]</strong> d-n嘛 横座标是a-n嘛</p>
+<p><strong>[00:40:40]</strong> 那这个时候d-n是德语语的</p>
+<p><strong>[00:40:42]</strong> 说明它是在我们的横座标上面</p>
+<p><strong>[00:40:45]</strong> 那你的a-n是大语语的时候</p>
+<p><strong>[00:40:48]</strong> 它就是语语</p>
+<p><strong>[00:40:49]</strong> 那你的a-n是小语语的时候</p>
+<p><strong>[00:40:52]</strong> 它就是要混化过来</p>
+<p><strong>[00:40:54]</strong> 泰或我们说 吴泰</p>
+<p><strong>[00:40:57]</strong> 你只要用我这个图形的方式去理解</p>
+<p><strong>[00:41:00]</strong> 那么 这种我们的分母还是分子微粒子</p>
+<p><strong>[00:41:04]</strong> 基本上 都可以先从而去判断</p>
+<p><strong>[00:41:07]</strong> 我们在它身体的一个下面层次</p>
+<p><strong>[00:41:09]</strong> 这是一个小经验</p>
+<p><strong>[00:41:11]</strong> 就是说 如果你有任何的方法</p>
+<p><strong>[00:41:14]</strong> 来解决这个问题</p>
+<p><strong>[00:41:15]</strong> 我觉得这个方法应该是好</p>
+<p><strong>[00:41:16]</strong> 那么它算 它最初的一个结果</p>
+<p><strong>[00:41:20]</strong> 是在那边的 进化</p>
+<p><strong>[00:41:41]</strong> 再讲一点 指数不指数展开</p>
+<p><strong>[00:42:05]</strong> 我们要删分成什么样的形式</p>
+<p><strong>[00:42:07]</strong> 根据最终刷出来的形式</p>
+<p><strong>[00:42:09]</strong> 我们怎么去换这个浮屏图</p>
+<p><strong>[00:42:11]</strong> 与相对图</p>
+<p><strong>[00:42:12]</strong> 那么复制处理展开</p>
+<p><strong>[00:42:13]</strong> 它那个Cn是一个复数</p>
+<p><strong>[00:42:16]</strong> 所以它有四个处理</p>
+<p><strong>[00:42:19]</strong> 那么在一复下面</p>
+<p><strong>[00:42:20]</strong> 它除了双边的浮屏图之外</p>
+<p><strong>[00:42:22]</strong> 它还会多出一个虚笔的等级</p>
+<p><strong>[00:42:26]</strong> 所以它相较于我们的</p>
+<p><strong>[00:42:28]</strong> 相较的复数展开而言</p>
+<p><strong>[00:42:30]</strong> 可以</p>
+<p><strong>[00:42:33]</strong> 但是复数它基本上是一个复数</p>
+<p><strong>[00:42:36]</strong> 它可以提示的还是这个</p>
+<p><strong>[00:42:57]</strong> 失语的问题</p>
+<p><strong>[00:43:04]</strong> 这个按照我们看看前面的这个</p>
+<p><strong>[00:43:23]</strong> 由于A0加上N01到N059</p>
+<p><strong>[00:43:26]</strong> 在一次比的</p>
+<p><strong>[00:43:40]</strong> 那这个是按照我们</p>
+<p><strong>[00:43:48]</strong> 我们可以看到</p>
+<p><strong>[00:43:51]</strong> 我们发现</p>
+<p><strong>[00:43:52]</strong> 上面是N01到N059</p>
+<p><strong>[00:43:54]</strong> 所以它是一个单边的辅助</p>
+<p><strong>[00:43:56]</strong> N01到N059</p>
+<p><strong>[00:43:59]</strong> 可能出现负值</p>
+<p><strong>[00:44:00]</strong> 但是在负值数长开端中</p>
+<p><strong>[00:44:03]</strong> 我们的N是头部</p>
+<p><strong>[00:44:04]</strong> 所以我觉得N我们会出现</p>
+<p><strong>[00:44:07]</strong> 一个双边的辅助</p>
+<p><strong>[00:44:15]</strong> 这也是我们联想中的</p>
+<p><strong>[00:44:17]</strong> 十大天的辅助</p>
+<p><strong>[00:44:21]</strong> 大家也能知道一些品牌类的条件是什么</p>
+<p><strong>[00:45:20]</strong> 这个是条件的一个故事</p>
+<p><strong>[00:45:22]</strong> 那么由于这个1118是一个银花家家的一个暴露症状</p>
+<p><strong>[00:46:05]</strong> 那么故事的时候</p>
+<p><strong>[00:46:07]</strong> 那么大家根本就要知道</p>
+<p><strong>[00:46:09]</strong> 它最初转型化成什么样子</p>
+<p><strong>[00:46:30]</strong> 接下来这个是划算的</p>
+<p><strong>[00:46:33]</strong> 就是根据我们的认识</p>
+<p><strong>[00:46:42]</strong> 刚才我们是通过计算把它改选成了我们想要的</p>
+<p><strong>[00:46:45]</strong> 我们现在也是一样</p>
+<p><strong>[00:46:47]</strong> 我们也是通过计算把它改选成</p>
+<p><strong>[00:46:49]</strong> 来写著我们最终信仰的</p>
+<p><strong>[00:46:52]</strong> 这边比较好注意</p>
+<p><strong>[00:47:00]</strong> 心灵 心恩</p>
+<p><strong>[00:47:18]</strong> 心恩在这边</p>
+<p><strong>[00:47:19]</strong> 心在那边</p>
+<p><strong>[00:47:42]</strong> 心灵在这边</p>
+<p><strong>[00:48:00]</strong> 那这边奥登基因</p>
+<p><strong>[00:48:01]</strong> 心灵变成奥登基因</p>
+<p><strong>[00:48:07]</strong> 是因为实际的经分</p>
+<p><strong>[00:48:08]</strong> 不只有主的奥登基因</p>
+<p><strong>[00:48:10]</strong> 只有奥登基因</p>
+<p><strong>[00:48:14]</strong> 你再往旁边一点</p>
+<p><strong>[00:48:15]</strong> 它是没有的</p>
+<p><strong>[00:48:16]</strong> 不要那么懦弱</p>
+<p><strong>[00:48:18]</strong> 就是我们中间它是用</p>
+<p><strong>[00:48:30]</strong> 这一段它才有奥登基因</p>
+<p><strong>[00:48:32]</strong> 平高奥登基因</p>
+<p><strong>[00:48:42]</strong> 负的奥登基因</p>
+<p><strong>[00:48:43]</strong> 现在这一段它有一个指示</p>
+<p><strong>[00:48:52]</strong> 它这边就是正量力的负能力</p>
+<p><strong>[00:48:55]</strong> 阿弥陀佛</p>
+<p><strong>[01:01:53]</strong> 当它分为1的时候</p>
+<p><strong>[01:01:57]</strong> 那我这边只有10乎没有7乎</p>
+<p><strong>[01:02:00]</strong> 这个是Nπ 30</p>
+<p><strong>[01:02:01]</strong> 然后这是Nπ</p>
+<p><strong>[01:02:02]</strong> 它只有10乎没有7乎</p>
+<p><strong>[01:02:04]</strong> 这边是10乎</p>
+<p><strong>[01:02:05]</strong> 这个不是我的希尔纳</p>
+<p><strong>[01:02:15]</strong> 这也算</p>
+<p><strong>[01:02:16]</strong> 当它分为1的时候</p>
+<p><strong>[01:02:18]</strong> 它也分为A</p>
+<p><strong>[01:02:19]</strong> 分为Pi</p>
+<p><strong>[01:02:20]</strong> 它不是Pi是D</p>
+<p><strong>[01:02:21]</strong> 所以当它分为1的时候</p>
+<p><strong>[01:02:23]</strong> 我们的希尔纳就可以</p>
+<p><strong>[01:02:26]</strong> 就是等于A</p>
+<p><strong>[01:02:30]</strong> 那么大家看一下</p>
+<p><strong>[01:02:32]</strong> 负的二分之负一负的二分之A</p>
+<p><strong>[01:02:38]</strong> 是不是也得益</p>
+<p><strong>[01:02:40]</strong> 所以无论政府</p>
+<p><strong>[01:02:43]</strong> 那么3N以上为3%的A</p>
+<p><strong>[01:03:07]</strong> 里面是2的3%</p>
+<p><strong>[01:03:09]</strong> 2的3%是负1嘛</p>
+<p><strong>[01:03:12]</strong> 那么负1的一个绝对值</p>
+<p><strong>[01:03:14]</strong> 如果是负3的话</p>
+<p><strong>[01:03:24]</strong> 也是一样的</p>
+<p><strong>[01:03:26]</strong> 如果是负3这没时期</p>
+<p><strong>[01:03:28]</strong> 这没时期</p>
+<p><strong>[01:03:29]</strong> 所以绝对值之后</p>
+<p><strong>[01:03:31]</strong> 就是在N得益的这个值</p>
+<p><strong>[01:03:43]</strong> 那么在N得益的时候</p>
+<p><strong>[01:03:45]</strong> 它其实就是C0嘛</p>
+<p><strong>[01:03:46]</strong> A得益A</p>
+<p><strong>[01:03:48]</strong> 我们要写的原体一点</p>
+<p><strong>[01:03:59]</strong> 所以当 N 等于 0 的时候</p>
+<p><strong>[01:04:08]</strong> 那就是 C0 的</p>
+<p><strong>[01:04:09]</strong> C0 等于 A0 等于 0.5</p>
+<p><strong>[01:04:11]</strong> 那么这整个双边的符字</p>
+<p><strong>[01:04:13]</strong> 就会被划出来</p>
+<p><strong>[01:04:14]</strong> 算一下</p>
+<p><strong>[01:04:18]</strong> 调一下</p>
+<p><strong>[01:04:29]</strong> A0</p>
+<p><strong>[01:04:34]</strong> 等于 0 的时候</p>
+<p><strong>[01:04:38]</strong> A</p>
+<p><strong>[01:04:39]</strong> 等于 1 的时候</p>
+<p><strong>[01:04:40]</strong> A 等于 5</p>
+<p><strong>[01:04:43]</strong> 等于 3 的时候</p>
+<p><strong>[01:04:44]</strong> A 等于 3</p>
+<p><strong>[01:04:46]</strong> 等于 5 的时候</p>
+<p><strong>[01:04:48]</strong> A 等于 5</p>
+<p><strong>[01:04:51]</strong> 这边也是一样</p>
+<p><strong>[01:04:52]</strong> A 等于</p>
+<p><strong>[01:04:59]</strong> 双边符字符</p>
+<p><strong>[01:05:06]</strong> 所以证明,你看,Cn的绝对无率价An的二分之一</p>
+<p><strong>[01:05:29]</strong> 上面的An是π分之二,A是A</p>
+<p><strong>[01:05:34]</strong> 所以连它们的这个平衡就可以了</p>
+<p><strong>[01:06:09]</strong> C的,C的,它们这个C是C的,C是5分</p>
+<p><strong>[01:06:21]</strong> 它们那个是C是5分</p>
+<p><strong>[01:06:25]</strong> 那,现在比较好想想的是Cn啦,它C是C是5分</p>
+<p><strong>[01:06:32]</strong> 因为Cn得以nπ平衡,它们也有C是5分</p>
+<p><strong>[01:06:37]</strong> 也就是这个C是5分在那里</p>
+<p><strong>[01:06:41]</strong> 这里我们的一个系统是鲑鱼鳞</p>
+<p><strong>[01:07:01]</strong> 说明我们的尺度都在图标上面</p>
+<p><strong>[01:07:04]</strong> 那么甘宁的一个尺数有3分</p>
+<p><strong>[01:07:11]</strong> 甘宁的尺数小鲤鱼的时候</p>
+<p><strong>[01:07:14]</strong> 你会换到这边一根鱼钛</p>
+<p><strong>[01:07:16]</strong> 如果你从这边看过来</p>
+<p><strong>[01:07:18]</strong> 如果你从这边看过来</p>
+<p><strong>[01:07:21]</strong> 那么为了使整个画图</p>
+<p><strong>[01:07:24]</strong> 更加的规整一点</p>
+<p><strong>[01:07:26]</strong> 会规定分大鱼鳞的尺碳</p>
+<p><strong>[01:07:28]</strong> 分小鱼鳞的固碳</p>
+<p><strong>[01:07:33]</strong> 画图的理论我们有</p>
+<p><strong>[01:07:51]</strong> 我们这边是Ce-A</p>
+<p><strong>[01:08:02]</strong> 这个是石头</p>
+<p><strong>[01:08:16]</strong> 现在石头的语音</p>
+<p><strong>[01:08:17]</strong> 所以我们的值都是在这边</p>
+<p><strong>[01:08:19]</strong> 那你这个正值</p>
+<p><strong>[01:08:20]</strong> 就是点落在这个位置</p>
+<p><strong>[01:08:23]</strong> 那么你的N</p>
+<p><strong>[01:08:44]</strong> 那你知道为什么这边看过去</p>
+<p><strong>[01:08:47]</strong> 虽然是大语音的</p>
+<p><strong>[01:08:52]</strong> 我们又翻来翻去</p>
+<p><strong>[01:09:00]</strong> 那么我们来看这个A</p>
+<p><strong>[01:09:13]</strong> 但是这个N是小语音的</p>
+<p><strong>[01:11:41]</strong> 那这个N字小语的时候</p>
+<p><strong>[01:11:44]</strong> 上面的语言</p>
+<p><strong>[01:11:58]</strong> 依然对于我们的数字</p>
+<p><strong>[01:12:07]</strong> 就是在课里面</p>
+<p><strong>[01:12:08]</strong> N得于B的时候</p>
+<p><strong>[01:12:32]</strong> 它是老生之态</p>
+<p><strong>[01:12:34]</strong> 那我们的N得于2</p>
+<p><strong>[01:12:36]</strong> N得于1的时候</p>
+<p><strong>[01:12:39]</strong> 它也是A</p>
+<p><strong>[01:12:40]</strong> N得于2的时候</p>
+<p><strong>[01:12:41]</strong> 它也是A</p>
+<p><strong>[01:12:42]</strong> 所不足的是</p>
+<p><strong>[01:12:43]</strong> 当我们的N得于3的时候</p>
+<p><strong>[01:12:45]</strong> 3才是A</p>
+<p><strong>[01:12:50]</strong> 你认为是不正确的话</p>
+<p><strong>[01:13:09]</strong> 是B读</p>
+<p><strong>[01:13:12]</strong> 怕不然</p>
+<p><strong>[01:13:13]</strong> 对于这种语言</p>
+<p><strong>[01:13:16]</strong> 反复去学的话</p>
+<p><strong>[01:13:44]</strong> 是必要学过的语言</p>
+<p><strong>[01:13:59]</strong> 接</p>
+<p><strong>[01:14:03]</strong> 它这个A就是学</p>
+<p><strong>[01:14:05]</strong> 这时候连接都没有</p>
+<p><strong>[01:14:07]</strong> 只有10度的话它肯定就是在这个线上</p>
+<p><strong>[01:14:12]</strong> 当10度大于0的时候</p>
+<p><strong>[01:14:16]</strong> 我们的百分比是</p>
+<p><strong>[01:14:17]</strong> 当10度小于0的时候</p>
+<p><strong>[01:14:20]</strong> 我们的百分比是</p>
+<p><strong>[01:14:25]</strong> 如果你是n大于0</p>
+<p><strong>[01:14:26]</strong> 如果n小于0</p>
+<p><strong>[01:14:28]</strong> 这个也是特别量化</p>
+<p><strong>[01:14:35]</strong> 下位有的是金盘</p>
+<p><strong>[01:14:38]</strong> 金盘上是</p>
+<p><strong>[01:14:40]</strong> 1号的一个五组分析</p>
+<p><strong>[01:14:45]</strong> 那么除了非洲系信号</p>
+<p><strong>[01:14:52]</strong> 非洲系信号也没改过</p>
+<p><strong>[01:14:56]</strong> 我们的非洲系信号</p>
+<p><strong>[01:14:59]</strong> 是做了一个</p>
+<p><strong>[01:15:02]</strong> 也不是顺变</p>
+<p><strong>[01:15:05]</strong> 那么准多区信号</p>
+<p><strong>[01:15:07]</strong> 有一个特征</p>
+<p><strong>[01:15:08]</strong> 主要就是两个中期信号叠加</p>
+<p><strong>[01:15:10]</strong> 如果这两个中期信号的平衡次序</p>
+<p><strong>[01:15:14]</strong> 它不是一个游行数</p>
+<p><strong>[01:15:16]</strong> 而是一个固定数</p>
+<p><strong>[01:15:18]</strong> 比如一个简单的例子</p>
+<p><strong>[01:15:20]</strong> 像这边</p>
+<p><strong>[01:15:21]</strong> 这是一个准多区的</p>
+<p><strong>[01:15:24]</strong> 再快速的去换算一下</p>
+<p><strong>[01:15:25]</strong> 我写的这件事</p>
+<p><strong>[01:15:27]</strong> 那就是准多区</p>
+<p><strong>[01:15:52]</strong> 准多区信号</p>
+<p><strong>[01:16:01]</strong> 要知道它是无期的</p>
+<p><strong>[01:16:03]</strong> 因此就在中期</p>
+<p><strong>[01:16:04]</strong> 但是它属于非中期的准多区</p>
+<p><strong>[01:16:07]</strong> 二 三 哪一个是 给大家讲</p>
+<p><strong>[01:16:21]</strong> 是多少 一 这个人比例是多少</p>
+<p><strong>[01:16:32]</strong> 这个人比例是一 这是六</p>
+<p><strong>[01:16:35]</strong> 这个人比例是一 这是六</p>
+<p><strong>[01:16:37]</strong> 所以只有第2个相比是一个有理数</p>
+<p><strong>[01:16:40]</strong> 其他的相比都是一个无理数</p>
+<p><strong>[01:16:43]</strong> 那么意味著他们叠加之后</p>
+<p><strong>[01:16:45]</strong> 找不到一个公共的区间</p>
+<p><strong>[01:16:48]</strong> 使得它能够作而不失不现</p>
+<p><strong>[01:16:52]</strong> 甚至是一种混沟区的形状</p>
+<p><strong>[01:16:55]</strong> 实际上在中国山东有两个</p>
+<p><strong>[01:16:59]</strong> 非中心的微型化</p>
+<p><strong>[01:17:01]</strong> 更多的是顺略飞行</p>
+<p><strong>[01:17:03]</strong> 否则时间存在</p>
+<p><strong>[01:17:08]</strong> 或者说在一定时间存在</p>
+<p><strong>[01:17:10]</strong> 并且随着时间的延长慢慢衰</p>
+<p><strong>[01:17:12]</strong> 可以提示过</p>
+<p><strong>[01:17:21]</strong> 就是东西性化</p>
+<p><strong>[01:17:23]</strong> 就是我们的鼻散</p>
+<p><strong>[01:17:32]</strong> 就是它在屁股</p>
+<p><strong>[01:17:33]</strong> 顺略飞行的情况</p>
+<p><strong>[01:17:38]</strong> 它存在</p>
+<p><strong>[01:17:41]</strong> 或者说随着我们时间的延长</p>
+<p><strong>[01:17:43]</strong> 肯定也相对</p>
+<p><strong>[01:17:48]</strong> 慢慢地就登号</p>
+<p><strong>[01:17:50]</strong> 所以看到</p>
+<p><strong>[01:17:59]</strong> 实际上它存在</p>
+<p><strong>[01:18:00]</strong> 五个时间</p>
+<p><strong>[01:18:01]</strong> 如果这个其实</p>
+<p><strong>[01:18:03]</strong> 要把地再小一点的一个慢沉的</p>
+<p><strong>[01:18:09]</strong> 进展的变化</p>
+<p><strong>[01:18:10]</strong> 慢沉发源</p>
+<p><strong>[01:18:12]</strong> 慢沉就坚定了这段工作</p>
+<p><strong>[01:18:15]</strong> 因为慢沉的信号</p>
+<p><strong>[01:18:18]</strong> 它到时候的菱花吹蛮大的</p>
+<p><strong>[01:18:21]</strong> 要很清楚的</p>
+<p><strong>[01:18:25]</strong> 那么非洲区的一个信号</p>
+<p><strong>[01:18:29]</strong> 非洲区信号</p>
+<p><strong>[01:18:31]</strong> 我们可以想像成它其实</p>
+<p><strong>[01:18:35]</strong> 虽然它们有一个固定的基因</p>
+<p><strong>[01:18:38]</strong> 但是它的信号</p>
+<p><strong>[01:18:39]</strong> 没有什么实现</p>
+<p><strong>[01:18:41]</strong> 但我们如果把非洲区的信号</p>
+<p><strong>[01:18:45]</strong> 假象它是一个周期体</p>
+<p><strong>[01:18:47]</strong> 得虑不大的情况下</p>
+<p><strong>[01:18:49]</strong> 那么我们的评定</p>
+<p><strong>[01:18:51]</strong> 和我们之间的间隔</p>
+<p><strong>[01:18:53]</strong> 大家看Omega</p>
+<p><strong>[01:18:55]</strong> 它就得虑我们的Omega</p>
+<p><strong>[01:18:56]</strong> 就是我们1号和T0</p>
+<p><strong>[01:18:59]</strong> 居定于我们的0</p>
+<p><strong>[01:19:00]</strong> 我们原来是</p>
+<p><strong>[01:19:01]</strong> 1、2、3、4嘛</p>
+<p><strong>[01:19:06]</strong> 所以每一个之间的间隔</p>
+<p><strong>[01:19:08]</strong> 是一个Omega</p>
+<p><strong>[01:19:09]</strong> 那我现在</p>
+<p><strong>[01:19:11]</strong> 如计居定于5球</p>
+<p><strong>[01:19:13]</strong> 那么澳太出力</p>
+<p><strong>[01:19:14]</strong> 以这个Omega为基准</p>
+<p><strong>[01:19:16]</strong> 那么相当于我们原来</p>
+<p><strong>[01:19:19]</strong> 是一个离散的体育</p>
+<p><strong>[01:19:20]</strong> 1Omega和Omega</p>
+<p><strong>[01:19:22]</strong> 它是一个低闪的地图</p>
+<p><strong>[01:19:25]</strong> 这个时间可能还是比较远的</p>
+<p><strong>[01:19:27]</strong> 当我们的周期距离无求的时候</p>
+<p><strong>[01:19:30]</strong> Delta回赶时间的间隔</p>
+<p><strong>[01:19:34]</strong> 就是DL回赶回赶时间的间隔</p>
+<p><strong>[01:19:36]</strong> 慢慢慢慢地缩小</p>
+<p><strong>[01:19:38]</strong> 我们最多的一个细算</p>
+<p><strong>[01:19:40]</strong> 就不只是有从N合于1加到无求的形式</p>
+<p><strong>[01:19:45]</strong> 而是更基于量于1分的形式</p>
+<p><strong>[01:19:49]</strong> 它的一个间隔</p>
+<p><strong>[01:19:50]</strong> 从收缩头站开的一个形状</p>
+<p><strong>[01:19:52]</strong> 慢慢地逐步进来</p>
+<p><strong>[01:19:54]</strong> 所以我们的非周期序号可以看成是周期数位季</p>
+<p><strong>[01:19:58]</strong> 但是这个季属于无穷的情况</p>
+<p><strong>[01:20:10]</strong> N加了1分到0</p>
+<p><strong>[01:20:19]</strong> 所以有另外一个道理</p>
+<p><strong>[01:20:20]</strong> 电线连续度</p>
+<p><strong>[01:20:23]</strong> 那么以我们刚才这个C2比例</p>
+<p><strong>[01:20:25]</strong> C2等于七分之一</p>
+<p><strong>[01:20:27]</strong> 跟红绿杆</p>
+<p><strong>[01:20:32]</strong> 我们可以非常突然</p>
+<p><strong>[01:20:33]</strong> 我们的C1</p>
+<p><strong>[01:20:35]</strong> 它不是去进一层</p>
+<p><strong>[01:20:37]</strong> 临时</p>
+<p><strong>[01:20:38]</strong> 因为我们现在要把红绿杆</p>
+<p><strong>[01:20:41]</strong> 给零母体</p>
+<p><strong>[01:20:51]</strong> 其他</p>
+<p><strong>[01:20:54]</strong> 那么此时我们</p>
+<p><strong>[01:20:55]</strong> 现在是叫红绿杆</p>
+<p><strong>[01:21:25]</strong> 也讲过</p>
+<p><strong>[01:21:25]</strong> 它是在中心信号里面展开</p>
+<p><strong>[01:21:28]</strong> 它应该要</p>
+<p><strong>[01:21:28]</strong> 以及科技条件</p>
+<p><strong>[01:21:31]</strong> 我们建立了延伸有限的</p>
+<p><strong>[01:21:33]</strong> 即使没有延伸有限号</p>
+<p><strong>[01:21:40]</strong> 都可以采取</p>
+<p><strong>[01:21:41]</strong> 那这个条件呢</p>
+<p><strong>[01:21:42]</strong> 是数学消费的难度</p>
+<p><strong>[01:21:44]</strong> 这个副理念技术更加的延迟</p>
+<p><strong>[01:21:51]</strong> 那么知道了</p>
+<p><strong>[01:21:53]</strong> 我们非洲区的时候</p>
+<p><strong>[01:21:54]</strong> 它是测试的流程</p>
+<p><strong>[01:21:56]</strong> 没有意义嘛</p>
+<p><strong>[01:21:57]</strong> 因为我们这个副理念技术</p>
+<p><strong>[01:21:58]</strong> 都是从分到测试的</p>
+<p><strong>[01:22:02]</strong> 那么每个在那一层</p>
+<p><strong>[01:22:03]</strong> Omega-02</p>
+<p><strong>[01:22:04]</strong> Omega-03</p>
+<p><strong>[01:22:05]</strong> Omega-04</p>
+<p><strong>[01:22:06]</strong> Omega-01</p>
+<p><strong>[01:22:07]</strong> 每一个建立的自由</p>
+<p><strong>[01:22:09]</strong> 那我现在进去无穷的浩天、吴宇记、德意、彭佳麟</p>
+<p><strong>[01:22:15]</strong> 趋近于零了</p>
+<p><strong>[01:22:16]</strong> 那你这个形式已经转化成积分的一个形式了</p>
+<p><strong>[01:22:21]</strong> 你就不能用这种糗糙的一个形式</p>
+<p><strong>[01:22:24]</strong> 这个台的这种积分的形式</p>
+<p><strong>[01:22:26]</strong> 我们发现它在高知识度上也进入零了</p>
+<p><strong>[01:22:29]</strong> 但是它信号的一个存在它必须存在</p>
+<p><strong>[01:22:33]</strong> 如果没有这个信号它就不会存在</p>
+<p><strong>[01:22:36]</strong> 所以如果我们把这个回收器的一个信号</p>
+<p><strong>[01:22:39]</strong> 它怎么去分解</p>
+<p><strong>[01:22:41]</strong> 它阻力量肯定是不变的</p>
+<p><strong>[01:22:43]</strong> 无论我们周期增加到何种程度</p>
+<p><strong>[01:22:46]</strong> 我们信号的能量</p>
+<p><strong>[01:22:48]</strong> 也一定会对这个风速测证</p>
+<p><strong>[01:22:50]</strong> 它不适不在</p>
+<p><strong>[01:22:52]</strong> 也就是说</p>
+<p><strong>[01:22:53]</strong> 我们第一周期信号的距离</p>
+<p><strong>[01:22:55]</strong> 肯定也是阻力量不变</p>
+<p><strong>[01:22:57]</strong> 信号是阻力量</p>
+<p><strong>[01:22:59]</strong> 它的风险是阻力量不适不变的</p>
+<p><strong>[01:23:02]</strong> 那你的能量是在你区域上供应的</p>
+<p><strong>[01:23:06]</strong> 所以比如也是阻力量不适不过</p>
+<p><strong>[01:23:09]</strong> 还有5年一个时数去赋予它</p>
+<p><strong>[01:23:13]</strong> 这时候是另外一段时间的电话</p>
+<p><strong>[01:23:18]</strong> 这个是我们负值数的展开</p>
+<p><strong>[01:23:22]</strong> 负值数的展开</p>
+<p><strong>[01:23:25]</strong> 这是Cn的一个值</p>
+<p><strong>[01:23:28]</strong> 我们把Cn值全部盖进来之后</p>
+<p><strong>[01:23:30]</strong> 它就变成这样子</p>
+<p><strong>[01:23:34]</strong> 当然我们刚才讲的</p>
+<p><strong>[01:23:37]</strong> 静耗是非定义无辜的</p>
+<p><strong>[01:23:47]</strong> 那么G0不求我们的</p>
+<p><strong>[01:23:50]</strong> G0</p>
+<p><strong>[01:23:56]</strong> G0</p>
+<p><strong>[01:24:11]</strong> 那么这个是</p>
+<p><strong>[01:24:15]</strong> 那个时候就不是N</p>
+<p><strong>[01:24:16]</strong> 不求求到这种数量</p>
+<p><strong>[01:24:18]</strong> 就不能用相当的解释</p>
+<p><strong>[01:24:20]</strong> 因为不得不提及</p>
+<p><strong>[01:24:25]</strong> 这个</p>
+<p><strong>[01:24:29]</strong> 这个</p>
+<p><strong>[01:24:30]</strong> 这个变成了</p>
+<p><strong>[01:24:32]</strong> G0</p>
+<p><strong>[01:24:34]</strong> 在外面</p>
+<p><strong>[01:24:35]</strong> 当然是变成</p>
+<p><strong>[01:24:38]</strong> 我们的</p>
+<p><strong>[01:24:49]</strong> 因为不是N</p>
+<p><strong>[01:24:51]</strong> Omega 0 已经变成了 T 的一个</p>
+<p><strong>[01:24:56]</strong> Omega 0 直接就变成了 Omega</p>
+<p><strong>[01:24:59]</strong> 负责</p>
+<p><strong>[01:25:00]</strong> 那这边是 T 的负责</p>
+<p><strong>[01:25:06]</strong> Omega T</p>
+<p><strong>[01:25:08]</strong> 这个就是</p>
+<p><strong>[01:25:10]</strong> 这个我们可以做一个小小的编划</p>
+<p><strong>[01:25:13]</strong> 负责到这</p>
+<p><strong>[01:25:16]</strong> 这边是负责</p>
+<p><strong>[01:25:20]</strong> 负责</p>
+<p><strong>[01:25:21]</strong> 还可以是 T 的负责</p>
+<p><strong>[01:25:24]</strong> Omega T</p>
+<p><strong>[01:25:25]</strong> 这边呢 E Omega 0</p>
+<p><strong>[01:25:27]</strong> Omega T</p>
+<p><strong>[01:25:38]</strong> 好啊 这边呢</p>
+<p><strong>[01:25:39]</strong> 我们要找 Omega 编划</p>
+<p><strong>[01:25:40]</strong> 输到最后的编划</p>
+<p><strong>[01:25:42]</strong> 那我们可以发现</p>
+<p><strong>[01:25:44]</strong> 这是一个关于时间的一个积分</p>
+<p><strong>[01:25:48]</strong> 关于时间的一个量感激的一个积分</p>
+<p><strong>[01:25:50]</strong> 那么当积分完之后</p>
+<p><strong>[01:25:52]</strong> 就可以使得关于我们的电差的和平</p>
+<p><strong>[01:26:04]</strong> 和我们的磁碳</p>
+<p><strong>[01:26:07]</strong> 都到这个温度</p>
+<p><strong>[01:26:08]</strong> 这个时候我们的小单元是体会感</p>
+<p><strong>[01:26:28]</strong> E的内容会感</p>
+<p><strong>[01:26:30]</strong> E 体会感</p>
+<p><strong>[01:26:32]</strong> 这都是数学手法上的一个数理</p>
+<p><strong>[01:26:37]</strong> 然后我们就抽出了</p>
+<p><strong>[01:26:39]</strong> 变成我们的积分</p>
+<p><strong>[01:26:42]</strong> 我们进步了以后</p>
+<p><strong>[01:26:44]</strong> 就变成这样</p>
+<p><strong>[01:26:46]</strong> 丢到这边的积分</p>
+<p><strong>[01:26:47]</strong> 打鸡蛋 鸡蛋 鸡蛋</p>
+<p><strong>[01:26:48]</strong> XG合理</p>
+<p><strong>[01:26:57]</strong> 可以转化为我们的平均</p>
+<p><strong>[01:27:01]</strong> 可以转化为我们的食用</p>
+<p><strong>[01:27:03]</strong> 那么XG</p>
+<p><strong>[01:27:04]</strong> 我们的平均的话</p>
+<p><strong>[01:27:08]</strong> XG它的一个负体液</p>
+<p><strong>[01:27:30]</strong> 这个的话就是一个</p>
+<p><strong>[01:27:31]</strong> 中性含素当中</p>
+<p><strong>[01:27:35]</strong> 把球核给发改成积分的一个体质</p>
+<p><strong>[01:27:39]</strong> 那么大家需要注意的就是</p>
+<p><strong>[01:27:41]</strong> 一个是我们要讲的</p>
+<p><strong>[01:27:51]</strong> 比较详细一点的话</p>
+<p><strong>[01:27:54]</strong> 比如说我们的平均是有食用</p>
+<p><strong>[01:27:57]</strong> 好 附体叶可以换来的</p>
+<p><strong>[01:27:59]</strong> 再来呢 我们的实例也可以说我们的体育</p>
+<p><strong>[01:28:02]</strong> 附体叶 液变化来的</p>
+<p><strong>[01:28:03]</strong> 那这是一堆附体叶变化对比</p>
+<p><strong>[01:28:06]</strong> 那 这个可以 更方便一些</p>
+<p><strong>[01:28:21]</strong> 分法</p>
+<p><strong>[01:28:22]</strong> Omega-L 代表从F</p>
+<p><strong>[01:28:24]</strong> 代表到我们的这个</p>
+<p><strong>[01:28:26]</strong> 代表从XF</p>
+<p><strong>[01:28:29]</strong> 输出到这五个XT</p>
+<p><strong>[01:28:31]</strong> E的 负的一个Z 代表在F</p>
+<p><strong>[01:28:34]</strong> 所以</p>
+<p><strong>[01:28:35]</strong> 那么 只要XT</p>
+<p><strong>[01:28:36]</strong> 这个实体育</p>
+<p><strong>[01:28:38]</strong> 因为它这个时候就选择这样子的</p>
+<p><strong>[01:28:40]</strong> 到这个时候就变成这样子了</p>
+<p><strong>[01:28:45]</strong> 它是大型的</p>
+<p><strong>[01:28:52]</strong> 一个是频率</p>
+<p><strong>[01:28:53]</strong> 大家要清楚才会知道</p>
+<p><strong>[01:28:54]</strong> 你是在讲什么</p>
+<p><strong>[01:28:56]</strong> 一个是光影体</p>
+<p><strong>[01:28:58]</strong> 一个是光影时间</p>
+<p><strong>[01:28:59]</strong> 这个应该是频率</p>
+<p><strong>[01:29:00]</strong> 这个应该是时间</p>
+<p><strong>[01:29:01]</strong> 这个应该是频率</p>
+<p><strong>[01:29:02]</strong> 这个应该是时间</p>
+<p><strong>[01:29:03]</strong> 那我们的一个频率</p>
+<p><strong>[01:29:05]</strong> 它是以平方来说是</p>
+<p><strong>[01:29:07]</strong> 一个固化</p>
+<p><strong>[01:29:09]</strong> 所以它可以变成一个实物</p>
+<p><strong>[01:29:11]</strong> 加上一个虚固的固化</p>
+<p><strong>[01:29:13]</strong> 最终它会变成这样一个形式</p>
+<p><strong>[01:29:15]</strong> 那这个不就是</p>
+<p><strong>[01:29:16]</strong> 我们固固质素展开</p>
+<p><strong>[01:29:18]</strong> 基本上有点类似吧</p>
+<p><strong>[01:29:19]</strong> 因为CNN得于CNN大加上CNN</p>
+<p><strong>[01:29:23]</strong> 得于我们绝对值的CNN</p>
+<p><strong>[01:29:26]</strong> 乙的Z的拜恩</p>
+<p><strong>[01:29:29]</strong> 不一样</p>
+<p><strong>[01:29:30]</strong> 然后我们的CNN的绝对值得于N</p>
+<p><strong>[01:29:34]</strong> CNN大的平均量平均</p>
+<p><strong>[01:29:38]</strong> 我们的拜恩等等的初分</p>
+<p><strong>[01:29:42]</strong> 初分就是这一份</p>
+<p><strong>[01:29:46]</strong> 不一样</p>
+<p><strong>[01:29:47]</strong> 虽然是跟我们的复业技术</p>
+<p><strong>[01:29:54]</strong> 那用这个虚拟</p>
+<p><strong>[01:29:55]</strong> 虚拟感</p>
+<p><strong>[01:29:58]</strong> 如果是应用的时候要应用完</p>
+<p><strong>[01:30:09]</strong> 通过各个部队的关系,并列出各个部队的关系,并列出各个部队的关系。</p>
+<p><strong>[01:30:46]</strong> 在电力计计上,应该使用的关系是,最后的关系就是电路、电子计计、电子输出、电动机、电线等。</p>
+<p><strong>[01:30:54]</strong> 这是一个差异的事实</p>
+<p><strong>[01:30:57]</strong> 差异核心P3是一个连续负频度的</p>
+<p><strong>[01:31:03]</strong> 相当于它是一个负频度的概念</p>
+<p><strong>[01:31:11]</strong> 虽然我们都叫它负频</p>
+<p><strong>[01:31:13]</strong> 但是我们只是为了说</p>
+<p><strong>[01:31:20]</strong> 它会连续负频度</p>
+<p><strong>[01:31:22]</strong> 当中它会平滑上来的</p>
+<p><strong>[01:31:33]</strong> 其实它其实更多的是一个负频度的密度</p>
+<p><strong>[01:31:38]</strong> 还可以略为有一点点的区别</p>
+<p><strong>[01:31:40]</strong> 但是写的时候</p>
+<p><strong>[01:31:42]</strong> 这是白色的</p>
+<p><strong>[01:31:46]</strong> 如果这边的信号是信号的辅助</p>
+<p><strong>[01:31:49]</strong> 它是我们单位无关上的一个辅助</p>
+<p><strong>[01:31:53]</strong> 更多代表的是我们的辅助力度的一个辅助</p>
+<p><strong>[01:31:57]</strong> 那么这边的白色的信号是结构的相位</p>
+<p><strong>[01:32:01]</strong> 它这边是对应的一个信号</p>
+<p><strong>[01:32:03]</strong> 即一个相位</p>
+<p><strong>[01:32:05]</strong> 所以这两个非周期信号的辅助</p>
+<p><strong>[01:32:11]</strong> 中文字幕 李宗盛</p>
+<p><strong>[01:32:51]</strong> 包括我们的饭盘</p>
+<p><strong>[01:32:53]</strong> 我们饭盘一个是粉粉的一个香味</p>
+<p><strong>[01:32:57]</strong> 麦皮丝巾的香味</p>
+<p><strong>[01:33:01]</strong> 香味就有一点点的区别</p>
+<p><strong>[01:33:05]</strong> 那服业瑞芳在紫兰</p>
+<p><strong>[01:33:07]</strong> 它这边比较慢</p>
+<p><strong>[01:33:08]</strong> 还是我们不会用</p>
+<p><strong>[01:33:10]</strong> 我们一定要知道会不会用</p>
+<p><strong>[01:33:11]</strong> 服业瑞芳才会用</p>
+<p><strong>[01:33:13]</strong> 如果你这边不打不赢</p>
+<p><strong>[01:33:14]</strong> 你服业瑞芳肯定不打不赢</p>
+<p><strong>[01:33:17]</strong> 那这是一个长廊的训练</p>
+<p><strong>[01:33:19]</strong> 然后还是我们现在后面的</p>
+<p><strong>[01:33:20]</strong> 譬如说像说我们在陆地盘</p>
+<p><strong>[01:33:22]</strong> 它只允许经过这个仓库</p>
+<p><strong>[01:33:33]</strong> 其他的不允许经过这个仓库</p>
+<p><strong>[01:33:36]</strong> 所以它迅速地把一些</p>
+<p><strong>[01:33:38]</strong> 不需要的摩擦的信号给给废掉</p>
+<p><strong>[01:33:42]</strong> 所以在灵波器上</p>
+<p><strong>[01:33:43]</strong> 如果可以看一看</p>
+<p><strong>[01:33:44]</strong> 能够看到这个</p>
+<p><strong>[01:33:45]</strong> 那这个就是一个飞轴器的信号</p>
+<p><strong>[01:33:47]</strong> 可以看到</p>
+<p><strong>[01:33:48]</strong> 它既在定时电位存在</p>
+<p><strong>[01:33:51]</strong> 这是一个飞轴器的信号</p>
+<p><strong>[01:34:00]</strong> 而且它是一个</p>
+<p><strong>[01:34:01]</strong> 是一个顺便的拼图</p>
+<p><strong>[01:34:04]</strong> 还不是说准拼图</p>
+<p><strong>[01:34:07]</strong> 是一个顺便的拼图</p>
+<p><strong>[01:34:16]</strong> 我们其实拼图</p>
+<p><strong>[01:34:29]</strong> 所以我们想要求拼图</p>
+<p><strong>[01:34:45]</strong> 就是求差额</p>
+<p><strong>[01:34:47]</strong> 那这个差额有什么</p>
+<p><strong>[01:34:50]</strong> 有一个C的</p>
+<p><strong>[01:34:59]</strong> 有一个A的</p>
+<p><strong>[01:35:01]</strong> 有一个Z的</p>
+<p><strong>[01:35:03]</strong> 这个就是故事</p>
+<p><strong>[01:35:09]</strong> 那这个故事是什么</p>
+<p><strong>[01:35:13]</strong> 这个新的故事</p>
+<p><strong>[01:35:17]</strong> 我查一下</p>
+<p><strong>[01:35:19]</strong> 是因为我们有out-type-applet</p>
+<p><strong>[01:35:22]</strong> 再使用out-type-applet</p>
+<p><strong>[01:35:23]</strong> 不然它前面也有一个out-type-applet</p>
+<p><strong>[01:35:25]</strong> 所以它其实跟我们刚开始CNN的过程是一样</p>
+<p><strong>[01:35:29]</strong> 包括你看</p>
+<p><strong>[01:35:30]</strong> 后面是xte-z-out-type-applet</p>
+<p><strong>[01:35:33]</strong> 它是xte-z-out-type-applet</p>
+<p><strong>[01:35:36]</strong> 我们的基准的话才就是</p>
+<p><strong>[01:35:39]</strong> 我估计没有要证明出来</p>
+<p><strong>[01:35:40]</strong> 所以我刚才说了</p>
+<p><strong>[01:35:41]</strong> 你这边可以</p>
+<p><strong>[01:35:42]</strong> 你这边可以换</p>
+<p><strong>[01:35:43]</strong> 自然而然也不会</p>
+<p><strong>[01:35:45]</strong> 如果你这边可以换</p>
+<p><strong>[01:35:46]</strong> 那么你说你这边可以换的话</p>
+<p><strong>[01:35:50]</strong> 可能也有证明出来</p>
+<p><strong>[01:35:51]</strong> 那么这边的差异度</p>
+<p><strong>[01:35:53]</strong> 那么纯固固球距到热固球没有必要</p>
+<p><strong>[01:36:11]</strong> 实际上我们只在这个区域</p>
+<p><strong>[01:36:13]</strong> 只在负荷号的日期</p>
+<p><strong>[01:36:15]</strong> 超过了这两个区域它都是同一段</p>
+<p><strong>[01:36:18]</strong> 除非你是一个</p>
+<p><strong>[01:36:21]</strong> 这个主持人有多熟悉</p>
+<p><strong>[01:36:23]</strong> 像是在韩国</p>
+<p><strong>[01:36:24]</strong> 中式的韩国</p>
+<p><strong>[01:36:25]</strong> 有韩国的话应该不是</p>
+<p><strong>[01:36:27]</strong> 所以它这个日期是直接被改成</p>
+<p><strong>[01:36:29]</strong> 由我们讲负荷号的日期</p>
+<p><strong>[01:36:31]</strong> T到澳洲的日期</p>
+<p><strong>[01:36:33]</strong> T的负责</p>
+<p><strong>[01:36:35]</strong> 那么在负荷号的日期到澳洲的日期</p>
+<p><strong>[01:36:41]</strong> 这就是PK类,我们有E码</p>
+<p><strong>[01:36:44]</strong> 简单的方法</p>
+<p><strong>[01:37:21]</strong> 这个方式是ZIF</p>
+<p><strong>[01:37:24]</strong> 典讯1的Z</p>
+<p><strong>[01:37:27]</strong> 这是他们类似的</p>
+<p><strong>[01:37:40]</strong> 这个指数你要回想过的话</p>
+<p><strong>[01:37:44]</strong> 今天没有什么问题</p>
+<p><strong>[01:37:46]</strong> 没有什么太大的难点</p>
+<p><strong>[01:37:48]</strong> 我们是不是在这边也是如果</p>
+<p><strong>[01:37:51]</strong> 我们都让C码要用这个</p>
+<p><strong>[01:37:53]</strong> 你看这里面是负的,1的负J</p>
+<p><strong>[01:37:55]</strong> 到这个M码</p>
+<p><strong>[01:37:57]</strong> 这边是1的负J</p>
+<p><strong>[01:37:59]</strong> A和G</p>
+<p><strong>[01:38:03]</strong> 这边我们正在计划</p>
+<p><strong>[01:38:05]</strong> 我们来复杰</p>
+<p><strong>[01:38:12]</strong> 我们来复杰</p>
+<p><strong>[01:38:13]</strong> 那么换到我们这边</p>
+<p><strong>[01:38:32]</strong> 我们来复杰</p>
+<p><strong>[01:38:36]</strong> 就像一个家宴</p>
+<p><strong>[01:38:46]</strong> 家宴的这一餐</p>
+<p><strong>[01:39:04]</strong> 可以把这个</p>
+<p><strong>[01:39:09]</strong> 但是这个复杰对话</p>
+<p><strong>[01:39:14]</strong> 其实没办法好懂</p>
+<p><strong>[01:39:15]</strong> 现在就是</p>
+<p><strong>[01:39:17]</strong> 好 师傅速写到早</p>
+<p><strong>[01:39:33]</strong> 响钟</p>
+<p><strong>[01:40:14]</strong> 请不吝点赞 订阅 转发 打赏支持明镜与点点栏目</p>
+<p><strong>[01:50:54]</strong> 即时例库表、使用损失、运行为属性的使用、机库外部充电、风扇、打机、电池、电脑、电脑更换入、电脑解锁、电脑装置、电脑密码、电脑冷却、电脑盒、电脑装置、电脑相机、电脑配置、电脑装置、电脑装置设备、电脑解键、电脑装置设计、电脑装置设计、电脑改成、电脑固定、电脑透明、电脑测试、电脑测试、电脑放置、电脑缩、电脑电稳定、电脑装置、电脑</p>
+<p><strong>[01:53:37]</strong> 请不吝点赞 订阅 转发 打赏支持明镜与点点栏目</p>
+<p><strong>[01:55:32]</strong> 11-14 我们一样把那个设计的可能在11-12</p>
+<p><strong>[01:55:47]</strong> 顺便把我们把时间给它调整一下</p>
+<p><strong>[01:55:55]</strong> 还有这个介绍一些系列专门的画面形态</p>
+<p><strong>[01:56:06]</strong> 以及PC单单的画面形态</p>
+<p><strong>[01:56:08]</strong> 触摸屏呢又成为人机界面</p>
+<p><strong>[01:56:12]</strong> 以广泛的应用工业控制现场</p>
+<p><strong>[01:56:17]</strong> 长于这个</p>
+<p><strong>[01:56:19]</strong> 也很合理</p>
+<p><strong>[01:56:20]</strong> 你会看到一个出锅瓶</p>
+<p><strong>[01:56:23]</strong> 也称为人间界面</p>
+<p><strong>[01:56:26]</strong> 简直是为人间界面</p>
+<p><strong>[01:56:27]</strong> 在过后你会看到</p>
+<p><strong>[01:56:29]</strong> 有些人会选择</p>
+<p><strong>[01:56:30]</strong> 以广泛的应用</p>
+<p><strong>[01:56:32]</strong> 与工业公司现场</p>
+<p><strong>[01:56:34]</strong> 长于PRC配套使用</p>
+<p><strong>[01:56:36]</strong> 那可以出锅</p>
+<p><strong>[01:56:38]</strong> 对一个出锅瓶呢</p>
+<p><strong>[01:56:39]</strong> 对PRC进行</p>
+<p><strong>[01:56:41]</strong> 三重设施</p>
+<p><strong>[01:56:42]</strong> 首先</p>
+<p><strong>[01:56:45]</strong> 共同化</p>
+<p><strong>[01:56:46]</strong> 描述</p>
+<p><strong>[01:56:48]</strong> 机构化</p>
+<p><strong>[01:56:49]</strong> 运作</p>
+<p><strong>[01:56:50]</strong> 电线</p>
+<p><strong>[01:56:57]</strong> 简单的应用</p>
+<p><strong>[01:56:59]</strong> 精致面板</p>
+<p><strong>[01:57:00]</strong> 复杂任何的程序</p>
+<p><strong>[01:57:02]</strong> 移动面板在移动中进行实时监测</p>
+<p><strong>[01:57:06]</strong> 和按键面板创新的传统按钮的替代方案</p>
+<p><strong>[01:57:12]</strong> 在微信工厂不同小型的应用中</p>
+<p><strong>[01:57:20]</strong> 可视化人家的工具</p>
+<p><strong>[01:57:23]</strong> 人家的工具的环境</p>
+<p><strong>[01:57:30]</strong> 韩信的设计的USB接口</p>
+<p><strong>[01:57:37]</strong> 可以连接键盘 鼠标 调性码 扫描</p>
+<p><strong>[01:57:41]</strong> 通过PROFIT NAME连接外部功能</p>
+<p><strong>[01:57:53]</strong> 但是我们做了一个方法</p>
+<p><strong>[01:57:59]</strong> 通过可以连接各种PLC</p>
+<p><strong>[01:58:01]</strong> 它与S720完美的结合</p>
+<p><strong>[01:58:04]</strong> 可以同时在模组中进行工程</p>
+<p><strong>[01:58:07]</strong> 这三个就会对这个介绍</p>
+<p><strong>[01:58:14]</strong> ZCC是一款人机界面的图案软件</p>
+<p><strong>[01:58:17]</strong> 图案的内容包括全对i</p>
+<p><strong>[01:58:19]</strong> 还有这个RT Amongst的项目</p>
+<p><strong>[01:58:26]</strong> 以及RT Professional的项目</p>
+<p><strong>[01:58:30]</strong> 这四种版本</p>
+<p><strong>[01:58:31]</strong> 更把这边的有这些基本版本</p>
+<p><strong>[01:58:34]</strong> 经济画面</p>
+<p><strong>[01:58:35]</strong> 还有一个所有的面板</p>
+<p><strong>[01:58:37]</strong> 还有这个Along</p>
+<p><strong>[01:58:38]</strong> 还有这个Professional</p>
+<p><strong>[01:58:39]</strong> 主要就是WinCC的这个DNA过渡</p>
+<p><strong>[01:58:48]</strong> 不要这种经典的问题</p>
+<p><strong>[01:58:51]</strong> 包括一般说是历史没有符合</p>
+<p><strong>[01:58:56]</strong> 现在是很快要让历史去</p>
+<p><strong>[01:58:59]</strong> 前者可以整排出某些</p>
+<p><strong>[01:59:00]</strong> 或者是不可以的</p>
+<p><strong>[01:59:02]</strong> 接下来第四个是</p>
+<p><strong>[01:59:08]</strong> 是经典系列的画面整洁</p>
+<p><strong>[01:59:10]</strong> 那完成这样一个</p>
+<p><strong>[01:59:13]</strong> 叫做添加P2D设备的</p>
+<p><strong>[01:59:16]</strong> 边界提醒组</p>
+<p><strong>[01:59:18]</strong> 那下面这个程序</p>
+<p><strong>[01:59:19]</strong> 大家可以内容</p>
+<p><strong>[01:59:21]</strong> 然后呢</p>
+<p><strong>[01:59:22]</strong> 这个</p>
+<p><strong>[01:59:23]</strong> 因为电机的这个</p>
+<p><strong>[01:59:25]</strong> 启动和停止</p>
+<p><strong>[01:59:26]</strong> 需要通过触摸平衡</p>
+<p><strong>[01:59:30]</strong> 去通过启动一个软件</p>
+<p><strong>[01:59:33]</strong> 现在MDM</p>
+<p><strong>[01:59:34]</strong> 而不是i电</p>
+<p><strong>[01:59:35]</strong> 是i电而是</p>
+<p><strong>[01:59:37]</strong> 外部储存的状态</p>
+<p><strong>[01:59:38]</strong> 通过触摸平衡</p>
+<p><strong>[01:59:39]</strong> 去改变i电的</p>
+<p><strong>[01:59:41]</strong> i电</p>
+<p><strong>[01:59:47]</strong> 我们做的第一个实验课就是做一个简单的</p>
+<p><strong>[01:59:51]</strong> 就是画一个这个,然后实验它的功能</p>
+<p><strong>[01:59:55]</strong> 另外呢,你帮我用这里一个</p>
+<p><strong>[01:59:58]</strong> 今天要选谁选谁来,选一个方式让它表达出来</p>
+<p><strong>[02:00:58]</strong> 但是我需要同学来帮我完成一件事情</p>
+<p><strong>[02:01:10]</strong> 完成一下就是之前的画的这一个电子的气泡</p>
+<p><strong>[02:01:15]</strong> 这个电子</p>
+<p><strong>[02:01:17]</strong> 需要帮我复制这件事情</p>
+<p><strong>[02:01:24]</strong> 等一下就是我没有联系起来</p>
+<p><strong>[02:01:31]</strong> 我再联系一下</p>
+<p><strong>[02:01:32]</strong> 那个前面这个气泡的结果应该是个非常简单的</p>
+<p><strong>[02:02:17]</strong> 所以我需要分布一个团队</p>
+<p><strong>[02:02:20]</strong> 大家帮我思考一下</p>
+<p><strong>[02:02:25]</strong> 思考一下你怎么完成</p>
+<p><strong>[02:13:02]</strong> 后半部分为《电气控制与PLC》课程，涉及、关系、图中、网络、电视、运转、电脑、电脑局、运转、浮线我们册子、电脑保存、新上级、浮线、电脑链、数码路、电脑供应项目等。</p>
+<p><strong>[02:13:10]</strong> 后半部分为《电气控制与PLC》课程，下、线路、天线设备、线路、天线设备、链接设计、电脑扫除、全体系组理、大厨、电流、图中、浮线、电子、电汽、电子图、电线。</p>
+<p><strong>[02:13:11]</strong> 请不吝点赞 订阅 转发 打赏支持明镜与点点栏目</p>
+<p><strong>[02:14:47]</strong> 响钟</p>
+<p><strong>[02:21:26]</strong> 装载,然后我们可以选择装载,系统的系统这个,变一下,每一个其中的,再完成,之后呢,再来用这个小电筒监视,监视一下,监视它的这个动态,好,最后可以再修改,再来,再来一次,修改之后,最后就OK了,对吧,好,最后一下子,好,一下子,那这个就是,这个过程,这个过程。</p>
+<p><strong>[02:22:05]</strong> 但是我们今天也不是只要做这个过程</p>
+<p><strong>[02:22:09]</strong> 我们今天不是做这个</p>
+<p><strong>[02:22:11]</strong> 我们今天做什么</p>
+<p><strong>[02:22:13]</strong> 我们今天要做的是另外一个事情</p>
+<p><strong>[02:22:16]</strong> 结束</p>
+<p><strong>[02:22:17]</strong> 我先把这个访问结束</p>
+<p><strong>[02:22:18]</strong> 我们今天要做的是一个变灵</p>
+<p><strong>[02:22:20]</strong> 我带大家一起来</p>
+<p><strong>[02:22:21]</strong> 大家一起来感受一下</p>
+<p><strong>[02:22:23]</strong> 我带大家一起来感受一下</p>
+<p><strong>[02:22:27]</strong> 今天不能全面来</p>
+<p><strong>[02:22:29]</strong> 这个就是我们之前说到的</p>
+<p><strong>[02:22:31]</strong> 说到的这个小后半</p>
+<p><strong>[02:22:35]</strong> 小后半</p>
+<p><strong>[02:22:36]</strong> 那我们首先按根本的来</p>
+<p><strong>[02:22:38]</strong> 我现在在第九章</p>
+<p><strong>[02:22:47]</strong> 这个模块需要你跟我一起来完成</p>
+<p><strong>[02:23:06]</strong> 这个模块需要你跟我一起来完成</p>
+<p><strong>[02:23:08]</strong> 这个模块需要你跟我一起来完成</p>
+<p><strong>[02:23:11]</strong> 另外作为一个海外同学</p>
+<p><strong>[02:23:14]</strong> 我们来问一下</p>
+<p><strong>[02:23:32]</strong> 我们来问一下</p>
+<p><strong>[02:23:34]</strong> 接下来我们要做的就是</p>
+<p><strong>[02:23:37]</strong> 接下来我们要做的就是</p>
+<p><strong>[02:23:39]</strong> 添加一个HRI的界面</p>
+<p><strong>[02:23:41]</strong> 用推过来控制</p>
+<p><strong>[02:23:43]</strong> 来来来</p>
+<p><strong>[02:23:48]</strong> 照顾</p>
+<p><strong>[02:23:50]</strong> 对</p>
+<p><strong>[02:23:54]</strong> 接下来回来我讲</p>
+<p><strong>[02:23:56]</strong> 他说了添加HMI设备</p>
+<p><strong>[02:23:58]</strong> 对</p>
+<p><strong>[02:24:01]</strong> 168页</p>
+<p><strong>[02:24:03]</strong> 最后呢</p>
+<p><strong>[02:24:08]</strong> 添加HMI设备</p>
+<p><strong>[02:24:10]</strong> 那你打开什么</p>
+<p><strong>[02:24:17]</strong> 打开项目书</p>
+<p><strong>[02:24:22]</strong> 添加设备</p>
+<p><strong>[02:24:30]</strong> 说你要加入</p>
+<p><strong>[02:24:32]</strong> 这个系列是一个阶级的阶级材</p>
+<p><strong>[02:24:43]</strong> 然后在后面这个是GD的910</p>
+<p><strong>[02:24:50]</strong> 但这个要注意</p>
+<p><strong>[02:24:52]</strong> 因为它后面它有这个系列</p>
+<p><strong>[02:24:54]</strong> 像后面这个KD的这个圈</p>
+<p><strong>[02:25:00]</strong> 没错</p>
+<p><strong>[02:25:02]</strong> 按距离</p>
+<p><strong>[02:25:03]</strong> 这就出来了</p>
+<p><strong>[02:25:05]</strong> 可是要照亮一下</p>
+<p><strong>[02:25:06]</strong> 再按这个按钮再稳定</p>
+<p><strong>[02:25:33]</strong> 这个时候就出现了这一个界面</p>
+<p><strong>[02:25:55]</strong> 然后它接下来怎么出了</p>
+<p><strong>[02:25:57]</strong> 他怎么说的</p>
+<p><strong>[02:25:58]</strong> 他是怎么做的</p>
+<p><strong>[02:26:04]</strong> PA2的资产顶级</p>
+<p><strong>[02:26:06]</strong> 那第一个是组成设备</p>
+<p><strong>[02:26:08]</strong> 第二个是也许买设备</p>
+<p><strong>[02:26:10]</strong> 但你找到这个像他一样</p>
+<p><strong>[02:26:11]</strong> 找到这一个设备资产</p>
+<p><strong>[02:26:16]</strong> 实际上这个是一样的</p>
+<p><strong>[02:26:24]</strong> 你挑一大堆</p>
+<p><strong>[02:26:24]</strong> 回到二日的形状</p>
+<p><strong>[02:26:31]</strong> 从卧宅这里</p>
+<p><strong>[02:26:42]</strong> 这里</p>
+<p><strong>[02:26:45]</strong> 形状是第二天</p>
+<p><strong>[02:26:48]</strong> 来 这边</p>
+<p><strong>[02:26:49]</strong> 这里</p>
+<p><strong>[02:26:50]</strong> 这边</p>
+<p><strong>[02:26:51]</strong> 这个形状</p>
+<p><strong>[02:26:54]</strong> 这个形状</p>
+<p><strong>[02:26:57]</strong> 这个形状很好</p>
+<p><strong>[02:26:59]</strong> 然后他说</p>
+<p><strong>[02:27:08]</strong> 对 就是这个是</p>
+<p><strong>[02:27:09]</strong> 我用毛笛再把他们两个连接起来</p>
+<p><strong>[02:27:12]</strong> 不是不要连接连接连接连接连接连接</p>
+<p><strong>[02:27:28]</strong> 那这时候就连接了对吧</p>
+<p><strong>[02:27:30]</strong> 好</p>
+<p><strong>[02:27:30]</strong> 连接后我们看一下下一个再做什么</p>
+<p><strong>[02:27:36]</strong> 双击</p>
+<p><strong>[02:27:36]</strong> 在项目中双击</p>
+<p><strong>[02:27:38]</strong> 你看</p>
+<p><strong>[02:27:41]</strong> 连接</p>
+<p><strong>[02:27:51]</strong> 在项目中</p>
+<p><strong>[02:27:56]</strong> 在项目中</p>
+<p><strong>[02:27:57]</strong> HMI连接</p>
+<p><strong>[02:28:28]</strong> 哦</p>
+<p><strong>[02:28:29]</strong> 有一个空隙对吧</p>
+<p><strong>[02:28:30]</strong> 上面这个位置</p>
+<p><strong>[02:28:31]</strong> 那你先把上面这个关上</p>
+<p><strong>[02:28:32]</strong> 拔</p>
+<p><strong>[02:28:40]</strong> 然后打到这个</p>
+<p><strong>[02:29:07]</strong> 对吧</p>
+<p><strong>[02:29:14]</strong> 然后再打到这个位置</p>
+<p><strong>[02:29:18]</strong> 然后这个就完成了</p>
+<p><strong>[02:29:32]</strong> 现在我们再来看</p>
+<p><strong>[02:29:57]</strong> 打开这个萤幕画面</p>
+<p><strong>[02:29:59]</strong> 萤幕画面就是在这里面</p>
+<p><strong>[02:30:57]</strong> 这个外观</p>
+<p><strong>[02:31:04]</strong> 链接</p>
+<p><strong>[02:31:06]</strong> 我们需要点开这个</p>
+<p><strong>[02:31:08]</strong> 我们这边的链接是</p>
+<p><strong>[02:31:18]</strong> 摩托边的表</p>
+<p><strong>[02:31:20]</strong> 打开摩托边的表</p>
+<p><strong>[02:31:43]</strong> 在 PLT 变量</p>
+<p><strong>[02:31:46]</strong> 人家找 PLT 变量</p>
+<p><strong>[02:31:51]</strong> 你就关点什么</p>
+<p><strong>[02:31:53]</strong> 线圈,线圈就是内部机</p>
+<p><strong>[02:32:03]</strong> 就往你的那个</p>
+<p><strong>[02:32:06]</strong> 然后它在这边</p>
+<p><strong>[02:32:09]</strong> 关点完毕</p>
+<p><strong>[02:32:11]</strong> 这个颜色需要你</p>
+<p><strong>[02:32:20]</strong> 那亮的时候,就是把灯给设计好了,那还需要什么?</p>
+<p><strong>[02:33:03]</strong> 按钮是吧,主菜按钮,那你再给我主菜按钮。</p>
+<p><strong>[02:33:08]</strong> 主菜按钮的话,按钮是这个,那这个名字你可以先改一下。</p>
+<p><strong>[02:33:36]</strong> 那这个是什么按钮啊?</p>
+<p><strong>[02:33:38]</strong> 这个是,然后你再来进行一般的观点。</p>
+<p><strong>[02:33:55]</strong> 其中,就像他说的,在他课本里面说的其中按钮,</p>
+<p><strong>[02:34:09]</strong> 它说按一下添加什么</p>
+<p><strong>[02:34:28]</strong> 那后面呢它需要什么</p>
+<p><strong>[02:35:05]</strong> 要关联一下</p>
+<p><strong>[02:35:08]</strong> 再留点</p>
+<p><strong>[02:35:24]</strong> 那这个应该是什么</p>
+<p><strong>[02:35:26]</strong> 启动按钮</p>
+<p><strong>[02:35:28]</strong> 对</p>
+<p><strong>[02:35:30]</strong> 就是说我完成了启动</p>
+<p><strong>[02:35:33]</strong> 再那个一下</p>
+<p><strong>[02:35:37]</strong> 再把另外一个</p>
+<p><strong>[02:35:38]</strong> 对</p>
+<p><strong>[02:35:40]</strong> 这个还没输出完</p>
+<p><strong>[02:35:41]</strong> 还有一个</p>
+<p><strong>[02:35:43]</strong> 再添加</p>
+<p><strong>[02:35:53]</strong> 诶,这里,哦,可以,这次行动可以吧,好,可以</p>
+<p><strong>[02:36:32]</strong> 再来另外一个行动,行动也是这样,行动也是这样操作</p>
+<p><strong>[02:36:37]</strong> 行动也是这样操作</p>
+<p><strong>[02:36:47]</strong> 我先按下,按下是支位,按下是支位,最完整的</p>
+<p><strong>[02:37:25]</strong> 那我接下来,诶,他还说什么,接下来他说什么</p>
+<p><strong>[02:37:30]</strong> 哦,接下来你可以看着手机,直接来编辑</p>
+<p><strong>[02:37:39]</strong> 那你直接来,给一下,给一下</p>
+<p><strong>[02:37:45]</strong> 有关系中文请到</p>
+<p><strong>[02:38:01]</strong> 没关系</p>
+<p><strong>[02:38:02]</strong> 可以回到</p>
+<p><strong>[02:38:15]</strong> 然后再打开这个方针</p>
+<p><strong>[02:38:23]</strong> 其中方针</p>
+<p><strong>[02:38:24]</strong> 打开</p>
+<p><strong>[02:38:37]</strong> 对 请多一下</p>
+<p><strong>[02:38:39]</strong> 因为有连接</p>
+<p><strong>[02:38:44]</strong> 再打开这个轮流</p>
+<p><strong>[02:38:46]</strong> 我们看一下</p>
+<p><strong>[02:38:47]</strong> 我们把写入</p>
+<p><strong>[02:38:48]</strong> 那是因为还没有我们来操作一下</p>
+<p><strong>[02:38:52]</strong> 我们来试一下</p>
+<p><strong>[02:38:54]</strong> 因为这种你可能也要多试</p>
+<p><strong>[02:38:56]</strong> 多试几把</p>
+<p><strong>[02:38:57]</strong> 我们来看一下</p>
+<p><strong>[02:39:00]</strong> 有没有好的画面</p>
+<p><strong>[02:39:04]</strong> 试一下</p>
+<p><strong>[02:39:14]</strong> 中文字幕志愿者 李宗盛</p>
+<p><strong>[02:40:00]</strong> 今期内容就分享到这里,感谢观看,gun.ly slash 搜索,点赞,转发,打赏支持明镜与点点栏目</p>
+<p><strong>[02:50:44]</strong> TLC 这边要在 PLC 这个边缘里面去连拾起、电动机,启动、还关。</p>
+<p><strong>[02:50:53]</strong> 这个信要给大家看,继续点滑。</p>
+<p><strong>[02:51:17]</strong> 现在有一个交换的问题,就是电路机的电流线是有的按钮不在WhatPLC、接触、接触。</p>
+<p><strong>[02:51:30]</strong> 其实是一个比较暗淡的色彩</p>
+<p><strong>[02:51:35]</strong> 后面就是这样一个发光的</p>
+<p><strong>[02:51:38]</strong> 不太有发明度的每个元素的对象</p>
+<p><strong>[02:51:43]</strong> 每个对象都有动画的时间</p>
+<p><strong>[02:52:01]</strong> 动画与PLC的变量</p>
+<p><strong>[02:52:03]</strong> 给我们这个观点实际上</p>
+<p><strong>[02:52:05]</strong> 这里面有一个原则的操作</p>
+<p><strong>[02:52:10]</strong> 在HRI变成了深层的一个编辑</p>
+<p><strong>[02:52:22]</strong> 所以是我们这样一个观点的一个企划</p>
+<p><strong>[02:52:27]</strong> 你看它这里呢,我们刚刚不是这样操作的,对吧?</p>
+<p><strong>[02:52:39]</strong> 它在后面那边找到这个屏幕。</p>
+<p><strong>[02:52:43]</strong> 这样也可以,你一下子也可以试一下。</p>
+<p><strong>[02:52:53]</strong> 是的,对。</p>
+<p><strong>[02:52:54]</strong> 它这个接触的真实的这个Walker内置的网络功能是模拟的,</p>
+<p><strong>[02:53:02]</strong> 因为是没有那个形态的。</p>
+<p><strong>[02:53:29]</strong> 还有PC系统,你这样PC系统,然后呢,</p>
+<p><strong>[02:53:32]</strong> 确定,然后呢,进行了一个形态。</p>
+<p><strong>[02:53:36]</strong> 来一个连接</p>
+<p><strong>[02:53:39]</strong> 写个字网</p>
+<p><strong>[02:53:40]</strong> 各种不同的文件</p>
+<p><strong>[02:53:43]</strong> 看这一个</p>
+<p><strong>[02:53:48]</strong> 那自动伸松门的广泛</p>
+<p><strong>[02:53:57]</strong> 这边是自动伸松门</p>
+<p><strong>[02:53:59]</strong> 广泛的因为企业和学校</p>
+<p><strong>[02:54:01]</strong> 奇怪的大</p>
+<p><strong>[02:54:02]</strong> 就是我们每个人的那种门</p>
+<p><strong>[02:54:04]</strong> 但是这个门</p>
+<p><strong>[02:54:07]</strong> 那我们也来控制一下</p>
+<p><strong>[02:54:11]</strong> 这种</p>
+<p><strong>[02:54:12]</strong> Y1为门的指针</p>
+<p><strong>[02:54:16]</strong> 这里面有Y1是门</p>
+<p><strong>[02:54:20]</strong> Y2是关门</p>
+<p><strong>[02:54:21]</strong> 关门的第三个是这样一个暂停的系统</p>
+<p><strong>[02:54:36]</strong> 在门的内侧的海岸</p>
+<p><strong>[02:54:38]</strong> 带有这样一个暂停的系统</p>
+<p><strong>[02:54:48]</strong> 是这样的</p>
+<p><strong>[02:54:59]</strong> 要求呢</p>
+<p><strong>[02:55:01]</strong> 设计PRC控制系统</p>
+<p><strong>[02:55:03]</strong> 并且通过这样一个</p>
+<p><strong>[02:55:04]</strong> 有下一个</p>
+<p><strong>[02:55:09]</strong> 当你按一下按钮SFC</p>
+<p><strong>[02:55:12]</strong> SF1的时候</p>
+<p><strong>[02:55:14]</strong> 你也是无联网</p>
+<p><strong>[02:55:15]</strong> 通过执行打开的动作</p>
+<p><strong>[02:55:18]</strong> 进行振转</p>
+<p><strong>[02:55:19]</strong> 通过Y1的电脑</p>
+<p><strong>[02:55:21]</strong> 直到开门的系统开关</p>
+<p><strong>[02:55:23]</strong> 这样一个</p>
+<p><strong>[02:55:24]</strong> 这个V2 每二个时候 其实就是当开关的时候 万一在不灭</p>
+<p><strong>[02:55:30]</strong> 那你按下关门的按钮的时候 按下V2 五秒钟 然后一键</p>
+<p><strong>[02:55:37]</strong> 就开始执行开关 通常一度过</p>
+<p><strong>[02:55:42]</strong> 一度一 二 三 边 二 边 三 边</p>
+<p><strong>[02:55:44]</strong> 一直到你这个V2 这个V2在不灭</p>
+<p><strong>[02:55:46]</strong> 一直到你碰到这个线路开关的时候</p>
+<p><strong>[02:55:49]</strong> 开门的时候 关门 线路开关公式 都在不灭</p>
+<p><strong>[02:55:57]</strong> 然后 还有说 在失踪的开关公式中</p>
+<p><strong>[02:56:00]</strong> 如果你逆合SX3,SX3是一个正体封缠钮,</p>
+<p><strong>[02:56:05]</strong> 那么可以使用这个伸缩本在这几个组合,</p>
+<p><strong>[02:56:09]</strong> 但你还要给SX3顺序组合,</p>
+<p><strong>[02:56:12]</strong> 这个跟我们生活中,在伸缩本关闭的过程中,</p>
+<p><strong>[02:56:18]</strong> 如果你假到不能,假到就要呼气,</p>
+<p><strong>[02:56:21]</strong> 就会触发这样一个泄漏的开关,</p>
+<p><strong>[02:56:24]</strong> 现在伸缩本关闭工作,</p>
+<p><strong>[02:56:29]</strong> 一直到这个X3的伸缩本继续关闭,</p>
+<p><strong>[02:56:33]</strong> 那这个伸缩本关闭过程中,</p>
+<p><strong>[02:56:35]</strong> 比如说这个Y3灯是一个直线灯</p>
+<p><strong>[02:56:38]</strong> 现在想重复触摸屏</p>
+<p><strong>[02:56:47]</strong> 可以重复摸摸</p>
+<p><strong>[02:56:52]</strong> 首先它进行的这样一个</p>
+<p><strong>[02:56:55]</strong> 硬件的这样一个设计</p>
+<p><strong>[02:56:57]</strong> 要进行设备的连接</p>
+<p><strong>[02:56:59]</strong> 吹换这个</p>
+<p><strong>[02:57:00]</strong> 这个是因为这种</p>
+<p><strong>[02:57:02]</strong> 网外的存在</p>
+<p><strong>[02:57:03]</strong> 因为从P2C</p>
+<p><strong>[02:57:05]</strong> 直接连接进去</p>
+<p><strong>[02:57:07]</strong> VSB</p>
+<p><strong>[02:57:08]</strong> 一代网络</p>
+<p><strong>[02:57:09]</strong> 然后再进行的</p>
+<p><strong>[02:57:10]</strong> 二代系统的这样一个</p>
+<p><strong>[02:57:14]</strong> 第四级配置</p>
+<p><strong>[02:57:17]</strong> 那这个配置的话</p>
+<p><strong>[02:57:18]</strong> 它有开门的按钮</p>
+<p><strong>[02:57:20]</strong> 它还会设置为ID电池</p>
+<p><strong>[02:57:23]</strong> 那么我们一出</p>
+<p><strong>[02:57:24]</strong> 这个代表电池</p>
+<p><strong>[02:57:26]</strong> 关门按钮的PRT</p>
+<p><strong>[02:57:32]</strong> 这个按钮是N</p>
+<p><strong>[02:57:43]</strong> 关门按钮是我们自己认为的</p>
+<p><strong>[02:57:49]</strong> 相当的一个代表电池</p>
+<p><strong>[02:57:50]</strong> 这个是ID电池</p>
+<p><strong>[02:58:02]</strong> 这个是ID电池</p>
+<p><strong>[02:58:03]</strong> 电动机这种的话</p>
+<p><strong>[02:58:10]</strong> 我们用这个QBIN电池</p>
+<p><strong>[02:58:12]</strong> QBIN电池</p>
+<p><strong>[02:58:13]</strong> 反转用QBIN电池</p>
+<p><strong>[02:58:15]</strong> 开门用QBIN电池</p>
+<p><strong>[02:58:17]</strong> 关门用3</p>
+<p><strong>[02:58:20]</strong> 这个电池我们可以</p>
+<p><strong>[02:58:24]</strong> PRT接线</p>
+<p><strong>[02:58:29]</strong> 可以开启它</p>
+<p><strong>[02:58:30]</strong> 下面方便按一次U2</p>
+<p><strong>[02:58:37]</strong> 再按一次E</p>
+<p><strong>[02:58:39]</strong> 接了一个QAR</p>
+<p><strong>[02:58:51]</strong> 接了一个U2</p>
+<p><strong>[02:58:55]</strong> 接下来这个功能处</p>
+<p><strong>[02:59:00]</strong> 我们来看一下</p>
+<p><strong>[02:59:02]</strong> 这个就是我们看到的</p>
+<p><strong>[02:59:31]</strong> 关门的线位开关</p>
+<p><strong>[03:00:10]</strong> 然后这边是主权区</p>
+<p><strong>[03:00:12]</strong> 你按下M1.1</p>
+<p><strong>[03:00:14]</strong> M1.1在这里是吧</p>
+<p><strong>[03:00:16]</strong> 开门</p>
+<p><strong>[03:00:18]</strong> M1.1</p>
+<p><strong>[03:00:19]</strong> 当你按下那个M1.1的电</p>
+<p><strong>[03:00:22]</strong> M1.1电以后呢</p>
+<p><strong>[03:00:24]</strong> 这个M1.1开始动</p>
+<p><strong>[03:00:27]</strong> M1.1五秒钟以后</p>
+<p><strong>[03:00:28]</strong> 五秒钟以后</p>
+<p><strong>[03:00:33]</strong> 闭合了以后</p>
+<p><strong>[03:00:34]</strong> 它就这样振转了</p>
+<p><strong>[03:00:48]</strong> 退位电在进行</p>
+<p><strong>[03:00:53]</strong> 你关门</p>
+<p><strong>[03:01:00]</strong> 关门的话是这个信号</p>
+<p><strong>[03:01:01]</strong> M1.1</p>
+<p><strong>[03:01:02]</strong> 一关闭</p>
+<p><strong>[03:01:03]</strong> 那这个时候</p>
+<p><strong>[03:01:04]</strong> M1.3是不是有电了</p>
+<p><strong>[03:01:08]</strong> V1.3有电</p>
+<p><strong>[03:01:11]</strong> V1.3有电了以后</p>
+<p><strong>[03:01:13]</strong> 我们可以看一下</p>
+<p><strong>[03:01:15]</strong> V1.3在哪里操作</p>
+<p><strong>[03:01:39]</strong> V1.1工作,大家可以看一下这个</p>
+<p><strong>[03:01:42]</strong> 是不是V1.1工作呢</p>
+<p><strong>[03:01:44]</strong> 5秒钟以后,这个已经关闭</p>
+<p><strong>[03:01:46]</strong> 这个关闭的同步</p>
+<p><strong>[03:01:49]</strong> V1.3关闭</p>
+<p><strong>[03:01:56]</strong> 如果你暂停,按一下V1.2</p>
+<p><strong>[03:01:58]</strong> V1.5就动作了</p>
+<p><strong>[03:02:00]</strong> V1.5动作了</p>
+<p><strong>[03:02:02]</strong> 看一下这里面是不是动开了</p>
+<p><strong>[03:02:04]</strong> 就动开了,头脑开了</p>
+<p><strong>[03:02:13]</strong> 这个L1.3订阅到达线围开关的时候</p>
+<p><strong>[03:02:19]</strong> 它也设备L1.3</p>
+<p><strong>[03:02:23]</strong> 你看L1.3是啥</p>
+<p><strong>[03:02:24]</strong> 关门线围开关</p>
+<p><strong>[03:02:25]</strong> 你碰到关门线围开关</p>
+<p><strong>[03:02:27]</strong> 它会把你的L1.7动作</p>
+<p><strong>[03:02:31]</strong> L1.7在哪里</p>
+<p><strong>[03:02:37]</strong> 这里扣档</p>
+<p><strong>[03:02:38]</strong> 我看我扣档够不够</p>
+<p><strong>[03:02:55]</strong> 实际上这个缺点是</p>
+<p><strong>[03:02:57]</strong> 一旦自己带来的</p>
+<p><strong>[03:03:01]</strong> 因为你是维修嘛</p>
+<p><strong>[03:03:04]</strong> 你维修的话</p>
+<p><strong>[03:03:05]</strong> 让我们这个系统P2C所管理的对比要有这些意见比较好</p>
+<p><strong>[03:03:10]</strong> 接下来呢</p>
+<p><strong>[03:03:14]</strong> 说明一到六</p>
+<p><strong>[03:03:16]</strong> 对</p>
+<p><strong>[03:03:17]</strong> 但是我们看这个我们都说关键的变量的评论</p>
+<p><strong>[03:03:22]</strong> 他说网络一到六是P2C输入介统</p>
+<p><strong>[03:03:26]</strong> 副作品画面功能</p>
+<p><strong>[03:03:28]</strong> 按照你认定的开启程序</p>
+<p><strong>[03:03:34]</strong> 一点三呢是关门程序</p>
+<p><strong>[03:03:35]</strong> 网络七到十</p>
+<p><strong>[03:03:39]</strong> 依然一个控制的开过程</p>
+<p><strong>[03:03:43]</strong> 这个三个包括十一到十四的错误的结果</p>
+<p><strong>[03:03:47]</strong> 接下来呢</p>
+<p><strong>[03:03:51]</strong> 啊</p>
+<p><strong>[03:03:52]</strong> 这个还挺有意思</p>
+<p><strong>[03:03:53]</strong> 他就画了一个这个,画了一个墙,然后画了一些,这些栏杆,这些栏杆,对,灯,暂停,把一些东西交互进去了,设计已经成功了,现在是吧,要求显示,我们要对这一个显示,包括开机,显示画面,画面,设备状态,用户的这一个状态,这个呢,以后我希望会有点点特别的了解。</p>
+<p><strong>[03:04:59]</strong> 第九章 大家先做177页的9-1到9-5</p>
+<p><strong>[03:05:14]</strong> 你可以把1-5先做出来</p>
+<p><strong>[03:05:48]</strong> 先把那边试一下</p>
+<p><strong>[03:06:25]</strong> 9-5 177页</p>
+<p><strong>[03:10:18]</strong> 这些东西我考试了一期。</p>
+<p><strong>[03:10:38]</strong> 我想要考试一下。</p>
+<p><strong>[03:10:43]</strong> 我拍你,把你的化研究系统电子然后呢,画出它的这样一个工序图,画出这个工序图。</p>
+<p><strong>[03:10:56]</strong> 这是一个,是吧,Multi-Sense,Multi-Sense,这个新的,需要你,需要你做到。</p>
+<p><strong>[03:11:06]</strong> 启动按钮,是吧,启动按钮,然后中间继电器,配合,这些东西。</p>
+<p><strong>[03:11:14]</strong> 我给一个特别的东西</p>
+<p><strong>[03:11:16]</strong> 是同样的</p>
+<p><strong>[03:11:17]</strong> 是这样一并合</p>
+<p><strong>[03:11:22]</strong> 然后对对面就出现</p>
+<p><strong>[03:11:30]</strong> 这样一个信号的</p>
+<p><strong>[03:11:33]</strong> 这样一个记忆和保持同轮</p>
+<p><strong>[03:11:35]</strong> 这是智慧和智慧电路</p>
+<p><strong>[03:11:41]</strong> 这个智慧和智慧</p>
+<p><strong>[03:11:42]</strong> 大家先看一下</p>
+<p><strong>[03:11:43]</strong> 我们等一下再说</p>
+<p><strong>[03:11:44]</strong> 第二个</p>
+<p><strong>[03:12:35]</strong> 激暴锯</p>
+<p><strong>[03:12:37]</strong> 这个电路</p>
+<p><strong>[03:12:40]</strong> 用的是常规的</p>
+<p><strong>[03:12:41]</strong> 这样一个</p>
+<p><strong>[03:12:42]</strong> 常开</p>
+<p><strong>[03:12:43]</strong> 常闭的</p>
+<p><strong>[03:12:45]</strong> 这一个重力充电和线圈的输出充电站</p>
+<p><strong>[03:12:50]</strong> 以及这样一个边线</p>
+<p><strong>[03:12:52]</strong> 可以完成这样一个系统工作</p>
+<p><strong>[03:12:54]</strong> 这一个和我们刚刚那个神道是一样的</p>
+<p><strong>[03:12:58]</strong> 像我们的一个启动按钮</p>
+<p><strong>[03:13:23]</strong> 然后这个是启动电的线圈</p>
+<p><strong>[03:13:27]</strong> 一个启动按钮</p>
+<p><strong>[03:13:29]</strong> 还有一个启动电线圈</p>
+<p><strong>[03:13:32]</strong> 这个启动电线圈</p>
+<p><strong>[03:13:33]</strong> 如果在5月份可以达到,需要进段的作业时期,需要进段的作业时期,就比较多,比较多的东西。</p>
+<p><strong>[03:14:04]</strong> 所以这个主要的一个方式,比较不替代的,不替代的作业,不一样。</p>
+<p><strong>[03:14:12]</strong> 然后还有一个公司在三项艺术业务的程序上</p>
+<p><strong>[03:14:17]</strong> 我以前都学过</p>
+<p><strong>[03:14:19]</strong> 以前学过这个</p>
+<p><strong>[03:14:21]</strong> 这个电视台的电脑</p>
+<p><strong>[03:14:23]</strong> 大家也可以来回顾一下</p>
+<p><strong>[03:14:25]</strong> 看一下说</p>
+<p><strong>[03:14:27]</strong> 怎么样来完成这个</p>
+<p><strong>[03:14:29]</strong> 这个公司</p>
+<p><strong>[03:14:31]</strong> 在这一个170周年</p>
+<p><strong>[03:14:33]</strong> 大家开的这个</p>
+<p><strong>[03:20:01]</strong> 同时呢,我们这里还加了一个电气控制座,加了这样一个电气控制座在这里面,可以免疫,对方的对方的这个常规充电串串进去,还有一个按钮控制座,都加了一个按钮控制座,加了一个双保线,完全就是,那这个就不能完全把它提醒出来。</p>
+<p><strong>[03:20:29]</strong> 就问这是什么需要来讲</p>
+<p><strong>[03:20:32]</strong> 这个因为需要来讲</p>
+<p><strong>[03:20:58]</strong> 接下来时间呢</p>
+<p><strong>[03:21:01]</strong> 大家就帮我把</p>
+<p><strong>[03:21:03]</strong> 看一下这个10到1到4</p>
+<p><strong>[03:21:05]</strong> 同时呢</p>
+<p><strong>[03:21:07]</strong> 课本的214页</p>
+<p><strong>[03:21:09]</strong> 这个习题</p>
+<p><strong>[03:21:10]</strong> 课本的4页</p>
+<p><strong>[03:21:13]</strong> 在上面214页</p>
+<p><strong>[03:21:14]</strong> 10到3</p>
+<p><strong>[03:21:16]</strong> 把它画出来</p>
+<p><strong>[03:21:17]</strong> 你也都用不到</p>
+<p><strong>[03:21:27]</strong> 你也不用教</p>
+<p><strong>[03:21:28]</strong> 但教上来的可以教</p>
+<p><strong>[03:21:31]</strong> 那你如果可以下一个话</p>
+<p><strong>[03:21:36]</strong> 你在一个点上</p>
+<p><strong>[03:21:37]</strong> 你可以参加,还有点时间,你把10-1-3写下来</p>
+<p><strong>[03:21:45]</strong> 10-1-2就是课本的立体</p>
+<p><strong>[03:21:52]</strong> 179页的7-8页,再给一下下一次上课时间</p>
+<p><strong>[03:30:16]</strong> 中文字幕志愿者 杨栋梁</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%94%B5%E6%B0%94%E6%8E%A7%E5%88%B6-PLC-%E8%AF%BE%E5%A0%82%E9%80%90%E5%AD%97%E7%A8%BF-ASR/" class="print-no-link">#电气控制 PLC 课堂逐字稿 ASR</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>信号分析与 PLC 合堂课堂逐字稿（ASR 原始）</div>
+      <div>https://tdexxx.github.io/2026/10/14/02_电气控制与PLC/电气控制与PLC_信号分析与PLC合堂_逐字稿_ASR原始/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>tdexxx</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年10月14日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/10/14/02_%E7%94%B5%E6%B0%94%E6%8E%A7%E5%88%B6%E4%B8%8EPLC/%E7%94%B5%E6%B0%94%E6%8E%A7%E5%88%B6%E4%B8%8EPLC_HMI%E8%A7%A6%E6%91%B8%E5%B1%8F%E7%BB%84%E6%80%81%E4%B8%8E%E8%87%AA%E5%8A%A8%E4%BC%B8%E7%BC%A9%E9%97%A8_%E5%8F%91%E5%B8%83%E7%A8%BF/" title="HMI 触摸屏组态与自动伸缩门 PLC 控制系统">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">HMI 触摸屏组态与自动伸缩门 PLC 控制系统</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/10/14/04_%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1_%E6%BB%9A%E5%8A%A8%E8%BD%B4%E6%89%BF%E4%B8%8E%E8%BD%AE%E7%B3%BB%E8%9C%97%E6%9D%86_%E5%8F%91%E5%B8%83%E7%A8%BF/" title="滚动轴承选型与寿命计算、轮系与蜗杆传动">
+                        <span class="hidden-mobile">滚动轴承选型与寿命计算、轮系与蜗杆传动</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,1092 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="tdexxx">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="机械设计蜗杆传动笔记：蜗轮蜗杆自锁与分类、正确啮合条件、导程角与 d1&#x3D;mq 几何计算、交错轴受力分析（Fa1&#x3D;Ft2）、滑动速度、效率组成与热平衡计算、蜗轮材料结构（含齿轮传动复习与三级减速综合例题） 本节是《机械设计》第八章蜗杆传动的新授课，开头先用一段时间快速复习第七章齿轮传动（齿廓啮合定律、渐开线特性、模数、正确啮合与连续传动条件、五种失效、设计准则、受力三分力），随后">
+<meta property="og:type" content="article">
+<meta property="og:title" content="蜗杆传动：几何计算、受力分析与热平衡（LaTeX 公式版）">
+<meta property="og:url" content="https://tdexxx.github.io/2026/10/15/04_%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1_%E8%9C%97%E6%9D%86%E4%BC%A0%E5%8A%A8_%E5%8F%91%E5%B8%83%E7%A8%BF%EF%BC%88LaTeX%E5%85%AC%E5%BC%8F%E7%89%88%EF%BC%89/index.html">
+<meta property="og:site_name" content="tdexxx的博客">
+<meta property="og:description" content="机械设计蜗杆传动笔记：蜗轮蜗杆自锁与分类、正确啮合条件、导程角与 d1&#x3D;mq 几何计算、交错轴受力分析（Fa1&#x3D;Ft2）、滑动速度、效率组成与热平衡计算、蜗轮材料结构（含齿轮传动复习与三级减速综合例题） 本节是《机械设计》第八章蜗杆传动的新授课，开头先用一段时间快速复习第七章齿轮传动（齿廓啮合定律、渐开线特性、模数、正确啮合与连续传动条件、五种失效、设计准则、受力三分力），随后">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-10-15T14:03:47.000Z">
+<meta property="article:modified_time" content="2026-10-30T17:37:19.956Z">
+<meta property="article:author" content="tdexxx">
+<meta property="article:tag" content="机械设计 蜗杆传动">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>蜗杆传动：几何计算、受力分析与热平衡（LaTeX 公式版） - tdexxx的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"tdexxx.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2022-12-10T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="蜗杆传动：几何计算、受力分析与热平衡（LaTeX 公式版）"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-10-15 22:03" pubdate>
+          2026年10月15日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          10k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          84 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">蜗杆传动：几何计算、受力分析与热平衡（LaTeX 公式版）</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="机械设计蜗杆传动笔记：蜗轮蜗杆自锁与分类、正确啮合条件、导程角与-d1-mq-几何计算、交错轴受力分析（Fa1-Ft2）、滑动速度、效率组成与热平衡计算、蜗轮材料结构（含齿轮传动复习与三级减速综合例题）"><a href="#机械设计蜗杆传动笔记：蜗轮蜗杆自锁与分类、正确啮合条件、导程角与-d1-mq-几何计算、交错轴受力分析（Fa1-Ft2）、滑动速度、效率组成与热平衡计算、蜗轮材料结构（含齿轮传动复习与三级减速综合例题）" class="headerlink" title="机械设计蜗杆传动笔记：蜗轮蜗杆自锁与分类、正确啮合条件、导程角与 d1&#x3D;mq 几何计算、交错轴受力分析（Fa1&#x3D;Ft2）、滑动速度、效率组成与热平衡计算、蜗轮材料结构（含齿轮传动复习与三级减速综合例题）"></a>机械设计蜗杆传动笔记：蜗轮蜗杆自锁与分类、正确啮合条件、导程角与 d1&#x3D;mq 几何计算、交错轴受力分析（Fa1&#x3D;Ft2）、滑动速度、效率组成与热平衡计算、蜗轮材料结构（含齿轮传动复习与三级减速综合例题）</h1><blockquote>
+<p>本节是《机械设计》第八章<strong>蜗杆传动</strong>的新授课，开头先用一段时间快速复习第七章齿轮传动（齿廓啮合定律、渐开线特性、模数、正确啮合与连续传动条件、五种失效、设计准则、受力三分力），随后系统讲蜗杆传动：组成与特点、分类、正确啮合条件、以导程角和直径系数为核心的几何尺寸计算、交错轴受力分析（本章最大易错点）、滑动速度、效率与润滑、<strong>热平衡计算</strong>、材料与结构，最后用教材例 8-1 和一道”锥齿轮 + 斜齿 + 蜗杆”三级减速综合题把旋向、转向、分力判断串起来。</p>
+<p>齿轮传动的完整手册见同系列齿轮篇；本篇齿轮部分只作提纲式复习，重点放在蜗杆传动。</p>
+</blockquote>
+<hr>
+<h2 id="一、核心结论（先记住这-18-条）"><a href="#一、核心结论（先记住这-18-条）" class="headerlink" title="一、核心结论（先记住这 18 条）"></a>一、核心结论（先记住这 18 条）</h2><ol>
+<li><strong>蜗杆传动由蜗杆（主动件，形如螺杆，齿数称”头数” $z_1$）和蜗轮（从动件，齿数 $z_2$）组成</strong>，用于传递<strong>空间两交错轴（通常交错 $90°$）</strong>之间的运动和动力。</li>
+<li>蜗杆传动的突出特点：<strong>单级传动比大</strong>（可达几十、几百甚至上千）、<strong>传动平稳噪声小</strong>、<strong>可以自锁</strong>（导程角小、摩擦大时蜗轮带不动蜗杆，可吊住重物不下落）；但<strong>同时啮合齿数少、相对滑动大、效率低、易磨损和胶合、成本较高</strong>（蜗轮常用青铜）。</li>
+<li>蜗杆一般是<strong>主动件</strong>；判断旋向时人站在与轴线平行的方向看，齿向线<strong>斜向右上为右旋、斜向左上为左旋</strong>。</li>
+<li>按蜗杆形状分<strong>圆柱蜗杆、环面（弧面）蜗杆、锥蜗杆</strong>三类；普通圆柱蜗杆按轴向（法向）齿廓又分<strong>阿基米德蜗杆 ZA（轴向齿廓两侧都是直线）、渐开线蜗杆 ZI（一侧直一侧凸）、法向直廓蜗杆 ZN（法向齿廓为直线）</strong>。</li>
+<li><strong>正确啮合三条件</strong>：蜗杆轴向模数 &#x3D; 蜗轮端面模数（$m_{a1}&#x3D;m_{t2}&#x3D;m$）；蜗杆轴向压力角 &#x3D; 蜗轮端面压力角（$\alpha_{a1}&#x3D;\alpha_{t2}$）；<strong>蜗杆导程角 &#x3D; 蜗轮螺旋角且旋向相同</strong>（$\gamma&#x3D;\beta_2$）。</li>
+<li>角标含义：**$a$ 表示轴向（axial），$t$ 表示端面&#x2F;圆周方向（transverse）**；蜗杆的模数、压力角取轴向值，蜗轮取端面值——这是出现 $a$、$t$ 不同角标的原因。</li>
+<li>**蜗杆分度圆直径不能像齿轮那样写成 $d_1&#x3D;mz_1$<strong>，而要引入</strong>直径系数（特性系数）$q$**：$\boxed{d_1&#x3D;mq}$；蜗轮则正常：$d_2&#x3D;mz_2$。这是本章第一易错点。</li>
+<li><strong>导程角</strong> $\gamma$ 满足 $\tan\gamma&#x3D;\dfrac{z_1 p_x}{\pi d_1}&#x3D;\dfrac{mz_1}{d_1}$，即 $d_1&#x3D;\dfrac{mz_1}{\tan\gamma}$；齿距 $p_x&#x3D;\pi m$，导程 $P_z&#x3D;z_1p_x$（单头 $z_1&#x3D;1$ 时导程 &#x3D; 齿距）。</li>
+<li>蜗杆头数 $z_1$ 常取 <strong>1、2、4</strong>（$z_1&#x3D;1$ 称单头&#x2F;单级，余为多头）；头数越多效率越高，但螺旋线越多、加工越难、精度越难保证，工程上最多取 1、2。蜗轮齿数 $z_2$ 推荐 <strong>28～80</strong>（教材约从 27 起），过大会使蜗轮尺寸和加工难度增大。</li>
+<li>传动比 $\boxed{i&#x3D;\dfrac{n_1}{n_2}&#x3D;\dfrac{z_2}{z_1}}}$（齿数反比、转速正比），但 **$i\neq\dfrac{d_2}{d_1}$**（因为 $d_1\neq mz_1$，$\dfrac{d_2}{d_1}&#x3D;\dfrac{z_2}{q}$）。这是本章第二易错点。</li>
+<li>中心距与齿轮一致：$a&#x3D;\dfrac{d_1+d_2}{2}$。</li>
+<li>蜗杆传动接触线由短变长再变短、传动较平稳，<strong>轮齿折断较少</strong>；因相对滑动大、发热大，<strong>主要失效形式是齿面磨损和胶合</strong>，且失效多发生在<strong>蜗轮轮齿</strong>上（蜗轮齿较薄）。</li>
+<li>设计准则：<strong>闭式蜗杆传动按蜗轮齿面接触疲劳强度设计，不再校核齿根弯曲疲劳强度，但必须做热平衡计算</strong>；<strong>开式蜗杆传动按齿根弯曲疲劳强度设计</strong>。</li>
+<li>材料要减摩、耐磨、抗胶合：<strong>蜗杆用合金钢或碳钢</strong>（重载用 20Cr、20CrMnTi 等渗碳淬火，普通用 45 钢调质）；<strong>蜗轮用青铜</strong>（高速&#x2F;高滑动速度用铸造锡青铜，低速用铸造铝青铜等无锡青铜，速度很低时轮缘可用灰铸铁）。</li>
+<li>交错轴受力配对（与平行轴齿轮不同，务必记牢）：$\boxed{F_{a1}&#x3D;-F_{t2}}$、$\boxed{F_{t1}&#x3D;-F_{a2}}$、$\boxed{F_{r1}&#x3D;-F_{r2}}$；径向力都指向各自轮心。</li>
+<li>蜗杆轴向力 $F_{a1}$ 用<strong>左右手定则</strong>判（左旋用左手、右旋用右手，四指顺蜗杆转向 $n_1$，大拇指即 $F_{a1}$ 方向），<strong>手则只能用于主动件蜗杆</strong>；蜗轮是从动件，其圆周力 $F_{t2}&#x3D;-F_{a1}$ 与蜗轮转向 $n_2$ 相同（”主动反从动”），故 $F_{a1}$ 与 $n_2$ 方向相反。</li>
+<li>交错轴存在<strong>滑动速度</strong> $\vec v_s&#x3D;\vec v_1-\vec v_2$，$v_s&#x3D;\dfrac{v_1}{\cos\gamma}&gt;v_1$，$v_s$ 与 $v_1$ 夹角为导程角 $\gamma$；它是磨损、胶合、效率低的根源。转矩关系 $T_2&#x3D;T_1,i,\eta$（蜗杆效率低，$\eta$ 不能忽略）。</li>
+<li>总效率 $\eta&#x3D;\eta_1\eta_2\eta_3$（啮合效率、搅油效率、轴承效率），头数越多效率越高，单头约 0.7、多头最高约 0.92，一般仅 0.5～0.8。<strong>热平衡条件</strong>：单位时间损失功率全部由箱体散出，$P_1(1-\eta)&#x3D;k_sA(t_1-t_2)$，求得工作油温 $t_1$ 应不超过约 80℃；不满足时加散热片（面积按 50% 折算）、轴端风扇、冷却水管或压力喷油循环。</li>
+</ol>
+<hr>
+<h2 id="二、知识结构（本节脉络）"><a href="#二、知识结构（本节脉络）" class="headerlink" title="二、知识结构（本节脉络）"></a>二、知识结构（本节脉络）</h2><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs awk">机械设计：齿轮传动复习 → 蜗杆传动<br>│<br>├─ 〇、齿轮传动复习（第七章速览）<br>│   齿廓啮合定律 <span class="hljs-regexp">/ 渐开线可分性与三线合一 /</span> 模数 m / 正确啮合( m、α 相等)<br>│   连续传动 ε≥<span class="hljs-number">1</span> <span class="hljs-regexp">/ 五种失效 /</span> 闭式·开式设计准则 <span class="hljs-regexp">/ 三分力 Fr Ft Fa /</span> 润滑<br>│<br>├─ 一、蜗杆传动组成、原理与特点（大传动比、平稳、自锁、低效、易磨损胶合）<br>├─ 二、分类（圆柱<span class="hljs-regexp">/环面/</span>锥；ZA 阿基米德 <span class="hljs-regexp">/ ZI 渐开线 /</span> ZN 法向直廓）<br>├─ 三、正确啮合条件（ma1=mt2、αa1=αt2、γ=β<span class="hljs-number">2</span> 且旋向相同；角标 a/t）<br>├─ 四、主要参数与几何尺寸（d1=mq、导程角、头数 z1、z2、i=z2<span class="hljs-regexp">/z1≠d2/</span>d1、中心距）<br>├─ 五、失效形式与设计准则（闭式接触强度+热平衡；开式弯曲强度）<br>├─ 六、材料（蜗杆钢；蜗轮青铜按滑动速度选锡青铜<span class="hljs-regexp">/铝青铜/</span>铸铁）<br>├─ 七、受力分析（Fa1=−Ft2、Ft1=−Fa2、Fr1=−Fr2；手则；滑动速度；T2=T1iη）<br>├─ 八、例 <span class="hljs-number">8</span>-<span class="hljs-number">1</span>：判蜗轮旋向、转向 n2、三分力<br>├─ 九、效率与润滑（η=η<span class="hljs-number">1</span>η<span class="hljs-number">2</span>η<span class="hljs-number">3</span>；浸油/喷油；防胶合）<br>├─ 十、热平衡计算（P1(<span class="hljs-number">1</span>−η)=ksA(t1−t2)；散热片<span class="hljs-regexp">/风扇/</span>冷却水管/喷油）<br>├─ 十一、结构（蜗杆轴一体：车制/铣制；蜗轮整体式与组合式及连接）<br>└─ 十二、三级减速综合题（锥齿轮+斜齿+蜗杆：旋向、转向、分力、轴向力抵消）<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="三、详细知识点笔记"><a href="#三、详细知识点笔记" class="headerlink" title="三、详细知识点笔记"></a>三、详细知识点笔记</h2><h3 id="（〇）齿轮传动复习（第七章提纲）"><a href="#（〇）齿轮传动复习（第七章提纲）" class="headerlink" title="（〇）齿轮传动复习（第七章提纲）"></a>（〇）齿轮传动复习（第七章提纲）</h3><ol>
+<li><strong>齿廓啮合基本定律</strong>：两齿廓在任意位置啮合时，接触点的齿廓公法线都必须通过连心线上的一个固定点——<strong>节点</strong>，才能保证瞬时传动比恒定。</li>
+<li><strong>渐开线齿廓特性</strong>：<ul>
+<li><strong>可分性</strong>：中心距略有变化时传动比仍保持不变，故齿轮制造装配后传动比即确定；</li>
+<li>啮合过程”<strong>三线合一</strong>“：啮合线、齿廓公法线、基圆公切线重合；注意公法线是<strong>齿廓</strong>的公法线，公切线是<strong>基圆</strong>的公切线。</li>
+</ul>
+</li>
+<li>正压力沿齿廓公法线（啮合线）方向，方向恒定，才能保证所传递的力和转矩确定、传动平稳。</li>
+<li><strong>模数 $m$<strong>：人为规定的</strong>标准参数</strong>，有单位（mm），$m&#x3D;p&#x2F;\pi$（$p$ 为齿距）；计算所得模数要<strong>向大圆整</strong>并尽量取标准<strong>第一系列</strong>。齿宽 $b&#x3D;\varphi_a a$（或 $\varphi_d d_1$）等尺寸参数了解即可。</li>
+<li><strong>正确啮合条件</strong>：两齿轮模数相等、压力角相等；<strong>连续传动条件</strong>：重合度 $\varepsilon\ge 1$（$\varepsilon$ 为希腊字母 epsilon）。</li>
+<li>齿轮精度分 13 个等级，<strong>0 级最高</strong>。</li>
+<li><strong>五种失效形式</strong>：轮齿折断、齿面点蚀、齿面磨损、齿面胶合、塑性变形。</li>
+<li><strong>设计准则</strong>：<ul>
+<li><strong>闭式传动</strong>：一般按<strong>齿面接触疲劳强度</strong>设计（防止点蚀），再按<strong>齿根弯曲疲劳强度</strong>校核（防止断齿）；</li>
+<li><strong>开式传动</strong>：主要失效是磨损，通常按<strong>齿根弯曲疲劳强度</strong>设计，并把算得的模数适当放大（为磨损预留余量）。</li>
+</ul>
+</li>
+<li>强度公式中载荷系数 $K&#x3D;K_A K_v K_\beta K_\alpha$（$K_A$ 为使用&#x2F;工况系数，$T$ 为转矩，$u$ 为齿数比）；一对齿轮传动时齿数比即传动比。齿面接触强度公式求出的是分度圆直径 $d_1$，其中代入齿宽系数；许用接触应力应取配对两轮中的较小值。</li>
+<li><strong>受力三分力</strong>：<ul>
+<li>**径向力 $F_r$**：沿半径方向，由接触点指向轮心；</li>
+<li>**圆周力 $F_t$**：方向口诀”<strong>主动反（之）、从（动）同</strong>“——主动轮上圆周力是阻力、与其转向相反，从动轮上圆周力是动力、与其转向相同；</li>
+<li><strong>轴向力 $F_a$<strong>：</strong>直齿圆柱齿轮没有轴向力</strong>；斜齿轮、锥齿轮因螺旋角&#x2F;锥角而有轴向力，用<strong>左右手定则</strong>判断：左旋用左手、右旋用右手，四指弯曲方向指向齿轮转动方向，大拇指即轴向力方向；<strong>手则只能用于主动轮</strong>。</li>
+<li>互相啮合的两齿轮，三个分力分别大小相等、方向相反。</li>
+</ul>
+</li>
+<li>齿轮润滑分<strong>浸油润滑</strong>与<strong>喷油润滑</strong>，按圆周速度等选取。</li>
+</ol>
+<hr>
+<h3 id="（一）蜗杆传动的组成、工作原理与特点"><a href="#（一）蜗杆传动的组成、工作原理与特点" class="headerlink" title="（一）蜗杆传动的组成、工作原理与特点"></a>（一）蜗杆传动的组成、工作原理与特点</h3><ul>
+<li><strong>组成</strong>：蜗杆（$z_1$，相当于一个齿数很少、螺旋角很大的斜齿轮，外形如螺杆）+ 蜗轮（$z_2$，在与蜗杆啮合处做成包络蜗杆的弧形齿）。蜗杆通常为主动件。</li>
+<li><strong>轴间关系</strong>：用于两<strong>空间交错轴</strong>，最常见交错角为 $90°$（区别于直齿、斜齿圆柱齿轮的平行轴，以及锥齿轮的相交轴）。</li>
+<li><strong>旋向判断</strong>：人站在与蜗杆轴线平行的方向观察，齿向线斜向右上方为<strong>右旋</strong>，斜向左上方为<strong>左旋</strong>。</li>
+<li><strong>主要特点</strong>：<ol>
+<li><strong>单级传动比大、结构紧凑</strong>：$i$ 可达几十、几百，甚至上千；</li>
+<li><strong>传动平稳、噪声小</strong>：啮合时接触线由短变长、再由长变短，逐渐进入和退出啮合（与斜齿轮类似）；</li>
+<li><strong>可以自锁</strong>：当蜗杆导程角较小、摩擦较大时，只能蜗杆带动蜗轮，<strong>蜗轮不能带动蜗杆</strong>；如卷扬、起重装置中可借自锁使重物停悬不下落（自锁与摩擦、导程角有关，后文效率部分会讲）；</li>
+<li><strong>效率较低</strong>：同时啮合的齿对数少（常只有 3～4 个齿接触），且齿面间相对滑动大，一般效率仅 50%～60%，最高约 80%（而齿轮传动可达 96%～99%）；</li>
+<li><strong>易磨损、易胶合、发热大</strong>，需要良好的润滑与散热，闭式传动要做热平衡计算；</li>
+<li><strong>成本较高</strong>：蜗轮齿圈常用减摩耐磨的青铜制造。</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h3 id="（二）蜗杆传动的分类"><a href="#（二）蜗杆传动的分类" class="headerlink" title="（二）蜗杆传动的分类"></a>（二）蜗杆传动的分类</h3><ol>
+<li><strong>按蜗杆的外形分</strong>：<ul>
+<li><strong>圆柱蜗杆</strong>：蜗杆分度曲面为圆柱面，最常用；</li>
+<li><strong>环面（弧面&#x2F;toroidal）蜗杆</strong>：蜗杆体呈圆弧包络面，与蜗轮近似面接触，承载能力高；</li>
+<li><strong>锥蜗杆</strong>：蜗杆为锥形。</li>
+</ul>
+</li>
+<li><strong>圆柱蜗杆按刀具齿形分</strong>：普通圆柱蜗杆、圆弧圆柱蜗杆（由圆弧刀刃加工得到）。</li>
+<li><strong>普通圆柱蜗杆按轴向&#x2F;法向齿廓形状分（教材三类）</strong>：<ul>
+<li><strong>阿基米德蜗杆（ZA 型）</strong>：在<strong>轴向截面</strong>内，齿廓两侧都是<strong>直线</strong>（呈梯形齿条状），加工最简单，应用广；</li>
+<li><strong>渐开线蜗杆（ZI 型）</strong>：齿面为渐开线螺旋面，轴向截面齿廓一侧为直线、一侧为凸曲线；</li>
+<li><strong>法向直廓蜗杆（ZN 型）</strong>：在螺旋线的<strong>法向截面（$N-N$ 面）</strong>内齿廓为直线，轴向截面为凸形。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="（三）正确啮合条件（含角标-a、t）"><a href="#（三）正确啮合条件（含角标-a、t）" class="headerlink" title="（三）正确啮合条件（含角标 a、t）"></a>（三）正确啮合条件（含角标 a、t）</h3><p>蜗杆相当于把斜齿轮”螺旋化”，描述其参数时：</p>
+<ul>
+<li><strong>蜗杆取轴向（下标 $a$，axial）参数</strong>：轴向模数 $m_{a1}$、轴向压力角 $\alpha_{a1}$，并用<strong>导程角 $\gamma$</strong> 描述螺旋方向；</li>
+<li><strong>蜗轮取端面（下标 $t$，transverse，圆周方向）参数</strong>：端面模数 $m_{t2}$、端面压力角 $\alpha_{t2}$，并用<strong>螺旋角 $\beta_2$</strong> 描述。</li>
+</ul>
+<p><strong>正确啮合三条件</strong>：</p>
+<p>$$<br>m_{a1}&#x3D;m_{t2}&#x3D;m,\qquad \alpha_{a1}&#x3D;\alpha_{t2},\qquad \gamma&#x3D;\beta_2\ \text{（且两者旋向相同）}<br>$$</p>
+<p>即蜗杆的导程角与蜗轮的螺旋角大小相等、旋向一致（蜗杆右旋则蜗轮也右旋）。这就是教材中一个角标为 $a$、另一个为 $t$ 的原因。</p>
+<hr>
+<h3 id="（四）主要参数与几何尺寸计算（本章计算核心）"><a href="#（四）主要参数与几何尺寸计算（本章计算核心）" class="headerlink" title="（四）主要参数与几何尺寸计算（本章计算核心）"></a>（四）主要参数与几何尺寸计算（本章计算核心）</h3><h4 id="1-蜗杆分度圆直径-d-1-与直径系数-q"><a href="#1-蜗杆分度圆直径-d-1-与直径系数-q" class="headerlink" title="1. 蜗杆分度圆直径 $d_1$ 与直径系数 $q$"></a>1. 蜗杆分度圆直径 $d_1$ 与直径系数 $q$</h4><p>齿轮有 $d&#x3D;mz$，但蜗杆为了能用<strong>有限规格的蜗轮滚刀</strong>加工蜗轮，对同一模数规定了若干标准的蜗杆分度圆直径，引入**直径系数（特性系数）$q$**：</p>
+<p>$$<br>\boxed{d_1&#x3D;mq}\quad\Longrightarrow\quad q&#x3D;\frac{d_1}{m}<br>$$</p>
+<p>**切记：蜗杆 $d_1\neq mz_1$**；而蜗轮与普通齿轮相同：</p>
+<p>$$<br>d_2&#x3D;mz_2<br>$$</p>
+<p>$m$ 与 $d_1$（即 $q$）的标准搭配可查教材表（计算时按表取值）。</p>
+<h4 id="2-齿距、导程与导程角"><a href="#2-齿距、导程与导程角" class="headerlink" title="2. 齿距、导程与导程角"></a>2. 齿距、导程与导程角</h4><ul>
+<li>轴向齿距：$p_x&#x3D;\pi m$；</li>
+<li>导程（蜗杆同一根螺旋线转过一周沿轴向前进的距离，等于全部 $z_1$ 个齿距之和）：$P_z&#x3D;z_1 p_x&#x3D;\pi m z_1$；单头（$z_1&#x3D;1$）时导程就等于一个齿距；</li>
+<li>**导程角 $\gamma$**：蜗杆分度圆柱螺旋线的切线与垂直于轴线的端面之间的夹角。把分度圆柱展开，螺旋线为斜线，由几何关系：</li>
+</ul>
+<p>$$<br>\tan\gamma&#x3D;\frac{P_z}{\pi d_1}&#x3D;\frac{z_1 p_x}{\pi d_1}&#x3D;\frac{mz_1}{d_1}<br>\quad\Longrightarrow\quad<br>d_1&#x3D;\frac{mz_1}{\tan\gamma}<br>$$</p>
+<h4 id="3-头数-z-1-、齿数-z-2-与传动比"><a href="#3-头数-z-1-、齿数-z-2-与传动比" class="headerlink" title="3. 头数 $z_1$、齿数 $z_2$ 与传动比"></a>3. 头数 $z_1$、齿数 $z_2$ 与传动比</h4><ul>
+<li>蜗杆的齿数习惯称”<strong>头数</strong>“ $z_1$，常取 <strong>1、2、4</strong>：$z_1&#x3D;1$ 称单头（单级），$z_1&#x3D;2$ 称双头，其余称多头；</li>
+<li>头数越多，导程角越大、<strong>效率越高</strong>，但一根蜗杆上螺旋线越多、加工越困难、精度越难保证，故常用 $z_1&#x3D;1、2$；</li>
+<li>蜗轮齿数 $z_2$ 一般推荐 <strong>28～80</strong>（教材表中约从 27 起）：齿数取得过大，蜗轮分度圆和整体尺寸就大，箱体和加工难度随之增大；</li>
+<li><strong>传动比</strong>：</li>
+</ul>
+<p>$$<br>\boxed{i&#x3D;\frac{n_1}{n_2}&#x3D;\frac{z_2}{z_1}}<br>$$</p>
+<p>注意：</p>
+<p>$$<br>\frac{d_2}{d_1}&#x3D;\frac{mz_2}{mq}&#x3D;\frac{z_2}{q}\neq\frac{z_2}{z_1}&#x3D;i<br>$$</p>
+<p>即 **$i\neq d_2&#x2F;d_1$**（因为 $d_1\neq mz_1$），这是与齿轮传动（$i&#x3D;d_2&#x2F;d_1&#x3D;z_2&#x2F;z_1$）最大的不同，也是高频易错点。</p>
+<ul>
+<li><strong>中心距</strong>：</li>
+</ul>
+<p>$$<br>a&#x3D;\frac{d_1+d_2}{2}<br>$$</p>
+<h4 id="4-查表与算例（教材表-8-2、表-8-3-思路）"><a href="#4-查表与算例（教材表-8-2、表-8-3-思路）" class="headerlink" title="4. 查表与算例（教材表 8-2、表 8-3 思路）"></a>4. 查表与算例（教材表 8-2、表 8-3 思路）</h4><p>按传动比推荐 $z_1$、$z_2$：例如 $i\approx25$ 时，可取 $z_1&#x3D;2$，则 $z_2&#x3D;i,z_1&#x3D;50$；若设模数 $m&#x3D;1$，则蜗轮分度圆直径 $d_2&#x3D;mz_2&#x3D;50$，而蜗杆分度圆直径 $d_1&#x3D;mq$ 需按标准直径系数查表得到，不能用 $mz_1$ 计算。</p>
+<hr>
+<h3 id="（五）失效形式与设计准则"><a href="#（五）失效形式与设计准则" class="headerlink" title="（五）失效形式与设计准则"></a>（五）失效形式与设计准则</h3><ul>
+<li>蜗杆传动齿面接触线逐渐变化、传动比平稳，<strong>轮齿折断相对不易发生</strong>；由于齿面间存在很大的相对滑动、发热严重，<strong>主要失效形式是齿面磨损和齿面胶合</strong>。</li>
+<li>失效多出现在<strong>蜗轮轮齿</strong>上：蜗轮每个齿只是一小段、齿较薄，而蜗杆齿是连续的整条螺旋线、强度较高。因此强度计算体系主要建立在<strong>蜗轮</strong>上。</li>
+<li><strong>设计准则</strong>：<ul>
+<li><strong>闭式蜗杆传动</strong>：按<strong>蜗轮齿面接触疲劳强度</strong>进行设计（控制磨损&#x2F;胶合与点蚀），设计后<strong>不再校核齿根弯曲疲劳强度</strong>；但因发热大，<strong>必须进行热平衡计算</strong>；</li>
+<li><strong>开式蜗杆传动</strong>：按<strong>齿根弯曲疲劳强度</strong>设计（开式以磨损为主，无密闭箱体，不做热平衡计算）。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="（六）蜗杆与蜗轮的材料选择"><a href="#（六）蜗杆与蜗轮的材料选择" class="headerlink" title="（六）蜗杆与蜗轮的材料选择"></a>（六）蜗杆与蜗轮的材料选择</h3><p>选材原则：足够的强度，以及良好的<strong>减摩性、耐磨性、抗胶合能力</strong>（摩擦副配对要”滑得动、磨得少、不胶合”）。</p>
+<table>
+<thead>
+<tr>
+<th>零件</th>
+<th>常用材料</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>蜗杆</td>
+<td>合金钢、碳钢</td>
+<td>重载&#x2F;高速用 20Cr、20CrMnTi 等合金钢渗碳淬火；一般载荷用 45 钢等碳钢，并通过<strong>调质</strong>等表面处理提高强度和齿面硬度</td>
+</tr>
+<tr>
+<td>蜗轮（齿圈）</td>
+<td>青铜为主</td>
+<td>滑动速度较高（约 $v_s&gt;3\ \text{m&#x2F;s}$）、高速重载时用<strong>铸造锡青铜</strong>（减摩抗胶合最好，但锡贵）；滑动速度较低（约 $v_s&lt;1\sim2\ \text{m&#x2F;s}$）用<strong>铸造铝青铜</strong>等无锡青铜（加入锌、铝等降低成本）；速度很低时轮缘可用<strong>灰铸铁（HT）</strong></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>锡青铜、铝青铜与滑动速度的具体分界值[以教材&#x2F;手册为准]；原则是”速度越高越要用减摩抗胶合好的锡青铜”。</p>
+</blockquote>
+<hr>
+<h3 id="（七）蜗杆传动的受力分析（本章重点与最大易错点）"><a href="#（七）蜗杆传动的受力分析（本章重点与最大易错点）" class="headerlink" title="（七）蜗杆传动的受力分析（本章重点与最大易错点）"></a>（七）蜗杆传动的受力分析（本章重点与最大易错点）</h3><h4 id="1-法向力与三个分力"><a href="#1-法向力与三个分力" class="headerlink" title="1. 法向力与三个分力"></a>1. 法向力与三个分力</h4><p>齿面间作用着沿啮合线的**法向力 $F_n$**。先把它分解为径向分力和水平面内的分力，再借助导程角 $\gamma$ 把水平面内的分力分解为圆周力与轴向力，得到三个分力：圆周力 $F_t$、径向力 $F_r$、轴向力 $F_a$。</p>
+<h4 id="2-交错轴的力配对（与平行轴齿轮不同！）"><a href="#2-交错轴的力配对（与平行轴齿轮不同！）" class="headerlink" title="2. 交错轴的力配对（与平行轴齿轮不同！）"></a>2. 交错轴的力配对（与平行轴齿轮不同！）</h4><p>由于两轴空间交错 $90°$，蜗杆的”轴向”恰好对应蜗轮的”圆周方向”，蜗杆的”圆周方向”又对应蜗轮的”轴向”，因此：</p>
+<p>$$<br>\boxed{F_{a1}&#x3D;-F_{t2}},\qquad<br>\boxed{F_{t1}&#x3D;-F_{a2}},\qquad<br>\boxed{F_{r1}&#x3D;-F_{r2}}<br>$$</p>
+<p>即：<strong>蜗杆轴向力与蜗轮圆周力配对、蜗杆圆周力与蜗轮轴向力配对、两者径向力互相配对</strong>，每对都是大小相等、方向相反。径向力 $F_{r1}$、$F_{r2}$ 都由接触点指向各自轮心。</p>
+<blockquote>
+<p>对比记忆：平行轴斜齿轮是 $F_{t1}&#x3D;-F_{t2}$、$F_{a1}&#x3D;-F_{a2}$、$F_{r1}&#x3D;-F_{r2}$；蜗杆传动把前两对中的 $t$ 与 $a$ <strong>交叉互换</strong>了。</p>
+</blockquote>
+<h4 id="3-各力方向的判断"><a href="#3-各力方向的判断" class="headerlink" title="3. 各力方向的判断"></a>3. 各力方向的判断</h4><ul>
+<li><strong>蜗杆一般为主动件</strong>，用<strong>左右手定则</strong>直接判蜗杆轴向力 $F_{a1}$：左旋用左手、右旋用右手，四指弯曲顺着蜗杆转向 $n_1$，大拇指指向即 $F_{a1}$；</li>
+<li>圆周力遵循”<strong>主动反、从动同</strong>“：主动件蜗杆上的圆周力 $F_{t1}$ 与 $n_1$ 反向（是阻力）；从动件蜗轮上的圆周力 $F_{t2}$ 与蜗轮转向 $n_2$ 同向（是推动蜗轮转动的动力）；</li>
+<li>因为 $F_{t2}&#x3D;-F_{a1}$ 且 $F_{t2}$ 与 $n_2$ 同向，所以 <strong>$F_{a1}$ 的方向与蜗轮转向 $n_2$ 相反</strong>——这是由蜗杆轴向力反推蜗轮转向的关键；</li>
+<li>径向力始终指向轮心。</li>
+</ul>
+<h4 id="4-滑动速度"><a href="#4-滑动速度" class="headerlink" title="4. 滑动速度"></a>4. 滑动速度</h4><p>交错轴传动在啮合点处两齿面间存在明显的相对滑动。设蜗杆、蜗轮在啮合点的圆周速度分别为 $\vec v_1$、$\vec v_2$，则相对滑动速度：</p>
+<p>$$<br>\vec v_s&#x3D;\vec v_1-\vec v_2,\qquad<br>v_s&#x3D;\frac{v_1}{\cos\gamma};(&gt;v_1)<br>$$</p>
+<p>$v_s$ 与 $v_1$ 之间的夹角即导程角 $\gamma$。滑动速度越大，越容易磨损、胶合，润滑条件越苛刻，材料要求也越高。</p>
+<h4 id="5-力与转矩的大小"><a href="#5-力与转矩的大小" class="headerlink" title="5. 力与转矩的大小"></a>5. 力与转矩的大小</h4><p>$$<br>F_{t1}&#x3D;\frac{2T_1}{d_1},\qquad F_{t2}&#x3D;\frac{2T_2}{d_2}<br>$$</p>
+<p>蜗杆传动效率较低、不能忽略，故蜗轮轴输出转矩：</p>
+<p>$$<br>\boxed{T_2&#x3D;T_1,i,\eta}<br>$$</p>
+<p>（若忽略效率才有 $T_2&#x2F;T_1&#x3D;i$；实际必须乘总效率 $\eta$。）</p>
+<hr>
+<h3 id="（八）教材例-8-1：判蜗轮旋向、转向与三分力"><a href="#（八）教材例-8-1：判蜗轮旋向、转向与三分力" class="headerlink" title="（八）教材例 8-1：判蜗轮旋向、转向与三分力"></a>（八）教材例 8-1：判蜗轮旋向、转向与三分力</h3><p>题目给出蜗杆的旋向和转向，要求判断蜗轮旋向、蜗轮旋转方向 $n_2$ 以及各分力方向。标准步骤：</p>
+<ol>
+<li><strong>判蜗杆旋向</strong>：按齿向线”右高右旋、左高左旋”确定；</li>
+<li>**定蜗杆轴向力 $F_{a1}$**：对主动件蜗杆使用对应手的手则（四指顺 $n_1$、大拇指为 $F_{a1}$）；</li>
+<li>**定蜗轮圆周力 $F_{t2}$ 与转向 $n_2$**：$F_{t2}&#x3D;-F_{a1}$；蜗轮是从动件，$F_{t2}$ 与 $n_2$ 同向，由此确定蜗轮转向；</li>
+<li><strong>配出其余各力</strong>：$F_{t1}&#x3D;-F_{a2}$、$F_{r1}&#x3D;-F_{r2}$；$F_{t1}$ 与 $n_1$ 反向，径向力指向轮心；</li>
+<li><strong>判蜗轮旋向</strong>：正确啮合要求蜗杆、蜗轮<strong>旋向相同</strong>，故蜗轮旋向与蜗杆一致。</li>
+</ol>
+<p>易错提醒：<strong>左右手定则只能直接用于主动件（蜗杆）</strong>。若想在从动的蜗轮上”比划”，得到的方向必须再取一次反号（因为从动轮各分力与主动轮对应力相反），否则会把旋向判反。</p>
+<hr>
+<h3 id="（九）效率与润滑"><a href="#（九）效率与润滑" class="headerlink" title="（九）效率与润滑"></a>（九）效率与润滑</h3><h4 id="1-总效率的组成"><a href="#1-总效率的组成" class="headerlink" title="1. 总效率的组成"></a>1. 总效率的组成</h4><p>蜗杆传动的总效率由三部分串联组成：</p>
+<p>$$<br>\eta&#x3D;\eta_1,\eta_2,\eta_3<br>$$</p>
+<ul>
+<li>$\eta_1$：<strong>啮合效率</strong>，与导程角 $\gamma$ 和当量摩擦角 $\rho_v$ 有关（近似 $\eta_1&#x3D;\dfrac{\tan\gamma}{\tan(\gamma+\rho_v)}$），导程角在一定范围内增大、摩擦角减小，啮合效率提高；</li>
+<li>$\eta_2$：<strong>搅油效率</strong>（零件搅动润滑油造成功率损失）；</li>
+<li>$\eta_3$：<strong>轴承效率</strong>，滚动轴承约 0.99，计算时整体可取 0.97～0.99，粗略估算时 $\eta_2\eta_3$ 有时取 1。</li>
+</ul>
+<p>头数 $z_1$ 越多、导程角越大，效率越高：单头蜗杆效率约 0.7，多头最高约 0.92；一般蜗杆传动效率多在 0.5～0.8。**具有自锁性的蜗杆（$\gamma$ 很小）效率通常低于 50%**。</p>
+<h4 id="2-润滑"><a href="#2-润滑" class="headerlink" title="2. 润滑"></a>2. 润滑</h4><p>蜗杆传动比齿轮传动更要重视润滑：温度过高时润滑油黏度下降、油膜破坏并产生黏性沉积物，极易诱发胶合。应按教材表 8-6 根据载荷、滑动速度选择合适黏度和牌号的润滑油；重载、速度高时采用<strong>喷油润滑</strong>，一般情况采用<strong>浸油润滑</strong>。</p>
+<hr>
+<h3 id="（十）热平衡计算（闭式蜗杆传动必做，重点掌握）"><a href="#（十）热平衡计算（闭式蜗杆传动必做，重点掌握）" class="headerlink" title="（十）热平衡计算（闭式蜗杆传动必做，重点掌握）"></a>（十）热平衡计算（闭式蜗杆传动必做，重点掌握）</h3><h4 id="1-发热与散热"><a href="#1-发热与散热" class="headerlink" title="1. 发热与散热"></a>1. 发热与散热</h4><ul>
+<li>蜗杆传动损失的功率几乎全部转化为热量。若输入功率为 $P_1$，则单位时间的发热量（损失功率）为：</li>
+</ul>
+<p>$$<br>P_s&#x3D;P_1(1-\eta)<br>$$</p>
+<ul>
+<li>密闭箱体内热量主要通过金属箱体外壁向环境散发。单位时间散热量按牛顿冷却形式：</li>
+</ul>
+<p>$$<br>\Phi&#x3D;k_s,A,(t_1-t_2)<br>$$</p>
+<p>其中：</p>
+<ul>
+<li>$t_1$ 为箱体工作温度（油温），$t_2$ 为环境温度（如取 $25℃$）；注意这里的 $t$ 表示温度而非时间；</li>
+<li>$k_s$ 为<strong>散热系数</strong>，随通风条件而不同：通风良好时约 $17.5\ \text{W&#x2F;(m}^2\cdot℃\text{)}$，通风不良时约 $8.5\ \text{W&#x2F;(m}^2\cdot℃\text{)}$[数值以教材为准]；</li>
+<li>$A$ 为箱体有效散热面积（$m^2$）。</li>
+</ul>
+<h4 id="2-热平衡条件与工作温度"><a href="#2-热平衡条件与工作温度" class="headerlink" title="2. 热平衡条件与工作温度"></a>2. 热平衡条件与工作温度</h4><p>热平衡时发热 &#x3D; 散热：</p>
+<p>$$<br>\boxed{P_1(1-\eta)&#x3D;k_sA(t_1-t_2)}<br>$$</p>
+<p>由此解出工作温度：</p>
+<p>$$<br>t_1&#x3D;t_2+\frac{P_1(1-\eta)}{k_sA}<br>$$</p>
+<p>要求算得的 $t_1$ 不超过润滑油和密封允许的最高温度（一般要求 $t_1\le 70\sim80℃$）。</p>
+<h4 id="3-散热不足时的措施"><a href="#3-散热不足时的措施" class="headerlink" title="3. 散热不足时的措施"></a>3. 散热不足时的措施</h4><p>当算得 $t_1&gt;80℃$ 或自然散热面积不够时，可采取（与电脑 CPU 散热思路类似）：</p>
+<ol>
+<li><strong>增加散热片</strong>：在箱体外壁加铸散热片以增大散热面积（散热片的计算面积通常按其实际面积的 <strong>50%</strong> 折算）；</li>
+<li><strong>加装轴端风扇</strong>：在蜗杆外伸轴端装风扇，强迫通风、加快空气扰动带走热量；</li>
+<li><strong>在箱内设置冷却水管（冷凝管&#x2F;蛇形管）</strong>：通循环冷水，类比电脑热管&#x2F;水冷；</li>
+<li><strong>采用压力喷油循环润滑冷却</strong>：用外置冷却器把油冷却后再喷入啮合区。</li>
+</ol>
+<hr>
+<h3 id="（十一）蜗杆与蜗轮的结构"><a href="#（十一）蜗杆与蜗轮的结构" class="headerlink" title="（十一）蜗杆与蜗轮的结构"></a>（十一）蜗杆与蜗轮的结构</h3><ul>
+<li><strong>蜗杆</strong>：一般与轴做成一体（蜗杆轴），分<ul>
+<li><strong>铣制</strong>：在铣床上铣出螺旋齿槽；</li>
+<li><strong>车制</strong>：在车床上车削，车制时常在齿根两端留出较大的退刀距离，以免该部分加工不清。</li>
+</ul>
+</li>
+<li><strong>蜗轮</strong>：<ul>
+<li><strong>整体式</strong>：小尺寸、低速或用铸铁&#x2F;铸铁青铜时可整体铸造；</li>
+<li><strong>组合式</strong>（为节省贵重金属，青铜只做齿圈、轮芯用铸铁或钢）：齿圈与轮芯的连接方式随尺寸增大依次可用<strong>过盈配合&#x2F;焊接、螺栓连接、铰制孔螺栓连接、以及把青铜齿圈直接浇铸在铸铁轮芯上</strong>等，尺寸越大连接越牢固。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="（十二）三级减速传动综合例题（锥齿轮-斜齿圆柱齿轮-蜗杆）"><a href="#（十二）三级减速传动综合例题（锥齿轮-斜齿圆柱齿轮-蜗杆）" class="headerlink" title="（十二）三级减速传动综合例题（锥齿轮 + 斜齿圆柱齿轮 + 蜗杆）"></a>（十二）三级减速传动综合例题（锥齿轮 + 斜齿圆柱齿轮 + 蜗杆）</h3><p>题目为一台三级减速器：第一级一对锥齿轮、第二级一对斜齿圆柱齿轮、第三级蜗杆蜗轮；电机驱动轴 I（主动），输出轴 III 接工作机；要求使轴 II、轴 III 上的轴向力能相互抵消一部分，需判断齿轮 3、4、5、6 的旋向、各轴转向 $n_5$、$n_6$ 并标出各轮三个分力。解题要点：</p>
+<ol>
+<li><strong>锥齿轮的轴向力最好判断</strong>：无论转向如何，锥齿轮的轴向力方向总是<strong>由轮齿小端指向大端</strong>（沿轴线、背离锥顶方向）。据此先写出 $F_{a2}$，再按”轴 II 上两轴向力反向抵消”确定 $F_{a3}$ 的方向。</li>
+<li><strong>一对啮合锥齿轮的转向关系</strong>：两节锥作纯滚动，啮合点处要么同时”相向进入”、要么同时”相背退出”，据此由一个轮的转向判断另一个轮的转向。</li>
+<li><strong>斜齿圆柱齿轮旋向</strong>：用轴向力方向反推——已知 $F_{a3}$ 方向和齿轮 3 的转向，用左右手定则确定齿轮 3 的旋向（四指顺转向、大拇指为轴向力）；互相啮合的两斜齿圆柱齿轮<strong>旋向相反</strong>，由此得齿轮 4 旋向。</li>
+<li>轴 III 上齿轮 5（斜齿从动轮）与蜗杆（与齿轮 5 同轴&#x2F;相连）的轴向力也要反向抵消：$F_{a4}&#x3D;-F_{a3}$，据此定 $F_{a5}$，再由齿轮 5 转向用手则定其旋向；与齿轮 5 啮合的齿轮 6 旋向相反。</li>
+<li><strong>蜗轮（齿轮 6）转向</strong>：蜗杆轴向力 $F_{a,\text{杆}}$ 的反作用力即蜗轮圆周力 $F_{t6}$，$F_{t6}$ 与 $n_6$ 同向，由此定 $n_6$。</li>
+<li><strong>标三分力</strong>：径向力一律指向各自轮心；圆周力按”主动反、从动同”标；轴向力按手则或抵消关系标。把”点（箭头向外，先看到箭头尖端）”和”叉（箭头向里，看到箭尾）”画对。</li>
+<li>若这道综合题能独立、正确地完成，则蜗杆传动（以及齿轮传动）的受力分析就基本掌握了。</li>
+</ol>
+<hr>
+<h2 id="四、例题与案例汇总"><a href="#四、例题与案例汇总" class="headerlink" title="四、例题与案例汇总"></a>四、例题与案例汇总</h2><table>
+<thead>
+<tr>
+<th>例题</th>
+<th>已知</th>
+<th>求&#x2F;结论</th>
+<th>关键方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>几何算例</td>
+<td>$i&#x3D;25$，取 $z_1&#x3D;2$，$m&#x3D;1$</td>
+<td>$z_2&#x3D;iz_1&#x3D;50$，$d_2&#x3D;mz_2&#x3D;50$，$d_1&#x3D;mq$ 查表</td>
+<td>$i&#x3D;z_2&#x2F;z_1$；蜗杆 $d_1\neq mz_1$</td>
+</tr>
+<tr>
+<td>导程角</td>
+<td>已知 $m、z_1、d_1$</td>
+<td>$\tan\gamma&#x3D;mz_1&#x2F;d_1$</td>
+<td>分度圆柱展开几何关系</td>
+</tr>
+<tr>
+<td>传动比辨析</td>
+<td>$z_1,z_2,q$</td>
+<td>$i&#x3D;z_2&#x2F;z_1$，但 $d_2&#x2F;d_1&#x3D;z_2&#x2F;q\neq i$</td>
+<td>交错轴蜗杆传动特有</td>
+</tr>
+<tr>
+<td>例 8-1</td>
+<td>蜗杆旋向、转向</td>
+<td>蜗轮旋向（与蜗杆相同）、$n_2$、三分力</td>
+<td>手则定 $F_{a1}$→$F_{t2}&#x3D;-F_{a1}$→定 $n_2$</td>
+</tr>
+<tr>
+<td>自锁判断</td>
+<td>导程角小、摩擦大</td>
+<td>蜗轮不能带动蜗杆、重物悬停</td>
+<td>$\gamma$ 小于当量摩擦角时自锁、效率低</td>
+</tr>
+<tr>
+<td>热平衡</td>
+<td>$P_1,\eta,k_s,A,t_2$</td>
+<td>$t_1&#x3D;t_2+P_1(1-\eta)&#x2F;(k_sA)\le80℃$</td>
+<td>发热&#x3D;散热；不足加散热片&#x2F;风扇&#x2F;水管&#x2F;喷油</td>
+</tr>
+<tr>
+<td>材料选择</td>
+<td>高&#x2F;低滑动速度</td>
+<td>高速锡青铜、低速铝青铜&#x2F;铸铁</td>
+<td>减摩、耐磨、抗胶合</td>
+</tr>
+<tr>
+<td>三级减速综合</td>
+<td>锥齿+斜齿+蜗杆、轴向力抵消</td>
+<td>3&#x2F;4&#x2F;5&#x2F;6 旋向、$n_5&#x2F;n_6$、各分力</td>
+<td>锥齿轴向力小端→大端；手则；力配对</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="五、术语与公式速查表"><a href="#五、术语与公式速查表" class="headerlink" title="五、术语与公式速查表"></a>五、术语与公式速查表</h2><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>内容&#x2F;公式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>组成与轴</td>
+<td>蜗杆（主动，头数 $z_1$）+ 蜗轮（$z_2$）；空间交错轴，常 $90°$</td>
+</tr>
+<tr>
+<td>五大特点</td>
+<td>传动比大、平稳噪声小、可自锁；效率低、易磨损胶合、成本高</td>
+</tr>
+<tr>
+<td>分类</td>
+<td>圆柱&#x2F;环面&#x2F;锥蜗杆；ZA 阿基米德（轴向直线）、ZI 渐开线、ZN 法向直廓</td>
+</tr>
+<tr>
+<td>正确啮合</td>
+<td>$m_{a1}&#x3D;m_{t2}$、$\alpha_{a1}&#x3D;\alpha_{t2}$、$\gamma&#x3D;\beta_2$ 且旋向相同</td>
+</tr>
+<tr>
+<td>角标</td>
+<td>$a$&#x3D;轴向（蜗杆用）；$t$&#x3D;端面&#x2F;圆周（蜗轮用）</td>
+</tr>
+<tr>
+<td>分度圆直径</td>
+<td>蜗杆 $d_1&#x3D;mq$（$q$ 直径系数，**$d_1\neq mz_1$**）；蜗轮 $d_2&#x3D;mz_2$</td>
+</tr>
+<tr>
+<td>齿距&#x2F;导程</td>
+<td>$p_x&#x3D;\pi m$；$P_z&#x3D;z_1p_x&#x3D;\pi mz_1$</td>
+</tr>
+<tr>
+<td>导程角</td>
+<td>$\tan\gamma&#x3D;P_z&#x2F;(\pi d_1)&#x3D;mz_1&#x2F;d_1$</td>
+</tr>
+<tr>
+<td>头数&#x2F;齿数</td>
+<td>$z_1$ 取 1、2、4（多则效率高但难加工）；$z_2$ 取 28～80</td>
+</tr>
+<tr>
+<td>传动比</td>
+<td>$i&#x3D;n_1&#x2F;n_2&#x3D;z_2&#x2F;z_1$；**$i\neq d_2&#x2F;d_1$**（$d_2&#x2F;d_1&#x3D;z_2&#x2F;q$）</td>
+</tr>
+<tr>
+<td>中心距</td>
+<td>$a&#x3D;(d_1+d_2)&#x2F;2$</td>
+</tr>
+<tr>
+<td>主要失效</td>
+<td>齿面磨损、胶合（多发生在蜗轮齿）；断齿较少</td>
+</tr>
+<tr>
+<td>设计准则</td>
+<td>闭式：按蜗轮齿面接触疲劳强度设计 + 热平衡，不校弯曲；开式：按齿根弯曲疲劳强度</td>
+</tr>
+<tr>
+<td>材料</td>
+<td>蜗杆：合金钢&#x2F;碳钢（渗碳淬火或调质）；蜗轮：锡青铜（高速）&#x2F;铝青铜（低速）&#x2F;铸铁</td>
+</tr>
+<tr>
+<td>受力配对</td>
+<td>$F_{a1}&#x3D;-F_{t2}$、$F_{t1}&#x3D;-F_{a2}$、$F_{r1}&#x3D;-F_{r2}$</td>
+</tr>
+<tr>
+<td>力方向</td>
+<td>手则只用于主动蜗杆定 $F_{a1}$；$F_{t2}&#x3D;-F_{a1}$ 与 $n_2$ 同向；$F_{a1}$ 与 $n_2$ 反向；径向指向轮心</td>
+</tr>
+<tr>
+<td>滑动速度</td>
+<td>$\vec v_s&#x3D;\vec v_1-\vec v_2$，$v_s&#x3D;v_1&#x2F;\cos\gamma&gt;v_1$，与 $v_1$ 夹角 $\gamma$</td>
+</tr>
+<tr>
+<td>力与转矩</td>
+<td>$F_{t1}&#x3D;2T_1&#x2F;d_1$，$F_{t2}&#x3D;2T_2&#x2F;d_2$，$T_2&#x3D;T_1 i\eta$</td>
+</tr>
+<tr>
+<td>效率</td>
+<td>$\eta&#x3D;\eta_1\eta_2\eta_3$；单头约 0.7、多头最高约 0.92，一般 0.5～0.8；自锁时 &lt;0.5</td>
+</tr>
+<tr>
+<td>热平衡</td>
+<td>$P_1(1-\eta)&#x3D;k_sA(t_1-t_2)$，$t_1\le70\sim80℃$；$k_s$ 通风好约 17.5、差约 8.5</td>
+</tr>
+<tr>
+<td>散热措施</td>
+<td>散热片（面积折半）、轴端风扇、冷却水管、压力喷油循环</td>
+</tr>
+<tr>
+<td>结构</td>
+<td>蜗杆与轴一体（车制&#x2F;铣制）；蜗轮整体式或青铜齿圈+轮芯组合式（焊&#x2F;螺栓&#x2F;浇铸）</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="六、课堂任务-实训要点"><a href="#六、课堂任务-实训要点" class="headerlink" title="六、课堂任务 &#x2F; 实训要点"></a>六、课堂任务 &#x2F; 实训要点</h2><ol>
+<li>能默写蜗杆传动正确啮合三条件，并解释角标 $a$、$t$ 的含义。</li>
+<li>会用 $d_1&#x3D;mq$、$d_2&#x3D;mz_2$、$\tan\gamma&#x3D;mz_1&#x2F;d_1$、$i&#x3D;z_2&#x2F;z_1$、$a&#x3D;(d_1+d_2)&#x2F;2$ 做几何计算，并能说清为什么 $i\neq d_2&#x2F;d_1$。</li>
+<li>会判断蜗杆&#x2F;蜗轮旋向，会用左右手定则由蜗杆转向确定 $F_{a1}$，再推出蜗轮圆周力和转向。</li>
+<li>能正确写出交错轴三个分力的配对关系并在图上标出方向（点&#x2F;叉）。</li>
+<li>会做热平衡计算，判断工作温度是否超限并选择散热措施。</li>
+<li>能根据滑动速度合理选择蜗轮材料；了解蜗杆、蜗轮的典型结构。</li>
+<li>会做”锥齿轮 + 斜齿 + 蜗杆”多级传动的旋向、转向、分力综合判断。</li>
+</ol>
+<hr>
+<h2 id="七、待核对-以教材为准（录音口语化处）"><a href="#七、待核对-以教材为准（录音口语化处）" class="headerlink" title="七、待核对 &#x2F; 以教材为准（录音口语化处）"></a>七、待核对 &#x2F; 以教材为准（录音口语化处）</h2><ol>
+<li>录音提到精度等级、$z_2$ 范围”教材写 27、可记 28”，本文按推荐 28～80 整理，具体[以教材表 8-2 为准]。</li>
+<li>锡青铜、铝青铜（无锡青铜）、铸铁对应的滑动速度分界（录音中”3 m&#x2F;s””1～2 m&#x2F;s、12 m&#x2F;s”等表述含糊），[以教材材料表为准]。</li>
+<li>散热系数 $k_s$ 录音给出”通风好约 17.5、通风差约 8.5”，单位与数值[以教材第 117 页附近为准]；最高工作温度按常见 70～80℃ 给出。</li>
+<li>啮合效率公式 $\eta_1&#x3D;\tan\gamma&#x2F;\tan(\gamma+\rho_v)$ 为常见形式，教材具体写法与符号[以课本为准]。</li>
+<li>齿轮复习部分各强度公式的完整形式、载荷系数符号（$K_A,K_v,K_\beta,K_\alpha$）以齿轮章教材为准，本篇只作提纲。</li>
+<li>例 8-1 与三级减速综合题的具体图号、齿轮编号和箭头方向以教材&#x2F;课堂图为准；本文给出的是通用解题步骤。</li>
+</ol>
+<hr>
+<h2 id="八、复习自测（主动回忆，先自己答再看答案）"><a href="#八、复习自测（主动回忆，先自己答再看答案）" class="headerlink" title="八、复习自测（主动回忆，先自己答再看答案）"></a>八、复习自测（主动回忆，先自己答再看答案）</h2><p><strong>1. 蜗杆传动用于什么轴之间？由哪两个基本构件组成，谁通常是主动件？</strong><br>答：用于空间两交错轴（通常 90°）之间；由蜗杆和蜗轮组成，蜗杆通常是主动件，其齿数称头数 $z_1$，蜗轮齿数 $z_2$。</p>
+<p><strong>2. 蜗杆传动有哪些主要优缺点？</strong><br>答：优点是单级传动比大、结构紧凑、传动平稳噪声小、可自锁；缺点是齿面相对滑动大、效率低（一般 0.5～0.8）、易磨损和胶合、发热大、蜗轮需用青铜成本高。</p>
+<p><strong>3. 什么是蜗杆传动的自锁？自锁与效率有什么关系？</strong><br>答：当蜗杆导程角很小、摩擦较大时只能蜗杆带动蜗轮，蜗轮不能带动蜗杆，起重装置可借此吊住重物不下落；能自锁的蜗杆导程角小、啮合效率低，总效率通常低于 50%。</p>
+<p><strong>4. 普通圆柱蜗杆按齿廓分哪三类？阿基米德蜗杆的轴向齿廓是什么形状？</strong><br>答：阿基米德蜗杆 ZA、渐开线蜗杆 ZI、法向直廓蜗杆 ZN；阿基米德蜗杆轴向截面齿廓两侧都是直线。</p>
+<p><strong>5. 写出蜗杆传动正确啮合的三个条件。</strong><br>答：$m_{a1}&#x3D;m_{t2}&#x3D;m$；$\alpha_{a1}&#x3D;\alpha_{t2}$；蜗杆导程角等于蜗轮螺旋角 $\gamma&#x3D;\beta_2$ 且两者旋向相同。</p>
+<p><strong>6. 角标 a 和 t 分别表示什么？为什么蜗杆用 a、蜗轮用 t？</strong><br>答：a 表示轴向、t 表示端面（圆周方向）；蜗杆相当于螺旋化的斜齿轮，其啮合参数取轴向值，蜗轮取端面值，二者才能对应相等。</p>
+<p><strong>7. 蜗杆分度圆直径为什么不能写成 $d_1&#x3D;mz_1$？应该怎么算？</strong><br>答：为减少蜗轮滚刀规格，对同一模数规定了标准蜗杆分度圆直径，引入直径系数 q，故 $d_1&#x3D;mq$；蜗轮才是 $d_2&#x3D;mz_2$。</p>
+<p><strong>8. 写出导程角公式，并说明齿距、导程与头数的关系。</strong><br>答：$\tan\gamma&#x3D;mz_1&#x2F;d_1$；齿距 $p_x&#x3D;\pi m$，导程 $P_z&#x3D;z_1p_x&#x3D;\pi mz_1$，单头时导程等于一个齿距。</p>
+<p><strong>9. 蜗杆头数一般取哪些值？是不是越多越好？</strong><br>答：常取 1、2、4；头数越多导程角越大、效率越高，但螺旋线增多、加工困难、精度难保证，故工程上常用 1、2。</p>
+<p><strong>10. 蜗轮齿数推荐范围是多少？齿数过大有什么问题？</strong><br>答：约 28～80；齿数过大则蜗轮分度圆和整体尺寸大、箱体大、加工难度高。</p>
+<p><strong>11. 写出蜗杆传动传动比公式，并说明为什么 $i\neq d_2&#x2F;d_1$。</strong><br>答：$i&#x3D;n_1&#x2F;n_2&#x3D;z_2&#x2F;z_1$；因 $d_1&#x3D;mq\neq mz_1$，故 $d_2&#x2F;d_1&#x3D;z_2&#x2F;q\neq z_2&#x2F;z_1$。</p>
+<p><strong>12. 蜗杆传动最主要的失效形式是什么？多发生在哪个零件上？为什么？</strong><br>答：主要是齿面磨损和胶合（相对滑动大、发热大），断齿较少；多发生在蜗轮轮齿上，因蜗轮齿较薄而蜗杆是连续螺旋齿、强度较高。</p>
+<p><strong>13. 闭式和开式蜗杆传动分别按什么准则设计？闭式为什么必须做热平衡？</strong><br>答：闭式按蜗轮齿面接触疲劳强度设计、不再校弯曲强度，但必须做热平衡计算（密闭箱体发热大、易超温胶合）；开式按齿根弯曲疲劳强度设计。</p>
+<p><strong>14. 蜗杆和蜗轮常用什么材料？高速蜗轮为什么用锡青铜？</strong><br>答：蜗杆用合金钢或碳钢（渗碳淬火或调质）；蜗轮用青铜，高速重载用减摩抗胶合最好的锡青铜，低速可用铝青铜等无锡青铜，很低速可用灰铸铁；锡含得越多减摩抗胶合越好但越贵。</p>
+<p><strong>15. 写出蜗杆传动三个分力的配对关系。</strong><br>答：$F_{a1}&#x3D;-F_{t2}$、$F_{t1}&#x3D;-F_{a2}$、$F_{r1}&#x3D;-F_{r2}$；与平行轴齿轮相比，圆周力与轴向力发生了交叉互换。</p>
+<p><strong>16. 怎样判断蜗杆轴向力 $F_{a1}$ 的方向？左右手定则能否用于蜗轮？</strong><br>答：对主动件蜗杆，左旋用左手、右旋用右手，四指顺蜗杆转向、大拇指即 $F_{a1}$；手则只能直接用于主动件，用于从动蜗轮时所得方向必须再取反。</p>
+<p><strong>17. 已知蜗杆转向和旋向，怎样确定蜗轮转向 $n_2$？</strong><br>答：手则定 $F_{a1}$，由 $F_{t2}&#x3D;-F_{a1}$ 得蜗轮圆周力方向；蜗轮是从动件，$F_{t2}$ 与其转向 $n_2$ 同向，即得 $n_2$；故 $F_{a1}$ 与 $n_2$ 反向。</p>
+<p><strong>18. 什么是滑动速度？写出它与 $v_1$、导程角的关系。</strong><br>答：啮合点两齿面的相对速度 $\vec v_s&#x3D;\vec v_1-\vec v_2$；$v_s&#x3D;v_1&#x2F;\cos\gamma&gt;v_1$，$v_s$ 与 $v_1$ 夹角为导程角 $\gamma$；它是磨损、胶合和效率低的根源。</p>
+<p><strong>19. 写出蜗轮轴输出转矩公式，为什么效率不能省略？</strong><br>答：$F_{t1}&#x3D;2T_1&#x2F;d_1$、$F_{t2}&#x3D;2T_2&#x2F;d_2$，$T_2&#x3D;T_1 i\eta$；蜗杆传动效率低（常 0.5～0.8），忽略 $\eta$ 会显著高估输出转矩。</p>
+<p><strong>20. 总效率由哪三部分组成？头数对效率有何影响？</strong><br>答：$\eta&#x3D;\eta_1\eta_2\eta_3$，分别为啮合效率、搅油效率、轴承效率；头数越多导程角越大、效率越高，单头约 0.7、多头最高约 0.92。</p>
+<p><strong>21. 写出热平衡方程，并说明各符号含义。</strong><br>答：$P_1(1-\eta)&#x3D;k_sA(t_1-t_2)$；$P_1$ 输入功率、$\eta$ 总效率、$k_s$ 散热系数（通风好约 17.5、差约 8.5）、$A$ 散热面积、$t_1$ 工作油温、$t_2$ 环境温度。</p>
+<p><strong>22. 热平衡算出工作温度超过约 80℃，可采取哪些措施？</strong><br>答：加散热片（面积按 50% 折算）、装轴端风扇强迫通风、箱内铺设通冷水的冷却水管、采用带外冷却器的压力喷油循环润滑。</p>
+<p><strong>23. 蜗杆和蜗轮在结构上各有什么特点？组合式蜗轮怎样连接？</strong><br>答：蜗杆常与轴做成一体（车制或铣制）；蜗轮有整体式和组合式，组合式用青铜齿圈+铸铁&#x2F;钢轮芯以节省铜，靠过盈&#x2F;焊接、螺栓、铰制孔螺栓或浇铸连接，尺寸越大连接越牢。</p>
+<p><strong>24. 锥齿轮的轴向力方向有什么规律？</strong><br>答：无论转向和旋向如何，锥齿轮轴向力总是由轮齿小端指向大端（沿轴线背离锥顶）。</p>
+<p><strong>25. 做”锥齿+斜齿+蜗杆”多级传动、要求中间轴轴向力抵消时，整体思路是什么？</strong><br>答：先用锥齿轮轴向力（小端→大端）和”同轴两轴向力反向抵消”确定斜齿轴向力方向，再用左右手定则和啮合斜齿旋向相反依次定各斜齿&#x2F;蜗杆旋向；用 $F_{t2}&#x3D;-F_{a1}$ 定蜗轮转向；最后按”主动反从动同”、径向指向轮心标出全部三分力。</p>
+<hr>
+<blockquote>
+<p><strong>收尾记忆</strong>：蜗杆传动这一章抓住”<strong>一个特殊几何关系、一对交叉力、一个热平衡</strong>“就不会乱——几何上记住蜗杆 $d_1&#x3D;mq\neq mz_1$、$i&#x3D;z_2&#x2F;z_1\neq d_2&#x2F;d_1$、$\tan\gamma&#x3D;mz_1&#x2F;d_1$；受力上记住交错轴 $F_{a1}\leftrightarrow F_{t2}$、$F_{t1}\leftrightarrow F_{a2}$ 交叉配对，手则只用于主动蜗杆、再由 $F_{t2}$ 定蜗轮转向；热平衡上记住闭式必做 $P_1(1-\eta)&#x3D;k_sA(t_1-t_2)$，超温就上散热片、风扇、冷却水管或喷油循环。</p>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1-%E8%9C%97%E6%9D%86%E4%BC%A0%E5%8A%A8/" class="print-no-link">#机械设计 蜗杆传动</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>蜗杆传动：几何计算、受力分析与热平衡（LaTeX 公式版）</div>
+      <div>https://tdexxx.github.io/2026/10/15/04_机械设计基础/机械设计_蜗杆传动_发布稿（LaTeX公式版）/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>tdexxx</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年10月15日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/10/15/04_%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1_%E5%B8%A6%E4%BC%A0%E5%8A%A8%E4%B8%8E%E9%93%BE%E4%BC%A0%E5%8A%A8%E5%8E%9F%E7%90%86%E5%8F%8A%E8%AE%BE%E8%AE%A1_%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E7%89%88%E6%9C%AC2%EF%BC%89/" title="带传动与链传动原理及设计课堂笔记（版本 2）">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">带传动与链传动原理及设计课堂笔记（版本 2）</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/10/15/04_%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1_%E8%9C%97%E6%9D%86%E4%BC%A0%E5%8A%A8_%E5%8F%91%E5%B8%83%E7%A8%BF%EF%BC%88%E7%BA%AF%E6%96%87%E6%9C%AC%E5%85%AC%E5%BC%8F%E7%89%88%EF%BC%89/" title="蜗杆传动：几何计算、受力分析与热平衡（纯文本公式版）">
+                        <span class="hidden-mobile">蜗杆传动：几何计算、受力分析与热平衡（纯文本公式版）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

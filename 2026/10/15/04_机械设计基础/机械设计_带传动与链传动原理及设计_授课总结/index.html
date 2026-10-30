@@ -1,0 +1,783 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="tdexxx">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="带传动与链传动原理及设计 — 课程逐字稿详细总结 来源：《带传动与链传动原理及设计》课堂授课逐字稿说明：原稿为课堂实录，混杂大量口语与闲聊内容，本总结剔除无关对话后，按知识点模块完整整理。   一、带传动核心基础公式与例题解题思路1. 拉力相关公式 有效拉力（圆周力）：$F&#x3D;F_1-F_2$，其中 $F_1$ 为紧边拉力，$F_2$ 为松边拉力； 初拉力关系：$F_1+F_2&#x3D;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="带传动与链传动原理及设计授课总结">
+<meta property="og:url" content="https://tdexxx.github.io/2026/10/15/04_%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1_%E5%B8%A6%E4%BC%A0%E5%8A%A8%E4%B8%8E%E9%93%BE%E4%BC%A0%E5%8A%A8%E5%8E%9F%E7%90%86%E5%8F%8A%E8%AE%BE%E8%AE%A1_%E6%8E%88%E8%AF%BE%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:site_name" content="tdexxx的博客">
+<meta property="og:description" content="带传动与链传动原理及设计 — 课程逐字稿详细总结 来源：《带传动与链传动原理及设计》课堂授课逐字稿说明：原稿为课堂实录，混杂大量口语与闲聊内容，本总结剔除无关对话后，按知识点模块完整整理。   一、带传动核心基础公式与例题解题思路1. 拉力相关公式 有效拉力（圆周力）：$F&#x3D;F_1-F_2$，其中 $F_1$ 为紧边拉力，$F_2$ 为松边拉力； 初拉力关系：$F_1+F_2&#x3D;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-10-15T14:03:47.000Z">
+<meta property="article:modified_time" content="2026-10-30T17:37:19.950Z">
+<meta property="article:author" content="tdexxx">
+<meta property="article:tag" content="机械设计 带传动 链传动 授课总结">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>带传动与链传动原理及设计授课总结 - tdexxx的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"tdexxx.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2022-12-10T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="带传动与链传动原理及设计授课总结"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-10-15 22:03" pubdate>
+          2026年10月15日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          14 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">带传动与链传动原理及设计授课总结</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="带传动与链传动原理及设计-—-课程逐字稿详细总结"><a href="#带传动与链传动原理及设计-—-课程逐字稿详细总结" class="headerlink" title="带传动与链传动原理及设计 — 课程逐字稿详细总结"></a>带传动与链传动原理及设计 — 课程逐字稿详细总结</h1><blockquote>
+<p>来源：《带传动与链传动原理及设计》课堂授课逐字稿<br>说明：原稿为课堂实录，混杂大量口语与闲聊内容，本总结剔除无关对话后，按知识点模块完整整理。</p>
+</blockquote>
+<hr>
+<h2 id="一、带传动核心基础公式与例题解题思路"><a href="#一、带传动核心基础公式与例题解题思路" class="headerlink" title="一、带传动核心基础公式与例题解题思路"></a>一、带传动核心基础公式与例题解题思路</h2><h3 id="1-拉力相关公式"><a href="#1-拉力相关公式" class="headerlink" title="1. 拉力相关公式"></a>1. 拉力相关公式</h3><ul>
+<li><strong>有效拉力（圆周力）</strong>：$F&#x3D;F_1-F_2$，其中 $F_1$ 为紧边拉力，$F_2$ 为松边拉力；</li>
+<li><strong>初拉力关系</strong>：$F_1+F_2&#x3D;2F_0$，$F_0$ 为带的初拉力；</li>
+<li><strong>欧拉公式</strong>：$\dfrac{F_1}{F_2}&#x3D;e^{f_v\alpha}$，$\alpha$ 为包角（计算时必须换算成弧度），$f_v$ 为当量摩擦系数，用于临界打滑状态下拉力比值的计算。</li>
+</ul>
+<h3 id="2-课堂例题解题思路"><a href="#2-课堂例题解题思路" class="headerlink" title="2. 课堂例题解题思路"></a>2. 课堂例题解题思路</h3><ul>
+<li>联立 <strong>欧拉公式</strong> 与 <strong>$F_1-F_2&#x3D;F$</strong> 两个方程，解两个未知数 $F_1$、$F_2$（其余参数已知），进而求解传递功率 $P$。</li>
+<li>课堂说明：考试一般不会要求推导欧拉公式，题目会直接提供公式使用。</li>
+</ul>
+<hr>
+<h2 id="二、带传动的三类应力与最大应力位置"><a href="#二、带传动的三类应力与最大应力位置" class="headerlink" title="二、带传动的三类应力与最大应力位置"></a>二、带传动的三类应力与最大应力位置</h2><p>带工作时同时承受三种应力：</p>
+<table>
+<thead>
+<tr>
+<th>应力类型</th>
+<th>产生原因</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>拉应力</td>
+<td>紧边、松边拉力产生</td>
+<td>紧边拉应力大于松边</td>
+</tr>
+<tr>
+<td>弯曲应力 $\sigma_b$</td>
+<td>带绕在带轮上发生弯曲</td>
+<td>与带轮基准直径成反比，<strong>小带轮弯曲应力远大于大带轮</strong>，带轮直径越小弯曲应力越大</td>
+</tr>
+<tr>
+<td>离心应力 $\sigma_c$</td>
+<td>带高速回转产生</td>
+<td>$\sigma_c&#x3D;\dfrac{qv^2}{A}$，$q$ 为单位长度带质量，$v$ 为带速；<strong>沿整条带处处相等</strong></td>
+</tr>
+</tbody></table>
+<ul>
+<li>✅ <strong>最大应力位置：小带轮的紧边进入包角处</strong><br>$$\sigma_{max}&#x3D;\sigma_1+\sigma_{b1}+\sigma_c$$</li>
+<li>带上每一个质点每循环一圈，应力周期性变化一次，循环次数达到限值即发生<strong>疲劳破坏</strong>。</li>
+</ul>
+<hr>
+<h2 id="三、带传动两大失效形式"><a href="#三、带传动两大失效形式" class="headerlink" title="三、带传动两大失效形式"></a>三、带传动两大失效形式</h2><ol>
+<li><strong>打滑</strong>：传递的有效圆周力超过带与轮面间极限摩擦力时，发生显著相对滑动；会加剧磨损，导致传动失效。<strong>属于过载造成，可以避免</strong>。打滑优先发生在包角更小的<strong>小带轮</strong>上。</li>
+<li><strong>疲劳破坏</strong>：带承受循环交变应力，长期运转后出现开裂、断裂。由应力循环造成，是带的固有寿命限制。</li>
+</ol>
+<blockquote>
+<p>✨ <strong>设计准则：保证带不打滑的前提下，满足带的疲劳寿命。</strong></p>
+</blockquote>
+<hr>
+<h2 id="四、弹性滑动-vs-打滑（高频考点）"><a href="#四、弹性滑动-vs-打滑（高频考点）" class="headerlink" title="四、弹性滑动 vs 打滑（高频考点）"></a>四、弹性滑动 vs 打滑（高频考点）</h2><h3 id="1-弹性滑动"><a href="#1-弹性滑动" class="headerlink" title="1. 弹性滑动"></a>1. 弹性滑动</h3><p>带是弹性体，绕带轮时紧边到松边拉力变化，弹性变形随之改变，造成带与带轮之间微量相对滑动。</p>
+<ul>
+<li>特点：<strong>带传动固有现象，不可避免</strong>；</li>
+<li>后果：从动轮线速度低于主动轮，传动比不准确，产生能量损耗、发热、磨损；</li>
+<li>引入 <strong>滑动率 $\varepsilon$</strong> 表征，一般 $\varepsilon&#x3D;1%\sim2%$，常规工程计算传动比时可忽略不计。</li>
+</ul>
+<h3 id="2-打滑"><a href="#2-打滑" class="headerlink" title="2. 打滑"></a>2. 打滑</h3><p>过载时有效圆周力大于最大摩擦力，发生显著整体滑动；<strong>可以避免，必须防止</strong>。</p>
+<h3 id="对比表"><a href="#对比表" class="headerlink" title="对比表"></a>对比表</h3><table>
+<thead>
+<tr>
+<th>对比项</th>
+<th>弹性滑动</th>
+<th>打滑</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>产生原因</td>
+<td>带弹性变形、拉力变化</td>
+<td>过载，有效拉力超过极限摩擦力</td>
+</tr>
+<tr>
+<td>可否避免</td>
+<td>不可避免</td>
+<td>可以避免，控制载荷即可</td>
+</tr>
+<tr>
+<td>现象</td>
+<td>微量相对滑移</td>
+<td>显著滑动，传动失效</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="五、V带传动完整设计步骤（课堂实例：4kW-电动机，每日工作-16h）"><a href="#五、V带传动完整设计步骤（课堂实例：4kW-电动机，每日工作-16h）" class="headerlink" title="五、V带传动完整设计步骤（课堂实例：4kW 电动机，每日工作 16h）"></a>五、V带传动完整设计步骤（课堂实例：4kW 电动机，每日工作 16h）</h2><ol>
+<li><strong>计算计算功率</strong>：$P_{ca}&#x3D;K_A\cdot P$<ul>
+<li>$K_A$ 为工作情况系数，按载荷波动、每日工作时长查表；</li>
+<li>例题：载荷变动小、每日工作 16h，取 $K_A&#x3D;1.2$，$P_{ca}&#x3D;4.8\ \mathrm{kW}$。</li>
+</ul>
+</li>
+<li><strong>选择 V 带型号</strong>：按计算功率 $P_{ca}$ 与小带轮转速 $n_1$ 查选型图；例题选 <strong>A 型 V 带</strong>。注意每种带型号存在最小基准直径（A 型最小基准直径 75mm）。</li>
+<li><strong>确定带轮基准直径 $d_{d1}$、$d_{d2}$</strong><ul>
+<li>$d_{d1}$ 需 ≥ 该型号最小基准直径；再由传动比算 $d_{d2}$；</li>
+<li>验算带速 $v&#x3D;\dfrac{\pi d_{d1}n_1}{60\times1000}$，V 带合适带速为 <strong>5~25 m&#x2F;s</strong>；速度超上限减小直径，低于下限增大直径。</li>
+</ul>
+</li>
+<li><strong>初选中心距 $a_0$</strong> → 计算带的计算长度 → 选取标准基准长度 $L_d$ → 反算实际中心距 $a$，并校核中心距是否满足设计约束。</li>
+<li>**校核小带轮包角 $\alpha_1$**（包角影响承载能力）。</li>
+<li><strong>计算 V 带根数 $z$</strong><br>$$z&#x3D;\frac{P_{ca}}{(P_0+\Delta P_0),K_\alpha K_L}$$<ul>
+<li>$P_0$：单根 V 带基本额定功率；$\Delta P_0$：传动比带来的功率增量（查表）；</li>
+<li>$K_\alpha$：包角系数；$K_L$：带长系数（查表）；</li>
+<li>根数计算结果为小数时<strong>向上取整</strong>。例题算出 3.66，取 <strong>4 根</strong>。</li>
+</ul>
+</li>
+<li>**计算单根带初拉力 $F_0$<strong>；</strong>计算轴上载荷 $F_Q$**（用于后续轴的强度校核）。</li>
+</ol>
+<hr>
+<h2 id="六、V带带轮设计"><a href="#六、V带带轮设计" class="headerlink" title="六、V带带轮设计"></a>六、V带带轮设计</h2><ol>
+<li><strong>材料</strong>：常用铸铁；高速用铸钢；小功率可用铸铝、工程塑料。</li>
+<li><strong>结构组成</strong>：轮缘（安放 V 带）、轮辐、轮毂（与轴配合）。</li>
+<li><strong>四种结构形式</strong>：实心式、腹板式、孔板式、轮辐式，按带轮直径选用。</li>
+</ol>
+<hr>
+<h2 id="七、V带使用维护要点"><a href="#七、V带使用维护要点" class="headerlink" title="七、V带使用维护要点"></a>七、V带使用维护要点</h2><ol>
+<li>避免高温暴晒、酸碱腐蚀；</li>
+<li>更换带时必须<strong>全部同时更换</strong>，新旧不能混用；</li>
+<li>使用一段时间后初拉力下降，需要<strong>重新张紧</strong>；常用滑动导轨调整中心距实现张紧。</li>
+</ol>
+<hr>
+<h2 id="八、链传动基础内容"><a href="#八、链传动基础内容" class="headerlink" title="八、链传动基础内容"></a>八、链传动基础内容</h2><h3 id="1-分类"><a href="#1-分类" class="headerlink" title="1. 分类"></a>1. 分类</h3><ul>
+<li><strong>滚子链</strong>：自行车链条，最常用；</li>
+<li><strong>齿形链</strong>：传动平稳，但结构复杂、成本高。</li>
+</ul>
+<h3 id="2-优点"><a href="#2-优点" class="headerlink" title="2. 优点"></a>2. 优点</h3><ul>
+<li>无弹性滑动，<strong>传动比准确</strong>；</li>
+<li>轴上载荷小；</li>
+<li>可在高温、多灰尘等恶劣环境工作；</li>
+<li>要求两轴平行。</li>
+</ul>
+<h3 id="3-缺点"><a href="#3-缺点" class="headerlink" title="3. 缺点"></a>3. 缺点</h3><ul>
+<li><strong>多边形效应</strong>造成瞬时传动比不恒定；</li>
+<li>工作有噪声；</li>
+<li>高速冲击，容易跳齿、脱链。</li>
+</ul>
+<blockquote>
+<p>⚠️ 注意辨析：链传动<strong>平均传动比准确，瞬时传动比不恒定</strong>。</p>
+</blockquote>
+<hr>
+<h2 id="九、课堂课后思考题重点答案"><a href="#九、课堂课后思考题重点答案" class="headerlink" title="九、课堂课后思考题重点答案"></a>九、课堂课后思考题重点答案</h2><ol>
+<li>平带传动依靠<strong>摩擦力</strong>传递动力；</li>
+<li>V 带传动承载能力比平带高：V 带为楔形面，<strong>当量摩擦系数更大</strong>；</li>
+<li>打滑最先发生在<strong>小带轮</strong>，原因：小带轮包角更小；</li>
+<li>影响带传动承载能力的因素：带型号、小带轮直径、转速、包角、带长、材料等；提高承载能力可通过增大包角等途径；</li>
+<li>弹性滑动<strong>不可避免</strong>；打滑由过载产生，<strong>应当避免</strong>，否则造成传动失效。</li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1-%E5%B8%A6%E4%BC%A0%E5%8A%A8-%E9%93%BE%E4%BC%A0%E5%8A%A8-%E6%8E%88%E8%AF%BE%E6%80%BB%E7%BB%93/" class="print-no-link">#机械设计 带传动 链传动 授课总结</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>带传动与链传动原理及设计授课总结</div>
+      <div>https://tdexxx.github.io/2026/10/15/04_机械设计基础/机械设计_带传动与链传动原理及设计_授课总结/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>tdexxx</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年10月15日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/10/15/04_%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/%E6%9C%BA%E6%A2%B0%E5%8E%9F%E7%90%86_%E8%BD%AE%E7%B3%BB%E4%BC%A0%E5%8A%A8%E6%AF%94_%E5%8F%91%E5%B8%83%E7%A8%BF/" title="轮系传动比计算：定轴、周转与复合轮系">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">轮系传动比计算：定轴、周转与复合轮系</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/10/15/04_%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1_%E5%B8%A6%E4%BC%A0%E5%8A%A8%E4%B8%8E%E9%93%BE%E4%BC%A0%E5%8A%A8%E5%8E%9F%E7%90%86%E5%8F%8A%E8%AE%BE%E8%AE%A1_%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/" title="带传动与链传动原理及设计课堂笔记">
+                        <span class="hidden-mobile">带传动与链传动原理及设计课堂笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

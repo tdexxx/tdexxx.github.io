@@ -1,0 +1,861 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="tdexxx">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="数控车削编程详解：G71 复合粗车循环、工序工步划分与轴类综合实例 基于发那科 FANUC 数控车系统  本文系统梳理数控车削编程的核心内容：先通过一个完整例题讲透 G71 复合粗车循环的参数与编程方法；再讲解加工工序、工步的划分原则（工艺路线）；最后以一个包含外圆、退刀槽和螺纹的轴类零件为例，给出从装夹、粗车、切槽、车螺纹到精加工的完整编程思路与易错点。文中以发那科（FANUC）系统为例。 一、">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数控车削 G71 复合粗车循环与轴类综合实例">
+<meta property="og:url" content="https://tdexxx.github.io/2026/10/15/01_%E6%95%B0%E6%8E%A7%E5%8A%A0%E5%B7%A5%E5%B7%A5%E8%89%BA%E4%B8%8E%E7%BC%96%E7%A8%8B/%E6%95%B0%E6%8E%A7%E5%8A%A0%E5%B7%A5%E5%B7%A5%E8%89%BA%E4%B8%8E%E7%BC%96%E7%A8%8B_%E8%BD%A6%E5%89%8AG71%E5%A4%8D%E5%90%88%E5%BE%AA%E7%8E%AF_%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="tdexxx的博客">
+<meta property="og:description" content="数控车削编程详解：G71 复合粗车循环、工序工步划分与轴类综合实例 基于发那科 FANUC 数控车系统  本文系统梳理数控车削编程的核心内容：先通过一个完整例题讲透 G71 复合粗车循环的参数与编程方法；再讲解加工工序、工步的划分原则（工艺路线）；最后以一个包含外圆、退刀槽和螺纹的轴类零件为例，给出从装夹、粗车、切槽、车螺纹到精加工的完整编程思路与易错点。文中以发那科（FANUC）系统为例。 一、">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-10-15T14:03:47.000Z">
+<meta property="article:modified_time" content="2026-10-30T17:37:19.910Z">
+<meta property="article:author" content="tdexxx">
+<meta property="article:tag" content="数控编程 车削 G71 课堂笔记">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>数控车削 G71 复合粗车循环与轴类综合实例 - tdexxx的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"tdexxx.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2022-12-10T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="数控车削 G71 复合粗车循环与轴类综合实例"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-10-15 22:03" pubdate>
+          2026年10月15日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          30 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">数控车削 G71 复合粗车循环与轴类综合实例</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="数控车削编程详解：G71-复合粗车循环、工序工步划分与轴类综合实例"><a href="#数控车削编程详解：G71-复合粗车循环、工序工步划分与轴类综合实例" class="headerlink" title="数控车削编程详解：G71 复合粗车循环、工序工步划分与轴类综合实例"></a>数控车削编程详解：G71 复合粗车循环、工序工步划分与轴类综合实例</h1><blockquote>
+<p>基于发那科 FANUC 数控车系统</p>
+</blockquote>
+<p>本文系统梳理数控车削编程的核心内容：先通过一个完整例题讲透 G71 复合粗车循环的参数与编程方法；再讲解加工工序、工步的划分原则（工艺路线）；最后以一个包含外圆、退刀槽和螺纹的轴类零件为例，给出从装夹、粗车、切槽、车螺纹到精加工的完整编程思路与易错点。文中以发那科（FANUC）系统为例。</p>
+<h2 id="一、概述：数控车中部分代码含义的变化"><a href="#一、概述：数控车中部分代码含义的变化" class="headerlink" title="一、概述：数控车中部分代码含义的变化"></a>一、概述：数控车中部分代码含义的变化</h2><p>在数控车、数控铣等具体设备上，部分通用代码的含义会发生变化，编程时需要特别注意，例如：</p>
+<ul>
+<li>原来用于设定工件坐标系的 <strong>G92</strong>，在发那科数控车中变为<strong>螺纹车削循环</strong>。</li>
+<li>原来表示绝对坐标方式的 <strong>G90</strong>，在发那科数控车中变为<strong>柱面（外圆）车削循环</strong>。</li>
+<li>工件坐标系改用 <strong>G54、G55、G56、G57</strong> 等直接调用第 1、2、3 号坐标系。</li>
+</ul>
+<h2 id="二、复合粗车循环-G71-例题完整编程"><a href="#二、复合粗车循环-G71-例题完整编程" class="headerlink" title="二、复合粗车循环 G71 例题完整编程"></a>二、复合粗车循环 G71 例题完整编程</h2><h3 id="（一）例题加工过程"><a href="#（一）例题加工过程" class="headerlink" title="（一）例题加工过程"></a>（一）例题加工过程</h3><ul>
+<li>刀具先从起点快速进刀到循环起点（终点）位置。</li>
+<li>到达后进行粗加工，快速去除不需要的材料（图中虚线&#x2F;箭头区域）。</li>
+<li>粗加工同时为半精加工、精加工预留余量：<strong>X 方向单边留 2 mm（直径方向共留 4 mm），Z 方向单边留 2 mm</strong>。</li>
+<li>粗车最终轮廓与零件最终轮廓相差预留余量，该余量供后续半精、精加工切除。</li>
+</ul>
+<h3 id="（二）程序的编写步骤"><a href="#（二）程序的编写步骤" class="headerlink" title="（二）程序的编写步骤"></a>（二）程序的编写步骤</h3><ul>
+<li>设定工件坐标系：不再用 G92，而用 G54、G55、G56、G57 等调用第 1、2、3 号工件坐标系。</li>
+<li>G00 快速移动到离工件较远的安全位置（如 <code>X220 Z230</code>），告知工件坐标系当前刀具位置，并防止撞刀、碰到夹具。</li>
+<li>在快速定位过程中开启主轴（S&#x2F;M03）、完成换刀并建立刀补。</li>
+<li>数控车中不再需要 G90&#x2F;G91：地址出现 X、Y、Z 即为绝对坐标，出现 U、V、W 即为增量（相对）坐标。</li>
+</ul>
+<h3 id="（三）G71-粗车循环参数"><a href="#（三）G71-粗车循环参数" class="headerlink" title="（三）G71 粗车循环参数"></a>（三）G71 粗车循环参数</h3><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义 &#x2F; 本例取值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>P</td>
+<td>精加工程序开始的程序段段号（粗加工阶段暂不填写，待精加工程序写完后确定）。</td>
+</tr>
+<tr>
+<td>Q</td>
+<td>精加工程序结束的程序段段号（同上）。</td>
+</tr>
+<tr>
+<td>U（ΔU）</td>
+<td>X 方向预留精加工余量；单边 2 mm，车削按直径乘 2，取 4。</td>
+</tr>
+<tr>
+<td>W（ΔW）</td>
+<td>Z 方向预留精加工余量，取 2。</td>
+</tr>
+<tr>
+<td>D（ΔD）</td>
+<td>每次粗车的切削（背吃刀）深度，本例取 5。</td>
+</tr>
+<tr>
+<td>F</td>
+<td>进给速度；粗车一般低转速、高进给，可取较大值（如 300）。</td>
+</tr>
+</tbody></table>
+<p>预留精加工余量的另一个作用，是规定粗加工的范围：系统根据精加工轮廓加上余量来判定粗加工区域，使粗加工不会超出该范围。</p>
+<h3 id="（四）分两行书写（含退刀量）"><a href="#（四）分两行书写（含退刀量）" class="headerlink" title="（四）分两行书写（含退刀量）"></a>（四）分两行书写（含退刀量）</h3><ul>
+<li>教材格式中没有”退刀量 e”参数；实际常把 G71 分两段写。</li>
+<li>第一行：指定切削深度 ΔD 与退刀量 e（每次切削后沿径向&#x2F;轴向退回的距离，如 1 mm）。</li>
+<li>第二行：指定 P、Q、U、W、F 等，完成粗车循环。</li>
+<li>粗车循环结束后，刀具自动停回循环起点。</li>
+</ul>
+<h3 id="（五）精加工程序与绝对-增量混用"><a href="#（五）精加工程序与绝对-增量混用" class="headerlink" title="（五）精加工程序与绝对&#x2F;增量混用"></a>（五）精加工程序与绝对&#x2F;增量混用</h3><ul>
+<li>精加工轨迹编程与常规外圆练习相同；先 G00 定位（如 <code>X45</code>），再沿轮廓 G01。</li>
+<li>允许在同一程序段内混用绝对与增量坐标：例如 <code>X65 W-30</code>，X 用绝对值、Z(W) 用增量值，免去繁琐坐标计算。</li>
+<li>本例精加工程序从 N60 开始、到 N130 结束，据此把 <code>P60</code>、<code>Q130</code> 填入 G71。</li>
+</ul>
+<blockquote>
+<p><strong>为什么数控车不再用 G90&#x2F;G91 区分坐标？</strong></p>
+<p>因为同一程序段内可以同时出现绝对坐标（X&#x2F;Z）和增量坐标（U&#x2F;W），若在段前写 G90 或 G91，无法同时表示两种坐标；故数控车直接用地址字符区分：X、Y、Z 为绝对，U、V、W 为增量，使用方便。</p>
+</blockquote>
+<h2 id="三、加工工序的划分（四个原则）"><a href="#三、加工工序的划分（四个原则）" class="headerlink" title="三、加工工序的划分（四个原则）"></a>三、加工工序的划分（四个原则）</h2><p>工序划分主要从加工精度与生产效率考虑，常见四个原则如下。</p>
+<h3 id="（一）一次安装（定位）原则"><a href="#（一）一次安装（定位）原则" class="headerlink" title="（一）一次安装（定位）原则"></a>（一）一次安装（定位）原则</h3><ul>
+<li>一次安装定位中能够加工的所有内容，定义为一道工序，尽量减少装夹次数。</li>
+<li>一般加工零件外形时以内形定位，加工内形时以外形定位。</li>
+<li>精度要求较高的表面尽量安排在同一次安装中完成，避免多次安装产生定位误差。</li>
+</ul>
+<h3 id="（二）完整程序连续加工原则"><a href="#（二）完整程序连续加工原则" class="headerlink" title="（二）完整程序连续加工原则"></a>（二）完整程序连续加工原则</h3><ul>
+<li>以一个完整程序能够连续加工的内容为一道工序。</li>
+<li>若一次装夹可加工内容过多、程序段太长，会受程序存储容量限制，且出错后不便检查，可把程序分成几段，每段视为一道工序。</li>
+</ul>
+<h3 id="（三）同类结构、同一把刀原则"><a href="#（三）同类结构、同一把刀原则" class="headerlink" title="（三）同类结构、同一把刀原则"></a>（三）同类结构、同一把刀原则</h3><ul>
+<li>零件上结构相似、可用同一把刀加工的内容（如同类外圆面、内腔曲面、槽等）划分为一道工序。</li>
+<li>数控车刀架可装多把刀、通过旋转换刀；按结构分组用刀，可减少定位误差和换刀次数。</li>
+</ul>
+<h3 id="（四）粗加工、精加工分开原则"><a href="#（四）粗加工、精加工分开原则" class="headerlink" title="（四）粗加工、精加工分开原则"></a>（四）粗加工、精加工分开原则</h3><ul>
+<li>粗加工余量大、切削力大，工件容易变形，粗加工后常需校形，故粗、精加工应分为两道工序。</li>
+<li>两道工序可采用不同刀具和切削用量；单件小批量、毛坯余量大、加工精度要求高时也应分开。</li>
+<li>可进一步分为粗车、半精车、精车，或粗车在一台机床、其余交另一台机床完成。</li>
+</ul>
+<h2 id="四、工序划分实例——手柄零件"><a href="#四、工序划分实例——手柄零件" class="headerlink" title="四、工序划分实例——手柄零件"></a>四、工序划分实例——手柄零件</h2><h3 id="（一）零件与生产条件"><a href="#（一）零件与生产条件" class="headerlink" title="（一）零件与生产条件"></a>（一）零件与生产条件</h3><ul>
+<li>零件为典型手柄（类似吊钩的老图样），采用直径 φ32 mm 棒料。</li>
+<li>生产条件：批量加工，但只有一台数控车床，其余为普通（手动）车床。</li>
+</ul>
+<h3 id="（二）单件与批量的区别"><a href="#（二）单件与批量的区别" class="headerlink" title="（二）单件与批量的区别"></a>（二）单件与批量的区别</h3><ul>
+<li>若只加工一件，可一次装夹，在同一台车床上完成粗、精加工（圆弧部分用数控或手工车削均可，因其仍为规则圆弧）。</li>
+<li>批量生产（如一年两三千件）时，为合理分工、提高效率，应划分工序。</li>
+</ul>
+<h3 id="（三）工序安排"><a href="#（三）工序安排" class="headerlink" title="（三）工序安排"></a>（三）工序安排</h3><ul>
+<li><strong>第一道工序</strong>：夹住棒料，先用普通车床手工车出手柄柱等横平竖直部分（φ22、φ12、φ20）；粗车时把台阶往圆弧方向多拉一些，并车一个约 30°&#x2F;60° 的锥面（不碰到最终圆弧轮廓），为后续加工圆弧去除多余材料；再用切断刀切下。</li>
+<li>该道一般需端面刀、外圆刀、切断刀；精度要求不高、无公差时端面可由外圆刀兼做，两把刀即可。</li>
+<li><strong>第二道工序</strong>：反过来用三爪卡盘夹住手柄柱，把复杂的圆弧曲面交给数控车床，先粗车去除余量、再精车轮廓。</li>
+</ul>
+<p>该划分主要依据”一次安装可加工内容为一道工序”的原则；圆弧复杂部分交给数控设备，简单规则部分用普通机床，符合设备有限条件下的合理分工。</p>
+<h2 id="五、加工工序的安排（工艺路线）"><a href="#五、加工工序的安排（工艺路线）" class="headerlink" title="五、加工工序的安排（工艺路线）"></a>五、加工工序的安排（工艺路线）</h2><table>
+<thead>
+<tr>
+<th>顺序原则</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>先加工定位面</td>
+<td>定位面先加工，可作为后续工序的精基准（基准统一）；制定工艺路线时常从最后一道工序往前推，使前道工序为后道提供基准。</td>
+</tr>
+<tr>
+<td>先面后孔</td>
+<td>先加工平面、后加工孔；平面面积大、切削受力大易变形，若先加工孔会影响孔的精度。</td>
+</tr>
+<tr>
+<td>先粗后精</td>
+<td>先进行粗加工、后进行精加工，逐步提高精度。</td>
+</tr>
+<tr>
+<td>相同装夹连续进行</td>
+<td>定位、夹紧方式相同的工序应连续安排，减少重复定位与夹紧次数。</td>
+</tr>
+<tr>
+<td>合理穿插通用机床</td>
+<td>若工序中穿插有普通（通用）机床加工，应综合考虑其在工艺路线中的合理位置。</td>
+</tr>
+</tbody></table>
+<h2 id="六、工步的划分与工步顺序"><a href="#六、工步的划分与工步顺序" class="headerlink" title="六、工步的划分与工步顺序"></a>六、工步的划分与工步顺序</h2><p>一道工序内，可采用不同刀具、或同一把刀配不同切削用量（转速、进给等），从而划分不同工步。工步顺序主要考虑以下几点。</p>
+<table>
+<thead>
+<tr>
+<th>工步原则</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>先粗后精</td>
+<td>对各表面先全部粗加工，去除大部分余量并留精加工余量，再进行半精、精加工，整体效率高。</td>
+</tr>
+<tr>
+<td>先近后远</td>
+<td>先加工离对刀点近的部位、后加工远的部位，缩短刀具移动距离；车削时有利于保持工件刚性、改善散热条件。</td>
+</tr>
+<tr>
+<td>内外交叉</td>
+<td>内外表面都加工且精度要求较高时，按”内孔粗加工→外圆粗加工→内孔半精&#x2F;精加工→外圆半精&#x2F;精加工”交替进行；内孔刀刚性差、排屑困难，难控制的部位先做。</td>
+</tr>
+<tr>
+<td>刀具集中</td>
+<td>一把刀尽可能完成相应加工内容后再换刀，减少空行程和换刀时间。</td>
+</tr>
+</tbody></table>
+<h2 id="七、轴类零件综合编程实例（外圆-槽-螺纹）"><a href="#七、轴类零件综合编程实例（外圆-槽-螺纹）" class="headerlink" title="七、轴类零件综合编程实例（外圆 + 槽 + 螺纹）"></a>七、轴类零件综合编程实例（外圆 + 槽 + 螺纹）</h2><h3 id="（一）加工准备"><a href="#（一）加工准备" class="headerlink" title="（一）加工准备"></a>（一）加工准备</h3><ul>
+<li>该零件为精加工（连波纹都要求车出），结构不复杂，可在一次装夹、一道工序内完成。</li>
+<li>步骤：制定工艺路线 → 选择刀具 → 选择切削用量（查表）→ 编写加工程序。</li>
+</ul>
+<h3 id="（二）工步（工艺路线）"><a href="#（二）工步（工艺路线）" class="headerlink" title="（二）工步（工艺路线）"></a>（二）工步（工艺路线）</h3><ul>
+<li><strong>车端面</strong>：一般粗车一道即可，无长度&#x2F;公差要求时不必再精车。</li>
+<li><strong>外圆面精加工</strong>：用一把 90° 外圆刀（或弯头刀）完成所有外圆面。</li>
+<li><strong>切槽</strong>：车螺纹前先用切槽刀切出退刀槽。</li>
+<li><strong>车螺纹</strong>：最后换螺纹刀车削螺纹。</li>
+</ul>
+<h3 id="（三）刀具布置"><a href="#（三）刀具布置" class="headerlink" title="（三）刀具布置"></a>（三）刀具布置</h3><ul>
+<li>外圆刀放一号位、切槽（切断）刀放二号位、螺纹刀放三号位；刀架旋转依次换刀。</li>
+<li>各刀刀位点位置不同（如螺纹刀刀尖距侧面有偏移），应通过刀补（如 <code>T0101</code>）修正刀尖实际位置。</li>
+<li>因涉及三把刀，程序中必须写明刀具、切削液等，以便区分各刀。</li>
+</ul>
+<h3 id="（四）螺纹大径（光杆直径）的计算"><a href="#（四）螺纹大径（光杆直径）的计算" class="headerlink" title="（四）螺纹大径（光杆直径）的计算"></a>（四）螺纹大径（光杆直径）的计算</h3><ul>
+<li>以 M48×1.5 为例，车螺纹前的光杆（大径）≈ 公称直径 − 0.1×螺距 &#x3D; 48 − 0.1×1.5 &#x3D; 47.85，习惯往下取 <strong>47.8</strong>。</li>
+<li>程序起点 X 必须填 47.8 而不是 48，这是最容易出错的地方。</li>
+</ul>
+<h3 id="（五）外圆面走刀要点（易错点）"><a href="#（五）外圆面走刀要点（易错点）" class="headerlink" title="（五）外圆面走刀要点（易错点）"></a>（五）外圆面走刀要点（易错点）</h3><ul>
+<li>快速定位到基点 A：<code>X47.8</code>、<code>Z292</code> 附近。</li>
+<li>槽未切前，外圆刀直接滑过槽区，如 <code>W-59</code>（X 不变）。</li>
+<li>经过槽处要先抬刀：由 X47.8 抬到 X50，再继续走锥面，避免切到槽——槽附近的小台阶最易忽略。</li>
+<li>锥面可用增量，如 <code>X62 W-60</code>；倒角 C1 处 <code>X78</code>（1×45°）。</li>
+<li>倒角后长度要相应减少，如 <code>W-19</code>（不是 20，因已走倒角）。</li>
+<li>R70 圆弧：先判断顺&#x2F;逆圆——本例坐标下 Y 正方向朝里，从正方向往负方向观察为顺时针，用 G02；可用圆心坐标或半径编程。</li>
+<li>端面不车，最后 G00 快速退回安全位置。</li>
+</ul>
+<h3 id="（六）换刀与切槽"><a href="#（六）换刀与切槽" class="headerlink" title="（六）换刀与切槽"></a>（六）换刀与切槽</h3><ul>
+<li>换刀动作：注销当前刀补、关主轴（M05）、关切削液 → 换二号刀 → 重新指定转速（切槽可低一些，如 200）、开切削液。</li>
+<li>切槽定位 X 略高于台阶（如 X51，高于 50 防撞），Z 定位到槽位置。</li>
+<li>槽宽 3、底径 45（3×45）：槽刀本身宽 3 mm，直接径向进给到 X45 即可，不需走刀扩槽；尽量避免在同一零件上使用不同宽度的槽刀。</li>
+</ul>
+<h3 id="（七）G04-暂停（光整槽底）"><a href="#（七）G04-暂停（光整槽底）" class="headerlink" title="（七）G04 暂停（光整槽底）"></a>（七）G04 暂停（光整槽底）</h3><ul>
+<li>若刀具一边转动一边连续径向进给，槽底会呈螺旋状；需要在进给到槽底后用 G04 暂停，主轴继续转动、停止进给，以修整出整圈等深的槽。</li>
+<li>G04 为暂停（dwell）指令，如 <code>G04 X5</code> 表示暂停约 5 秒；注意部分低档系统中 X 后面单位为毫秒，多数常见系统以秒计，应以机床说明书为准。</li>
+<li>暂停结束后退刀。</li>
+</ul>
+<h3 id="（八）G92-螺纹车削"><a href="#（八）G92-螺纹车削" class="headerlink" title="（八）G92 螺纹车削"></a>（八）G92 螺纹车削</h3><ul>
+<li>换三号螺纹刀、降低转速，G00 定位到螺纹起点（如 <code>X47.8</code>、<code>Z252</code>）。</li>
+<li>用 G92（西门子为 G33）螺纹循环，F 后写螺距 1.5（不是进给速度）。</li>
+<li>分次走刀（直径背吃刀量依次递减）：</li>
+</ul>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs text">48 - 0.8  = 47.2<br>47.2 - 0.6 = 46.6<br>46.6 - 0.4 = 46.2<br>46.2 - 0.16 = 46.04<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>空刀导入量取 2～5 个螺距、导出量取 1～2 个螺距（本例槽宽有限，取约 1.5）。</li>
+<li>可校验螺纹小径：约 48 − 1.3×1.5 &#x3D; 46.05，与 46.04 基本一致。</li>
+</ul>
+<blockquote>
+<p><strong>易错点汇总：轴类综合实例</strong></p>
+<ol>
+<li>螺纹光杆大径是 47.8，不是 48。</li>
+<li>槽附近要先抬刀（47.8→50），不要直接连到锥面。</li>
+<li>倒角 C1 后长度减 1（W-19 而非 W-20）。</li>
+<li>切槽到 X45 后用 G04 暂停光整槽底。</li>
+<li>螺纹分次背吃刀量 0.8&#x2F;0.6&#x2F;0.4&#x2F;0.16，F 为螺距 1.5。</li>
+<li>三把刀要分别写换刀、转速、切削液，并用刀补修正刀位点。</li>
+</ol>
+</blockquote>
+<h2 id="八、全文小结"><a href="#八、全文小结" class="headerlink" title="八、全文小结"></a>八、全文小结</h2><ul>
+<li><strong>G71 复合粗车循环</strong>：掌握 P、Q、U、W、D、F 的含义，粗车留余量、可分两行写并补退刀量。</li>
+<li><strong>工序划分四原则</strong>：一次安装、完整程序、同类同刀、粗精分开。</li>
+<li><strong>工序安排</strong>：先定位面、先面后孔、先粗后精、相同装夹连续、合理穿插通用机床。</li>
+<li><strong>工步顺序</strong>：先粗后精、先近后远、内外交叉、刀具集中。</li>
+<li><strong>综合编程</strong>：会安排端面—外圆—切槽—螺纹的顺序，正确计算螺纹大径&#x2F;小径，使用 G04 暂停，灵活混用绝对（X&#x2F;Z）与增量（U&#x2F;W）坐标。</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E6%8E%A7%E7%BC%96%E7%A8%8B-%E8%BD%A6%E5%89%8A-G71-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/" class="print-no-link">#数控编程 车削 G71 课堂笔记</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>数控车削 G71 复合粗车循环与轴类综合实例</div>
+      <div>https://tdexxx.github.io/2026/10/15/01_数控加工工艺与编程/数控加工工艺与编程_车削G71复合循环_课堂笔记/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>tdexxx</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年10月15日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/10/15/01_%E6%95%B0%E6%8E%A7%E5%8A%A0%E5%B7%A5%E5%B7%A5%E8%89%BA%E4%B8%8E%E7%BC%96%E7%A8%8B/%E6%95%B0%E6%8E%A7%E5%8A%A0%E5%B7%A5%E5%B7%A5%E8%89%BA%E4%B8%8E%E7%BC%96%E7%A8%8B%C2%B7%E9%80%90%E7%82%B9%E6%AF%94%E8%BE%83%E6%B3%95%E6%8F%92%E8%A1%A5%E5%8E%9F%E7%90%86%EF%BC%88%E7%9B%B4%E7%BA%BF%E4%B8%8E%E5%9C%86%E5%BC%A7%EF%BC%89+%E5%8A%A0%E5%B7%A5%E4%B8%AD%E5%BF%83%E7%A8%8B%E5%BA%8F%E5%8D%95%E4%B8%8E%E8%87%AA%E5%8A%A8%E7%BC%96%E7%A8%8B%20CSDN%E5%8F%91%E5%B8%83%E7%A8%BF/" title="逐点比较法插补原理与加工中心程序单、自动编程">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">逐点比较法插补原理与加工中心程序单、自动编程</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/10/15/01_%E6%95%B0%E6%8E%A7%E5%8A%A0%E5%B7%A5%E5%B7%A5%E8%89%BA%E4%B8%8E%E7%BC%96%E7%A8%8B/%E6%95%B0%E6%8E%A7%E5%8A%A0%E5%B7%A5%E5%B7%A5%E8%89%BA%E4%B8%8E%E7%BC%96%E7%A8%8B_%E8%BD%A6%E5%89%8A%E7%BC%96%E7%A8%8B_%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/" title="数控车削编程知识点总结：G71 与工序工步划分">
+                        <span class="hidden-mobile">数控车削编程知识点总结：G71 与工序工步划分</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

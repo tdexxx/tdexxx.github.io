@@ -1,0 +1,1297 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="tdexxx">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="课程笔记｜机械设计｜带传动与链传动原理及设计课程信息   项目 内容    日期 待确认（逐字稿未提供）   课程&#x2F;章节 机械设计 — 带传动与链传动（教材第6章）   使用材料 课堂录音逐字稿（1份，含大量口语噪声）   整理范围 完整授课内容；已剔除学生闲聊、转写噪声和无关对话   教材引用 教材57–73页（表6-2至表6-7、公式6-13至6-21等）    说明：本笔记基于单一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="带传动与链传动原理及设计课堂笔记（版本 2）">
+<meta property="og:url" content="https://tdexxx.github.io/2026/10/15/04_%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1_%E5%B8%A6%E4%BC%A0%E5%8A%A8%E4%B8%8E%E9%93%BE%E4%BC%A0%E5%8A%A8%E5%8E%9F%E7%90%86%E5%8F%8A%E8%AE%BE%E8%AE%A1_%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E7%89%88%E6%9C%AC2%EF%BC%89/index.html">
+<meta property="og:site_name" content="tdexxx的博客">
+<meta property="og:description" content="课程笔记｜机械设计｜带传动与链传动原理及设计课程信息   项目 内容    日期 待确认（逐字稿未提供）   课程&#x2F;章节 机械设计 — 带传动与链传动（教材第6章）   使用材料 课堂录音逐字稿（1份，含大量口语噪声）   整理范围 完整授课内容；已剔除学生闲聊、转写噪声和无关对话   教材引用 教材57–73页（表6-2至表6-7、公式6-13至6-21等）    说明：本笔记基于单一">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-10-15T14:03:47.000Z">
+<meta property="article:modified_time" content="2026-10-30T17:37:19.952Z">
+<meta property="article:author" content="tdexxx">
+<meta property="article:tag" content="机械设计 带传动 链传动 课堂笔记">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>带传动与链传动原理及设计课堂笔记（版本 2） - tdexxx的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"tdexxx.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2022-12-10T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="带传动与链传动原理及设计课堂笔记（版本 2）"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-10-15 22:03" pubdate>
+          2026年10月15日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          52 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">带传动与链传动原理及设计课堂笔记（版本 2）</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="课程笔记｜机械设计｜带传动与链传动原理及设计"><a href="#课程笔记｜机械设计｜带传动与链传动原理及设计" class="headerlink" title="课程笔记｜机械设计｜带传动与链传动原理及设计"></a>课程笔记｜机械设计｜带传动与链传动原理及设计</h1><h2 id="课程信息"><a href="#课程信息" class="headerlink" title="课程信息"></a>课程信息</h2><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>日期</td>
+<td>待确认（逐字稿未提供）</td>
+</tr>
+<tr>
+<td>课程&#x2F;章节</td>
+<td>机械设计 — 带传动与链传动（教材第6章）</td>
+</tr>
+<tr>
+<td>使用材料</td>
+<td>课堂录音逐字稿（1份，含大量口语噪声）</td>
+</tr>
+<tr>
+<td>整理范围</td>
+<td>完整授课内容；已剔除学生闲聊、转写噪声和无关对话</td>
+</tr>
+<tr>
+<td>教材引用</td>
+<td>教材57–73页（表6-2至表6-7、公式6-13至6-21等）</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>说明：本笔记基于单一转写稿整理，无课件和板书交叉核对。转写中存在较多同音词错误和数字识别错误，关键公式和数字已标注 <code>[待核对]</code>，请对照教材核实。</p>
+</blockquote>
+<hr>
+<h2 id="一、核心结论"><a href="#一、核心结论" class="headerlink" title="一、核心结论"></a>一、核心结论</h2><ol>
+<li><strong>带传动的有效拉力</strong>等于紧边拉力与松边拉力之差：$F &#x3D; F_1 - F_2$；紧边与松边拉力满足 $F_1 + F_2 &#x3D; 2F_0$（$F_0$ 为初拉力）。[转写 行17–19, 27]</li>
+<li><strong>欧拉公式</strong>描述临界打滑时紧松边拉力比：$F_1&#x2F;F_2 &#x3D; e^{f\alpha}$，其中 $\alpha$ 必须用<strong>弧度</strong>代入。[转写 行19, 33]</li>
+<li><strong>带中存在三种应力</strong>：拉应力（紧边&#x2F;松边不同）、弯曲应力（仅在包角范围内，小带轮更大）、离心应力（处处相等）；最大应力发生在<strong>小带轮紧边入口处</strong>：$\sigma_{\max} &#x3D; \sigma_1 + \sigma_{b1} + \sigma_c$。[转写 行39–81]</li>
+<li><strong>带传动的两种失效形式</strong>：打滑（过载引起，可避免）和疲劳破坏（应力循环引起，不可避免但可延缓）。[转写 行88–91]</li>
+<li><strong>弹性滑动是带传动固有特性，不可避免</strong>；其根本原因是带的弹性变形 + 紧松边拉力差，导致从动轮圆周速度低于主动轮。打滑则是过载引起的全面滑动，可通过降低载荷避免。[转写 行93–114, 125]</li>
+<li><strong>V带设计准则</strong>：在保证不打滑的前提下，使带具有足够的疲劳强度和寿命。设计流程为：计算功率 → 选型号 → 定直径 → 验算带速 → 初选中心距与带长 → 验算包角 → 算根数 → 算初拉力和轴上力。[转写 行125–191]</li>
+<li><strong>链传动无弹性滑动</strong>，故平均传动比准确，但瞬时传动比不恒定；能在高温、多尘等恶劣环境工作，但噪声较大、有冲击。[转写 行215–221]</li>
+</ol>
+<hr>
+<h2 id="二、知识结构"><a href="#二、知识结构" class="headerlink" title="二、知识结构"></a>二、知识结构</h2><pre><code class=" mermaid">flowchart TD
+    A[带传动与链传动] --&gt; B[带传动力分析]
+    A --&gt; C[带的应力分析]
+    A --&gt; D[失效形式]
+    A --&gt; E[弹性滑动与打滑]
+    A --&gt; F[V带传动设计]
+    A --&gt; G[带轮设计与维护]
+    A --&gt; H[链传动简介]
+
+    B --&gt; B1[有效拉力 F=F1-F2]
+    B --&gt; B2[初拉力关系 F1+F2=2F0]
+    B --&gt; B3[欧拉公式 F1/F2=e^fα]
+    B --&gt; B4[功率 P=Fv/1000]
+
+    C --&gt; C1[拉应力 σ1/σ2]
+    C --&gt; C2[弯曲应力 σb ∝ 1/D]
+    C --&gt; C3[离心应力 σc=qv²/A 处处相等]
+    C --&gt; C4[σmax 在小带轮紧边]
+
+    D --&gt; D1[打滑 — 过载 可避免]
+    D --&gt; D2[疲劳破坏 — 应力循环]
+
+    E --&gt; E1[弹性滑动 不可避免]
+    E --&gt; E2[打滑 可避免]
+    E --&gt; E3[滑动率 ε 1%~2%]
+
+    F --&gt; F1[Pca=KA·P]
+    F --&gt; F2[选型号 A/B/C...]
+    F --&gt; F3[定 d1/d2 验算 v]
+    F --&gt; F4[选中心距和带长]
+    F --&gt; F5[算根数 z/初拉力 F0/轴上力 FQ]
+
+    H --&gt; H1[滚子链]
+    H --&gt; H2[齿形链 更平稳]
+</code></pre>
+
+<hr>
+<h2 id="三、详细笔记"><a href="#三、详细笔记" class="headerlink" title="三、详细笔记"></a>三、详细笔记</h2><h3 id="3-1-带传动的力分析（复习）"><a href="#3-1-带传动的力分析（复习）" class="headerlink" title="3.1 带传动的力分析（复习）"></a>3.1 带传动的力分析（复习）</h3><h4 id="三个基本公式"><a href="#三个基本公式" class="headerlink" title="三个基本公式"></a>三个基本公式</h4><p>带传动正常工作时，存在以下关系 [转写 行17–19, 27]：</p>
+<ol>
+<li><p><strong>有效拉力（圆周力）</strong>：<br>$$F &#x3D; F_1 - F_2$$<br>其中 $F_1$ 为紧边拉力，$F_2$ 为松边拉力。</p>
+</li>
+<li><p><strong>初拉力关系</strong>：<br>$$F_1 + F_2 &#x3D; 2F_0$$<br>其中 $F_0$ 为初拉力（安装时的预紧力）。</p>
+</li>
+<li><p><strong>欧拉公式（临界打滑状态）</strong>：<br>$$\frac{F_1}{F_2} &#x3D; e^{f\alpha}$$</p>
+<ul>
+<li>$f$ 为当量摩擦系数（V带用当量摩擦系数 $f_v$）</li>
+<li>$\alpha$ 为包角，<strong>必须用弧度代入</strong>：$\alpha(\text{rad}) &#x3D; \alpha(°) \times \frac{\pi}{180}$ [转写 行33]</li>
+<li>因 $e^{f\alpha} &gt; 1$，故 $F_1 &gt; F_2$。</li>
+</ul>
+</li>
+</ol>
+<h4 id="功率与力的关系"><a href="#功率与力的关系" class="headerlink" title="功率与力的关系"></a>功率与力的关系</h4><p>$$P &#x3D; \frac{Fv}{1000} \quad (\text{kW})$$<br>其中 $v$ 为带速（m&#x2F;s），$F$ 为有效拉力（N）。[转写 行27]</p>
+<blockquote>
+<p>教师强调：欧拉公式只需”有印象”，实际计算时会提供；三个基本公式（$F&#x3D;F_1-F_2$、$F_1+F_2&#x3D;2F_0$、$P&#x3D;Fv&#x2F;1000$）要求记忆。[转写 行37]</p>
+</blockquote>
+<h3 id="3-2-带的应力分析"><a href="#3-2-带的应力分析" class="headerlink" title="3.2 带的应力分析"></a>3.2 带的应力分析</h3><p>带在运转过程中受三种应力 [转写 行39–73]：</p>
+<h4 id="1-拉应力"><a href="#1-拉应力" class="headerlink" title="(1) 拉应力"></a>(1) 拉应力</h4><p>$$\sigma_1 &#x3D; \frac{F_1}{A}, \quad \sigma_2 &#x3D; \frac{F_2}{A}$$</p>
+<ul>
+<li>$A$ 为带的横截面积</li>
+<li>紧边拉应力 $\sigma_1$ &gt; 松边拉应力 $\sigma_2$</li>
+<li>沿带长分布：紧边段为 $\sigma_1$，经过小带轮包角时逐渐减小至 $\sigma_2$；松边段为 $\sigma_2$，经过大带轮包角时逐渐增大回 $\sigma_1$ [转写 行57–63]</li>
+</ul>
+<h4 id="2-弯曲应力"><a href="#2-弯曲应力" class="headerlink" title="(2) 弯曲应力"></a>(2) 弯曲应力</h4><p>$$\sigma_b &#x3D; \frac{E \cdot h}{D}$$</p>
+<ul>
+<li>$E$ 为带的弹性模量，$h$ 为带的厚度，$D$ 为带轮基准直径</li>
+<li><strong>仅在带与带轮接触的包角范围内存在</strong> [转写 行75]</li>
+<li>$\sigma_b$ 与 $D$ 成反比：<strong>小带轮的弯曲应力大于大带轮</strong>（$\sigma_{b1} &gt; \sigma_{b2}$）[转写 行47, 79]</li>
+<li>在同一带轮的包角范围内，弯曲应力幅值相等 [转写 行55]</li>
+</ul>
+<h4 id="3-离心应力"><a href="#3-离心应力" class="headerlink" title="(3) 离心应力"></a>(3) 离心应力</h4><p>$$\sigma_c &#x3D; \frac{q v^2}{A}$$</p>
+<ul>
+<li>$q$ 为带的单位长度质量（kg&#x2F;m），由带型号决定（如A型带 $q \approx 0.15$ kg&#x2F;m）[转写 行49, 191]</li>
+<li><strong>沿带长处处相等</strong>，因为带速 $v$ 和 $q$ 均为常量 [转写 行51, 73]</li>
+</ul>
+<h4 id="最大应力位置"><a href="#最大应力位置" class="headerlink" title="最大应力位置"></a>最大应力位置</h4><p>$$\sigma_{\max} &#x3D; \sigma_1 + \sigma_{b1} + \sigma_c$$</p>
+<p>发生在<strong>带进入小带轮的紧边入口处</strong>。原因 [转写 行65–81]：</p>
+<ul>
+<li>该位置紧边拉力 $F_1$ 最大 → 拉应力最大</li>
+<li>小带轮直径 $d_1$ 最小 → 弯曲应力最大</li>
+<li>离心应力处处相等，叠加后总应力最大</li>
+</ul>
+<blockquote>
+<p>带上任一点随带循环运动，每经过一圈应力就变化一次，循环到一定次数即发生<strong>疲劳破坏</strong>。[转写 行81–87]</p>
+</blockquote>
+<h3 id="3-3-带传动的失效形式"><a href="#3-3-带传动的失效形式" class="headerlink" title="3.3 带传动的失效形式"></a>3.3 带传动的失效形式</h3><table>
+<thead>
+<tr>
+<th>失效形式</th>
+<th>产生原因</th>
+<th>能否避免</th>
+<th>后果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>打滑</strong></td>
+<td>有效圆周力 &gt; 极限摩擦力之和（过载）</td>
+<td>可避免（降低载荷&#x2F;增大摩擦）</td>
+<td>加剧磨损，传动失效</td>
+</tr>
+<tr>
+<td><strong>疲劳破坏</strong></td>
+<td>应力循环次数超过极限</td>
+<td>不可避免，可延缓（降低应力&#x2F;选好材料）</td>
+<td>带断裂，传动失效</td>
+</tr>
+</tbody></table>
+<p>[转写 行88–91]</p>
+<h3 id="3-4-弹性滑动与打滑"><a href="#3-4-弹性滑动与打滑" class="headerlink" title="3.4 弹性滑动与打滑"></a>3.4 弹性滑动与打滑</h3><h4 id="弹性滑动的机理"><a href="#弹性滑动的机理" class="headerlink" title="弹性滑动的机理"></a>弹性滑动的机理</h4><p>带是弹性体，受拉力不同时弹性变形量不同 [转写 行93–101]：</p>
+<ul>
+<li><strong>小带轮侧</strong>：带从紧边进入（拉力 $F_1$），在包角内拉力逐渐降至 $F_2$，带逐渐收缩 → 带的速度<strong>逐渐小于</strong>小带轮圆周速度 $v_1$</li>
+<li><strong>大带轮侧</strong>：带从松边进入（拉力 $F_2$），在包角内拉力逐渐增至 $F_1$，带逐渐伸长 → 带的速度<strong>逐渐大于</strong>大带轮圆周速度 $v_2$</li>
+</ul>
+<p>因此带与带轮之间产生微量相对滑动，称为<strong>弹性滑动</strong>。</p>
+<h4 id="速度关系"><a href="#速度关系" class="headerlink" title="速度关系"></a>速度关系</h4><p>$$v_1 &gt; v &gt; v_2$$</p>
+<ul>
+<li>$v_1$：主动轮（小带轮）圆周速度</li>
+<li>$v$：带的实际速度（在包角内变化）</li>
+<li>$v_2$：从动轮（大带轮）圆周速度</li>
+<li>从动轮速度<strong>落后于</strong>主动轮 [转写 行103–117]</li>
+</ul>
+<h4 id="滑动率与传动比"><a href="#滑动率与传动比" class="headerlink" title="滑动率与传动比"></a>滑动率与传动比</h4><p>滑动率 $\varepsilon$ 定量描述弹性滑动程度：<br>$$\varepsilon &#x3D; \frac{v_1 - v_2}{v_1} \times 100%$$</p>
+<p>一般 $\varepsilon &#x3D; 1% \sim 2%$，计算传动比时通常可忽略。[转写 行121–123]</p>
+<p>考虑滑动率时的传动比：<br>$$i &#x3D; \frac{n_1}{n_2} &#x3D; \frac{d_2}{d_1(1-\varepsilon)}$$<br>（教材公式6-21，具体形式请对照教材核实 [待核对]）</p>
+<h4 id="弹性滑动-vs-打滑"><a href="#弹性滑动-vs-打滑" class="headerlink" title="弹性滑动 vs 打滑"></a>弹性滑动 vs 打滑</h4><table>
+<thead>
+<tr>
+<th>对比项</th>
+<th>弹性滑动</th>
+<th>打滑</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>产生原因</td>
+<td>带的弹性变形 + 紧松边拉力差</td>
+<td>过载，有效力 &gt; 极限摩擦力</td>
+</tr>
+<tr>
+<td>发生范围</td>
+<td>包角内局部微量滑动</td>
+<td>整个接触面全面滑动</td>
+</tr>
+<tr>
+<td>能否避免</td>
+<td><strong>不可避免</strong>（固有特性）</td>
+<td><strong>可避免</strong>（降低载荷即可）</td>
+</tr>
+<tr>
+<td>后果</td>
+<td>速度损失、少量发热</td>
+<td>严重磨损、传动失效</td>
+</tr>
+</tbody></table>
+<p>[转写 行113–114, 125]</p>
+<h3 id="3-5-V带传动设计"><a href="#3-5-V带传动设计" class="headerlink" title="3.5 V带传动设计"></a>3.5 V带传动设计</h3><h4 id="设计准则"><a href="#设计准则" class="headerlink" title="设计准则"></a>设计准则</h4><p>在保证<strong>不打滑</strong>的前提下，使带具有足够的<strong>疲劳强度和寿命</strong>。[转写 行127]</p>
+<h4 id="单根V带基本额定功率-P-0"><a href="#单根V带基本额定功率-P-0" class="headerlink" title="单根V带基本额定功率 $P_0$"></a>单根V带基本额定功率 $P_0$</h4><p>基于临界打滑条件和疲劳强度条件推导得出，具体数值查表（教材表6-4）。$P_0$ 与带型号、小带轮直径 $d_1$、小带轮转速 $n_1$ 有关。[转写 行129–139]</p>
+<h4 id="设计步骤"><a href="#设计步骤" class="headerlink" title="设计步骤"></a>设计步骤</h4><p><strong>第1步：计算计算功率</strong><br>$$P_{ca} &#x3D; K_A \cdot P$$</p>
+<ul>
+<li>$K_A$ 为工作情况系数，查表6-6（根据原动机类型、载荷变动、每天工作时长选取）[转写 行141–143]</li>
+</ul>
+<p><strong>第2步：选择V带型号</strong><br>根据 $P_{ca}$ 和小带轮转速 $n_1$，查教材65页选型图，落在哪个区域就选对应型号（Y&#x2F;Z&#x2F;A&#x2F;B&#x2F;C&#x2F;D&#x2F;E）。[转写 行143]</p>
+<p><strong>第3步：确定带轮基准直径</strong></p>
+<ul>
+<li>小带轮 $d_1$：查教材表6-3选取标准值，且 $d_1 \geq d_{\min}$（如A型 $d_{\min}&#x3D;75$ mm，Z型 $d_{\min}&#x3D;50$ mm）[转写 行145, 161–163]</li>
+<li>大带轮 $d_2$：由传动比计算<br>$$d_2 &#x3D; d_1 \cdot \frac{n_1}{n_2} \cdot (1-\varepsilon)$$<br>建议取 $\varepsilon \approx 2%$ [转写 行147, 167]</li>
+</ul>
+<p><strong>第4步：验算带速</strong><br>$$v &#x3D; \frac{\pi d_1 n_1}{60 \times 1000} \quad (\text{m&#x2F;s})$$<br>要求 $5 \leq v \leq 25$ m&#x2F;s。若 $v &gt; 25$，减小 $d_1$；若 $v &lt; 5$，增大 $d_1$。[转写 行145–146, 169–171]</p>
+<p><strong>第5步：初选中心距和基准长度</strong></p>
+<ul>
+<li>初选中心距 $a_0$，经验范围：<br>$$0.7(d_1 + d_2) \leq a_0 \leq 2(d_1 + d_2)$$<br>[转写 行173]</li>
+<li>计算带的基准长度：<br>$$L_d \approx 2a_0 + \frac{\pi}{2}(d_1 + d_2) + \frac{(d_2 - d_1)^2}{4a_0}$$<br>[待核对：转写中未给出完整公式，此为标准公式]</li>
+<li>查教材表6-2（58页）选取最接近的标准基准长度 $L_d$ [转写 行149–151, 175]</li>
+</ul>
+<p><strong>第6步：计算实际中心距</strong><br>$$a \approx a_0 + \frac{L_d - L_{d0}}{2}$$<br>[待核对：转写中未明确公式形式]</p>
+<p><strong>第7步：验算小带轮包角</strong><br>$$\alpha_1 &#x3D; 180° - \frac{d_2 - d_1}{a} \times 57.3°$$<br>一般要求 $\alpha_1 \geq 120°$ [转写 行177]</p>
+<p><strong>第8步：计算V带根数</strong><br>$$z &#x3D; \frac{P_{ca}}{(P_0 + \Delta P_0) K_\alpha K_L}$$</p>
+<ul>
+<li>$P_0$：单根带基本额定功率（表6-4）</li>
+<li>$\Delta P_0$：传动比 $i \neq 1$ 时的功率增量（表6-5）</li>
+<li>$K_\alpha$：包角系数（表6-7，67页）</li>
+<li>$K_L$：带长系数（表6-2，58页）</li>
+<li>根数 $z$ 应<strong>向上取整</strong>（如算得3.66则取4）[转写 行177–189]</li>
+</ul>
+<p><strong>第9步：计算初拉力</strong><br>$$F_0 &#x3D; 500 \cdot \frac{P_{ca}}{zv} \left(\frac{2.5}{K_\alpha} - 1\right) + qv^2$$<br>[待核对：转写中未完整写出公式，此为标准公式形式]</p>
+<ul>
+<li>$q$ 为带单位长度质量（表6-1，57页），如A型带 $q &#x3D; 0.15$ kg&#x2F;m [转写 行191]</li>
+</ul>
+<p><strong>第10步：计算轴上载荷</strong><br>$$F_Q &#x3D; 2zF_0 \sin\frac{\alpha_1}{2}$$<br>用于后续轴的设计校核。[转写 行191]</p>
+<h3 id="3-6-带轮设计"><a href="#3-6-带轮设计" class="headerlink" title="3.6 带轮设计"></a>3.6 带轮设计</h3><h4 id="材料"><a href="#材料" class="headerlink" title="材料"></a>材料</h4><table>
+<thead>
+<tr>
+<th>材料</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>铸铁（HT150&#x2F;HT200）</td>
+<td>最常用，铸造性好</td>
+</tr>
+<tr>
+<td>铸钢</td>
+<td>速度较高时</td>
+</tr>
+<tr>
+<td>铸铝 &#x2F; 塑料</td>
+<td>小功率场合</td>
+</tr>
+</tbody></table>
+<p>[转写 行193]</p>
+<h4 id="结构组成"><a href="#结构组成" class="headerlink" title="结构组成"></a>结构组成</h4><p>带轮由三部分组成 [转写 行195–198]：</p>
+<ul>
+<li><strong>轮缘</strong>：最外圈，与带接触的部分（有轮槽）</li>
+<li><strong>轮毂</strong>：中间与轴配合的部分</li>
+<li><strong>轮辐</strong>：连接轮缘和轮毂的部分</li>
+</ul>
+<h4 id="结构形式"><a href="#结构形式" class="headerlink" title="结构形式"></a>结构形式</h4><table>
+<thead>
+<tr>
+<th>形式</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>实心式</td>
+<td>小直径带轮，中间全实心</td>
+</tr>
+<tr>
+<td>腹板式</td>
+<td>中等直径，轮辐为薄板</td>
+</tr>
+<tr>
+<td>孔板式</td>
+<td>在腹板式基础上打孔减重</td>
+</tr>
+<tr>
+<td>轮辐式</td>
+<td>大直径，类似汽车轮辐结构（最常见）</td>
+</tr>
+</tbody></table>
+<p>[转写 行199–201]</p>
+<h3 id="3-7-带传动的使用与维护"><a href="#3-7-带传动的使用与维护" class="headerlink" title="3.7 带传动的使用与维护"></a>3.7 带传动的使用与维护</h3><ul>
+<li>避免带与<strong>酸碱</strong>等腐蚀性物质接触 [转写 行201]</li>
+<li>避免<strong>暴晒</strong>，防止带老化变形 [转写 行201]</li>
+<li>更换带时应<strong>成组更换</strong>（同组带一起换），不能只换其中一根，类似电池要换就换一对 [转写 行201–203]</li>
+<li>同组带应尽量使用<strong>同品牌同型号</strong>，避免性能差异 [转写 行203]</li>
+<li>工作一段时间后带会松弛，需<strong>重新张紧</strong> [转写 行205–206]</li>
+<li>张紧装置：滑台式（通过移动电机位置调整中心距实现张紧）[转写 行207–209]</li>
+</ul>
+<h3 id="3-8-链传动简介"><a href="#3-8-链传动简介" class="headerlink" title="3.8 链传动简介"></a>3.8 链传动简介</h3><h4 id="同步带（带齿的带）"><a href="#同步带（带齿的带）" class="headerlink" title="同步带（带齿的带）"></a>同步带（带齿的带）</h4><p>带和带轮都有齿，靠啮合传动，传动比恒定。[转写 行213–214]</p>
+<h4 id="链传动的特点"><a href="#链传动的特点" class="headerlink" title="链传动的特点"></a>链传动的特点</h4><p><strong>优点</strong> [转写 行217]：</p>
+<ul>
+<li>无弹性滑动，<strong>平均传动比准确</strong></li>
+<li>不需要很大的张紧力，作用在轴上的力较小</li>
+<li>能在<strong>高温、多尘</strong>等恶劣环境下工作</li>
+</ul>
+<p><strong>缺点</strong> [转写 行219]：</p>
+<ul>
+<li><strong>瞬时传动比不恒定</strong>（注意：平均传动比准确 ≠ 瞬时传动比恒定）</li>
+<li>工作时<strong>噪声较大</strong></li>
+<li>突然加载时可能<strong>跳齿</strong>或断链（如久放的自行车猛踩）</li>
+<li>仅适用于<strong>两轴平行</strong>的场合</li>
+</ul>
+<h4 id="链的类型"><a href="#链的类型" class="headerlink" title="链的类型"></a>链的类型</h4><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>滚子链</strong></td>
+<td>最常见（如自行车链条），带滚子减少磨损</td>
+</tr>
+<tr>
+<td><strong>齿形链</strong>（无声链）</td>
+<td>齿形啮合，传动更平稳、噪声更小，但结构复杂、成本高</td>
+</tr>
+</tbody></table>
+<p>[转写 行221]</p>
+<hr>
+<h2 id="四、例题、案例或实验"><a href="#四、例题、案例或实验" class="headerlink" title="四、例题、案例或实验"></a>四、例题、案例或实验</h2><h3 id="例题1：教材73页习题6-3（力分析计算）"><a href="#例题1：教材73页习题6-3（力分析计算）" class="headerlink" title="例题1：教材73页习题6-3（力分析计算）"></a>例题1：教材73页习题6-3（力分析计算）</h3><p><strong>题设</strong> [转写 行21–23]：</p>
+<ul>
+<li>有效拉力 $F &#x3D; 412$ N [待核对：转写为”412 N”]</li>
+<li>主动轮直径 $d_1 &#x3D; 140$ mm</li>
+<li>主动轮转速 $n_1 &#x3D; 1440$ r&#x2F;min [待核对：转写中数字混乱”1441400440”]</li>
+<li>包角 $\alpha_1 &#x3D; 150°$</li>
+<li>当量摩擦系数 $f_v$ [待核对：转写中未给出具体值]</li>
+<li>求：$F_1$、$F_2$、$F$（或功率 $P$）</li>
+</ul>
+<p><strong>解题思路</strong> [转写 行27–35]：</p>
+<ol>
+<li>已知 $F &#x3D; F_1 - F_2$（有效拉力）</li>
+<li>已知 $F_1 + F_2 &#x3D; 2F_0$（初拉力关系）</li>
+<li>欧拉公式：$F_1&#x2F;F_2 &#x3D; e^{f_v \alpha_1}$（注意 $\alpha_1$ 转弧度）</li>
+<li>三个方程联立求解 $F_1$、$F_2$</li>
+<li>由 $P &#x3D; Fv&#x2F;1000$ 计算功率，其中 $v &#x3D; \pi d_1 n_1 &#x2F; (60 \times 1000)$</li>
+</ol>
+<blockquote>
+<p>教师说明：这是上节课内容的复习，欧拉公式只需有印象，实际计算会提供。[转写 行37]</p>
+</blockquote>
+<h3 id="例题2：V带传动完整设计例题"><a href="#例题2：V带传动完整设计例题" class="headerlink" title="例题2：V带传动完整设计例题"></a>例题2：V带传动完整设计例题</h3><p><strong>设计要求</strong> [转写 行155]：</p>
+<ul>
+<li>传递功率 $P &#x3D; 4$ kW</li>
+<li>小带轮转速 $n_1 &#x3D; 1440$ r&#x2F;min [待核对]</li>
+<li>大带轮转速 $n_2$ [待核对：转写中未明确，由传动比推算]</li>
+<li>每天工作16小时</li>
+<li>中心距尽量 $&lt; 650$ mm</li>
+<li>原动机：三相异步电动机，Y型连接，载荷变动较小</li>
+</ul>
+<p><strong>设计过程</strong> [转写 行157–191]：</p>
+<p><strong>① 计算功率</strong><br>$K_A &#x3D; 1.2$（查表6-6：空载起动电动机、载荷变动小、16h&#x2F;天）<br>$P_{ca} &#x3D; K_A \cdot P &#x3D; 1.2 \times 4 &#x3D; 4.8$ kW</p>
+<p><strong>② 选型号</strong><br>根据 $P_{ca}&#x3D;4.8$ kW 和 $n_1&#x3D;1440$ r&#x2F;min，查65页选型图 → 选 <strong>A型</strong> V带</p>
+<p><strong>③ 确定基准直径</strong><br>$d_1 &#x3D; 100$ mm（A型最小75 mm，选标准值100）<br>$d_2 &#x3D; d_1 \cdot \frac{n_1}{n_2} \cdot (1-\varepsilon)$，取 $\varepsilon&#x3D;2%$<br>[待核对：转写中 $d_2$ 具体数值未清晰给出]</p>
+<p><strong>④ 验算带速</strong><br>$v &#x3D; \frac{\pi d_1 n_1}{60 \times 1000} \approx 7.5$ m&#x2F;s<br>在 5~25 m&#x2F;s 范围内，合格。</p>
+<p><strong>⑤ 初选中心距与带长</strong><br>初选 $a_0 &#x3D; 450$ mm<br>计算得带长约 $L_d \approx 1650$ mm<br>查表6-2选标准值 → $L_d &#x3D; 1640$ mm</p>
+<p><strong>⑥ 实际中心距</strong><br>计算得 $a \approx 440$ mm，满足 $&lt; 650$ mm 的要求。</p>
+<p><strong>⑦ 包角</strong><br>$\alpha_1 \approx 147°$ [待核对：转写中提及]</p>
+<p><strong>⑧ 查系数并算根数</strong></p>
+<ul>
+<li>$P_0 &#x3D; 1.32$ kW（表6-4，A型，$d_1&#x3D;100$，$n_1&#x3D;1450$ 列）</li>
+<li>$\Delta P_0 \approx 0.16 \sim 0.17$ kW（表6-5，A型，$i \geq 2$，$n_1&#x3D;1450$）</li>
+<li>$K_\alpha \approx 0.90 \sim 0.92$（表6-7，$\alpha_1&#x3D;147°$）</li>
+<li>$K_L &#x3D; 0.99$（表6-2，$L_d&#x3D;1640$）</li>
+</ul>
+<p>$$z &#x3D; \frac{4.8}{(1.32 + 0.16) \times 0.91 \times 0.99} \approx 3.66 \rightarrow \text{取 } z &#x3D; 4$$</p>
+<p><strong>⑨ 初拉力与轴上力</strong></p>
+<ul>
+<li>$q &#x3D; 0.15$ kg&#x2F;m（A型带，表6-1）</li>
+<li>代入公式计算 $F_0$ [转写中未给出具体数值]</li>
+<li>计算轴上力 $F_Q &#x3D; 2zF_0\sin(\alpha_1&#x2F;2)$ [转写中未给出具体数值]</li>
+</ul>
+<blockquote>
+<p>教师说明：设计完带后还需进行带轮设计，以及后续轴的校核。[转写 行191–192]</p>
+</blockquote>
+<hr>
+<h2 id="五、术语、公式或关键表达"><a href="#五、术语、公式或关键表达" class="headerlink" title="五、术语、公式或关键表达"></a>五、术语、公式或关键表达</h2><h3 id="符号表"><a href="#符号表" class="headerlink" title="符号表"></a>符号表</h3><table>
+<thead>
+<tr>
+<th>符号</th>
+<th>含义</th>
+<th>单位</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$F_1$</td>
+<td>紧边拉力</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>$F_2$</td>
+<td>松边拉力</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>$F$</td>
+<td>有效拉力（圆周力）</td>
+<td>N</td>
+<td>$F &#x3D; F_1 - F_2$</td>
+</tr>
+<tr>
+<td>$F_0$</td>
+<td>初拉力</td>
+<td>N</td>
+<td>$F_1 + F_2 &#x3D; 2F_0$</td>
+</tr>
+<tr>
+<td>$P$</td>
+<td>传递功率</td>
+<td>kW</td>
+<td></td>
+</tr>
+<tr>
+<td>$P_{ca}$</td>
+<td>计算功率</td>
+<td>kW</td>
+<td>$P_{ca}&#x3D;K_A P$</td>
+</tr>
+<tr>
+<td>$P_0$</td>
+<td>单根V带基本额定功率</td>
+<td>kW</td>
+<td>查表</td>
+</tr>
+<tr>
+<td>$v$</td>
+<td>带速</td>
+<td>m&#x2F;s</td>
+<td>推荐 5~25</td>
+</tr>
+<tr>
+<td>$d_1, d_2$</td>
+<td>小&#x2F;大带轮基准直径</td>
+<td>mm</td>
+<td></td>
+</tr>
+<tr>
+<td>$\alpha_1$</td>
+<td>小带轮包角</td>
+<td>° 或 rad</td>
+<td>欧拉公式中用rad</td>
+</tr>
+<tr>
+<td>$\sigma_1, \sigma_2$</td>
+<td>紧&#x2F;松边拉应力</td>
+<td>MPa</td>
+<td></td>
+</tr>
+<tr>
+<td>$\sigma_b$</td>
+<td>弯曲应力</td>
+<td>MPa</td>
+<td>$\sigma_b &#x3D; Eh&#x2F;D$</td>
+</tr>
+<tr>
+<td>$\sigma_c$</td>
+<td>离心应力</td>
+<td>MPa</td>
+<td>$\sigma_c &#x3D; qv^2&#x2F;A$，处处相等</td>
+</tr>
+<tr>
+<td>$\sigma_{\max}$</td>
+<td>最大应力</td>
+<td>MPa</td>
+<td>小带轮紧边入口处</td>
+</tr>
+<tr>
+<td>$\varepsilon$</td>
+<td>滑动率</td>
+<td>%</td>
+<td>一般 1%~2%</td>
+</tr>
+<tr>
+<td>$i$</td>
+<td>传动比</td>
+<td>—</td>
+<td>$i &#x3D; n_1&#x2F;n_2$</td>
+</tr>
+<tr>
+<td>$q$</td>
+<td>带单位长度质量</td>
+<td>kg&#x2F;m</td>
+<td>A型≈0.15</td>
+</tr>
+<tr>
+<td>$z$</td>
+<td>V带根数</td>
+<td>—</td>
+<td>向上取整</td>
+</tr>
+<tr>
+<td>$K_A$</td>
+<td>工作情况系数</td>
+<td>—</td>
+<td>查表6-6</td>
+</tr>
+<tr>
+<td>$K_\alpha$</td>
+<td>包角系数</td>
+<td>—</td>
+<td>查表6-7</td>
+</tr>
+<tr>
+<td>$K_L$</td>
+<td>带长系数</td>
+<td>—</td>
+<td>查表6-2</td>
+</tr>
+</tbody></table>
+<h3 id="易混淆概念"><a href="#易混淆概念" class="headerlink" title="易混淆概念"></a>易混淆概念</h3><ul>
+<li><strong>传动比准确 vs 传动比恒定</strong>：链传动平均传动比准确，但瞬时传动比不恒定。[转写 行217, 219]</li>
+<li><strong>弹性滑动 vs 打滑</strong>：弹性滑动是局部微量、不可避免；打滑是全面滑动、过载引起、可避免。[转写 行113–114]</li>
+<li><strong>V带的当量摩擦系数</strong> $f_v$ 大于平带的摩擦系数 $f$，因此V带传动能力更强。[转写 行229–230]</li>
+</ul>
+<hr>
+<h2 id="六、课堂任务与-DDL"><a href="#六、课堂任务与-DDL" class="headerlink" title="六、课堂任务与 DDL"></a>六、课堂任务与 DDL</h2><table>
+<thead>
+<tr>
+<th>任务</th>
+<th>说明</th>
+<th>截止&#x2F;要求</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>教材73页习题6-3</td>
+<td>力分析计算（$F_1, F_2, P$）</td>
+<td>课堂练习 [转写 行21]</td>
+</tr>
+<tr>
+<td>教材73页思考题</td>
+<td>6-1至6-7（带传动原理相关）</td>
+<td>课堂抽查 [转写 行223–237]</td>
+</tr>
+<tr>
+<td>实验报告</td>
+<td>二班实验报告，把空的填上</td>
+<td>明天提交 [转写 行115] [待核对：转写为”明天的时间报是在第四次学的时候写完”]</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>注：转写中关于实验报告的表述较为混乱，具体提交时间和要求请以课程通知为准。</p>
+</blockquote>
+<hr>
+<h2 id="七、待核对与疑问"><a href="#七、待核对与疑问" class="headerlink" title="七、待核对与疑问"></a>七、待核对与疑问</h2><table>
+<thead>
+<tr>
+<th>问题</th>
+<th>原因</th>
+<th>相关来源</th>
+<th>建议核对方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>习题6-3中 $n_1$ 具体数值</td>
+<td>转写为”1441400440”，明显识别错误</td>
+<td>转写 行21</td>
+<td>对照教材73页原题</td>
+</tr>
+<tr>
+<td>习题6-3中等效摩擦系数 $f_v$ 数值</td>
+<td>转写中未清晰给出</td>
+<td>转写 行23</td>
+<td>对照教材原题</td>
+</tr>
+<tr>
+<td>设计例题中 $n_2$ 和传动比 $i$</td>
+<td>转写中未明确给出 $n_2$</td>
+<td>转写 行155</td>
+<td>对照教材例题或课堂PPT</td>
+</tr>
+<tr>
+<td>设计例题中 $d_2$ 具体数值</td>
+<td>转写中跳过了计算结果</td>
+<td>转写 行167</td>
+<td>按公式 $d_2 &#x3D; d_1 \cdot n_1&#x2F;n_2 \cdot (1-\varepsilon)$ 计算</td>
+</tr>
+<tr>
+<td>基准长度公式和实际中心距公式</td>
+<td>转写中未完整写出公式</td>
+<td>转写 行147–152</td>
+<td>对照教材公式6-15、6-16</td>
+</tr>
+<tr>
+<td>初拉力 $F_0$ 公式</td>
+<td>转写中未完整写出</td>
+<td>转写 行191</td>
+<td>对照教材公式6-20</td>
+</tr>
+<tr>
+<td>实验报告提交时间</td>
+<td>转写表述混乱</td>
+<td>转写 行115</td>
+<td>询问任课教师&#x2F;查看课程通知</td>
+</tr>
+<tr>
+<td>思考题6-2中 $v_1, v_2, v$ 关系</td>
+<td>转写中答案为”$v_1 &gt; v_2$”，但完整三者关系应为 $v_1 &gt; v &gt; v_2$</td>
+<td>转写 行227</td>
+<td>对照教材确认</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="八、复习与主动回忆"><a href="#八、复习与主动回忆" class="headerlink" title="八、复习与主动回忆"></a>八、复习与主动回忆</h2><h3 id="10–20-分钟复习清单"><a href="#10–20-分钟复习清单" class="headerlink" title="10–20 分钟复习清单"></a>10–20 分钟复习清单</h3><ol>
+<li><strong>(3分钟)</strong> 默写三个力分析基本公式：$F&#x3D;F_1-F_2$、$F_1+F_2&#x3D;2F_0$、$P&#x3D;Fv&#x2F;1000$，回忆各符号含义。</li>
+<li><strong>(3分钟)</strong> 画出带的应力分布图，标出三种应力的分布特点和最大应力位置，写出 $\sigma_{\max}$ 表达式。</li>
+<li><strong>(3分钟)</strong> 用自己的话解释弹性滑动的产生机理，对比弹性滑动与打滑的区别（原因、范围、能否避免、后果）。</li>
+<li><strong>(4分钟)</strong> 默写V带设计的10个步骤，重点记住 $P_{ca}&#x3D;K_A P$、带速范围5~25 m&#x2F;s、根数向上取整这几个关键点。</li>
+<li><strong>(3分钟)</strong> 回顾链传动的优缺点，特别注意”平均传动比准确但瞬时不恒定”这个易考点。</li>
+<li><strong>(2分钟)</strong> 浏览”待核对”清单，标记需要对照教材确认的公式和数值。</li>
+</ol>
+<h3 id="主动回忆题"><a href="#主动回忆题" class="headerlink" title="主动回忆题"></a>主动回忆题</h3><ol>
+<li><p>带传动中，紧边拉力 $F_1$、松边拉力 $F_2$、初拉力 $F_0$ 和有效拉力 $F$ 之间有哪两个基本关系式？欧拉公式在什么条件下成立？代入时包角应使用什么单位？</p>
+</li>
+<li><p>带上存在哪三种应力？各自的分布特点是什么？最大应力发生在什么位置？写出最大应力的表达式并说明为什么是该位置。</p>
+</li>
+<li><p>什么是弹性滑动？它为什么不可避免？弹性滑动导致主动轮和从动轮的圆周速度有什么关系？滑动率的一般范围是多少？</p>
+</li>
+<li><p>弹性滑动和打滑有什么本质区别？分别是什么原因引起的？哪种是可以避免的？</p>
+</li>
+<li><p>V带传动的设计准则是什么？请按顺序列出设计的主要步骤，并说明每一步的关键参数或查表来源。</p>
+</li>
+<li><p>为什么V带的根数计算结果要向上取整？如果算出来是3.1，应该取几根？</p>
+</li>
+<li><p>带轮由哪三部分组成？常见的带轮结构形式有哪几种？分别适用于什么情况？</p>
+</li>
+<li><p>链传动与带传动相比，主要优点和缺点是什么？为什么说链传动”平均传动比准确”但”瞬时传动比不恒定”？</p>
+</li>
+<li><p>带传动的两种主要失效形式是什么？设计时分别如何应对？</p>
+</li>
+<li><p>更换V带时为什么要成组更换？日常使用中应注意哪些维护事项？</p>
+</li>
+</ol>
+<h3 id="答案要点"><a href="#答案要点" class="headerlink" title="答案要点"></a>答案要点</h3><ol>
+<li><p>$F&#x3D;F_1-F_2$，$F_1+F_2&#x3D;2F_0$；欧拉公式 $F_1&#x2F;F_2&#x3D;e^{f\alpha}$ 在临界打滑（即将打滑）时成立；包角必须用<strong>弧度</strong>代入。</p>
+</li>
+<li><p>三种应力：拉应力（紧边大、松边小，沿带长变化）、弯曲应力（仅包角内，小带轮大，与直径成反比）、离心应力（处处相等）。最大应力在<strong>小带轮紧边入口处</strong>：$\sigma_{\max}&#x3D;\sigma_1+\sigma_{b1}+\sigma_c$，因为该位置紧边拉应力最大且小带轮弯曲应力最大，叠加离心应力后总应力最大。</p>
+</li>
+<li><p>弹性滑动是由于带是弹性体，紧松边拉力不同导致弹性变形量不同，在包角内带与带轮间产生微量相对滑动。不可避免是因为只要传递载荷就存在紧松边拉力差。速度关系：$v_1 &gt; v &gt; v_2$（从动轮落后）。滑动率一般1%~2%。</p>
+</li>
+<li><p>弹性滑动：带的弹性变形引起，局部微量，固有特性不可避免，仅造成少量速度损失和发热。打滑：过载引起，整个接触面全面滑动，可以通过降低载荷避免，会造成严重磨损和传动失效。</p>
+</li>
+<li><p>设计准则：保证不打滑的前提下具有足够疲劳寿命。步骤：①算 $P_{ca}&#x3D;K_A P$；②查图选型号；③选 $d_1$（≥最小值）、算 $d_2$；④验算带速5~25 m&#x2F;s；⑤初选 $a_0$、算带长、选标准 $L_d$；⑥算实际中心距 $a$；⑦验算包角 $\alpha_1$；⑧算根数 $z$（向上取整）；⑨算初拉力 $F_0$；⑩算轴上力 $F_Q$。</p>
+</li>
+<li><p>因为根数必须是整数，且少一根会导致单根带过载，所以向上取整。3.1应取4根。</p>
+</li>
+<li><p>带轮由轮缘（外圈带槽）、轮毂（与轴配合）、轮辐（连接部分）组成。结构形式：实心式（小直径）、腹板式（中等直径）、孔板式（打孔减重）、轮辐式（大直径，最常见）。</p>
+</li>
+<li><p>优点：无弹性滑动→平均传动比准确、张紧力小、轴上力小、能在高温多尘环境工作。缺点：瞬时传动比不恒定、噪声大、有冲击、仅适用于平行轴。瞬时传动比不恒定是因为链条绕上链轮时，链节与链轮齿的啮合位置在不断变化，导致瞬时角速度波动。</p>
+</li>
+<li><p>打滑和疲劳破坏。防打滑：保证有效拉力不超过极限摩擦力（设计中通过包角、摩擦系数、根数等保证）；防疲劳：降低最大应力（增大 $d_1$、降低应力循环）、选用优质材料、保证足够的安全系数。</p>
+</li>
+<li><p>成组更换是因为旧带已产生塑性变形和磨损，与新带长度&#x2F;弹性不同，混用时会导致各带受力不均。维护注意：避免酸碱腐蚀、避免暴晒、定期检查张紧力并重新张紧、同组使用同品牌同型号带。</p>
+</li>
+</ol>
+<hr>
+<p><em>整理说明：本笔记基于课堂录音转写稿整理，转写质量较差（含大量口语噪声和识别错误），所有公式和关键数字已尽量还原，但仍建议对照教材和课件核实”待核对”清单中的内容。</em></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1-%E5%B8%A6%E4%BC%A0%E5%8A%A8-%E9%93%BE%E4%BC%A0%E5%8A%A8-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/" class="print-no-link">#机械设计 带传动 链传动 课堂笔记</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>带传动与链传动原理及设计课堂笔记（版本 2）</div>
+      <div>https://tdexxx.github.io/2026/10/15/04_机械设计基础/机械设计_带传动与链传动原理及设计_课堂笔记（版本2）/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>tdexxx</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年10月15日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/10/15/04_%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1_%E5%B8%A6%E4%BC%A0%E5%8A%A8%E4%B8%8E%E9%93%BE%E4%BC%A0%E5%8A%A8%E5%8E%9F%E7%90%86%E5%8F%8A%E8%AE%BE%E8%AE%A1_%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/" title="带传动与链传动原理及设计课堂笔记">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">带传动与链传动原理及设计课堂笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/10/15/04_%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1_%E8%9C%97%E6%9D%86%E4%BC%A0%E5%8A%A8_%E5%8F%91%E5%B8%83%E7%A8%BF%EF%BC%88LaTeX%E5%85%AC%E5%BC%8F%E7%89%88%EF%BC%89/" title="蜗杆传动：几何计算、受力分析与热平衡（LaTeX 公式版）">
+                        <span class="hidden-mobile">蜗杆传动：几何计算、受力分析与热平衡（LaTeX 公式版）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

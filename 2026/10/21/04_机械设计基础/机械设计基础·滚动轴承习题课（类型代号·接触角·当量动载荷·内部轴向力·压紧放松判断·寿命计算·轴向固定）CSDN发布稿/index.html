@@ -1,0 +1,1315 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="tdexxx">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="《机械设计基础》滚动轴承习题课：类型代号 · 接触角 C&#x2F;AC&#x2F;B · 当量动载荷 · 内部轴向力 · 压紧放松判断 · 寿命计算 · 轴向固定与轴系结构 本篇为《机械设计基础》滚动轴承习题课整理。这节课把”滚动轴承”这一章的计算题从头到尾走了一遍，并补上了教材里讲得少、但工程上必须会的轴向固定与轴系结构。 主线是这样一条链： 认得出（类型代号、接触角、内径代号）→ 选得对（调">
+<meta property="og:type" content="article">
+<meta property="og:title" content="滚动轴承习题课：类型代号、当量动载荷与寿命计算">
+<meta property="og:url" content="https://tdexxx.github.io/2026/10/21/04_%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80%C2%B7%E6%BB%9A%E5%8A%A8%E8%BD%B4%E6%89%BF%E4%B9%A0%E9%A2%98%E8%AF%BE%EF%BC%88%E7%B1%BB%E5%9E%8B%E4%BB%A3%E5%8F%B7%C2%B7%E6%8E%A5%E8%A7%A6%E8%A7%92%C2%B7%E5%BD%93%E9%87%8F%E5%8A%A8%E8%BD%BD%E8%8D%B7%C2%B7%E5%86%85%E9%83%A8%E8%BD%B4%E5%90%91%E5%8A%9B%C2%B7%E5%8E%8B%E7%B4%A7%E6%94%BE%E6%9D%BE%E5%88%A4%E6%96%AD%C2%B7%E5%AF%BF%E5%91%BD%E8%AE%A1%E7%AE%97%C2%B7%E8%BD%B4%E5%90%91%E5%9B%BA%E5%AE%9A%EF%BC%89CSDN%E5%8F%91%E5%B8%83%E7%A8%BF/index.html">
+<meta property="og:site_name" content="tdexxx的博客">
+<meta property="og:description" content="《机械设计基础》滚动轴承习题课：类型代号 · 接触角 C&#x2F;AC&#x2F;B · 当量动载荷 · 内部轴向力 · 压紧放松判断 · 寿命计算 · 轴向固定与轴系结构 本篇为《机械设计基础》滚动轴承习题课整理。这节课把”滚动轴承”这一章的计算题从头到尾走了一遍，并补上了教材里讲得少、但工程上必须会的轴向固定与轴系结构。 主线是这样一条链： 认得出（类型代号、接触角、内径代号）→ 选得对（调">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-10-21T12:08:45.000Z">
+<meta property="article:modified_time" content="2026-10-30T17:37:19.960Z">
+<meta property="article:author" content="tdexxx">
+<meta property="article:tag" content="机械设计 滚动轴承 习题课 CSDN">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>滚动轴承习题课：类型代号、当量动载荷与寿命计算 - tdexxx的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"tdexxx.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2022-12-10T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="滚动轴承习题课：类型代号、当量动载荷与寿命计算"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-10-21 20:08" pubdate>
+          2026年10月21日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          8.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          73 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">滚动轴承习题课：类型代号、当量动载荷与寿命计算</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="《机械设计基础》滚动轴承习题课：类型代号-·-接触角-C-AC-B-·-当量动载荷-·-内部轴向力-·-压紧放松判断-·-寿命计算-·-轴向固定与轴系结构"><a href="#《机械设计基础》滚动轴承习题课：类型代号-·-接触角-C-AC-B-·-当量动载荷-·-内部轴向力-·-压紧放松判断-·-寿命计算-·-轴向固定与轴系结构" class="headerlink" title="《机械设计基础》滚动轴承习题课：类型代号 · 接触角 C&#x2F;AC&#x2F;B · 当量动载荷 · 内部轴向力 · 压紧放松判断 · 寿命计算 · 轴向固定与轴系结构"></a>《机械设计基础》滚动轴承习题课：类型代号 · 接触角 C&#x2F;AC&#x2F;B · 当量动载荷 · 内部轴向力 · 压紧放松判断 · 寿命计算 · 轴向固定与轴系结构</h1><blockquote>
+<p>本篇为《机械设计基础》<strong>滚动轴承习题课</strong>整理。这节课把”滚动轴承”这一章的<strong>计算题</strong>从头到尾走了一遍，并补上了教材里讲得少、但工程上必须会的<strong>轴向固定与轴系结构</strong>。</p>
+<p>主线是这样一条链：</p>
+<p><strong>认得出</strong>（类型代号、接触角、内径代号）→ <strong>选得对</strong>（调心？极限转速？）→ <strong>算得准</strong>（当量动载荷 P → 内部轴向力 S → 压紧&#x2F;放松判断 → 各轴承的 Fa → 寿命 L）→ <strong>装得上</strong>（轴向固定方式、装拆、轴系结构改错）。</p>
+<p>中间穿插了三个完整例题：单轴承求 P、一对圆锥滚子轴承求轴向力分配与寿命、深沟球与角接触球轴承的选型对比。</p>
+<p>文中公式统一采用行内数学写法；课堂口述与教材符号不一致、或录音模糊处，均标注【以教材为准】。</p>
+</blockquote>
+<hr>
+<h2 id="一、这节课讲了什么"><a href="#一、这节课讲了什么" class="headerlink" title="一、这节课讲了什么"></a>一、这节课讲了什么</h2><p>这是一节<strong>习题课</strong>，老师的组织方式是”先补基础、再走例题、最后讲结构”。</p>
+<p><strong>第一段（约 25:28–34:20）把”认得出来”解决掉。</strong><br>老师给了一套<strong>类型代号的记忆顺序</strong>：调心球（1）、调心滚子（2）、圆锥滚子（3）、推力球（5）、深沟球（6）、角接触球（7）、圆柱滚子（N）。接着讲角接触球轴承的三个接触角 <strong>C（15°）、AC（25°）、B（40°）</strong>，以及<strong>轴承代号的三段结构</strong>——前置代号、基本代号（类型代号 + 尺寸系列代号 + 内径代号）、后置代号。这里有一个必考的坑：**内径代号 00&#x2F;01&#x2F;02&#x2F;03 分别对应 10&#x2F;12&#x2F;15&#x2F;17 mm，从 04 起才是”代号 × 5”**。</p>
+<p><strong>第二段（约 32:19）用一道选型题把”选得对”讲清。</strong><br>轴发生偏移、转速又较大——该选调心球轴承还是调心滚子轴承？答案是<strong>调心球轴承</strong>，理由是<strong>球轴承的极限转速更高</strong>。老师顺带纠正了一处常见错误：极限寿命 $L$ 的单位是 <strong>$10^6$ 转</strong>，不是”转”。</p>
+<p><strong>第三段（约 34:25–1:31:00）是全课的计算主线。</strong><br>先用一道单轴承例题讲清<strong>当量动载荷</strong>：查表得判断系数 $e$，再比较 $F_a&#x2F;F_r$ 与 $e$ 的大小，决定 $X$、$Y$ 取值。然后讲<strong>内部轴向力（派生轴向力）$S$</strong> 是怎么产生的——径向力作用在滚动体上，因为<strong>有接触角</strong>，合力会分解出一个轴向分量，各滚动体轴向分量之和就是 $S$。<strong>深沟球轴承接触角为零，不产生 $S$<strong>。接着是</strong>正装&#x2F;反装</strong>的力线判断，以及一对轴承里”<strong>谁被压紧、谁被放松</strong>“的判断方法——这是全章最绕的一步。最后进入<strong>寿命计算</strong>：$P^{\varepsilon} L$ 为常数，球轴承 $\varepsilon &#x3D; 3$、滚子轴承 $\varepsilon &#x3D; 10&#x2F;3$，并引入温度系数 $f_T$ 与载荷系数 $f_P$。</p>
+<p><strong>第四段（约 1:32:00–1:51:00）讲”装得上”。</strong><br>包括<strong>轴向固定方式</strong>（双支点单向固定、一端固定一端游动）、内圈与外圈各自的固定手段（弹性挡圈、圆螺母、轴肩、端盖、套筒）、<strong>装拆要点</strong>（拆装工具必须卡在内圈上，卡外圈是错的），以及一组<strong>轴系结构改错</strong>——齿轮与轴承之间必须加隔离套（油润滑与脂润滑不能混）、轴肩高度要够、键槽要同侧、用阶梯轴降低加工面。</p>
+<hr>
+<h2 id="二、核心结论速览"><a href="#二、核心结论速览" class="headerlink" title="二、核心结论速览"></a>二、核心结论速览</h2><ol>
+<li><strong>类型代号记忆顺序</strong>：调心球 1、调心滚子 2、圆锥滚子 3、推力球 5、深沟球 6、角接触球 7、圆柱滚子 N。</li>
+<li><strong>角接触球轴承的三个接触角</strong>：<strong>C &#x3D; 15°、AC &#x3D; 25°、B &#x3D; 40°</strong>。题目给”接触角 25°”，就对应代号 <strong>AC</strong>。</li>
+<li><strong>轴承代号三段结构</strong>：前置代号 + 基本代号（<strong>类型代号 + 尺寸系列代号 + 内径代号</strong>）+ 后置代号。</li>
+<li><strong>内径代号必背</strong>：<strong>00 → 10 mm、01 → 12 mm、02 → 15 mm、03 → 17 mm</strong>；<strong>从 04 起，内径 &#x3D; 代号 × 5</strong>。</li>
+<li>例：轴径 $d &#x3D; 60$ mm，内径代号 $&#x3D; 60&#x2F;5 &#x3D; 12$；轴径 $d &#x3D; 30$ mm，内径代号 $&#x3D; 30&#x2F;5 &#x3D; 6$。</li>
+<li><strong>调心球 vs 调心滚子</strong>：两者都能调心，但<strong>球轴承的极限转速更高</strong>。转速较大时选<strong>调心球轴承</strong>。</li>
+<li><strong>极限寿命 $L$ 的单位是 $10^6$ 转</strong>，不是”转”——说”$L$ 的单位是转”是<strong>错的</strong>。</li>
+<li><strong>当量动载荷</strong>：$P &#x3D; X F_r + Y F_a$。</li>
+<li><strong>判断系数 $e$ 从表格查</strong>，查表要看清<strong>轴承类型 + 接触角分档</strong>（角接触球轴承 7 类里还分 C&#x2F;AC&#x2F;B 三小行）。</li>
+<li><strong>$F_a &#x2F; F_r \le e$ 时</strong>：$X &#x3D; 1$、$Y &#x3D; 0$，即 $P &#x3D; F_r$——轴向力”不产生额外影响”。</li>
+<li><strong>$F_a &#x2F; F_r &gt; e$ 时</strong>：$X$、$Y$ 按表格取值（角接触球轴承常见 $X &#x3D; 0.41$，$Y$ 随接触角变）。</li>
+<li><strong>内部轴向力 $S$（派生轴向力）只在有接触角时产生</strong>：角接触球轴承、圆锥滚子轴承有；**深沟球轴承接触角为零，没有 $S$**。</li>
+<li><strong>$S$ 的产生机理</strong>：径向力 $F_r$ 作用在滚动体上产生反力，因接触角存在，合力分解出轴向分量，各滚动体轴向分量之和即 $S$。</li>
+<li><strong>角接触球轴承</strong>：$S &#x3D; e F_r$（$e$ 查表）。</li>
+<li><strong>圆锥滚子轴承</strong>：$S &#x3D; \frac{F_r}{2Y}$（$Y$ 查表）。</li>
+<li><strong>正装（面对面）与反装（背对背）</strong> 的区别在于<strong>接触角方向 &#x2F; 力线交点的位置</strong>：力线向内收敛为面对面，向外张开为背对背。</li>
+<li><strong>一对轴承的轴向力要重新分配</strong>：先算两端各自的 $S$，再判断<strong>整个轴系的运动趋势朝哪边</strong>。</li>
+<li><strong>被压紧的一端</strong>：$F_a &#x3D; S’ + F_A$（外部轴向力 + 另一端的内部轴向力）。</li>
+<li><strong>被放松的一端</strong>：$F_a &#x3D; S$（只承受自身的内部轴向力）。</li>
+<li><strong>判断”压紧&#x2F;放松”是解题的关键一步</strong>——判错了，后面 $P$ 和 $L$ 全错。</li>
+<li><strong>寿命计算的基本关系</strong>：$P^{\varepsilon} L$ 为常数。</li>
+<li><strong>寿命指数</strong>：**球轴承 $\varepsilon &#x3D; 3$<strong>；</strong>滚子轴承 $\varepsilon &#x3D; 10&#x2F;3$**。</li>
+<li><strong>滚子轴承的 $\varepsilon$ 大于球轴承</strong>，因为滚子是<strong>线接触</strong>、承载能力更强，寿命对载荷变化更不敏感。</li>
+<li><strong>基本额定寿命</strong>：$L_{10} &#x3D; (\frac{C}{P})^{\varepsilon}$，单位 $10^6$ 转。</li>
+<li><strong>换算成小时</strong>：$L_{10h} &#x3D; \frac{10^6}{60n}(\frac{C}{P})^{\varepsilon}$。</li>
+<li>**温度系数 $f_T$**：工作温度低于 100 °C 时取 1（常温约 25 °C 一般取 1）。</li>
+<li><strong>载荷系数 $f_P$<strong>：轻微冲击或无冲击取 1～1.2，</strong>计算时为方便常取 1</strong>。</li>
+<li><strong>反算所需额定动载荷</strong>：$C_{req} &#x3D; \frac{f_P P}{f_T}(\frac{60 n L_h}{10^6})^{1&#x2F;\varepsilon}$，选轴承时要求**样本 $C \ge C_{req}$**。</li>
+<li><strong>当量静载荷 $C_{0r}$</strong> 一般不作计算要求，知道它是”静止或极低速时的承载能力指标”即可。</li>
+<li><strong>轴向固定两种基本方式</strong>：<strong>双支点单向固定</strong>（两端各限制一个方向）与<strong>一端固定一端游动</strong>（一端双向固定、另一端可游动补偿热伸长）。</li>
+<li><strong>内圈固定手段</strong>：轴肩、弹性挡圈、圆螺母 + 止动垫圈、端盖压紧、套筒。</li>
+<li><strong>外圈固定手段</strong>：孔内挡肩、孔用弹性挡圈、端盖、螺纹环。</li>
+<li><strong>装拆铁律</strong>：拆装工具的受力点必须落在<strong>要拆的那个套圈</strong>上——拆内圈就卡内圈，卡到外圈是<strong>错误结构</strong>。</li>
+<li><strong>油润滑与脂润滑不能混</strong>：齿轮用油润滑、轴承用脂润滑时，两者之间<strong>必须加隔离（挡油环&#x2F;隔离套）</strong>。</li>
+<li><strong>轴系结构改错的四个高频点</strong>：① 齿轮与轴承之间要加隔离套；② 轴肩高度要能顶住套圈；③ 键槽要在同一侧；④ 用阶梯轴减少不必要的配合加工面。</li>
+</ol>
+<hr>
+<h2 id="三、知识结构树"><a href="#三、知识结构树" class="headerlink" title="三、知识结构树"></a>三、知识结构树</h2><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs gherkin">《机械设计基础》滚动轴承 习题课<br>|<span class="hljs-string"></span><br><span class="hljs-string"></span>|<span class="hljs-string">- 1. 认得出来</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 类型代号：1 / 2 / 3 / 5 / 6 / 7 / N</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 角接触球轴承接触角：C=15  AC=25  B=40</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 代号结构</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 前置代号</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 基本代号：类型 + 尺寸系列 + 内径</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">   </span>|<span class="hljs-string">   `- 内径：00=10 01=12 02=15 03=17；04 起 = 代号x5</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">   `- 后置代号</span><br><span class="hljs-string"></span>|<span class="hljs-string">   `- 极限寿命单位：10^6 转</span><br><span class="hljs-string"></span>|<br>|<span class="hljs-string">- 2. 选得对</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 有偏移 -&gt; 调心类</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 转速高 -&gt; 球轴承（极限转速高）</span><br><span class="hljs-string"></span>|<span class="hljs-string">   `- 有轴向力 -&gt; 角接触球 / 圆锥滚子</span><br><span class="hljs-string"></span>|<br>|<span class="hljs-string">- 3. 算得准（主线）</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 当量动载荷 P = X*Fr + Y*Fa</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 查 e（按类型 + 接触角分档）</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">   </span>|<span class="hljs-string">- Fa/Fr &lt;= e -&gt; X=1, Y=0</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">   `- Fa/Fr &gt; e  -&gt; X、Y 查表</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 内部轴向力 S</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 产生条件：必须有接触角</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 角接触球：S = e*Fr</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">   `- 圆锥滚子：S = Fr/(2Y)</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 正装 / 反装（力线方向）</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 压紧端 / 放松端判断</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 压紧端：Fa = 另一端 S + 外部轴向力</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">   `- 放松端：Fa = 自身 S</span><br><span class="hljs-string"></span>|<span class="hljs-string">   `- 寿命</span><br><span class="hljs-string"></span>|<span class="hljs-string">       </span>|<span class="hljs-string">- L10 = (C/P)^eps     eps: 球 3 / 滚子 10/3</span><br><span class="hljs-string"></span>|<span class="hljs-string">       </span>|<span class="hljs-string">- L10h = 10^6/(60n) * (C/P)^eps</span><br><span class="hljs-string"></span>|<span class="hljs-string">       </span>|<span class="hljs-string">- 修正：fT 温度系数、fP 载荷系数</span><br><span class="hljs-string"></span>|<span class="hljs-string">       `- 反算 C_req，要求样本 C &gt;= C_req</span><br><span class="hljs-string"></span>|<br>|<span class="hljs-string">- 4. 装得上</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 轴向固定</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 双支点单向固定</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">   `- 一端固定一端游动</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 内圈固定：轴肩 / 弹性挡圈 / 圆螺母 / 端盖 / 套筒</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 外圈固定：孔内挡肩 / 孔用挡圈 / 端盖 / 螺纹环</span><br><span class="hljs-string"></span>|<span class="hljs-string">   </span>|<span class="hljs-string">- 装拆：工具必须卡内圈</span><br><span class="hljs-string"></span>|<span class="hljs-string">   `- 轴系结构改错</span><br><span class="hljs-string"></span>|<span class="hljs-string">       </span>|<span class="hljs-string">- 齿轮与轴承之间加隔离套（油/脂不能混）</span><br><span class="hljs-string"></span>|<span class="hljs-string">       </span>|<span class="hljs-string">- 轴肩高度要顶住套圈</span><br><span class="hljs-string"></span>|<span class="hljs-string">       </span>|<span class="hljs-string">- 键槽同侧</span><br><span class="hljs-string"></span>|<span class="hljs-string">       `- 阶梯轴减少配合加工面</span><br><span class="hljs-string"></span>|<br>`- 5. 当量静载荷 C0r（了解即可）<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="四、知识点详解"><a href="#四、知识点详解" class="headerlink" title="四、知识点详解"></a>四、知识点详解</h2><h3 id="4-1-类型代号与记忆方法"><a href="#4-1-类型代号与记忆方法" class="headerlink" title="4.1 类型代号与记忆方法"></a>4.1 类型代号与记忆方法</h3><p>老师给了一条”按记忆顺序背”的路子——先记调心类，再记其他：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>代号</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>调心球轴承</td>
+<td><strong>1</strong></td>
+<td>能调心，球轴承，极限转速高</td>
+</tr>
+<tr>
+<td>调心滚子轴承</td>
+<td><strong>2</strong></td>
+<td>能调心，承载能力大，极限转速低</td>
+</tr>
+<tr>
+<td>圆锥滚子轴承</td>
+<td><strong>3</strong></td>
+<td>能承受较大轴向力，需成对使用</td>
+</tr>
+<tr>
+<td>推力球轴承</td>
+<td><strong>5</strong></td>
+<td>只能承受轴向力</td>
+</tr>
+<tr>
+<td>深沟球轴承</td>
+<td><strong>6</strong></td>
+<td>最常用，性价比最高</td>
+</tr>
+<tr>
+<td>角接触球轴承</td>
+<td><strong>7</strong></td>
+<td>有接触角，能承受轴向力</td>
+</tr>
+<tr>
+<td>圆柱滚子轴承</td>
+<td><strong>N</strong></td>
+<td>只能承受径向力</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>为什么要按顺序记</strong>：考试里经常给一个轴承代号让你”读出类型”，或给一个工况让你”写出代号”。这套顺序是老师建议的记忆锚点，按它顺下来不容易漏。</p>
+</blockquote>
+<h3 id="4-2-角接触球轴承的接触角：C-AC-B"><a href="#4-2-角接触球轴承的接触角：C-AC-B" class="headerlink" title="4.2 角接触球轴承的接触角：C &#x2F; AC &#x2F; B"></a>4.2 角接触球轴承的接触角：C &#x2F; AC &#x2F; B</h3><p>角接触球轴承按接触角大小分三档：</p>
+<table>
+<thead>
+<tr>
+<th>代号</th>
+<th>接触角</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>C</strong></td>
+<td><strong>15°</strong></td>
+<td>接触角小，主要承受径向力，极限转速最高</td>
+</tr>
+<tr>
+<td><strong>AC</strong></td>
+<td><strong>25°</strong></td>
+<td>常用档，兼顾径向与轴向</td>
+</tr>
+<tr>
+<td><strong>B</strong></td>
+<td><strong>40°</strong></td>
+<td>接触角大，承受轴向力能力强，极限转速最低</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>考试提示</strong>：题目如果说”某角接触球轴承接触角为 25°”，那它的代号就是 <strong>AC</strong>。老师特别说明：<strong>这三个是要记的</strong>，其他角度（如 45°）不在本课程要求范围内。</p>
+</blockquote>
+<h3 id="4-3-轴承代号的结构"><a href="#4-3-轴承代号的结构" class="headerlink" title="4.3 轴承代号的结构"></a>4.3 轴承代号的结构</h3><p>一个完整的轴承代号分三段：</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs 1c">[前置代号] <span class="hljs-punctuation">-</span> [基本代号] <span class="hljs-punctuation">-</span> [后置代号]<br>                 <span class="hljs-string">|</span><br>                 <span class="hljs-string">|- 类型代号</span><br>                 <span class="hljs-string">|- 尺寸系列代号</span><br>                 `<span class="hljs-punctuation">-</span> 内径代号<br></code></pre></td></tr></table></figure>
+
+<p><strong>内径代号是必考点</strong>，规则要分两段记：</p>
+<table>
+<thead>
+<tr>
+<th>内径代号</th>
+<th>对应内径 $d$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>00</strong></td>
+<td>10 mm</td>
+</tr>
+<tr>
+<td><strong>01</strong></td>
+<td>12 mm</td>
+</tr>
+<tr>
+<td><strong>02</strong></td>
+<td>15 mm</td>
+</tr>
+<tr>
+<td><strong>03</strong></td>
+<td>17 mm</td>
+</tr>
+<tr>
+<td><strong>04 及以上</strong></td>
+<td>$d &#x3D; 5n$ mm（$n$ 为内径代号）</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>为什么 00~03 要单独记</strong>：因为这四个是”一一对应”的例外，不按 ×5 的规律。老师说”这四个不同于其他的，它是直接一一对应的关系”。</p>
+<p><strong>反过来用</strong>：已知轴径 $d &#x3D; 60$ mm，则内径代号 $&#x3D; 60&#x2F;5 &#x3D; 12$；已知 $d &#x3D; 30$ mm，则内径代号 $&#x3D; 30&#x2F;5 &#x3D; 6$。</p>
+</blockquote>
+<h3 id="4-4-选型的两个典型判据"><a href="#4-4-选型的两个典型判据" class="headerlink" title="4.4 选型的两个典型判据"></a>4.4 选型的两个典型判据</h3><p><strong>（1）有偏移 → 选调心类</strong></p>
+<p>轴发生弯曲变形或安装不同心时，轴颈会相对轴承座产生偏斜。这时必须选<strong>调心</strong>轴承，让轴线能自动恢复。调心类有<strong>调心球（1）</strong>和<strong>调心滚子（2）</strong>两种。</p>
+<p><strong>（2）转速高 → 选球轴承</strong></p>
+<p>这是本节的<strong>关键取舍</strong>：</p>
+<ul>
+<li>调心球轴承：<strong>点接触</strong>，摩擦小，<strong>极限转速高</strong>；</li>
+<li>调心滚子轴承：<strong>线接触</strong>，承载能力大，但摩擦大，<strong>极限转速低</strong>。</li>
+</ul>
+<p>所以”<strong>有偏移 + 转速较大</strong>“这个组合，答案是<strong>调心球轴承</strong>，而不是调心滚子轴承。</p>
+<blockquote>
+<p>老师的原话大意：球轴承的极限转速比较高，所以在选择的时候选调心球轴承，而不是调心滚子轴承。</p>
+</blockquote>
+<p><strong>（3）有轴向力 → 选角接触球或圆锥滚子</strong></p>
+<p>深沟球轴承虽然也能承受一定轴向力，但能力有限。斜齿轮传动会产生轴向力，这时应选<strong>圆锥滚子轴承</strong>或<strong>角接触球轴承</strong>。</p>
+<h3 id="4-5-当量动载荷"><a href="#4-5-当量动载荷" class="headerlink" title="4.5 当量动载荷"></a>4.5 当量动载荷</h3><h4 id="4-5-1-基本公式"><a href="#4-5-1-基本公式" class="headerlink" title="4.5.1 基本公式"></a>4.5.1 基本公式</h4><p>$P &#x3D; X F_r + Y F_a$</p>
+<p>其中 $F_r$ 为径向载荷、$F_a$ 为轴向载荷，$X$、$Y$ 分别为径向系数与轴向系数，由表格按轴承类型与 $F_a&#x2F;F_r$ 与 $e$ 的比较结果查取。</p>
+<h4 id="4-5-2-判断系数-e-的查表与比较"><a href="#4-5-2-判断系数-e-的查表与比较" class="headerlink" title="4.5.2 判断系数 $e$ 的查表与比较"></a>4.5.2 判断系数 $e$ 的查表与比较</h4><p>查表的顺序是：</p>
+<ol>
+<li><strong>先定轴承类型</strong>（例如角接触球轴承是 7 类）；</li>
+<li><strong>再看分档</strong>（7 类里还分 C、AC、B 三小行，按题目给的接触角选行）；</li>
+<li>**读出 $e$**；</li>
+<li>**比较 $F_a&#x2F;F_r$ 与 $e$**：</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>比较结果</th>
+<th>系数取值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$F_a&#x2F;F_r \le e$</td>
+<td>$X &#x3D; 1$，$Y &#x3D; 0$</td>
+<td>轴向力不产生额外影响，$P &#x3D; F_r$</td>
+</tr>
+<tr>
+<td>$F_a&#x2F;F_r &gt; e$</td>
+<td>$X$、$Y$ 查表</td>
+<td>轴向力开始起作用</td>
+</tr>
+</tbody></table>
+<h4 id="4-5-3-例题：角接触球轴承求当量动载荷"><a href="#4-5-3-例题：角接触球轴承求当量动载荷" class="headerlink" title="4.5.3 例题：角接触球轴承求当量动载荷"></a>4.5.3 例题：角接触球轴承求当量动载荷</h4><p><strong>已知</strong>：角接触球轴承，接触角 25°（即代号 AC），径向载荷 $F_r &#x3D; 1000$ N，轴向载荷 $F_a &#x3D; 600$ N。</p>
+<p><strong>求解步骤</strong>：</p>
+<ol>
+<li>由接触角 25° 确定代号为 <strong>AC</strong>；</li>
+<li>查表：角接触球轴承 7 类、AC 档，得**判断系数 $e &#x3D; 0.68$**；</li>
+<li>计算比值：$F_a &#x2F; F_r &#x3D; 600&#x2F;1000 &#x3D; 0.6$；</li>
+<li>比较：$0.6 &lt; 0.68$，即 $F_a&#x2F;F_r \le e$；</li>
+<li>取 $X &#x3D; 1$、$Y &#x3D; 0$；</li>
+<li>所以 $P &#x3D; 1 \times 1000 + 0 \times 600 &#x3D; 1000$ N。</li>
+</ol>
+<blockquote>
+<p><strong>这题的考点</strong>：不是算乘法，而是<strong>会不会查 $e$、会不会比较</strong>。很多同学一上来就套 $X&#x3D;0.41$、$Y&#x3D;1.6$，忘了先比较 $F_a&#x2F;F_r$ 与 $e$。</p>
+</blockquote>
+<h3 id="4-6-内部轴向力（派生轴向力）-S"><a href="#4-6-内部轴向力（派生轴向力）-S" class="headerlink" title="4.6 内部轴向力（派生轴向力）$S$"></a>4.6 内部轴向力（派生轴向力）$S$</h3><h4 id="4-6-1-产生机理"><a href="#4-6-1-产生机理" class="headerlink" title="4.6.1 产生机理"></a>4.6.1 产生机理</h4><p>这是本章最抽象的一节，老师的讲法是”从受力图往上推”：</p>
+<ol>
+<li>轴受径向力 $F_r$，通过内圈传给<strong>滚动体</strong>；</li>
+<li>滚动体受压后产生<strong>反力</strong>；</li>
+<li>因为轴承<strong>有接触角</strong>，这个反力不是纯径向的，而是沿接触线方向；</li>
+<li>把每个滚动体的反力<strong>分解</strong>成径向分量与轴向分量；</li>
+<li><strong>所有滚动体的轴向分量之和</strong>，就是**内部轴向力 $S$**（也叫派生轴向力）。</li>
+</ol>
+<h4 id="4-6-2-产生条件"><a href="#4-6-2-产生条件" class="headerlink" title="4.6.2 产生条件"></a>4.6.2 产生条件</h4><p><strong>必须要有接触角</strong>。这是判断”某轴承有没有 $S$”的唯一标准：</p>
+<table>
+<thead>
+<tr>
+<th>轴承类型</th>
+<th>接触角</th>
+<th>有 $S$ 吗</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>深沟球轴承</td>
+<td>0°</td>
+<td><strong>没有</strong></td>
+</tr>
+<tr>
+<td>角接触球轴承</td>
+<td>15°&#x2F;25°&#x2F;40°</td>
+<td><strong>有</strong></td>
+</tr>
+<tr>
+<td>圆锥滚子轴承</td>
+<td>有</td>
+<td><strong>有</strong></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>老师的推理：假设是深沟球轴承，接触角为零，滚动体只受径向反力，那么各滚动体的轴向分量全为零，<strong>自然就没有内部轴向力</strong>。</p>
+</blockquote>
+<h4 id="4-6-3-计算公式"><a href="#4-6-3-计算公式" class="headerlink" title="4.6.3 计算公式"></a>4.6.3 计算公式</h4><table>
+<thead>
+<tr>
+<th>轴承类型</th>
+<th>内部轴向力</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>角接触球轴承</td>
+<td>$S &#x3D; e F_r$</td>
+</tr>
+<tr>
+<td>圆锥滚子轴承</td>
+<td>$S &#x3D; \frac{F_r}{2Y}$</td>
+</tr>
+</tbody></table>
+<p>式中 $e$、$Y$ 均由表格查取。</p>
+<blockquote>
+<p><strong>注意</strong>：这两个公式形式不同，考试时不要混。角接触球轴承用 $e$ 乘 $F_r$；圆锥滚子轴承是 $F_r$ 除以 $2Y$。</p>
+</blockquote>
+<h3 id="4-7-正装与反装（面对面-背对背）"><a href="#4-7-正装与反装（面对面-背对背）" class="headerlink" title="4.7 正装与反装（面对面 &#x2F; 背对背）"></a>4.7 正装与反装（面对面 &#x2F; 背对背）</h3><p>一对角接触球轴承（或圆锥滚子轴承）成对使用时，有两种安装方式：</p>
+<table>
+<thead>
+<tr>
+<th>安装方式</th>
+<th>别名</th>
+<th>力线特征</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>正装</strong></td>
+<td>面对面</td>
+<td>两端接触角力线<strong>向内收敛</strong>，交点在两轴承之间</td>
+</tr>
+<tr>
+<td><strong>反装</strong></td>
+<td>背对背</td>
+<td>两端接触角力线<strong>向外张开</strong>，交点在两轴承之外</td>
+</tr>
+</tbody></table>
+<p><strong>判断方法</strong>：画出接触角方向 → 延长力线与轴线相交 → 看交点在两轴承之间还是之外。</p>
+<blockquote>
+<p><strong>工程习惯</strong>：老师说”一般情况都会采用正装”。反装时力线交点在外侧，<strong>支承点跨距变大</strong>，轴承受力情况不同，需要另行分析。</p>
+</blockquote>
+<h3 id="4-8-压紧端与放松端的判断（本章最绕的一步）"><a href="#4-8-压紧端与放松端的判断（本章最绕的一步）" class="headerlink" title="4.8 压紧端与放松端的判断（本章最绕的一步）"></a>4.8 压紧端与放松端的判断（本章最绕的一步）</h3><p>一对轴承成对使用时，<strong>外部轴向力只会由一个轴承承担</strong>，另一个只承受自身的内部轴向力。判断谁是”压紧端”的步骤：</p>
+<p><strong>第一步</strong>：算出两端的内部轴向力 $S_1$、$S_2$，并明确它们的<strong>方向</strong>（都指向轴承外侧）。</p>
+<p><strong>第二步</strong>：判断整个轴系的<strong>运动趋势朝哪一边</strong>。方法是比较”两端的 $S$ 与外部轴向力 $F_A$ 的合力方向”。</p>
+<p><strong>第三步</strong>：按趋势定压紧与放松：</p>
+<table>
+<thead>
+<tr>
+<th>端</th>
+<th>轴向力取值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>被压紧端</strong></td>
+<td>$F_a &#x3D; S’ + F_A$</td>
+</tr>
+<tr>
+<td><strong>被放松端</strong></td>
+<td>$F_a &#x3D; S$</td>
+</tr>
+</tbody></table>
+<p><strong>第四步</strong>：用各自的 $F_a$ 与 $F_r$ 求 $F_a&#x2F;F_r$，再与 $e$ 比较，得 $X$、$Y$，算 $P$。</p>
+<blockquote>
+<p><strong>为什么这么判</strong>：轴系向某一侧移动时，那一侧的轴承被”顶住”（压紧），所以它要承担”另一端推过来的内部轴向力 + 外部轴向力”；另一侧则”让开”（放松），只承受自身的内部轴向力。</p>
+</blockquote>
+<h3 id="4-9-寿命计算"><a href="#4-9-寿命计算" class="headerlink" title="4.9 寿命计算"></a>4.9 寿命计算</h3><h4 id="4-9-1-基本关系"><a href="#4-9-1-基本关系" class="headerlink" title="4.9.1 基本关系"></a>4.9.1 基本关系</h4><p>根据大量试验，当量动载荷 $P$ 与寿命 $L$ 之间存在：</p>
+<p>$P^{\varepsilon} L$ 为常数</p>
+<p>取 $L &#x3D; 1$（即 $10^6$ 转）时的载荷定义为**基本额定动载荷 $C$**，于是：</p>
+<p>$L_{10} &#x3D; (\frac{C}{P})^{\varepsilon}$</p>
+<p>单位是 <strong>$10^6$ 转</strong>。</p>
+<p>**寿命指数 $\varepsilon$**：</p>
+<table>
+<thead>
+<tr>
+<th>轴承类型</th>
+<th>$\varepsilon$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>球轴承</td>
+<td><strong>3</strong></td>
+</tr>
+<tr>
+<td>滚子轴承</td>
+<td><strong>10&#x2F;3</strong></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>为什么滚子轴承的 $\varepsilon$ 更大</strong>：滚子是<strong>线接触</strong>，承载能力更强，寿命对载荷变化不那么敏感，所以指数更大。</p>
+</blockquote>
+<h4 id="4-9-2-换算成小时"><a href="#4-9-2-换算成小时" class="headerlink" title="4.9.2 换算成小时"></a>4.9.2 换算成小时</h4><p>$L_{10h} &#x3D; \frac{10^6}{60n}(\frac{C}{P})^{\varepsilon}$</p>
+<p>式中 $n$ 为转速（r&#x2F;min）。工程上习惯用小时数表示寿命，所以这一步换算几乎必做。</p>
+<h4 id="4-9-3-修正系数-f-T-与-f-P"><a href="#4-9-3-修正系数-f-T-与-f-P" class="headerlink" title="4.9.3 修正系数 $f_T$ 与 $f_P$"></a>4.9.3 修正系数 $f_T$ 与 $f_P$</h4><table>
+<thead>
+<tr>
+<th>系数</th>
+<th>含义</th>
+<th>取值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>$f_T$</strong></td>
+<td>温度系数</td>
+<td>工作温度低于 100 °C 取 1；常温（约 25 °C）一般取 1</td>
+</tr>
+<tr>
+<td><strong>$f_P$</strong></td>
+<td>载荷系数</td>
+<td>轻微冲击或无冲击取 1～1.2；<strong>计算时为方便常取 1</strong></td>
+</tr>
+</tbody></table>
+<p>引入后：</p>
+<p>$L_{10h} &#x3D; \frac{10^6}{60n}(\frac{f_T C}{f_P P})^{\varepsilon}$</p>
+<blockquote>
+<p>老师的一个提醒：如果希望算出来的寿命尽量大，$f_P$ 就取小一点（取 1），因为它在<strong>分母</strong>上。</p>
+</blockquote>
+<h4 id="4-9-4-反算所需额定动载荷"><a href="#4-9-4-反算所需额定动载荷" class="headerlink" title="4.9.4 反算所需额定动载荷"></a>4.9.4 反算所需额定动载荷</h4><p>实际设计中更常见的是<strong>已知预期寿命、反选轴承</strong>。把上式变形：</p>
+<p>$C_{req} &#x3D; \frac{f_P P}{f_T}(\frac{60 n L_h}{10^6})^{1&#x2F;\varepsilon}$</p>
+<p>算出的 $C_{req}$ 是<strong>所需的最小基本额定动载荷</strong>，选轴承时要求<strong>样本上的 $C$ 大于等于它</strong>。</p>
+<blockquote>
+<p><strong>这正是”试算—校核”流程的由来</strong>：先按轴径预选一个型号，查出它的 $C$ 与 $C_{0r}$，再算 $e$、$S$、$F_a$、$P$，最后算寿命或反算 $C_{req}$。如果不够就换大一档，重来一遍。</p>
+</blockquote>
+<h4 id="4-9-5-当量静载荷"><a href="#4-9-5-当量静载荷" class="headerlink" title="4.9.5 当量静载荷"></a>4.9.5 当量静载荷</h4><p>$C_{0r}$ 是<strong>基本额定静载荷</strong>，用于静止或极低速、有冲击的场合。本课程<strong>一般不要求计算</strong>，知道它是”抗塑性变形的能力指标”即可。</p>
+<h3 id="4-10-轴向固定方式"><a href="#4-10-轴向固定方式" class="headerlink" title="4.10 轴向固定方式"></a>4.10 轴向固定方式</h3><table>
+<thead>
+<tr>
+<th>方式</th>
+<th>做法</th>
+<th>适用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>双支点单向固定</strong></td>
+<td>两端各用一个轴承，各自限制一个方向的轴向移动</td>
+<td>跨距较小、温升不高</td>
+</tr>
+<tr>
+<td><strong>一端固定一端游动</strong></td>
+<td>一端轴承双向固定，另一端可沿轴向游动</td>
+<td>跨距较大、有热伸长</td>
+</tr>
+</tbody></table>
+<p><strong>内圈的固定手段</strong>：</p>
+<ul>
+<li><strong>轴肩</strong>（最常用，靠轴上的台阶顶住内圈端面）；</li>
+<li><strong>弹性挡圈</strong>（卡在轴上的环槽里，结构简单）；</li>
+<li><strong>圆螺母 + 止动垫圈</strong>（可调整、可预紧）；</li>
+<li><strong>端盖压紧</strong>；</li>
+<li><strong>套筒</strong>（隔套，同时起定位与隔离作用）。</li>
+</ul>
+<p><strong>外圈的固定手段</strong>：</p>
+<ul>
+<li><strong>孔内挡肩</strong>；</li>
+<li><strong>孔用弹性挡圈</strong>；</li>
+<li><strong>端盖</strong>（只限制一个方向）；</li>
+<li><strong>螺纹环</strong>。</li>
+</ul>
+<h3 id="4-11-装拆与轴系结构常见错误"><a href="#4-11-装拆与轴系结构常见错误" class="headerlink" title="4.11 装拆与轴系结构常见错误"></a>4.11 装拆与轴系结构常见错误</h3><h4 id="4-11-1-装拆铁律"><a href="#4-11-1-装拆铁律" class="headerlink" title="4.11.1 装拆铁律"></a>4.11.1 装拆铁律</h4><p><strong>拆装工具的受力点必须落在”要拆的那个套圈”上。</strong></p>
+<ul>
+<li>拆<strong>内圈</strong>（内圈与轴配合），工具必须<strong>卡内圈</strong>；</li>
+<li>如果结构上工具只能卡到外圈，那就是<strong>结构设计错误</strong>——因为力会经过滚动体传到另一个套圈，<strong>可能把滚动体压坏或挤裂</strong>。</li>
+</ul>
+<h4 id="4-11-2-轴系结构改错的四个高频点"><a href="#4-11-2-轴系结构改错的四个高频点" class="headerlink" title="4.11.2 轴系结构改错的四个高频点"></a>4.11.2 轴系结构改错的四个高频点</h4><table>
+<thead>
+<tr>
+<th>错误</th>
+<th>正确做法</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>齿轮与轴承端面直接贴合</td>
+<td>中间<strong>加隔离套（挡油环）</strong></td>
+<td>齿轮用<strong>油</strong>润滑、轴承用<strong>脂</strong>润滑，两者不能接触，必须隔离</td>
+</tr>
+<tr>
+<td>轴肩高度不够</td>
+<td>轴肩直径要能<strong>顶住套圈端面</strong></td>
+<td>轴肩太低顶不到套圈，定位失效</td>
+</tr>
+<tr>
+<td>两个键槽不在同一侧</td>
+<td>键槽<strong>布置在同一母线上</strong></td>
+<td>装配时便于对位、受力更合理</td>
+</tr>
+<tr>
+<td>整根轴都做成配合面</td>
+<td>用<strong>阶梯轴</strong>，只加工配合段</td>
+<td>减少不必要的精加工面，降低成本</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="五、例题与解题方法汇总"><a href="#五、例题与解题方法汇总" class="headerlink" title="五、例题与解题方法汇总"></a>五、例题与解题方法汇总</h2><h3 id="题型-1：选型（给工况选轴承类型）"><a href="#题型-1：选型（给工况选轴承类型）" class="headerlink" title="题型 1：选型（给工况选轴承类型）"></a>题型 1：选型（给工况选轴承类型）</h3><p><strong>解题步骤</strong>：</p>
+<ol>
+<li><strong>看有没有偏斜&#x2F;不同心</strong> → 有则必须<strong>调心</strong>；</li>
+<li><strong>看转速</strong> → 转速高选<strong>球轴承</strong>，转速低且载荷大选<strong>滚子轴承</strong>；</li>
+<li><strong>看有没有轴向力</strong> → 有较大轴向力选<strong>角接触球</strong>或<strong>圆锥滚子</strong>；</li>
+<li><strong>看有没有冲击</strong> → 有冲击优先<strong>滚子轴承</strong>（线接触、抗冲击好）；</li>
+<li><strong>综合</strong>：例如”有偏斜 + 转速较高”→ 调心球轴承；”斜齿轮传动 + 需承受轴向力”→ 圆锥滚子或角接触球。</li>
+</ol>
+<h3 id="题型-2：单个轴承求当量动载荷"><a href="#题型-2：单个轴承求当量动载荷" class="headerlink" title="题型 2：单个轴承求当量动载荷"></a>题型 2：单个轴承求当量动载荷</h3><p><strong>解题步骤</strong>：</p>
+<ol>
+<li>由型号&#x2F;接触角确定<strong>类型与分档</strong>；</li>
+<li>查表得 **$e$**；</li>
+<li>算 $F_a&#x2F;F_r$，与 $e$ 比较；</li>
+<li>取 $X$、$Y$；</li>
+<li>$P &#x3D; X F_r + Y F_a$。</li>
+</ol>
+<p><strong>易错点</strong>：忘了先比较 $F_a&#x2F;F_r$ 与 $e$，直接套 $X&#x3D;0.41$、$Y&#x3D;1.6$。</p>
+<h3 id="题型-3：一对轴承的轴向力分配-寿命"><a href="#题型-3：一对轴承的轴向力分配-寿命" class="headerlink" title="题型 3：一对轴承的轴向力分配 + 寿命"></a>题型 3：一对轴承的轴向力分配 + 寿命</h3><p><strong>解题步骤</strong>：</p>
+<ol>
+<li><strong>求两端内部轴向力</strong>：$S_1$、$S_2$（角接触球用 $e F_r$，圆锥滚子用 $F_r&#x2F;(2Y)$）；</li>
+<li><strong>定方向</strong>：两端 $S$ 都指向轴承外侧；</li>
+<li><strong>判趋势</strong>：比较”$S_1$、$S_2$、$F_A$ 的合力方向”；</li>
+<li><strong>定压紧&#x2F;放松</strong>：趋势指向的一端为<strong>压紧端</strong>；</li>
+<li>**算各端 $F_a$**：压紧端 $&#x3D; S’ + F_A$；放松端 $&#x3D; S$；</li>
+<li>**算 $F_a&#x2F;F_r$**，与 $e$ 比较，取 $X$、$Y$；</li>
+<li>**算 $P$**，再算 $L_{10h}$ 或反算 $C_{req}$。</li>
+</ol>
+<h3 id="题型-4：轴系结构改错"><a href="#题型-4：轴系结构改错" class="headerlink" title="题型 4：轴系结构改错"></a>题型 4：轴系结构改错</h3><p><strong>检查清单</strong>（逐条过）：</p>
+<ol>
+<li>齿轮与轴承之间有没有<strong>隔离套</strong>？（油&#x2F;脂不能混）</li>
+<li>轴肩高度<strong>够不够</strong>顶住套圈？</li>
+<li>两个键槽是否在<strong>同一侧</strong>？</li>
+<li>是否用了<strong>阶梯轴</strong>减少配合面？</li>
+<li>拆装工具<strong>能不能卡到内圈</strong>？</li>
+<li>轴承的<strong>轴向固定</strong>是否完整（内圈、外圈各限制了什么方向）？</li>
+<li>是否有<strong>多余约束</strong>（两端都双向固定会导致热伸长无补偿）？</li>
+</ol>
+<hr>
+<h2 id="六、术语速查表"><a href="#六、术语速查表" class="headerlink" title="六、术语速查表"></a>六、术语速查表</h2><table>
+<thead>
+<tr>
+<th>术语</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>接触角</td>
+<td>滚动体与滚道接触点法线与轴承径向平面的夹角，用 $\alpha$ 表示</td>
+</tr>
+<tr>
+<td>基本额定动载荷 $C$</td>
+<td>使轴承基本额定寿命为 $10^6$ 转时所能承受的载荷</td>
+</tr>
+<tr>
+<td>基本额定静载荷 $C_{0r}$</td>
+<td>使受载最大滚动体与滚道接触处产生规定永久变形量的静载荷</td>
+</tr>
+<tr>
+<td>当量动载荷 $P$</td>
+<td>与实际载荷组合等效的假想载荷，$P &#x3D; X F_r + Y F_a$</td>
+</tr>
+<tr>
+<td>判断系数 $e$</td>
+<td>用于判断轴向力是否起作用的界限值</td>
+</tr>
+<tr>
+<td>径向系数 $X$</td>
+<td>当量动载荷中径向载荷的系数</td>
+</tr>
+<tr>
+<td>轴向系数 $Y$</td>
+<td>当量动载荷中轴向载荷的系数</td>
+</tr>
+<tr>
+<td>内部轴向力 $S$</td>
+<td>因接触角存在，径向载荷派生出的轴向力，又称派生轴向力</td>
+</tr>
+<tr>
+<td>正装（面对面）</td>
+<td>一对轴承的接触角力线向内收敛的安装方式</td>
+</tr>
+<tr>
+<td>反装（背对背）</td>
+<td>一对轴承的接触角力线向外张开的安装方式</td>
+</tr>
+<tr>
+<td>压紧端</td>
+<td>轴系轴向移动时被顶住的一端，承受另一端内部轴向力与外部轴向力</td>
+</tr>
+<tr>
+<td>放松端</td>
+<td>轴系轴向移动时让开的一端，只承受自身内部轴向力</td>
+</tr>
+<tr>
+<td>寿命指数 $\varepsilon$</td>
+<td>寿命公式中的指数，球轴承 3、滚子轴承 10&#x2F;3</td>
+</tr>
+<tr>
+<td>基本额定寿命 $L_{10}$</td>
+<td>一批相同轴承中 90% 不出现疲劳点蚀时能达到的寿命</td>
+</tr>
+<tr>
+<td>温度系数 $f_T$</td>
+<td>考虑工作温度对额定动载荷影响的修正系数</td>
+</tr>
+<tr>
+<td>载荷系数 $f_P$</td>
+<td>考虑冲击、振动等实际工况的修正系数</td>
+</tr>
+<tr>
+<td>双支点单向固定</td>
+<td>两端各限制一个方向轴向移动的固定方式</td>
+</tr>
+<tr>
+<td>一端固定一端游动</td>
+<td>一端双向固定、另一端可游动以补偿热伸长的固定方式</td>
+</tr>
+<tr>
+<td>轴肩</td>
+<td>轴上直径变化形成的台阶，用于轴向定位</td>
+</tr>
+<tr>
+<td>弹性挡圈</td>
+<td>卡入轴或孔上的环槽以实现轴向固定的零件</td>
+</tr>
+<tr>
+<td>隔离套（挡油环）</td>
+<td>隔开油润滑与脂润滑区域的零件</td>
+</tr>
+<tr>
+<td>阶梯轴</td>
+<td>各段直径不同的轴，用于减少配合加工面、便于装拆</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="七、课堂强调与复习重点"><a href="#七、课堂强调与复习重点" class="headerlink" title="七、课堂强调与复习重点"></a>七、课堂强调与复习重点</h2><ol>
+<li><strong>内径代号 00～03 是例外</strong>，必须单独背；从 04 起才是”代号 × 5”。</li>
+<li><strong>接触角 C&#x2F;AC&#x2F;B 对应的角度要记牢</strong>：15°、25°、40°。</li>
+<li><strong>极限寿命 $L$ 的单位是 $10^6$ 转</strong>，不是”转”。</li>
+<li><strong>调心球 vs 调心滚子的取舍靠极限转速</strong>，不是靠承载能力。</li>
+<li>**当量动载荷的第一步是查 $e$ 并比较 $F_a&#x2F;F_r$**，不是直接套 $X$、$Y$。</li>
+<li><strong>内部轴向力只在有接触角时才有</strong>——深沟球轴承没有。</li>
+<li>**角接触球用 $S &#x3D; eF_r$，圆锥滚子用 $S &#x3D; F_r&#x2F;(2Y)$**，两个公式不能混。</li>
+<li><strong>压紧&#x2F;放松判断是本章最难的一步</strong>，判错则全错。先求 $S$、再定方向、再判趋势。</li>
+<li><strong>寿命指数</strong>：球 3、滚子 10&#x2F;3。</li>
+<li><strong>实际设计是”试算—校核”循环</strong>：预选型号 → 查表 → 算 $P$ → 算寿命或反算 $C_{req}$ → 不合适就换型号重来。老师说考试<strong>不会</strong>考这种反复试算，会直接给 AC 或 B 这类具体档位。</li>
+<li><strong>$f_P$ 在分母</strong>，想算出的寿命大就取小（取 1）。</li>
+<li><strong>轴向固定两种方式要能画出来</strong>：双支点单向固定、一端固定一端游动。</li>
+<li><strong>装拆工具必须卡内圈</strong>，卡外圈是错误结构。</li>
+<li><strong>油润滑与脂润滑之间必须隔离</strong>，否则脂被油冲走、油被脂污染。</li>
+<li><strong>轴系结构改错题按清单逐条查</strong>，别凭感觉。</li>
+</ol>
+<hr>
+<h2 id="八、【以教材为准】待核对清单"><a href="#八、【以教材为准】待核对清单" class="headerlink" title="八、【以教材为准】待核对清单"></a>八、【以教材为准】待核对清单</h2><p>以下条目因录音环境噪声、口述省略或与教材符号习惯不一致，建议对照教材核对：</p>
+<ol>
+<li><strong>类型代号的记忆顺序</strong>。课堂上口述为”调心球的一、圆柱滚子的十三、推力的五、深沟球的六、角接触的 7、圆锥的 N”，其中”十三”与”N”的对应关系听录不清（圆柱滚子轴承标准代号为 <strong>N</strong>）。正文按标准代号表给出，<strong>以教材为准</strong>。</li>
+<li><strong>接触角 C 的角度</strong>。课堂口述中出现”25 度”（对应 AC）与”C 45 度”两处表述，标准规定 <strong>C &#x3D; 15°、AC &#x3D; 25°、B &#x3D; 40°</strong>。正文按标准值，<strong>以教材为准</strong>。</li>
+<li><strong>判断系数 $e$ 的具体数值</strong>。例题中口述 $e &#x3D; 0.68$（AC 档），<strong>不同教材&#x2F;手册的表格数值可能略有差异</strong>，请以所用教材的表格为准。</li>
+<li><strong>例题载荷数值</strong>。录音中径向载荷口述为”1000 N”（另一处似为”1100”），正文取 $F_r &#x3D; 1000$ N、$F_a &#x3D; 600$ N，比值 0.6 与课堂口述的”0.6”一致。</li>
+<li><strong>角接触球轴承 $X$ 的取值</strong>。正文按常见手册取 $X &#x3D; 0.41$（$F_a&#x2F;F_r &gt; e$ 时），<strong>具体数值以教材表格为准</strong>。</li>
+<li><strong>圆锥滚子轴承综合例题的数值</strong>。录音中出现 30206、$C_r &#x3D; 43$ kN、$e &#x3D; 0.37$、$Y &#x3D; 1.6$、$S_1 &#x3D; 1250$ N、$S_2 &#x3D; 1330$ N、$F_A &#x3D; 350$ N 等，均为听录，<strong>请以教材例题为准</strong>。</li>
+<li><strong>深沟球轴承选型例题的型号</strong>。录音中出现 6212、6312、736C 等型号与 $C_{0r} &#x3D; 20.3$ kN、$C_r &#x3D; 32.3$ kN 的参数，听录可能有误，<strong>以教材&#x2F;手册为准</strong>。</li>
+<li><strong>温度系数 $f_T$ 的分档</strong>。正文按”低于 100 °C 取 1”表述，<strong>具体分档表以教材为准</strong>。</li>
+<li><strong>载荷系数 $f_P$ 的取值范围</strong>。正文按”轻微冲击或无冲击取 1～1.2”表述，<strong>具体分档以教材为准</strong>。</li>
+<li><strong>教材页码</strong>（录音中提到 143 页、145 页、243 页等）为听录，正文未引用。</li>
+<li><strong>轴向固定方式的分类名称</strong>。正文按”双支点单向固定”与”一端固定一端游动”两大类表述，<strong>部分教材还有”两端固定”一类</strong>，以教材为准。</li>
+<li><strong>轴系结构改错的具体图例</strong>。课堂是按图纸逐处讲解，正文归纳为四个高频错误点，<strong>具体图例请对照教材</strong>。</li>
+</ol>
+<hr>
+<h2 id="九、复习自测（20-题）"><a href="#九、复习自测（20-题）" class="headerlink" title="九、复习自测（20 题）"></a>九、复习自测（20 题）</h2><p><strong>基础（1–6）</strong></p>
+<ol>
+<li>写出调心球、调心滚子、圆锥滚子、推力球、深沟球、角接触球、圆柱滚子轴承的类型代号。</li>
+<li>角接触球轴承的 C、AC、B 三种代号分别对应多少度接触角？</li>
+<li>轴承代号由哪几部分组成？内径代号 00、01、02、03 分别对应多少毫米？</li>
+<li>轴径 $d &#x3D; 45$ mm，其内径代号是多少？</li>
+<li>轴发生偏移且转速较高，应选调心球轴承还是调心滚子轴承？为什么？</li>
+<li>极限寿命 $L$ 的单位是什么？</li>
+</ol>
+<p><strong>当量动载荷与内部轴向力（7–13）</strong></p>
+<ol start="7">
+<li>写出当量动载荷的计算公式，并说明 $F_a&#x2F;F_r \le e$ 时 $X$、$Y$ 如何取值。</li>
+<li>某角接触球轴承接触角 25°，$F_r &#x3D; 2000$ N、$F_a &#x3D; 900$ N，查表得 $e &#x3D; 0.68$。求当量动载荷 $P$。</li>
+<li>内部轴向力（派生轴向力）是如何产生的？产生的前提条件是什么？</li>
+<li>为什么深沟球轴承没有内部轴向力？</li>
+<li>写出角接触球轴承与圆锥滚子轴承内部轴向力的计算公式。</li>
+<li>正装与反装（面对面与背对背）的区别是什么？</li>
+<li>一对轴承成对使用时，如何判断哪一端是压紧端、哪一端是放松端？</li>
+</ol>
+<p><strong>寿命（14–17）</strong></p>
+<ol start="14">
+<li>写出基本额定寿命公式，并说明球轴承与滚子轴承的寿命指数分别是多少。</li>
+<li>为什么滚子轴承的寿命指数大于球轴承？</li>
+<li>写出把 $L_{10}$（$10^6$ 转）换算成小时寿命 $L_{10h}$ 的公式。</li>
+<li>已知某轴承 $C &#x3D; 32$ kN、$P &#x3D; 8$ kN、$n &#x3D; 1500$ r&#x2F;min、球轴承，求 $L_{10h}$（取 $\varepsilon &#x3D; 3$，不计修正系数）。</li>
+</ol>
+<p><strong>结构与装拆（18–20）</strong></p>
+<ol start="18">
+<li>滚动轴承的轴向固定有哪两种基本方式？各自适用什么场合？</li>
+<li>齿轮用油润滑、轴承用脂润滑时，结构上必须注意什么？为什么？</li>
+<li>拆卸安装在轴上的轴承内圈时，拆装工具的受力点应落在哪里？如果结构上只能卡到外圈，说明什么问题？</li>
+</ol>
+<hr>
+<h2 id="十、复习自测参考答案"><a href="#十、复习自测参考答案" class="headerlink" title="十、复习自测参考答案"></a>十、复习自测参考答案</h2><p><strong>1.</strong> 调心球 <strong>1</strong>、调心滚子 <strong>2</strong>、圆锥滚子 <strong>3</strong>、推力球 <strong>5</strong>、深沟球 <strong>6</strong>、角接触球 <strong>7</strong>、圆柱滚子 <strong>N</strong>。</p>
+<p><strong>2.</strong> <strong>C &#x3D; 15°、AC &#x3D; 25°、B &#x3D; 40°</strong>。</p>
+<p><strong>3.</strong> 由<strong>前置代号 + 基本代号 + 后置代号</strong>三部分组成，其中基本代号又包含<strong>类型代号、尺寸系列代号、内径代号</strong>。内径代号 <strong>00 → 10 mm、01 → 12 mm、02 → 15 mm、03 → 17 mm</strong>。</p>
+<p><strong>4.</strong> $45&#x2F;5 &#x3D; 9$，内径代号为 <strong>09</strong>。</p>
+<p><strong>5.</strong> 选<strong>调心球轴承</strong>。两者都能调心，但<strong>球轴承是点接触、摩擦小、极限转速高</strong>；调心滚子轴承是线接触、承载能力大但极限转速低。转速较高时应优先保证转速能力。</p>
+<p><strong>6.</strong> <strong>$10^6$ 转</strong>（不是”转”）。</p>
+<p><strong>7.</strong> $P &#x3D; X F_r + Y F_a$。当 $F_a&#x2F;F_r \le e$ 时取 **$X &#x3D; 1$、$Y &#x3D; 0$**，此时 $P &#x3D; F_r$。</p>
+<p><strong>8.</strong> $F_a&#x2F;F_r &#x3D; 900&#x2F;2000 &#x3D; 0.45 &lt; e &#x3D; 0.68$，故 $X &#x3D; 1$、$Y &#x3D; 0$，$P &#x3D; 1 \times 2000 + 0 \times 900 &#x3D; 2000$ N。</p>
+<p><strong>9.</strong> 径向载荷 $F_r$ 通过内圈作用在滚动体上，滚动体产生反力；因为轴承<strong>有接触角</strong>，反力沿接触线方向，可分解出轴向分量；<strong>各滚动体轴向分量之和</strong>即为内部轴向力 $S$。产生前提是<strong>必须有接触角</strong>。</p>
+<p><strong>10.</strong> 因为深沟球轴承的<strong>接触角为零</strong>，滚动体只承受径向反力，没有轴向分量，所以各滚动体的轴向分量之和为零，<strong>不产生内部轴向力</strong>。</p>
+<p><strong>11.</strong> 角接触球轴承：$S &#x3D; e F_r$；圆锥滚子轴承：$S &#x3D; \frac{F_r}{2Y}$（$e$、$Y$ 查表）。</p>
+<p><strong>12.</strong> <strong>正装（面对面）</strong>：两端接触角力线<strong>向内收敛</strong>，力线交点落在两轴承之间；<strong>反装（背对背）</strong>：力线<strong>向外张开</strong>，交点落在两轴承之外。判断方法是画出接触角方向、延长力线与轴线相交，看交点位置。</p>
+<p><strong>13.</strong> 步骤：① 求两端内部轴向力 $S_1$、$S_2$ 并明确方向（都指向轴承外侧）；② 比较两端 $S$ 与外部轴向力 $F_A$ 的合力，判断<strong>整个轴系的运动趋势朝哪一侧</strong>；③ <strong>趋势所指向的一端为压紧端</strong>，另一端为放松端。压紧端 $F_a &#x3D; S’ + F_A$，放松端 $F_a &#x3D; S$。</p>
+<p><strong>14.</strong> $L_{10} &#x3D; (\frac{C}{P})^{\varepsilon}$。**球轴承 $\varepsilon &#x3D; 3$，滚子轴承 $\varepsilon &#x3D; 10&#x2F;3$**。</p>
+<p><strong>15.</strong> 因为滚子是<strong>线接触</strong>，接触面积大、承载能力强，寿命对载荷变化的敏感度较低，所以寿命指数更大。</p>
+<p><strong>16.</strong> $L_{10h} &#x3D; \frac{10^6}{60n}(\frac{C}{P})^{\varepsilon}$。</p>
+<p><strong>17.</strong> 先算载荷比：$C&#x2F;P &#x3D; 32&#x2F;8 &#x3D; 4$；再算 $4^3 &#x3D; 64$；代入：</p>
+<p>$L_{10h} &#x3D; \frac{10^6}{60 \times 1500} \times 64 &#x3D; \frac{10^6}{90000} \times 64 \approx 11.11 \times 64 \approx 711$ h</p>
+<p>即约 <strong>711 小时</strong>。</p>
+<p><strong>18.</strong> ① <strong>双支点单向固定</strong>：两端各限制一个方向的轴向移动，适用于<strong>跨距较小、温升不高</strong>的场合；② <strong>一端固定一端游动</strong>：一端双向固定、另一端可沿轴向游动，适用于<strong>跨距较大、有热伸长</strong>的场合。</p>
+<p><strong>19.</strong> 必须在齿轮与轴承之间<strong>加隔离套（挡油环）</strong>。因为齿轮用<strong>油</strong>润滑、轴承用<strong>脂</strong>润滑，两者不能相互接触——油会把脂冲走，脂会污染油，都会破坏润滑效果。</p>
+<p><strong>20.</strong> 受力点必须落在<strong>要拆的那个套圈</strong>上——拆内圈就<strong>卡内圈</strong>。如果结构上只能卡到外圈，说明<strong>轴肩&#x2F;台阶设计有误</strong>：力会经外圈→滚动体→内圈传递，可能把滚动体压坏或挤裂，属于<strong>结构设计错误</strong>，应修改轴肩结构使工具能卡到内圈。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1-%E6%BB%9A%E5%8A%A8%E8%BD%B4%E6%89%BF-%E4%B9%A0%E9%A2%98%E8%AF%BE-CSDN/" class="print-no-link">#机械设计 滚动轴承 习题课 CSDN</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>滚动轴承习题课：类型代号、当量动载荷与寿命计算</div>
+      <div>https://tdexxx.github.io/2026/10/21/04_机械设计基础/机械设计基础·滚动轴承习题课（类型代号·接触角·当量动载荷·内部轴向力·压紧放松判断·寿命计算·轴向固定）CSDN发布稿/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>tdexxx</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年10月21日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/10/21/04_%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80%C2%B7%E8%AF%BE%E5%A0%82%E9%80%90%E5%AD%97%E7%A8%BF%EF%BC%88%E6%BB%9A%E5%8A%A8%E8%BD%B4%E6%89%BF%E4%B9%A0%E9%A2%98%E8%AF%BE%EF%BC%89ASR%E5%8E%9F%E5%A7%8B/" title="滚动轴承习题课课堂逐字稿（ASR 原始）">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">滚动轴承习题课课堂逐字稿（ASR 原始）</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/10/16/06_%E6%9C%BA%E6%A2%B0%E5%88%B6%E9%80%A0%E5%B7%A5%E8%89%BA%E4%B8%8E%E5%A4%B9%E5%85%B7/%E6%9C%BA%E6%A2%B0%E5%88%B6%E9%80%A0%E5%B7%A5%E8%89%BA%E5%AD%A6%C2%B7%E5%A4%8D%E4%B9%A0%E8%AF%BE%EF%BC%88%E5%85%B8%E5%9E%8B%E8%A1%A8%E9%9D%A2%E5%8A%A0%E5%B7%A5%E8%B7%AF%E7%BA%BF%C2%B7%E5%B7%A5%E5%BA%8F%E5%AE%89%E6%8E%92%E5%9B%9B%E5%8E%9F%E5%88%99%C2%B7%E7%83%AD%E5%A4%84%E7%90%86%E5%B7%A5%E5%BA%8F%C2%B7%E5%8A%A0%E5%B7%A5%E4%BD%99%E9%87%8F%C2%B7%E5%B7%A5%E8%89%BA%E5%B0%BA%E5%AF%B8%E9%93%BE%EF%BC%89CSDN%E5%8F%91%E5%B8%83%E7%A8%BF/" title="机械制造工艺学复习课：加工路线、工序安排与工艺尺寸链">
+                        <span class="hidden-mobile">机械制造工艺学复习课：加工路线、工序安排与工艺尺寸链</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,978 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="tdexxx">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="数控编程G代码应用笔记：G90&#x2F;G91绝对增量、G92建工件坐标系与车床直径编程、G17平面选择、G00&#x2F;G01与M代码、模态同组逻辑及锥度车削实例（含考点） 本文整理《数控编程基础与 G 代码应用（数控编程基础与坐标系应用）》一课，是数控机床编程从”格式与坐标系”进入”具体指令应用”的一节。内容分四部分：第一部分简要复习机床坐标轴方向判断（Z 轴平行主轴、远离工件为正，X 轴">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数控编程 G 代码应用：G90&#x2F;G91、G92 与模态指令">
+<meta property="og:url" content="https://tdexxx.github.io/2026/10/07/01_%E6%95%B0%E6%8E%A7%E5%8A%A0%E5%B7%A5%E5%B7%A5%E8%89%BA%E4%B8%8E%E7%BC%96%E7%A8%8B/%E6%95%B0%E6%8E%A7%E5%8A%A0%E5%B7%A5%E5%B7%A5%E8%89%BA%E4%B8%8E%E7%BC%96%E7%A8%8B_G%E4%BB%A3%E7%A0%81%E5%BA%94%E7%94%A8_%E5%8F%91%E5%B8%83%E7%A8%BF/index.html">
+<meta property="og:site_name" content="tdexxx的博客">
+<meta property="og:description" content="数控编程G代码应用笔记：G90&#x2F;G91绝对增量、G92建工件坐标系与车床直径编程、G17平面选择、G00&#x2F;G01与M代码、模态同组逻辑及锥度车削实例（含考点） 本文整理《数控编程基础与 G 代码应用（数控编程基础与坐标系应用）》一课，是数控机床编程从”格式与坐标系”进入”具体指令应用”的一节。内容分四部分：第一部分简要复习机床坐标轴方向判断（Z 轴平行主轴、远离工件为正，X 轴">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-10-06T16:33:12.000Z">
+<meta property="article:modified_time" content="2026-10-30T17:37:19.904Z">
+<meta property="article:author" content="tdexxx">
+<meta property="article:tag" content="数控编程 车削 G代码">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>数控编程 G 代码应用：G90/G91、G92 与模态指令 - tdexxx的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"tdexxx.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2022-12-10T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="数控编程 G 代码应用：G90/G91、G92 与模态指令"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-10-07 00:33" pubdate>
+          2026年10月7日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          67 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">数控编程 G 代码应用：G90/G91、G92 与模态指令</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="数控编程G代码应用笔记：G90-G91绝对增量、G92建工件坐标系与车床直径编程、G17平面选择、G00-G01与M代码、模态同组逻辑及锥度车削实例（含考点）"><a href="#数控编程G代码应用笔记：G90-G91绝对增量、G92建工件坐标系与车床直径编程、G17平面选择、G00-G01与M代码、模态同组逻辑及锥度车削实例（含考点）" class="headerlink" title="数控编程G代码应用笔记：G90&#x2F;G91绝对增量、G92建工件坐标系与车床直径编程、G17平面选择、G00&#x2F;G01与M代码、模态同组逻辑及锥度车削实例（含考点）"></a>数控编程G代码应用笔记：G90&#x2F;G91绝对增量、G92建工件坐标系与车床直径编程、G17平面选择、G00&#x2F;G01与M代码、模态同组逻辑及锥度车削实例（含考点）</h1><blockquote>
+<p>本文整理《数控编程基础与 G 代码应用（数控编程基础与坐标系应用）》一课，是数控机床编程从”格式与坐标系”进入”具体指令应用”的一节。内容分四部分：第一部分简要复习<strong>机床坐标轴方向判断</strong>（Z 轴平行主轴、远离工件为正，X 轴在立铣&#x2F;卧车上的判定，Y 轴右手定则）和<strong>机床坐标系与工件坐标系、原点偏置</strong>；第二部分讲编程的坐标基础——<strong>绝对坐标系 G90 与增量坐标系 G91</strong>、<strong>最小设定单位（脉冲当量）</strong>与毫米&#x2F;份数两种坐标表达；第三部分是核心——<strong>准备功能 G 代码、辅助功能 M 代码和 F&#x2F;S&#x2F;T 功能字</strong>，重点讲清<strong>模态（续效）与非模态代码、同组取代&#x2F;不同组共存</strong>的逻辑，常用 M 代码（M00&#x2F;M01&#x2F;M02&#x2F;M30、M03&#x2F;M05、M08&#x2F;M09），<strong>G92 建立工件坐标系</strong>（坐标值是起刀点相对工件原点、只能用绝对坐标）、<strong>车床 X 直径编程（直径值&#x3D;半径值两倍）</strong>、<strong>G17&#x2F;G18&#x2F;G19 平面选择</strong>、<strong>G00 快速定位与 G01 直线插补</strong>；第四部分是一个<strong>带 1:3 锥面的轴类车削综合编程实例</strong>（G92 建系、G00 留安全距离、S&#x2F;T&#x2F;M03&#x2F;M08、G90、G01 车外圆与锥面）和安全进退刀经验。文末附模态代码逐段判读例题、指令代码速查表、待核对清单和主动回忆题（含答案要点）。</p>
+</blockquote>
+<h2 id="一、核心结论"><a href="#一、核心结论" class="headerlink" title="一、核心结论"></a>一、核心结论</h2><ul>
+<li>坐标轴方向：<strong>Z 轴平行主轴轴线</strong>（工件旋转的车床平行工件轴线、刀具旋转的铣床平行刀具轴线），<strong>Z 正方向为远离刀具、远离工件的方向</strong>；X 轴垂直 Z 轴且平行装夹面（立铣 Z 垂直时从前往后看右手边为 X 正，卧车 X 沿横向拖板径向、刀具远离工件为正）；Z、X 定后用<strong>右手定则</strong>定 Y。</li>
+<li><strong>机床坐标系原点</strong>是机床固有、固定不变的基准点（车床常在主轴卡盘中心，靠回零建立），一般不直接用于编程；<strong>工件坐标系原点（工作原点）</strong>由编程人员按图样方便确定（车床常取工件右端面中心），可在程序中多次改变。</li>
+<li>工件坐标系是把机床坐标系经<strong>原点偏置平移</strong>得到，两系<strong>坐标轴平行、正方向一致</strong>，只平移不旋转、不反向。</li>
+<li><strong>绝对坐标系</strong>所有点以同一固定原点计量、坐标值固定，用 <strong>G90</strong>；<strong>增量坐标系</strong>以每段起点为基准、写终点相对起点的位移（带正负号），用 <strong>G91</strong>；G90、G91 都是模态、同组互斥。</li>
+<li><strong>最小设定单位（最小指令增量&#x2F;脉冲当量）</strong>是数控系统能实现的最小位移量（如 0.001、0.01mm），决定加工精度；坐标可用毫米直接写（推荐，如 125.30），也可以最小设定单位为 1 份写份数（0.01mm 时 125.30mm 写 12530）。</li>
+<li>功能字：<strong>G</strong> 准备功能（建立加工方式、决定走直线&#x2F;圆弧路径）、<strong>M</strong> 辅助功能（主轴、切削液、程序启停，不影响路径）、<strong>F</strong> 进给速度（mm&#x2F;min）、<strong>S</strong> 主轴转速（r&#x2F;min）、<strong>T</strong> 刀具号&#x2F;刀补号（T01 或 T0101，加工中心才有刀库换刀）。</li>
+<li><strong>模态（续效）代码</strong>出现一次后持续有效，直到被<strong>同组</strong>代码取代（查表 2-2 中标 a&#x2F;b&#x2F;c&#x2F;d 组别的）；<strong>非模态代码</strong>只在所出现程序段有效（如 G92）。<strong>同组相互取代、不同组可共存</strong>：G00&#x2F;G01&#x2F;G02&#x2F;G03 同属 a 组互相顶替，G17（c 组平面）、G42（刀补组）与它们不同组，可写在同一程序段并各自延续。</li>
+<li>M 代码的模态不靠”同组”取消，而由<strong>功能相反的合适指令</strong>终止：M03 主轴正转由 M05 停、M08 切削液开由 M09 关；若没有对应关闭指令，则由程序结束 M02&#x2F;M30 终止。</li>
+<li><strong>M00 程序停止</strong>：暂停以便换刀&#x2F;测量&#x2F;掉头&#x2F;变速，主轴进给冷却停但<strong>模态信息保持不变</strong>，按循环启动继续；<strong>M01 计划（选择）停止</strong>：须先按下操作面板”任选停止”按钮，程序走到 M01 才停（用于定时抽检）；<strong>M02 程序结束</strong>：全部停止复位、光标停在最后一段（多用于单件）；<strong>M30 程序结束</strong>：全部停止复位且<strong>光标自动返回程序头</strong>（便于批量重复）。</li>
+<li><strong>G92 建立工件坐标系</strong>：格式 <code>G92 X_ Y_ Z_</code>，非模态；其 XYZ 是<strong>刀具起始点（起刀点）相对于工件原点</strong>的坐标值，<strong>不是</strong>工件原点相对机床原点；机床知道刀具在机床坐标系中的位置，据此反推出工件原点；G92 段不切削，且<strong>只能用绝对坐标、不能用增量</strong>。</li>
+<li><strong>车床 X 用直径值编程</strong>：因车削回转体，X 坐标写直径值，等于半径（实际坐标）的两倍（如半径 60、直径 φ120 时 X 写 120）。</li>
+<li>平面选择：<strong>G17&#x3D;XY 平面（铣床默认）、G18&#x3D;ZX 平面（车床默认）、G19&#x3D;YZ 平面</strong>，均模态；默认平面可省略，非默认必须写明。</li>
+<li><strong>G00 快速定位</strong>：以<strong>系统设定</strong>速度快速移动到目标点、空行程不切削，模态、<strong>不需要 F、S</strong>，格式 <code>G00 X_Y_Z_</code>；<strong>G01 直线插补</strong>：刀具坐标联动、按指定进给速度走直线到目标点，模态、<strong>必须有 F</strong>，格式 <code>G01 X_Y_Z_ F_</code>，XYZ 只写终点坐标。</li>
+<li>车削实操经验：G00 接近工件时在切削点外留约 1mm 安全距离，再用 G01 慢慢切入，退刀同样留安全量，防止撞刀。</li>
+<li>锥度轴实例程序骨架：G92 建系（X 写直径值）→ G00 定位到留 1mm 余量处、给 S600、T0101 → M03（主轴正转，必须）、M08（切削液，可选）→ G90 声明绝对 → G01 X20 Z-14 F100 车 φ20 外圆 → 按锥度 1:3 算终点继续 G01 车锥面。</li>
+</ul>
+<h2 id="二、知识结构"><a href="#二、知识结构" class="headerlink" title="二、知识结构"></a>二、知识结构</h2><ul>
+<li>坐标系（复习）<ul>
+<li>XYZ 方向判断；机床坐标系&#x2F;工件坐标系&#x2F;原点偏置</li>
+</ul>
+</li>
+<li>坐标表达基础<ul>
+<li>绝对 G90 &#x2F; 增量 G91；最小设定单位（脉冲当量）</li>
+</ul>
+</li>
+<li>功能字与模态<ul>
+<li>G&#x2F;M&#x2F;F&#x2F;S&#x2F;T；模态&#x2F;非模态、同组取代&#x2F;不同组共存</li>
+<li>常用 M 代码（M00&#x2F;M01&#x2F;M02&#x2F;M30、M03&#x2F;M05、M08&#x2F;M09）</li>
+</ul>
+</li>
+<li>常用 G 指令<ul>
+<li>G92 建工件坐标系；车床直径编程</li>
+<li>G17&#x2F;G18&#x2F;G19 平面；G00 快速定位；G01 直线插补</li>
+</ul>
+</li>
+<li>综合实例：1:3 锥度轴车削程序与安全进退刀</li>
+</ul>
+<h2 id="三、详细笔记"><a href="#三、详细笔记" class="headerlink" title="三、详细笔记"></a>三、详细笔记</h2><h3 id="3-1-机床坐标轴方向判断（复习）"><a href="#3-1-机床坐标轴方向判断（复习）" class="headerlink" title="3.1 机床坐标轴方向判断（复习）"></a>3.1 机床坐标轴方向判断（复习）</h3><ul>
+<li><strong>Z 轴</strong>：大原则是平行于主轴轴线。工件旋转的机床（车床）Z 轴平行工件（主轴）轴线；刀具旋转的机床（铣床、加工中心）Z 轴平行旋转刀具的轴线。</li>
+<li><strong>Z 轴正方向</strong>：取远离刀具、远离工件的方向。立式铣床上刀具向上抬起、远离工件为 Z 正，朝下靠近工件为负。</li>
+<li><strong>X 轴</strong>：垂直于 Z 轴且平行于工件装夹面，需区分 Z 轴水平还是垂直：<ul>
+<li>Z 轴垂直（立式铣床）：从主轴（立柱）向工件方向、即”从前往后看”，右手边为 X 轴正方向；</li>
+<li>Z 轴水平（卧式车床，工件旋转）：X 轴在横向拖板（径向）方向，刀具沿径向远离工件（退出）方向为 X 正；工件旋转的情况不按水平&#x2F;垂直再细分。</li>
+</ul>
+</li>
+<li><strong>Y 轴</strong>：Z、X 正方向确定后，用右手定则确定——伸出右手拇指、食指、中指（三指互相垂直）依次代表 X、Y、Z 正方向，即可定出 Y。</li>
+<li>教材约 14 页有立铣、卧车两张坐标图，是本部分判定依据。</li>
+</ul>
+<h3 id="3-2-机床坐标系、工件坐标系与原点偏置"><a href="#3-2-机床坐标系、工件坐标系与原点偏置" class="headerlink" title="3.2 机床坐标系、工件坐标系与原点偏置"></a>3.2 机床坐标系、工件坐标系与原点偏置</h3><ul>
+<li><strong>机床坐标系（机械坐标系）</strong>：原点（机床原点&#x2F;机械原点）是机床出厂调试后固有的、固定不变的点，记载于机床说明书，通常靠”回零（回参考点）”操作建立；数控车床的机床原点一般在主轴卡盘（端面）中心。它是基准，机床搬动、受撞或大修后原点可能丢失、精度下降。一般<strong>不直接用机床坐标系编程</strong>。</li>
+<li><strong>工件坐标系（编程坐标系）</strong>：原点称工作原点（程序原点），由编程人员在分析图样时选定，原则是”怎么方便编程怎么定”；车削轴类常选工件右端面中心为工作原点。所有编程尺寸都按工件坐标系给出，且在一个程序中工作原点可以多次改变。</li>
+<li><strong>原点偏置与两系关系</strong>：工件随夹具安装后，工件原点与机床原点之间的距离称原点偏置；工件坐标系就是把机床坐标系<strong>平移</strong>到方便位置得到的，二者坐标轴互相平行、正方向完全一致，不会发生轴方向改变或反向。</li>
+</ul>
+<h3 id="3-3-绝对坐标系与增量坐标系（G90-G91）"><a href="#3-3-绝对坐标系与增量坐标系（G90-G91）" class="headerlink" title="3.3 绝对坐标系与增量坐标系（G90&#x2F;G91）"></a>3.3 绝对坐标系与增量坐标系（G90&#x2F;G91）</h3><ul>
+<li><strong>绝对坐标系</strong>：所有坐标点都以同一个固定坐标原点为起点计量。原点一定，各点坐标值就固定不变；无论刀具从 A 走到 B 还是从 B 走到 A，A、B 两点的绝对坐标都相同。</li>
+<li><strong>增量（相对）坐标系</strong>：以每段运动轨迹的起点为临时原点，写终点相对起点的位移量（增量，带正负号）。从 A→B 与从 B→A 的增量坐标数值相同、符号相反，随起点变化。</li>
+<li>选用原则：图样上直接标注了各点相对同一基准的坐标时，用绝对坐标编程快；图样标注的是相邻点之间的间距&#x2F;增量时，用增量坐标方便；取决于一开始数值计算的方式。</li>
+<li>指令：<strong>G90 为绝对坐标指令、G91 为增量坐标指令</strong>，二者都是模态代码且同组、互相取代；通常在确定工作原点、完成快速移位后的前几段就要声明用 G90 还是 G91。</li>
+</ul>
+<h3 id="3-4-最小设定单位（脉冲当量）"><a href="#3-4-最小设定单位（脉冲当量）" class="headerlink" title="3.4 最小设定单位（脉冲当量）"></a>3.4 最小设定单位（脉冲当量）</h3><ul>
+<li>最小设定单位又称最小指令增量、脉冲当量，是数控系统所能实现的<strong>最小位移量</strong>，常见 0.0001、0.001、0.01mm，它决定了机床的加工精度；该值越小，可实现精度越高。</li>
+<li>编程坐标有两种表达方式：<ol>
+<li><strong>以毫米为单位直接书写</strong>（推荐、不易错）：实际移动多少毫米就写多少，如 125.30；</li>
+<li><strong>以最小设定单位为基准写份数</strong>：把一个最小设定单位当作 1 份，写实际距离包含多少份，如最小单位 0.01mm 时，125.30mm 含 12530 份，即写 12530。</li>
+</ol>
+</li>
+<li>注意书写的数值精度不能超过系统最小设定单位（系统只到 0.01mm 时，写到 0.0001mm 的位无法实现）；具体机床该值还会随使用磨损变化，以现场调试为准。</li>
+</ul>
+<h3 id="3-5-程序功能字-G、M、F、S、T"><a href="#3-5-程序功能字-G、M、F、S、T" class="headerlink" title="3.5 程序功能字 G、M、F、S、T"></a>3.5 程序功能字 G、M、F、S、T</h3><ul>
+<li><strong>准备功能 G</strong>：使机床&#x2F;数控系统建立某种加工方式、确定刀具实际加工路径（走直线还是圆弧），用 G 加两位数字表示（G00~G99，没有 G1、G2 这种写法）；代码见教材表 2-2（约 17 页），以我国标准为准，不同国家&#x2F;厂家可能略有差异，实际以机床说明书为准。</li>
+<li><strong>辅助功能 M</strong>：控制机床辅助动作和程序执行（主轴开停与正反转、切削液开关、程序停止&#x2F;结束等），与零件轮廓路径无关。</li>
+<li><strong>进给功能 F</strong>：指定进给速度，单位 <strong>mm&#x2F;min</strong>，如 F100。</li>
+<li><strong>主轴转速功能 S</strong>：指定主轴转速，单位 <strong>r&#x2F;min</strong>，如 S600、S1000。</li>
+<li><strong>刀具功能 T</strong>：指定刀具号和刀补号，可跟两位或四位数字：T01 表示用 1 号刀；T0101 表示用 1 号刀并调用 1 号刀补（前两位刀具号、后两位刀补号）。普通数控车&#x2F;铣床无刀库、人工换刀时可能没有刀具号概念，加工中心才有自动换刀和刀库。</li>
+</ul>
+<h3 id="3-6-模态代码与非模态代码（重点）"><a href="#3-6-模态代码与非模态代码（重点）" class="headerlink" title="3.6 模态代码与非模态代码（重点）"></a>3.6 模态代码与非模态代码（重点）</h3><ul>
+<li><strong>模态代码（续效代码）</strong>：在程序中一旦出现就持续有效，直到被同组的其他模态代码取代为止；查表 2-2 时第二列用 a、b、c、d 等组别字母标注的都是模态代码。</li>
+<li><strong>非模态代码</strong>：只在它所出现的那一个程序段内有效，下一段即失效（如 G92）；表中相应列标注的为非模态。</li>
+<li><strong>同组相互取代、不同组可以共存</strong>：<ul>
+<li>G00、G01、G02、G03 同属 <strong>a 组</strong>，同一程序中后出现的会顶替前一个的功能；</li>
+<li>G17（平面选择，c 组）、G42（刀具半径补偿，另一组）与 G00&#x2F;G01 不同组，写在同一程序段互不取消，可各自持续。</li>
+</ul>
+</li>
+<li>逐段判读示例：<ul>
+<li>N0010 中 G00 生效（快速定位）；</li>
+<li>N0020 出现 G01 和 G17：G01 顶替同组 G00（本段起降为直线插补），G17 因组别不同继续有效；</li>
+<li>N0030 出现 G90、G01：G90 为模态且与 G01 不同组，持续有效；</li>
+<li>N0040 出现 G02：G02 顶替同组的 G01（改为圆弧插补），但 G90、G17、G42 等不同组代码仍延续有效；</li>
+<li>G92 若只在 N0010 出现，到 N0020 已不起作用（非模态）。</li>
+</ul>
+</li>
+<li>利用模态特性，后续程序段中与上段相同的模态代码可省略不写，以简化程序。</li>
+</ul>
+<h3 id="3-7-常用辅助功能-M-代码"><a href="#3-7-常用辅助功能-M-代码" class="headerlink" title="3.7 常用辅助功能 M 代码"></a>3.7 常用辅助功能 M 代码</h3><ul>
+<li>M 代码也分模态&#x2F;非模态（查表 2-3 第四、五列），但它的模态<strong>不靠同组代码取消，而由功能相反的合适指令终止</strong>（开↔关、启动↔停止），若始终没有相反指令，则由程序结束 M02&#x2F;M30 终止。</li>
+<li><strong>M03 主轴正转</strong>（模态）：主轴顺时针转动，持续到 <strong>M05 主轴停止</strong>为止。</li>
+<li><strong>M08 切削液（冷却）开</strong>（模态）：持续到 <strong>M09 切削液关</strong>为止。</li>
+<li><strong>M00 程序停止（暂停）</strong>：暂停当前程序，用于加工中换刀、测量尺寸、工件掉头、手动变速等；执行时主轴、进给、冷却停止，但<strong>此前所有模态代码的信息保持不变</strong>，按操作面板”循环启动”即可继续。</li>
+<li><strong>M01 计划（选择）停止</strong>：功能与 M00 相似，用于关键尺寸的临时&#x2F;抽样检验；区别是必须<strong>事先按下操作面板上的”任选（计划）停止”按钮</strong>，程序运行到 M01 才会停，按钮未按则照常运行——这样可做到每隔若干件抽检一次，而不是每件都停。</li>
+<li><strong>M02 程序结束</strong>：主轴、进给、冷却全部停止、系统复位、此前模态信息全部清零，光标停在<strong>最后一个程序段</strong>，多用于单件加工。</li>
+<li><strong>M30 程序结束</strong>：同样使全部动作停止、系统复位，但执行后<strong>光标自动返回程序开头</strong>，便于批量生产时反复循环加工。</li>
+<li>学习重点至少记住 M03、M08、M30 及它们的配对&#x2F;含义。</li>
+</ul>
+<h3 id="3-8-G92-建立工件坐标系（重点、难点）"><a href="#3-8-G92-建立工件坐标系（重点、难点）" class="headerlink" title="3.8 G92 建立工件坐标系（重点、难点）"></a>3.8 G92 建立工件坐标系（重点、难点）</h3><ul>
+<li>编程一般用工件坐标系，需要在程序里告诉机床”工件原点在哪”，<strong>G92 用于建立（设定）工件坐标系</strong>。</li>
+<li>工作原理：机床始终知道刀具在机床坐标系中的实时位置；人工装夹工件后机床并不知道工件原点，于是程序用 G92 告诉机床”在以工件原点为基准的坐标系里，当前刀具起始点位于何处”，机床把这一位置与刀具在机床坐标系中的实际位置对比，即可反推出工件原点。</li>
+<li>编程格式：</li>
+</ul>
+<p>$$\text{G92 X_ Y_ Z_}$$</p>
+<ul>
+<li>关键：其中 X、Y、Z 是<strong>刀具起始点（起刀点）相对于工件原点</strong>的坐标值，<strong>不是</strong>工件原点相对于机床原点的坐标；要按工件原点为基准、注意正负号（例：起刀点在工件原点 X 正向 160、Y 负向 20，写 X160 Y-20）。</li>
+<li>G92 为<strong>非模态</strong>，只在本段有效；该段只设定坐标系、<strong>不产生任何切削移动</strong>；并且 <strong>G92 只能用绝对坐标表达，不能用增量（G91）</strong>，所以 G92 段不必（也不应）写 G90&#x2F;G91。</li>
+</ul>
+<h3 id="3-9-车床的直径编程（X-值取直径）"><a href="#3-9-车床的直径编程（X-值取直径）" class="headerlink" title="3.9 车床的直径编程（X 值取直径）"></a>3.9 车床的直径编程（X 值取直径）</h3><ul>
+<li>数控车床加工回转体，径向尺寸习惯用直径表示，因此<strong>车床程序中 X 轴坐标值一般写直径值，即实际半径坐标的两倍</strong>。</li>
+<li>例：工件外圆直径 φ120（半径 60），起刀点在径向距回转中心 60 处时，G92 中 X 应写 120，而不是 60；直径 φ50 对应 X50，不是 25。Z 轴仍按轴向实际长度（带符号）写。</li>
+</ul>
+<h3 id="3-10-坐标平面选择-G17-G18-G19"><a href="#3-10-坐标平面选择-G17-G18-G19" class="headerlink" title="3.10 坐标平面选择 G17&#x2F;G18&#x2F;G19"></a>3.10 坐标平面选择 G17&#x2F;G18&#x2F;G19</h3><ul>
+<li><strong>G17 选择 XY 平面、G18 选择 ZX 平面、G19 选择 YZ 平面</strong>，均为模态代码。</li>
+<li>数控车床默认在 ZX（G18）平面加工，铣床默认在 XY（G17）平面加工；在默认平面内加工时该指令可省略，若要在非默认平面加工则必须写明；初学不放心时可在程序开头显式写出平面指令以求稳妥。</li>
+</ul>
+<h3 id="3-11-G00-快速定位与-G01-直线插补"><a href="#3-11-G00-快速定位与-G01-直线插补" class="headerlink" title="3.11 G00 快速定位与 G01 直线插补"></a>3.11 G00 快速定位与 G01 直线插补</h3><ul>
+<li><strong>G00 快速点定位</strong>：命令刀具以<strong>数控系统内部设定的快速速度</strong>（不是用 F 编程的速度）从当前点快速移动到目标点，用于空行程定位，<strong>全程不切削</strong>；因此 G00 段<strong>不需要指定 F，也不需要 S</strong>；G00 为模态（a 组）。格式：<code>G00 X_ Y_ Z_</code>，XYZ 为目标点坐标。</li>
+<li><strong>G01 直线插补</strong>：命令刀具以各坐标<strong>联动</strong>（如 X、Y 同时运动）的方式、按程序指定的进给速度 F，走任意斜率的直线到达目标点；G01 为模态（a 组），<strong>必须给定 F</strong>，否则机床不知道切削进给量。格式：<code>G01 X_ Y_ Z_ F_</code>，其中 XYZ 只写直线的<strong>终点（目标点）坐标</strong>，不写起点或中间点。</li>
+<li>G02&#x2F;G03 为圆弧插补（顺圆&#x2F;逆圆），本课只提及，后续章节展开。</li>
+</ul>
+<h3 id="3-12-轴类车削综合编程实例（含-1-3-锥面）"><a href="#3-12-轴类车削综合编程实例（含-1-3-锥面）" class="headerlink" title="3.12 轴类车削综合编程实例（含 1:3 锥面）"></a>3.12 轴类车削综合编程实例（含 1:3 锥面）</h3><ul>
+<li>零件（课堂示例，具体尺寸以教材图为准）：一端为直径 φ20、轴向长度 14 的圆柱面，其后接锥度为 1:3 的圆锥面，再后为较大直径（约 φ40）外圆，总长尺寸课堂口述为 38&#x2F;48（待核对）。</li>
+<li>工艺与程序骨架（数控车床，工件原点取右端面中心）：<ol>
+<li><strong>建立工件坐标系 G92</strong>：写出起刀点相对工件原点的坐标，<strong>X 按直径值写</strong>（如径向对应直径 50 则写 X50，不是 25），Z 按轴向位置写；</li>
+<li><strong>G00 快速接近</strong>：刀具先快速定位到距切削起点 B 约 <strong>1mm 安全距离</strong>的位置（不直接 G00 顶到工件上的切削点，防止撞刀），同段或随后指定 <strong>S600</strong>（主轴转速）、<strong>T0101</strong>（1 号刀、1 号刀补）；</li>
+<li><strong>启动主轴与冷却</strong>：<strong>M03 主轴正转（必须有，否则工件不转而刀具进给会切坏工件）</strong>，按需 <strong>M08 切削液开（可选）</strong>；</li>
+<li><strong>声明坐标方式 G90</strong>：后续用绝对坐标编程（G90 模态，后面程序段不必重复写）；</li>
+<li><strong>车 φ20 外圆 G01</strong>：<code>G01 X20 Z-14 F100</code>，从接近点以进给速度走到圆柱面终点 C；注意写的是目标点<strong>坐标值</strong>（Z 为 -14，带符号），不是移动距离，F100 给进给量；</li>
+<li><strong>车 1:3 锥面</strong>：从 C 点继续用 G01 走到锥面终点 D，需先按锥度 1:3 算出 D 点的 X（直径）、Z 坐标再填写。</li>
+</ol>
+</li>
+<li><strong>安全进退刀经验（教材第三章细讲）</strong>：无论进刀还是车完退刀，都不要用 G00 直接冲到&#x2F;离开工件上的点，应在工件外留 1~2mm 安全距离，再改用 G01 缓慢切入或先 G01 退出一段再 G00 快速退回。</li>
+</ul>
+<h3 id="3-13-锥度-1-3-的复习提示"><a href="#3-13-锥度-1-3-的复习提示" class="headerlink" title="3.13 锥度 1:3 的复习提示"></a>3.13 锥度 1:3 的复习提示</h3><ul>
+<li>锥度表示圆锥大小端直径差与圆锥轴向长度之比（常用 $C&#x3D;(D-d)&#x2F;L$），1:3 即直径变化量与对应轴向长度之比为 1&#x2F;3；编程前需据此由已知直径、长度推算锥面终点坐标。具体锥度&#x2F;斜度定义与该例题数值以教材为准（本课布置课后复习锥度 1:3）。</li>
+</ul>
+<h2 id="四、例题与案例分析"><a href="#四、例题与案例分析" class="headerlink" title="四、例题与案例分析"></a>四、例题与案例分析</h2><h3 id="4-1-模态代码逐段判读"><a href="#4-1-模态代码逐段判读" class="headerlink" title="4.1 模态代码逐段判读"></a>4.1 模态代码逐段判读</h3><ul>
+<li>程序段依次含 G00→G01 G17→G90 G01→G02：判断每段实际生效的功能。结论：G00 在 G01 出现后被同组顶替；G01 在 G02 出现后被同组顶替；G17、G90 因与运动指令不同组而一直延续；G92 若为非模态只在本段有效。</li>
+</ul>
+<h3 id="4-2-G90-G91-同一运动的两种写法"><a href="#4-2-G90-G91-同一运动的两种写法" class="headerlink" title="4.2 G90&#x2F;G91 同一运动的两种写法"></a>4.2 G90&#x2F;G91 同一运动的两种写法</h3><ul>
+<li>刀具从 A 到 B 走直线：绝对方式写 <code>G90 G01 X_B Y_B F_</code>（只写目标点 B 的绝对坐标）；增量方式写 <code>G91 G01 X_Δx Y_Δy F_</code>（写 B 相对 A 的增量，如 X-13、Y30，带正负号）。</li>
+</ul>
+<h3 id="4-3-G92-坐标值判断"><a href="#4-3-G92-坐标值判断" class="headerlink" title="4.3 G92 坐标值判断"></a>4.3 G92 坐标值判断</h3><ul>
+<li>已知工件原点和起刀点位置，要求写 G92：必须以工件原点为基准写起刀点坐标（如 X160 Y-20），不能写成工件原点相对机床原点的坐标，也不能把正负号写反。</li>
+</ul>
+<h3 id="4-4-车床直径编程换算"><a href="#4-4-车床直径编程换算" class="headerlink" title="4.4 车床直径编程换算"></a>4.4 车床直径编程换算</h3><ul>
+<li>起刀点距回转中心半径 60（外圆 φ120），G92 的 X 写 120；车 φ20 外圆时 G01 的 X 写 20；凡径向尺寸一律换算成直径值。</li>
+</ul>
+<h3 id="4-5-M00-与-M01-区别"><a href="#4-5-M00-与-M01-区别" class="headerlink" title="4.5 M00 与 M01 区别"></a>4.5 M00 与 M01 区别</h3><ul>
+<li>M00 程序每执行到该处必停、模态信息保持、按循环启动继续；M01 只有在面板”任选停止”按钮按下时才停，用于抽检。M02 停在程序末段，M30 复位后光标回程序头。</li>
+</ul>
+<h3 id="4-6-锥度轴程序填空"><a href="#4-6-锥度轴程序填空" class="headerlink" title="4.6 锥度轴程序填空"></a>4.6 锥度轴程序填空</h3><ul>
+<li>按 3.12 骨架补全：G92 建系 → G00 定位（留 1mm）＋S600 T0101 → M03&#x2F;M08 → G90 → G01 X20 Z-14 F100 → 按 1:3 锥度计算并 G01 车锥面 → 退刀、M05&#x2F;M09、M30 结束。</li>
+</ul>
+<h2 id="五、常用指令与术语速查表"><a href="#五、常用指令与术语速查表" class="headerlink" title="五、常用指令与术语速查表"></a>五、常用指令与术语速查表</h2><table>
+<thead>
+<tr>
+<th>指令&#x2F;术语</th>
+<th>功能</th>
+<th>模态&#x2F;组别</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>G90 &#x2F; G91</td>
+<td>绝对坐标 &#x2F; 增量（相对）坐标</td>
+<td>模态、同组互斥</td>
+</tr>
+<tr>
+<td>G92 X_Y_Z_</td>
+<td>建立工件坐标系（起刀点相对工件原点，只用绝对）</td>
+<td>非模态</td>
+</tr>
+<tr>
+<td>G17&#x2F;G18&#x2F;G19</td>
+<td>XY 平面（铣默认）&#x2F;ZX 平面（车默认）&#x2F;YZ 平面</td>
+<td>模态</td>
+</tr>
+<tr>
+<td>G00 X_Y_Z_</td>
+<td>快速定位，系统速度、空行程、不需 F</td>
+<td>模态（a 组）</td>
+</tr>
+<tr>
+<td>G01 X_Y_Z_ F_</td>
+<td>直线插补，坐标联动、必须给 F</td>
+<td>模态（a 组）</td>
+</tr>
+<tr>
+<td>G02&#x2F;G03</td>
+<td>顺圆&#x2F;逆圆圆弧插补（后续讲）</td>
+<td>模态（a 组）</td>
+</tr>
+<tr>
+<td>M03 &#x2F; M05</td>
+<td>主轴正转 &#x2F; 主轴停止</td>
+<td>M03 模态，由 M05 终止</td>
+</tr>
+<tr>
+<td>M08 &#x2F; M09</td>
+<td>切削液开 &#x2F; 关</td>
+<td>M08 模态，由 M09 终止</td>
+</tr>
+<tr>
+<td>M00</td>
+<td>程序停止（换刀&#x2F;测量），模态信息保持</td>
+<td>非模态</td>
+</tr>
+<tr>
+<td>M01</td>
+<td>计划（选择）停止，需面板按钮配合</td>
+<td>非模态</td>
+</tr>
+<tr>
+<td>M02 &#x2F; M30</td>
+<td>程序结束复位（M02 光标停末段 &#x2F; M30 回程序头）</td>
+<td>结束指令</td>
+</tr>
+<tr>
+<td>F &#x2F; S &#x2F; T</td>
+<td>进给速度 mm&#x2F;min &#x2F; 主轴转速 r&#x2F;min &#x2F; 刀具号·刀补号（T0101）</td>
+<td>—</td>
+</tr>
+<tr>
+<td>脉冲当量</td>
+<td>最小设定单位（如 0.01mm），决定精度</td>
+<td>—</td>
+</tr>
+<tr>
+<td>原点偏置</td>
+<td>工件原点与机床原点距离，两系平行同向</td>
+<td>—</td>
+</tr>
+<tr>
+<td>车床 X</td>
+<td>直径值&#x3D;半径值两倍</td>
+<td>—</td>
+</tr>
+</tbody></table>
+<h2 id="六、课堂任务与复习安排"><a href="#六、课堂任务与复习安排" class="headerlink" title="六、课堂任务与复习安排"></a>六、课堂任务与复习安排</h2><ul>
+<li>课后<strong>复习锥度 1:3</strong> 的定义与计算（大小端直径差与轴向长度之比），为锥面车削编程做准备。</li>
+<li>复习要求：<ol>
+<li>能判定立铣、卧车的 X、Y、Z 轴及正方向，说清机床坐标系与工件坐标系、原点偏置关系；</li>
+<li>区分 G90 绝对、G91 增量，能把同一段运动用两种方式改写；</li>
+<li>理解脉冲当量与毫米&#x2F;份数两种坐标表达；</li>
+<li>熟记 G、M、F、S、T 功能字含义，会查表 2-2&#x2F;2-3 判断模态&#x2F;非模态与组别；</li>
+<li>掌握同组取代、不同组共存的逐段判读，掌握 M00&#x2F;M01&#x2F;M02&#x2F;M30、M03&#x2F;M05、M08&#x2F;M09；</li>
+<li>会用 G92 建工件坐标系（含车床 X 直径值）、G17&#x2F;G18&#x2F;G19 选平面、G00&#x2F;G01 编程；</li>
+<li>能按骨架写出含圆柱面和 1:3 锥面的车削程序并注意安全进退刀。</li>
+</ol>
+</li>
+</ul>
+<h2 id="七、待核对与疑问"><a href="#七、待核对与疑问" class="headerlink" title="七、待核对与疑问"></a>七、待核对与疑问</h2><table>
+<thead>
+<tr>
+<th>问题</th>
+<th>原因</th>
+<th>建议核对方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>G02&#x2F;G03 顺逆圆判断与 I&#x2F;K、R 格式</td>
+<td>本课仅提及未展开</td>
+<td>查教材圆弧插补一节（第三章）</td>
+</tr>
+<tr>
+<td>锥度轴实例各段直径、长度（38&#x2F;48、φ40 等）</td>
+<td>录音口述数字含糊</td>
+<td>查教材例题图样</td>
+</tr>
+<tr>
+<td>锥度 1:3 终点 X、Z 的具体计算</td>
+<td>课堂布置课后复习、未算完</td>
+<td>按 C&#x3D;(D-d)&#x2F;L 自行计算并对答案</td>
+</tr>
+<tr>
+<td>脉冲当量常见取值（0.0001&#x2F;0.001&#x2F;0.01mm）</td>
+<td>不同机床不同</td>
+<td>查具体机床说明书</td>
+</tr>
+<tr>
+<td>G 代码组别字母（a&#x2F;b&#x2F;c&#x2F;d）与各码归属</td>
+<td>课堂举例 G00 等为 a 组、G17 为 c 组、G42 另一组</td>
+<td>查教材表 2-2</td>
+</tr>
+<tr>
+<td>M03&#x2F;M08 是否模态、M01 模态归属</td>
+<td>课堂以查表 2-3 为准</td>
+<td>查教材表 2-3 第四、五列</td>
+</tr>
+<tr>
+<td>立铣 X 正方向”从前往后看右手边”的观察方向</td>
+<td>依赖课本 14 页图示</td>
+<td>对照教材坐标图确认</td>
+</tr>
+</tbody></table>
+<h2 id="八、复习与主动回忆"><a href="#八、复习与主动回忆" class="headerlink" title="八、复习与主动回忆"></a>八、复习与主动回忆</h2><h3 id="复习清单"><a href="#复习清单" class="headerlink" title="复习清单"></a>复习清单</h3><ol>
+<li>用 3 分钟复述 Z、X、Y 轴方向判定（立铣与卧车各一遍）。</li>
+<li>用 3 分钟比较机床坐标系与工件坐标系、原点偏置，说明两系方向关系。</li>
+<li>用 3 分钟说清 G90&#x2F;G91 区别并各写一段 G01。</li>
+<li>用 2 分钟解释脉冲当量和毫米&#x2F;份数两种写法。</li>
+<li>用 4 分钟讲清模态&#x2F;非模态、同组取代&#x2F;不同组共存，并做一次逐段判读。</li>
+<li>用 4 分钟背出 M00&#x2F;M01&#x2F;M02&#x2F;M30、M03&#x2F;M05、M08&#x2F;M09 的功能与区别。</li>
+<li>用 4 分钟说明 G92 格式、坐标基准、为何只能用绝对，以及车床 X 为何写直径值。</li>
+<li>用 3 分钟说清 G17&#x2F;G18&#x2F;G19 默认平面、G00 与 G01 的区别（速度来源、是否要 F）。</li>
+<li>用 5 分钟默写锥度轴车削程序骨架并说明安全进退刀。</li>
+</ol>
+<h3 id="主动回忆题"><a href="#主动回忆题" class="headerlink" title="主动回忆题"></a>主动回忆题</h3><ol>
+<li>怎样确定数控车床和立式铣床的 Z 轴及其正方向？X、Y 轴又如何确定？</li>
+<li>机床坐标系原点和工件坐标系原点有什么不同？两坐标系之间是什么关系？</li>
+<li>绝对坐标系和增量坐标系有何区别？分别用哪个 G 代码？同一段直线运动怎样用两种方式写？</li>
+<li>什么是最小设定单位（脉冲当量）？125.30mm 在脉冲当量 0.01mm 的机床上用”份数”如何写？</li>
+<li>G、M、F、S、T 各表示什么功能？F、S 的单位分别是什么？T0101 表示什么？</li>
+<li>什么是模态代码、非模态代码？G00、G01、G02、G03 为什么会互相顶替，而 G17、G42 能与它们共存？</li>
+<li>M03、M08 靠什么指令结束？若程序中没有写 M05&#x2F;M09，主轴和切削液会怎样停止？</li>
+<li>比较 M00 与 M01、M02 与 M30 的区别。</li>
+<li>G92 的格式和作用是什么？其中 XYZ 是以哪个原点为基准？为什么说 G92 只能用绝对坐标？车床 X 为什么写直径值（举例）？</li>
+<li>G17&#x2F;G18&#x2F;G19 各选哪个平面、车床和铣床默认哪个？G00 和 G01 在速度来源、是否切削、是否要 F 上有何不同？</li>
+</ol>
+<h3 id="答案要点"><a href="#答案要点" class="headerlink" title="答案要点"></a>答案要点</h3><ol>
+<li>Z 轴平行主轴轴线：车床（工件旋转）平行工件轴线、铣床（刀具旋转）平行刀具轴线；Z 正方向取远离刀具、远离工件方向（立铣刀向上抬为正）。X 轴垂直 Z 且平行装夹面：立铣（Z 垂直）从前往后看右手边为 X 正，卧车（Z 水平、工件旋转）X 沿横向拖板径向、刀具远离工件为正。Z、X 定后用右手定则（拇指 X、食指 Y、中指 Z）定 Y。</li>
+<li>机床坐标系原点是机床固有、固定不变、靠回零建立的基准点（车床常在卡盘中心），一般不直接编程；工件坐标系原点由编程人员按图样方便选定（轴类常取右端面中心），可编程中多次改变。工件坐标系是机床坐标系经原点偏置平移得到的，两系坐标轴平行、正方向一致，只平移不旋转、不反向。</li>
+<li>绝对坐标系各点都以同一固定原点计量、坐标固定，用 G90；增量坐标系以每段起点为基准写终点相对起点的位移、随起点变化，用 G91；二者模态、同组互斥。A→B 走直线：绝对写 <code>G90 G01 X_B Y_B F_</code>（只写目标点 B），增量写 <code>G91 G01 X_Δx Y_Δy F_</code>（写 B 相对 A 的带符号增量）。</li>
+<li>最小设定单位（最小指令增量&#x2F;脉冲当量）是系统能实现的最小位移量，决定加工精度。脉冲当量 0.01mm 时，125.30mm 含 125.30&#x2F;0.01&#x3D;12530 份，用份数写即 12530；推荐直接写毫米 125.30，且书写精度不能超过最小设定单位。</li>
+<li>G 准备功能决定加工方式&#x2F;走刀路径；M 辅助功能控制主轴、冷却、程序启停等辅助动作（不影响路径）；F 进给速度（mm&#x2F;min）；S 主轴转速（r&#x2F;min）；T 刀具号与刀补号。T0101 表示选用 1 号刀并调用 1 号刀具补偿（前两位刀具号、后两位刀补号）。</li>
+<li>模态（续效）代码出现后持续有效、直到被同组代码取代；非模态代码只在本程序段有效。G00、G01、G02、G03 同属 a 组，故后出现的顶替前一个；G17（c 组平面）、G42（刀补组）与运动指令不同组，同段写入互不取消，各自延续，直到被自己同组代码取代。</li>
+<li>M 代码模态由功能相反的合适指令终止：M03 主轴正转由 M05 主轴停止终止，M08 切削液开由 M09 关终止；若程序中没有 M05&#x2F;M09，则主轴转动和切削液要一直持续到程序结束，由 M02 或 M30 统一停止。</li>
+<li>M00 程序停止：执行到必停，用于换刀&#x2F;测量&#x2F;掉头&#x2F;变速，停止时模态信息保持，按循环启动继续；M01 计划停止：须先按下操作面板”任选停止”按钮、走到 M01 才停，用于定时抽检，否则不停。M02 与 M30 都使全部动作停止、系统复位、模态清零；区别是 M02 后光标停在最后一段（单件），M30 后光标自动返回程序头（便于批量重复）。</li>
+<li>格式 <code>G92 X_Y_Z_</code>，作用是建立工件坐标系：告诉机床在以工件原点为基准的坐标系中起刀点所处的位置，机床结合刀具在机床坐标系中的实际位置反推出工件原点，本段不切削。其 XYZ 是起刀点相对工件原点的坐标（不是工件原点相对机床原点，注意正负）；G92 非模态且只能用绝对坐标，故不与 G91 连用。车床加工回转体、径向按直径标注，故 X 写直径值&#x3D;半径值两倍，如半径 60、直径 φ120 时 X 写 120。</li>
+<li>G17 选 XY、G18 选 ZX、G19 选 YZ 平面，均模态；数控车床默认 G18（ZX）、铣床默认 G17（XY），默认平面可省略、非默认须写明。G00 以系统设定的快速速度移动、做空行程定位、不切削，故不需 F、S；G01 按程序给定 F 做坐标联动直线切削，必须指定 F，且 XYZ 只写终点坐标。</li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E6%8E%A7%E7%BC%96%E7%A8%8B-%E8%BD%A6%E5%89%8A-G%E4%BB%A3%E7%A0%81/" class="print-no-link">#数控编程 车削 G代码</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>数控编程 G 代码应用：G90/G91、G92 与模态指令</div>
+      <div>https://tdexxx.github.io/2026/10/07/01_数控加工工艺与编程/数控加工工艺与编程_G代码应用_发布稿/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>tdexxx</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年10月7日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/10/07/03_%E6%B6%B2%E5%8E%8B%E4%BC%A0%E5%8A%A8/02_%E6%B6%B2%E5%8E%8B%E4%BC%A0%E5%8A%A8_%E6%B6%B2%E5%8E%8B%E6%B3%B5%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E4%B8%8E%E6%80%A7%E8%83%BD%E5%8F%82%E6%95%B0/" title="液压泵工作原理与性能参数：排量、流量与效率特性">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">液压泵工作原理与性能参数：排量、流量与效率特性</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/10/07/02_%E7%94%B5%E6%B0%94%E6%8E%A7%E5%88%B6%E4%B8%8EPLC/%E7%94%B5%E6%B0%94%E6%8E%A7%E5%88%B6%E4%B8%8EPLC_S7-1200%E7%A1%AC%E4%BB%B6%E4%B8%8E%E5%90%AF%E4%BF%9D%E5%81%9C%E6%8E%A7%E5%88%B6_%E5%8F%91%E5%B8%83%E7%A8%BF/" title="S7-1200 硬件结构、循环扫描与启保停控制">
+                        <span class="hidden-mobile">S7-1200 硬件结构、循环扫描与启保停控制</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

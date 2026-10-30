@@ -1,0 +1,1099 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="tdexxx">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="机械原理复习笔记：铰链四杆机构曲柄存在条件与急回特性、凸轮机构运动规律与反转法设计（含考点） 本文整理机械原理复习课《铰链四杆机构与凸轮机构》。前半部分复习铰链四杆机构：三大基本形式、曲柄存在的两个条件（格拉霍夫杆长条件＋最短杆为连架杆或机架）、按最短杆角色判定曲柄摇杆&#x2F;双曲柄&#x2F;双摇杆的方法、极位夹角 θ 与行程速比系数 $K&#x3D;(180°+\theta)&#x2F;(">
+<meta property="og:type" content="article">
+<meta property="og:title" content="四杆机构曲柄条件、急回特性与凸轮机构设计">
+<meta property="og:url" content="https://tdexxx.github.io/2026/10/06/04_%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/%E6%9C%BA%E6%A2%B0%E5%8E%9F%E7%90%86_%E5%9B%9B%E6%9D%86%E6%9C%BA%E6%9E%84%E4%B8%8E%E5%87%B8%E8%BD%AE%E6%9C%BA%E6%9E%84_%E5%8F%91%E5%B8%83%E7%A8%BF/index.html">
+<meta property="og:site_name" content="tdexxx的博客">
+<meta property="og:description" content="机械原理复习笔记：铰链四杆机构曲柄存在条件与急回特性、凸轮机构运动规律与反转法设计（含考点） 本文整理机械原理复习课《铰链四杆机构与凸轮机构》。前半部分复习铰链四杆机构：三大基本形式、曲柄存在的两个条件（格拉霍夫杆长条件＋最短杆为连架杆或机架）、按最短杆角色判定曲柄摇杆&#x2F;双曲柄&#x2F;双摇杆的方法、极位夹角 θ 与行程速比系数 $K&#x3D;(180°+\theta)&#x2F;(">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-10-06T14:25:26.000Z">
+<meta property="article:modified_time" content="2026-10-30T17:37:19.947Z">
+<meta property="article:author" content="tdexxx">
+<meta property="article:tag" content="机械原理 四杆机构 凸轮机构">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>四杆机构曲柄条件、急回特性与凸轮机构设计 - tdexxx的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"tdexxx.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2022-12-10T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="四杆机构曲柄条件、急回特性与凸轮机构设计"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-10-06 22:25" pubdate>
+          2026年10月6日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          9.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          80 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">四杆机构曲柄条件、急回特性与凸轮机构设计</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="机械原理复习笔记：铰链四杆机构曲柄存在条件与急回特性、凸轮机构运动规律与反转法设计（含考点）"><a href="#机械原理复习笔记：铰链四杆机构曲柄存在条件与急回特性、凸轮机构运动规律与反转法设计（含考点）" class="headerlink" title="机械原理复习笔记：铰链四杆机构曲柄存在条件与急回特性、凸轮机构运动规律与反转法设计（含考点）"></a>机械原理复习笔记：铰链四杆机构曲柄存在条件与急回特性、凸轮机构运动规律与反转法设计（含考点）</h1><blockquote>
+<p>本文整理机械原理复习课《铰链四杆机构与凸轮机构》。前半部分复习铰链四杆机构：三大基本形式、<strong>曲柄存在的两个条件（格拉霍夫杆长条件＋最短杆为连架杆或机架）</strong>、按最短杆角色判定曲柄摇杆&#x2F;双曲柄&#x2F;双摇杆的方法、<strong>极位夹角 θ 与行程速比系数 $K&#x3D;(180°+\theta)&#x2F;(180°-\theta)$<strong>、压力角与传动角（$\alpha+\gamma&#x3D;90°$）以及死点位置。后半部分是凸轮机构重点：凸轮机构的组成与优缺点、按凸轮形状&#x2F;从动件形式&#x2F;运动形式&#x2F;锁合方式的分类，</strong>基圆、偏距、行程、推程&#x2F;回程&#x2F;近休止&#x2F;远休止及各运动角</strong>等术语，从动件四种常用运动规律（等速、等加速等减速、简谐、摆线）的<strong>刚性冲击&#x2F;柔性冲击判断与适用转速</strong>，压力角与基圆半径的权衡，以及用<strong>反转法（相对运动法）</strong>图解凸轮理论轮廓和实际轮廓。文末附判定表、公式术语表、典型例题、待核对清单和主动回忆题（含答案要点），适合期末复习、做图 3-21 标注和图 3-23 位移计算题。</p>
+</blockquote>
+<h2 id="一、核心结论"><a href="#一、核心结论" class="headerlink" title="一、核心结论"></a>一、核心结论</h2><ul>
+<li>铰链四杆机构三大基本形式：<strong>曲柄摇杆机构、双曲柄机构、双摇杆机构</strong>（另有含滑块、导杆等演化形式）。</li>
+<li><strong>曲柄存在条件（两条同时满足）</strong>：①杆长条件（格拉霍夫定理）：<strong>最短杆＋最长杆 ≤ 其余两杆长度之和</strong>，即 $l_{min}+l_{max}\le l_3+l_4$；②<strong>最短杆必须是连架杆或机架</strong>。</li>
+<li>类型判定（满足杆长条件时看最短杆是谁）：最短杆为<strong>连架杆→曲柄摇杆</strong>（最短杆即曲柄）；最短杆为<strong>机架→双曲柄</strong>；最短杆为<strong>连杆（既非机架也非连架杆）→双摇杆</strong>。</li>
+<li><strong>不满足杆长条件</strong>（$l_{min}+l_{max}&gt;$ 其余两杆之和）时，无论以哪根杆为机架，<strong>都是双摇杆机构</strong>（无曲柄）。</li>
+<li><strong>急回特性</strong>：曲柄摇杆机构中摇杆处于两极限位置时，曲柄对应两位置所夹锐角称<strong>极位夹角 θ</strong>；θ 使工作行程慢、回程快。行程速比系数：</li>
+</ul>
+<p>$$K&#x3D;\frac{v_{回}}{v_{工}}&#x3D;\frac{t_{工}}{t_{回}}&#x3D;\frac{180°+\theta}{180°-\theta},\qquad \theta&#x3D;180°\frac{K-1}{K+1}$$</p>
+<ul>
+<li><strong>压力角 α</strong> 是从动件受力方向与受力点速度方向所夹锐角，**传动角 γ 是连杆与从动连架杆所夹锐角，$\alpha+\gamma&#x3D;90°$**；α 越小（γ 越大）传力越好。</li>
+<li><strong>死点</strong>：摇杆主动、曲柄从动时，连杆与曲柄共线（两个位置），γ&#x3D;0、α&#x3D;90°，驱动力对曲柄回转中心力矩为零，机构不能启动或会转向不确定；曲柄主动时无死点；可用飞轮惯性或机构错位排列越过死点。</li>
+<li>凸轮机构由<strong>凸轮（主动件）、从动件、机架</strong>三部分组成，凸轮与从动件为<strong>点接触或线接触（高副）</strong>；优点是只要设计合适轮廓就能使从动件实现任意预定运动规律、结构紧凑，缺点是高副易磨损、不宜传大动力、轮廓加工要求高。</li>
+<li>按凸轮形状分<strong>盘形凸轮（最常见、平面凸轮）、移动凸轮（盘形展开、用于门闩闸板）、圆柱凸轮（圆柱面沟槽、空间凸轮、从动件多摆动）</strong>。</li>
+<li>按从动件端部接触形式分<strong>尖顶（点接触、易磨）、滚子（线接触、耐磨、应用最广；滚子自转是局部自由度）、平底（平面接触、受力好、宜高速）</strong>；按运动形式分直动、摆动；按锁合方式分<strong>力锁合（弹簧力&#x2F;重力）和形锁合（沟槽等几何形状）</strong>。</li>
+<li><strong>基圆</strong>：以凸轮回转中心 O 为圆心、O 到理论轮廓最近点距离 $r_0$ 为半径的圆，$r_0$ 是最小向径；<strong>偏距 e</strong>：O 到从动件导路中心线的垂直距离，以 O 为心、e 为半径的圆为偏距圆，e&#x3D;0 为对心。</li>
+<li><strong>行程 h</strong>：从动件推程（回程）移动的最大距离，$h&#x3D;r_{max}-r_0$，是固定几何量；<strong>位移 s</strong> 是某瞬时从动件移动量，随转角（时间）变化。</li>
+<li>一个运动循环：<strong>推程（推程运动角 δ₁）→远休止（远休止角 δ₂）→回程（回程运动角 δ₃）→近休止（近休止角 δ₄）</strong>，四角之和为 360°；无休止的凸轮某些角为 0。</li>
+<li>四种运动规律与冲击：<strong>等速</strong>——s 为斜直线，起终点速度突变，<strong>刚性冲击</strong>，低速轻载；<strong>等加速等减速</strong>——s 为两段抛物线，<strong>柔性冲击</strong>，中速轻载；<strong>简谐（余弦加速度）</strong>——<strong>柔性冲击</strong>，中速中载；<strong>摆线（正弦加速度）</strong>——<strong>既无刚性也无柔性冲击</strong>，高速。</li>
+<li>凸轮压力角 α 是从动件受力方向与速度方向所夹锐角；α 越大有效分力越小、有害分力越大，甚至自锁，设计须使 <strong>$\alpha_{max}\le[\alpha]$<strong>；同运动规律下</strong>基圆半径越小压力角越大</strong>，减小压力角要增大基圆半径但机构变大，需权衡。</li>
+<li><strong>反转法</strong>：给整个机构叠加一个与凸轮角速度等大反向（−ω）的公共角速度使凸轮静止，从动件一边随导路绕 O 反转、一边按预定规律相对导路移动，尖顶轨迹即<strong>理论轮廓</strong>；滚子从动件再以理论轮廓各点为心、滚子半径为半径作圆，取<strong>内包络线（向里偏一个滚子半径）</strong>得<strong>实际轮廓</strong>。</li>
+</ul>
+<h2 id="二、知识结构"><a href="#二、知识结构" class="headerlink" title="二、知识结构"></a>二、知识结构</h2><ul>
+<li>铰链四杆机构<ul>
+<li>三形式：曲柄摇杆 &#x2F; 双曲柄 &#x2F; 双摇杆（滑块、导杆演化）</li>
+<li>曲柄存在条件：格拉霍夫杆长条件 ＋ 最短杆为连架杆或机架</li>
+<li>类型判定：看最短杆是机架&#x2F;连架杆&#x2F;连杆；不满足杆长条件恒为双摇杆</li>
+<li>急回特性：极位夹角 θ、行程速比系数 K</li>
+<li>传力特性：压力角 α、传动角 γ（α+γ&#x3D;90°）、死点</li>
+</ul>
+</li>
+<li>凸轮机构<ul>
+<li>组成、优缺点（高副点&#x2F;线接触）</li>
+<li>分类：凸轮形状 &#x2F; 从动件端部 &#x2F; 运动形式 &#x2F; 锁合方式</li>
+<li>术语：基圆 r₀、偏距 e、行程 h、位移 s、推程回程休止、运动角</li>
+<li>四种运动规律：等速 &#x2F; 等加等减 &#x2F; 简谐 &#x2F; 摆线（冲击与转速）</li>
+<li>压力角与基圆半径权衡</li>
+<li>反转法设计：理论轮廓 →（滚子内包络）实际轮廓</li>
+<li>自由度复习：滚子局部自由度、对称重复虚约束</li>
+</ul>
+</li>
+</ul>
+<h2 id="三、详细笔记"><a href="#三、详细笔记" class="headerlink" title="三、详细笔记"></a>三、详细笔记</h2><h3 id="3-1-铰链四杆机构的组成与三种基本形式"><a href="#3-1-铰链四杆机构的组成与三种基本形式" class="headerlink" title="3.1 铰链四杆机构的组成与三种基本形式"></a>3.1 铰链四杆机构的组成与三种基本形式</h3><ul>
+<li>铰链四杆机构由四根杆用转动副（铰链）连接而成：固定不动的一根称<strong>机架</strong>；与机架相连的两根称<strong>连架杆</strong>；不与机架直接相连、作平面运动的称<strong>连杆</strong>。</li>
+<li>连架杆中能绕机架铰链作整周 360° 转动的叫<strong>曲柄</strong>，只能在一定角度内往复摆动的叫<strong>摇杆</strong>。</li>
+<li>三种基本形式：<ul>
+<li><strong>曲柄摇杆机构</strong>：一个连架杆为曲柄、另一个为摇杆（如雷达天线俯仰、颚式破碎机、缝纫机踏板机构等）；</li>
+<li><strong>双曲柄机构</strong>：两个连架杆都是曲柄（如机车车轮联动、惯性筛）；</li>
+<li><strong>双摇杆机构</strong>：两个连架杆都是摇杆（如起重机吊钩、电风扇摇头、某些自卸车举升）。</li>
+</ul>
+</li>
+<li>在铰链四杆基础上，把转动副演化成移动副可得到曲柄滑块机构，进一步演化出导杆、定块、摇块机构等。</li>
+</ul>
+<h3 id="3-2-曲柄存在条件与机构类型判定（重点）"><a href="#3-2-曲柄存在条件与机构类型判定（重点）" class="headerlink" title="3.2 曲柄存在条件与机构类型判定（重点）"></a>3.2 曲柄存在条件与机构类型判定（重点）</h3><h4 id="3-2-1-曲柄存在的两个条件"><a href="#3-2-1-曲柄存在的两个条件" class="headerlink" title="3.2.1 曲柄存在的两个条件"></a>3.2.1 曲柄存在的两个条件</h4><p>设四根杆长度分别为 $l_1、l_2、l_3、l_4$，其中 $l_{min}$ 为最短杆、$l_{max}$ 为最长杆。</p>
+<ol>
+<li><strong>杆长条件（格拉霍夫定理）</strong>：</li>
+</ol>
+<p>$$l_{min}+l_{max}\le l_a+l_b$$</p>
+<p>其中 $l_a、l_b$ 为另外两根杆的长度。即最短杆与最长杆长度之和不大于其余两杆长度之和。</p>
+<ol start="2">
+<li><strong>最短杆位置条件</strong>：最短杆必须是<strong>机架</strong>或<strong>连架杆</strong>（即最短杆不能是连杆）。</li>
+</ol>
+<p>只有两个条件同时满足，机构中才存在曲柄。</p>
+<h4 id="3-2-2-类型判定方法"><a href="#3-2-2-类型判定方法" class="headerlink" title="3.2.2 类型判定方法"></a>3.2.2 类型判定方法</h4><ul>
+<li><strong>第一步</strong>：先验算杆长条件。<ul>
+<li>若 $l_{min}+l_{max}&gt;l_a+l_b$（不满足）：机构中无曲柄，<strong>无论以哪根杆为机架都是双摇杆机构</strong>。</li>
+</ul>
+</li>
+<li><strong>第二步</strong>：在满足杆长条件的前提下，看<strong>最短杆充当什么角色</strong>：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>最短杆的角色</th>
+<th>机构类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>连架杆</td>
+<td>曲柄摇杆机构</td>
+<td>最短杆就是曲柄，另一连架杆为摇杆</td>
+</tr>
+<tr>
+<td>机架</td>
+<td>双曲柄机构</td>
+<td>两连架杆均可整周转动</td>
+</tr>
+<tr>
+<td>连杆（既非机架也非连架杆）</td>
+<td>双摇杆机构</td>
+<td>最短杆在对面作连杆</td>
+</tr>
+</tbody></table>
+<ul>
+<li>记忆口诀：<strong>满足杆长条件时——最短杆”坐庄”（机架）双曲柄，最短杆”靠边”（连架杆）一曲柄一摇杆，最短杆”居中”（连杆）双摇杆；不满足杆长条件，一律双摇杆。</strong></li>
+<li>这也体现了”机架变换（倒置）”思想：同一组四杆，更换机架可得到不同机构。</li>
+</ul>
+<h3 id="3-3-急回特性、极位夹角与行程速比系数-K"><a href="#3-3-急回特性、极位夹角与行程速比系数-K" class="headerlink" title="3.3 急回特性、极位夹角与行程速比系数 K"></a>3.3 急回特性、极位夹角与行程速比系数 K</h3><ul>
+<li>在曲柄摇杆机构中，曲柄整周等速转动，摇杆在两个<strong>极限位置</strong>之间往复摆动。</li>
+<li>当摇杆分别处于两个极限位置时，对应曲柄的两个位置之间所夹的<strong>锐角</strong>称为<strong>极位夹角 θ</strong>（注意是曲柄两位置的夹角，不是摇杆摆角）。</li>
+<li>由于 θ 的存在，曲柄转过的角度在工作行程与回程不同：工作行程（切削&#x2F;受力行程，慢速）曲柄转过 $180°+\theta$，回程（空回，快速）转过 $180°-\theta$。曲柄等速转动，转角大用时多、速度慢，于是回程平均速度大于工作行程平均速度，称为<strong>急回特性</strong>。</li>
+<li><strong>行程速比系数（行程速度变化系数）K</strong>：</li>
+</ul>
+<p>$$K&#x3D;\frac{\text{回程平均速度}}{\text{工作行程平均速度}}&#x3D;\frac{t_{工}}{t_{回}}&#x3D;\frac{180°+\theta}{180°-\theta}$$</p>
+<ul>
+<li>由 K 反求极位夹角：</li>
+</ul>
+<p>$$\theta&#x3D;180°\cdot\frac{K-1}{K+1}$$</p>
+<ul>
+<li>θ 越大、K 越大，急回越显著；θ&#x3D;0 时 K&#x3D;1，无急回。设计牛头刨床、往复式运输机等时常利用急回特性节省空回时间。</li>
+</ul>
+<h3 id="3-4-压力角、传动角与死点位置"><a href="#3-4-压力角、传动角与死点位置" class="headerlink" title="3.4 压力角、传动角与死点位置"></a>3.4 压力角、传动角与死点位置</h3><ul>
+<li><strong>压力角 α</strong>：不计摩擦时，从动件上受力点所受作用力方向（沿连杆，因连杆为二力杆）与该点<strong>速度方向</strong>之间所夹的锐角。</li>
+<li><strong>传动角 γ</strong>：连杆与从动连架杆（摇杆）之间所夹的锐角。由几何关系：</li>
+</ul>
+<p>$$\alpha+\gamma&#x3D;90°$$</p>
+<ul>
+<li>α 越小、γ 越大，沿从动件运动方向的有效分力越大、垂直方向的有害分力越小，传力性能越好、越省力；设计时应使最大压力角不超过许用值（即保证最小传动角不小于许用传动角）。</li>
+<li><strong>死点（止点）位置</strong>：在曲柄摇杆机构中若以<strong>摇杆为主动件、曲柄为从动件</strong>，当连杆与从动曲柄成一直线（共线）时，传动角 γ&#x3D;0、压力角 α&#x3D;90°，连杆作用于曲柄的力通过曲柄回转中心，对该中心的力矩为零，不能驱动曲柄转动，机构处于<strong>死点</strong>（曲柄与连杆共线一般有两个位置，故有两个死点）。</li>
+<li>曲柄为主动件时没有死点。死点的克服：在从动轴上装<strong>飞轮</strong>借惯性冲过死点，或采用两组以上相同机构错位排列（如机车车轮联动）；也有专门利用死点夹紧的装置（如飞机起落架、快速夹具、折叠机构）。</li>
+</ul>
+<h3 id="3-5-凸轮机构的组成、特点与分类（一）：按凸轮形状"><a href="#3-5-凸轮机构的组成、特点与分类（一）：按凸轮形状" class="headerlink" title="3.5 凸轮机构的组成、特点与分类（一）：按凸轮形状"></a>3.5 凸轮机构的组成、特点与分类（一）：按凸轮形状</h3><ul>
+<li><strong>组成</strong>：凸轮（具有曲线轮廓、通常作主动件并等速转动或移动）、从动件（推杆&#x2F;摆杆，被凸轮推动）、机架。</li>
+<li><strong>工作特点</strong>：凸轮与从动件之间是<strong>点接触或线接触，属于高副</strong>，单位面积压力大、容易磨损，故一般用于传力不大的场合；但只要做出合适的凸轮轮廓，就能让从动件实现任意预期的运动规律，且结构简单、紧凑、设计方便，广泛用于发动机配气、自动机床进给、包装机械、分度机构等。</li>
+<li>按<strong>凸轮形状</strong>分三类：<ol>
+<li><strong>盘形（盘状）凸轮</strong>：绕固定轴线转动、轮廓向径变化的盘形构件，像一个不规则的盘子，是最常见的平面凸轮；</li>
+<li><strong>移动凸轮</strong>：可看成盘形凸轮沿圆周展开成的板状凸轮，凸轮作往复直线移动，从动件靠重力或弹簧与轮廓贴合，随凸轮位置变化而升降，常用于门闩、粮仓闸板等；</li>
+<li><strong>圆柱凸轮</strong>：在圆柱体端面上或圆柱面上加工出曲线沟槽，从动件（常带滚子）嵌在沟槽中被带动，可实现从动件的移动或摆动；圆柱凸轮属<strong>空间凸轮机构</strong>。</li>
+</ol>
+</li>
+</ul>
+<h3 id="3-6-凸轮机构分类（二）：从动件形式、运动形式与锁合方式"><a href="#3-6-凸轮机构分类（二）：从动件形式、运动形式与锁合方式" class="headerlink" title="3.6 凸轮机构分类（二）：从动件形式、运动形式与锁合方式"></a>3.6 凸轮机构分类（二）：从动件形式、运动形式与锁合方式</h3><ul>
+<li>按从动件<strong>端部接触形式</strong>分：<ul>
+<li><strong>尖顶（尖底）从动件</strong>：端部为一个尖点，与凸轮<strong>点接触</strong>，结构最简单、能精确实现复杂规律，但接触应力大、极易磨损，多用于仪表或低速轻载；</li>
+<li><strong>滚子（滚轮）从动件</strong>：端部装一个可自由转动的滚子，与凸轮为<strong>线接触</strong>，滚动摩擦小、耐磨损，<strong>应用最广</strong>；滚子绕自身轴的转动不影响其他构件运动，是典型的<strong>局部自由度</strong>（计算自由度时把滚子与摆杆视为一体）；</li>
+<li><strong>平底从动件</strong>：端部为一平面，平底与凸轮接触（凸轮有厚度时接触处实为一条线），受力方向恒定、润滑条件好、传力较平稳，宜用于高速，但不能用于凹陷轮廓。</li>
+</ul>
+</li>
+<li>按从动件<strong>运动形式</strong>分：<strong>直动从动件</strong>（沿导路往复移动）和<strong>摆动从动件</strong>（绕固定铰链往复摆动，圆柱凸轮常见）。</li>
+<li>按<strong>锁合（封闭）方式</strong>——保证从动件始终与凸轮轮廓接触：<ul>
+<li><strong>力锁合（力封闭）</strong>：利用<strong>重力或弹簧力</strong>把从动件压在凸轮上，如发动机气门用弹簧顶住平底从动件；</li>
+<li><strong>形锁合（形封闭&#x2F;几何锁合）</strong>：利用凸轮和从动件的特殊几何形状保证接触，如圆柱凸轮的沟槽、端面凹槽、沟槽凸轮、等宽&#x2F;等径凸轮、共轭（主回）凸轮等，不需弹簧。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-7-凸轮机构基本术语与运动角（重点，对照教材图-3-21）"><a href="#3-7-凸轮机构基本术语与运动角（重点，对照教材图-3-21）" class="headerlink" title="3.7 凸轮机构基本术语与运动角（重点，对照教材图 3-21）"></a>3.7 凸轮机构基本术语与运动角（重点，对照教材图 3-21）</h3><p>设凸轮以等角速度 ω 绕回转中心 O 转动，从动件（以对心尖顶直动为例）随轮廓变化运动：</p>
+<ul>
+<li><strong>基圆</strong>：以凸轮回转中心 O 为圆心、以 O 到凸轮<strong>理论轮廓最近点的距离 $r_0$</strong> 为半径所作的圆；$r_0$ 称基圆半径，它等于凸轮轮廓的最小向径。</li>
+<li><strong>偏距 e 与偏距圆</strong>：直动从动件导路中心线若不通过 O，称偏置从动件，O 到导路中心线的垂直距离称<strong>偏距 e</strong>；以 O 为圆心、e 为半径所作的圆称偏距圆。导路中心线通过 O 时 e&#x3D;0，称对心从动件。</li>
+<li><strong>行程 h</strong>：从动件从最近位置到最远位置所移动的最大距离，等于最大向径与最小向径之差：</li>
+</ul>
+<p>$$h&#x3D;r_{max}-r_0$$</p>
+<p>行程是不随时间变化的几何量。</p>
+<ul>
+<li><strong>位移 s</strong>：某一瞬时从动件相对最近（初始）位置移动的距离，随凸轮转角 δ（或时间 t）变化，由位移线图 s-δ 给出。注意行程 h 是固定的最大值，位移 s 是随时间变化的瞬时值（类比”路程长度”与”某时刻走到的位置”）。</li>
+<li>一个循环的四个过程与对应凸轮转角：<ol>
+<li><strong>推程（升程）</strong>：从动件从最近位置被推到最远位置（向径增大、从动件上升），对应凸轮转角称<strong>推程运动角 δ₁（Φ）</strong>；</li>
+<li><strong>远休止（远休）</strong>：从动件停在最远位置不动（对应轮廓是以 O 为心的圆弧、向径不变），对应<strong>远休止角 δ₂（Φₛ）</strong>；</li>
+<li><strong>回程（返程）</strong>：从动件从最远位置返回最近位置（向径减小、从动件下降），对应<strong>回程运动角 δ₃（Φ′）</strong>，回程移动距离仍为 h；</li>
+<li><strong>近休止（近休）</strong>：从动件停在最近位置不动，对应<strong>近休止角 δ₄（Φ′ₛ）</strong>。</li>
+</ol>
+</li>
+<li>一个运动循环内：</li>
+</ul>
+<p>$$\delta_1+\delta_2+\delta_3+\delta_4&#x3D;360°$$</p>
+<p>无休止段的凸轮相应休止角为 0（如某些完整圆轮廓例子推程角与回程角各 180°、无休止角）。</p>
+<h3 id="3-8-从动件四种常用运动规律（重点：冲击与适用转速）"><a href="#3-8-从动件四种常用运动规律（重点：冲击与适用转速）" class="headerlink" title="3.8 从动件四种常用运动规律（重点：冲击与适用转速）"></a>3.8 从动件四种常用运动规律（重点：冲击与适用转速）</h3><p>凸轮轮廓形状决定从动件运动规律，常用四种（位移 s、速度 v、加速度 a 随转角 δ&#x2F;时间 t 的变化）：</p>
+<table>
+<thead>
+<tr>
+<th>运动规律</th>
+<th>位移线 s-δ</th>
+<th>速度&#x2F;加速度特征</th>
+<th>冲击类型</th>
+<th>适用场合</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>等速运动（一次多项式）</td>
+<td>过原点斜直线，$s&#x3D;\dfrac{h}{\delta_1}\delta$</td>
+<td>v 为常数；行程起、终点速度突变，a 理论趋于无穷大</td>
+<td><strong>刚性冲击（硬冲）</strong></td>
+<td>低速、轻载、从动件质量小</td>
+</tr>
+<tr>
+<td>等加速等减速（二次多项式&#x2F;抛物线）</td>
+<td>两段抛物线（前半加速、后半减速）</td>
+<td>a 为两段常数，在起点、中点、终点有限突变</td>
+<td><strong>柔性冲击（软冲）</strong></td>
+<td>中速、轻载</td>
+</tr>
+<tr>
+<td>简谐运动（余弦加速度）</td>
+<td>简谐（余弦）曲线</td>
+<td>加速度按余弦变化，起终点有限突变</td>
+<td><strong>柔性冲击</strong></td>
+<td>中速、中载</td>
+</tr>
+<tr>
+<td>摆线运动（正弦加速度）</td>
+<td>摆线曲线</td>
+<td>加速度按正弦变化，v、a 连续无突变</td>
+<td><strong>无刚性、无柔性冲击</strong></td>
+<td>高速</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>刚性冲击</strong>：速度发生突变、加速度理论上无穷大，像手猛敲桌子，冲击强烈；<strong>柔性冲击</strong>：加速度只发生有限突变，冲击较缓和。</li>
+<li>记忆主线：<strong>等速→刚性冲击→低速；等加等减、简谐→柔性冲击→中速；摆线→无冲击→高速</strong>。</li>
+<li>除冲击外，选择规律还要看**最大速度 $v_{max}$<strong>（质量大、速度大则动量大，起停冲击大）和</strong>最大加速度 $a_{max}$**（加速度大则惯性力大、引起的动压力和振动大）。</li>
+<li>等速推程位移公式推导（了解）：等速时 $v&#x3D;s&#x2F;t$ 为常数，s-t 为过原点直线；已知行程 h 在推程运动角 δ₁ 内完成，凸轮等角速度 ω，$t_1&#x3D;\delta_1&#x2F;\omega$，故 $s&#x3D;vt&#x3D;(h&#x2F;t_1)t&#x3D;h\delta&#x2F;\delta_1$。回程为下降过程，形式类似、符号相反。</li>
+</ul>
+<h3 id="3-9-凸轮机构压力角与基圆半径的选择（了解）"><a href="#3-9-凸轮机构压力角与基圆半径的选择（了解）" class="headerlink" title="3.9 凸轮机构压力角与基圆半径的选择（了解）"></a>3.9 凸轮机构压力角与基圆半径的选择（了解）</h3><ul>
+<li><strong>凸轮压力角 α</strong>：从动件在接触点所受凸轮作用力方向（轮廓法线方向）与该点从动件<strong>速度方向（直动从动件即导路方向）</strong>之间所夹锐角。</li>
+<li>把作用力分解：沿导路方向推动从动件的是<strong>有效分力</strong>，垂直导路、压向导路的是<strong>有害分力</strong>（增大导向摩擦和侧压力）。α 越大，有效分力越小、有害分力越大，效率越低，严重时无论力多大都推不动从动件，即发生<strong>自锁</strong>。</li>
+<li>设计条件：凸轮轮廓上的<strong>最大压力角不得超过许用压力角</strong>：</li>
+</ul>
+<p>$$\alpha_{max}\le[\alpha]$$</p>
+<p>（直动从动件推程许用压力角、摆动从动件许用压力角及回程许用值的具体度数以教材为准，回程因靠弹簧&#x2F;重力返回、许用值可取得较大。）</p>
+<ul>
+<li><strong>压力角与基圆半径的关系</strong>：在相同行程 h 和运动规律下，<strong>基圆半径 $r_0$ 越小，凸轮轮廓越陡、压力角越大</strong>；为减小压力角、改善传力和避免自锁，应适当增大基圆半径，但基圆增大又会使整个凸轮和机构尺寸变大。</li>
+<li>因此设计时要在”传力性能（压力角小）”与”结构紧凑（基圆小）”之间权衡：在满足 $\alpha_{max}\le[\alpha]$ 的前提下尽量取较小的基圆半径。</li>
+</ul>
+<h3 id="3-10-反转法（图解法）设计凸轮轮廓（重点理解相对运动）"><a href="#3-10-反转法（图解法）设计凸轮轮廓（重点理解相对运动）" class="headerlink" title="3.10 反转法（图解法）设计凸轮轮廓（重点理解相对运动）"></a>3.10 反转法（图解法）设计凸轮轮廓（重点理解相对运动）</h3><h4 id="3-10-1-反转法原理"><a href="#3-10-1-反转法原理" class="headerlink" title="3.10.1 反转法原理"></a>3.10.1 反转法原理</h4><ul>
+<li>实际运动中凸轮以角速度 ω 绕 O 转动、从动件按预定规律相对导路移动，直接在转动的凸轮上设计轮廓很困难。</li>
+<li>根据<strong>相对运动原理</strong>：给整个机构同时叠加一个绕 O、大小与 ω 相等、方向相反（<strong>−ω</strong>）的公共角速度。这样：<ul>
+<li>凸轮因 ω＋(−ω)&#x3D;0 而<strong>相对静止（固定不动）</strong>；</li>
+<li>从动件一方面随其导路以 <strong>−ω 绕 O 反转（公转）</strong>，另一方面仍按预定运动规律相对导路作往复移动。</li>
+</ul>
+</li>
+<li>方向口诀：<strong>凸轮顺时针转，反转后从动件导路就绕 O 逆时针转；凸轮逆时针转，从动件导路就顺时针转</strong>（即逆着凸轮转向反转）。</li>
+<li>在这一复合运动中，<strong>尖顶从动件尖端所走过的轨迹，就是凸轮的理论轮廓</strong>。</li>
+</ul>
+<h4 id="3-10-2-尖顶直动从动件作图步骤"><a href="#3-10-2-尖顶直动从动件作图步骤" class="headerlink" title="3.10.2 尖顶直动从动件作图步骤"></a>3.10.2 尖顶直动从动件作图步骤</h4><ol>
+<li>选比例尺，画出基圆（半径 $r_0$）、偏距圆（偏置时）和从动件导路的初始位置，确定起始尖顶点（在基圆上）；</li>
+<li>把推程运动角 δ₁（回程角 δ₃）沿 <strong>−ω 方向</strong>等分成若干份（如 6 等份），得到各反转位置的导路；</li>
+<li>由事先作出的位移线图 s-δ，查出各分点对应的从动件位移 $s_1、s_2、s_3\cdots$；</li>
+<li>在每条反转后的导路上，从导路与基圆的交点起，沿导路向外量取相应位移 $s_i$，得到一系列尖顶位置点 $B_1、B_2、B_3\cdots$；</li>
+<li>把各点光滑连接，即得凸轮的<strong>理论轮廓</strong>；其中休止段对应以 O 为圆心的圆弧。</li>
+</ol>
+<h4 id="3-10-3-滚子从动件与平底从动件"><a href="#3-10-3-滚子从动件与平底从动件" class="headerlink" title="3.10.3 滚子从动件与平底从动件"></a>3.10.3 滚子从动件与平底从动件</h4><ul>
+<li><strong>滚子从动件</strong>：<ol>
+<li>先不计滚子，把滚子中心看作”尖顶”，按上述反转法画出滚子中心的轨迹——<strong>理论轮廓</strong>；</li>
+<li>再以理论轮廓上的各点为圆心、以<strong>滚子半径 $r_r$</strong> 为半径作一系列滚子圆；</li>
+<li>作这些滚子圆的<strong>内包络线（即相对理论轮廓向里偏置一个滚子半径 $r_r$ 的等距曲线）</strong>，就是凸轮的<strong>实际（工作）轮廓</strong>。</li>
+</ol>
+</li>
+<li><strong>平底从动件</strong>：同样用反转法确定各反转位置的平底直线，再作这族平底直线的包络线，即得实际轮廓。</li>
+<li>结论：<strong>理论轮廓按尖顶（滚子中心）绘制，实际轮廓是理论轮廓的内等距曲线（向里一个滚子半径）</strong>。</li>
+</ul>
+<h3 id="3-11-凸轮机构自由度复习：局部自由度与虚约束"><a href="#3-11-凸轮机构自由度复习：局部自由度与虚约束" class="headerlink" title="3.11 凸轮机构自由度复习：局部自由度与虚约束"></a>3.11 凸轮机构自由度复习：局部自由度与虚约束</h3><ul>
+<li>滚子从动件中，滚子绕自身轴线的自由转动不影响从动件整体和其他构件的运动，属于<strong>局部自由度</strong>；计算机构自由度时，把滚子与安装滚子的摆杆（推杆）视为焊在一起的一个构件（去除局部自由度）。</li>
+<li>对对称布置、重复起相同约束作用的部分（如某些沟槽凸轮两侧、对称齿轮&#x2F;导路），其中重复部分属于<strong>虚约束</strong>，计算自由度时只算一处、去除虚约束；这与平面机构自由度计算中处理局部自由度、虚约束、复合铰链的方法一致（自由度公式 $F&#x3D;3n-2P_L-P_H$）。</li>
+</ul>
+<h2 id="四、例题、案例或课堂题"><a href="#四、例题、案例或课堂题" class="headerlink" title="四、例题、案例或课堂题"></a>四、例题、案例或课堂题</h2><h3 id="4-1-铰链四杆机构类型判定"><a href="#4-1-铰链四杆机构类型判定" class="headerlink" title="4.1 铰链四杆机构类型判定"></a>4.1 铰链四杆机构类型判定</h3><ul>
+<li>已知四杆长度（单位略）为 a&#x3D;100、b&#x3D;120、c&#x3D;80、d&#x3D;130，判断以不同杆为机架时的机构类型。</li>
+<li>解：最短杆 c&#x3D;80、最长杆 d&#x3D;130，$c+d&#x3D;210$，其余两杆 $a+b&#x3D;220$，因 $210\le220$，<strong>满足杆长条件</strong>。<ul>
+<li>以最短杆 c 为连架杆（机架取与 c 相邻的杆）时→曲柄摇杆机构，c 为曲柄；</li>
+<li>以最短杆 c 为机架时→双曲柄机构；</li>
+<li>以最短杆 c 为连杆（机架取 c 的对杆）时→双摇杆机构。</li>
+</ul>
+</li>
+<li>若把 d 改为 160，则 $c+d&#x3D;240&gt;a+b&#x3D;220$，不满足杆长条件，无论以哪杆为机架都是双摇杆机构。</li>
+</ul>
+<h3 id="4-2-行程速比系数计算"><a href="#4-2-行程速比系数计算" class="headerlink" title="4.2 行程速比系数计算"></a>4.2 行程速比系数计算</h3><ul>
+<li>已知某曲柄摇杆机构极位夹角 θ&#x3D;36°，求 K；若要求 K&#x3D;1.5，θ 应为多少？</li>
+<li>解：$K&#x3D;(180+36)&#x2F;(180-36)&#x3D;216&#x2F;144&#x3D;1.5$；<br>反求 $\theta&#x3D;180(K-1)&#x2F;(K+1)&#x3D;180\times0.5&#x2F;2.5&#x3D;36°$。</li>
+</ul>
+<h3 id="4-3-运动规律与冲击选择"><a href="#4-3-运动规律与冲击选择" class="headerlink" title="4.3 运动规律与冲击选择"></a>4.3 运动规律与冲击选择</h3><ul>
+<li>问：既无刚性冲击也无柔性冲击、适合高速凸轮的是哪种规律？等速规律为什么只用于低速？</li>
+<li>答：摆线（正弦加速度）运动规律无冲击、宜高速；等速规律在行程起点和终点速度突变、加速度理论无穷大，产生刚性冲击，故只能用于低速、轻载。</li>
+</ul>
+<h3 id="4-4-基圆、偏距、行程标注（图-3-21）"><a href="#4-4-基圆、偏距、行程标注（图-3-21）" class="headerlink" title="4.4 基圆、偏距、行程标注（图 3-21）"></a>4.4 基圆、偏距、行程标注（图 3-21）</h3><ul>
+<li>问：基圆的圆心和半径如何确定？行程 h 等于什么？</li>
+<li>答：基圆以凸轮回转中心 O 为圆心、以 O 到理论轮廓最近点距离 $r_0$（最小向径）为半径；行程 h 是从动件最远位置与最近位置之差，$h&#x3D;r_{max}-r_0$；偏距 e 是 O 到导路中心线的垂直距离。</li>
+</ul>
+<h3 id="4-5-反转法作图（图-3-23-位移题思路）"><a href="#4-5-反转法作图（图-3-23-位移题思路）" class="headerlink" title="4.5 反转法作图（图 3-23 位移题思路）"></a>4.5 反转法作图（图 3-23 位移题思路）</h3><ul>
+<li>求凸轮转过 90°（某分角）时从动件位移 $s_2$：<ul>
+<li>把导路沿 −ω 方向反转 90° 得该瞬时导路位置；由位移线图查该转角对应位移；在该导路上从基圆交点起量取该位移得尖顶位置；该点到基圆对应点沿导路的长度（或两向径之差）就是 $s_2$。最大行程 h 则取最远、最近两位置沿导路之差。</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-6-课堂选择题回顾"><a href="#4-6-课堂选择题回顾" class="headerlink" title="4.6 课堂选择题回顾"></a>4.6 课堂选择题回顾</h3><ul>
+<li>凸轮机构最大缺点：高副点&#x2F;线接触、易磨损（”能实现间歇运动”不是缺点，远&#x2F;近休止本身就能间歇）。</li>
+<li>凸轮机构最大优点：只要设计合适轮廓，从动件就能实现任意预期运动规律（这是普通平面连杆机构难以做到的）。</li>
+<li>滚子从动件中滚子自转属于局部自由度；圆柱凸轮沟槽保证接触属于形锁合，气门弹簧顶紧属于力锁合。</li>
+</ul>
+<h2 id="五、术语、公式或关键表达"><a href="#五、术语、公式或关键表达" class="headerlink" title="五、术语、公式或关键表达"></a>五、术语、公式或关键表达</h2><table>
+<thead>
+<tr>
+<th>术语&#x2F;符号</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>机架&#x2F;连架杆&#x2F;连杆&#x2F;曲柄&#x2F;摇杆</td>
+<td>四杆机构构件名称；曲柄整周转、摇杆往复摆</td>
+</tr>
+<tr>
+<td>格拉霍夫条件</td>
+<td>$l_{min}+l_{max}\le$ 其余两杆之和</td>
+</tr>
+<tr>
+<td>曲柄存在条件</td>
+<td>满足杆长条件 ＋ 最短杆为机架或连架杆</td>
+</tr>
+<tr>
+<td>类型判定</td>
+<td>最短杆为连架杆→曲柄摇杆；为机架→双曲柄；为连杆→双摇杆；不满足条件→恒为双摇杆</td>
+</tr>
+<tr>
+<td>极位夹角 θ</td>
+<td>摇杆两极限位置时曲柄两位置所夹锐角</td>
+</tr>
+<tr>
+<td>行程速比系数 K</td>
+<td>$K&#x3D;(180°+\theta)&#x2F;(180°-\theta)$；$\theta&#x3D;180°(K-1)&#x2F;(K+1)$</td>
+</tr>
+<tr>
+<td>压力角 α &#x2F; 传动角 γ</td>
+<td>力方向与速度方向夹角 &#x2F; 连杆与从动杆夹角；$\alpha+\gamma&#x3D;90°$</td>
+</tr>
+<tr>
+<td>死点</td>
+<td>摇杆主动、连杆与曲柄共线，γ&#x3D;0、α&#x3D;90°，力矩为零</td>
+</tr>
+<tr>
+<td>凸轮&#x2F;从动件&#x2F;机架</td>
+<td>凸轮机构三构件；凸轮—从动件为高副（点&#x2F;线接触）</td>
+</tr>
+<tr>
+<td>盘形&#x2F;移动&#x2F;圆柱凸轮</td>
+<td>平面盘形 &#x2F; 展开板状 &#x2F; 圆柱沟槽空间凸轮</td>
+</tr>
+<tr>
+<td>尖顶&#x2F;滚子&#x2F;平底</td>
+<td>点接触易磨 &#x2F; 线接触最常用（滚子自转局部自由度）&#x2F; 平面接触宜高速</td>
+</tr>
+<tr>
+<td>力锁合&#x2F;形锁合</td>
+<td>弹簧力重力封闭 &#x2F; 沟槽等几何形状封闭</td>
+</tr>
+<tr>
+<td>基圆 $r_0$</td>
+<td>O 为心、O 到理论轮廓最近点距离（最小向径）为半径</td>
+</tr>
+<tr>
+<td>偏距 e &#x2F; 偏距圆</td>
+<td>O 到导路中心线垂直距离；以 O 心 e 为半径；e&#x3D;0 对心</td>
+</tr>
+<tr>
+<td>行程 h &#x2F; 位移 s</td>
+<td>最大移动距离 $h&#x3D;r_{max}-r_0$ &#x2F; 某瞬时移动量（随 δ 变）</td>
+</tr>
+<tr>
+<td>推程&#x2F;远休止&#x2F;回程&#x2F;近休止</td>
+<td>δ₁ 升、δ₂ 远休、δ₃ 回、δ₄ 近休；四角和 360°</td>
+</tr>
+<tr>
+<td>等速&#x2F;等加等减&#x2F;简谐&#x2F;摆线</td>
+<td>刚性冲击低速 &#x2F; 柔性冲击中速 &#x2F; 柔性冲击中速中载 &#x2F; 无冲击高速</td>
+</tr>
+<tr>
+<td>压力角条件</td>
+<td>$\alpha_{max}\le[\alpha]$；基圆越小压力角越大</td>
+</tr>
+<tr>
+<td>反转法</td>
+<td>叠加 −ω 使凸轮静止，尖顶轨迹为理论轮廓；滚子内包络为实际轮廓</td>
+</tr>
+</tbody></table>
+<h2 id="六、课堂任务与复习安排"><a href="#六、课堂任务与复习安排" class="headerlink" title="六、课堂任务与复习安排"></a>六、课堂任务与复习安排</h2><ul>
+<li>课后完成教材<strong>第 40 页图 3-21</strong> 的标注：基圆、偏距（偏距圆）、行程 h、推程、回程、近休止&#x2F;远休止、推程运动角、回程运动角、休止角等。</li>
+<li>完成教材<strong>图 3-23（3-23 页）活动构件位移计算题</strong>（习题 3-5 的第 2、3、4 小题）：用反转法作图求指定转角（如转过 90°）时的位移 $s_2$、最大行程 h 等；教材若缺图可按课堂板图补绘。</li>
+<li>复习要求：<ol>
+<li>会用格拉霍夫条件＋最短杆角色三步判定四杆机构类型；</li>
+<li>熟记 K 与 θ 公式并会互算，能说清急回成因；</li>
+<li>分清压力角、传动角、死点，知道 α+γ&#x3D;90° 和死点的克服&#x2F;利用；</li>
+<li>能说出凸轮机构按形状、从动件、运动形式、锁合方式的分类及典型例子；</li>
+<li>准确标注基圆、偏距、行程、推&#x2F;回程、休止、各运动角；</li>
+<li>背熟四种运动规律的冲击类型和适用转速；</li>
+<li>理解反转法原理，会画尖顶从动件理论轮廓、知道滚子从动件实际轮廓是内包络线。</li>
+</ol>
+</li>
+</ul>
+<h2 id="七、待核对与疑问"><a href="#七、待核对与疑问" class="headerlink" title="七、待核对与疑问"></a>七、待核对与疑问</h2><table>
+<thead>
+<tr>
+<th>问题</th>
+<th>原因</th>
+<th>建议核对方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>许用压力角 [α] 的具体数值（直动&#x2F;摆动&#x2F;回程）</td>
+<td>课堂只讲 αmax≤[α]，未给度数</td>
+<td>查教材凸轮章设计数据表</td>
+</tr>
+<tr>
+<td>运动角符号 δ₁~δ₄ 与 Φ、Φₛ、Φ′、Φ′ₛ</td>
+<td>不同教材符号习惯不同</td>
+<td>以本班教材图 3-21 标注为准</td>
+</tr>
+<tr>
+<td>教材页码（28~29、40 页图 3-21、3-23 页&#x2F;图 3-23、习题 3-5）</td>
+<td>课堂口述页码</td>
+<td>以手中教材实际目录页码为准</td>
+</tr>
+<tr>
+<td>等速&#x2F;抛物线&#x2F;简谐&#x2F;摆线位移方程完整形式</td>
+<td>课堂重点讲冲击与适用场合，公式未全推</td>
+<td>复习教材运动规律一节的位移方程</td>
+</tr>
+<tr>
+<td>具体机构例子（雷达、起重机、机车联动等）归类</td>
+<td>复习课举例较快</td>
+<td>对照教材插图确认</td>
+</tr>
+<tr>
+<td>滚子半径选择、运动失真与最小基圆半径</td>
+<td>本课未展开</td>
+<td>后续凸轮设计课&#x2F;教材</td>
+</tr>
+</tbody></table>
+<h2 id="八、复习与主动回忆"><a href="#八、复习与主动回忆" class="headerlink" title="八、复习与主动回忆"></a>八、复习与主动回忆</h2><h3 id="复习清单"><a href="#复习清单" class="headerlink" title="复习清单"></a>复习清单</h3><ol>
+<li>用 3 分钟复述铰链四杆机构三形式和曲柄存在的两个条件。</li>
+<li>用 3 分钟说出”满足&#x2F;不满足杆长条件＋最短杆角色”的完整判定流程并各举一例。</li>
+<li>用 3 分钟写出 K、θ 公式并说明急回成因，会互算。</li>
+<li>用 2 分钟说清压力角、传动角关系和死点位置及克服方法。</li>
+<li>用 3 分钟说出凸轮按形状、从动件端部、运动形式、锁合方式的分类和例子。</li>
+<li>用 4 分钟在草图上标注基圆、偏距圆、行程、推&#x2F;回程、近&#x2F;远休止及四个运动角。</li>
+<li>用 3 分钟背出四种运动规律的冲击类型与适用转速。</li>
+<li>用 4 分钟叙述反转法原理和尖顶、滚子从动件轮廓的画法。</li>
+</ol>
+<h3 id="主动回忆题"><a href="#主动回忆题" class="headerlink" title="主动回忆题"></a>主动回忆题</h3><ol>
+<li>铰链四杆机构中存在曲柄必须满足哪两个条件？</li>
+<li>满足格拉霍夫杆长条件时，怎样根据最短杆的角色判定机构是曲柄摇杆、双曲柄还是双摇杆？不满足杆长条件时是什么机构？</li>
+<li>写出行程速比系数 K 与极位夹角 θ 的关系式，并由 K 反求 θ。</li>
+<li>压力角 α 和传动角 γ 是什么关系？为什么压力角过大机构会自锁？</li>
+<li>什么是死点位置？哪个构件主动时会出现死点？怎样克服或利用死点？</li>
+<li>凸轮机构由哪三部分组成？凸轮与从动件是什么接触（高副还是低副）？这种接触带来什么优缺点？</li>
+<li>盘形、移动、圆柱凸轮各有什么特点？尖顶、滚子、平底从动件在接触形式、磨损和应用上有何不同？</li>
+<li>什么是基圆、偏距、行程、位移？行程 h 与位移 s 有什么区别？推程、远休止、回程、近休止对应的四个角加起来等于多少？</li>
+<li>等速、等加速等减速、简谐、摆线四种运动规律各产生什么冲击？分别适用于什么转速场合？</li>
+<li>叙述反转法设计凸轮轮廓的原理；滚子从动件的实际轮廓与理论轮廓是什么关系？</li>
+</ol>
+<h3 id="答案要点"><a href="#答案要点" class="headerlink" title="答案要点"></a>答案要点</h3><ol>
+<li>①杆长条件（格拉霍夫定理）：最短杆与最长杆长度之和不大于其余两杆长度之和，$l_{min}+l_{max}\le l_a+l_b$；②最短杆必须是机架或连架杆。两条同时满足机构中才有曲柄。</li>
+<li>满足杆长条件时：最短杆为连架杆→曲柄摇杆机构（最短杆是曲柄）；最短杆为机架→双曲柄机构；最短杆为连杆（既非机架也非连架杆）→双摇杆机构。若不满足杆长条件，则无论以哪根杆为机架都没有曲柄，一律是双摇杆机构。</li>
+<li>$K&#x3D;(180°+\theta)&#x2F;(180°-\theta)$；反求 $\theta&#x3D;180°(K-1)&#x2F;(K+1)$。θ 是摇杆两极限位置时曲柄对应两位置所夹锐角，它使工作行程曲柄转角大（慢）、回程转角小（快），形成急回。</li>
+<li>压力角 α 是从动件受力方向与速度方向所夹锐角，传动角 γ 是连杆与从动连架杆所夹锐角，二者互余 $\alpha+\gamma&#x3D;90°$。α 越大，沿运动方向的有效分力越小、垂直导路的有害分力越大，摩擦增大、效率降低，α 大到一定程度有效分力不足以克服阻力即自锁，故要限制 αmax≤[α]。</li>
+<li>以摇杆为主动件、曲柄为从动件，当连杆与曲柄共线（两个位置）时，γ&#x3D;0、α&#x3D;90°，连杆作用力通过曲柄回转中心、驱动力矩为零，机构不能启动或转向不定，即死点；曲柄主动时无死点。可在从动轴装飞轮借惯性冲过，或用多组机构错位排列；也可利用死点实现夹紧、起落架锁止、折叠定位。</li>
+<li>凸轮机构由凸轮（主动件）、从动件、机架三部分组成；凸轮与从动件是点接触或线接触，属于高副。优点是设计合适轮廓即可让从动件实现任意预定运动规律、结构紧凑；缺点是高副接触应力大、易磨损，不宜传大动力，复杂轮廓加工要求较高。</li>
+<li>盘形凸轮绕固定轴转动、向径变化，最常见，是平面凸轮；移动凸轮是盘形展开成板状、作直线移动，用于门闩闸板；圆柱凸轮在圆柱面开沟槽、属空间凸轮，从动件常摆动。尖顶从动件点接触、最简单但易磨损，用于低速仪表；滚子从动件线接触、滚动耐磨、应用最广（滚子自转是局部自由度）；平底从动件平面接触、受力平稳润滑好、宜高速但不能用于凹陷轮廓。</li>
+<li>基圆是以回转中心 O 为圆心、O 到理论轮廓最近点距离 r₀（最小向径）为半径的圆；偏距 e 是 O 到从动件导路中心线的垂直距离，对应偏距圆，e&#x3D;0 为对心；行程 h 是从动件从最近到最远位置移动的最大距离，$h&#x3D;r_{max}-r_0$，是固定几何量；位移 s 是某一瞬时从动件相对初始位置的移动量，随转角（时间）变化。推程、远休止、回程、近休止对应 δ₁、δ₂、δ₃、δ₄，四角之和为 360°。</li>
+<li>等速规律在起终点速度突变、有刚性冲击，用于低速轻载；等加速等减速规律加速度有限突变、有柔性冲击，用于中速轻载；简谐（余弦加速度）规律有柔性冲击，用于中速中载；摆线（正弦加速度）规律速度、加速度连续，既无刚性冲击也无柔性冲击，用于高速。</li>
+<li>给整个机构叠加一个与凸轮角速度等大反向（−ω）的公共角速度，凸轮相对静止，从动件一边随导路绕 O 反转、一边按预定规律相对导路移动，尖顶在该复合运动中的轨迹就是理论轮廓（作图时把运动角等分、各反转导路上从基圆点量取对应位移得一系列尖顶点，光滑连接）。滚子从动件先以滚子中心为尖顶画出理论轮廓，再以理论轮廓各点为心、滚子半径为半径作滚子圆，取其内包络线（向里偏一个滚子半径的等距曲线）即为实际轮廓。</li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%9C%BA%E6%A2%B0%E5%8E%9F%E7%90%86-%E5%9B%9B%E6%9D%86%E6%9C%BA%E6%9E%84-%E5%87%B8%E8%BD%AE%E6%9C%BA%E6%9E%84/" class="print-no-link">#机械原理 四杆机构 凸轮机构</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>四杆机构曲柄条件、急回特性与凸轮机构设计</div>
+      <div>https://tdexxx.github.io/2026/10/06/04_机械设计基础/机械原理_四杆机构与凸轮机构_发布稿/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>tdexxx</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年10月6日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/10/06/02_%E7%94%B5%E6%B0%94%E6%8E%A7%E5%88%B6%E4%B8%8EPLC/%E7%94%B5%E6%B0%94%E6%8E%A7%E5%88%B6%E4%B8%8EPLC_%E7%94%B5%E5%8A%A8%E6%9C%BA%E6%8E%A7%E5%88%B6%E4%B8%8EPLC%E5%85%A5%E9%97%A8_%E5%8F%91%E5%B8%83%E7%A8%BF/" title="电动机减压启动、反接制动与 PLC 入门">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">电动机减压启动、反接制动与 PLC 入门</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/10/06/07_%E7%94%B5%E5%B7%A5%E7%94%B5%E5%AD%90%E4%B8%8E%E7%94%B5%E8%B7%AF%E5%AE%9E%E9%AA%8C/%E7%94%B5%E5%B7%A5%E7%94%B5%E5%AD%90_%E7%94%B5%E5%B7%A5%E5%AE%9E%E9%AA%8C%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C_%E5%8F%91%E5%B8%83%E7%A8%BF/" title="电工实验基础操作与元件伏安特性测试">
+                        <span class="hidden-mobile">电工实验基础操作与元件伏安特性测试</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

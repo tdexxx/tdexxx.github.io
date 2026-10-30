@@ -1,0 +1,1027 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="tdexxx">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="机械加工工艺规程与定位基准设计笔记：欠定位&#x2F;过定位判断、组合定位过定位分析三步骤与菱形销改进、大平面长销&#x2F;双顶针三爪&#x2F;V形块&#x2F;高精度刀柄过定位案例、设计基准与工艺基准分类、粗基准选择三原则、结构工艺性（退刀槽越程槽钻孔圆角键槽）、工艺卡片与工艺规程设计步骤（含考点） 本文整理《机械加工工艺规程与定位基准设计》一课。本课是第一章”定位”的收尾与第二章”工艺规程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="工艺规程设计与定位基准选择">
+<meta property="og:url" content="https://tdexxx.github.io/2026/10/07/06_%E6%9C%BA%E6%A2%B0%E5%88%B6%E9%80%A0%E5%B7%A5%E8%89%BA%E4%B8%8E%E5%A4%B9%E5%85%B7/%E6%9C%BA%E6%A2%B0%E5%88%B6%E9%80%A0%E5%B7%A5%E8%89%BA_%E5%B7%A5%E8%89%BA%E8%A7%84%E7%A8%8B%E4%B8%8E%E5%AE%9A%E4%BD%8D%E5%9F%BA%E5%87%86_%E5%8F%91%E5%B8%83%E7%A8%BF/index.html">
+<meta property="og:site_name" content="tdexxx的博客">
+<meta property="og:description" content="机械加工工艺规程与定位基准设计笔记：欠定位&#x2F;过定位判断、组合定位过定位分析三步骤与菱形销改进、大平面长销&#x2F;双顶针三爪&#x2F;V形块&#x2F;高精度刀柄过定位案例、设计基准与工艺基准分类、粗基准选择三原则、结构工艺性（退刀槽越程槽钻孔圆角键槽）、工艺卡片与工艺规程设计步骤（含考点） 本文整理《机械加工工艺规程与定位基准设计》一课。本课是第一章”定位”的收尾与第二章”工艺规程">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-10-07T07:54:56.000Z">
+<meta property="article:modified_time" content="2026-10-30T17:37:19.964Z">
+<meta property="article:author" content="tdexxx">
+<meta property="article:tag" content="机械制造工艺 工艺规程 定位基准">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>工艺规程设计与定位基准选择 - tdexxx的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"tdexxx.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2022-12-10T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="工艺规程设计与定位基准选择"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-10-07 15:54" pubdate>
+          2026年10月7日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          11k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          91 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">工艺规程设计与定位基准选择</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="机械加工工艺规程与定位基准设计笔记：欠定位-过定位判断、组合定位过定位分析三步骤与菱形销改进、大平面长销-双顶针三爪-V形块-高精度刀柄过定位案例、设计基准与工艺基准分类、粗基准选择三原则、结构工艺性（退刀槽越程槽钻孔圆角键槽）、工艺卡片与工艺规程设计步骤（含考点）"><a href="#机械加工工艺规程与定位基准设计笔记：欠定位-过定位判断、组合定位过定位分析三步骤与菱形销改进、大平面长销-双顶针三爪-V形块-高精度刀柄过定位案例、设计基准与工艺基准分类、粗基准选择三原则、结构工艺性（退刀槽越程槽钻孔圆角键槽）、工艺卡片与工艺规程设计步骤（含考点）" class="headerlink" title="机械加工工艺规程与定位基准设计笔记：欠定位&#x2F;过定位判断、组合定位过定位分析三步骤与菱形销改进、大平面长销&#x2F;双顶针三爪&#x2F;V形块&#x2F;高精度刀柄过定位案例、设计基准与工艺基准分类、粗基准选择三原则、结构工艺性（退刀槽越程槽钻孔圆角键槽）、工艺卡片与工艺规程设计步骤（含考点）"></a>机械加工工艺规程与定位基准设计笔记：欠定位&#x2F;过定位判断、组合定位过定位分析三步骤与菱形销改进、大平面长销&#x2F;双顶针三爪&#x2F;V形块&#x2F;高精度刀柄过定位案例、设计基准与工艺基准分类、粗基准选择三原则、结构工艺性（退刀槽越程槽钻孔圆角键槽）、工艺卡片与工艺规程设计步骤（含考点）</h1><blockquote>
+<p>本文整理《机械加工工艺规程与定位基准设计》一课。本课是第一章”定位”的收尾与第二章”工艺规程&#x2F;基准”的开篇，内容分四大块：第一块在六点定位基础上辨析<strong>欠定位与过定位</strong>，重点讲组合定位中<strong>移动自由度被重复约束时的”三步骤”等效分析法</strong>，以及把短圆柱销改为<strong>菱形销</strong>消除过定位；第二块用齿轮大平面长销、双顶针＋三爪卡盘、大平面＋双 V 形块、高精度刀柄四个案例讲清过定位的识别、危害、允许条件与改进措施；第三块讲<strong>基准的分类与定义</strong>（设计基准，工艺基准中的工序&#x2F;定位&#x2F;测量&#x2F;装配基准，原有&#x2F;附加基准、粗&#x2F;精基准）；第四块进入<strong>工艺规程设计</strong>——工艺规程的作用、工艺过程卡片与工序卡片、设计原则与所需资料、设计步骤，并集中讲解<strong>结构工艺性审查</strong>（退刀槽、越程槽、钻孔、圆角、键槽、大平面减工等）、毛坯选择和<strong>粗基准选择三原则</strong>（套筒外圆、床身导轨两个经典例子）。文末附案例对照表、基准分类表、结构工艺性表、粗基准表、待核对清单和主动回忆题（含答案要点）。</p>
+</blockquote>
+<h2 id="一、核心结论"><a href="#一、核心结论" class="headerlink" title="一、核心结论"></a>一、核心结论</h2><ul>
+<li><strong>欠定位（欠约束）</strong>：本应约束的自由度没有被约束，会导致工件位置不确定、无法保证加工要求，<strong>绝对不允许</strong>。</li>
+<li><strong>过定位（重复定位&#x2F;超定位）</strong>：同一个自由度被两个或多个定位元件重复约束。过定位要分情况：定位面&#x2F;工件<strong>精度很高时可以提高接触刚性，是允许的</strong>；<strong>精度较差时会引起工件或夹具变形、破坏定位，一般不允许</strong>，需设法消除。</li>
+<li>组合定位中若<strong>移动自由度被重复约束</strong>，按”三步骤”等效分析：① 按定位元件参与定位的先后（初学可按限制自由度的多少）分出<strong>主要参考面和次要参考面</strong>；② 假设主要参考面限制的自由度类型不变；③ 设想工件沿次要参考面所约束的方向移动，若主要参考点不动，则该移动可等效为绕主要参考点的转动；若无法等效（如两孔圆心共线方向），则该移动自由度确属被重复约束，判为过定位。</li>
+<li>组合定位中若<strong>转动（旋转）自由度被同步重复约束</strong>，一般不再做等效处理，<strong>直接判定为过定位</strong>并采取措施消除。</li>
+<li>“两块长条形支撑板＋两个短圆柱销”案例：两块长条支撑板等效为一个矩形大平面（约束 1 个移动＋2 个转动，共 3 个自由度），两个短圆柱销各约束 2 个移动，结果沿两销连心方向的移动被重复约束；由于夹具两销中心距固定而毛坯两孔中心距有误差，会装不进或强迫变形。<strong>把其中一个短圆柱销换成菱形销（削边销）</strong>，利用菱形销只约束一个方向移动的特点消除重复约束，得到完全定位。</li>
+<li>齿轮”大平面＋长销”案例：大平面约束 1 移动＋2 转动，长销约束 2 移动＋2 转动，两个转动自由度被同步重复约束，属过定位；毛坯端面不平、夹紧时强迫端面与大平面贴合，造成工件&#x2F;夹具变形，使车出的大端面对内孔轴线<strong>垂直度超差</strong>。理论上改”小平面＋长销”可消除过定位，但因螺母沿轴向垂直夹紧会强迫端面贴合，实际仍有误差；轻载可用<strong>橡胶垫</strong>靠弹性变形补偿，重载宜采用<strong>自定心（涨开）机构或楔块（斜块）移动错位</strong>补偿。</li>
+<li>“固定顶尖＋浮动（活动）顶尖＋长夹持三爪卡盘”案例：两顶尖约束 5 个自由度、长距离三爪卡盘约束 4 个自由度，组合后明显过定位；改进思路是<strong>去掉三爪卡盘、改用拨盘（鸡心夹头）带动工件旋转</strong>，或对短轴直接去掉一侧顶尖（轴向移动可不约束，用程序安全距离补偿），长轴则需中心架&#x2F;跟刀架增强刚性。</li>
+<li>“大平面＋固定 V 形块＋浮动 V 形块”案例：大平面约束 3 个自由度，固定 V 形块约束 2 个移动，浮动 V 形块只约束 1 个移动，造成某一移动方向重复（该方向过圆心无法等效为转动）；改进办法是让浮动 V 形块<strong>只起夹紧作用、不参与定位</strong>（此时允许保留绕工件轴线的转动自由度，钻中心孔不受影响）。</li>
+<li>过定位并非一律有害：<strong>高精度刀柄（如 HSK 类）采用大锥度心轴（约 5 个自由度）＋定位端面接触（平面 3 个自由度）</strong>，合计超过 6 个属过定位，但因零件制造极精密，反而能提高接触刚性与连接可靠性，在精密装配场合允许；一般普通精度产品不建议采用。</li>
+<li>定位分析有两种方法：<strong>分项（分线）分析法</strong>把每个定位元件约束的自由度逐个列出再组合，适合判断过定位，初学推荐；<strong>整体分析法</strong>从工件整体被制约情况判断，更适合判断欠定位，初学不易掌握。</li>
+<li><strong>基准</strong>是用来确定加工对象上几何要素（点、线、面）位置关系（尺寸起始位置）的那些点、线、面。按用途分<strong>设计基准</strong>和<strong>工艺基准</strong>；工艺基准又分<strong>工序基准、定位基准、测量基准、装配基准</strong>，本章重点是定位基准。</li>
+<li>基准还有两组分类：按工件上是否原有分为<strong>原有基准</strong>与<strong>附加基准</strong>（为工艺需要专门加工出来的，如轴两端中心孔、箱体工艺凸台）；按基准面是否加工过分为<strong>粗基准</strong>（毛坯面）与<strong>精基准</strong>（已加工面）。</li>
+<li><strong>工艺规程</strong>是生产中的指导性文件（纸质常贴在机床旁、电子厂用 MES 显示），是生产准备工作的依据，也是新建车间&#x2F;工厂的基本技术条件。单件小批、普通加工用<strong>机械加工工艺过程卡片</strong>；大批量生产用更细致的<strong>机械加工工序卡片</strong>（一工序一卡，含工步、装备、参数、工时）。</li>
+<li>工艺规程设计原则：保证加工质量、满足生产纲领、高效率低成本、充分利用现有条件并平衡生产、减轻劳动强度保障安全、尽量采用先进工艺技术。</li>
+<li>工艺规程设计步骤：读图（技术要求&#x2F;材料&#x2F;能否生产）→ 工艺审查（结构工艺性）→ 熟悉确定毛坯 → 确定工艺路线（核心）→ 确定工艺装备 → 确定各工序技术要求与解决方法 → 确定加工余量、计算工序尺寸与公差 → 确定切削用量与时间定额 → （数控）自动编程 → 评估工艺路线并填写工艺文件。</li>
+<li>常见结构工艺性问题：螺纹&#x2F;插齿键槽根部要留<strong>退刀槽（空刀槽）</strong>以防打刀和残留死角（内螺纹退刀槽在加工底孔时就做出）；高粗糙度（如 Ra0.4）轴肩磨削要留<strong>砂轮越程槽</strong>以防直角残留影响装配；钻孔的切入、切出表面应平整以防钻头偏斜，深长孔可在铸&#x2F;锻时预铸更大的”空刀”；内外圆角半径尽量统一、避免过小（便于同一把铣刀加工、避免满刀切降低刀具寿命）；同一圆周上的键槽尽量同向、同宽，一次装夹加工；大平面可中部挖空以减少加工面积、保证平面度；多个退刀槽尺寸尽量统一以减少换刀。</li>
+<li>毛坯依据零件作用、外形尺寸、材料工艺特性和生产批量选择，常见有铸件、锻件、焊接件、冲压件、型材；现代汽车大型复杂件越来越多采用压铸&#x2F;一体化压铸。</li>
+<li><strong>粗基准选择三原则</strong>：① 要保证加工面与不加工面之间的相互位置关系时，选<strong>不加工面</strong>作粗基准（套筒类选不加工外圆夹外圆镗内孔，可保证内外圆同轴、壁厚均匀）；② 要保证某重要表面加工余量均匀时，选<strong>该重要表面本身</strong>作粗基准（床身先以导轨面为粗基准加工床脚，再以加工后的床脚为精基准加工导轨，保证导轨余量均匀）；③ 粗基准应平整、无飞边&#x2F;浇冒口&#x2F;分型面等缺陷，且<strong>一般不得重复使用</strong>（粗基准只能作主要定位面用一次，作次要基准可酌情）。</li>
+</ul>
+<h2 id="二、知识结构"><a href="#二、知识结构" class="headerlink" title="二、知识结构"></a>二、知识结构</h2><ul>
+<li>定位基本概念：欠定位、过定位的定义与允许条件</li>
+<li>组合定位过定位分析：移动自由度重复的三步骤、转动自由度重复直接判定</li>
+<li>过定位案例：支撑板＋双圆柱销（菱形销）、齿轮大平面长销、双顶针三爪、双 V 形块、高精度刀柄</li>
+<li>定位分析方法：分项分析法、整体分析法</li>
+<li>基准：基准定义；原有&#x2F;附加、粗&#x2F;精两组分类；设计基准与四种工艺基准</li>
+<li>工艺规程：作用、两类工艺卡片、设计原则、所需资料、设计步骤</li>
+<li>结构工艺性审查：退刀槽&#x2F;越程槽&#x2F;钻孔&#x2F;圆角&#x2F;键槽&#x2F;大平面等</li>
+<li>毛坯选择与粗基准三原则（套筒、床身导轨实例）</li>
+</ul>
+<h2 id="三、详细笔记"><a href="#三、详细笔记" class="headerlink" title="三、详细笔记"></a>三、详细笔记</h2><h3 id="3-1-欠定位与过定位"><a href="#3-1-欠定位与过定位" class="headerlink" title="3.1 欠定位与过定位"></a>3.1 欠定位与过定位</h3><ul>
+<li>六点定位原理用合理分布的六个支承点限制工件六个自由度。在此基础上：<ul>
+<li><strong>欠定位（限定位）</strong>：工件本应被限制的自由度没有被限制，定位不足，加工要求无法保证，是<strong>绝对不允许</strong>的定位错误。</li>
+<li><strong>过定位（重复定位）</strong>：某一个自由度被两个或两个以上定位元件重复限制。过定位是否允许要看条件：<ul>
+<li>当工件定位基面和定位元件<strong>精度很高</strong>时，过定位能增加接触刚度、提高定位的稳固性，<strong>允许采用</strong>；</li>
+<li>当精度较差时，过定位会使工件或定位元件产生变形、接触不良、定位不稳定，反而破坏定位精度，<strong>应当消除</strong>。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-2-组合定位中移动自由度重复的”三步骤”分析法"><a href="#3-2-组合定位中移动自由度重复的”三步骤”分析法" class="headerlink" title="3.2 组合定位中移动自由度重复的”三步骤”分析法"></a>3.2 组合定位中移动自由度重复的”三步骤”分析法</h3><ul>
+<li>当组合定位中某一<strong>移动</strong>自由度被重复限制时，按以下三步判断它实际等效约束了什么：<ol>
+<li><strong>分主次参考面</strong>：按定位元件参与定位的先后顺序分出主要参考面、次要参考面；初学时难以判断先后，可简单地把<strong>限制自由度较多</strong>的定位元件作为主要参考面，少的作为次要参考面。</li>
+<li><strong>固定主要参考面的约束类型</strong>：假设主要参考面所限制的自由度类型保持不变。</li>
+<li><strong>对次要参考面做等效</strong>：设想工件沿次要参考面所约束的方向移动，而主要参考点保持不动，看该移动能否等效为绕主要参考点的转动；若能等效，则重复的移动实际转化为转动约束，不构成过定位；若不能等效（例如两孔圆心共线，沿连心线方向移动时工件姿态不变），则该移动自由度仍被重复限制，判定为过定位。</li>
+</ol>
+</li>
+<li>若是<strong>转动</strong>自由度被同步重复约束，一般不做上述等效，直接判为过定位并加以消除。</li>
+</ul>
+<h3 id="3-3-案例一：两块长支撑板＋两个短圆柱销（菱形销改进）"><a href="#3-3-案例一：两块长支撑板＋两个短圆柱销（菱形销改进）" class="headerlink" title="3.3 案例一：两块长支撑板＋两个短圆柱销（菱形销改进）"></a>3.3 案例一：两块长支撑板＋两个短圆柱销（菱形销改进）</h3><ul>
+<li>定位方案：工件底面用两块长条形支撑板支承，侧面（或两孔）用左、右两个短圆柱销定位。</li>
+<li>自由度分析：<ul>
+<li>两块长条形支撑板等效为一块矩形大平面（相当于三个均布支承钉），限制垂直于板面方向的 1 个移动和绕另外两轴的 2 个转动，共 3 个自由度；</li>
+<li>单个短圆柱销（与孔配合）限制垂直于销轴线平面内的 2 个移动；左、右两个短圆柱销分别分析时都限制这 2 个移动。</li>
+<li>组合后，沿两销连心方向的移动被两个销重复限制。</li>
+</ul>
+</li>
+<li>用三步骤分析：取左销为主要参考面、右销为次要参考面；工件若沿某方向移动且左销点不动，可等效为绕左销点（绕垂直板面轴）的转动；但沿两孔圆心共线（连心线）方向移动时，工件整体平移、姿态不变，<strong>无法等效为转动</strong>，故该移动自由度确属重复约束，为过定位。</li>
+<li>危害：夹具上两销装好后中心距固定（如 41.9 mm），而各毛坯件两孔中心距存在误差（可能 41.8、42.0 mm 等），间距小了塞不进、大了松动；强行装入会造成圆柱销或工件变形。</li>
+<li>改进：把其中一个短圆柱销换成<strong>菱形销（削边销）</strong>。菱形销只在一个方向上起定位作用（只限制垂直于削边方向的移动），从而去掉对连心线方向移动的重复约束，使组合定位成为完全定位。这是”一面两销”中最经典的过定位消除方法。</li>
+</ul>
+<h3 id="3-4-案例二：齿轮大平面＋长销车大端面（垂直度超差）"><a href="#3-4-案例二：齿轮大平面＋长销车大端面（垂直度超差）" class="headerlink" title="3.4 案例二：齿轮大平面＋长销车大端面（垂直度超差）"></a>3.4 案例二：齿轮大平面＋长销车大端面（垂直度超差）</h3><ul>
+<li>加工对象：齿轮，以内孔和小端端面定位、车削大端面；大端面对内孔轴线有垂直度要求（公差较小，课堂约 0.02 mm，具体以图样为准）。</li>
+<li>原方案用”大平面＋长销”，端面靠大平面、内孔套长销，端部螺母夹紧。</li>
+<li>自由度分析：大平面限制 1 个移动＋2 个转动；长销限制 2 个移动＋2 个转动。结果绕 X、Y 两轴的转动被大平面和长销<strong>同步重复约束</strong>，属过定位（转动重复直接判过定位）。</li>
+<li>失效原因：毛坯端面平整度差，夹紧时为使端面与大平面完全贴合而用力拧紧，迫使工件或心轴变形；变形状态下车出的大端面，松开后回弹，无法保证与内孔轴线垂直。</li>
+<li>理论改进：改为”<strong>小平面＋长销</strong>“（课本给出的标准组合之一），减少端面对转动自由度的约束，成为不完全定位，给端面误差留出转动余地。</li>
+<li>实际困难：该夹具靠螺母沿轴向垂直夹紧，即使定位面改成小平面，夹紧力仍会强迫端面与定位面贴死、不允许其转动倾斜，误差依旧。</li>
+<li>补偿措施：<ul>
+<li><strong>轻载、切削力小</strong>：可在端面加<strong>橡胶垫</strong>，靠橡胶垫的弹性变形补偿端面不平；</li>
+<li><strong>重载、切削力大</strong>：橡胶垫被压死后会出现空隙、长度尺寸无法保证，应采用<strong>自定心（涨开）机构或楔块（斜块）移动错位</strong>补偿——螺母不直接压端面，而是拧动时推动两个楔块向两端涨开实现径向夹紧，不强迫端面与定位面贴合。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-5-案例三：双顶针＋三爪卡盘车轴"><a href="#3-5-案例三：双顶针＋三爪卡盘车轴" class="headerlink" title="3.5 案例三：双顶针＋三爪卡盘车轴"></a>3.5 案例三：双顶针＋三爪卡盘车轴</h3><ul>
+<li>固定顶尖与浮动（活动）顶尖顶住轴两端，两顶尖组合共约束 5 个自由度（只放开绕自身轴线的转动）；当三爪卡盘夹持轴的距离较长时，长夹持的三爪卡盘又约束 4 个自由度（2 移动＋2 转动）。工件总共只有 6 个自由度，二者组合明显过定位。</li>
+<li>问题根源：顶尖本身只顶住中心孔、不带动工件回转，初学者常再用三爪卡盘夹住一段并靠卡盘带动旋转，造成重复约束。</li>
+<li>改进思路：<ul>
+<li>去掉三爪卡盘，改用<strong>拨盘＋鸡心夹头（卡箍）</strong>拨动工件回转，两顶尖只负责定位；</li>
+<li>若只是车削表面层、轴较短，可直接去掉一侧顶尖——被去掉的轴向移动约束用车削程序中更长的安全距离来补偿（刀具从头车到尾，轴向略有窜动不影响）；</li>
+<li>加工长轴时不能简单去顶尖，否则轴会弯曲，需加<strong>中心架或跟刀架</strong>提高刚性。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-6-案例四：大平面＋固定-V-形块＋浮动-V-形块"><a href="#3-6-案例四：大平面＋固定-V-形块＋浮动-V-形块" class="headerlink" title="3.6 案例四：大平面＋固定 V 形块＋浮动 V 形块"></a>3.6 案例四：大平面＋固定 V 形块＋浮动 V 形块</h3><ul>
+<li>大平面（底面）约束 3 个自由度；左侧固定 V 形块对圆柱形工件约束 2 个移动；右侧是可左右移动的浮动 V 形块，只约束 1 个移动。</li>
+<li>组合后某一横向移动被固定 V 形块和浮动 V 形块重复约束；由于接触点过圆心，该移动无法等效为绕圆心的转动，判为过定位。</li>
+<li>改进：右侧浮动 V 形块<strong>不再承担定位，只起夹紧作用</strong>。大平面＋固定 V 形块已约束 5 个自由度，剩下绕工件自身轴线的转动可以不限制（例如钻中心孔时，工件绕轴线转不影响中心孔位置）。</li>
+</ul>
+<h3 id="3-7-过定位的合理利用：高精度刀柄"><a href="#3-7-过定位的合理利用：高精度刀柄" class="headerlink" title="3.7 过定位的合理利用：高精度刀柄"></a>3.7 过定位的合理利用：高精度刀柄</h3><ul>
+<li>传统大锥度心轴定位约约束 5 个自由度（放开绕轴线转动）；一些高精度刀柄（如 HSK 类）在此基础上又让<strong>定位端面同时接触</strong>，端面（平面）再约束 3 个自由度，合计超过 6 个，属于过定位。</li>
+<li>但刀柄各零件在装配前都经过极精密加工，表面粗糙度、形位公差、尺寸公差要求很高，这种过定位能显著提高锥面与端面的接触刚性和连接可靠性，因此在精密装配场合<strong>允许且有益</strong>；普通精度的一般产品不要轻易采用。</li>
+</ul>
+<h3 id="3-8-定位分析的两种方法"><a href="#3-8-定位分析的两种方法" class="headerlink" title="3.8 定位分析的两种方法"></a>3.8 定位分析的两种方法</h3><ul>
+<li><strong>分项（分线）分析法</strong>：分别分析每一个定位元件各自限制了哪些自由度，再组合起来判断是否重复（过定位）。条理清楚，是判断过定位的主要方法，初学推荐。</li>
+<li><strong>整体分析法</strong>：从工件整体被制约的运动情况直接判断，更适合判断是否欠定位；但需要较强的工程经验（如能判断键槽等结构到底要不要限制某方向），初学不易掌握，不建议一开始就用。</li>
+</ul>
+<h3 id="3-9-基准的基本概念与分类"><a href="#3-9-基准的基本概念与分类" class="headerlink" title="3.9 基准的基本概念与分类"></a>3.9 基准的基本概念与分类</h3><ul>
+<li><strong>基准</strong>：零件上用来确定其他点、线、面位置（即尺寸标注起始位置）的那些点、线、面。</li>
+<li>按用途分为两大类：<ul>
+<li><strong>设计基准</strong>：设计人员根据零件在装配结构中的装配关系、以及零件本身结构要素之间的相互位置关系，所确定的标注尺寸起始位置（可以是点、线、面）。一个尺寸两端的要素都可作为该尺寸的设计基准（如某高度尺寸的两个端面都可作为其设计基准）。</li>
+<li><strong>工艺基准</strong>：工艺过程中所使用的基准，由工艺人员确定，又分四种：<ul>
+<li><strong>工序基准</strong>：在工序图上用来确定本工序被加工表面加工后的尺寸、形状、位置的基准；正规工序图多为单向标注，由定位端面指向被加工面。</li>
+<li><strong>定位基准（本章重点）</strong>：加工时用来确定工件在机床或夹具中正确位置所依据的基准。</li>
+<li><strong>测量基准</strong>：加工后检验、测量时所依据的基准。</li>
+<li><strong>装配基准</strong>：装配时用来确定零件在产品（部件）中相对位置所依据的基准。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>另外两组常见分类：<ul>
+<li>按工件上是否<strong>原有</strong>：原有基准（毛坯&#x2F;零件上本来就有的要素）与<strong>附加基准</strong>（零件功能上并不需要、纯粹为了工艺定位需要而专门加工出来的要素，如轴两端的中心孔、为便于定位在箱体上铸出的工艺凸台）。</li>
+<li>按基准面是否<strong>加工过</strong>：以毛坯（未加工）面作基准称<strong>粗基准</strong>，以已加工面作基准称<strong>精基准</strong>。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-10-工艺规程的作用、卡片与设计原则"><a href="#3-10-工艺规程的作用、卡片与设计原则" class="headerlink" title="3.10 工艺规程的作用、卡片与设计原则"></a>3.10 工艺规程的作用、卡片与设计原则</h3><ul>
+<li>作用：工艺规程是规定零件工艺过程和操作方法等的<strong>指导性工艺文件</strong>（纸质文件常挂&#x2F;贴在机床旁，数字化车间在 MES 等终端显示）；它是生产准备（备料、设备、工装、人员）的依据，也是新建工厂或车间的基本技术条件。</li>
+<li>两类主要工艺卡片：<ul>
+<li><strong>机械加工工艺过程卡片</strong>：内容较集中，列出各工序及对应车间、设备、工艺装备等，用于单件小批、普通加工方法；</li>
+<li><strong>机械加工工序卡片</strong>：大批量生产时使用，一个工序一张卡，详细写明工步内容、每个工步所用装备、具体工艺参数和时间定额。</li>
+</ul>
+</li>
+<li>设计原则：<ol>
+<li>保证零件加工质量，达到图纸规定的各项精度指标；</li>
+<li>满足生产纲领（年生产批量），大批量应采用专用夹具、专用机床等高效方案；</li>
+<li>具有较高生产效率和较低成本；</li>
+<li>充分利用现有生产条件，并注意<strong>平衡生产</strong>（多种产品共用设备时避免某台设备被单一产品占满而使其他产品停滞）；</li>
+<li>减轻工人劳动强度、保障安全生产；</li>
+<li>在可能条件下采用先进工艺和技术。</li>
+</ol>
+</li>
+<li>设计前应掌握的资料：本车间生产情况、相关工艺与设备手册、标准技术规程、零件图、验收标准、年生产量等。</li>
+</ul>
+<h3 id="3-11-工艺规程设计的步骤"><a href="#3-11-工艺规程设计的步骤" class="headerlink" title="3.11 工艺规程设计的步骤"></a>3.11 工艺规程设计的步骤</h3><ol>
+<li><strong>读图</strong>：看懂零件图，了解性能指标、技术要求和材料，初步评估本厂是否具备加工条件（接单&#x2F;试生产阶段尤其重要）；</li>
+<li><strong>工艺审查</strong>：审查设计结构是否满足工艺生产条件（结构工艺性，见 3.12）；</li>
+<li><strong>熟悉并确定毛坯</strong>：明确毛坯是铸、锻、焊、冲压还是型材，了解分型面、浇冒口残余等不能精确定位的部位；</li>
+<li><strong>确定工艺路线（核心）</strong>：确定各表面的定位基准和加工方法（车、铣、刨、磨、钻、热处理等的先后顺序）；</li>
+<li>确定满足各工序要求的工艺装备（机床、夹具、刀具、量具）；</li>
+<li>确定各主要工序的技术要求和保证（解决）方法；</li>
+<li>确定各工序加工余量，计算工序尺寸和公差；</li>
+<li>确定切削用量和时间定额；</li>
+<li>数控加工时进行自动编程；</li>
+<li>评估工艺路线是否合理、有无更优方案，并填写工艺文件。</li>
+</ol>
+<h3 id="3-12-结构工艺性审查（常见实例）"><a href="#3-12-结构工艺性审查（常见实例）" class="headerlink" title="3.12 结构工艺性审查（常见实例）"></a>3.12 结构工艺性审查（常见实例）</h3><ul>
+<li><strong>孔&#x2F;箱壁离端面太近</strong>：钻头进给时顶部被干涉，需加长钻头，钻头越长刚性越差、易弯易折；且铸造圆角处麻花钻接触圆角不易定心钻入。改进：把箱带（凸缘）加长避开干涉，或直接延伸到端面。</li>
+<li><strong>螺纹退刀槽</strong>：车螺纹到台阶处若退刀不及时易”打刀”（撞刀），且刀尖带圆弧会在尾部留下车不掉的残留、使最后一牙不完整。应在<strong>加工内螺纹底孔（孔）时就预先车出退刀槽</strong>（不是车螺纹时才加工），螺纹车到槽内退刀，既防打刀又清除死角。</li>
+<li><strong>插齿&#x2F;键槽空刀槽</strong>：插齿加工键槽时底部若无退刀空间也易打刀、难以保证槽深；带台阶的齿轮插齿过深会破坏台阶面，需在槽底留出空刀范围。</li>
+<li><strong>砂轮越程槽</strong>：对表面粗糙度要求很高（如 Ra 0.4，车削达不到、需磨削）的轴肩，砂轮边缘为直角，在轴肩转角处磨不到、留下直角残留死角，装配时相关零件不能贴紧、易晃动；故磨削轴肩必须留越程槽。</li>
+<li><strong>钻孔表面</strong>：钻头切入和切出的表面都应尽量平整；在斜面、曲面上钻孔时钻头易打滑偏斜、甚至折断。深长孔可在铸造或锻造时预先留出比孔径大的”空刀”孔洞，关键部位只钻较短一段，减少加工量。</li>
+<li><strong>加工面等高</strong>：需加工的平面高度不一致时要多次调整刀具高度、影响效率，可在设计上统一高度，减少调刀和空行程。</li>
+<li><strong>退刀槽尺寸统一</strong>：一根轴上多个退刀槽宽度不一（如 5、4、3）时需多把成形车刀、多次换刀，效率低；应尽量统一尺寸，用一把刀加工。</li>
+<li><strong>大平面减工</strong>：大平面平面度难保证、加工面积大效率低；轴承座、箱体等可把中部挖去一部分，只保证周边接触区域的平面度，既减少加工面积又利于保证平面度。</li>
+<li><strong>圆角</strong>：内、外圆角半径尽量相同，以便用同一把铣刀加工、减少换刀；圆角不宜过小，过小的凹圆弧会使铣刀轮廓一次全部包络（满刀切），加剧刀具磨损、缩短寿命；适当增大圆角可采用更大直径的铣刀、增大刀体接触宽度，提高刀具寿命。</li>
+<li><strong>键槽方向一致</strong>：同一圆周上的多个平键键槽应尽量布置在同一方向，并在满足键长要求前提下使槽宽一致，以便一次装夹、一把铣刀加工完成，减少反复装夹带来的误差。</li>
+</ul>
+<h3 id="3-13-毛坯选择"><a href="#3-13-毛坯选择" class="headerlink" title="3.13 毛坯选择"></a>3.13 毛坯选择</h3><ul>
+<li>选择依据：零件在机器中的作用、外形尺寸、材料的工艺特性（可铸性、可锻性、可焊性、切削加工性等）、生产批量。</li>
+<li>常见毛坯：铸件、锻件、焊接件、冲压件、型材。冲压件适合形状较简单件，复杂件传统上需冲压后焊接；现代汽车（尤其新能源）大型复杂结构件越来越多采用压铸&#x2F;一体化压铸成形。</li>
+</ul>
+<h3 id="3-14-粗基准选择三原则（本章重点）"><a href="#3-14-粗基准选择三原则（本章重点）" class="headerlink" title="3.14 粗基准选择三原则（本章重点）"></a>3.14 粗基准选择三原则（本章重点）</h3><ul>
+<li>第一道工序面对的都是未加工的毛坯面，只能用毛坯面作定位基准，即粗基准。选择原则：<ol>
+<li><strong>保证加工面与不加工面之间的相互位置关系</strong>：当零件同时有加工面和不加工面、且二者有位置要求时，应选择<strong>不加工面</strong>作为粗基准。<ul>
+<li>例：套筒类铸件若内孔与外圆铸出后不同轴、壁厚不均，要求加工后内外圆同轴、壁厚均匀。方案 A 用三爪卡盘夹住<strong>不加工的外圆</strong>、加工内孔——车内孔的回转轴线与外圆轴线重合，可保证同轴度和两端壁厚均匀；方案 B 卡住外圆后按毛坯内孔找正（以内孔为粗基准）加工，则加工后内孔仍沿原毛坯内孔轴线、与外圆不重合，壁厚一厚一薄无法纠正。故应选不加工外圆作粗基准。</li>
+</ul>
+</li>
+<li><strong>保证某重要表面加工余量均匀</strong>：若要保证某个重要表面的加工余量均匀，应选择<strong>该重要表面本身</strong>作为粗基准。<ul>
+<li>例：车床床身有床脚和导轨，导轨是有平面度、直线度要求的重要表面。正确做法是<strong>先以导轨面为粗基准</strong>刨&#x2F;铣床脚（把床脚不平面切去），再翻身以加工过的床脚面作为<strong>精基准</strong>加工导轨——此时加工导轨的基准是已加工、较平整的床脚面，导轨切深均匀、余量均匀；若一开始就以毛坯床脚为粗基准直接加工导轨，毛坯床脚不平会使导轨各点余量不均。</li>
+</ul>
+</li>
+<li><strong>保证装夹可靠、基准平整</strong>：粗基准表面应尽量平整，不应有飞边、浇冒口残余、分型（分模）面等缺陷；并且<strong>粗基准一般不得重复使用</strong>——粗基准粗糙，第二次装夹时定位位置会与第一次不一致、轴线跑偏，影响各加工面的位置关系。若工艺需要，粗基准可作为<strong>次要</strong>定位基准酌情使用，但不应作为主要定位面重复使用。<ul>
+<li>例：先以不加工外圆为粗基准车端面、加工内孔；后续钻径向小孔时应改用已加工的孔&#x2F;端面（精基准）定位，而不能再次以粗糙外圆重复作主要定位。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="四、典型案例与判断流程"><a href="#四、典型案例与判断流程" class="headerlink" title="四、典型案例与判断流程"></a>四、典型案例与判断流程</h2><h3 id="4-1-过定位判断通用流程"><a href="#4-1-过定位判断通用流程" class="headerlink" title="4.1 过定位判断通用流程"></a>4.1 过定位判断通用流程</h3><ol>
+<li>建立坐标系，逐个写出每个定位元件（平面、短&#x2F;长销、V 形块、顶尖、卡盘等）各自限制的自由度；</li>
+<li>合并所有元件的约束，找出被两个以上元件重复限制的自由度；</li>
+<li>重复的是移动自由度时，按”三步骤”判断能否等效为转动；重复的是转动自由度时一般直接判过定位；</li>
+<li>结合工件&#x2F;定位面精度判断该过定位是否允许；不允许时通过改元件（圆柱销改菱形销、大平面改小平面、固定 V 改浮动&#x2F;夹紧、卡盘改拨盘等）或增加补偿（橡胶垫、自定心&#x2F;楔块机构）消除。</li>
+</ol>
+<h3 id="4-2-粗基准选择决策"><a href="#4-2-粗基准选择决策" class="headerlink" title="4.2 粗基准选择决策"></a>4.2 粗基准选择决策</h3><ul>
+<li>有不加工面且与加工面有位置要求 → 选不加工面（原则一）；</li>
+<li>要保证某重要表面余量均匀 → 选该重要表面本身（原则二）；</li>
+<li>基准面要平整、避开浇冒口&#x2F;分型面，且同一粗基准不作主要定位面重复使用（原则三）。</li>
+</ul>
+<h2 id="五、案例与知识速查表"><a href="#五、案例与知识速查表" class="headerlink" title="五、案例与知识速查表"></a>五、案例与知识速查表</h2><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>关键结论</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>欠定位</td>
+<td>该约束的自由度没约束，绝对不允许</td>
+</tr>
+<tr>
+<td>过定位</td>
+<td>同一自由度被重复约束；高精度可提刚性允许，低精度致变形须消除</td>
+</tr>
+<tr>
+<td>移动重复分析</td>
+<td>三步骤：分主次参考面→主要面约束不变→次要面移动等效绕点转动</td>
+</tr>
+<tr>
+<td>转动重复</td>
+<td>一般不等效，直接判过定位</td>
+</tr>
+<tr>
+<td>一面两销</td>
+<td>两短圆柱销重复连心线移动；一个改菱形销只约束一个方向移动</td>
+</tr>
+<tr>
+<td>齿轮大平面长销</td>
+<td>X&#x2F;Y 转动重复，垂直度超差；小平面长销&#x2F;橡胶垫（轻载）&#x2F;自定心楔块（重载）</td>
+</tr>
+<tr>
+<td>双顶针＋三爪</td>
+<td>5＋4 过定位；去卡盘换拨盘，短轴去一侧顶尖，长轴加中心架&#x2F;跟刀架</td>
+</tr>
+<tr>
+<td>大平面＋双V块</td>
+<td>横向移动重复；浮动 V 块改为只夹紧不定位</td>
+</tr>
+<tr>
+<td>高精度刀柄</td>
+<td>大锥度心轴＋端面接触过定位，精密场合允许、提高刚性</td>
+</tr>
+<tr>
+<td>分析方法</td>
+<td>分项分析法判过定位（推荐初学）；整体分析法判欠定位</td>
+</tr>
+<tr>
+<td>设计基准</td>
+<td>标注尺寸起始位置的点线面，由设计员定</td>
+</tr>
+<tr>
+<td>工艺基准</td>
+<td>工序基准、定位基准（重点）、测量基准、装配基准</td>
+</tr>
+<tr>
+<td>附加基准</td>
+<td>为工艺专门加工，如中心孔、工艺凸台</td>
+</tr>
+<tr>
+<td>粗&#x2F;精基准</td>
+<td>用毛坯面&#x2F;已加工面作基准</td>
+</tr>
+<tr>
+<td>过程卡片</td>
+<td>单件小批、普通加工，内容集中</td>
+</tr>
+<tr>
+<td>工序卡片</td>
+<td>大批量，一序一卡、含工步参数工时</td>
+</tr>
+<tr>
+<td>退刀槽</td>
+<td>螺纹&#x2F;插齿根部防打刀、清死角；内螺纹槽在打底孔时做出</td>
+</tr>
+<tr>
+<td>越程槽</td>
+<td>磨削轴肩（如 Ra0.4）防砂轮直角残留、保证装配贴合</td>
+</tr>
+<tr>
+<td>钻孔</td>
+<td>出入端面要平防偏斜；深长孔预铸空刀</td>
+</tr>
+<tr>
+<td>圆角&#x2F;键槽</td>
+<td>内外圆角统一、勿过小；键槽同向同宽一次装夹</td>
+</tr>
+<tr>
+<td>粗基准原则一</td>
+<td>保加工面与不加工面位置关系→选不加工面（套筒选外圆保同轴壁厚）</td>
+</tr>
+<tr>
+<td>粗基准原则二</td>
+<td>保重要表面余量均匀→选重要表面本身（床身先导轨后床脚）</td>
+</tr>
+<tr>
+<td>粗基准原则三</td>
+<td>平整无飞边浇冒口分型面；一般不重复使用（可作次要基准）</td>
+</tr>
+</tbody></table>
+<h2 id="六、课堂任务与复习安排"><a href="#六、课堂任务与复习安排" class="headerlink" title="六、课堂任务与复习安排"></a>六、课堂任务与复习安排</h2><ul>
+<li>作业一：根据给定零件，分析其定位装置应约束&#x2F;限制哪些自由度（判断完全&#x2F;不完全定位、欠定位、过定位）。</li>
+<li>作业二：平台发布的第二份作业（定位&#x2F;基准相关）。</li>
+<li>复习要求：<ol>
+<li>能准确区分欠定位与过定位，说明过定位何时允许、何时必须消除；</li>
+<li>熟练用”三步骤”分析移动自由度重复，能判断一面两销、大平面长销、双顶针三爪、双 V 块等方案并提出改进；</li>
+<li>掌握基准的两大用途分类和两组分类，能在图样上指认设计基准与各类工艺基准；</li>
+<li>记住工艺规程的作用、两类卡片、设计原则与设计步骤；</li>
+<li>能识别退刀槽、越程槽、钻孔、圆角、键槽、大平面等典型结构工艺性问题并说明原因；</li>
+<li>会用粗基准三原则分析套筒、床身导轨等实例。</li>
+</ol>
+</li>
+</ul>
+<h2 id="七、待核对与疑问"><a href="#七、待核对与疑问" class="headerlink" title="七、待核对与疑问"></a>七、待核对与疑问</h2><table>
+<thead>
+<tr>
+<th>问题</th>
+<th>原因</th>
+<th>建议核对方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>各定位元件具体限制自由度数量（长销4、大平面3、V块2等）</td>
+<td>录音口语、坐标方向反复</td>
+<td>对照教材定位元件自由度表</td>
+</tr>
+<tr>
+<td>齿轮端面垂直度公差数值（约0.02）</td>
+<td>录音”0:02”含糊</td>
+<td>查原图样</td>
+</tr>
+<tr>
+<td>一面两销销间距数值（41.9&#x2F;41.8&#x2F;42）</td>
+<td>课堂举例随口数值</td>
+<td>以具体夹具&#x2F;毛坯图为准</td>
+</tr>
+<tr>
+<td>菱形销削边方向与所约束移动方向的确切表述</td>
+<td>录音”只约束长边方向”易混</td>
+<td>查教材菱形销（削边销）定位原理</td>
+</tr>
+<tr>
+<td>HSK 刀柄名称与锥面&#x2F;端面约束自由度</td>
+<td>录音”高于ssk”含糊</td>
+<td>查工具系统与刀柄资料</td>
+</tr>
+<tr>
+<td>表面粗糙度 Ra0.4 与新老国标标注</td>
+<td>录音提到老国标0.4</td>
+<td>对照表面结构新国标</td>
+</tr>
+<tr>
+<td>工艺规程步骤序号与名称（不同教材略有差异）</td>
+<td>录音列举较散</td>
+<td>对照本校教材工艺规程设计章节</td>
+</tr>
+</tbody></table>
+<h2 id="八、复习与主动回忆"><a href="#八、复习与主动回忆" class="headerlink" title="八、复习与主动回忆"></a>八、复习与主动回忆</h2><h3 id="复习清单"><a href="#复习清单" class="headerlink" title="复习清单"></a>复习清单</h3><ol>
+<li>用 3 分钟说清欠定位、过定位的定义和过定位的允许条件。</li>
+<li>用 6 分钟复述移动自由度重复的”三步骤”，并解释一面两销为何过定位、菱形销如何消除。</li>
+<li>用 8 分钟依次讲齿轮大平面长销、双顶针三爪、双 V 块、刀柄四个案例的过定位与改进。</li>
+<li>用 4 分钟区分分项分析法与整体分析法的用途。</li>
+<li>用 5 分钟画出基准分类（设计&#x2F;工艺四种、原有&#x2F;附加、粗&#x2F;精）并各举例。</li>
+<li>用 5 分钟说清工艺规程作用、两类卡片、设计原则和设计步骤。</li>
+<li>用 6 分钟解释退刀槽、越程槽、钻孔、圆角、键槽、大平面减工的结构工艺性道理。</li>
+<li>用 6 分钟用套筒和床身导轨例子讲透粗基准三原则。</li>
+</ol>
+<h3 id="主动回忆题"><a href="#主动回忆题" class="headerlink" title="主动回忆题"></a>主动回忆题</h3><ol>
+<li>什么是欠定位？为什么绝对不允许？</li>
+<li>什么是过定位？过定位在什么条件下允许、什么条件下必须消除？</li>
+<li>组合定位中移动自由度被重复约束时，”三步骤”怎么分析？</li>
+<li>“两块长支撑板＋两个短圆柱销”为什么过定位？怎样改进？菱形销起什么作用？</li>
+<li>齿轮用”大平面＋长销”定位车大端面，为什么垂直度会超差？理论和实际各怎么改进？轻载、重载补偿有何不同？</li>
+<li>双顶针配合长夹持三爪卡盘为什么过定位？怎样改进？短轴和长轴处理有何区别？</li>
+<li>大平面＋固定 V＋浮动 V 为什么过定位？右侧浮动 V 应如何处理？</li>
+<li>高精度刀柄用心轴加端面接触明明过定位，为什么允许？</li>
+<li>基准分哪两大类？工艺基准包括哪四种？什么是附加基准、粗基准、精基准？各举一例。</li>
+<li>工艺规程有什么作用？过程卡片和工序卡片分别用于什么生产类型？设计步骤的核心是哪一步？</li>
+<li>螺纹退刀槽、砂轮越程槽分别解决什么问题？内螺纹退刀槽应在什么时候加工？</li>
+<li>粗基准选择有哪三条原则？分别用套筒和床身导轨的例子说明。粗基准则为什么一般不能重复使用？</li>
+</ol>
+<h3 id="答案要点"><a href="#答案要点" class="headerlink" title="答案要点"></a>答案要点</h3><ol>
+<li>欠定位是工件本应被限制的自由度没有被限制，定位不足、工件位置不确定，无法保证尺寸、形状和位置精度，所以绝对不允许。</li>
+<li>过定位是同一自由度被两个以上定位元件重复限制。当工件定位面和定位元件精度很高时，过定位可提高接触刚性、增强稳定性，允许采用；精度较差时会造成工件或夹具变形、接触不稳、定位失效，应消除。</li>
+<li>①按定位先后（或限制自由度多少）分出主要、次要参考面；②假设主要参考面限制的自由度不变；③设想工件沿次要参考面约束方向移动而主要参考点不动，看能否等效为绕主要参考点的转动；能等效则不重复，不能等效（如两孔连心线方向平移）则该移动仍被重复，判过定位。</li>
+<li>两块长支撑板等效大平面，限制 1 移动＋2 转动；两个短圆柱销各限制 2 个移动，使两销连心方向移动被重复；夹具销距固定而毛坯孔距有误差，装不进或强迫变形。把其中一个短圆柱销换成菱形销（削边销），使其只限制一个方向的移动，即可消除重复、实现完全定位。</li>
+<li>大平面限制 1 移动＋2 转动、长销限制 2 移动＋2 转动，绕 X、Y 的转动被同步重复，属过定位；毛坯端面不平，螺母夹紧强迫端面贴大平面，引起工件&#x2F;心轴变形，松开回弹后大端面与内孔轴线垂直度超差。理论上改小平面＋长销放开一个转动，但轴向垂直夹紧仍会强迫端面贴合；轻载可用橡胶垫弹性补偿，重载橡胶垫会被压死，应用自定心涨开机构或楔块移动错位补偿，避免强迫端面贴合。</li>
+<li>两顶尖约束 5 个自由度、长夹持三爪卡盘又约束 4 个，组合后超过 6 个、明显过定位。可去掉三爪卡盘改用拨盘＋鸡心夹头拨动旋转；短轴只车表层时可去掉一侧顶尖，用程序加大轴向安全距离补偿；长轴去顶尖会弯曲，需加中心架或跟刀架增强刚性。</li>
+<li>大平面约束 3 个、固定 V 形块约束 2 个移动、浮动 V 形块再约束 1 个移动，使某横向移动被重复，且接触点过圆心无法等效为转动。应让右侧浮动 V 形块只起夹紧作用、不参与定位；此时保留绕工件轴线的转动不影响钻中心孔等加工。</li>
+<li>高精度刀柄大锥度心轴约约束 5 个自由度，定位端面再接触约束 3 个，合计超过 6 个属过定位；但刀柄及配合件加工精度极高（粗糙度、形位、尺寸公差都很严），过定位能提高锥面与端面的接触刚性和连接可靠性，所以精密装配场合允许；普通精度产品不宜采用。</li>
+<li>基准分设计基准和工艺基准。设计基准是标注尺寸起始位置的点线面；工艺基准包括工序基准、定位基准（加工时确定工件在机床&#x2F;夹具中位置的基准，本章重点）、测量基准、装配基准。附加基准是零件功能不需要、专为工艺定位加工出的要素（如轴端中心孔、箱体工艺凸台）；用毛坯未加工面作基准称粗基准，用已加工面作基准称精基准。</li>
+<li>工艺规程是生产的指导性文件、生产准备的依据、新建车间的基本技术条件。单件小批、普通加工用机械加工工艺过程卡片（内容集中）；大批量用机械加工工序卡片（一序一卡、含工步&#x2F;装备&#x2F;参数&#x2F;工时）。设计步骤核心是第四步”确定工艺路线（定位基准与加工方法顺序）”。</li>
+<li>螺纹退刀槽解决车螺纹到台阶退刀不及时打刀、以及刀尖圆弧造成尾部螺纹不完整&#x2F;死角问题；砂轮越程槽解决高粗糙度轴肩磨削时砂轮直角在转角处磨不到、残留死角影响装配贴合的问题。内螺纹退刀槽应在加工螺纹底孔（孔）时就预先加工出来，而不是车螺纹时才加工。</li>
+<li>三原则：①保加工面与不加工面相互位置关系时选不加工面（套筒选不加工外圆夹外圆镗内孔，保证内外圆同轴、壁厚均匀，按内孔找正则壁厚不均无法纠正）；②保重要表面余量均匀时选该重要表面本身（床身先以导轨面为粗基准加工床脚，再以加工后的床脚为精基准加工导轨，导轨余量才均匀）；③粗基准要平整、无飞边&#x2F;浇冒口&#x2F;分型面，且一般不得重复使用——粗基准粗糙，重复装夹定位位置不一致、轴线跑偏，故只能作一次主要定位面（作次要基准可酌情）。</li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%9C%BA%E6%A2%B0%E5%88%B6%E9%80%A0%E5%B7%A5%E8%89%BA-%E5%B7%A5%E8%89%BA%E8%A7%84%E7%A8%8B-%E5%AE%9A%E4%BD%8D%E5%9F%BA%E5%87%86/" class="print-no-link">#机械制造工艺 工艺规程 定位基准</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>工艺规程设计与定位基准选择</div>
+      <div>https://tdexxx.github.io/2026/10/07/06_机械制造工艺与夹具/机械制造工艺_工艺规程与定位基准_发布稿/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>tdexxx</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年10月7日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/10/07/01_%E6%95%B0%E6%8E%A7%E5%8A%A0%E5%B7%A5%E5%B7%A5%E8%89%BA%E4%B8%8E%E7%BC%96%E7%A8%8B/%E6%95%B0%E6%8E%A7%E5%8A%A0%E5%B7%A5%E5%B7%A5%E8%89%BA%E4%B8%8E%E7%BC%96%E7%A8%8B_%E7%BC%96%E7%A8%8B%E6%8C%87%E4%BB%A4%E4%B8%8E%E5%B7%A5%E8%89%BA%E5%A4%84%E7%90%86_%E5%8F%91%E5%B8%83%E7%A8%BF/" title="数控编程指令与工艺处理：刀补、长度补偿与走刀路线">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">数控编程指令与工艺处理：刀补、长度补偿与走刀路线</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/10/07/01_%E6%95%B0%E6%8E%A7%E5%8A%A0%E5%B7%A5%E5%B7%A5%E8%89%BA%E4%B8%8E%E7%BC%96%E7%A8%8B/%E6%95%B0%E6%8E%A7%E5%8A%A0%E5%B7%A5%E5%B7%A5%E8%89%BA%E4%B8%8E%E7%BC%96%E7%A8%8B_%E8%BD%A6%E5%BA%8A%E7%BC%96%E7%A8%8B%E4%B8%8E%E5%9C%86%E5%BC%A7%E6%8F%92%E8%A1%A5_%E5%8F%91%E5%B8%83%E7%A8%BF/" title="数控车床编程与圆弧插补：G02/G03 与 I/K、R 编程">
+                        <span class="hidden-mobile">数控车床编程与圆弧插补：G02/G03 与 I/K、R 编程</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

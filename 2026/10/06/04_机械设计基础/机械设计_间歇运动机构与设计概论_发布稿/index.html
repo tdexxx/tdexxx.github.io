@@ -1,0 +1,996 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="tdexxx">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="间歇运动机构与机械设计概论笔记：棘轮机构、槽轮机构运动系数，零件失效形式与强度刚度设计准则、结构工艺性清根及标准件（含凸轮图解与连杆习题） 本文整理《凸轮与棘轮机构及机械设计基础》一课。内容分三部分：第一部分简要回顾凸轮机构并讲运动参数的图解法（基圆&#x2F;偏距、推程回程休止与各运动角、实际轮廓内偏滚子半径、转过 90° 位移 $s_2$ 和最大行程 h 的作图）；第二部分是本章新主体——两种">
+<meta property="og:type" content="article">
+<meta property="og:title" content="间歇运动机构与机械设计概论：棘轮、槽轮与设计准则">
+<meta property="og:url" content="https://tdexxx.github.io/2026/10/06/04_%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1_%E9%97%B4%E6%AD%87%E8%BF%90%E5%8A%A8%E6%9C%BA%E6%9E%84%E4%B8%8E%E8%AE%BE%E8%AE%A1%E6%A6%82%E8%AE%BA_%E5%8F%91%E5%B8%83%E7%A8%BF/index.html">
+<meta property="og:site_name" content="tdexxx的博客">
+<meta property="og:description" content="间歇运动机构与机械设计概论笔记：棘轮机构、槽轮机构运动系数，零件失效形式与强度刚度设计准则、结构工艺性清根及标准件（含凸轮图解与连杆习题） 本文整理《凸轮与棘轮机构及机械设计基础》一课。内容分三部分：第一部分简要回顾凸轮机构并讲运动参数的图解法（基圆&#x2F;偏距、推程回程休止与各运动角、实际轮廓内偏滚子半径、转过 90° 位移 $s_2$ 和最大行程 h 的作图）；第二部分是本章新主体——两种">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-10-06T15:59:06.000Z">
+<meta property="article:modified_time" content="2026-10-30T17:37:19.959Z">
+<meta property="article:author" content="tdexxx">
+<meta property="article:tag" content="机械设计 间歇运动机构 设计概论">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>间歇运动机构与机械设计概论：棘轮、槽轮与设计准则 - tdexxx的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"tdexxx.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2022-12-10T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="间歇运动机构与机械设计概论：棘轮、槽轮与设计准则"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-10-06 23:59" pubdate>
+          2026年10月6日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          8.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          70 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">间歇运动机构与机械设计概论：棘轮、槽轮与设计准则</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="间歇运动机构与机械设计概论笔记：棘轮机构、槽轮机构运动系数，零件失效形式与强度刚度设计准则、结构工艺性清根及标准件（含凸轮图解与连杆习题）"><a href="#间歇运动机构与机械设计概论笔记：棘轮机构、槽轮机构运动系数，零件失效形式与强度刚度设计准则、结构工艺性清根及标准件（含凸轮图解与连杆习题）" class="headerlink" title="间歇运动机构与机械设计概论笔记：棘轮机构、槽轮机构运动系数，零件失效形式与强度刚度设计准则、结构工艺性清根及标准件（含凸轮图解与连杆习题）"></a>间歇运动机构与机械设计概论笔记：棘轮机构、槽轮机构运动系数，零件失效形式与强度刚度设计准则、结构工艺性清根及标准件（含凸轮图解与连杆习题）</h1><blockquote>
+<p>本文整理《凸轮与棘轮机构及机械设计基础》一课。内容分三部分：第一部分简要回顾凸轮机构并讲<strong>运动参数的图解法</strong>（基圆&#x2F;偏距、推程回程休止与各运动角、实际轮廓内偏滚子半径、转过 90° 位移 $s_2$ 和最大行程 h 的作图）；第二部分是本章新主体——两种典型<strong>间歇运动机构</strong>：<strong>棘轮机构</strong>（摆杆＋棘爪＋棘轮、单向间歇转动、超越运动、外&#x2F;内啮合、齿式&#x2F;摩擦式、单&#x2F;双向、止动棘爪、自行车飞轮）和<strong>槽轮机构（马尔他机构）</strong>（拨销轮＋径向槽槽轮、锁止弧、内啮合只能一个销、运动系数 τ）；第三部分进入机械设计概论——机械零件的设计要求、<strong>失效形式</strong>（断裂、塑性变形、磨损、腐蚀、打滑等）、<strong>设计准则</strong>（强度 $\sigma\le[\sigma]$ 与安全系数、刚度、疲劳寿命、振动稳定性&#x2F;共振、可靠性）、常用材料与毛坯、<strong>结构工艺性</strong>（倒角便于装配、圆柱铣刀内圆角的清根孔&#x2F;倒角让位）以及<strong>标准件与非标件、标准化</strong>。文末结合课堂讲解的平面连杆习题 2-4、2-5 复习曲柄存在条件、传动角&#x2F;压力角、极限位置作图与极位夹角，并附术语公式表、待核对清单和主动回忆题（含答案要点）。</p>
+</blockquote>
+<h2 id="一、核心结论"><a href="#一、核心结论" class="headerlink" title="一、核心结论"></a>一、核心结论</h2><ul>
+<li>凸轮轮廓以凸轮回转中心 O 为基准、用 O 到理论轮廓各点的向径描述；基圆以 O 为心、O 到理论轮廓最近点距离 $r_0$ 为半径；偏置从动件导路到 O 的垂直距离为偏距 e。</li>
+<li>从动件运动分<strong>推程</strong>（最低→最高）、<strong>回程</strong>（最高→最低）、<strong>休止</strong>（远休止&#x2F;近休止，相对 O 的远近区分）；对应推程运动角、回程运动角和休止角（休止时不动，称休止角而非运动角），四角之和 360°。</li>
+<li>滚子从动件凸轮的<strong>实际轮廓</strong>是在<strong>理论轮廓基础上向内偏移一个滚子半径</strong>得到的内包络（等距）曲线。</li>
+<li>图解：凸轮转过某角（如 90°）时从动件位移 $s_2$，用反转法把导路反转到该角位置、沿导路量取相对基圆（最近点）的距离；<strong>最大行程 h＝最远点向径−最近点向径（最高位置−最低位置）</strong>。</li>
+<li><strong>棘轮机构</strong>由主动摆杆、棘爪、棘轮组成，把摆杆的往复摆动转换成棘轮的<strong>单向间歇转动</strong>（推程棘爪拨过一齿、回程棘爪滑过、棘轮停歇）。</li>
+<li>棘轮机构特点：①间歇运动；②<strong>超越运动</strong>（从动件可超越主动件，如自行车后轮飞轮，停踩后后轮靠惯性继续转、不带动链条）；③齿式为有级、摩擦式为无级。</li>
+<li>棘轮机构类型：外啮合&#x2F;内啮合；齿式（有齿）&#x2F;摩擦式（无齿、靠摩擦、可无级但易打滑）；单向式&#x2F;双向式（还有单动、双动）；另设<strong>止动棘爪</strong>卡住棘轮防止停止时倒转。</li>
+<li><strong>槽轮机构（马尔他机构）</strong>由连续转动的<strong>主动拨销轮（带圆销）</strong>和带径向槽的<strong>从动槽轮</strong>组成；圆销进入径向槽时槽轮转位，圆销离开后由锁止弧锁住、槽轮停歇，实现周期性间歇转动；槽数（4、6 槽等）决定每次转位角（4 槽每次 90°）。</li>
+<li><strong>内啮合槽轮机构拨销轮上只能有一个销</strong>，两个销会造成过约束&#x2F;干涉。</li>
+<li>槽轮<strong>运动系数 τ</strong>＝槽轮每次运动时间与主动拨销轮回转一周总时间之比（τ&lt;1，总时间＝运动时间＋停歇时间）。</li>
+<li><strong>失效</strong>是零件失去正常工作能力；常见形式：断裂、塑性变形、磨损、腐蚀、打滑（带传动），以及过大弹性变形、疲劳、共振等。</li>
+<li><strong>强度准则</strong>：工作应力不超过许用应力 $\sigma\le[\sigma]$，$[\sigma]&#x3D;\sigma_{lim}&#x2F;S$（$\sigma_{lim}$ 极限应力、S 安全系数，S&gt;1 且越大越安全）；<strong>刚度准则</strong>：弹性变形量不超过许用变形量 $y\le[y]$（强度针对塑性变形&#x2F;断裂，刚度针对可恢复的弹性变形）。</li>
+<li>其他准则：疲劳寿命（按累计工作小时数折算）、振动稳定性（零件固有频率避开振源频率以防共振）、可靠性（规定条件&#x2F;时间内完成功能的概率）。</li>
+<li><strong>结构工艺性</strong>：结构要便于加工、装配、维修；轴端、孔口做倒角便于装配；圆柱（盘状）铣刀加工内角必留半径等于刀具半径的圆角，需在<strong>母件内角加清根工艺孔（越程槽）</strong>或在<strong>公件端部做大于圆角的倒角（圆角）让位</strong>，保证直角配合。</li>
+<li><strong>标准件</strong>按国家&#x2F;行业统一标准制造、具有<strong>互换性</strong>，便于维修更换、大批量降本，应尽量采用；<strong>非标件</strong>为特殊功能专门设计、无广泛互换性，但能形成独有技术、提升竞争力；把非标件尽量系列化通用化即”标准化”，可在大批量生产中降本。企业内部小范围规范不算国家标准件。</li>
+</ul>
+<h2 id="二、知识结构"><a href="#二、知识结构" class="headerlink" title="二、知识结构"></a>二、知识结构</h2><ul>
+<li>凸轮机构（复习＋图解）<ul>
+<li>基圆&#x2F;偏距、推程&#x2F;回程&#x2F;休止、运动角、实际轮廓</li>
+<li>反转法图解位移 s₂、最大行程 h</li>
+</ul>
+</li>
+<li>间歇运动机构（新）<ul>
+<li>棘轮机构：组成、原理、间歇&#x2F;超越&#x2F;有级、类型、止动棘爪、飞轮</li>
+<li>槽轮机构：拨销轮＋槽轮、锁止弧、内啮合单销、运动系数 τ</li>
+</ul>
+</li>
+<li>机械设计概论（新）<ul>
+<li>设计要求；失效形式</li>
+<li>设计准则：强度、刚度、寿命、振动稳定性、可靠性</li>
+<li>常用材料与毛坯</li>
+<li>结构工艺性：倒角、铣刀圆角与清根&#x2F;让位</li>
+<li>标准件&#x2F;非标件&#x2F;标准化&#x2F;互换性</li>
+</ul>
+</li>
+<li>平面连杆习题 2-4、2-5（复习）<ul>
+<li>曲柄存在条件数值判定；传动角&#x2F;压力角；极限位置作图；极位夹角与 K</li>
+</ul>
+</li>
+</ul>
+<h2 id="三、详细笔记"><a href="#三、详细笔记" class="headerlink" title="三、详细笔记"></a>三、详细笔记</h2><h3 id="3-1-凸轮机构回顾与运动参数图解"><a href="#3-1-凸轮机构回顾与运动参数图解" class="headerlink" title="3.1 凸轮机构回顾与运动参数图解"></a>3.1 凸轮机构回顾与运动参数图解</h3><ul>
+<li>凸轮机构属高副，从动件运动规律完全由凸轮轮廓决定。以凸轮回转中心 O 为圆心，用 O 到<strong>理论轮廓</strong>上各点的向径即可描述轮廓；向径最小处确定<strong>基圆</strong>（半径 $r_0$）。偏置直动从动件导路中心线到 O 的垂直距离称<strong>偏距 e</strong>，以 O 为心、e 为半径作偏距圆。</li>
+<li>从动件运动过程：<ul>
+<li><strong>推程（升程）</strong>：从最低位置被推到最高位置，对应<strong>推程运动角</strong>；</li>
+<li><strong>远休止</strong>：在最高位置停留不动，对应<strong>远休止角</strong>；</li>
+<li><strong>回程</strong>：从最高位置返回最低位置，对应<strong>回程运动角</strong>；</li>
+<li><strong>近休止</strong>：在最低位置停留，对应<strong>近休止角</strong>；休止段从动件不动，故其角称”休止角”而不叫”运动角”；四角之和为 360°。</li>
+</ul>
+</li>
+<li>行程 h 是从动件最高与最低位置之间的距离（最大移动量）；位移 s 是某瞬时相对最低位置的移动量。</li>
+<li>滚子从动件：先按滚子中心（视为尖顶）画出<strong>理论轮廓</strong>，再以理论轮廓各点为心、滚子半径为半径作滚子圆，取<strong>向内偏一个滚子半径的内包络线</strong>为<strong>实际（工作）轮廓</strong>。</li>
+<li><strong>图解位移 $s_2$（凸轮转过 90°）</strong>：用反转法，以 O 为心把从动件导路从初始位置沿 −ω 方向转过 90° 得到该瞬时导路位置，导路与基圆（最近点）交点到该瞬时从动件接触点（滚子中心）沿导路的距离，就是转过 90° 的位移 $s_2$。</li>
+<li><strong>图解最大行程 h</strong>：在轮廓上找出从动件接触的最近点（基圆点，向径最小）和最远点（向径最大），两点沿从动件运动方向的距离（最大向径减最小向径，$h&#x3D;r_{max}-r_0$）即最大行程。</li>
+</ul>
+<h3 id="3-2-棘轮机构的组成与工作原理"><a href="#3-2-棘轮机构的组成与工作原理" class="headerlink" title="3.2 棘轮机构的组成与工作原理"></a>3.2 棘轮机构的组成与工作原理</h3><ul>
+<li><strong>组成</strong>：棘轮（外缘或内缘带齿的轮）、棘爪（端部像爪子、铰接在主动摆杆上，常用弹簧或自重使其始终贴靠棘轮齿面）、主动摆杆（作往复摆动）和机架；常另有止动棘爪。</li>
+<li><strong>工作过程</strong>：主动摆杆向一个方向摆动时，棘爪插入棘轮齿槽推动棘轮随摆杆转过一定角度（通常一个或几个齿对应的角度）；摆杆反向往回摆动时，棘爪沿棘轮齿背滑过（棘轮不被带动、保持不动）；摆杆再次正向摆动又拨过一齿。于是摆杆的连续往复摆动被转换成棘轮的<strong>单向、周期性的间歇转动</strong>。</li>
+</ul>
+<h3 id="3-3-棘轮机构的特点与类型"><a href="#3-3-棘轮机构的特点与类型" class="headerlink" title="3.3 棘轮机构的特点与类型"></a>3.3 棘轮机构的特点与类型</h3><ul>
+<li><strong>主要特点</strong>：<ol>
+<li><strong>间歇运动</strong>：棘轮每被拨过一齿后停歇，等待下一次拨动，转角按齿距成”级”变化；</li>
+<li><strong>超越运动（超越离合器作用）</strong>：从动件可以超越主动件转动。典型是<strong>自行车后轮飞轮（小链轮与后轴之间的棘轮）</strong>：向前蹬踏时棘爪带动后轮转动；停止蹬踏时链轮（主动部分）停转，后轮可借惯性继续向前转，棘爪在齿上滑过而不带动脚踏和链条；</li>
+<li>齿式棘轮的转角只能按齿数有级改变（可通过棘轮罩改变参与工作的齿数或改变摆角来调节），摩擦式则可无级改变但传力较小、易打滑。</li>
+</ol>
+</li>
+<li><strong>常见类型</strong>：<ul>
+<li>按棘爪与棘轮啮合位置：<strong>外啮合</strong>（棘爪在棘轮外部，最常见）、<strong>内啮合</strong>（棘爪在棘轮内部，结构紧凑）；</li>
+<li>按传力方式：<strong>齿式棘轮机构</strong>（有齿、啮合可靠、有级）、<strong>摩擦式棘轮机构</strong>（无齿，靠接触面摩擦传动、可无级、运转平稳但传力小、会打滑）；</li>
+<li>按运动方向&#x2F;棘爪数：<strong>单向式、双向式</strong>（棘爪可翻转或采用对称齿形，实现两个方向的间歇进给），以及单动、双动（两个棘爪使摆杆往复都能拨齿）等；</li>
+<li>驱动方式除摆杆外，也可用凸轮推动滑杆再带动棘爪。</li>
+</ul>
+</li>
+<li><strong>止动棘爪（制动爪&#x2F;防逆爪）</strong>：用一个固定在机架上的棘爪顶住棘轮，防止机构停止或受反向载荷时棘轮倒转，实现止动（如起重、卷扬中防止重物下坠）。</li>
+</ul>
+<h3 id="3-4-槽轮机构（马尔他机构）的组成与工作"><a href="#3-4-槽轮机构（马尔他机构）的组成与工作" class="headerlink" title="3.4 槽轮机构（马尔他机构）的组成与工作"></a>3.4 槽轮机构（马尔他机构）的组成与工作</h3><ul>
+<li><strong>组成</strong>：带圆销（拨销）的<strong>主动拨销轮</strong>（连续等速转动）和开有若干条<strong>径向槽</strong>的<strong>从动槽轮</strong>。</li>
+<li><strong>工作过程</strong>：拨销轮连续转动，只有当圆销进入槽轮某条径向槽时，才拨动槽轮转位；圆销转过一定角度后离开径向槽，槽轮上的内凹锁止弧被拨销轮的外凸锁止弧（锁住弧）卡住，槽轮被定位、静止不动；待圆销再次进入下一条径向槽时又转位一次，从而实现<strong>单向、周期性的间歇转动</strong>。</li>
+<li><strong>类型</strong>：外啮合槽轮机构（拨销轮与槽轮转向相反，最常见）、内啮合槽轮机构（转向相同、结构紧凑、运动平稳）；还有球面（空间）槽轮机构。</li>
+<li><strong>重要结论</strong>：<strong>内啮合槽轮机构的拨销轮上只能布置一个圆销</strong>，若有两个销会产生过多约束（运动干涉）。</li>
+<li>槽轮的槽数 z（常见 4、6、8 槽）决定每次转位角：如 4 槽槽轮每次转过 $360°&#x2F;4&#x3D;90°$；槽数和圆销数共同决定运动系数与每转停歇&#x2F;运动次数。</li>
+<li>应用：电影放映机胶片间歇送进、自动机床刀架转位、回转工作台、灌装&#x2F;包装机械的转盘分度等。</li>
+</ul>
+<h3 id="3-5-槽轮机构的运动系数-τ"><a href="#3-5-槽轮机构的运动系数-τ" class="headerlink" title="3.5 槽轮机构的运动系数 τ"></a>3.5 槽轮机构的运动系数 τ</h3><ul>
+<li><strong>运动系数（运动特性系数）τ</strong>：在一个运动循环内，槽轮运动时间 $t_d$ 与主动拨销轮回转一周总时间 t 之比：</li>
+</ul>
+<p>$$\tau&#x3D;\frac{t_d}{t}&#x3D;\frac{\text{槽轮运动时间}}{\text{主动拨销轮回转一周的总时间}}$$</p>
+<ul>
+<li>拨销轮转一周的总时间等于槽轮运动时间与停歇时间之和，故 $\tau&lt;1$；τ 越大，一个循环中运动所占比例越大、停歇越短。单销外槽轮的 τ 与槽数 z 的具体关系式以教材为准（常见结论 $\tau&#x3D;(z-2)&#x2F;(2z)$，且 $\tau&lt;1&#x2F;2$，待核对）。</li>
+</ul>
+<h3 id="3-6-机械零件设计的基本要求与失效形式"><a href="#3-6-机械零件设计的基本要求与失效形式" class="headerlink" title="3.6 机械零件设计的基本要求与失效形式"></a>3.6 机械零件设计的基本要求与失效形式</h3><ul>
+<li><strong>设计基本要求</strong>：在实现预定功能的前提下，使零件性能尽量好、工作效率尽量高、加工成本尽量低，同时便于安装和售后维修。</li>
+<li><strong>失效</strong>：机械零件由于某种原因不能正常工作（丧失规定功能）称为失效，失效不一定是破坏报废。常见失效形式：<ul>
+<li><strong>断裂</strong>：如过载断裂、冲击断裂、疲劳断裂（玻璃式脆断、轴类疲劳断轴）；</li>
+<li><strong>塑性变形</strong>：应力超过材料屈服极限后产生不可恢复的永久变形（如钣金冲压成碗盆）；</li>
+<li><strong>磨损</strong>：有相对运动的配合面因摩擦使材料逐渐损耗（链条与链轮、铰链、导轨）；</li>
+<li><strong>腐蚀</strong>：金属在环境介质中发生化学&#x2F;电化学锈蚀；</li>
+<li><strong>打滑</strong>：带传动中载荷过大、速度过高或突然启停时，主动带轮转动而从动带轮未及时跟上、皮带在轮上跳动滑动，属带传动的一种失效；</li>
+<li>此外还有过大的弹性变形、表面疲劳点蚀、过热、共振等。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-7-机械零件的设计准则"><a href="#3-7-机械零件的设计准则" class="headerlink" title="3.7 机械零件的设计准则"></a>3.7 机械零件的设计准则</h3><ul>
+<li><strong>强度准则</strong>：保证零件在载荷下不发生断裂或塑性变形。要求零件的最大工作应力不超过许用应力：</li>
+</ul>
+<p>$$\sigma\le[\sigma],\qquad [\sigma]&#x3D;\frac{\sigma_{lim}}{S}$$</p>
+<p>其中 $\sigma_{lim}$ 为材料的极限应力，S 为安全系数（S&gt;1）。安全系数取得越大，零件越安全、但越笨重费料；设计时应使零件实际安全系数不小于规定的最小许用安全系数。剪切、挤压等也有相应强度条件（$\tau\le[\tau]$）。</p>
+<ul>
+<li><strong>刚度准则</strong>：保证零件弹性变形不超过允许范围，要求最大变形量不超过许用变形量：</li>
+</ul>
+<p>$$y\le[y]$$</p>
+<p>强度反映材料抵抗塑性变形&#x2F;断裂的能力；刚度反映抵抗弹性变形的能力（卸载后能恢复原状，如弹簧发卡张开后回弹）。</p>
+<ul>
+<li><strong>寿命准则</strong>：对磨损、疲劳等随时间发展的失效，要求零件在规定寿命内可靠工作；寿命难以精确预估，常按疲劳寿命并结合预定工作制度（如每天工作 10 h、每年工作 360 天）折算累计工作小时数进行校核。</li>
+<li><strong>振动稳定性准则</strong>：当零件（系统）的固有频率与外界振源频率相近或相等时会发生<strong>共振</strong>，可能导致零件迅速破坏；设计应使零件固有频率避开振源频率。</li>
+<li><strong>可靠性准则</strong>：保证零件在规定条件下、规定时间内完成规定功能具有足够的概率（可靠度）。</li>
+</ul>
+<h3 id="3-8-常用工程材料与毛坯（了解）"><a href="#3-8-常用工程材料与毛坯（了解）" class="headerlink" title="3.8 常用工程材料与毛坯（了解）"></a>3.8 常用工程材料与毛坯（了解）</h3><ul>
+<li>常用材料有钢、铸铁、铜合金、铝合金等（教材约 49~54 页）：<ul>
+<li><strong>灰铸铁</strong>铸造性好、减振耐磨、成本低，常用于机床床身、箱体、机壳、轮壳、机座；</li>
+<li><strong>铝合金</strong>密度小、利于轻量化，但弹性模量&#x2F;强度相对较低，常需增大截面尺寸；</li>
+<li>铜合金用于耐磨、导电、导热零件；钢的综合力学性能好、应用最广。</li>
+</ul>
+</li>
+<li>热处理（退火、正火、淬火、回火等）用于改变材料组织性能。</li>
+<li>毛坯选择与加工：轴类等回转体零件常用棒料或锻件，在车床上用三爪卡盘夹持、车刀加工；箱体类常用铸件；平面、型腔常用铣床（数控铣按程序走刀）加工。</li>
+</ul>
+<h3 id="3-9-零件的结构工艺性（重点：装配倒角与铣刀圆角清根）"><a href="#3-9-零件的结构工艺性（重点：装配倒角与铣刀圆角清根）" class="headerlink" title="3.9 零件的结构工艺性（重点：装配倒角与铣刀圆角清根）"></a>3.9 零件的结构工艺性（重点：装配倒角与铣刀圆角清根）</h3><ul>
+<li>结构工艺性是指所设计的零件结构是否便于毛坯制造、切削加工、装配和维修。</li>
+<li><strong>装配倒角</strong>：轴装入孔（套）时，为使轴端顺利导入、避免锐边划伤配合面，常在轴端和孔口加工倒角（如 C2 倒角），便于对中装配、去除毛刺。</li>
+<li><strong>圆柱铣刀加工内直角必留圆角（清根问题）</strong>：<ul>
+<li>数控铣刀是圆柱形旋转刀具，用它加工凹槽内角（根部）时，受刀具圆柱面限制，内角不可能是绝对清角，必然留下一个半径约等于刀具半径的圆角（如用直径 2 mm 铣刀，根部留下约 R1&#x2F;R0.5 的圆角，具体以刀具半径为准）；外轮廓则可加工出尖角。</li>
+<li>危害：当一个带直角的凸块（公件）要嵌入带内直角的凹槽（母件）时，母件根部圆角会顶住公件尖角，使两件不能贴合到位、出现间隙。</li>
+<li>解决办法（两类）：<ol>
+<li><strong>在母件（凹槽件）内角处加工清根工艺孔（越程槽&#x2F;退刀槽）</strong>：让刀具在根部多走一段、把圆角处材料铣掉，形成让刀空间，保证凹槽内壁为直角；</li>
+<li><strong>在公件（凸块）端部做出倒角或圆角让位</strong>：使公件端部倒角（圆角）尺寸大于母件根部圆角，装配时让开干涉；</li>
+</ol>
+</li>
+<li>轴肩磨削的越程槽、螺纹车削的退刀槽同理，都是为刀具提供越程空间的结构工艺措施。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-10-标准件、非标件与标准化"><a href="#3-10-标准件、非标件与标准化" class="headerlink" title="3.10 标准件、非标件与标准化"></a>3.10 标准件、非标件与标准化</h3><ul>
+<li><strong>标准</strong>：由国家或行业统一制定、在大范围内共同遵守的技术规范（企业、子公司内部自定的小范围规范不属于国家标准）。</li>
+<li><strong>标准件</strong>：完全按标准生产的零件，如螺栓、螺钉、螺母、垫圈、键、销、轴承等；具有完全的<strong>互换性</strong>——同规格零件可直接替换，便于设备维修和更换，并适合专业化大批量生产、显著降低成本。设计中应尽量采用标准件。</li>
+<li><strong>非标件</strong>：为满足某台（类）设备的特殊功能而专门设计、没有对应通用标准的零件，不具备广泛互换性；但独特的非标结构能形成专有技术、提高产品的不可替代性和市场竞争力。</li>
+<li><strong>标准化（通用化、系列化）</strong>：在非标设计中尽量使零部件系列化、通用化、遵循标准，以便在大批量生产时降低成本、缩短周期。</li>
+</ul>
+<h3 id="3-11-平面连杆习题讲解（2-4、2-5，复习）"><a href="#3-11-平面连杆习题讲解（2-4、2-5，复习）" class="headerlink" title="3.11 平面连杆习题讲解（2-4、2-5，复习）"></a>3.11 平面连杆习题讲解（2-4、2-5，复习）</h3><ul>
+<li><strong>习题 2-4（曲柄存在条件，规范数值计算）</strong>：<ul>
+<li>判定两步：①格拉霍夫杆长条件 $l_{min}+l_{max}\le$ 其余两杆之和；②最短杆为机架或连架杆。</li>
+<li>课堂数据（以题干为准）：最短杆 a&#x3D;120 mm、最长杆 b&#x3D;300 mm，$a+b&#x3D;420\text{ mm}\le c+d$，满足杆长条件；a 为最短杆，取相应杆为机架时按”最短杆为机架→双曲柄、为连架杆→曲柄摇杆、为连杆→双摇杆”判定。</li>
+<li>当 a 改为 160 mm、其余不变时，$a+b&#x3D;460\text{ mm}&gt;c+d&#x3D;450\text{ mm}$，不满足杆长条件，无论以哪杆为机架都是双摇杆机构。</li>
+<li>答题规范：要写”解&#x2F;答”，代入数值时带单位（$120\text{ mm}+300\text{ mm}&#x3D;420\text{ mm}$），最后给结论。</li>
+</ul>
+</li>
+<li><strong>习题 2-5（传动角、压力角、极限位置、极位夹角）</strong>：<ul>
+<li><strong>传动角 γ</strong> 是连杆 BC 与从动件 CD 所夹的锐角；<strong>压力角 α</strong> 是从动件上受力点所受作用力方向（沿二力杆连杆 BC）与该点速度方向的夹角，$\alpha+\gamma&#x3D;90°$。</li>
+<li>分析传动角&#x2F;压力角要落在<strong>从动件 CD 上的 C 点</strong>（不是 B 点）：C 点速度方向垂直于 CD（沿 C 绕 D 所画圆弧的切线方向），力沿 BC 方向，据此画 α、γ。</li>
+<li><strong>极限位置作图</strong>：摇杆 CD 的极限位置出现在连杆 BC 与从动件 CD 共线（拉直共线 $l_1+l_2$、重叠共线 $l_1-l_2$）时：以 D 为圆心、分别以 $(l_{BC}+l_{CD})$ 和 $|l_{BC}-l_{CD}|$ 为半径画弧，再以固定铰链 A 为圆心、曲柄 AB 长为半径画弧，两组弧相交得曲柄销 B 的两个极限位置 B′，连接并延长 B′D 与 C 点轨迹弧相交得 C′，即摇杆两极限位置（一般上下对称，最多四个交点，特殊位置可能重合为两个）。</li>
+<li><strong>急回特性与极位夹角</strong>：急回特性看的是<strong>从动件（摇杆）</strong>往返平均速度不同，用行程速比系数 K 描述；K 由极位夹角 θ 决定，θ 是摇杆处于两极限位置时对应曲柄两位置所夹的锐角，$K&#x3D;(180°+\theta)&#x2F;(180°-\theta)$。曲柄能整周转动、没有极限位置，故急回特性由摇杆（从动件）的极限位置来定义。</li>
+</ul>
+</li>
+</ul>
+<h2 id="四、例题与案例分析"><a href="#四、例题与案例分析" class="headerlink" title="四、例题与案例分析"></a>四、例题与案例分析</h2><h3 id="4-1-棘轮与槽轮的判别"><a href="#4-1-棘轮与槽轮的判别" class="headerlink" title="4.1 棘轮与槽轮的判别"></a>4.1 棘轮与槽轮的判别</h3><ul>
+<li>自行车后轮飞轮：蹬踏时棘爪带动后轮，停蹬后后轮超越链轮继续转——体现棘轮机构的<strong>超越运动</strong>；卷扬机&#x2F;起重装置上的止动棘爪用于防止重物倒转。</li>
+<li>电影放映机胶片一格一格间歇送进、自动机床刀架每隔一定角度转位——典型<strong>槽轮机构</strong>；4 槽槽轮每次转位 90°。</li>
+</ul>
+<h3 id="4-2-槽轮运动系数"><a href="#4-2-槽轮运动系数" class="headerlink" title="4.2 槽轮运动系数"></a>4.2 槽轮运动系数</h3><ul>
+<li>已知某外槽轮机构拨销轮转一周用时 t，其中槽轮运动时间为 $t_d$、停歇时间为 $t_j$，则 $\tau&#x3D;t_d&#x2F;t$，且 $t&#x3D;t_d+t_j$；τ 恒小于 1。</li>
+</ul>
+<h3 id="4-3-强度与刚度判断"><a href="#4-3-强度与刚度判断" class="headerlink" title="4.3 强度与刚度判断"></a>4.3 强度与刚度判断</h3><ul>
+<li>起重机吊钩、螺栓受载后不允许断裂或永久伸长，应校核强度（$\sigma\le[\sigma]$）；机床主轴、镗杆受载后若弹性挠曲过大就不能保证加工精度，应校核刚度（$y\le[y]$）；冲压成形利用的是受控的塑性变形，不属于失效。</li>
+</ul>
+<h3 id="4-4-内直角配合的工艺处理"><a href="#4-4-内直角配合的工艺处理" class="headerlink" title="4.4 内直角配合的工艺处理"></a>4.4 内直角配合的工艺处理</h3><ul>
+<li>凸块要嵌入凹槽、凹槽根部因 Ø2 圆柱铣刀留有 R1 圆角导致装不到位：方案一在凹槽两内角加清根工艺孔（越程槽），方案二把凸块端部倒角做成大于 R1 的倒角让位。</li>
+</ul>
+<h3 id="4-5-凸轮位移与行程图解"><a href="#4-5-凸轮位移与行程图解" class="headerlink" title="4.5 凸轮位移与行程图解"></a>4.5 凸轮位移与行程图解</h3><ul>
+<li>按 3.1：反转导路 90°量得 $s_2$；在轮廓上量取最近点、最远点向径，$h&#x3D;r_{max}-r_0$。</li>
+</ul>
+<h3 id="4-6-曲柄存在条件数值题"><a href="#4-6-曲柄存在条件数值题" class="headerlink" title="4.6 曲柄存在条件数值题"></a>4.6 曲柄存在条件数值题</h3><ul>
+<li>见 3.11：a&#x3D;120 满足条件按最短杆角色判类型；a 改 160 后 $460&gt;450$ 不满足条件，恒为双摇杆。</li>
+</ul>
+<h2 id="五、术语、公式或关键表达"><a href="#五、术语、公式或关键表达" class="headerlink" title="五、术语、公式或关键表达"></a>五、术语、公式或关键表达</h2><table>
+<thead>
+<tr>
+<th>术语&#x2F;符号</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>基圆 $r_0$&#x2F;偏距 e</td>
+<td>O 到理论轮廓最近点距离 &#x2F; O 到导路垂直距离</td>
+</tr>
+<tr>
+<td>推程&#x2F;回程&#x2F;休止</td>
+<td>最低→最高 &#x2F; 最高→最低 &#x2F; 远、近位置停留</td>
+</tr>
+<tr>
+<td>推程&#x2F;回程运动角、休止角</td>
+<td>各过程对应凸轮回转角，四角和 360°</td>
+</tr>
+<tr>
+<td>实际轮廓</td>
+<td>理论轮廓向内偏一个滚子半径的内包络线</td>
+</tr>
+<tr>
+<td>行程 h&#x2F;位移 s</td>
+<td>$h&#x3D;r_{max}-r_0$ &#x2F; 瞬时移动量</td>
+</tr>
+<tr>
+<td>棘轮机构</td>
+<td>摆杆＋棘爪＋棘轮，往复摆动→单向间歇转动</td>
+</tr>
+<tr>
+<td>超越运动</td>
+<td>从动件超越主动件（自行车飞轮）</td>
+</tr>
+<tr>
+<td>止动棘爪</td>
+<td>固定棘爪，防棘轮倒转</td>
+</tr>
+<tr>
+<td>外&#x2F;内啮合、齿式&#x2F;摩擦式、单&#x2F;双向</td>
+<td>棘轮机构分类</td>
+</tr>
+<tr>
+<td>槽轮机构</td>
+<td>拨销轮＋径向槽槽轮，圆销入槽才转、锁止弧定位</td>
+</tr>
+<tr>
+<td>内啮合槽轮</td>
+<td>拨销轮只能有一个销</td>
+</tr>
+<tr>
+<td>运动系数 τ</td>
+<td>$\tau&#x3D;t_d&#x2F;t$（槽轮运动时间&#x2F;拨销轮转一周时间），τ&lt;1</td>
+</tr>
+<tr>
+<td>失效</td>
+<td>零件丧失规定功能（断裂、塑性变形、磨损、腐蚀、打滑等）</td>
+</tr>
+<tr>
+<td>强度准则</td>
+<td>$\sigma\le[\sigma]$，$[\sigma]&#x3D;\sigma_{lim}&#x2F;S$，S 安全系数&gt;1</td>
+</tr>
+<tr>
+<td>刚度准则</td>
+<td>$y\le[y]$，限制弹性变形</td>
+</tr>
+<tr>
+<td>寿命&#x2F;振动稳定性&#x2F;可靠性</td>
+<td>疲劳寿命折算 &#x2F; 避开共振频率 &#x2F; 规定时间内完成功能概率</td>
+</tr>
+<tr>
+<td>清根（越程槽）</td>
+<td>母件内角加工艺孔消除铣刀圆角干涉</td>
+</tr>
+<tr>
+<td>标准件&#x2F;非标件</td>
+<td>互换、降本&#x2F;特殊专用、形成专有技术</td>
+</tr>
+</tbody></table>
+<h2 id="六、课堂任务与复习安排"><a href="#六、课堂任务与复习安排" class="headerlink" title="六、课堂任务与复习安排"></a>六、课堂任务与复习安排</h2><ul>
+<li>对<strong>第一章、第二章、第三章课后题</strong>答案（含平面机构 2 道、凸轮机构 1 道，即习题 2-4、2-5、3 系列）。</li>
+<li><strong>预习实验二并完成实验报告</strong>：除报告内容外，要弄清实验中各表（第一、二、三表）的接线方法、操作步骤（涉及电动机控制接线）。</li>
+<li>复习要求：<ol>
+<li>会用反转法图解凸轮指定转角位移和最大行程，说清推程&#x2F;回程&#x2F;休止与各角；</li>
+<li>掌握棘轮机构、槽轮机构的组成、工作原理、特点、类型和典型应用，会算运动系数 τ；</li>
+<li>记住零件常见失效形式和强度、刚度等设计准则及公式；</li>
+<li>能从结构工艺性角度解释装配倒角、铣刀圆角清根&#x2F;让位；</li>
+<li>说清标准件互换性、非标件与标准化；</li>
+<li>熟练曲柄存在条件数值判定、传动角&#x2F;压力角（C 点）和极限位置作图。</li>
+</ol>
+</li>
+</ul>
+<h2 id="七、待核对与疑问"><a href="#七、待核对与疑问" class="headerlink" title="七、待核对与疑问"></a>七、待核对与疑问</h2><table>
+<thead>
+<tr>
+<th>问题</th>
+<th>原因</th>
+<th>建议核对方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>槽轮运动系数公式 $\tau&#x3D;(z-2)&#x2F;(2z)$、τ&lt;1&#x2F;2</td>
+<td>课堂只给 τ 定义和 t&#x3D;t_d+t_j，未写闭式公式</td>
+<td>查教材槽轮机构一节（约 11、13 页）</td>
+</tr>
+<tr>
+<td>槽轮槽数 z 与转位角、圆销数关系</td>
+<td>课堂举例 4 槽转 90°</td>
+<td>查教材图表</td>
+</tr>
+<tr>
+<td>棘轮摆角&#x2F;棘轮罩调节、双动式细节</td>
+<td>动画讲解、未系统板书</td>
+<td>查教材棘轮机构一节</td>
+</tr>
+<tr>
+<td>铣刀圆角半径（Ø2 刀→R1&#x2F;R0.5）</td>
+<td>录音口述数值含糊</td>
+<td>以刀具半径等于内角圆角半径理解</td>
+</tr>
+<tr>
+<td>许用应力、安全系数取值与各失效判据符号</td>
+<td>课堂口头推导</td>
+<td>查教材机械设计概论设计准则</td>
+</tr>
+<tr>
+<td>习题 2-4 完整杆长 c、d 数值</td>
+<td>录音只明确 a、b 和 c+d&#x3D;450</td>
+<td>以教材&#x2F;教师发布题干为准</td>
+</tr>
+<tr>
+<td>常用材料表（教材 49~54 页）具体牌号用途</td>
+<td>课堂要求翻看、未细讲</td>
+<td>查教材材料一节</td>
+</tr>
+</tbody></table>
+<h2 id="八、复习与主动回忆"><a href="#八、复习与主动回忆" class="headerlink" title="八、复习与主动回忆"></a>八、复习与主动回忆</h2><h3 id="复习清单"><a href="#复习清单" class="headerlink" title="复习清单"></a>复习清单</h3><ol>
+<li>用 3 分钟复述凸轮推程&#x2F;回程&#x2F;休止、各运动角和实际轮廓画法。</li>
+<li>用 3 分钟说明怎样用反转法求转过 90° 的位移 s₂ 和最大行程 h。</li>
+<li>用 4 分钟讲清棘轮机构的组成、工作原理、间歇与超越特性、类型和止动棘爪。</li>
+<li>用 4 分钟讲清槽轮机构组成、工作过程、内啮合为何只能一个销和运动系数 τ。</li>
+<li>用 3 分钟列举零件常见失效形式并各举一例。</li>
+<li>用 4 分钟写出强度、刚度准则公式，区分强度与刚度、安全系数含义。</li>
+<li>用 3 分钟说明寿命、振动稳定性（共振）、可靠性准则。</li>
+<li>用 4 分钟解释装配倒角、圆柱铣刀内圆角的成因和两种清根让位方法、标准件互换性。</li>
+<li>用 4 分钟复述习题 2-4 曲柄条件数值判定和 2-5 传动角&#x2F;极限位置作图。</li>
+</ol>
+<h3 id="主动回忆题"><a href="#主动回忆题" class="headerlink" title="主动回忆题"></a>主动回忆题</h3><ol>
+<li>凸轮的基圆、偏距、行程分别是什么？滚子从动件的实际轮廓与理论轮廓是什么关系？</li>
+<li>怎样图解凸轮转过 90° 时从动件的位移 s₂ 和最大行程 h？</li>
+<li>棘轮机构由哪几部分组成？它是怎样把往复摆动变成单向间歇转动的？</li>
+<li>什么是棘轮机构的超越运动？以自行车飞轮为例说明；止动棘爪起什么作用？</li>
+<li>棘轮机构按啮合位置、传力方式、运动方向各分为哪些类型？</li>
+<li>槽轮机构由哪两部分组成？为什么槽轮能实现间歇运动？内啮合槽轮为什么只能用一个销？</li>
+<li>写出槽轮运动系数 τ 的定义，它为什么小于 1？</li>
+<li>机械零件常见的失效形式有哪些？各举一个例子。</li>
+<li>写出强度准则和刚度准则的表达式，说明许用应力与安全系数的关系；强度和刚度有什么区别？</li>
+<li>圆柱铣刀加工凹槽内角为什么会留下圆角？怎样保证凸块与凹槽直角贴合？标准件为什么应尽量采用？</li>
+</ol>
+<h3 id="答案要点"><a href="#答案要点" class="headerlink" title="答案要点"></a>答案要点</h3><ol>
+<li>基圆是以凸轮回转中心 O 为圆心、O 到理论轮廓最近点距离 $r_0$（最小向径）为半径的圆；偏距 e 是 O 到从动件导路中心线的垂直距离；行程 h 是从动件最高与最低位置之差 $h&#x3D;r_{max}-r_0$。滚子从动件先以滚子中心画出理论轮廓，再作各滚子圆的内包络线（向里偏一个滚子半径的等距曲线）得到实际轮廓。</li>
+<li>用反转法：以 O 为心把从动件导路沿 −ω 方向转过 90° 得该瞬时导路，导路与基圆交点到该瞬时滚子中心沿导路的距离即位移 $s_2$；在轮廓上找向径最小（最近）和最大（最远）两点，沿从动件运动方向量得的距离（最大向径减最小向径）即最大行程 h。</li>
+<li>棘轮机构由棘轮、棘爪、主动摆杆和机架组成（常加止动棘爪）。摆杆正向摆动时棘爪插入齿槽推动棘轮转过一齿（一个小角度），摆杆回程时棘爪沿齿背滑过、棘轮不动，再次正摆又拨一齿，于是往复摆动被转换成单向、周期性的间歇转动。</li>
+<li>超越运动指从动件可以超越主动件转动。自行车飞轮中链轮经棘爪带动后轮；停止蹬踏时链轮停转，后轮借惯性继续向前转、棘爪滑过而不带动链条和脚踏。止动棘爪是固定在机架上的棘爪，顶住棘轮防止其在停止或受反向载荷时倒转（如防止起重重物下坠）。</li>
+<li>按啮合位置分外啮合（棘爪在棘轮外）和内啮合（棘爪在棘轮内）；按传力方式分齿式（有齿、可靠、有级）和摩擦式（无齿、靠摩擦、可无级但易打滑）；按运动方向&#x2F;棘爪数分单向式、双向式以及单动、双动等。</li>
+<li>槽轮机构由连续转动的主动拨销轮（带圆销）和带径向槽的从动槽轮组成。圆销进入径向槽时才拨动槽轮转位，圆销离开后槽轮被锁止弧卡住而停歇，故实现周期性间歇转动。内啮合时若布置两个圆销会在同一循环内产生过约束&#x2F;运动干涉，所以只能有一个销。</li>
+<li>$\tau&#x3D;t_d&#x2F;t$，即槽轮运动时间与主动拨销轮回转一周总时间之比；因为拨销轮转一周中槽轮只有一部分时间在运动、其余时间停歇（$t&#x3D;t_d+t_j$），所以 $t_d&lt;t$，恒有 τ&lt;1。</li>
+<li>常见失效有断裂（过载或疲劳断轴）、塑性变形（应力超屈服产生永久变形，如冲压件）、磨损（链条链轮、导轨摩擦损耗）、腐蚀（金属锈蚀）、打滑（带传动从动轮跟不上、皮带滑动），以及过大弹性变形、表面疲劳点蚀、共振等。</li>
+<li>强度准则 $\sigma\le[\sigma]$，刚度准则 $y\le[y]$；许用应力 $[\sigma]&#x3D;\sigma_{lim}&#x2F;S$，极限应力除以安全系数 S（S&gt;1，越大越安全但越笨重），设计应使实际安全系数不小于规定最小值。强度是抵抗塑性变形和断裂的能力（应力问题），刚度是抵抗弹性变形的能力（卸载可恢复的变形问题，如弹簧回弹、主轴挠曲）。</li>
+<li>圆柱（盘状）铣刀是旋转圆柱体，加工凹槽内角时刀具圆柱面无法到达理论尖角，根部必留下半径约等于刀具半径的圆角，顶住凸块直角使其装不到位。两种解决办法：①在凹槽（母件）内角加工清根工艺孔（越程槽），让刀把根部圆角铣掉、保证内直角；②在凸块（公件）端部做尺寸大于根部圆角的倒角或圆角让位。标准件按统一标准制造、具有互换性，同规格可直接替换，便于维修更换并适合大批量专业化生产、降低成本，故设计中应尽量采用。</li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1-%E9%97%B4%E6%AD%87%E8%BF%90%E5%8A%A8%E6%9C%BA%E6%9E%84-%E8%AE%BE%E8%AE%A1%E6%A6%82%E8%AE%BA/" class="print-no-link">#机械设计 间歇运动机构 设计概论</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>间歇运动机构与机械设计概论：棘轮、槽轮与设计准则</div>
+      <div>https://tdexxx.github.io/2026/10/06/04_机械设计基础/机械设计_间歇运动机构与设计概论_发布稿/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>tdexxx</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年10月6日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/10/07/02_%E7%94%B5%E6%B0%94%E6%8E%A7%E5%88%B6%E4%B8%8EPLC/%E7%94%B5%E6%B0%94%E6%8E%A7%E5%88%B6%E4%B8%8EPLC_S7-1200%E7%A1%AC%E4%BB%B6%E4%B8%8E%E5%90%AF%E4%BF%9D%E5%81%9C%E6%8E%A7%E5%88%B6_%E5%8F%91%E5%B8%83%E7%A8%BF/" title="S7-1200 硬件结构、循环扫描与启保停控制">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">S7-1200 硬件结构、循环扫描与启保停控制</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/10/06/06_%E6%9C%BA%E6%A2%B0%E5%88%B6%E9%80%A0%E5%B7%A5%E8%89%BA%E4%B8%8E%E5%A4%B9%E5%85%B7/%E6%9C%BA%E6%A2%B0%E5%88%B6%E9%80%A0%E5%B7%A5%E8%89%BA_%E5%A4%B9%E5%85%B7%E7%BB%84%E5%90%88%E5%AE%9A%E4%BD%8D%E4%B8%8E%E8%87%AA%E7%94%B1%E5%BA%A6_%E5%8F%91%E5%B8%83%E7%A8%BF/" title="夹具组合定位与自由度分析：六点定位与过定位">
+                        <span class="hidden-mobile">夹具组合定位与自由度分析：六点定位与过定位</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

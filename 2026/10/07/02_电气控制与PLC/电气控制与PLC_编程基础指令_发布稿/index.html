@@ -1,0 +1,1055 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="tdexxx">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="PLC 编程基础指令笔记（博途 S7-1200）：数据类型与变量、位逻辑（常开常闭取反&#x2F;置位复位 S&#x2F;R&#x2F;RS 与 SR 触发器优先级&#x2F;上升沿 P 下降沿 N 边沿检测）、比较与范围指令、数学运算指令、MOVE 移动与块移动、四则运算器梯形图实例（含指令速查与考点） 本文整理《PLC 编程基础指令（逻辑指令应用）》一课。本节课在前面认识博途软件、PLCSIM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="S7-1200 编程基础指令：位逻辑、边沿检测与运算指令">
+<meta property="og:url" content="https://tdexxx.github.io/2026/10/07/02_%E7%94%B5%E6%B0%94%E6%8E%A7%E5%88%B6%E4%B8%8EPLC/%E7%94%B5%E6%B0%94%E6%8E%A7%E5%88%B6%E4%B8%8EPLC_%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E6%8C%87%E4%BB%A4_%E5%8F%91%E5%B8%83%E7%A8%BF/index.html">
+<meta property="og:site_name" content="tdexxx的博客">
+<meta property="og:description" content="PLC 编程基础指令笔记（博途 S7-1200）：数据类型与变量、位逻辑（常开常闭取反&#x2F;置位复位 S&#x2F;R&#x2F;RS 与 SR 触发器优先级&#x2F;上升沿 P 下降沿 N 边沿检测）、比较与范围指令、数学运算指令、MOVE 移动与块移动、四则运算器梯形图实例（含指令速查与考点） 本文整理《PLC 编程基础指令（逻辑指令应用）》一课。本节课在前面认识博途软件、PLCSIM">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-10-07T08:53:42.000Z">
+<meta property="article:modified_time" content="2026-10-30T17:37:19.929Z">
+<meta property="article:author" content="tdexxx">
+<meta property="article:tag" content="PLC S7-1200 指令">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>S7-1200 编程基础指令：位逻辑、边沿检测与运算指令 - tdexxx的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"tdexxx.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2022-12-10T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="S7-1200 编程基础指令：位逻辑、边沿检测与运算指令"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-10-07 16:53" pubdate>
+          2026年10月7日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          7.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          63 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">S7-1200 编程基础指令：位逻辑、边沿检测与运算指令</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="PLC-编程基础指令笔记（博途-S7-1200）：数据类型与变量、位逻辑（常开常闭取反-置位复位-S-R-RS-与-SR-触发器优先级-上升沿-P-下降沿-N-边沿检测）、比较与范围指令、数学运算指令、MOVE-移动与块移动、四则运算器梯形图实例（含指令速查与考点）"><a href="#PLC-编程基础指令笔记（博途-S7-1200）：数据类型与变量、位逻辑（常开常闭取反-置位复位-S-R-RS-与-SR-触发器优先级-上升沿-P-下降沿-N-边沿检测）、比较与范围指令、数学运算指令、MOVE-移动与块移动、四则运算器梯形图实例（含指令速查与考点）" class="headerlink" title="PLC 编程基础指令笔记（博途 S7-1200）：数据类型与变量、位逻辑（常开常闭取反&#x2F;置位复位 S&#x2F;R&#x2F;RS 与 SR 触发器优先级&#x2F;上升沿 P 下降沿 N 边沿检测）、比较与范围指令、数学运算指令、MOVE 移动与块移动、四则运算器梯形图实例（含指令速查与考点）"></a>PLC 编程基础指令笔记（博途 S7-1200）：数据类型与变量、位逻辑（常开常闭取反&#x2F;置位复位 S&#x2F;R&#x2F;RS 与 SR 触发器优先级&#x2F;上升沿 P 下降沿 N 边沿检测）、比较与范围指令、数学运算指令、MOVE 移动与块移动、四则运算器梯形图实例（含指令速查与考点）</h1><blockquote>
+<p>本文整理《PLC 编程基础指令（逻辑指令应用）》一课。本节课在前面认识博途软件、PLCSIM 仿真、起保停梯形图、进制与码制、IEC 61131 语言的基础上，<strong>系统梳理 S7-1200（TIA 博途）的常用基础指令集</strong>：先讲数据类型与变量声明，再依次讲<strong>位逻辑指令</strong>（常开&#x2F;常闭&#x2F;取反、置位 S&#x2F;复位 R、RS 与 SR 触发器、上升沿 P&#x2F;下降沿 N 边沿检测）、<strong>比较指令</strong>（六种比较与 IN_RANGE&#x2F;OUT_OF_RANGE 范围判断）、<strong>数学运算指令</strong>（加减乘除取模、绝对值、极限、平方开方、对数指数、三角函数）、<strong>移动与转换指令</strong>（MOVE、MOVE_BLK、FILL_BLK、序列化&#x2F;反序列化），最后用一个”电子四则运算器 $Y&#x3D;20x\times35-8$，结果为 0 点红灯、否则点绿灯”的梯形图实例，演示复杂表达式如何拆成基本运算指令并用中间变量逐级传递。文末附指令速查表、课后任务、待核对清单和主动回忆题（含答案要点）。本篇与此前”PLC 编程基础与仿真””S7-1200 硬件与启保停””定时器&#x2F;计数器”各篇互补，不重复仿真操作与定时计数内容。</p>
+</blockquote>
+<h2 id="一、核心结论"><a href="#一、核心结论" class="headerlink" title="一、核心结论"></a>一、核心结论</h2><ul>
+<li>博途里可以在 PLC 变量表中选择&#x2F;修改变量名称和数据类型；除基本数据类型外，还有<strong>数组（Array）</strong>和由系统提供、具有预定义结构与固定成员数目的<strong>系统数据类型（SDT）</strong>；S7-1200 的变量声明数据区可通过”附加说明”等方式覆盖&#x2F;扩展。</li>
+<li>仿真时若节点使用 <strong>I（输入）区</strong>，只能从输入结果一侧去检查&#x2F;改变；若希望在仿真中直接改变某输出结果，需要把对应节点改成 I 类型（实际接实物时仍按真实 I&#x2F;O 接线）。</li>
+<li><strong>位逻辑是梯形图最基础的部分，必须熟练掌握</strong>：<ul>
+<li>常开触点 $-|\ |-$：输入为 1（通电）时闭合、为 0 时断开；</li>
+<li>常闭触点 $-|&#x2F;|-$：输入为 1（通电）时断开、为 0 时闭合，与常开相反；</li>
+<li>取反（NOT，取非）：把能流&#x2F;逻辑结果反转，输入 1 出 0、输入 0 出 1；</li>
+<li>线圈 $-(\ )-$：把前面的逻辑结果赋给操作数。</li>
+</ul>
+</li>
+<li><strong>置位 S &#x2F; 复位 R 具有记忆（保持）功能</strong>：置位指令 $-(\mathrm S)-$ 把操作数锁定为 1，即使触发信号随后断开仍保持 1；复位指令 $-(\mathrm R)-$ 把操作数恢复为 0。这相当于数字电路里的锁存器&#x2F;触发器。</li>
+<li><strong>RS、SR 触发器用于同时管理置位与复位</strong>，区别在两输入同时接通时谁优先：<ul>
+<li><strong>RS 触发器为复位优先</strong>：置位、复位同时为 1 时，输出为 0（复位生效）；</li>
+<li><strong>SR 触发器为置位优先</strong>：置位、复位同时为 1 时，输出为 1（置位生效）。</li>
+</ul>
+</li>
+<li><strong>边沿检测只在信号跳变的瞬间接通一个扫描周期</strong>：<ul>
+<li>上升沿指令 P：仅在信号由 0→1 的瞬间使输出接通<strong>一个扫描周期</strong>；</li>
+<li>下降沿指令 N：仅在信号由 1→0 的瞬间接通一个扫描周期；</li>
+<li>边沿指令需要一个<strong>边沿存储位（M 位）</strong>保存输入端上一个扫描周期的状态，通过”本周期状态 vs 上周期状态”比较判断是否发生跳变。</li>
+</ul>
+</li>
+<li>边沿触发与普通线圈&#x2F;点动的本质区别：普通线圈随输入通断而通断（像点动，按住才有、松开即无）；上升沿触发只认按下（0→1）那一瞬间，触发后即使输入回到 0，被置位的输出仍继续运行，直到复位信号到来。</li>
+<li>电机启停典型用法：启动按钮的<strong>上升沿</strong>配合置位指令让 Q0.0 置位并连续运行；停止按钮的<strong>下降沿</strong>（或停止信号）配合复位指令让 Q0.0 复位停止。</li>
+<li><strong>比较指令</strong>对两个<strong>相同数据类型</strong>操作数比较，结果作为触点通断：等于 <code>==</code>、不等于 <code>&lt;&gt;</code>、大于 <code>&gt;</code>、小于 <code>&lt;</code>、大于等于 <code>&gt;=</code>、小于等于 <code>&lt;=</code>；另有范围判断 <strong>IN_RANGE（在范围内）</strong>与 <strong>OUT_OF_RANGE（超出范围）</strong>，给定最小值 MIN、最大值 MAX（如判断数值是否在 10～20 之间）。典型应用：电机只允许转动 100 次，计数到 100 即停止。</li>
+<li><strong>数学运算指令</strong>：ADD 加、SUB 减、MUL 乘、DIV 除、MOD 取模（返回余数）、NEG 取负；整数 DIV 取整后输出商，MOD 输出余数；还有 ABS 绝对值、MAX 最大值、MIN 最小值、LIMIT 极限限幅、SQR 平方、SQRT 平方根、LN 自然对数、EXP 指数、SIN&#x2F;COS&#x2F;TAN 及反三角函数、FRAC 返回小数等。运算框可增加输入个数；<strong>浮点数（Real）运算要求输入&#x2F;输出数据类型一致</strong>；指令使能端 EN 通常高电平有效。</li>
+<li><strong>移动与转换指令</strong>：<ul>
+<li>MOVE：EN 满足时把输入端数据传送到输出端，要求<strong>相同数据类型</strong>、可有多个输出，但一般不用于位变量之间；</li>
+<li>MOVE_BLK（块移动）：把一组连续数据（如数组中的 01 02 03 04）成块移动到另一连续区域；</li>
+<li>FILL_BLK（填充）：把输入量批量填充到一段连续地址；</li>
+<li>序列化 Serialize &#x2F; 反序列化 Deserialize：实现标准数组与其他格式（如 UDP 通信格式）之间的相互转换，本节作了解。</li>
+</ul>
+</li>
+<li>复杂表达式（如 $Y&#x3D;20x\times35-8$）在梯形图中要<strong>拆成若干基本运算指令串联</strong>：前一条指令的输出存入<strong>中间变量（如 MD 存储区）</strong>，作为下一条指令的输入，逐级算出最终结果 Y，再用比较指令判断 Y 是否为 0 去点亮红&#x2F;绿灯。</li>
+</ul>
+<h2 id="二、知识结构（指令树）"><a href="#二、知识结构（指令树）" class="headerlink" title="二、知识结构（指令树）"></a>二、知识结构（指令树）</h2><ul>
+<li>数据与变量：PLC 变量、基本&#x2F;数组&#x2F;系统数据类型、I&#x2F;Q&#x2F;M 区、变量声明</li>
+<li>位逻辑指令<ul>
+<li>常开、常闭、取反 NOT、线圈</li>
+<li>置位 S、复位 R（保持&#x2F;记忆）</li>
+<li>RS（复位优先）、SR（置位优先）触发器</li>
+<li>上升沿 P、下降沿 N（边沿存储位，接通一个扫描周期）</li>
+</ul>
+</li>
+<li>比较指令：&#x3D;&#x3D;、&lt;&gt;、&gt;、&lt;、&gt;&#x3D;、&lt;&#x3D;；IN_RANGE、OUT_OF_RANGE</li>
+<li>数学运算：ADD&#x2F;SUB&#x2F;MUL&#x2F;DIV&#x2F;MOD&#x2F;NEG；ABS&#x2F;MAX&#x2F;MIN&#x2F;LIMIT&#x2F;SQR&#x2F;SQRT&#x2F;LN&#x2F;EXP&#x2F;三角函数&#x2F;FRAC</li>
+<li>移动与转换：MOVE、MOVE_BLK、FILL_BLK、Serialize&#x2F;Deserialize</li>
+<li>指令体系总览：位逻辑、比较、数学、移动、逻辑运算、移位循环、转换、定时器、计数器、高速脉冲&#x2F;高速计数器</li>
+<li>综合实例：电子四则运算器 $Y&#x3D;20x\times35-8$ 梯形图</li>
+</ul>
+<h2 id="三、详细笔记"><a href="#三、详细笔记" class="headerlink" title="三、详细笔记"></a>三、详细笔记</h2><h3 id="3-1-数据类型与变量声明"><a href="#3-1-数据类型与变量声明" class="headerlink" title="3.1 数据类型与变量声明"></a>3.1 数据类型与变量声明</h3><ul>
+<li>在博途项目的 PLC 变量（变量表）中可以选择变量并修改其名称、数据类型、地址等；编程时尽量用语义化的变量名（如”启动按钮””电机接触器”）提高可读性。</li>
+<li><strong>PLC 数据类型</strong>：除 Bool、Int、DInt、Real 等基本类型外，还可以使用 <strong>PLC 数据类型（UDT，用户自定义数据类型，课堂口语记作 PCD）</strong>，把若干相关变量打包成一个结构，便于复用。</li>
+<li><strong>数组类型 Array</strong>：相同类型数据的有序集合，在块移动、批量数据处理中应用很多。</li>
+<li><strong>系统数据类型 SDT</strong>：由系统提供，具有预定义的结构和固定数目（固定成员），用于定时器、计数器、通信等特定功能；S7-1200 声明变量的数据区域可通过附加说明进行覆盖&#x2F;编辑。</li>
+<li><strong>I&#x2F;Q&#x2F;M 区与仿真</strong>：I 为输入映像区、Q 为输出映像区、M 为位存储器（中间标志）。做 PLCSIM 模拟仿真时，如果节点用 I 区，通常只能从”输入结果”一侧去检查；若想直接改变某个输出结果观察逻辑，可临时把该节点改成 I 类型来强制；真正下载到实物时仍按外部接线使用对应 I&#x2F;Q。</li>
+<li>双字（DWord）、字（Word）、字节（Byte）等数据类型在存储运算结果（如 MD104）时经常用到，变量类型要与指令输入&#x2F;输出要求匹配。</li>
+</ul>
+<h3 id="3-2-位逻辑指令（本节重点）"><a href="#3-2-位逻辑指令（本节重点）" class="headerlink" title="3.2 位逻辑指令（本节重点）"></a>3.2 位逻辑指令（本节重点）</h3><h4 id="3-2-1-常开、常闭与取反"><a href="#3-2-1-常开、常闭与取反" class="headerlink" title="3.2.1 常开、常闭与取反"></a>3.2.1 常开、常闭与取反</h4><ul>
+<li>**常开触点 $-|\ |-$**：操作数为 1 时触点闭合、能流通过；为 0 时断开。可类比继电器&#x2F;接触器里的常开辅助触点。</li>
+<li>**常闭触点 $-|&#x2F;|-$**：与常开相反，操作数为 0 时闭合、为 1 时断开；常用来接停止按钮、互锁条件。快捷键可在博途里直接插入常闭。</li>
+<li><strong>取反（NOT &#x2F; 取非）</strong>：对能流取反。若前面逻辑有电能流过来（结果为 1），经取反后变为 0、后级断开；前面没有电（为 0），取反后反而为 1、后级接通。它与常闭触点都体现”非”逻辑，但取反是对整段能流结果取反。</li>
+<li>**线圈 $-(\ )-$**：把左侧逻辑运算结果写入操作数；得电（能流到）则为 1，失电则为 0。</li>
+</ul>
+<h4 id="3-2-2-置位-S-与复位-R（记忆-保持）"><a href="#3-2-2-置位-S-与复位-R（记忆-保持）" class="headerlink" title="3.2.2 置位 S 与复位 R（记忆&#x2F;保持）"></a>3.2.2 置位 S 与复位 R（记忆&#x2F;保持）</h4><ul>
+<li>**置位指令 $-(\mathrm S)-$**：当能流到达，把指定操作数置为 1 <strong>并锁存</strong>；之后即使能流消失（按钮松开、输入断开），该位仍保持 1，具有记忆保存功能。</li>
+<li>**复位指令 $-(\mathrm R)-$**：当能流到达，把指定操作数清为 0 并保持；可理解为把状态恢复到初始（0）状态。</li>
+<li>直观例子：按一下启动按钮（常开瞬动），用 S 把灯&#x2F;电机锁为 1，松开按钮后灯仍亮；再按停止用 R 复位，灯才灭。这正是启保停”自锁”的另一种实现方式（用 S&#x2F;R 替代自锁触点）。</li>
+</ul>
+<h4 id="3-2-3-RS-触发器与-SR-触发器（优先级）"><a href="#3-2-3-RS-触发器与-SR-触发器（优先级）" class="headerlink" title="3.2.3 RS 触发器与 SR 触发器（优先级）"></a>3.2.3 RS 触发器与 SR 触发器（优先级）</h4><ul>
+<li>触发器把置位、复位集成在一个指令框中，用两个输入分别控制，对应课本 110 页图 7-5（课堂记作 7-0-5）。</li>
+<li><strong>RS 触发器（复位优先 &#x2F; 复位置位）</strong>：<ul>
+<li>只有置位端接通 → 输出置 1；</li>
+<li>只有复位端接通 → 输出清 0；</li>
+<li><strong>置位、复位同时接通 → 输出为 0（复位优先）</strong>。</li>
+</ul>
+</li>
+<li><strong>SR 触发器（置位优先 &#x2F; 置位复位）</strong>：<ul>
+<li>只有置位端接通 → 输出置 1；</li>
+<li>只有复位端接通 → 输出清 0；</li>
+<li><strong>置位、复位同时接通 → 输出为 1（置位优先）</strong>。</li>
+</ul>
+</li>
+<li>记忆方法：名字中排在前面的字母代表”优先”——RS 中 R 在前，复位优先；SR 中 S 在前，置位优先。课堂以 M1.0&#x2F;M1.1 控制 M0.0、M2.0&#x2F;M2.1 控制 M2.2 分别演示了两种触发器。</li>
+</ul>
+<h4 id="3-2-4-上升沿-P-与下降沿-N（边沿检测）"><a href="#3-2-4-上升沿-P-与下降沿-N（边沿检测）" class="headerlink" title="3.2.4 上升沿 P 与下降沿 N（边沿检测）"></a>3.2.4 上升沿 P 与下降沿 N（边沿检测）</h4><ul>
+<li><strong>作用</strong>：捕捉信号的跳变瞬间，而不是信号的持续电平。</li>
+<li><strong>上升沿指令 P（$-(\mathrm P)-$）</strong>：仅当流入线圈的能流由 0 变 1（断开→闭合）的那个扫描周期，指令上方操作数接通<strong>一个扫描周期</strong>，随后即使输入保持 1，输出也回到 0。</li>
+<li><strong>下降沿指令 N（$-(\mathrm N)-$）</strong>：仅当能流由 1 变 0（闭合→断开）的那个扫描周期接通一个扫描周期。</li>
+<li><strong>边沿存储位</strong>：边沿指令下方需要指定一个 M 位（如 M1.0、M2.1），用来<strong>保存 P&#x2F;N 输入端上一个扫描周期的状态</strong>；CPU 把当前周期状态与该存储位中的上周期状态比较，不同才说明发生了跳变，从而产生一个扫描周期的脉冲。该存储位即使按钮松开也仍保留上一周期信息。</li>
+<li><strong>与普通线圈、点动的区别（高频考点）</strong>：<ul>
+<li>普通线圈&#x2F;点动：输入为 1 输出为 1、输入回 0 输出立即回 0，按住才有、松开即无；</li>
+<li>上升沿触发：只对触发信号 0→1 的瞬间有效，触发一次后”后面不管输入降不降”，被置位的输出都继续保持运行，直到复位；因此常用于”按一下启动、电机连续运转”。</li>
+</ul>
+</li>
+<li><strong>单台电机启停经典程序（课本 111～112 页）</strong>：<ul>
+<li>启动按钮（如 M0.0&#x2F;I0.0）按下的<strong>上升沿</strong>，经 P 指令产生一个扫描周期脉冲，通过<strong>置位</strong>指令把 Q0.0 置 1，电机启动并连续运行；</li>
+<li>停止按钮松开&#x2F;按下的<strong>下降沿</strong>，经 N 指令产生脉冲，通过<strong>复位</strong>指令把 Q0.0 清 0，电机停止；</li>
+<li>P、N 必须与置位&#x2F;复位配合使用，边沿存储位各自独立、不能混用。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-3-比较指令"><a href="#3-3-比较指令" class="headerlink" title="3.3 比较指令"></a>3.3 比较指令</h3><ul>
+<li>在指令库”比较操作（CMP）”中选择，对<strong>两个相同数据类型</strong>的操作数进行比较，比较结果为真时触点闭合、能流通过。</li>
+<li>六种关系：<ul>
+<li>等于 <code>==</code>（CMP&#x3D;&#x3D;）、不等于 <code>&lt;&gt;</code>（CMP&lt;&gt;）；</li>
+<li>大于 <code>&gt;</code>、小于 <code>&lt;</code>、大于等于 <code>&gt;=</code>、小于等于 <code>&lt;=</code>。</li>
+</ul>
+</li>
+<li>课堂示例：输入一个数与 100 比较——等于 100、不等于 100、大于等于 100、小于等于 100、大于 100、小于 100，分别接通不同的 M 点。</li>
+<li><strong>范围比较</strong>：<ul>
+<li>IN_RANGE（在范围内）：给定最小值 MIN、最大值 MAX，当 <code>MIN ≤ 输入值 ≤ MAX</code> 时输出为 1。如 MIN&#x3D;10、MAX&#x3D;20，输入 15、19 时接通，输入 12 是否接通要看是否落在区间；</li>
+<li>OUT_OF_RANGE（超出范围）：输入值小于 MIN 或大于 MAX 时接通。</li>
+</ul>
+</li>
+<li><strong>工程应用</strong>：例如要求电机只能转动 100 次，用计数器记录次数，再用”次数 ≥ 100”的比较触点去切断运行输出，实现定量停止&#x2F;限位保护。</li>
+</ul>
+<h3 id="3-4-数学运算指令"><a href="#3-4-数学运算指令" class="headerlink" title="3.4 数学运算指令"></a>3.4 数学运算指令</h3><ul>
+<li><strong>四则与取模</strong>：<ul>
+<li>ADD 加法、SUB 减法、MUL 乘法、DIV 除法、MOD 取模（返回除法余数）；</li>
+<li>NEG 取负（求相反数，与补码相关，补码 &#x3D; 反码 + 1）；</li>
+<li><strong>整数除法 DIV</strong> 对结果取整后以整数格式输出<strong>商</strong>，余数由 MOD 取得。</li>
+</ul>
+</li>
+<li><strong>扩展数学函数</strong>：<ul>
+<li>ABS 绝对值；MAX 取最大值、MIN 取最小值；LIMIT 极限（限幅）；</li>
+<li>SQR 平方、SQRT 平方根；LN 自然对数、EXP 指数（幂）函数；</li>
+<li>SIN&#x2F;COS&#x2F;TAN 正弦、余弦、正切，以及相应反三角函数；FRAC 返回一个数的小数部分。</li>
+</ul>
+</li>
+<li><strong>使用要点</strong>：<ul>
+<li>在指令框数据类型下拉列表中选择运算的数据类型（整数选 Int&#x2F;DInt，实数选 Real）；</li>
+<li>ADD、MUL 等指令可以点击”增加输入”得到多个输入端，实现多个数连加&#x2F;连乘（输入1 运算 输入2 再运算 输入3……）；</li>
+<li><strong>浮点数（Real）运算指令的输入 IN 与输出 OUT 必须同为实数类型</strong>，类型不一致需要先用转换指令；</li>
+<li>指令框的 <strong>EN 为使能端</strong>（本例为高电平有效，个别指令可设低电平有效），EN 接通（如 M0.0 闭合）时该运算才执行，ENO 用于级联到下一条指令。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-5-移动与转换指令"><a href="#3-5-移动与转换指令" class="headerlink" title="3.5 移动与转换指令"></a>3.5 移动与转换指令</h3><ul>
+<li><strong>MOVE（移动）</strong>：当使能端条件满足（为真）时，把输入端的数据原样传送到输出端，实现相同数据类型数据的传送；例如输入为 10.5 则输出也为 10.5。可增加多个输出端一次送到多个地址；一般不包括位变量之间的传送。</li>
+<li><strong>MOVE_BLK（块移动）</strong>：把一组<strong>连续</strong>数据从一个存储区成块移动到另一个连续存储区。课堂练习：把数组中的 01 02 03 04 移到指定目标区域（源与目标按连续地址对应）。</li>
+<li><strong>FILL_BLK（填充&#x2F;块填充）</strong>：当使能条件满足时，把输入量<strong>批量填充</strong>到一段连续地址；例如把某数组中连续的若干个字统一填 0（源、目标填充个数相同）。</li>
+<li><strong>序列化 Serialize &#x2F; 反序列化 Deserialize（了解）</strong>：把标准数组看成一个序列，与其他（非序列）格式（如 UDP 通信格式）相互转换；可实现字节、字、双字之间的格式拼装&#x2F;拆分（如把若干字节序列拼成双字）。本节不要求深入掌握，实际通信编程中再用。</li>
+</ul>
+<h3 id="3-6-指令体系总览（知道有哪几类）"><a href="#3-6-指令体系总览（知道有哪几类）" class="headerlink" title="3.6 指令体系总览（知道有哪几类）"></a>3.6 指令体系总览（知道有哪几类）</h3><ul>
+<li>博途指令主要包括：<strong>位逻辑指令、比较指令、数学函数指令、移动操作指令、逻辑运算指令、移位与循环指令、转换操作指令、定时器指令、计数器指令</strong>，以及高速脉冲输出与高速计数器等。</li>
+<li>工程上<strong>定时器、计数器用得非常多</strong>，工业逻辑中大量出现；其用法在专门的定时器&#x2F;计数器章节讲解，本篇不展开。</li>
+<li>学习方法：先把最常用的位逻辑（常开&#x2F;常闭&#x2F;取反、S&#x2F;R、触发器、边沿）和比较、基本四则运算练熟，高级数学函数与序列化等用到时再查手册。</li>
+</ul>
+<h2 id="四、综合实例：电子四则运算器梯形图"><a href="#四、综合实例：电子四则运算器梯形图" class="headerlink" title="四、综合实例：电子四则运算器梯形图"></a>四、综合实例：电子四则运算器梯形图</h2><h3 id="4-1-控制要求"><a href="#4-1-控制要求" class="headerlink" title="4.1 控制要求"></a>4.1 控制要求</h3><ul>
+<li>设计一个电子四则运算器，完成计算<br>$$Y&#x3D;20x\times35-8$$<br>其中 $x$ 为输入变量；当计算结果 $Y&#x3D;0$ 时点亮<strong>红灯</strong>，否则点亮<strong>绿灯</strong>。</li>
+<li>（注：课堂口语中”乘 35 &#x2F; 除以 35”发音含糊，纪要两处均记作 $Y&#x3D;20x*35-8$，本文按”乘以 35”绘制；若老师作业原题为除以 35，只需把第二条 MUL 换成 DIV，详见待核对表。）</li>
+</ul>
+<h3 id="4-2-编程思路——表达式拆解-中间变量"><a href="#4-2-编程思路——表达式拆解-中间变量" class="headerlink" title="4.2 编程思路——表达式拆解 + 中间变量"></a>4.2 编程思路——表达式拆解 + 中间变量</h3><ul>
+<li>复杂表达式不能用一条指令完成，要按运算顺序拆成基本指令，<strong>前一步的输出存入中间变量，作为后一步的输入</strong>：<ol>
+<li>第一步 MUL：$20\times x$，结果存入中间变量（如 MD100）；</li>
+<li>第二步 MUL：$\mathrm{MD100}\times35$，结果存入中间变量（如 MD102）；</li>
+<li>第三步 SUB：$\mathrm{MD102}-8$，最终结果 $Y$ 存入 MD104；</li>
+<li>比较：用 CMP &#x3D;&#x3D; 判断 MD104 是否等于 0：<ul>
+<li>MD104 &#x3D;&#x3D; 0 → 接通红灯输出；</li>
+<li>MD104 &lt;&gt; 0（否则）→ 接通绿灯输出。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>梯形图结构（文字示意）：</li>
+</ul>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs text">网络1：MUL          网络2：MUL           网络3：SUB<br>  IN1 = 20           IN1 = MD100          IN1 = MD102<br>  IN2 = x     →      IN2 = 35      →      IN2 = 8<br>  OUT = MD100        OUT = MD102          OUT = MD104 (即 Y)<br><br>网络4：比较与输出<br>  CMP == (MD104, 0)  ──( 红灯线圈 )<br>  CMP &lt;&gt; (MD104, 0)  ──( 绿灯线圈 )<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>若用可多输入的 MUL，也可把 $20\times x\times35$ 合并到一个三输入乘法框，再做减法；课堂还演示了”$20x$ 与 35 先除&#x2F;乘再减 8”的等价写法，运算顺序和数据类型保持一致即可。</li>
+<li>考点提示：这类题有两种考法——给出梯形图说运算功能（较易），或给出表达式让你自己画梯形图（要会拆表达式、会用中间变量 MD、会接比较与输出线圈）。</li>
+</ul>
+<h2 id="五、常用指令速查表"><a href="#五、常用指令速查表" class="headerlink" title="五、常用指令速查表"></a>五、常用指令速查表</h2><table>
+<thead>
+<tr>
+<th>类别</th>
+<th>指令&#x2F;符号</th>
+<th>功能要点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>位逻辑</td>
+<td>常开 $-|\ |-$</td>
+<td>操作数为 1 闭合</td>
+</tr>
+<tr>
+<td>位逻辑</td>
+<td>常闭 $-</td>
+<td>&#x2F;</td>
+</tr>
+<tr>
+<td>位逻辑</td>
+<td>NOT 取反</td>
+<td>能流结果 1↔0 反转</td>
+</tr>
+<tr>
+<td>位逻辑</td>
+<td>线圈 $-(\ )-$</td>
+<td>把逻辑结果写入操作数</td>
+</tr>
+<tr>
+<td>位逻辑</td>
+<td>置位 S</td>
+<td>锁为 1，输入断开仍保持</td>
+</tr>
+<tr>
+<td>位逻辑</td>
+<td>复位 R</td>
+<td>清为 0 并保持</td>
+</tr>
+<tr>
+<td>触发器</td>
+<td>RS</td>
+<td>复位优先（S、R 同 1 出 0）</td>
+</tr>
+<tr>
+<td>触发器</td>
+<td>SR</td>
+<td>置位优先（S、R 同 1 出 1）</td>
+</tr>
+<tr>
+<td>边沿</td>
+<td>P 上升沿</td>
+<td>0→1 瞬间接通一个扫描周期，需 M 存储位</td>
+</tr>
+<tr>
+<td>边沿</td>
+<td>N 下降沿</td>
+<td>1→0 瞬间接通一个扫描周期，需 M 存储位</td>
+</tr>
+<tr>
+<td>比较</td>
+<td>&#x3D;&#x3D;、&lt;&gt;、&gt;、&lt;、&gt;&#x3D;、&lt;&#x3D;</td>
+<td>两同类型操作数比较，结果作触点</td>
+</tr>
+<tr>
+<td>范围</td>
+<td>IN_RANGE</td>
+<td>MIN≤值≤MAX 时接通</td>
+</tr>
+<tr>
+<td>范围</td>
+<td>OUT_OF_RANGE</td>
+<td>值&lt;MIN 或 &gt;MAX 时接通</td>
+</tr>
+<tr>
+<td>数学</td>
+<td>ADD&#x2F;SUB&#x2F;MUL&#x2F;DIV</td>
+<td>加&#x2F;减&#x2F;乘&#x2F;除（整数 DIV 取整得商）</td>
+</tr>
+<tr>
+<td>数学</td>
+<td>MOD&#x2F;NEG</td>
+<td>取余&#x2F;取负</td>
+</tr>
+<tr>
+<td>数学</td>
+<td>ABS&#x2F;MAX&#x2F;MIN&#x2F;LIMIT</td>
+<td>绝对值&#x2F;最大&#x2F;最小&#x2F;限幅</td>
+</tr>
+<tr>
+<td>数学</td>
+<td>SQR&#x2F;SQRT</td>
+<td>平方&#x2F;平方根</td>
+</tr>
+<tr>
+<td>数学</td>
+<td>LN&#x2F;EXP</td>
+<td>自然对数&#x2F;指数</td>
+</tr>
+<tr>
+<td>数学</td>
+<td>SIN&#x2F;COS&#x2F;TAN、FRAC</td>
+<td>三角（含反三角）&#x2F;取小数</td>
+</tr>
+<tr>
+<td>移动</td>
+<td>MOVE</td>
+<td>同类型传送，EN 有效，可多输出</td>
+</tr>
+<tr>
+<td>移动</td>
+<td>MOVE_BLK</td>
+<td>连续数据块移动</td>
+</tr>
+<tr>
+<td>移动</td>
+<td>FILL_BLK</td>
+<td>连续区域批量填充</td>
+</tr>
+<tr>
+<td>转换</td>
+<td>Serialize&#x2F;Deserialize</td>
+<td>数组与 UDP 等格式互转（了解）</td>
+</tr>
+</tbody></table>
+<h2 id="六、课堂任务与复习安排"><a href="#六、课堂任务与复习安排" class="headerlink" title="六、课堂任务与复习安排"></a>六、课堂任务与复习安排</h2><ul>
+<li>课后任务（@全体同学）：<ol>
+<li>查阅课本 <strong>110 页图 7-5</strong>，理解置位、复位触发器（RS&#x2F;SR）的逻辑功能与优先级；</li>
+<li>查阅课本 <strong>111～112 页</strong>关于信号上升沿、下降沿置位操作的内容，吃透单台电机”上升沿启动连续运行、下降沿停止”的程序；</li>
+<li>完成作业：设计电子四则运算器 $Y&#x3D;20x\times35-8$（Y&#x3D;0 点红灯、否则点绿灯）的梯形图。</li>
+</ol>
+</li>
+<li>本节课还讲评了第六章部分选择&#x2F;判断题答案（如 6-1、6-2 选 B 等），以老师公布的标准答案为准。</li>
+<li>复习要求：<ol>
+<li>默写常开、常闭、取反、线圈、S、R、RS&#x2F;SR、P&#x2F;N 的符号与功能；</li>
+<li>能说清置位复位与普通线圈、上升沿与点动的区别；</li>
+<li>会用六种比较和 IN_RANGE&#x2F;OUT_OF_RANGE 做条件判断；</li>
+<li>会用 ADD&#x2F;SUB&#x2F;MUL&#x2F;DIV&#x2F;MOD 并正确选择数据类型；</li>
+<li>能把一个含多级运算的表达式拆成梯形图，正确使用中间变量。</li>
+</ol>
+</li>
+</ul>
+<h2 id="七、待核对与疑问"><a href="#七、待核对与疑问" class="headerlink" title="七、待核对与疑问"></a>七、待核对与疑问</h2><table>
+<thead>
+<tr>
+<th>问题</th>
+<th>原因</th>
+<th>建议核对方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>四则运算器原式是 $20x\times35-8$ 还是 $20x\div35-8$</td>
+<td>逐字稿”乘&#x2F;除 35”发音含糊，纪要记作乘</td>
+<td>以老师作业题&#x2F;课本原题为准，DIV 与 MUL 互换即可</td>
+</tr>
+<tr>
+<td>课堂口语”PCD 数据类型”</td>
+<td>应为 PLC 数据类型（UDT）</td>
+<td>对照博途帮助&#x2F;教材术语</td>
+</tr>
+<tr>
+<td>RS&#x2F;SR、P&#x2F;N 在不同博途版本中的具体指令名与引脚</td>
+<td>版本差异</td>
+<td>在本机博途指令库核对符号</td>
+</tr>
+<tr>
+<td>第六章习题答案（6-1～6-16 等）</td>
+<td>逐字稿为口头讲评、较碎</td>
+<td>以老师公布标准答案为准</td>
+</tr>
+<tr>
+<td>电机启停实例中按钮用 I0.0 还是 M0.0</td>
+<td>口语中 I&#x2F;M 混用</td>
+<td>仿真可用 M，实物接 I，按实际接线</td>
+</tr>
+<tr>
+<td>序列化&#x2F;反序列化、块移动细节</td>
+<td>本节仅要求了解</td>
+<td>后续通信&#x2F;数组章节再深入</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>说明：本文依据课程纪要与课堂逐字稿整理，逐字稿为语音转写、口语与同音字较多，凡录音含糊之处均已在表中标注；指令名称与功能以 TIA 博途软件和本校教材为准。</p>
+</blockquote>
+<h2 id="八、复习与主动回忆"><a href="#八、复习与主动回忆" class="headerlink" title="八、复习与主动回忆"></a>八、复习与主动回忆</h2><h3 id="复习清单"><a href="#复习清单" class="headerlink" title="复习清单"></a>复习清单</h3><ol>
+<li>用 5 分钟区分常开、常闭、取反、线圈的符号和通断规律。</li>
+<li>用 6 分钟讲清置位 S、复位 R 的保持功能，并举锁存灯的例子。</li>
+<li>用 6 分钟对比 RS 与 SR 触发器，重点说两输入同时接通时谁优先。</li>
+<li>用 8 分钟讲清上升沿 P、下降沿 N 的工作过程、边沿存储位作用，以及与点动的区别。</li>
+<li>用 5 分钟列出六种比较和两种范围指令并各举一例。</li>
+<li>用 6 分钟默写数学运算指令，说明整数除法&#x2F;取模、浮点类型一致、EN 使能。</li>
+<li>用 5 分钟区分 MOVE、MOVE_BLK、FILL_BLK。</li>
+<li>用 10 分钟独立画出 $Y&#x3D;20x\times35-8$ 四则运算器梯形图。</li>
+</ol>
+<h3 id="主动回忆题"><a href="#主动回忆题" class="headerlink" title="主动回忆题"></a>主动回忆题</h3><ol>
+<li>常开触点和常闭触点在输入为 1 时分别是什么状态？</li>
+<li>取反（NOT）指令的作用是什么？</li>
+<li>置位 S 和普通线圈有什么不同？为什么说 S&#x2F;R 有”记忆”功能？</li>
+<li>复位 R 执行后操作数变成什么状态？</li>
+<li>RS 触发器和 SR 触发器有什么区别？置位、复位同时接通时各自输出什么？</li>
+<li>怎样快速记住 RS、SR 谁优先？</li>
+<li>上升沿指令 P 在什么时刻接通？接通多长时间？</li>
+<li>下降沿指令 N 在什么时刻接通？</li>
+<li>边沿指令下方的 M 位（边沿存储位）起什么作用？</li>
+<li>上升沿触发和点动（普通线圈）控制电机有什么本质区别？</li>
+<li>写出”启动按钮上升沿启动并连续运行、停止按钮下降沿停止”的编程思路。</li>
+<li>比较指令有哪六种？对操作数数据类型有什么要求？</li>
+<li>IN_RANGE 和 OUT_OF_RANGE 怎样判断？给定 MIN&#x3D;10、MAX&#x3D;20，输入 15 和 25 分别接通哪个？</li>
+<li>举一个比较指令的工程应用例子。</li>
+<li>ADD&#x2F;SUB&#x2F;MUL&#x2F;DIV&#x2F;MOD 分别做什么？整数除法的商和余数分别由哪条指令得到？</li>
+<li>NEG、ABS、LIMIT、SQR、SQRT、LN、EXP、FRAC 分别是什么功能？</li>
+<li>数学运算框能否有多个输入？怎样实现连加&#x2F;连乘？</li>
+<li>浮点数运算对输入输出数据类型有什么要求？EN 端有什么作用？</li>
+<li>MOVE、MOVE_BLK、FILL_BLK 有什么区别？</li>
+<li>序列化&#x2F;反序列化主要用在什么场合？</li>
+<li>复杂数学表达式在梯形图中如何实现？为什么要用中间变量？</li>
+<li>写出 $Y&#x3D;20x\times35-8$、Y&#x3D;0 点红灯否则点绿灯的梯形图步骤。</li>
+</ol>
+<h3 id="答案要点"><a href="#答案要点" class="headerlink" title="答案要点"></a>答案要点</h3><ol>
+<li>常开触点输入为 1 时闭合、能流通过；常闭触点输入为 1 时断开（为 0 时才闭合）。</li>
+<li>对能流&#x2F;逻辑结果取反：输入（前级结果）为 1 时输出 0，为 0 时输出 1。</li>
+<li>普通线圈随输入通断，输入回 0 线圈立即回 0；置位 S 一旦被触发就把操作数锁为 1，输入断开仍保持 1，需复位才能清 0，因此具有记忆（保持&#x2F;锁存）功能，类似锁存器。</li>
+<li>复位 R 被触发后把操作数清为 0，并保持到下次置位。</li>
+<li>RS 为复位优先，SR 为置位优先；置位、复位同时接通时，RS 输出 0、SR 输出 1；只有单一输入接通时，两者都是置位接通出 1、复位接通出 0。</li>
+<li>名称中排在前面的字母优先：RS 的 R 在前→复位优先；SR 的 S 在前→置位优先。</li>
+<li>上升沿 P 只在能流&#x2F;信号由 0 变 1（断开到闭合）的那个扫描周期接通，接通时间为一个扫描周期，之后即使信号保持 1 也回到 0。</li>
+<li>下降沿 N 只在信号由 1 变 0（闭合到断开）的那个扫描周期接通一个扫描周期。</li>
+<li>边沿存储位（M 位）保存输入端上一个扫描周期的状态，CPU 用当前周期状态与它比较，两者不同才判定出现跳变并产生一个扫描周期的脉冲；没有它就无法判断是否发生边沿。</li>
+<li>点动&#x2F;普通线圈：按住（输入为 1）才有输出、松开立即停止；上升沿触发：只认按下瞬间，触发一次后被置位的输出持续运行，即使输入回到 0 也不受影响，直到复位。故上升沿常用于”按一下就连续运行”。</li>
+<li>启动按钮常开信号接上升沿 P，P 输出的一个扫描周期脉冲驱动置位 S 把 Q0.0 置 1（电机连续运行）；停止按钮信号接下降沿 N（或停止逻辑），其脉冲驱动复位 R 把 Q0.0 清 0；P、N 各用独立的边沿存储位。</li>
+<li>等于 &#x3D;&#x3D;、不等于 &lt;&gt;、大于 &gt;、小于 &lt;、大于等于 &gt;&#x3D;、小于等于 &lt;&#x3D;；两个操作数必须是相同数据类型，结果为真时触点闭合。</li>
+<li>IN_RANGE 在 MIN≤值≤MAX 时接通，OUT_OF_RANGE 在值&lt;MIN 或 &gt;MAX 时接通；MIN&#x3D;10、MAX&#x3D;20 时，15 在范围内→IN_RANGE 接通，25 超出范围→OUT_OF_RANGE 接通。</li>
+<li>例如用计数器统计电机运行次数，再用”次数 ≥ 设定值（如 100）”的比较触点切断输出，使电机转到规定次数自动停止；也可用于温度&#x2F;压力上下限报警。</li>
+<li>ADD 加、SUB 减、MUL 乘、DIV 除、MOD 取模；整数除法 DIV 取整后输出商，余数由 MOD 取得。</li>
+<li>NEG 取负（求相反数）；ABS 取绝对值；LIMIT 极限限幅（把值限制在上下限之间）；SQR 平方、SQRT 平方根；LN 自然对数、EXP 指数（e 的幂）；FRAC 返回一个数的小数部分。</li>
+<li>可以。点击指令框”增加输入”即可添加输入端，按顺序对多个输入连续运算，实现连加、连乘；各输入与输出数据类型要一致。</li>
+<li>浮点数（Real）运算的所有输入 IN 和输出 OUT 都必须是实数类型，否则要先做数据类型转换；EN 是使能端，EN 接通（本例高电平有效）时该指令才执行，ENO 可把执行状态级联到下一条指令。</li>
+<li>MOVE 把单个（同类型）数据从源传到目的、可多个输出；MOVE_BLK 把一段连续数据成块搬到另一连续区；FILL_BLK 把同一个数据批量填充到一段连续地址。</li>
+<li>序列化把标准数组转换成连续字节流（如 UDP 等通信格式）以便发送&#x2F;存储，反序列化把接收到的字节流还原成数组，主要用于通信和数据打包&#x2F;解包。</li>
+<li>按运算优先级和顺序把表达式拆成若干基本运算指令，用 EN&#x2F;ENO 或母线逐级连接；因为每条运算指令的输出需要一个地址保存，且要作为下一条指令的输入，所以必须用中间变量（如 MD100、MD102）暂存每一步结果。</li>
+<li>① MUL：20×x→MD100；② MUL：MD100×35→MD102（若原式为除以 35 则用 DIV）；③ SUB：MD102−8→MD104（即 Y）；④ CMP &#x3D;&#x3D; 比较 MD104 与 0，相等接通红灯；CMP &lt;&gt; 不相等接通绿灯。</li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/PLC-S7-1200-%E6%8C%87%E4%BB%A4/" class="print-no-link">#PLC S7-1200 指令</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>S7-1200 编程基础指令：位逻辑、边沿检测与运算指令</div>
+      <div>https://tdexxx.github.io/2026/10/07/02_电气控制与PLC/电气控制与PLC_编程基础指令_发布稿/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>tdexxx</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年10月7日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/10/07/07_%E7%94%B5%E5%B7%A5%E7%94%B5%E5%AD%90%E4%B8%8E%E7%94%B5%E8%B7%AF%E5%AE%9E%E9%AA%8C/%E7%94%B5%E5%B7%A5%E7%94%B5%E5%AD%90_%E4%B8%89%E6%9E%81%E7%AE%A1%E5%85%B1%E5%B0%84%E8%BE%93%E5%87%BA%E7%89%B9%E6%80%A7%E5%AE%9E%E9%AA%8C_%E5%8F%91%E5%B8%83%E7%A8%BF/" title="三极管共射极输出特性曲线测定实验">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">三极管共射极输出特性曲线测定实验</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/10/07/04_%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1_%E5%B8%A6%E4%BC%A0%E5%8A%A8%E5%BA%94%E5%8A%9B%E5%88%86%E6%9E%90%E4%B8%8EV%E5%B8%A6%E8%AE%BE%E8%AE%A1_%E5%8F%91%E5%B8%83%E7%A8%BF/" title="带传动应力分析与 V 带设计计算八步骤">
+                        <span class="hidden-mobile">带传动应力分析与 V 带设计计算八步骤</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
